@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
               CalcMyPower
             </span>
             <span className="hidden sm:inline-block ml-1.5 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
-              Electrical Labs
+              Power Calculators
             </span>
           </div>
         </Link>

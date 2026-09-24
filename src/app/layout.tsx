@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | CalcMyPower",
   },
   description:
-    "Accurate, engineering-based electrical, battery backup, solar, and wire sizing calculators with transparent formulas and NEC standards.",
+    "Practical electrical, battery backup, solar, and power calculators with transparent formulas and clear engineering baselines.",
   keywords: [
     "power calculator",
     "ups runtime calculator",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "watts to amps",
     "wire size calculator",
   ],
-  authors: [{ name: "CalcMyPower Engineering Team" }],
+  authors: [{ name: "CalcMyPower Technical Publishing" }],
   creator: "CalcMyPower",
   publisher: "CalcMyPower",
   formatDetection: {
@@ -32,9 +32,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://calcmypower.com",
     siteName: "CalcMyPower",
-    title: "CalcMyPower — Smart Electrical & Energy Calculators",
+    title: "CalcMyPower — Electrical & Power Calculators",
     description:
-      "Accurate power calculations for UPS systems, solar arrays, battery backups, and wire gauges.",
+      "Clear power calculations for UPS systems, battery backups, solar arrays, and electrical circuits.",
   },
   twitter: {
     card: "summary_large_image",

@@ -238,18 +238,18 @@ export const UpsCalculator: React.FC = () => {
             batteryNote={`Calculated using ${results.usedEfficiencyPercent}% inverter efficiency.`}
           />
 
-          {/* Contextual Amazon Hardware Recommendation Card */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+          {/* Contextual Amazon Hardware Recommendation Card (Secondary) */}
+          <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-slate-900 uppercase tracking-wider">
-                <ShoppingBag className="w-4 h-4 text-accent-amber" />
-                <span>Compatible Hardware on Amazon</span>
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
+                <span>Compatible Hardware Reference</span>
               </div>
-              <span className="text-[10px] text-slate-400">Affiliate Disclosure</span>
+              <span className="text-[10px] text-slate-400">Amazon Affiliate</span>
             </div>
 
-            <p className="text-xs text-slate-600 leading-normal">
-              Based on your {batteryVoltage}V setup and {loadWatts}W draw, here are popular verified components:
+            <p className="text-xs text-slate-500 leading-normal">
+              Hardware examples matching your {batteryVoltage}V setup and {loadWatts}W draw:
             </p>
 
             <div className="space-y-2.5">

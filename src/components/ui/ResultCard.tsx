@@ -29,15 +29,15 @@ export const ResultCard: React.FC<ResultCardProps> = ({
     <div className="bg-slate-900 text-white rounded-2xl shadow-xl overflow-hidden border border-slate-800">
       {/* Primary Result Banner */}
       <div className="p-6 md:p-8 bg-gradient-to-br from-slate-900 via-slate-850 to-blue-950 border-b border-slate-800">
-        <div className="flex items-center gap-2 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-2">
-          <Clock className="w-4 h-4" />
+        <div className="inline-flex items-center gap-2 text-blue-300 bg-blue-950/80 border border-blue-800/60 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
+          <Clock className="w-3.5 h-3.5 text-blue-400" />
           <span>{primaryTitle}</span>
         </div>
-        <div className="text-4xl md:text-5xl font-black tracking-tight text-white mb-2">
+        <div className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-2 leading-none">
           {primaryValue}
         </div>
         {primarySubtext && (
-          <p className="text-slate-400 text-sm">{primarySubtext}</p>
+          <p className="text-slate-400 text-sm mt-2">{primarySubtext}</p>
         )}
       </div>
 
