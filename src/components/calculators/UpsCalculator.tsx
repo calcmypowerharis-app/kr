@@ -432,7 +432,7 @@ export const UpsCalculator: React.FC = () => {
           {
             title: "Watts to Amps Electrical Calculator",
             description: "Convert electrical power to current for DC, single-phase AC, and 3-phase circuits.",
-            href: "/calculators",
+            href: "/watts-to-amps-calculator",
             category: "Electrical",
           },
           {

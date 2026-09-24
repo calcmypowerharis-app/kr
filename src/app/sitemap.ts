@@ -23,5 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
+    {
+      url: `${baseUrl}/watts-to-amps-calculator`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
   ];
 }

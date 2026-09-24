@@ -29,3 +29,10 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Context:** Applying $I = P / (\sqrt{3} \times V \times PF)$ without explicitly stating the "balanced system" condition is physically incomplete, as unbalanced three-phase circuits have different current flows per phase and carry neutral currents.
 - **Rule:** Whenever polyphase equations are displayed, state explicitly that the calculation assumes a symmetrical, balanced three-phase load.
 - **Prevention:** Include balanced system notices in methodology sections, formula tooltips, and variable tables.
+
+---
+
+## Lesson 005: Form Control Accessible Semantics
+- **Context:** Using `<label>` tags as visual section headers (e.g. `<label>Common Load Presets</label>`) without an `htmlFor` attribute or nested form control triggers browser accessibility audits ("No label associated with a form field").
+- **Rule:** Use semantic `<p>` or `<span>` elements for group headers and preset buttons. Reserve `<label htmlFor="...">` strictly for actual associated `<input>`, `<select>`, and `<textarea>` controls.
+- **Prevention:** Run Chrome DevTools `list_console_messages` during QA and verify 0 accessibility issues.

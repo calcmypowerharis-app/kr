@@ -97,3 +97,54 @@ $$E_{usable} = E_{total} \times DoD \times \eta$$
    - Subordinated Amazon hardware reference card with muted borders (`border-slate-200/80`) and subdued typography, keeping it strictly secondary to the calculation tool.
 5. **Mobile Verification:**
    - Verified 2-column mobile category layout and stacked calculator interface on 390×844 viewport. No layout shifts or usability defects found.
+
+---
+
+## 6. Phase C: Watts to Amps Electrical Calculator QA & Verification
+
+**Route Tested:** `/watts-to-amps-calculator`  
+**Test Target:** Local Next.js 15 production server on `http://localhost:3001`  
+**Automated Unit Tests:** 13/13 passing in `src/lib/calculators/__tests__/watts-to-amps.test.ts` (19/19 suite-wide)
+
+### 6.1 Viewport & Responsive Design Verification
+- **Desktop (1280×800):** Tested and confirmed. Clean 2-column layout (7 cols inputs, 5 cols sticky results & diagnostic tools).
+- **Tablet (768×1024):** Tested and confirmed. Responsive stacked layout with consistent padding and typography hierarchy.
+- **Mobile (390×844):** Tested and confirmed. Preset buttons wrap cleanly, form controls stack naturally, and touch targets exceed 44×44px with zero horizontal scroll.
+
+### 6.2 Electrical Formulas & Calculation Modes Verified
+1. **Direct Current (DC):**
+   $$I = \frac{P}{V}$$
+   - Preset Verified: Solar Panel (100W @ 12V DC) $\rightarrow$ 8.33 A (125% Continuous Reference: 10.42 A).
+   - Reactive power factor input is automatically hidden, displaying: *"DC circuits have no phase shift; power factor is inherently 1.0."*
+2. **AC Single-Phase:**
+   $$I = \frac{P}{V \times PF}$$
+   - Presets Verified:
+     - Space Heater (1,500W @ 120V, PF 1.0) $\rightarrow$ 12.50 A (125% Continuous Reference: 15.63 A).
+     - Microwave (1,200W @ 120V, PF 1.0) $\rightarrow$ 10.00 A (125% Continuous Reference: 12.50 A).
+     - Clothes Dryer (5,000W @ 240V, PF 1.0) $\rightarrow$ 20.83 A (125% Continuous Reference: 26.04 A).
+     - RV Air Conditioner (1,800W @ 120V, PF 0.85) $\rightarrow$ 17.65 A (Apparent Power: 2,118 VA).
+3. **Balanced AC Three-Phase (Line-to-Line):**
+   $$I = \frac{P}{\sqrt{3} \times V_{LL} \times PF}$$
+   - Verified: 10,000W at 480V with PF 0.85 $\rightarrow$ 14.15 A (125% Continuous Reference: 17.69 A).
+   - Card and UI explicitly display: *"Under 480V Balanced Three-Phase (Line-to-Line) (PF: 0.85)"*.
+4. **Balanced AC Three-Phase (Line-to-Neutral):**
+   $$I = \frac{P}{3 \times V_{LN} \times PF}$$
+   - Verified: 10,000W at 277V with PF 0.85 $\rightarrow$ 14.16 A (125% Continuous Reference: 17.70 A).
+
+### 6.3 Technical & Safety Guardrails Verified
+- **Continuous-Load Planning:** Converted all breaker references to **"125% Continuous-Load Reference"** ($I \times 1.25$). Avoided misleading claims of "2.5A safety headroom" on 15A circuits for 1,500W continuous loads (since $15\text{ A} \times 0.80 = 12.0\text{ A}$, which 12.5A exceeds).
+- **Conductor & Wire Sizing Separation:** Amperage alone does not determine wire gauge. Includes a prominent educational callout explaining the necessity of run length, permissible voltage drop (3%), and insulation temperature ratings (60°C/75°C/90°C), directly linking to the upcoming Wire Size & Voltage Drop Calculator.
+- **Balanced Assumption Transparency:** Explicitly states the symmetrical balanced system condition in the UI selector, result badge, calculation methodology, and physical assumptions table.
+- **Non-Silent Input Validation:**
+  - Tested $V = 0$: Triggers `role="alert"` `aria-live="polite"` notice: *"Voltage must be greater than 0 Volts to calculate current."* Primary result displays `--` without mathematical exception or `Infinity`.
+  - Tested Negative Watts: Non-silent notice displayed; safe fallback prevents arithmetic errors.
+  - Tested $PF > 1.0$: Non-silent notice displayed; sanitized safely.
+  - Tested High Current (>50A): Displays engineering advisory regarding dedicated heavy-duty wiring.
+
+### 6.4 Console & SEO Audit
+- **Console Messages:** 0 runtime errors, 0 warnings, 0 hydration mismatches, 0 accessibility issues.
+- **Semantic HTML:** Preset group header uses semantic `<p>` tags; all inputs have explicit `<label for="...">` associations and `aria-describedby` helper texts.
+- **SEO Metadata:** Title: *"Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC) | CalcMyPower"*; canonical URL: `https://calcmypower.com/watts-to-amps-calculator`.
+- **JSON-LD Schemas:** All 3 schemas verified in page head: `WebApplication`, `BreadcrumbList`, and `FAQPage` (5 comprehensive Q&As).
+- **XML Sitemap:** Verified entry in `/sitemap.xml`.
+

@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/calculators" className="hover:text-white transition">
+                <Link href="/watts-to-amps-calculator" className="hover:text-white transition">
                   Watts to Amps Converter
                 </Link>
               </li>

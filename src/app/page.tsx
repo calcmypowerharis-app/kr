@@ -34,8 +34,9 @@ const CATEGORIES: CategoryCard[] = [
     name: "Electrical",
     description: "Watts, Amps, Volts, resistance, Ohm's law, and AC power factor conversions.",
     icon: Cpu,
-    status: "coming_soon",
-    toolCount: "Planned",
+    status: "active",
+    href: "/watts-to-amps-calculator",
+    toolCount: "1 Active Tool",
   },
   {
     name: "Solar",
@@ -261,20 +262,29 @@ export default function HomePage() {
           </Link>
 
           {/* Card 2: Watts to Amps */}
-          <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3 opacity-85">
-            <div className="w-9 h-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+          <Link
+            href="/watts-to-amps-calculator"
+            className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-3"
+          >
+            <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
               <Cpu className="w-4 h-4" />
             </div>
             <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-slate-800">Watts to Amps</h3>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 bg-slate-200/70 px-2 py-0.5 rounded">
-                Coming Soon
+              <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition">
+                Watts to Amps
+              </h3>
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                Live
               </span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
               Convert real power to current across DC, single-phase AC, and balanced three-phase circuits.
             </p>
-          </div>
+            <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-1">
+              <span>Use Calculator</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </div>
+          </Link>
 
           {/* Card 3: Wire Sizing */}
           <div className="p-5 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3 opacity-85">
