@@ -1,233 +1,292 @@
-# CalcMyPower — Calculator Specification: Watts to Amps Converter
+# CalcMyPower — Calculator Specification: Watts to Amps Converter (Revision 2)
 
 **Document:** `CALCULATOR_SPEC_WATTS_TO_AMPS.md`  
 **Tool Name:** Watts to Amps Electrical Calculator  
-**Route / URL:** `/watts-to-amps-calculator` (with `/watts-to-amps` redirect or canonical alias)  
-**Status:** SPECIFICATION COMPLETE — AWAITING LEAD REVIEW  
+**Route / URL:** `/watts-to-amps-calculator`  
+**Status:** REVISED PER LEAD REVIEW — AWAITING FINAL APPROVAL  
 **Implementation Engineer:** Antigravity (Gemini 3.8 Flash High)  
 **Lead / Strategist:** ChatGPT + Project Owner  
 
 ---
 
 ## A. Search Intent
-- **Primary Search Intent:** Direct Informational / Utility Calculation.
-- **Target Keywords (Verified from Local SEMrush Dataset):**
-  - `watts to amps`: Monthly US Volume: **18,100** | KD: **28%** | Intent: Informational
-  - `watts to amps calculator`: Monthly US Volume: **4,400** | KD: **15%** | Intent: Informational / Tool
-  - Supporting Queries: `how to convert watts to amps`, `watts to amps 120v`, `watts to amps 12v`, `watts to amps 240v`.
-- **Search Intent Analysis:** Users have an appliance or electrical load rated in Watts (e.g. 1500W space heater, 1800W microwave, 100W solar panel) and need to determine how many Amperes (Amps) of electrical current it will draw from their circuit, breaker, or battery bank.
+- **Primary Search Intent:** Direct Informational & Practical Electrical Calculation.
+- **Target Keywords (Directly from Verified SEMrush US Dataset):**
+  - Primary: `watts to amps` (Volume: **18,100** | KD: **28%** | Intent: Informational)
+  - Secondary: `watts to amps calculator` (Volume: **4,400** | KD: **15%** | Intent: Informational / Tool)
+  - Natural Supporting Queries: `how to convert watts to amps`, `1500 watts to amps 120v`, `watts to amps 12v`, `watts to amps 240v`.
+- **Search Intent Analysis:** Users have an electrical appliance or load rated in Watts (e.g., 1,500W space heater, 1,200W microwave, 100W solar panel) and need to calculate the electrical current in Amperes (Amps) to evaluate circuit loading, battery discharge rates, or generator capacity.
 
 ---
 
 ## B. User Problem
-1. **Breaker Tripping & Overload:** Homeowners and RV owners want to know if plugging in multiple appliances will exceed a 15-Amp or 20-Amp breaker limit.
-2. **Wire & Fuse Sizing:** DIY solar and off-grid installers need to determine the continuous Amps traveling through DC battery cables or AC inverter lines to select the proper wire gauge (AWG) and fuse ratings.
-3. **Confusion between AC and DC:** Users often don't realize that converting Watts to Amps differs dramatically depending on whether the system is direct current (12V DC), single-phase alternating current (120V/240V AC), or three-phase commercial power (208V/480V AC).
-4. **Power Factor (PF) Misunderstanding:** Users do not understand inductive/reactive loads (motors, compressors, fluorescent ballasts) where apparent power (VA) exceeds real power (Watts).
+1. **Circuit Loading Evaluation:** Homeowners, renters, and RV travelers want to know how many Amperes an appliance will draw to prevent overloading standard circuits.
+2. **Current Draw for Inverters & Batteries:** Off-grid and solar users need to know continuous DC current draw to evaluate battery discharge rates and safety disconnects.
+3. **Confusion Across Electrical Systems:** Users often do not realize that converting Watts to Amps requires different formulas for Direct Current (DC), Single-Phase Alternating Current (AC), and Three-Phase AC.
+4. **Power Factor (PF) Misconceptions:** Users may not understand why motor-driven or reactive equipment draws more current (Amps) than a simple Watts/Volts calculation suggests.
 
 ---
 
 ## C. Input Specification
 
-| Parameter | Type | Required | Default | Min / Max | Allowed Steps / Options | Description |
-|---|---|---|---|---|---|---|
-| `powerWatts` | Number | Yes | 1200 W | 0 – 500,000 W | Step: 10 W | Real power consumed by the load. |
-| `currentType` | Select | Yes | `ac_single` | `dc`, `ac_single`, `ac_three` | 3 options | Type of electrical system. |
-| `voltage` | Number | Yes | 120 V | 1 – 1,000 V | Step: 1 V | Operating circuit voltage. |
-| `voltageType` | Select | Conditional (3-Phase only) | `line_to_line` | `line_to_line`, `line_to_neutral` | 2 options | Whether three-phase voltage is measured line-to-line ($V_{L-L}$) or line-to-neutral ($V_{L-N}$). |
-| `powerFactor` | Number | Conditional (AC only) | 1.0 (or 0.8 for reactive) | 0.1 – 1.0 | Step: 0.05 | Ratio of real power (W) to apparent power (VA). Disabled/hidden in DC mode. |
+| Parameter | Type | Required | Default | Allowed Range | Description & Behavior |
+|---|---|---|---|---|---|
+| `powerWatts` | Number | Yes | 1,200 W | $\ge 0$ W (Max: 500,000 W) | Real continuous power consumed by the load. |
+| `currentType` | Select | Yes | `ac_single` | `dc`, `ac_single`, `ac_three` | Operating electrical system type. |
+| `voltage` | Number | Yes | 120 V | $> 0$ V (Max: 1,000 V) | Nominal circuit voltage. Cannot be 0. |
+| `voltageType` | Select | Conditional (3-Phase only) | `line_to_line` | `line_to_line`, `line_to_neutral` | Specifies whether three-phase voltage is Line-to-Line ($V_{L-L}$) or Line-to-Neutral ($V_{L-N}$). |
+| `powerFactor` | Number | Conditional (AC only) | 1.0 | $0.1 \le PF \le 1.0$ | Real-to-apparent power ratio. Default is 1.0 (pure resistive). Hidden in DC mode. |
 
 ### Presets for Fast User Action:
-- **Common Voltage Quick-Selects:**
-  - `12V (DC Automotive / RV Battery)`
-  - `24V (DC Solar / Commercial Truck)`
-  - `48V (DC Telecom / Home Storage)`
-  - `120V (Standard US Household Outlet)`
-  - `208V (US Commercial 3-Phase)`
-  - `240V (US Heavy Appliance: Dryer / Level 2 EV)`
-  - `277V (US Commercial Lighting)`
-  - `480V (US Industrial 3-Phase)`
-- **Appliance Wattage Presets:**
+- **Common Voltage Selects:**
+  - `12V DC` (Automotive, RV House Battery)
+  - `24V DC` (Solar Battery Bank, Marine)
+  - `48V DC` (Off-Grid Powerwall, Telecom)
+  - `120V AC` (Standard US Household Wall Outlet)
+  - `208V AC` (US Commercial Three-Phase)
+  - `240V AC` (US Residential Clothes Dryer / Level 2 EV Charger)
+  - `277V AC` (US Commercial Lighting)
+  - `480V AC` (US Industrial Three-Phase)
+- **Appliance Wattage Selects:**
   - Space Heater (1,500W @ 120V)
   - Microwave (1,200W @ 120V)
   - Electric Clothes Dryer (5,000W @ 240V)
   - RV Air Conditioner (1,800W @ 120V)
-  - LED Light Bulb (10W @ 120V)
+  - Refrigerator Running Load (180W @ 120V)
   - 100W Solar Panel (100W @ 12V DC)
 
 ---
 
 ## D. Output Specification
 
-| Metric | Unit | Precision | Engineering Significance |
+| Metric | Unit | Precision | Educational & Engineering Role |
 |---|---|---|---|
-| **Calculated Current ($I$)** | Amperes (A) | 2 decimal places | Primary output answer. Direct current flow. |
-| **Apparent Power ($S$)** | Volt-Amps (VA) | Integer | Sizing basis for generators, transformers, and inverters ($S = P / PF$). |
-| **Minimum Circuit Breaker Size** | Amperes (A) | Integer (standard sizes: 15A, 20A, 30A, 50A) | Calculated with NEC 125% continuous load factor ($I \times 1.25$). |
-| **Recommended Minimum Wire Gauge (AWG)** | AWG (Copper, 75°C THHN) | Text (e.g. "14 AWG", "12 AWG", "10 AWG") | Preliminary reference based on NEC Table 310.16. |
-| **Formula String Displayed** | Math text | N/A | Dynamic equation showing substituted values. |
+| **Calculated Current ($I$)** | Amperes (A) | 2 decimal places | Primary calculation output. Direct mathematical result. |
+| **Apparent Power ($S$)** | Volt-Amps (VA) | Integer | Displayed for AC calculations where $PF < 1.0$ ($S = P / PF$). |
+| **125% Continuous-Load Reference** | Amperes (A) | 2 decimal places | Informational reference: $I \times 1.25$. Accompanied by explanatory note that actual overcurrent protection selection depends on installation specifics and applicable code. |
+| **Conductor Sizing Context** | Callout Link | N/A | Dedicated informational callout with internal link: *"Need to size wire? Conductor gauge depends on distance, insulation temperature rating, and voltage drop. Use our Wire Size & Voltage Drop Calculator."* |
+| **Formula Display** | Text / LaTeX | N/A | Transparent display showing exact variables and substituted numbers. |
 
 ---
 
-## E. Mathematical Formulas
+## E. Mathematical Formulas & Engineering Principles
 
 ### 1. Direct Current (DC)
-In a direct current circuit, voltage and current are constant over time and in phase. There are no inductive or capacitive phase shifts, so power factor does not exist ($PF = 1.0$ inherently).
+In DC circuits, electrical voltage and current are unidirectional and steady. There is no phase displacement between voltage and current. Consequently, power factor does not exist ($PF = 1.0$ inherently).
 
 $$I = \frac{P}{V}$$
 
-Where:
-- $I$ = Current in Amperes (A)
-- $P$ = Real Power in Watts (W)
-- $V$ = DC Voltage in Volts (V)
+- $I$: Current in Amperes (A)
+- $P$: Real Power in Watts (W)
+- $V$: Direct Current Voltage in Volts (V)
 
 ---
 
 ### 2. Alternating Current (AC) — Single Phase
-In single-phase AC circuits, AC voltage and current alternate sinusoidally. For inductive loads (motors, compressors, ballasts), current lags voltage. Real power ($P$, Watts) represents actual work performed, while Apparent Power ($S$, Volt-Amps) accounts for the phase displacement.
+In single-phase AC circuits, voltage and current alternate sinusoidally. When powering inductive or capacitive loads (motors, transformers, compressors), current shifts out of phase with voltage. Real power ($P$, Watts) represents usable work, while Apparent Power ($S$, Volt-Amps) represents the total circulating power.
 
 $$I = \frac{P}{V \times PF}$$
 
-Where:
-- $I$ = RMS Current in Amperes (A)
-- $P$ = Real Power in Watts (W)
-- $V$ = RMS Line Voltage in Volts (V) (e.g. 120V or 240V in the US)
-- $PF$ = Power Factor (dimensionless decimal between 0.1 and 1.0; 1.0 for resistive heaters/incandescent bulbs, 0.8 for typical motors/computers)
+- $I$: RMS Current in Amperes (A)
+- $P$: Real Power in Watts (W)
+- $V$: RMS Circuit Voltage in Volts (V) (e.g. 120V or 240V)
+- $PF$: Power Factor ($0.1 \le PF \le 1.0$). Default is **1.0** (pure resistive loads such as space heaters, water heaters, and incandescent lamps). For reactive equipment, users should consult the manufacturer nameplate or measured data.
 
 ---
 
-### 3. Alternating Current (AC) — Three Phase
-Three-phase AC power utilizes three separate sinusoidal voltages offset by 120 electrical degrees.
+### 3. Alternating Current (AC) — Three Phase (Balanced System Assumption)
+**Critical Engineering Assumption:** Three-phase calculations in this tool assume a **symmetrical, balanced system** where voltages, currents, and power factors are identical across all three phase conductors. (Unbalanced commercial systems require independent vector phase analysis).
 
-#### A. Line-to-Line Voltage ($V_{L-L}$):
-When using line-to-line voltage (the standard voltage rating across two phase legs, e.g. 208V, 480V):
+#### A. Using Line-to-Line Voltage ($V_{L-L}$):
+When voltage is measured across two phase conductors (standard commercial/industrial ratings: 208V, 480V):
 
 $$I = \frac{P}{\sqrt{3} \times V_{L-L} \times PF} \approx \frac{P}{1.73205 \times V_{L-L} \times PF}$$
 
-#### B. Line-to-Neutral Voltage ($V_{L-N}$):
-When using line-to-neutral voltage (phase voltage to neutral, e.g. 120V on a 208V wye system, 277V on a 480V wye system):
+#### B. Using Line-to-Neutral Voltage ($V_{L-N}$):
+When voltage is measured between one phase conductor and the system neutral (e.g., 120V in a 208Y/120V system, or 277V in a 480Y/277V system):
 
 $$I = \frac{P}{3 \times V_{L-N} \times PF}$$
 
-*Note:* Because $V_{L-L} = \sqrt{3} \times V_{L-N}$, both formulas yield identical current results when the proper voltage reference is maintained.
+*Mathematical Note:* Because $V_{L-L} = \sqrt{3} \times V_{L-N}$, both formulas yield identical line current results when using the correct voltage reference.
 
 ---
 
-### 4. Continuous Duty Safety Headroom (NEC Standard)
-Per National Electrical Code (NEC Article 210.19 and 215.2), any continuous electrical load (operating for 3 hours or more) must not exceed 80% of the circuit breaker rating. Equivalently, the circuit breaker and conductor must be sized for at least 125% of the continuous load:
+### 4. Continuous-Load Context & NEC 125% Reference
+Per National Electrical Code (NEC Article 100), a **continuous load** is defined as a load where the maximum current is expected to continue for **3 hours or more** (e.g. space heaters, commercial lighting, EV chargers).
 
-$$I_{continuous\_rated} = I \times 1.25$$
+Under NEC Article 210.19 and 215.2:
+- Branch circuit overcurrent protection and conductors must typically be sized for not less than **125% of the continuous load**, plus 100% of non-continuous load.
+- Alternatively expressed: standard (non-100%-rated) overcurrent devices must not carry continuous loads exceeding **80% of their ampere rating**.
+
+The calculator provides:
+$$\text{Continuous-Load Reference Current} = I \times 1.25$$
+
+*Important Disclaimer:* This reference is provided for informational and preliminary planning purposes only. Final breaker and overcurrent device selection requires evaluating conductor termination temperature ratings (60°C/75°C), conduit fill derating, ambient temperature adjustment, and licensed professional review.
 
 ---
 
-## F. Edge Cases & Validation Rules
+## F. Input Validation & Error Handling (Explicit, Non-Silent)
+
+Rather than silently altering invalid values without user awareness, the calculator presents explicit validation guidance:
 
 1. **Zero Voltage ($V = 0$):**
-   - Must never cause division by zero or produce `Infinity`/`NaN`.
-   - Validation triggers: *"Voltage must be greater than 0 Volts."*
-2. **Zero Power ($P = 0$):**
-   - Returns $0.00\text{ A}$ current cleanly without error.
-3. **Negative Values:**
-   - Negative wattage or voltage is physically invalid for power conversion. Sanitizer clamps all inputs to $\ge 0$.
-4. **Power Factor Boundaries:**
-   - $PF > 1.0$: Physically impossible in AC circuits. Clamped to $1.0$.
-   - $PF \le 0$: Clamped to minimum $0.1$ with guidance message.
-5. **High Amperage Warning ($I > 50\text{ A}$):**
-   - Displays safety notice: *"Current exceeds 50 Amps. High electrical hazard. Requires dedicated heavy-gauge circuit and subpanel wiring."*
+   - *Behavior:* Prevents division by zero. Sets current output to $0.00\text{ A}$.
+   - *User Message:* `"Voltage must be greater than 0 Volts to calculate current."`
+2. **Negative Power or Voltage ($P < 0$ or $V < 0$):**
+   - *Behavior:* Clamps calculation to $0$ and flags input.
+   - *User Message:* `"Electrical power and voltage cannot be negative values. Please enter a positive value."`
+3. **Power Factor Out of Bounds ($PF > 1.0$ or $PF < 0.1$):**
+   - *Behavior:* If user enters $PF > 1.0$, calculation defaults to $1.0$.
+   - *User Message:* `"Power Factor in AC circuits cannot exceed 1.0 (unity). Value has been set to 1.0."`
+   - If user enters $PF \le 0$, calculation defaults to $1.0$ with: `"Power Factor must be greater than 0. Check equipment nameplate."`
+4. **Zero Power ($P = 0$):**
+   - *Behavior:* Outputs $0.00\text{ A}$ cleanly with info text: `"Load is 0 Watts. Enter wattage to compute current."`
+5. **High Current Warning ($I > 50\text{ A}$):**
+   - *User Message:* `"High current detected (>50 Amps). Circuits of this magnitude require dedicated heavy-duty wiring, specialized overcurrent protection, and professional installation."`
 
 ---
 
-## G. UX Flow
+## G. Conductor Sizing Architecture Separation
+
+To maintain architectural integrity and avoid giving misleading wire recommendations:
+1. **Watts-to-Amps Calculator:** Focuses strictly on mathematical current conversion ($I$), Apparent Power ($VA$), and the 125% continuous reference.
+2. **Conductor Sizing Delegation:** Does **not** output a definitive wire gauge. Instead, provides an educational callout box:
+   > **Need to size electrical wire?**  
+   > Proper conductor sizing cannot be determined by amperage alone. It requires evaluating one-way run distance, permissible voltage drop (typically 3%), conduit fill, and temperature ratings.  
+   > 👉 **[Use our Dedicated Wire Size & Voltage Drop Calculator](/wire-size-calculator)**
+
+---
+
+## H. UX & Component Flow
 
 ```
-[Page Load]
-    ├── Pre-populated with sensible default: 1,200W @ 120V AC Single-Phase (PF = 1.0)
-    ├── Output displays immediately: 10.00 Amps | 15A Breaker Recommended | 14 AWG Copper
+[Page Header]
+    ├── Title: Watts to Amps Electrical Calculator
+    ├── Category Badge: Electrical & Power
+    └── Subtitle: Direct Current, Single-Phase AC & Balanced Three-Phase Systems
+
+[Interactive Calculator Grid]
+    ├── Left Column: Input Parameters
+    │     ├── Quick Appliance Presets (Heater, Microwave, Dryer, RV AC, etc.)
+    │     ├── Power Input (Watts) with unit badge
+    │     ├── Electrical System Selector (DC / AC Single-Phase / AC 3-Phase)
+    │     ├── Voltage Input (Volts) + Quick Voltage Buttons (12V, 24V, 120V, 240V, 480V)
+    │     ├── 3-Phase Toggle (Line-to-Line vs Line-to-Neutral) [Shown only in 3-Phase]
+    │     ├── Power Factor Input [Shown only in AC modes, default 1.0]
+    │     └── Non-silent validation warning banners when inputs are invalid
     │
-[User Interaction]
-    ├── Clicks "12V DC" Quick Preset -> Switches mode to DC, hides PF field, recalculates: 100.00 Amps!
-    │   └── Trigger High Current Warning + Recommends 1 AWG / 0 AWG wire.
-    ├── Clicks "3-Phase AC" -> Displays Line-to-Line vs Line-to-Neutral toggle.
-    ├── Types custom Watts (e.g. 1500) -> Instant debounced recalculation.
-    │
-[Result & Educational Sections Below]
-    ├── Contextual Amazon card: Digital Clamp Meters & Circuit Breaker Finders
-    ├── Step-by-step Formula Breakdown with symbol guide
-    ├── Three distinct worked examples (DC RV, AC Single-Phase Household, AC 3-Phase Motor)
-    ├── Power Factor explanatory table
-    ├── NEC Safety Disclaimer
-    ├── FAQ Accordion
-    └── Internal links to UPS Runtime & Wire Sizing Calculators
+    └── Right Column: Results & Context
+          ├── Primary Result Card: Calculated Current (e.g. 12.50 Amps)
+          ├── Subtext: Under [V]V AC Single-Phase at PF = [PF]
+          ├── Secondary Metric: Apparent Power (VA)
+          ├── Secondary Metric: 125% Continuous-Load Reference (Amps)
+          ├── Conductor Sizing Educational Callout (Links to Wire Size Calculator)
+          └── Contextual Amazon Hardware Card (Subtle, non-intrusive: Multimeters & Clamp Meters)
+
+[Supporting Educational Sections]
+    ├── Formula & Methodology (DC, Single-Phase, 3-Phase with variable breakdown)
+    ├── Step-by-Step Worked Examples (Resistive Space Heater, AC Motor with PF, 3-Phase Commercial)
+    ├── Power Factor Guide & Table (Resistive vs Inductive loads explained)
+    ├── Continuous Load & NEC Planning Context (Explaining the 80% / 125% rules clearly)
+    ├── Safety & Engineering Disclaimer
+    ├── FAQ Accordion (5 detailed questions)
+    └── Related Calculators (UPS Runtime, Wire Sizing, Amps to Watts)
 ```
 
 ---
 
-## H. SEO Page Structure
+## I. SEO Page Structure
 
-- **Target URL:** `/watts-to-amps-calculator` (Canonical)
-- **Meta Title:** `Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC)`
-- **Meta Description:** `Convert Watts to Amps with our free electrical calculator. Supports DC circuits, 120V/240V single-phase AC, and 208V/480V 3-phase systems with power factor.`
+- **Target Route:** `/watts-to-amps-calculator` (Canonical)
+- **Title Tag:** `Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC) | CalcMyPower`
+- **Meta Description:** `Convert Watts to Amps accurately. Calculate electrical current for DC, 120V/240V single-phase AC, and balanced three-phase circuits with clear formulas and power factor.`
 - **H1:** `Watts to Amps Electrical Calculator`
+- **Keyword Usage:** Natural inclusion of `watts to amps` and `watts to amps calculator` in H1, intro, formula explanation, and worked examples. Zero keyword stuffing.
 - **Schema.org Structured Data:**
-  - `WebApplication` schema (price: $0, category: UtilitiesApplication)
-  - `BreadcrumbList` schema (`Home` > `Calculators` > `Watts to Amps Calculator`)
-  - `FAQPage` schema (5 verified Q&A entries)
+  - `WebApplication` (Price: $0, Category: UtilitiesApplication)
+  - `BreadcrumbList` (`Home` > `Calculators` > `Watts to Amps Calculator`)
+  - `FAQPage` (5 verified technical Q&As)
 
 ---
 
-## I. FAQ Candidates (High-Intent Questions)
+## J. Revised FAQ Section (Factually Accurate & Standards-Compliant)
 
-1. **How do I convert 1,500 Watts to Amps at 120 Volts?**
-   - *Answer:* For standard 120V household AC with a resistive load (power factor = 1.0), divide 1,500 Watts by 120 Volts. Current = 1,500 / 120 = **12.5 Amps**. On a standard 15-Amp household circuit, this leaves 2.5 Amps of safety headroom.
-2. **Why does 100 Watts produce different Amps on 12V DC vs 120V AC?**
-   - *Answer:* Electrical current depends inversely on voltage ($I = P / V$). At 120V AC, 100 Watts draws only **0.83 Amps**. At 12V DC, that same 100 Watts requires **8.33 Amps** (10 times more current), necessitating much thicker wiring.
-3. **What is power factor and when do I need it?**
-   - *Answer:* Power factor (PF) measures how effectively electrical power is converted into working output in AC circuits. Pure resistive devices (space heaters, incandescent bulbs) have a PF of 1.0. Inductive devices with motors or compressors (refrigerators, power drills, air conditioners) typically have a PF between 0.75 and 0.85.
-4. **How many Amps can a standard 15-Amp household breaker handle?**
-   - *Answer:* Under the NEC 80% continuous duty rule, a 15-Amp circuit breaker should not exceed 12 Amps (1,440 Watts at 120V) for loads operating continuously for 3 hours or longer.
-5. **How do you calculate 3-phase Watts to Amps?**
-   - *Answer:* For 3-phase line-to-line systems, divide Watts by the product of the square root of 3 (1.732), the line-to-line voltage, and the power factor: $I = P / (1.732 \times V_{L-L} \times PF)$.
+### Q1: How do I convert 1,500 Watts to Amps at 120 Volts?
+**Answer:**  
+In a standard 120V single-phase AC circuit powering a resistive load (such as a portable space heater where power factor is 1.0):
+
+$$\text{Current} = \frac{1,500\text{ W}}{120\text{ V} \times 1.0} = 12.50\text{ Amps}$$
+
+**Continuous-Load Planning Context:**  
+While 12.5A is below a 15-Amp breaker's nominal trip point, electrical safety codes treat space heaters as continuous loads (operating for 3 hours or more). Under National Electrical Code (NEC) guidelines, continuous loads must not exceed 80% of circuit rating ($15\text{ A} \times 0.80 = 12.0\text{ A}$). Because 12.5A exceeds 12.0A, running a 1,500W heater continuously on a standard 15A branch circuit operates beyond recommended continuous limits. For continuous operation, a 20A branch circuit is standard practice.
 
 ---
 
-## J. Related Calculators
-1. **Amps to Watts Calculator** (`/amps-to-watts-calculator`) — Reverse conversion ($P = V \times I$).
-2. **Wire Size & Voltage Drop Calculator** (`/wire-size-calculator`) — Size conductors based on the calculated amperage.
-3. **UPS & Battery Backup Run-Time Calculator** (`/ups-battery-backup-calculator`) — Calculate how long a battery bank can support the calculated wattage.
-4. **Volts to Watts Calculator** (`/volts-to-watts-calculator`) — Relate voltage, resistance, and wattage using Ohm's law.
+### Q2: Why does 100 Watts produce different Amps on 12V DC compared to 120V AC?
+**Answer:**  
+Current is inversely proportional to voltage ($I = P / V$). At 120V AC, 100 Watts draws approximately **0.83 Amps**. At 12V DC (such as in an automotive or RV battery system), that same 100 Watts requires **8.33 Amps**—ten times as much current. Higher amperage generates significantly more electrical resistance and heat, requiring much thicker conductors and specialized fuses on low-voltage DC circuits.
 
 ---
 
-## K. Test Cases for Automated Verification (Vitest Suite)
+### Q3: What is power factor, and when must it be included in the calculation?
+**Answer:**  
+Power factor (PF) represents the ratio of real working power (Watts) to apparent total power (Volt-Amperes, VA) in alternating current circuits. Pure resistive loads (heaters, incandescent lamps) have a power factor of 1.0 because current and voltage are in phase. Reactive loads containing electric motors, magnetic coils, or compressors (refrigerators, air conditioners, power tools) introduce phase displacement, causing power factor to drop below 1.0 (typically between 0.75 and 0.90). In DC circuits, power factor does not exist because direct current has no frequency or phase shift.
 
-| Test ID | System Mode | Power ($P$) | Voltage ($V$) | Power Factor ($PF$) | Expected Current ($I$) | Hand-Calculation Verification |
-|---|---|---|---|---|---|---|
-| **TC-01** | DC | 120 W | 12 V | N/A | **10.00 A** | $120 / 12 = 10.0$ |
-| **TC-02** | DC | 1,200 W | 48 V | N/A | **25.00 A** | $1,200 / 48 = 25.0$ |
-| **TC-03** | AC Single-Phase | 1,500 W | 120 V | 1.0 | **12.50 A** | $1,500 / (120 \times 1.0) = 12.5$ |
-| **TC-04** | AC Single-Phase | 1,800 W | 120 V | 0.85 | **17.65 A** | $1,800 / (120 \times 0.85) = 17.647 \approx 17.65$ |
-| **TC-05** | AC Single-Phase | 5,000 W | 240 V | 1.0 | **20.83 A** | $5,000 / (240 \times 1.0) = 20.833 \approx 20.83$ |
-| **TC-06** | AC 3-Phase ($V_{L-L}$) | 10,000 W | 480 V | 0.85 | **14.17 A** | $10,000 / (1.73205 \times 480 \times 0.85) = 14.167 \approx 14.17$ |
-| **TC-07** | AC 3-Phase ($V_{L-N}$) | 10,000 W | 277 V | 0.85 | **14.16 A** | $10,000 / (3 \times 277 \times 0.85) = 14.157 \approx 14.16$ |
-| **TC-08** | Edge: Zero Power | 0 W | 120 V | 1.0 | **0.00 A** | Zero division guarded |
-| **TC-09** | Edge: Negative Load | -500 W | 120 V | 1.0 | **0.00 A** | Clamped to 0 |
-| **TC-10** | Edge: Extreme Load | 100,000 W | 480 V | 0.9 | **133.64 A** | High current flag fired |
+---
+
+### Q4: What is the 125% continuous-load reference?
+**Answer:**  
+The National Electrical Code defines a continuous load as any load where maximum current continues for 3 hours or more. Standard branch-circuit overcurrent protective devices are designed to carry continuous loads up to 80% of their marked rating. To account for this, engineers size protective equipment for at least 125% of the continuous current ($I \times 1.25$). For example, a continuous 12A draw requires at least a 15A breaker ($12\text{ A} \times 1.25 = 15\text{ A}$).
+
+---
+
+### Q5: How do you calculate three-phase Watts to Amps?
+**Answer:**  
+For a balanced three-phase system using line-to-line voltage ($V_{L-L}$):
+
+$$I = \frac{P}{\sqrt{3} \times V_{L-L} \times PF}$$
+
+For example, a 10,000W commercial load operating at 480V with a 0.85 power factor draws:
+
+$$I = \frac{10,000}{1.732 \times 480 \times 0.85} = 14.17\text{ Amps per line}$$
+
+*Note:* This formula assumes the electrical system is balanced across all three phases.
+
+---
+
+## K. Expanded Test Cases for Automated Verification (Vitest Suite)
+
+| Test ID | System Mode | Power ($P$) | Voltage ($V$) | Power Factor ($PF$) | Expected Current ($I$) | Expected 125% Ref | Verification Criteria |
+|---|---|---|---|---|---|---|---|
+| **TC-01** | DC Standard | 120 W | 12 V | N/A | **10.00 A** | 12.50 A | Exact DC conversion |
+| **TC-02** | DC High Current | 1,200 W | 12 V | N/A | **100.00 A** | 125.00 A | High current flag fired ($>50\text{A}$) |
+| **TC-03** | AC 1-Phase ($PF = 1$) | 1,500 W | 120 V | 1.0 | **12.50 A** | 15.63 A | Resistive space heater baseline |
+| **TC-04** | AC 1-Phase ($PF < 1$) | 1,800 W | 120 V | 0.85 | **17.65 A** | 22.06 A | Inductive load with Apparent Power = 2,118 VA |
+| **TC-05** | AC 1-Phase 240V | 5,000 W | 240 V | 1.0 | **20.83 A** | 26.04 A | Heavy residential 240V branch |
+| **TC-06** | AC 3-Phase ($V_{L-L}$) | 10,000 W | 480 V | 0.85 | **14.17 A** | 17.71 A | Balanced commercial 3-phase line-to-line |
+| **TC-07** | AC 3-Phase ($V_{L-N}$) | 10,000 W | 277 V | 0.85 | **14.16 A** | 17.70 A | Balanced 3-phase line-to-neutral |
+| **TC-08** | Edge: Zero Voltage | 1,000 W | 0 V | 1.0 | **0.00 A** | 0.00 A | Division by zero prevented; validation error |
+| **TC-09** | Edge: Zero Watts | 0 W | 120 V | 1.0 | **0.00 A** | 0.00 A | Clean 0.00A without error |
+| **TC-10** | Edge: Invalid $PF > 1$ | 1,000 W | 120 V | 1.2 | **8.33 A** | 10.42 A | Explanatory message; clamped to 1.0 |
+| **TC-11** | Edge: Negative Watts | -500 W | 120 V | 1.0 | **0.00 A** | 0.00 A | Non-silent validation warning; clamped to 0 |
+| **TC-12** | Extreme Load | 100,000 W | 480 V | 0.90 | **133.64 A** | 167.05 A | Industrial high-power threshold |
+| **TC-13** | Rounding Precision | 100 W | 120 V | 1.0 | **0.83 A** | 1.04 A | Verifies $0.8333...$ rounds strictly to $0.83$ |
 
 ---
 
 ## L. Authoritative Sources to Consult
-- **National Electrical Code (NEC / NFPA 70):** Article 210 (Branch Circuits), Article 215 (Feeders), Article 220 (Branch-Circuit, Feeder, and Service Calculations).
-- **IEEE Standard 141 (Red Book):** Recommended Practice for Electric Power Distribution for Industrial Plants (Calculation of three-phase power and power factor).
-- **US Department of Energy (DoE) & Energy Information Administration (EIA):** Standard appliance wattage ratings and energy conservation metrics.
-- **OSHA Standard 1910.303:** General electrical safety requirements and working spaces.
+- **National Electrical Code (NEC / NFPA 70):**
+  - Article 100 (Definitions: Continuous Load, Apparent Power)
+  - Article 210.19 (Branch-Circuit Ratings & Sizing)
+  - Article 215.2 (Feeder Minimum Rating & Ampacity)
+- **IEEE Standard 141 (Red Book):** Recommended Practice for Electric Power Distribution for Industrial Plants (Three-phase balanced power calculations).
+- **US Department of Energy (DoE) & Energy Information Administration (EIA):** Residential appliance electrical power baselines.
+- **OSHA Standard 1910.303:** General safety standards for electrical systems.
 
 ---
 
-## M. Monetization Opportunities (AdSense & Amazon)
-1. **AdSense Integration:**
-   - Leaderboard ad above the methodology section (high dwell time while users read three-phase equations).
-   - Sidebar ad on desktop adjacent to the results column.
+## M. Contextual Monetization (AdSense & Amazon)
+1. **Google AdSense:** Clean display ad placement below the worked examples and adjacent to the formula section (non-intrusive, zero interference with tool controls).
 2. **Contextual Amazon Associates Hardware:**
-   - **Under 20A:** Digital Multimeters & AC/DC Clamp Meters (e.g. Klein Tools, Fluke, Kaiweets) — high conversion tools for DIYers checking actual circuit current.
-   - **Over 30A:** Heavy-duty RV Surge Protectors, Generator Inlet Boxes, NEMA 14-50 EV chargers.
-   - **Low Voltage DC (<48V):** High-amperage inline ANL fuses, marine battery switches, and hydraulic crimpers for heavy copper lugs.
+   - **DIY Diagnostic Gear:** Digital clamp meters (measures live AC/DC amps without breaking circuits), multimeters, and circuit breakers.
+   - Positioned in a subtle, dedicated card below calculation results with full affiliate disclosure.

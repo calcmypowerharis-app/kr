@@ -54,3 +54,28 @@ This log records major technical and product decisions, context, rationale, and 
 - **Context:** Future calculators must follow identical high quality, mobile responsiveness, accessibility, and SEO standards without duplicating layout code.
 - **Decision:** Standardize all calculator pages on `CalculatorShell`, `FormulaSection`, `WorkedExampleSection`, `AssumptionsSection`, `DisclaimerSection`, `FaqSection`, and `RelatedCalculators`.
 - **Rationale:** Ensures every calculator meets GEMINI.md Section 5 (Calculator-First Product Principle) out of the box with zero boilerplate.
+
+---
+
+## Decision 005: Separation of Conductor Sizing from Watts-to-Amps Conversion
+- **Date:** 2026-09-24
+- **Status:** Approved
+- **Context:** Attempting to recommend a definitive wire gauge inside a Watts-to-Amps calculator is misleading because proper conductor sizing requires evaluating run distance, permissible voltage drop (typically 3%), temperature ratings (60°C/75°C/90°C), and raceway derating.
+- **Decision:** The Watts-to-Amps Calculator will strictly compute current ($I$), apparent power ($VA$), and a 125% continuous duty reference. Conductor sizing is explicitly delegated to the upcoming dedicated **Wire Size & Voltage Drop Calculator** via an educational callout link.
+- **Rationale:** Prevents presenting an incomplete electrical calculation as a definitive code recommendation, complying with GEMINI.md Section 10 (Safety).
+
+---
+
+## Decision 006: 125% Continuous-Load Reference Labeling
+- **Date:** 2026-09-24
+- **Status:** Approved
+- **Context:** Labeling an overcurrent output as "Recommended Breaker" implies a universal breaker-sizing algorithm without considering local installation constraints, non-continuous vs continuous loads, or breaker terminal limits.
+- **Decision:** Label the secondary metric as **"125% Continuous-Load Reference"** ($I \times 1.25$) and include an explicit note that final overcurrent protection selection depends on installation specifics and applicable NEC requirements.
+
+---
+
+## Decision 007: Explicit User Notification for Input Sanitization
+- **Date:** 2026-09-24
+- **Status:** Approved
+- **Context:** Silently clamping invalid or unphysical inputs (such as negative watts, zero voltage, or power factors > 1.0) can confuse users and conceal entry errors.
+- **Decision:** When invalid inputs are detected, the calculation logic must return user-visible validation messages explaining *why* the input is invalid while safely falling back to prevent division by zero, `NaN`, or `Infinity`.
