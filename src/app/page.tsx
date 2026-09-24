@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import {
   Zap,
@@ -11,6 +12,16 @@ import {
   Car,
   Clock,
 } from "lucide-react";
+import { generateWebSiteSchema } from "@/lib/seo/schema";
+
+export const metadata: Metadata = {
+  title: "CalcMyPower — Power, Energy & Electrical Calculators",
+  description:
+    "Practical electrical, battery backup, solar, and power calculators with transparent formulas and clear engineering baselines.",
+  alternates: {
+    canonical: "https://calcmypower.com",
+  },
+};
 
 interface CategoryCard {
   name: string;
@@ -83,8 +94,15 @@ const CATEGORIES: CategoryCard[] = [
 ];
 
 export default function HomePage() {
+  const websiteSchema = generateWebSiteSchema();
+
   return (
-    <div className="space-y-16 py-10 md:py-16">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <div className="space-y-16 py-10 md:py-16">
       {/* Hero Section */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
@@ -337,5 +355,6 @@ export default function HomePage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

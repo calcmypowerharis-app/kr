@@ -30,6 +30,12 @@ export const Header: React.FC = () => {
             UPS Runtime
           </Link>
           <Link
+            href="/watts-to-amps-calculator"
+            className="hover:text-blue-600 transition hidden md:block"
+          >
+            Watts to Amps
+          </Link>
+          <Link
             href="/calculators"
             className="text-slate-900 hover:text-blue-600 font-semibold transition"
           >

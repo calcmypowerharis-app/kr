@@ -79,3 +79,13 @@ This log records major technical and product decisions, context, rationale, and 
 - **Status:** Approved
 - **Context:** Silently clamping invalid or unphysical inputs (such as negative watts, zero voltage, or power factors > 1.0) can confuse users and conceal entry errors.
 - **Decision:** When invalid inputs are detected, the calculation logic must return user-visible validation messages explaining *why* the input is invalid while safely falling back to prevent division by zero, `NaN`, or `Infinity`.
+
+---
+
+## Decision 008: Explicit Homepage Canonical & WebSite Schema
+- **Date:** 2026-09-24
+- **Status:** Approved & Implemented
+- **Context:** While `layout.tsx` defines `metadataBase`, omitting explicit alternates on the root page omitted the canonical `<link>` tag on `/`. Additionally, brand search signals benefit from dedicated WebSite schema.
+- **Decision:** Explicitly export canonical `https://calcmypower.com` on `src/app/page.tsx` and inject `WebSite` JSON-LD structured data.
+- **Rationale:** Prevents search engines from experiencing canonical ambiguity across trailing slash or protocol variants, adhering to GEMINI.md Section 7.
+

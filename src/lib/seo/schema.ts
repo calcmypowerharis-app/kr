@@ -62,3 +62,22 @@ export function generateFaqSchema(
     })),
   };
 }
+
+export function generateWebSiteSchema({
+  name = "CalcMyPower",
+  url = "https://calcmypower.com",
+  description = "Practical electrical, battery backup, solar, and power calculators with transparent formulas and clear engineering baselines.",
+}: {
+  name?: string;
+  url?: string;
+  description?: string;
+} = {}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name,
+    url,
+    description,
+  };
+}
+

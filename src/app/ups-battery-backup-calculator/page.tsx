@@ -48,7 +48,17 @@ export default function UpsCalculatorPage() {
     {
       question: "What size inverter do I need for my UPS backup?",
       answer:
-        "Under National Electrical Code (NEC) continuous duty guidelines, size your inverter at least 25% larger than your total continuous wattage load (Continuous Load × 1.25).",
+        "Under National Electrical Code (NEC) continuous duty guidelines, size your inverter at least 25% larger than your total continuous wattage load (Continuous Load × 1.25). For example, a 400W load requires at least a 500W rated continuous inverter.",
+    },
+    {
+      question: "Why does my lead-acid UPS battery die faster than the calculator says?",
+      answer:
+        "Lead-acid batteries suffer from Peukert's effect: the faster you discharge them (high wattage loads), the lower their effective capacity becomes. If you pull a heavy load in under 2 hours, effective capacity can drop by up to 30%.",
+    },
+    {
+      question: "Can I replace standard UPS lead-acid batteries with LiFePO4 batteries?",
+      answer:
+        "In many consumer UPS units, drop-in replacement 12V LiFePO4 batteries work well if the built-in charging voltage profile is compatible (typically 13.8V float). Verify that the battery's Battery Management System (BMS) can support the maximum discharge current.",
     },
   ]);
 

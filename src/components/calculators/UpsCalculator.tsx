@@ -95,9 +95,9 @@ export const UpsCalculator: React.FC = () => {
         <div className="space-y-5">
           {/* Quick Preset Selector */}
           <div>
-            <label className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+            <p className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
               Quick Appliance Presets
-            </label>
+            </p>
             <div className="flex flex-wrap gap-2">
               {PRESETS.map((preset) => (
                 <button
