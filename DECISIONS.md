@@ -109,18 +109,17 @@ This log records major technical and product decisions, context, rationale, and 
 
 ---
 
-## Decision 011: Five-Variable Generator Sizing Engine & Planning Model
+## Decision 011: Four-Step Generator Sizing Methodology & Planning Capacity Formulation
 - **Date:** 2026-09-26
 - **Status:** Approved for Specification
 - **Context:** Generator sizing must accurately balance continuous running loads and motor starting inrushes without naive summation errors or hidden assumptions.
-- **Decision:** Define the mathematical engine using five explicit variables:
+- **Decision:** Define the mathematical engine using four explicit steps:
   1. Total Running Watts = $\sum (Q_i \times W_{r,i})$
   2. Largest Additional Starting Watts = $\max(0, \max_i(W_{s,i} - W_{r,i}))$
   3. Peak Starting Demand = Total Running Watts + Largest Additional Starting Watts
-  4. Planning Headroom = Total Running Watts $\times 1.25$
-  5. Final Minimum Generator Capacity = $\max(\text{Peak Starting Demand}, \text{Planning Headroom})$
-  Display an explicit note that this is a practical planning model and not a substitute for manufacturer-specific generator sizing or professional engineering analysis.
-- **Rationale:** Provides complete algorithmic transparency and mathematically sound sizing.
+  4. CalcMyPower Planning Capacity = Peak Starting Demand $\times 1.25$
+  Clearly label the 25% value as the **"CalcMyPower planning headroom factor"**. Display an explicit note that this planning margin is based on established generator-sizing guidance (e.g. Cummins, Generac) and may differ by manufacturer, application, generator type, and engineering methodology, and is not a universal NEC requirement.
+- **Rationale:** Ensures the generator operates comfortably within its continuous power band and can absorb motor startup transients without engine stall or voltage drop.
 
 ---
 
@@ -129,10 +128,10 @@ This log records major technical and product decisions, context, rationale, and 
 - **Status:** Approved for Specification
 - **Context:** Forcing calculated generator loads into arbitrary commercial retail buckets (e.g. "4,000W–5,500W class") lacks empirical grounding and restricts user evaluation across varied generator models.
 - **Decision:** Output exact calculated engineering thresholds:
-  1. Minimum calculated running capacity ($W_{running}$)
-  2. Minimum calculated peak/startup capacity ($W_{peak}$)
-  3. Planning capacity after headroom ($W_{headroom}$)
-  Provide an explicit equipment comparison guide instructing users to verify generator **Rated (Running) Watts** against running/headroom figures and **Surge (Starting) Watts** against peak figures.
+  1. Total Running Watts ($W_{\text{running}}$)
+  2. Peak Starting Demand ($W_{\text{peak}}$)
+  3. CalcMyPower Planning Capacity ($W_{\text{planning}} = W_{\text{peak}} \times 1.25$)
+  Provide an explicit equipment comparison guide instructing users to verify generator **Rated (Running) Watts** against running/planning figures and **Surge (Starting) Watts** against peak demand figures.
 - **Rationale:** Adheres to technical publisher standards and prevents unverified marketing categorization.
 
 ---
@@ -143,6 +142,33 @@ This log records major technical and product decisions, context, rationale, and 
 - **Context:** Misrepresenting NEC Article 702 as mandating a single specific hardware setup across every application creates legal and technical inaccuracies.
 - **Decision:** Use cautious, standardized language: *"Use properly installed transfer equipment or an approved interlock arrangement where applicable to prevent unintended interconnection with utility power. Follow applicable NEC and local code requirements and use qualified electrical professionals for installation."* Ground all CO safety advisories (including 20-foot outdoor rule) directly in current CDC and CPSC guidelines.
 - **Rationale:** Ensures strict technical compliance and safety rigor per GEMINI.md Section 9 and 10.
+
+---
+
+## Decision 014: Explicit Distinction and Mathematical Grounding of kVA Apparent Power Model
+- **Date:** 2026-09-26
+- **Status:** Approved for Specification
+- **Context:** Presenting a single universal kVA value without defining which power stage it represents creates confusion between running load, peak demand, and recommended nameplate capacity.
+- **Decision:** Use $kVA = kW / PF$ and explicitly distinguish between:
+  1. Planning Capacity kVA ($kW_{\text{planning}} / PF$): Primary output matching generator nameplate capacity ratings.
+  2. Running Load kVA ($kW_{\text{running}} / PF$): Steady-state continuous apparent power.
+  3. Peak Demand kVA ($kW_{\text{peak}} / PF$): Un-buffered momentary startup demand.
+  Use $PF = 0.80$ as an explicitly annotated illustrative assumption, noting that actual equipment power factor should be verified.
+- **Rationale:** Eliminates ambiguity and ensures users sizing commercial or standby generators do not undersize continuous or peak kVA requirements.
+
+---
+
+## Decision 015: Generator Technology Comparison and Appliance Interaction UX
+- **Date:** 2026-09-26
+- **Status:** Approved for Specification
+- **Context:** Hard wattage cutoffs for generator types (e.g. "<4500W = inverter") are technically inaccurate, as high-output inverters (7kW–10kW) and small conventional portables exist. Furthermore, user loads must allow frictionless editing and avoid arbitrary multipliers.
+- **Decision:**
+  1. Educational Technology Comparison: Compare portable inverter, conventional open-frame, dual-fuel, and standby units based on technical attributes (THD, noise, portability, fuel storage, automatic transfer) rather than arbitrary wattage tiers.
+  2. Category-First Appliance Organization: Organize into HVAC, Kitchen, Water & Pumps, Electronics, RV, Tools, Other, prioritizing high-impact appliances.
+  3. Preloaded Default Preset: Preload "Essential Outage" by default as an editable scenario and provide a clear "Clear All" button.
+  4. Custom Appliance Startup: Require explicit Running Watts and Starting Watts, or a "No Motor Surge / Unknown" toggle that sets Starting = Running; strictly prohibit arbitrary 2x/3x auto-multiplication.
+- **Rationale:** Maximizes educational value, technical accuracy, and UX clarity.
+
 
 
 

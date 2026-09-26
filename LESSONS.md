@@ -41,7 +41,7 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 
 ## Lesson 006: Avoiding Naive Summation in Multi-Motor Surge Sizing
 - **Context:** Online generator calculators frequently sum all appliance starting watts ($\sum W_{starting}$), assuming all compressors and motor inrushes occur at the exact same millisecond. Adding every appliance's starting surge assumes all startup events occur simultaneously and can substantially overstate the required generator capacity.
-- **Rule:** Clearly explain asynchronous motor cycling; size peak starting demand as Total Continuous Running Watts plus the Largest Additional Starting Watts ($\Delta W_{max} = \max(W_s - W_r)$) among active loads, while applying continuous headroom to the running load.
+- **Rule:** Clearly explain asynchronous motor cycling; size peak starting demand as Total Continuous Running Watts plus the Largest Additional Starting Watts ($\Delta W_{\max} = \max(W_s - W_r)$) among active loads, and compute CalcMyPower Planning Capacity as $W_{\text{peak}} \times 1.25$.
 - **Prevention:** Emphasize this methodology in the specification, worked examples, and automated test cases.
 
 ---
@@ -64,5 +64,27 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Context:** Presenting planning guidelines (such as 25% continuous headroom) as universal NEC code mandates or claiming NEC 702 mandates a single specific transfer switch design creates inaccurate technical claims in violation of GEMINI.md Section 9 and 10.
 - **Rule:** Clearly label planning buffers (e.g., "CalcMyPower planning headroom factor"), note that manufacturer recommendations may vary, use technically cautious language for transfer equipment, and source CO safety rules directly to CDC/CPSC guidance.
 - **Prevention:** Review all safety and methodology claims during specification and QA phases to ensure every standard cited is accurately represented.
+
+---
+
+## Lesson 010: Explicit Attribution of Apparent Power (kVA) Levels
+- **Context:** Stating a single ambiguous kVA metric without defining whether it represents running load, peak demand, or planning capacity confuses users comparing equipment nameplates.
+- **Rule:** Use $kVA = kW / PF$ and explicitly label what power level the kVA value represents (Planning kVA vs. Running kVA vs. Peak kVA), explicitly noting that $PF = 0.80$ is an illustrative assumption that must be verified against actual equipment specs.
+- **Prevention:** Define and test all three kVA stages explicitly in calculation engines and test suites.
+
+---
+
+## Lesson 011: Prohibition of Arbitrary Multipliers on Custom Appliance Loads
+- **Context:** Basic calculators often automatically double or triple running watts (e.g. $W_r \times 2$ or $W_r \times 3$) when a user adds a custom appliance with unknown surge, fabricating inrush characteristics for resistive or inverter loads that have zero surge.
+- **Rule:** Never apply ungrounded automated multipliers to user-entered loads. Require explicit Running Watts and Starting Watts, or provide a clear "No Motor Surge / Unknown" option that sets Starting Watts = Running Watts.
+- **Prevention:** Enforce input field validation that requires explicit inputs and avoids silent heuristic multipliers.
+
+---
+
+## Lesson 012: Attribute-Based Generator Technology Comparisons
+- **Context:** Classifying generator types strictly by wattage cutoffs (e.g. declaring all generators under 4,500W are inverters and all over 7,500W are standby) is inaccurate due to modern high-wattage inverters and compact standby units.
+- **Rule:** Compare generator categories (portable inverter, conventional portable, dual-fuel, and standby) based on objective technical attributes: Total Harmonic Distortion (THD), noise levels, portability, fuel storage/flexibility, and automatic transfer capabilities.
+- **Prevention:** Present educational comparison tables grounded in engineering characteristics rather than rigid wattage cutoffs.
+
 
 
