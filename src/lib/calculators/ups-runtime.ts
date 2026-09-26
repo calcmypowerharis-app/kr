@@ -46,7 +46,7 @@ export interface UpsRuntimeOutputs {
   minutes: number;
   /** Continuous DC current drawn from battery bank in Amps (A) */
   dcCurrentAmps: number;
-  /** Recommended minimum inverter continuous rating in Watts (25% safety margin) */
+  /** Recommended minimum inverter continuous rating in Watts (1.25× practical planning margin) */
   recommendedInverterWatts: number;
   /** Recommended inverter VA rating based on power factor */
   recommendedInverterVa: number;
@@ -63,17 +63,17 @@ export const CHEMISTRY_DEFAULTS: Record<
   { name: string; defaultDoD: number; description: string }
 > = {
   lead_acid: {
-    name: "Lead-Acid (SLA / AGM / Gel)",
+    name: "Lead-Acid — AGM / Gel",
     defaultDoD: 0.50, // 50% max to preserve cycle life
     description: "Recommended maximum 50% discharge depth to prevent premature degradation.",
   },
   lifepo4: {
-    name: "Lithium Iron Phosphate (LiFePO4)",
+    name: "LiFePO4 — Lithium",
     defaultDoD: 0.90, // 90% usable safely
     description: "Modern deep-cycle lithium standard; safe down to 80–90% discharge.",
   },
   lithium_ion: {
-    name: "Standard Lithium-Ion (NMC)",
+    name: "Lithium-Ion — NMC",
     defaultDoD: 0.80, // 80% usable safely
     description: "Typical consumer portable power stations; safe down to 80% discharge.",
   },
@@ -137,7 +137,7 @@ export function calculateUpsRuntime(inputs: UpsRuntimeInputs): UpsRuntimeOutputs
     : 0;
 
   // Inverter Sizing recommendations
-  // 1.25x continuous safety margin per NEC continuous duty rule (125%)
+  // 1.25x practical continuous planning margin
   const recommendedInverterWatts = Math.ceil((loadWatts * 1.25) / 50) * 50;
   const recommendedInverterVa = Math.ceil((recommendedInverterWatts / powerFactor) / 50) * 50;
 

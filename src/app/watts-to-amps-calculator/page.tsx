@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC) | CalcMyPower",
     description:
-      "Accurately convert electrical power in Watts to current in Amperes across DC, AC single-phase, and balanced three-phase systems.",
+      "Convert electrical power in Watts to current in Amperes across DC, AC single-phase, and balanced three-phase systems.",
     url: "https://calcmypower.com/watts-to-amps-calculator",
     type: "website",
   },

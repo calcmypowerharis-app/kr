@@ -9,7 +9,7 @@ import {
 export const metadata: Metadata = {
   title: "Generator Size Calculator (Home Backup, RV & Portable)",
   description:
-    "Calculate what size generator you need for home emergency backup, RV camping, or jobsite tools. Accurate running watts, motor startup surges, and planning capacity recommendations.",
+    "Calculate what size generator you need for home emergency backup, RV camping, or jobsite tools based on running watts, motor startup surges, and planning headroom.",
   keywords: [
     "generator size calculator",
     "generator calculator",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Generator Size Calculator (Home Backup, RV & Portable) | CalcMyPower",
     description:
-      "Accurately calculate your generator wattage requirements for home outages, RV air conditioning, or jobsite tools with motor surge handling and 25% planning headroom.",
+      "Calculate generator wattage requirements for home outages, RV air conditioning, or jobsite tools with motor surge handling and 25% planning headroom.",
     url: "https://calcmypower.com/generator-size-calculator",
     type: "website",
   },

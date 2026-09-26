@@ -67,6 +67,23 @@ export const COMMON_CIRCUIT_VOLTAGES = [
   { value: 480, label: "480V (US Industrial 3-Phase)" },
 ];
 
+export interface PresetAppliance {
+  label: string;
+  watts: number;
+  voltage: number;
+  system: ElectricalSystemType;
+  pf: number;
+}
+
+export const WATTS_TO_AMPS_PRESETS: PresetAppliance[] = [
+  { label: "Space Heater (1,500W @ 120V)", watts: 1500, voltage: 120, system: "ac_single", pf: 1.0 },
+  { label: "Microwave (1,200W @ 120V)", watts: 1200, voltage: 120, system: "ac_single", pf: 1.0 },
+  { label: "Clothes Dryer (5,000W @ 240V)", watts: 5000, voltage: 240, system: "ac_single", pf: 1.0 },
+  { label: "RV Air Conditioner (1,800W)", watts: 1800, voltage: 120, system: "ac_single", pf: 0.85 },
+  { label: "Refrigerator Running (180W)", watts: 180, voltage: 120, system: "ac_single", pf: 0.85 },
+  { label: "Solar Panel (100W @ 12V DC)", watts: 100, voltage: 12, system: "dc", pf: 1.0 },
+];
+
 export function calculateWattsToAmps(inputs: WattsToAmpsInputs): WattsToAmpsOutputs {
   const errors: ValidationError[] = [];
   const warnings: string[] = [];

@@ -83,13 +83,28 @@ export const UpsCalculator: React.FC = () => {
     label: `${v} Volts (DC)`,
   }));
 
+  const batterySearchLabel =
+    batteryChemistry === "lead_acid"
+      ? `${batteryVoltage}V ${batteryCapacityAh}Ah Deep-Cycle AGM Batteries`
+      : `${batteryVoltage}V ${batteryCapacityAh}Ah Deep-Cycle LiFePO4 Batteries`;
+
+  const batterySearchQuery = encodeURIComponent(
+    batteryChemistry === "lead_acid"
+      ? `${batteryVoltage}V ${batteryCapacityAh}Ah AGM deep cycle battery`
+      : `${batteryVoltage}V ${batteryCapacityAh}Ah LiFePO4 battery`
+  );
+
+  const inverterSearchQuery = encodeURIComponent(
+    `${batteryVoltage}V pure sine wave inverter ${results.recommendedInverterWatts}W`
+  );
+
   return (
     <CalculatorShell
       title="UPS & Battery Backup Run-Time Calculator"
       badge="Uninterruptible Power Supply Hours"
       category="UPS & Battery"
       lastUpdated="September 2026"
-      description="Calculate exact backup run-time hours for any uninterruptible power supply (UPS), inverter battery bank, or portable power station based on appliance wattage, battery voltage, and Amp-hour capacity."
+      description="Estimate backup run-time hours for an uninterruptible power supply (UPS), inverter battery bank, or portable power station from appliance wattage, battery voltage, and Amp-hour capacity."
       onReset={handleReset}
       inputSection={
         <div className="space-y-5">
@@ -205,6 +220,7 @@ export const UpsCalculator: React.FC = () => {
       resultSection={
         <div className="space-y-6">
           <ResultCard
+            icon="clock"
             primaryTitle="Estimated Backup Run-Time"
             primaryValue={results.formattedRuntime}
             primarySubtext={`Under continuous ${loadWatts}W load at ${results.usedDoDPercent}% Depth of Discharge`}
@@ -231,7 +247,7 @@ export const UpsCalculator: React.FC = () => {
                 label: "Min. Recommended Inverter",
                 value: results.recommendedInverterWatts,
                 unit: "Watts",
-                subtext: `${results.recommendedInverterVa} VA continuous`,
+                subtext: `${results.recommendedInverterVa} VA (1.25× planning margin)`,
               },
             ]}
             warnings={results.warnings}
@@ -245,48 +261,52 @@ export const UpsCalculator: React.FC = () => {
                 <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
                 <span>Compatible Hardware Reference</span>
               </div>
-              <span className="text-[10px] text-slate-400">Amazon Affiliate</span>
+              <span className="text-[10px] text-slate-400">Amazon Associate</span>
             </div>
 
             <p className="text-xs text-slate-500 leading-normal">
-              Hardware examples matching your {batteryVoltage}V setup and {loadWatts}W draw:
+              Search hardware categories matching your {batteryVoltage}V setup and {loadWatts}W continuous draw:
             </p>
 
             <div className="space-y-2.5">
               <a
-                href="https://www.amazon.com/s?k=12V+100Ah+LiFePO4+battery&tag=calcmypower-20"
+                href={`https://www.amazon.com/s?k=${batterySearchQuery}&tag=calcmypower-20`}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>
                   <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    12V 100Ah Deep Cycle LiFePO4 Batteries
+                    {batterySearchLabel}
                   </div>
                   <div className="text-[11px] text-slate-500">
-                    High cycle life (4000+ cycles) with built-in BMS
+                    Compare deep-cycle replacement and backup batteries on Amazon
                   </div>
                 </div>
                 <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
               </a>
 
               <a
-                href="https://www.amazon.com/s?k=pure+sine+wave+inverter+1000w&tag=calcmypower-20"
+                href={`https://www.amazon.com/s?k=${inverterSearchQuery}&tag=calcmypower-20`}
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>
                   <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    Pure Sine Wave Inverters ({results.recommendedInverterWatts}W+)
+                    {batteryVoltage}V Pure Sine Wave Inverters ({results.recommendedInverterWatts}W+)
                   </div>
                   <div className="text-[11px] text-slate-500">
-                    Safe clean power for electronics & CPAP machines
+                    Low-THD DC-to-AC inverters sized with a 25% continuous planning margin
                   </div>
                 </div>
                 <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
               </a>
             </div>
+
+            <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
+              As an Amazon Associate, CalcMyPower earns from qualifying purchases.
+            </p>
           </div>
         </div>
       }
@@ -371,7 +391,8 @@ export const UpsCalculator: React.FC = () => {
       />
 
       <AssumptionsSection
-        description="Every battery backup system operates in dynamic physical environments. This calculator uses standard industry engineering baselines as detailed below."
+        impactHeader="Impact on Runtime"
+        description="Battery runtime depends on discharge rate, chemistry limits, conversion losses, and ambient temperature:"
         assumptions={[
           {
             parameter: "Lead-Acid Safe DoD",
@@ -412,7 +433,7 @@ export const UpsCalculator: React.FC = () => {
           {
             question: "What size inverter do I need for my UPS backup?",
             answer:
-              "Under National Electrical Code (NEC) continuous duty guidelines, size your inverter at least 25% larger than your total continuous wattage load (Continuous Load × 1.25). For example, a 400W load requires at least a 500W rated continuous inverter.",
+              "As a practical planning margin, size your standalone inverter or UPS continuous wattage rating at least 25% above your total continuous load (Continuous Load × 1.25). For example, a 400W continuous load calls for at least a 500W continuous-rated inverter. While NEC branch-circuit rules apply a 125% factor to continuous circuit loads running 3 hours or more, actual UPS and inverter sizing also depends on manufacturer continuous ratings, power factor (VA), and appliance startup surges.",
           },
           {
             question: "Why does my lead-acid UPS battery die faster than the calculator says?",
@@ -436,16 +457,16 @@ export const UpsCalculator: React.FC = () => {
             category: "Electrical",
           },
           {
-            title: "Wire Size & DC Voltage Drop Calculator",
-            description: "Size safe battery cables and solar wiring based on NEC ampacity and distance.",
-            href: "/calculators",
-            category: "Wire Sizing",
+            title: "Generator Size Calculator",
+            description: "Size portable or standby generators for home backup, RV camping, and motor startup surges.",
+            href: "/generator-size-calculator",
+            category: "Generator Sizing",
           },
           {
-            title: "Solar Panel & Battery Sizing Hub",
-            description: "Determine how many solar panels are needed to recharge your backup battery bank.",
+            title: "More Electrical & Power Calculators",
+            description: "Browse all live power, battery backup, and electrical sizing calculators.",
             href: "/calculators",
-            category: "Solar",
+            category: "Directory",
           },
         ]}
       />

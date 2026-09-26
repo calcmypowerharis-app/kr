@@ -4,93 +4,125 @@ import {
   Zap,
   BatteryCharging,
   ArrowRight,
-  ShieldCheck,
   Cpu,
   Sliders,
   Sun,
   Plug,
   Car,
-  Clock,
+  BookOpen,
 } from "lucide-react";
 import { generateWebSiteSchema } from "@/lib/seo/schema";
 
 export const metadata: Metadata = {
   title: "CalcMyPower — Power, Energy & Electrical Calculators",
   description:
-    "Practical electrical, battery backup, solar, and power calculators with transparent formulas and clear engineering baselines.",
+    "Size backup battery banks, convert watts to amps across DC and AC circuits, and calculate portable or standby generator wattage with explicit equations and NEC-referenced assumptions.",
   alternates: {
     canonical: "https://calcmypower.com",
   },
 };
 
-interface CategoryCard {
-  name: string;
-  description: string;
+interface LiveTool {
+  title: string;
+  href: string;
   icon: React.ElementType;
-  status: "active" | "coming_soon";
-  href?: string;
-  toolCount: string;
+  formula: string;
+  summary: string;
+  outputs: string[];
+  cta: string;
 }
 
-const CATEGORIES: CategoryCard[] = [
+const LIVE_CALCULATORS: LiveTool[] = [
   {
-    name: "UPS & Backup",
-    description: "Uninterruptible power supply duration, battery runtime, and inverter sizing.",
-    icon: Clock,
-    status: "active",
+    title: "UPS & Battery Backup Runtime Calculator",
     href: "/ups-battery-backup-calculator",
-    toolCount: "1 Active Tool",
-  },
-  {
-    name: "Electrical",
-    description: "Watts, Amps, Volts, resistance, Ohm's law, and AC power factor conversions.",
-    icon: Cpu,
-    status: "active",
-    href: "/watts-to-amps-calculator",
-    toolCount: "1 Active Tool",
-  },
-  {
-    name: "Solar",
-    description: "PV array output, peak sun hours, panel sizing, and charge controller matching.",
-    icon: Sun,
-    status: "coming_soon",
-    toolCount: "Planned",
-  },
-  {
-    name: "Battery",
-    description: "Amp-hour to Watt-hour conversion, depth of discharge, and LiFePO4 vs SLA comparison.",
     icon: BatteryCharging,
-    status: "coming_soon",
-    toolCount: "Planned",
+    formula: "T = (V × Ah × DoD × η) ÷ W",
+    summary:
+      "Estimate how long a 12V, 24V, or 48V battery bank or UPS will sustain continuous AC loads while accounting for inverter efficiency, usable depth of discharge, and high discharge C-rates.",
+    outputs: [
+      "Runtime in hours & minutes",
+      "Usable battery energy (Wh) & DC current draw (A)",
+      "LiFePO4 (90% DoD), AGM/Gel (50% DoD), and NMC presets",
+      "1.25× continuous inverter sizing margin",
+    ],
+    cta: "Open UPS Runtime Calculator",
   },
   {
-    name: "Electricity",
-    description: "Appliance power consumption, kilowatt-hour (kWh) cost, and operating run-time.",
-    icon: Zap,
-    status: "coming_soon",
-    toolCount: "Planned",
+    title: "Watts to Amps Calculator",
+    href: "/watts-to-amps-calculator",
+    icon: Cpu,
+    formula: "I = P ÷ (V × PF)  |  3Φ: I = P ÷ (√3 × V × PF)",
+    summary:
+      "Convert active power (Watts) to electrical current (Amps) across DC, single-phase AC (120V/240V), and balanced three-phase AC (208V/240V/480V) circuits with power factor adjustments.",
+    outputs: [
+      "Operating current (Amps) & apparent power (VA)",
+      "NEC 125% continuous-load minimum breaker amps",
+      "Standard NEC 240.6(A) breaker trade size match",
+      "Line-to-Line vs. Line-to-Neutral 3-phase support",
+    ],
+    cta: "Open Watts to Amps Calculator",
   },
   {
-    name: "Generator",
-    description: "Starting vs running wattage, emergency backup load calculation, and fuel consumption.",
-    icon: Plug,
-    status: "active",
+    title: "Generator Size Calculator",
     href: "/generator-size-calculator",
-    toolCount: "1 Active Tool",
+    icon: Plug,
+    formula: "Peak = Running W + Max(Starting Surge W)",
+    summary:
+      "Calculate running watts, single-motor peak starting demand, and 1.25× recommended generator capacity for home outage backup, RV air conditioners, and jobsite equipment.",
+    outputs: [
+      "Total running watts & highest motor surge delta",
+      "Peak starting demand & 1.25× planning capacity",
+      "Apparent power (kVA) at configurable power factor",
+      "21 residential, RV, and jobsite appliance presets",
+    ],
+    cta: "Open Generator Size Calculator",
   },
+];
+
+interface PlannedTool {
+  category: string;
+  title: string;
+  scope: string;
+  icon: React.ElementType;
+}
+
+const PLANNED_TOOLS: PlannedTool[] = [
   {
-    name: "RV Power",
-    description: "12V/24V house battery setups, boondocking energy budgets, and DC-DC charging.",
+    category: "Electrical Wiring",
+    title: "Wire Gauge (AWG) & Voltage Drop",
+    scope: "Conductor sizing for 3% branch-circuit voltage drop over one-way cable distance.",
     icon: Sliders,
-    status: "coming_soon",
-    toolCount: "Planned",
   },
   {
-    name: "EV Charging",
-    description: "Level 1 vs Level 2 charging speeds, circuit ampacity requirements, and charging costs.",
+    category: "Solar PV",
+    title: "Solar Panel Array & Charge Controller Sizing",
+    scope: "PV array wattage from daily kWh consumption, peak sun hours, and system derating.",
+    icon: Sun,
+  },
+  {
+    category: "Battery Storage",
+    title: "Amp-Hours (Ah) ↔ Watt-Hours (Wh) Converter",
+    scope: "Nominal voltage energy conversion and series/parallel battery bank configuration.",
+    icon: BatteryCharging,
+  },
+  {
+    category: "Electricity Cost",
+    title: "Appliance kWh & Monthly Cost Calculator",
+    scope: "Daily and monthly utility billing estimates from wattage, duty cycle, and $/kWh rate.",
+    icon: Zap,
+  },
+  {
+    category: "RV & Mobile Power",
+    title: "RV 12V / 24V House Battery Energy Budget",
+    scope: "Boondocking daily amp-hour draw, inverter losses, and alternator/solar recharge time.",
+    icon: Sliders,
+  },
+  {
+    category: "EV Charging",
+    title: "Level 1 & Level 2 EV Circuit & Charge Time",
+    scope: "240V circuit breaker sizing (80% continuous load rule) and kWh replenishment hours.",
     icon: Car,
-    status: "coming_soon",
-    toolCount: "Planned",
   },
 ];
 
@@ -103,268 +135,163 @@ export default function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
-      <div className="space-y-16 py-10 md:py-16">
-      {/* Hero Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
-          <Zap className="w-3.5 h-3.5 fill-current" />
-          <span>Precision Power &amp; Energy Calculators</span>
-        </div>
-
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-          Clear Sizing for <span className="text-blue-600">Solar, Battery</span> &amp; Electrical Systems
-        </h1>
-
-        <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Accurate, transparent power calculations for homeowners, off-grid DIYers, RV travelers, and electricians. Every tool provides transparent formulas and explicit engineering baselines.
-        </p>
-
-        {/* Quick Hero CTA */}
-        <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            href="/ups-battery-backup-calculator"
-            className="px-5 py-3 rounded-xl bg-blue-600 text-white font-bold text-sm shadow-md shadow-blue-500/20 hover:bg-blue-700 transition flex items-center gap-2"
-          >
-            <span>Launch UPS Run-Time Calculator</span>
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link
-            href="/calculators"
-            className="px-5 py-3 rounded-xl bg-white text-slate-700 border border-slate-200 font-bold text-sm hover:bg-slate-50 transition"
-          >
-            Browse All Tools
-          </Link>
-        </div>
-      </section>
-
-      {/* Featured Flagship Tool Highlight */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-gradient-to-br from-slate-900 via-slate-850 to-blue-950 text-white rounded-3xl p-6 sm:p-8 md:p-10 shadow-xl border border-slate-800 relative overflow-hidden">
-          <div className="relative z-10 max-w-2xl space-y-4">
-            <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider border border-blue-500/30">
-              Flagship Tool
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-              UPS &amp; Battery Backup Run-Time Hours Calculator
-            </h2>
-            <p className="text-sm md:text-base text-slate-300 leading-relaxed">
-              Calculate how long a battery backup or uninterruptible power supply will sustain appliances, servers, or medical equipment. Transparently accounts for depth of discharge, inverter conversion efficiency, and Peukert high discharge notices.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/ups-battery-backup-calculator"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-500 text-white font-bold text-sm hover:bg-blue-400 transition"
-              >
-                <span>Calculate Backup Hours</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+      <div className="space-y-14 py-8 md:py-12">
+        {/* 1. Compact Hero Section */}
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold tracking-wide">
+            <Zap className="w-3.5 h-3.5 fill-current" />
+            <span>US Electrical, Battery &amp; Backup Power Reference Tools</span>
           </div>
-        </div>
-      </section>
 
-      {/* Browse by Category Section */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-            Browse by Power Category
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Explore calculators organized by electrical system discipline.
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight max-w-3xl">
+            Electrical, Battery Backup &amp; Generator Sizing Calculators
+          </h1>
+
+          <p className="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
+            Calculate UPS battery runtime hours, circuit amperage, and backup generator wattage using published equations, explicit efficiency factors, and NEC continuous-load margins.
           </p>
-        </div>
+        </section>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          {CATEGORIES.map((cat) => {
-            const Icon = cat.icon;
-            const isClickable = cat.status === "active" && cat.href;
+        {/* 2. Three Live Calculators */}
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-5">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-3">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                Live Calculators
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                Select a tool below to run interactive calculations with full step-by-step formulas and worked examples.
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-md self-start sm:self-auto">
+              3 Active Tools
+            </span>
+          </div>
 
-            const CardContent = (
-              <div
-                className={`p-4 rounded-2xl border transition h-full flex flex-col justify-between ${
-                  isClickable
-                    ? "bg-white border-slate-200 hover:border-blue-500 hover:shadow-md cursor-pointer group"
-                    : "bg-slate-50/70 border-slate-200/80"
-                }`}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center ${
-                        isClickable
-                          ? "bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition"
-                          : "bg-slate-200/70 text-slate-600"
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            {LIVE_CALCULATORS.map((tool) => {
+              const Icon = tool.icon;
+              return (
+                <Link
+                  key={tool.href}
+                  href={tool.href}
+                  className="group bg-white rounded-2xl border border-slate-200 hover:border-blue-500 hover:shadow-md transition p-5 sm:p-6 flex flex-col justify-between space-y-5"
+                >
+                  <div className="space-y-3.5">
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition shrink-0">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <code className="text-[11px] font-mono font-semibold text-slate-700 bg-slate-100 border border-slate-200 px-2 py-1 rounded">
+                        {tool.formula}
+                      </code>
                     </div>
-                    <span
-                      className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
-                        cat.status === "active"
-                          ? "bg-emerald-50 text-emerald-700 border border-emerald-200"
-                          : "bg-slate-100 text-slate-500"
-                      }`}
-                    >
-                      {cat.toolCount}
-                    </span>
+
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition leading-snug">
+                      {tool.title}
+                    </h3>
+
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      {tool.summary}
+                    </p>
+
+                    <ul className="space-y-1.5 pt-2 border-t border-slate-100 text-xs text-slate-600">
+                      {tool.outputs.map((item) => (
+                        <li key={item} className="flex items-start gap-2">
+                          <span className="text-blue-600 font-bold leading-none mt-0.5">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <h3
-                    className={`text-sm font-bold mb-1 ${
-                      isClickable
-                        ? "text-slate-900 group-hover:text-blue-600 transition"
-                        : "text-slate-800"
+                  <div className="pt-2 flex items-center justify-between text-xs sm:text-sm font-bold text-blue-600 group-hover:text-blue-700">
+                    <span>{tool.cta}</span>
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* 3. Compact "More Calculators / In Development" Section */}
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <div>
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight">
+                More Calculators in Development
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                Upcoming tools on the CalcMyPower roadmap. We publish calculators individually after verifying equations and test cases.
+              </p>
+            </div>
+            <Link
+              href="/calculators"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 self-start sm:self-auto"
+            >
+              <span>View Calculator Directory</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-2xl border border-slate-200 divide-y divide-slate-200">
+            <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+              {PLANNED_TOOLS.map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.title}
+                    className={`p-4 sm:px-5 flex items-start gap-3.5 ${
+                      idx >= 2 ? "md:border-t md:border-slate-200" : ""
                     }`}
                   >
-                    {cat.name}
-                  </h3>
-                  <p className="text-xs text-slate-500 leading-normal line-clamp-2">
-                    {cat.description}
-                  </p>
-                </div>
-
-                {isClickable && (
-                  <div className="pt-3 text-[11px] font-semibold text-blue-600 flex items-center gap-1">
-                    <span>View Tools</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center shrink-0 mt-0.5">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div className="min-w-0 flex-1 space-y-1">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <h3 className="text-sm font-bold text-slate-800">
+                          {item.title}
+                        </h3>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-600">
+                          {item.category} · Planned
+                        </span>
+                      </div>
+                      <p className="text-xs text-slate-500 leading-relaxed">
+                        {item.scope}
+                      </p>
+                    </div>
                   </div>
-                )}
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* 4. Brief Methodology / Trust Note */}
+        <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-100/80 rounded-2xl p-5 sm:p-6 border border-slate-200/90 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="space-y-1.5 max-w-3xl">
+              <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
+                <BookOpen className="w-4 h-4 text-blue-600 shrink-0" />
+                <h2>How CalcMyPower Models Electrical &amp; Power Loads</h2>
               </div>
-            );
-
-            return isClickable ? (
-              <Link key={cat.name} href={cat.href!} className="block">
-                {CardContent}
-              </Link>
-            ) : (
-              <div key={cat.name}>{CardContent}</div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Featured Tools Grid */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div>
-          <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-            Popular Electrical Calculators
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Formulas derived from standard electrical physics, Ohm&apos;s law, and established energy storage equations.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {/* Card 1: UPS */}
-          <Link
-            href="/ups-battery-backup-calculator"
-            className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-3"
-          >
-            <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
-              <BatteryCharging className="w-4 h-4" />
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Every calculator displays its governing formula, default parameters (such as inverter efficiency, depth of discharge, and power factor), and where <code className="font-mono text-slate-800 bg-white px-1 py-0.5 rounded border border-slate-200">1.25×</code> margins reflect NFPA 70 (NEC) branch-circuit rules versus practical equipment planning headroom. All calculations run locally in your browser for planning and educational use.
+              </p>
             </div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition">
-                UPS Backup Hours
-              </h3>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                Live
-              </span>
-            </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Calculate backup run-time hours for lead-acid and LiFePO4 battery banks under continuous load.
-            </p>
-            <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-1">
-              <span>Use Calculator</span>
+            <Link
+              href="/calculators"
+              className="px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-800 hover:border-blue-500 hover:text-blue-600 text-xs font-bold transition shrink-0 self-start md:self-center inline-flex items-center gap-1.5"
+            >
+              <span>All Calculators</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </Link>
-
-          {/* Card 2: Watts to Amps */}
-          <Link
-            href="/watts-to-amps-calculator"
-            className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-3"
-          >
-            <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
-              <Cpu className="w-4 h-4" />
-            </div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition">
-                Watts to Amps
-              </h3>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                Live
-              </span>
-            </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Convert real power to current across DC, single-phase AC, and balanced three-phase circuits.
-            </p>
-            <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-1">
-              <span>Use Calculator</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </Link>
-
-          {/* Card 3: Generator Sizing */}
-          <Link
-            href="/generator-size-calculator"
-            className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-3"
-          >
-            <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
-              <Plug className="w-4 h-4" />
-            </div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition">
-                Generator Sizing
-              </h3>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                Live
-              </span>
-            </div>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Calculate generator wattage for home backup or RVs with motor surge handling and 25% planning headroom.
-            </p>
-            <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-1">
-              <span>Use Calculator</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </Link>
-        </div>
-      </section>
-
-      {/* Trust & Principles */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-100/70 rounded-2xl p-6 md:p-8 border border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-          <div className="space-y-1.5">
-            <div className="font-bold text-slate-900 text-sm flex items-center justify-center md:justify-start gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>Transparent Math</span>
-            </div>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Every calculator shows the exact formula, variable definitions, and physical assumptions used.
-            </p>
+            </Link>
           </div>
-          <div className="space-y-1.5">
-            <div className="font-bold text-slate-900 text-sm flex items-center justify-center md:justify-start gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>Standard Safety Margins</span>
-            </div>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Calculations incorporate standard 125% continuous duty references where relevant for circuit planning.
-            </p>
-          </div>
-          <div className="space-y-1.5">
-            <div className="font-bold text-slate-900 text-sm flex items-center justify-center md:justify-start gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
-              <span>Zero Fluff</span>
-            </div>
-            <p className="text-xs text-slate-500 leading-relaxed">
-              Fast, client-side execution designed to provide clear answers immediately on any device.
-            </p>
-          </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
     </>
   );
 }
+

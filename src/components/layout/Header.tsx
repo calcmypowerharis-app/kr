@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Navigation Categories */}
-        <nav className="flex items-center gap-6 text-sm font-medium text-slate-600">
+        <nav className="flex items-center gap-5 text-sm font-medium text-slate-600">
           <Link
             href="/ups-battery-backup-calculator"
             className="hover:text-blue-600 transition hidden md:block"
@@ -34,6 +34,12 @@ export const Header: React.FC = () => {
             className="hover:text-blue-600 transition hidden md:block"
           >
             Watts to Amps
+          </Link>
+          <Link
+            href="/generator-size-calculator"
+            className="hover:text-blue-600 transition hidden md:block"
+          >
+            Generator Size
           </Link>
           <Link
             href="/calculators"

@@ -180,4 +180,25 @@ describe("calculateWattsToAmps — Unit Test Suite", () => {
     expect(res.currentAmps).toBe(0.83);
     expect(res.formattedCurrent).toBe("0.83 A");
   });
+
+  // TC-14: Microwave 1,200W @ 120V Preset Verification
+  it("TC-14: Microwave 1,200W @ 120V AC Single-Phase (PF=1.0) equals 10.00 Amps and matches UI preset", async () => {
+    const { WATTS_TO_AMPS_PRESETS } = await import("../watts-to-amps");
+    const microwavePreset = WATTS_TO_AMPS_PRESETS.find((p) => p.label.startsWith("Microwave"));
+    expect(microwavePreset).toBeDefined();
+    expect(microwavePreset?.watts).toBe(1200);
+    expect(microwavePreset?.voltage).toBe(120);
+    expect(microwavePreset?.system).toBe("ac_single");
+    expect(microwavePreset?.pf).toBe(1.0);
+
+    const res = calculateWattsToAmps({
+      powerWatts: microwavePreset!.watts,
+      voltage: microwavePreset!.voltage,
+      currentType: microwavePreset!.system,
+      powerFactor: microwavePreset!.pf,
+    });
+    expect(res.currentAmps).toBe(10.0);
+    expect(res.formattedCurrent).toBe("10.00 A");
+    expect(res.continuousLoadRefAmps).toBe(12.5);
+  });
 });

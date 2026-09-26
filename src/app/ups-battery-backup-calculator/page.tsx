@@ -9,14 +9,14 @@ import {
 export const metadata: Metadata = {
   title: "UPS Battery Backup Run-Time Hours Calculator",
   description:
-    "Accurately calculate uninterruptible power supply (UPS) backup hours and battery run-time based on appliance wattage, battery voltage, and Amp-hour capacity.",
+    "Estimate uninterruptible power supply (UPS) backup hours and battery run-time from appliance wattage, battery voltage, and Amp-hour capacity.",
   alternates: {
     canonical: "https://calcmypower.com/ups-battery-backup-calculator",
   },
   openGraph: {
     title: "UPS & Battery Backup Run-Time Calculator | CalcMyPower",
     description:
-      "Find out exactly how many hours your UPS or battery backup system will run your appliances during a power outage.",
+      "Estimate how many hours your UPS or battery backup system will run connected equipment during a power outage.",
     url: "https://calcmypower.com/ups-battery-backup-calculator",
     type: "website",
   },
@@ -48,7 +48,7 @@ export default function UpsCalculatorPage() {
     {
       question: "What size inverter do I need for my UPS backup?",
       answer:
-        "Under National Electrical Code (NEC) continuous duty guidelines, size your inverter at least 25% larger than your total continuous wattage load (Continuous Load × 1.25). For example, a 400W load requires at least a 500W rated continuous inverter.",
+        "As a practical planning margin, size your standalone inverter or UPS continuous wattage rating at least 25% above your total continuous load (Continuous Load × 1.25). For example, a 400W continuous load calls for at least a 500W continuous-rated inverter. While NEC branch-circuit rules apply a 125% factor to continuous circuit loads running 3 hours or more, actual UPS and inverter sizing also depends on manufacturer continuous ratings, power factor (VA), and appliance startup surges.",
     },
     {
       question: "Why does my lead-acid UPS battery die faster than the calculator says?",

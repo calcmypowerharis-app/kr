@@ -7,6 +7,8 @@ import {
   ElectricalSystemType,
   ThreePhaseVoltageType,
   COMMON_CIRCUIT_VOLTAGES,
+  WATTS_TO_AMPS_PRESETS,
+  PresetAppliance,
 } from "@/lib/calculators/watts-to-amps";
 import { InputField } from "@/components/ui/InputField";
 import { SelectField } from "@/components/ui/SelectField";
@@ -26,23 +28,6 @@ import {
   ArrowRight,
   ShieldAlert,
 } from "lucide-react";
-
-interface PresetAppliance {
-  label: string;
-  watts: number;
-  voltage: number;
-  system: ElectricalSystemType;
-  pf: number;
-}
-
-const PRESETS: PresetAppliance[] = [
-  { label: "Space Heater (1,500W @ 120V)", watts: 1500, voltage: 120, system: "ac_single", pf: 1.0 },
-  { label: "Microwave (1,200W @ 120V)", watts: 120, voltage: 120, system: "ac_single", pf: 1.0 },
-  { label: "Clothes Dryer (5,000W @ 240V)", watts: 5000, voltage: 240, system: "ac_single", pf: 1.0 },
-  { label: "RV Air Conditioner (1,800W)", watts: 1800, voltage: 120, system: "ac_single", pf: 0.85 },
-  { label: "Refrigerator Running (180W)", watts: 180, voltage: 120, system: "ac_single", pf: 0.85 },
-  { label: "Solar Panel (100W @ 12V DC)", watts: 100, voltage: 12, system: "dc", pf: 1.0 },
-];
 
 export const WattsToAmpsCalculator: React.FC = () => {
   // Input states with sensible defaults
@@ -79,14 +64,14 @@ export const WattsToAmpsCalculator: React.FC = () => {
   };
 
   const systemOptions = [
-    { value: "ac_single", label: "AC Single-Phase (Household / Light Commercial)" },
-    { value: "dc", label: "Direct Current (DC — Solar, RV & Battery)" },
-    { value: "ac_three", label: "AC Three-Phase (Balanced Commercial / Industrial)" },
+    { value: "ac_single", label: "AC Single-Phase (Residential)" },
+    { value: "dc", label: "Direct Current (DC — Solar / Battery)" },
+    { value: "ac_three", label: "AC Three-Phase (Commercial)" },
   ];
 
   const threePhaseOptions = [
-    { value: "line_to_line", label: "Line-to-Line Voltage (V_LL — e.g. 208V, 480V)" },
-    { value: "line_to_neutral", label: "Line-to-Neutral Voltage (V_LN — e.g. 120V, 277V)" },
+    { value: "line_to_line", label: "Line-to-Line (V_LL — 208V, 480V)" },
+    { value: "line_to_neutral", label: "Line-to-Neutral (V_LN — 120V, 277V)" },
   ];
 
   return (
@@ -105,7 +90,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
               Common Load Presets
             </p>
             <div className="flex flex-wrap gap-2">
-              {PRESETS.map((p) => {
+              {WATTS_TO_AMPS_PRESETS.map((p) => {
                 const isActive =
                   powerWatts === p.watts &&
                   voltage === p.voltage &&
@@ -139,7 +124,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
               currentType === "dc"
                 ? "DC circuits have no phase shift; power factor is inherently 1.0."
                 : currentType === "ac_three"
-                ? "Assumes a symmetrical, balanced three-phase system."
+                ? "Assumes a symmetrical, balanced three-phase commercial or industrial system."
                 : "Standard single-phase alternating current found in US residential and light commercial outlets."
             }
           />
@@ -238,6 +223,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
       resultSection={
         <div className="space-y-6">
           <ResultCard
+            icon="zap"
             primaryTitle="Calculated Electrical Current"
             primaryValue={results.isValid ? results.formattedCurrent : "--"}
             primarySubtext={
@@ -291,7 +277,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 href="/calculators"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition"
               >
-                <span>Explore Wire Size &amp; Voltage Drop Calculator</span>
+                <span>More Electrical Calculators</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -304,19 +290,19 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
                 <span>Diagnostic Gear Reference</span>
               </div>
-              <span className="text-[10px] text-slate-400">Amazon Affiliate</span>
+              <span className="text-[10px] text-slate-400">Amazon Associate</span>
             </div>
 
             <p className="text-xs text-slate-500 leading-normal">
-              Measuring live circuit current and verifying breaker loads:
+              Tools for measuring live circuit current and verifying branch-circuit loads:
             </p>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <a
                 href="https://www.amazon.com/s?k=digital+clamp+meter+auto+ranging&tag=calcmypower-20"
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>
                   <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
@@ -333,7 +319,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 href="https://www.amazon.com/s?k=circuit+breaker+finder+tool&tag=calcmypower-20"
                 target="_blank"
                 rel="nofollow noopener noreferrer"
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>
                   <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
@@ -346,6 +332,10 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
               </a>
             </div>
+
+            <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
+              As an Amazon Associate, CalcMyPower earns from qualifying purchases.
+            </p>
           </div>
         </div>
       }
@@ -425,7 +415,8 @@ export const WattsToAmpsCalculator: React.FC = () => {
       {/* Assumptions Section */}
       <AssumptionsSection
         title="Physical & Technical Assumptions"
-        description="Electrical conversions require clear physical baselines. This tool applies standard US electrical engineering conventions."
+        impactHeader="Effect on Current"
+        description="Current conversions depend on phase configuration, power factor, and load duration:"
         assumptions={[
           {
             parameter: "Three-Phase Balance",
@@ -505,16 +496,16 @@ export const WattsToAmpsCalculator: React.FC = () => {
             category: "UPS & Battery",
           },
           {
-            title: "Wire Size & DC Voltage Drop Calculator",
-            description: "Size copper conductor gauge (AWG) based on amperage, distance, and permissible voltage drop.",
-            href: "/calculators",
-            category: "Wire Sizing",
+            title: "Generator Size Calculator",
+            description: "Calculate required running and starting wattage for portable and standby generators.",
+            href: "/generator-size-calculator",
+            category: "Generator Sizing",
           },
           {
-            title: "Solar Panel & Battery Sizing Hub",
-            description: "Calculate solar array wattage and charge controller capacity for off-grid power.",
+            title: "More Electrical & Power Calculators",
+            description: "Browse all live power, battery backup, and generator sizing tools.",
             href: "/calculators",
-            category: "Solar",
+            category: "Directory",
           },
         ]}
       />

@@ -189,4 +189,41 @@ $$E_{usable} = E_{total} \times DoD \times \eta$$
   - JSON-LD: Verified `WebApplication`, `BreadcrumbList`, and `FAQPage` (5 Q&As) in rendered `<head>`.
   - Sitemap & Navigation: Verified `/generator-size-calculator` in `/sitemap.xml`, `/calculators`, and homepage `/` popular tools & active Generator category card.
 
+---
 
+## 8. Phase E: Controlled Quality Cleanup Sprint QA & Verification
+
+**Date:** 2026-09-26  
+**Routes Tested:** `/`, `/calculators`, `/ups-battery-backup-calculator`, `/watts-to-amps-calculator`, `/generator-size-calculator`  
+**Viewports Tested:** `1440×900`, `1280×800`, `768×1024`, `390×844` (with `2×` DPR mobile touch emulation)  
+**Automated Unit Tests:** 32/32 passing (`vitest run`), including new `TC-14` for the `1,200W` Microwave preset.
+
+### 8.1 Confirmed Bug Fixes Verified
+1. **Generator Escaped Headings (`&amp;` $\rightarrow$ `&`):**
+   - Verified in rendered DOM (`document.body.innerText.includes('&amp;') === false`) that headings render cleanly as `"Calculation Assumptions & Engineering Planning Model"` and `"Generator Sizing & Safety Disclaimer"`.
+2. **`AssumptionsSection` Domain-Specific Impact Header:**
+   - Added `impactHeader` prop (`default: "Practical Impact"`).
+   - Verified `"Impact on Runtime"` on UPS, `"Effect on Current"` on Watts-to-Amps, and `"Effect on Generator Sizing"` on Generator.
+3. **Result Card Icon Consistency:**
+   - Added `icon?: "clock" | "zap" | "plug"` support to `ResultCard`.
+   - Verified Clock icon on UPS, Lightning (`Zap`) icon on Watts-to-Amps, and Lightning (`Zap`) icon on Generator result badge.
+4. **Watts-to-Amps Microwave Preset (`120W` $\rightarrow$ `1,200W`):**
+   - Centralized `WATTS_TO_AMPS_PRESETS` in `src/lib/calculators/watts-to-amps.ts`.
+   - Verified clicking `"Microwave (1,200W @ 120V)"` populates `1200` W and outputs `10.00 A` (`12.5 A` 125% continuous reference).
+   - Verified via automated unit test `TC-14`.
+5. **Generator "Reset Defaults" vs. "Clear All":**
+   - Verified clicking `"Clear All"` empties the selected appliance list (`No appliances selected`).
+   - Verified clicking `"Reset Defaults"` restores the 5-item `"Essential Outage"` preset (`1,180 W` running, `2,750 W` planning capacity).
+
+### 8.2 Mobile Responsiveness (`390×844`) Verified
+- **Assumptions Section:** Stacked definition-row cards at `<640px` (`sm:hidden`) and 4-column table at `>=640px` (`hidden sm:block`). Zero inner or page-level horizontal scroll on mobile.
+- **Generator Selected Appliances:** Dedicated mobile card layout at `<640px` displaying appliance title, surge badge, delete button, quantity stepper, running watts input, starting watts input, and running subtotal without horizontal scrolling.
+- **Generator 4-Step Breakdown:** Responsive 2-column grid (`sm:grid-cols-2`) with `line-clamp-1` removed so `"Driver: Refrigerator / Freezer (Modern Energy Star)"` is never truncated.
+- **Mobile Select Labels:** Shortened option labels (`"LiFePO4 — Lithium (90% DoD)"`, `"Lead-Acid — AGM / Gel (50% DoD)"`, `"AC Single-Phase (Residential)"`, `"Line-to-Line (V_LL — 208V/240V/480V)"`) fit `390px` viewports without clipping.
+- **Zero Horizontal Overflow:** Verified `scrollWidth === clientWidth` (`hasOverflow: false`) at `1440px`, `1280px`, `768px`, and `390px` across all routes.
+
+### 8.3 Internal Link Graph, Editorial Copy & Homepage Refinement Verified
+- **Header & Footer:** Both expose all 3 live calculators (`UPS Runtime`, `Watts to Amps`, `Generator Size`) plus `All Calculators` (`/calculators`), with zero fake links to unbuilt tools.
+- **Related Calculators:** Each live calculator links directly to the other two live calculators plus `/calculators`.
+- **UPS 125% Wording & Dynamic Amazon Block:** Clarified `1.25×` inverter sizing as a practical planning margin distinct from NEC branch-circuit rules; updated UPS Amazon search queries to reflect selected battery voltage, capacity, chemistry, and recommended inverter wattage.
+- **Homepage Structure:** Consolidated into a compact hero, 3 Live Calculator tool cards (with governing formulas and bulleted outputs), a compact 2-column "More Calculators in Development" roadmap, and a concise methodology note.

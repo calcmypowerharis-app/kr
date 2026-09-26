@@ -108,6 +108,18 @@ export const GeneratorSizeCalculator: React.FC = () => {
     setActivePresetId(null);
   };
 
+  const handleResetDefaults = () => {
+    setSelectedAppliances(getEssentialOutagePreset());
+    setActivePresetId("essential_outage");
+    setSearchQuery("");
+    setSelectedCategory("all");
+    setCustomName("");
+    setCustomRunning("");
+    setCustomStarting("");
+    setCustomNoSurge(false);
+    setCustomError(null);
+  };
+
   // Appliance List Item Handlers
   const handleAddFromLibrary = (defId: string) => {
     const def = DEFAULT_APPLIANCES.find((d) => d.id === defId);
@@ -289,7 +301,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
                       </span>
                     )}
                   </div>
-                  <p className="text-[11px] text-slate-500 line-clamp-2 leading-tight">
+                  <p className="text-[11px] text-slate-500 leading-snug">
                     {p.description}
                   </p>
                 </div>
@@ -308,7 +320,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
         )}
       </div>
 
-      {/* Selected Loads Table */}
+      {/* Selected Loads Section */}
       <div className="space-y-3 pt-2 border-t border-slate-100">
         <div>
           <h2 className="text-base font-bold text-slate-900">
@@ -328,32 +340,26 @@ export const GeneratorSizeCalculator: React.FC = () => {
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead>
-                <tr className="border-b border-slate-200 text-slate-500 font-semibold text-[11px] uppercase tracking-wider">
-                  <th className="py-2.5 px-2">Appliance</th>
-                  <th className="py-2.5 px-2 text-center w-20">Qty</th>
-                  <th className="py-2.5 px-2 text-right w-24">Running (W)</th>
-                  <th className="py-2.5 px-2 text-right w-24">Starting (W)</th>
-                  <th className="py-2.5 px-2 text-right w-24">Subtotal</th>
-                  <th className="py-2.5 px-1 text-center w-8"></th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {selectedAppliances.map((item) => {
-                  const isDriver = calculation.surgeDriverName === item.name;
-                  const subtotalRun = item.quantity * item.runningWatts;
+          <>
+            {/* Mobile (<640px) Card/Row Layout — No Horizontal Scrolling Required */}
+            <div className="sm:hidden space-y-2.5">
+              {selectedAppliances.map((item) => {
+                const isDriver = calculation.surgeDriverName === item.name;
+                const subtotalRun = item.quantity * item.runningWatts;
+                const surgeDelta = Math.max(0, item.startingWatts - item.runningWatts);
 
-                  return (
-                    <tr
-                      key={item.id}
-                      className={`hover:bg-slate-50/70 transition ${
-                        isDriver ? "bg-amber-50/50" : ""
-                      }`}
-                    >
-                      <td className="py-2.5 px-2">
-                        <div className="font-semibold text-slate-900 flex items-center gap-1.5 flex-wrap">
+                return (
+                  <div
+                    key={item.id}
+                    className={`p-3.5 rounded-xl border space-y-3 ${
+                      isDriver
+                        ? "border-amber-300 bg-amber-50/40"
+                        : "border-slate-200 bg-white"
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="space-y-1">
+                        <div className="font-semibold text-xs text-slate-900 flex items-center gap-1.5 flex-wrap">
                           <span>{item.name}</span>
                           {item.isCustom && (
                             <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full font-medium">
@@ -361,103 +367,252 @@ export const GeneratorSizeCalculator: React.FC = () => {
                             </span>
                           )}
                           {isDriver && (
-                            <span
-                              className="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded-full font-bold inline-flex items-center gap-0.5"
-                              title="Largest additional startup surge driver"
-                            >
+                            <span className="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded-full font-bold inline-flex items-center gap-0.5">
                               <Flame className="w-2.5 h-2.5 text-amber-600" />
                               Surge Driver
                             </span>
                           )}
                         </div>
-                        <span className="text-[10px] text-slate-500 capitalize">
-                          {item.category.replace("_", " ")}
-                        </span>
-                      </td>
+                        <div className="flex items-center gap-2 text-[11px] text-slate-500">
+                          <span className="capitalize">{item.category.replace("_", " ")}</span>
+                          <span>•</span>
+                          <span>
+                            {surgeDelta > 0
+                              ? `+${surgeDelta.toLocaleString()}W startup surge`
+                              : "No startup surge"}
+                          </span>
+                        </div>
+                      </div>
 
-                      {/* Quantity Stepper */}
-                      <td className="py-2.5 px-2">
-                        <div className="flex items-center justify-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveItem(item.id)}
+                        className="text-slate-400 hover:text-rose-600 p-1.5 rounded-lg border border-slate-200 bg-slate-50 transition shrink-0"
+                        title={`Remove ${item.name}`}
+                        aria-label={`Remove ${item.name}`}
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 pt-1 border-t border-slate-100">
+                      {/* Quantity */}
+                      <div>
+                        <span className="block text-[10px] font-semibold text-slate-500 uppercase mb-1">
+                          Qty
+                        </span>
+                        <div className="flex items-center justify-between border border-slate-300 rounded-lg px-1.5 py-1 bg-white">
                           <button
                             type="button"
                             onClick={() => handleUpdateQuantity(item.id, -1)}
-                            className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition text-xs"
-                            title={`Decrease quantity of ${item.name}`}
+                            className="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs"
                             aria-label={`Decrease quantity of ${item.name}`}
                           >
                             -
                           </button>
-                          <span className="w-5 text-center font-bold text-slate-800">
+                          <span className="font-bold text-xs text-slate-800">
                             {item.quantity}
                           </span>
                           <button
                             type="button"
                             onClick={() => handleUpdateQuantity(item.id, 1)}
-                            className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition text-xs"
-                            title={`Increase quantity of ${item.name}`}
+                            className="w-5 h-5 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center text-xs"
                             aria-label={`Increase quantity of ${item.name}`}
                           >
                             +
                           </button>
                         </div>
-                      </td>
+                      </div>
 
-                      {/* Editable Running Watts */}
-                      <td className="py-2.5 px-2 text-right">
+                      {/* Running Watts */}
+                      <div>
+                        <label
+                          htmlFor={`mobile-running-watts-${item.id}`}
+                          className="block text-[10px] font-semibold text-slate-500 uppercase mb-1"
+                        >
+                          Running (W)
+                        </label>
                         <input
                           type="number"
                           min="0"
-                          id={`running-watts-${item.id}`}
-                          name={`running-watts-${item.id}`}
+                          id={`mobile-running-watts-${item.id}`}
+                          name={`mobile-running-watts-${item.id}`}
                           aria-label={`Running watts for ${item.name}`}
                           value={item.runningWatts}
                           onChange={(e) =>
                             handleUpdateRunningWatts(item.id, e.target.value)
                           }
-                          className="w-20 text-right font-medium text-xs px-1.5 py-1 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
-                          title="Edit running wattage estimate"
+                          className="w-full text-right font-medium text-xs px-2 py-1.5 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
                         />
-                      </td>
+                      </div>
 
-                      {/* Editable Starting Watts */}
-                      <td className="py-2.5 px-2 text-right">
+                      {/* Starting Watts */}
+                      <div>
+                        <label
+                          htmlFor={`mobile-starting-watts-${item.id}`}
+                          className="block text-[10px] font-semibold text-slate-500 uppercase mb-1"
+                        >
+                          Starting (W)
+                        </label>
                         <input
                           type="number"
                           min={item.runningWatts}
-                          id={`starting-watts-${item.id}`}
-                          name={`starting-watts-${item.id}`}
+                          id={`mobile-starting-watts-${item.id}`}
+                          name={`mobile-starting-watts-${item.id}`}
                           aria-label={`Starting watts for ${item.name}`}
                           value={item.startingWatts}
                           onChange={(e) =>
                             handleUpdateStartingWatts(item.id, e.target.value)
                           }
-                          className="w-20 text-right font-medium text-xs px-1.5 py-1 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
-                          title="Edit starting wattage estimate"
+                          className="w-full text-right font-medium text-xs px-2 py-1.5 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
                         />
-                      </td>
+                      </div>
+                    </div>
 
-                      {/* Subtotal Running */}
-                      <td className="py-2.5 px-2 text-right font-bold text-slate-900">
+                    <div className="flex items-center justify-between text-[11px] text-slate-600 pt-1 border-t border-slate-100">
+                      <span>Running Subtotal ({item.quantity}×):</span>
+                      <span className="font-bold text-slate-900">
                         {subtotalRun.toLocaleString()} W
-                      </td>
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
 
-                      {/* Remove Action */}
-                      <td className="py-2.5 px-1 text-center">
-                        <button
-                          type="button"
-                          onClick={() => handleRemoveItem(item.id)}
-                          className="text-slate-400 hover:text-rose-600 p-1 rounded-md transition"
-                          title="Remove appliance"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+            {/* Tablet & Desktop (>=640px) Table Layout */}
+            <div className="hidden sm:block overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="border-b border-slate-200 text-slate-500 font-semibold text-[11px] uppercase tracking-wider">
+                    <th className="py-2.5 px-2">Appliance</th>
+                    <th className="py-2.5 px-2 text-center w-20">Qty</th>
+                    <th className="py-2.5 px-2 text-right w-24">Running (W)</th>
+                    <th className="py-2.5 px-2 text-right w-24">Starting (W)</th>
+                    <th className="py-2.5 px-2 text-right w-24">Subtotal</th>
+                    <th className="py-2.5 px-1 text-center w-8"></th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100">
+                  {selectedAppliances.map((item) => {
+                    const isDriver = calculation.surgeDriverName === item.name;
+                    const subtotalRun = item.quantity * item.runningWatts;
+
+                    return (
+                      <tr
+                        key={item.id}
+                        className={`hover:bg-slate-50/70 transition ${
+                          isDriver ? "bg-amber-50/50" : ""
+                        }`}
+                      >
+                        <td className="py-2.5 px-2">
+                          <div className="font-semibold text-slate-900 flex items-center gap-1.5 flex-wrap">
+                            <span>{item.name}</span>
+                            {item.isCustom && (
+                              <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full font-medium">
+                                Custom
+                              </span>
+                            )}
+                            {isDriver && (
+                              <span
+                                className="text-[10px] bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded-full font-bold inline-flex items-center gap-0.5"
+                                title="Largest additional startup surge driver"
+                              >
+                                <Flame className="w-2.5 h-2.5 text-amber-600" />
+                                Surge Driver
+                              </span>
+                            )}
+                          </div>
+                          <span className="text-[10px] text-slate-500 capitalize">
+                            {item.category.replace("_", " ")}
+                          </span>
+                        </td>
+
+                        {/* Quantity Stepper */}
+                        <td className="py-2.5 px-2">
+                          <div className="flex items-center justify-center gap-1">
+                            <button
+                              type="button"
+                              onClick={() => handleUpdateQuantity(item.id, -1)}
+                              className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition text-xs"
+                              title={`Decrease quantity of ${item.name}`}
+                              aria-label={`Decrease quantity of ${item.name}`}
+                            >
+                              -
+                            </button>
+                            <span className="w-5 text-center font-bold text-slate-800">
+                              {item.quantity}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => handleUpdateQuantity(item.id, 1)}
+                              className="w-5 h-5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center transition text-xs"
+                              title={`Increase quantity of ${item.name}`}
+                              aria-label={`Increase quantity of ${item.name}`}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </td>
+
+                        {/* Editable Running Watts */}
+                        <td className="py-2.5 px-2 text-right">
+                          <input
+                            type="number"
+                            min="0"
+                            id={`running-watts-${item.id}`}
+                            name={`running-watts-${item.id}`}
+                            aria-label={`Running watts for ${item.name}`}
+                            value={item.runningWatts}
+                            onChange={(e) =>
+                              handleUpdateRunningWatts(item.id, e.target.value)
+                            }
+                            className="w-20 text-right font-medium text-xs px-1.5 py-1 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                            title="Edit running wattage estimate"
+                          />
+                        </td>
+
+                        {/* Editable Starting Watts */}
+                        <td className="py-2.5 px-2 text-right">
+                          <input
+                            type="number"
+                            min={item.runningWatts}
+                            id={`starting-watts-${item.id}`}
+                            name={`starting-watts-${item.id}`}
+                            aria-label={`Starting watts for ${item.name}`}
+                            value={item.startingWatts}
+                            onChange={(e) =>
+                              handleUpdateStartingWatts(item.id, e.target.value)
+                            }
+                            className="w-20 text-right font-medium text-xs px-1.5 py-1 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-hidden"
+                            title="Edit starting wattage estimate"
+                          />
+                        </td>
+
+                        {/* Subtotal Running */}
+                        <td className="py-2.5 px-2 text-right font-bold text-slate-900">
+                          {subtotalRun.toLocaleString()} W
+                        </td>
+
+                        {/* Remove Action */}
+                        <td className="py-2.5 px-1 text-center">
+                          <button
+                            type="button"
+                            onClick={() => handleRemoveItem(item.id)}
+                            className="text-slate-400 hover:text-rose-600 p-1 rounded-md transition"
+                            title={`Remove ${item.name}`}
+                            aria-label={`Remove ${item.name}`}
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </>
         )}
       </div>
 
@@ -659,7 +814,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
           <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700/80 space-y-0.5">
             <span className="text-slate-400 text-[10px] block">Step 1: Running Load</span>
             <p className="text-base font-black text-white">
@@ -675,7 +830,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
             <p className="text-base font-black text-amber-400">
               +{calculation.largestAdditionalStartingWatts.toLocaleString()} W
             </p>
-            <p className="text-[10px] text-slate-400 line-clamp-1">
+            <p className="text-[10px] text-slate-400 leading-snug">
               {calculation.surgeDriverName
                 ? `Driver: ${calculation.surgeDriverName}`
                 : "No motor surge"}
@@ -721,10 +876,11 @@ export const GeneratorSizeCalculator: React.FC = () => {
       {/* Primary Capacity Card */}
       <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl p-6 shadow-lg space-y-4">
         <div className="flex items-center justify-between">
-          <span className="text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-blue-500/40 text-blue-100 border border-blue-400/40">
-            Recommended Capacity
+          <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-blue-500/40 text-blue-100 border border-blue-400/40">
+            <Zap className="w-3.5 h-3.5 text-blue-200" />
+            <span>Recommended Capacity</span>
           </span>
-          <span className="text-xs text-blue-200">CalcMyPower Engine</span>
+          <span className="text-xs text-blue-200">1.25× Planning Margin</span>
         </div>
 
         <div>
@@ -816,59 +972,92 @@ export const GeneratorSizeCalculator: React.FC = () => {
         </div>
       </div>
 
-      {/* Contextual Amazon Hardware Section */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3 text-xs">
-        <div className="flex items-center gap-2">
-          <ShoppingBag className="w-4 h-4 text-blue-600" />
-          <h4 className="font-bold text-slate-900 text-sm">
-            Recommended Equipment Categories
-          </h4>
+      {/* Contextual Amazon Hardware Section (Secondary) */}
+      <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3 text-xs">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+            <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
+            <span>Generator Hardware Reference</span>
+          </div>
+          <span className="text-[10px] text-slate-400">Amazon Associate</span>
         </div>
 
-        <p className="text-slate-600 leading-normal">
-          To connect and operate emergency generator power safely, standard installation hardware is required:
+        <p className="text-slate-500 leading-normal">
+          Standard equipment categories for portable backup power and safe transfer connection:
         </p>
 
-        <div className="space-y-2 text-slate-700">
-          <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-            <span className="font-semibold text-slate-900 block">
-              Dual-Fuel Inverter Generators (3,500W – 4,500W)
-            </span>
-            <span className="text-[11px] text-slate-500 block mt-0.5">
-              Clean power (&lt;3% THD) for electronics; runs on gasoline or long-storing propane.
-            </span>
-          </div>
+        <div className="space-y-2.5">
+          <a
+            href="https://www.amazon.com/s?k=dual+fuel+inverter+generator+3500w+4500w&tag=calcmypower-20"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+          >
+            <div>
+              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                Dual-Fuel Inverter Generators (3,500W – 4,500W)
+              </div>
+              <div className="text-[11px] text-slate-500">
+                Clean power (&lt;3% THD) for electronics; operates on gasoline or propane
+              </div>
+            </div>
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+          </a>
 
-          <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-            <span className="font-semibold text-slate-900 block">
-              Outdoor Power Inlet Boxes (30A / 50A)
-            </span>
-            <span className="text-[11px] text-slate-500 block mt-0.5">
-              NEMA 3R weatherproof through-wall connection; eliminates running cords through windows.
-            </span>
-          </div>
+          <a
+            href="https://www.amazon.com/s?k=30+amp+50+amp+generator+power+inlet+box+nema+3r&tag=calcmypower-20"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+          >
+            <div>
+              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                Outdoor Power Inlet Boxes (30A / 50A)
+              </div>
+              <div className="text-[11px] text-slate-500">
+                NEMA 3R weatherproof exterior connection for transfer cords
+              </div>
+            </div>
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+          </a>
 
-          <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-            <span className="font-semibold text-slate-900 block">
-              Manual Transfer Switch &amp; Interlock Kits
-            </span>
-            <span className="text-[11px] text-slate-500 block mt-0.5">
-              Code-compliant break-before-make subpanels preventing deadly utility backfeeding.
-            </span>
-          </div>
+          <a
+            href="https://www.amazon.com/s?k=manual+generator+transfer+switch+kit+30+amp&tag=calcmypower-20"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+          >
+            <div>
+              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                Manual Transfer Switch Kits
+              </div>
+              <div className="text-[11px] text-slate-500">
+                Break-before-make subpanels to isolate generator power from utility lines
+              </div>
+            </div>
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+          </a>
 
-          <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200">
-            <span className="font-semibold text-slate-900 block">
-              Heavy-Duty 4-Prong Generator Cords (L14-30P)
-            </span>
-            <span className="text-[11px] text-slate-500 block mt-0.5">
-              10 AWG all-weather copper extension cords designed for 120V/240V generator transfer.
-            </span>
-          </div>
+          <a
+            href="https://www.amazon.com/s?k=10+awg+l14-30p+generator+cord+4+prong&tag=calcmypower-20"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+          >
+            <div>
+              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                4-Prong Generator Cords (L14-30P, 10 AWG)
+              </div>
+              <div className="text-[11px] text-slate-500">
+                Heavy-duty copper extension cords for 120V/240V 30-Amp generator outlets
+              </div>
+            </div>
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+          </a>
         </div>
 
-        <p className="text-[10px] text-slate-400 pt-2 border-t border-slate-100">
-          As an Amazon Associate, CalcMyPower earns from qualifying purchases. We never recommend untested hardware.
+        <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
+          As an Amazon Associate, CalcMyPower earns from qualifying purchases.
         </p>
       </div>
     </div>
@@ -881,7 +1070,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
       badge="Electrical Sizing Tool"
       category="Generator Sizing"
       lastUpdated="September 2026"
-      onReset={handleClearAll}
+      onReset={handleResetDefaults}
       inputSection={inputSectionContent}
       resultSection={resultSectionContent}
     >
@@ -972,7 +1161,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
                 Comparing Generator Technologies
               </h2>
               <p className="text-xs md:text-sm text-slate-500">
-                Understanding the trade-offs between generator types based on engineering characteristics rather than arbitrary wattages.
+                Compare portable inverter, open-frame, dual-fuel, and standby generators by power quality (THD), noise level, portability, and fuel storage.
               </p>
             </div>
           </div>
@@ -1105,7 +1294,8 @@ export const GeneratorSizeCalculator: React.FC = () => {
 
         {/* Assumptions Section */}
         <AssumptionsSection
-          title="Calculation Assumptions &amp; Engineering Planning Model"
+          title="Calculation Assumptions & Engineering Planning Model"
+          impactHeader="Effect on Generator Sizing"
           description="Transparent electrical assumptions used in this generator sizing calculator:"
           assumptions={[
             {
@@ -1141,7 +1331,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
 
         {/* Disclaimer Section */}
         <DisclaimerSection
-          title="Generator Sizing &amp; Safety Disclaimer"
+          title="Generator Sizing & Safety Disclaimer"
           points={[
             "The generator capacity figures provided by this calculator are planning estimates for consumer guidance only.",
             "Electrical loads, motor inrush characteristics (Locked Rotor Amps), altitude deratings, and local electrical codes vary. Sizing estimates do not substitute for professional engineering analysis, manufacturer-specific sizing software, or licensed electrical contractor assessment.",
@@ -1199,9 +1389,9 @@ export const GeneratorSizeCalculator: React.FC = () => {
               category: "Electrical Sizing",
             },
             {
-              title: "All Electrical & Power Calculators",
+              title: "More Electrical & Power Calculators",
               description:
-                "Explore our complete directory of power, solar, battery, and electrical sizing tools.",
+                "Explore our directory of power, battery backup, and electrical sizing tools.",
               href: "/calculators",
               category: "Directory",
             },

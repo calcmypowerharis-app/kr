@@ -177,3 +177,31 @@ This log records major technical and product decisions, context, rationale, and 
 - **Context:** Supporting appliance quantities ($Q_i > 1$) scales continuous running wattage ($Q_i \times W_{r,i}$), while the largest startup surge delta ($\Delta W_{\max} = \max(W_{s,i} - W_{r,i})$) assumes staggered motor starts.
 - **Decision:** Display a prominent, non-hidden limitation notice in both the specification and the top of the calculator UI: *"This practical planning model assumes that only one significant motor-driven load starts at a time. If multiple large motors can start simultaneously, generator sizing may require a more detailed manufacturer or engineering analysis."*
 - **Rationale:** Ensures complete transparency regarding how quantity scaling interacts with motor starting transients.
+
+---
+
+## Decision 017: Responsive Dual-View Pattern for Dense Technical Tables on Mobile (`<640px`)
+- **Date:** 2026-09-26
+- **Status:** Approved & Implemented
+- **Context:** Multi-column tables with inline numeric inputs (such as the 5-column Generator Selected Appliances table and the 4-column Assumptions table) require `min-w-[500px]` or `min-w-[600px]` on desktop, which forces awkward horizontal scrolling on `390px` mobile viewports and hides delete/input controls off-screen.
+- **Decision:** Use a responsive dual-view layout (`sm:hidden` stacked definition/control cards for `<640px`, `hidden sm:block` semantic `<table>` for `>=640px`) in `AssumptionsSection` and `GeneratorSizeCalculator`.
+- **Rationale:** Preserves high-density tabular scanning on tablet/desktop while giving mobile users 100% visible controls and text without horizontal scrolling.
+
+---
+
+## Decision 018: Distinction Between "Reset Defaults" and "Clear All" in Multi-Item Calculators
+- **Date:** 2026-09-26
+- **Status:** Approved & Implemented
+- **Context:** In calculators that preload a default multi-item scenario (like the Generator Size Calculator's "Essential Outage" preset), wiring both "Reset Defaults" and "Clear All" to empty the list breaks user expectations when trying to return to the baseline example.
+- **Decision:** "Reset Defaults" must always restore the initial default preset state (`preset_essential`), whereas "Clear All" explicitly empties the selected appliance list (`[]`).
+- **Rationale:** Matches standard form semantics and prevents accidental loss of the default reference scenario.
+
+---
+
+## Decision 019: Tool-First Homepage Hierarchy Over Redundant SaaS Showcase Blocks
+- **Date:** 2026-09-26
+- **Status:** Approved & Implemented
+- **Context:** Promoting the same calculator four times on the homepage (Hero button, Flagship banner, Category grid, and Popular grid) created a repetitive template feel and buried the other live calculators below the fold.
+- **Decision:** Structure the homepage around four focused sections: (1) Compact Hero, (2) 3 Live Calculators with governing equations and bulleted outputs, (3) Compact "More Calculators in Development" roadmap table, and (4) Brief Methodology & Standards Note.
+- **Rationale:** Surfaces all live tools above or near the fold, eliminates card duplication, and maintains honest roadmap signaling.
+

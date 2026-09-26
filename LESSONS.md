@@ -92,3 +92,32 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Context:** Inline editable `<input type="number">` fields inside table rows (where column headers act as visual labels) trigger Chrome DevTools accessibility warnings (`No label associated with a form field` and `A form field element should have an id or name attribute`) if they lack explicit accessible labels and unique `id`/`name` properties.
 - **Rule:** Every dynamically rendered table input must include a unique `id` (e.g. `running-watts-${item.id}`), `name`, and a descriptive `aria-label` (e.g. `Running watts for ${item.name}`).
 - **Prevention:** Verify all multi-row interactive calculators with Chrome DevTools `list_console_messages` and `take_snapshot` to confirm zero form-field accessibility issues.
+
+---
+
+## Lesson 014: Never Pass HTML Entities (`&amp;`) Inside JSX String Props
+- **Context:** Passing `title="Calculation Assumptions &amp; Engineering Planning Model"` as a JSX string prop causes React to escape the ampersand a second time, rendering literal `&amp;` in the visible heading.
+- **Rule:** Always use plain characters (`&`, `'`, `"`) inside JavaScript/TypeScript string literals and JSX string props; only use HTML entities in direct JSX text children when syntactically required.
+- **Prevention:** Search rendered `document.body.innerText` for `&amp;`, `&quot;`, and `&#` during browser QA.
+
+---
+
+## Lesson 015: Centralize Preset Data and Unit-Test Preset Values Against Labels
+- **Context:** In the Watts-to-Amps calculator, the `"Microwave (1,200W @ 120V)"` preset button had `watts: 120` instead of `watts: 1200`, causing a 10× calculation discrepancy (`1.00 A` instead of `10.00 A`).
+- **Rule:** Export calculator preset arrays from `src/lib/calculators/*.ts` and write unit tests verifying that preset numerical values match their human-readable labels.
+- **Prevention:** Added `WATTS_TO_AMPS_PRESETS` to `src/lib/calculators/watts-to-amps.ts` and test case `TC-14` in `watts-to-amps.test.ts`.
+
+---
+
+## Lesson 016: Keep Native `<select>` `<option>` Text Concise for `390px` Mobile Viewports
+- **Context:** Native mobile `<select>` controls do not wrap single-line text in their closed state. Option labels longer than ~38 characters (especially when combined with an appended `(sublabel)`) clip horizontally on `390px` viewports.
+- **Rule:** Keep `<option>` label + sublabel combinations concise (e.g., `"LiFePO4 — Lithium (90% DoD)"`, `"AC Single-Phase (Residential)"`) and place longer explanatory definitions in the field's `helperText`.
+- **Prevention:** Visually inspect every `<select>` element at `390×844` via Chrome DevTools screenshots.
+
+---
+
+## Lesson 017: Avoid `line-clamp` on Technical Labels and Scenario Descriptions
+- **Context:** Applying `line-clamp-1` or `line-clamp-2` to technical outputs (like `"Driver: Refrigerator / Freezer (Modern Energy Star)"`) or scenario preset descriptions cuts off critical appliance names and wattage ratings with `...`.
+- **Rule:** Never truncate technical identifiers, appliance lists, or calculation drivers with `line-clamp`. Allow text to wrap naturally within responsive grid cells.
+- **Prevention:** Visual audit across mobile (`390px`) and desktop (`1280px`/`1440px`) viewports.
+

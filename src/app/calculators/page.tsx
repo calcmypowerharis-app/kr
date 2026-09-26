@@ -5,7 +5,7 @@ import { BatteryCharging, Cpu, Sliders, ArrowRight, Plug } from "lucide-react";
 export const metadata: Metadata = {
   title: "Electrical & Power Calculators Directory",
   description:
-    "Explore our complete directory of engineering calculators for solar systems, battery runtimes, inverters, and electrical wiring.",
+    "Browse CalcMyPower's interactive calculators for UPS battery backup runtime, Watts to Amps circuit conversion, and backup generator sizing.",
   alternates: {
     canonical: "https://calcmypower.com/calculators",
   },
@@ -16,10 +16,10 @@ export default function CalculatorsDirectoryPage() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
       <header className="space-y-3">
         <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900">
-          Electrical & Power Calculators
+          Electrical &amp; Power Calculators
         </h1>
         <p className="text-base text-slate-600 max-w-2xl leading-relaxed">
-          Select an interactive tool below to compute power requirements, backup durations, or conductor sizes according to standard engineering equations.
+          Select a calculator below to size battery backup banks, convert watts to amps across DC and AC circuits, or estimate required backup generator wattage.
         </p>
       </header>
 

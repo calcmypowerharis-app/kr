@@ -1,5 +1,5 @@
 import React from "react";
-import { AlertTriangle, Clock, Zap, BatteryCharging, ShieldAlert } from "lucide-react";
+import { AlertTriangle, Clock, Zap, BatteryCharging, Plug } from "lucide-react";
 
 interface StatItem {
   label: string;
@@ -15,6 +15,7 @@ interface ResultCardProps {
   stats: StatItem[];
   warnings?: string[];
   batteryNote?: string;
+  icon?: "clock" | "zap" | "plug";
 }
 
 export const ResultCard: React.FC<ResultCardProps> = ({
@@ -24,13 +25,16 @@ export const ResultCard: React.FC<ResultCardProps> = ({
   stats,
   warnings = [],
   batteryNote,
+  icon = "clock",
 }) => {
+  const IconComponent = icon === "zap" ? Zap : icon === "plug" ? Plug : Clock;
+
   return (
     <div className="bg-slate-900 text-white rounded-2xl shadow-xl overflow-hidden border border-slate-800">
       {/* Primary Result Banner */}
       <div className="p-6 md:p-8 bg-gradient-to-br from-slate-900 via-slate-850 to-blue-950 border-b border-slate-800">
         <div className="inline-flex items-center gap-2 text-blue-300 bg-blue-950/80 border border-blue-800/60 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-3">
-          <Clock className="w-3.5 h-3.5 text-blue-400" />
+          <IconComponent className="w-3.5 h-3.5 text-blue-400" />
           <span>{primaryTitle}</span>
         </div>
         <div className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-white mb-2 leading-none">

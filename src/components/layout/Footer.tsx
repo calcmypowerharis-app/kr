@@ -16,7 +16,7 @@ export const Footer: React.FC = () => {
               <span>CalcMyPower.com</span>
             </div>
             <p className="text-xs md:text-sm text-slate-400 leading-relaxed max-w-md">
-              Engineering-backed power, battery, solar, and electrical calculators. Built for homeowners, RV travelers, off-grid DIYers, and electrical professionals.
+              Practical power, battery backup, generator, and electrical calculators for US residential, RV, and off-grid systems.
             </p>
           </div>
 
@@ -36,17 +36,17 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link href="/watts-to-amps-calculator" className="hover:text-white transition">
-                  Watts to Amps Converter
+                  Watts to Amps Calculator
+                </Link>
+              </li>
+              <li>
+                <Link href="/generator-size-calculator" className="hover:text-white transition">
+                  Generator Size Calculator
                 </Link>
               </li>
               <li>
                 <Link href="/calculators" className="hover:text-white transition">
-                  Solar Panel Sizing
-                </Link>
-              </li>
-              <li>
-                <Link href="/calculators" className="hover:text-white transition">
-                  Wire Size Computation
+                  All Calculators
                 </Link>
               </li>
             </ul>

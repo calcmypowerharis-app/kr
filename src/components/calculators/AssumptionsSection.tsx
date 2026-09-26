@@ -12,12 +12,14 @@ interface AssumptionsSectionProps {
   title?: string;
   description: string;
   assumptions: AssumptionItem[];
+  impactHeader?: string;
 }
 
 export const AssumptionsSection: React.FC<AssumptionsSectionProps> = ({
   title = "Calculation Assumptions & Real-World Variables",
   description,
   assumptions,
+  impactHeader = "Practical Impact",
 }) => {
   return (
     <section className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
@@ -32,14 +34,38 @@ export const AssumptionsSection: React.FC<AssumptionsSectionProps> = ({
         {description}
       </p>
 
-      <div className="overflow-x-auto">
+      {/* Mobile (<640px): Stacked definition-row layout */}
+      <div className="sm:hidden divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden">
+        {assumptions.map((row, i) => (
+          <div key={i} className="p-4 bg-white space-y-2 text-xs">
+            <div className="font-bold text-slate-900 text-sm">{row.parameter}</div>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600">
+              <div>
+                <span className="text-slate-400 font-medium">Default: </span>
+                <span className="font-mono font-semibold text-blue-600">{row.defaultVal}</span>
+              </div>
+              <div>
+                <span className="text-slate-400 font-medium">Typical Range: </span>
+                <span className="text-slate-700">{row.realisticRange}</span>
+              </div>
+            </div>
+            <div className="pt-1 text-slate-600 leading-relaxed">
+              <span className="font-semibold text-slate-700">{impactHeader}: </span>
+              {row.impact}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Tablet & Desktop (>=640px): 4-column table layout */}
+      <div className="hidden sm:block overflow-x-auto">
         <table className="w-full text-left text-xs md:text-sm border-collapse">
           <thead>
             <tr className="border-b border-slate-200 bg-slate-50 text-slate-700">
               <th className="py-3 px-3.5 font-semibold">Parameter</th>
               <th className="py-3 px-3.5 font-semibold">Model Default</th>
               <th className="py-3 px-3.5 font-semibold">Typical Field Range</th>
-              <th className="py-3 px-3.5 font-semibold">Impact on Runtime</th>
+              <th className="py-3 px-3.5 font-semibold">{impactHeader}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 text-slate-600">
