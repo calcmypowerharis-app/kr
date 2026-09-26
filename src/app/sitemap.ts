@@ -29,5 +29,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.95,
     },
+    {
+      url: `${baseUrl}/generator-size-calculator`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.95,
+    },
   ];
 }

@@ -93,7 +93,7 @@ This log records major technical and product decisions, context, rationale, and 
 
 ## Decision 009: Generator Sizing Methodology — "Largest Single Motor Surge" Rule
 - **Date:** 2026-09-26
-- **Status:** Approved for Specification
+- **Status:** Approved & Implemented
 - **Context:** Sizing algorithms that sum all starting surges assume that every motor in a facility or home starts at the exact same millisecond. This causes severe, expensive oversizing.
 - **Decision:** Sizing for peak/surge capacity will be calculated as Total Continuous Running Watts plus the single largest motor surge delta among active loads: $W_{surge\_demand} = W_{running} + \max(W_{starting} - W_{running})$.
 - **Rationale:** Reflects asynchronous real-world motor cycling and manual/automatic circuit staging, complying with IEEE and electrical contractor standards.
@@ -102,16 +102,16 @@ This log records major technical and product decisions, context, rationale, and 
 
 ## Decision 010: CalcMyPower Planning Headroom Factor
 - **Date:** 2026-09-26
-- **Status:** Approved for Specification
+- **Status:** Approved & Implemented
 - **Context:** Operating internal combustion generators continuously at 100% of rated capacity creates thermal stress, excessive fuel burn, voltage/frequency sag, and risk of nuisance tripping. However, continuous duty factors vary across applications and must not be misrepresented as a universal NEC requirement.
-- **Decision:** Explicitly label the 25% continuous buffer as the **"CalcMyPower planning headroom factor"** ($W_{headroom} = W_{running} \times 1.25$). Note that generator manufacturers and alternative sizing methodologies may use different operating margins (e.g. 10%–30%).
+- **Decision:** Explicitly label the 25% continuous buffer as the **"CalcMyPower planning headroom factor"**. Note that generator manufacturers and alternative sizing methodologies may use different operating margins (e.g. 10%–30%).
 - **Rationale:** Transparently explains the engineering intent (targeting ~80% of generator capacity) without improperly claiming an NEC code mandate.
 
 ---
 
 ## Decision 011: Four-Step Generator Sizing Methodology & Planning Capacity Formulation
 - **Date:** 2026-09-26
-- **Status:** Approved for Specification
+- **Status:** Approved & Implemented
 - **Context:** Generator sizing must accurately balance continuous running loads and motor starting inrushes without naive summation errors or hidden assumptions.
 - **Decision:** Define the mathematical engine using four explicit steps:
   1. Total Running Watts = $\sum (Q_i \times W_{r,i})$
@@ -125,7 +125,7 @@ This log records major technical and product decisions, context, rationale, and 
 
 ## Decision 012: Calculated Electrical Thresholds Over Arbitrary Retail Bucketing
 - **Date:** 2026-09-26
-- **Status:** Approved for Specification
+- **Status:** Approved & Implemented
 - **Context:** Forcing calculated generator loads into arbitrary commercial retail buckets (e.g. "4,000W–5,500W class") lacks empirical grounding and restricts user evaluation across varied generator models.
 - **Decision:** Output exact calculated engineering thresholds:
   1. Total Running Watts ($W_{\text{running}}$)
@@ -138,7 +138,7 @@ This log records major technical and product decisions, context, rationale, and 
 
 ## Decision 013: Cautious Attribution for Transfer Equipment and Safety Guidance
 - **Date:** 2026-09-26
-- **Status:** Approved for Specification
+- **Status:** Approved & Implemented
 - **Context:** Misrepresenting NEC Article 702 as mandating a single specific hardware setup across every application creates legal and technical inaccuracies.
 - **Decision:** Use cautious, standardized language: *"Use properly installed transfer equipment or an approved interlock arrangement where applicable to prevent unintended interconnection with utility power. Follow applicable NEC and local code requirements and use qualified electrical professionals for installation."* Ground all CO safety advisories (including 20-foot outdoor rule) directly in current CDC and CPSC guidelines.
 - **Rationale:** Ensures strict technical compliance and safety rigor per GEMINI.md Section 9 and 10.
@@ -147,7 +147,7 @@ This log records major technical and product decisions, context, rationale, and 
 
 ## Decision 014: Explicit Distinction and Mathematical Grounding of kVA Apparent Power Model
 - **Date:** 2026-09-26
-- **Status:** Approved for Specification
+- **Status:** Approved & Implemented
 - **Context:** Presenting a single universal kVA value without defining which power stage it represents creates confusion between running load, peak demand, and recommended nameplate capacity.
 - **Decision:** Use $kVA = kW / PF$ and explicitly distinguish between:
   1. Planning Capacity kVA ($kW_{\text{planning}} / PF$): Primary output matching generator nameplate capacity ratings.
@@ -160,7 +160,7 @@ This log records major technical and product decisions, context, rationale, and 
 
 ## Decision 015: Generator Technology Comparison and Appliance Interaction UX
 - **Date:** 2026-09-26
-- **Status:** Approved for Specification
+- **Status:** Approved & Implemented
 - **Context:** Hard wattage cutoffs for generator types (e.g. "<4500W = inverter") are technically inaccurate, as high-output inverters (7kW–10kW) and small conventional portables exist. Furthermore, user loads must allow frictionless editing and avoid arbitrary multipliers.
 - **Decision:**
   1. Educational Technology Comparison: Compare portable inverter, conventional open-frame, dual-fuel, and standby units based on technical attributes (THD, noise, portability, fuel storage, automatic transfer) rather than arbitrary wattage tiers.
@@ -169,6 +169,11 @@ This log records major technical and product decisions, context, rationale, and 
   4. Custom Appliance Startup: Require explicit Running Watts and Starting Watts, or a "No Motor Surge / Unknown" toggle that sets Starting = Running; strictly prohibit arbitrary 2x/3x auto-multiplication.
 - **Rationale:** Maximizes educational value, technical accuracy, and UX clarity.
 
+---
 
-
-
+## Decision 016: Prominent Single-Motor Startup Model Limitation Notice
+- **Date:** 2026-09-26
+- **Status:** Approved & Implemented
+- **Context:** Supporting appliance quantities ($Q_i > 1$) scales continuous running wattage ($Q_i \times W_{r,i}$), while the largest startup surge delta ($\Delta W_{\max} = \max(W_{s,i} - W_{r,i})$) assumes staggered motor starts.
+- **Decision:** Display a prominent, non-hidden limitation notice in both the specification and the top of the calculator UI: *"This practical planning model assumes that only one significant motor-driven load starts at a time. If multiple large motors can start simultaneously, generator sizing may require a more detailed manufacturer or engineering analysis."*
+- **Rationale:** Ensures complete transparency regarding how quantity scaling interacts with motor starting transients.

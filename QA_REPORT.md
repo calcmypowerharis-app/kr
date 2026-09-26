@@ -148,3 +148,45 @@ $$E_{usable} = E_{total} \times DoD \times \eta$$
 - **JSON-LD Schemas:** All 3 schemas verified in page head: `WebApplication`, `BreadcrumbList`, and `FAQPage` (5 comprehensive Q&As).
 - **XML Sitemap:** Verified entry in `/sitemap.xml`.
 
+---
+
+## 7. Phase D: Generator Size Calculator QA & Verification
+
+**Date:** 2026-09-26  
+**Route Tested:** `/generator-size-calculator`  
+**Test Target:** Local Next.js 15 production server on `http://localhost:3000`  
+**Automated Unit Tests:** 12/12 passing in `src/lib/calculators/__tests__/generator-size.test.ts` (31/31 suite-wide)
+
+### 7.1 Viewport & Responsive Design Verification
+- **Desktop (1280×800):** Tested and confirmed (`scrollWidth: 1280`, `clientWidth: 1280`, `hasHorizontalOverflow: false`). Clean 12-column grid layout with interactive appliance selector and sticky right-hand capacity summary.
+- **Tablet (768×1024):** Tested and confirmed (`scrollWidth: 753`, `clientWidth: 753`, `hasHorizontalOverflow: false`). Responsive stacked layout with full table usability.
+- **Mobile (390×844):** Tested with true mobile touch emulation (`scrollWidth: 390`, `clientWidth: 390`, `hasHorizontalOverflow: false`). Quick scenario cards, category filter pills, and appliance cards stack cleanly without side-scrolling.
+
+### 7.2 Four-Step Sizing Engine & Presets Verified
+1. **Explicit Single-Motor Startup Limitation Banner:**
+   - Verified prominent high-contrast amber alert at the top of the calculator: *"This practical planning model assumes that only one significant motor-driven load starts at a time. If multiple large motors can start simultaneously, generator sizing may require a more detailed manufacturer or engineering analysis."*
+2. **Pre-Loaded Default Scenario ("Essential Outage — Editable"):**
+   - Pre-loads Refrigerator (180W run / 1200W start), Sump Pump (800W run / 1800W start), Wi-Fi Router (25W), 4 rooms of LED Lighting (4 × 40W = 160W), and Phone Charger (15W).
+   - Verified math:
+     - $W_{\text{running}} = 1,180\text{ W}$
+     - $\Delta W_{\max} = 1,020\text{ W}$ (Surge Driver: Refrigerator / Freezer)
+     - $W_{\text{peak}} = 2,200\text{ W}$
+     - $W_{\text{planning}} = 2,200 \times 1.25 = 2,750\text{ W}$ ($2.75\text{ kW}$)
+     - Apparent Power ($PF = 0.80$ assumption): Planning = $3.44\text{ kVA}$, Running = $1.47\text{ kVA}$, Peak = $2.75\text{ kVA}$.
+3. **Interactive Controls Verified:**
+   - **Clear All Button:** Resets selected appliances to `0`, displays empty-state prompt, and sets all output metrics cleanly to `0`.
+   - **Scenario Presets:** Switching to *"RV 30-Amp Summer"* recalculates to $3,650\text{ W}$ running, $+1,700\text{ W}$ surge (RV Rooftop AC), $5,350\text{ W}$ peak demand, and $6,688\text{ W}$ ($6.69\text{ kW}$) planning capacity ($8.36\text{ kVA}$).
+   - **Inline Editing & Quantity Scaling:** Adjusting appliance quantity scales running watts while preserving the single-motor surge model. Editing running or starting watts inline immediately updates totals and re-evaluates the surge driver.
+   - **Custom Load Entry:** Requires explicit Running Watts and Starting Watts (or "No motor surge / unknown" toggle setting Starting = Running). Verified zero arbitrary $2\times$ or $3\times$ multipliers.
+
+### 7.3 Technical Guardrails, Safety & SEO Audit
+- **Spec Sheet Matching Guide:** Instructs users to compare generator **Rated (Running) Watts** against Planning Capacity and **Surge (Starting) Watts** against Peak Starting Demand, avoiding arbitrary retail wattage buckets.
+- **Safety Advisories:** Displays CDC & CPSC 20-foot outdoor placement rule for carbon monoxide prevention and cautious transfer equipment / interlock guidance preventing utility backfeeding.
+- **Console & Accessibility Audit:** 0 console errors, 0 warnings, 0 hydration issues, and 0 DevTools accessibility form-field issues (all inline table spinbuttons, search inputs, and custom form inputs have explicit `id`, `name`, and `aria-label` or `<label htmlFor>` bindings).
+- **SEO Metadata & JSON-LD:**
+  - `<title>`: `Generator Size Calculator (Home Backup, RV & Portable) | CalcMyPower`
+  - `<link rel="canonical">`: `https://calcmypower.com/generator-size-calculator`
+  - JSON-LD: Verified `WebApplication`, `BreadcrumbList`, and `FAQPage` (5 Q&As) in rendered `<head>`.
+  - Sitemap & Navigation: Verified `/generator-size-calculator` in `/sitemap.xml`, `/calculators`, and homepage `/` popular tools & active Generator category card.
+
+

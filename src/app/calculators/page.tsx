@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { BatteryCharging, Cpu, Sliders, ArrowRight } from "lucide-react";
+import { BatteryCharging, Cpu, Sliders, ArrowRight, Plug } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Electrical & Power Calculators Directory",
@@ -67,6 +67,31 @@ export default function CalculatorsDirectoryPage() {
           </h2>
           <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
             Convert continuous power (Watts) to electrical current (Amps) across DC, single-phase AC, and balanced three-phase AC circuits.
+          </p>
+          <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
+            <span>Open Calculator</span>
+            <ArrowRight className="w-4 h-4" />
+          </div>
+        </Link>
+
+        {/* Active: Generator Size Calculator */}
+        <Link
+          href="/generator-size-calculator"
+          className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3"
+        >
+          <div className="flex items-center justify-between">
+            <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+              <Plug className="w-5 h-5" />
+            </div>
+            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+              Live Tool
+            </span>
+          </div>
+          <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+            Generator Size Calculator
+          </h2>
+          <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+            Calculate required generator wattage for home backup, RV camping, or jobsite tools with motor surge handling and 25% planning headroom.
           </p>
           <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
             <span>Open Calculator</span>

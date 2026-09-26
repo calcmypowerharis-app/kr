@@ -86,5 +86,9 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Rule:** Compare generator categories (portable inverter, conventional portable, dual-fuel, and standby) based on objective technical attributes: Total Harmonic Distortion (THD), noise levels, portability, fuel storage/flexibility, and automatic transfer capabilities.
 - **Prevention:** Present educational comparison tables grounded in engineering characteristics rather than rigid wattage cutoffs.
 
+---
 
-
+## Lesson 013: Explicit Accessible Attributes on Dynamic Table Inputs
+- **Context:** Inline editable `<input type="number">` fields inside table rows (where column headers act as visual labels) trigger Chrome DevTools accessibility warnings (`No label associated with a form field` and `A form field element should have an id or name attribute`) if they lack explicit accessible labels and unique `id`/`name` properties.
+- **Rule:** Every dynamically rendered table input must include a unique `id` (e.g. `running-watts-${item.id}`), `name`, and a descriptive `aria-label` (e.g. `Running watts for ${item.name}`).
+- **Prevention:** Verify all multi-row interactive calculators with Chrome DevTools `list_console_messages` and `take_snapshot` to confirm zero form-field accessibility issues.
