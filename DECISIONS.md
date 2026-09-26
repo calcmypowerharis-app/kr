@@ -100,11 +100,49 @@ This log records major technical and product decisions, context, rationale, and 
 
 ---
 
-## Decision 010: Generator Operating Headroom (75–80% Continuous Load Target)
+## Decision 010: CalcMyPower Planning Headroom Factor
 - **Date:** 2026-09-26
 - **Status:** Approved for Specification
-- **Context:** Internal combustion engine generators operated continuously at 100% rated capacity experience thermal stress, high fuel burn rates, voltage/frequency instability, and frequent breaker trips.
-- **Decision:** Apply a continuous operating headroom buffer of 20% to 25% to running loads ($W_{rated\_recommended} \ge W_{running} \times 1.25$) when establishing the recommended generator capacity range.
-- **Rationale:** Ensures long engine life, acceptable fuel efficiency, and transient reserve capacity for unexpected loads.
+- **Context:** Operating internal combustion generators continuously at 100% of rated capacity creates thermal stress, excessive fuel burn, voltage/frequency sag, and risk of nuisance tripping. However, continuous duty factors vary across applications and must not be misrepresented as a universal NEC requirement.
+- **Decision:** Explicitly label the 25% continuous buffer as the **"CalcMyPower planning headroom factor"** ($W_{headroom} = W_{running} \times 1.25$). Note that generator manufacturers and alternative sizing methodologies may use different operating margins (e.g. 10%–30%).
+- **Rationale:** Transparently explains the engineering intent (targeting ~80% of generator capacity) without improperly claiming an NEC code mandate.
+
+---
+
+## Decision 011: Five-Variable Generator Sizing Engine & Planning Model
+- **Date:** 2026-09-26
+- **Status:** Approved for Specification
+- **Context:** Generator sizing must accurately balance continuous running loads and motor starting inrushes without naive summation errors or hidden assumptions.
+- **Decision:** Define the mathematical engine using five explicit variables:
+  1. Total Running Watts = $\sum (Q_i \times W_{r,i})$
+  2. Largest Additional Starting Watts = $\max(0, \max_i(W_{s,i} - W_{r,i}))$
+  3. Peak Starting Demand = Total Running Watts + Largest Additional Starting Watts
+  4. Planning Headroom = Total Running Watts $\times 1.25$
+  5. Final Minimum Generator Capacity = $\max(\text{Peak Starting Demand}, \text{Planning Headroom})$
+  Display an explicit note that this is a practical planning model and not a substitute for manufacturer-specific generator sizing or professional engineering analysis.
+- **Rationale:** Provides complete algorithmic transparency and mathematically sound sizing.
+
+---
+
+## Decision 012: Calculated Electrical Thresholds Over Arbitrary Retail Bucketing
+- **Date:** 2026-09-26
+- **Status:** Approved for Specification
+- **Context:** Forcing calculated generator loads into arbitrary commercial retail buckets (e.g. "4,000W–5,500W class") lacks empirical grounding and restricts user evaluation across varied generator models.
+- **Decision:** Output exact calculated engineering thresholds:
+  1. Minimum calculated running capacity ($W_{running}$)
+  2. Minimum calculated peak/startup capacity ($W_{peak}$)
+  3. Planning capacity after headroom ($W_{headroom}$)
+  Provide an explicit equipment comparison guide instructing users to verify generator **Rated (Running) Watts** against running/headroom figures and **Surge (Starting) Watts** against peak figures.
+- **Rationale:** Adheres to technical publisher standards and prevents unverified marketing categorization.
+
+---
+
+## Decision 013: Cautious Attribution for Transfer Equipment and Safety Guidance
+- **Date:** 2026-09-26
+- **Status:** Approved for Specification
+- **Context:** Misrepresenting NEC Article 702 as mandating a single specific hardware setup across every application creates legal and technical inaccuracies.
+- **Decision:** Use cautious, standardized language: *"Use properly installed transfer equipment or an approved interlock arrangement where applicable to prevent unintended interconnection with utility power. Follow applicable NEC and local code requirements and use qualified electrical professionals for installation."* Ground all CO safety advisories (including 20-foot outdoor rule) directly in current CDC and CPSC guidelines.
+- **Rationale:** Ensures strict technical compliance and safety rigor per GEMINI.md Section 9 and 10.
+
 
 

@@ -3,7 +3,7 @@
 **Document:** `CALCULATOR_SPEC_GENERATOR_SIZE.md`  
 **Tool Name:** Generator Size Calculator  
 **Target Route / URL:** `/generator-size-calculator`  
-**Status:** SPECIFICATION PHASE — AWAITING LEAD REVIEW  
+**Status:** SPECIFICATION APPROVED WITH REVISIONS — READY FOR IMPLEMENTATION  
 **Implementation Engineer:** Antigravity (Gemini 3.8 Flash High)  
 **Lead / Strategist:** ChatGPT + Project Owner  
 
@@ -40,8 +40,9 @@ Most existing generator calculators on the web suffer from one of two extremes:
 
 ### CalcMyPower Positioning:
 - **Unbiased & Independent:** Not affiliated with any generator brand.
-- **Transparent Mathematical Engine:** Distinctly calculates Total Running Watts, Peak Starting Demand, and explains the engineering difference between continuous running load and the *Largest Single Motor Starting Surge*.
-- **Practical Capacity Range:** Outputs both the bare electrical minimum and a realistic continuous operating band (applying standard 20–25% operating headroom).
+- **Transparent Mathematical Engine:** Distinctly calculates Total Running Watts, Largest Additional Starting Watts, Peak Starting Demand, and Planning Headroom using an explicit five-variable sizing model.
+- **Practical Capacity Thresholds:** Outputs exact calculated engineering thresholds (Minimum calculated running capacity, Minimum calculated peak/startup capacity, and Planning capacity after headroom) rather than arbitrary marketing buckets.
+- **Equipment Specification Comparison:** Explains exactly how to compare calculated figures to generator nameplate specifications: Rated (Running) Watts vs. Surge (Starting) Watts.
 - **Multi-Application Versatility:** Dedicated presets and filters for Home Backup, Portable / Emergency, RV / Camping, and Jobsite DIY.
 - **Zero Friction:** 100% client-side, instant calculation, zero forced email signups, and fully responsive across mobile, tablet, and desktop.
 
@@ -57,7 +58,7 @@ A thorough review of prominent market tools was conducted. The findings and Calc
 | **Generator Source** | Excellent technical kVA-to-kW conversion utilities; detailed single-phase vs three-phase generator parameters. | Geared primarily toward commercial diesel generators (20kW–2000kW); lacks an intuitive residential appliance picker. | Provides consumer appliance load libraries and dynamic custom wattage inputs alongside rigorous kW and kVA conversions. |
 | **Honda Power Equipment** | Clean consumer categorizations (Camping, Home, Tailgating, Jobsite); recognizable equipment presets. | Locked exclusively to Honda's product lineup; simplistic bucketing that recommends specific models without explaining calculations or power factor. | Brand-agnostic sizing outputs; explains the exact formula, continuous headroom, and motor startup physics without pushing a single brand. |
 | **Generac** | Comprehensive home backup wizard; covers whole-house vs managed circuit transfers. | Gated lead-capture funnel; tends to aggressively upsize homeowners toward 20kW+ whole-house standby units; hides intermediate math. | Ungated, instant results; shows exactly how staggering motor starts or managing loads allows a much smaller, affordable portable or standby generator to succeed. |
-| **Taylor Power Systems** | Precise technical specifications for prime, continuous, and standby ratings with standard power factor ($PF=0.8$). | Industrial enterprise focus; no interactive consumer builder for emergency home loads or DIY usage. | Retains proper engineering rigor (continuous duty margins, $PF=0.8$ kVA conversion) while delivering a mobile-first user experience. |
+| **Taylor Power Systems** | Precise technical specifications for prime, continuous, and standby ratings with standard power factor ($PF=0.8$). | Industrial enterprise focus; no interactive consumer builder for emergency home loads or DIY usage. | Retains proper engineering rigor (continuous duty margins, kVA conversion) while delivering a mobile-first user experience. |
 
 ---
 
@@ -88,18 +89,20 @@ The user flow is structured to guide the user from broad intent to precise equip
             │
             ▼
 [ Step 4: Real-Time Sizing Outputs & Educational Breakdown ]
-  ├── Total Running Watts (Continuous Load)
-  ├── Peak Starting Demand (Running + Largest Surge)
-  ├── Recommended Generator Capacity Range (with 20-25% headroom)
-  ├── kW and kVA Conversions
-  └── Transparent calculation explanation box
+  ├── Minimum Calculated Running Capacity (Continuous Load)
+  ├── Minimum Calculated Peak/Startup Capacity (Running + Largest Surge Delta)
+  ├── Planning Capacity After Headroom (Running × 1.25)
+  ├── Final Minimum Generator Capacity = MAX(Peak, Headroom)
+  ├── Generator Spec Comparison Guide (Rated Watts vs. Surge Watts)
+  ├── kW and kVA Conversions (with PF guidance)
+  └── Transparent calculation methodology box
 ```
 
 ---
 
 ## 5. Complete Appliance Library & US Practical Defaults
 
-All default wattages are derived from US Department of Energy, manufacturer nameplates, and electrical safety standards. The calculator explicitly displays: *"Default wattages are typical estimates. Always check your equipment nameplate or owner's manual for exact ratings."*
+All default wattages are derived from US Department of Energy benchmarks, manufacturer nameplates, and electrical safety standards. The calculator explicitly displays: *"Default wattages are typical estimates. Always check your equipment nameplate or owner's manual for exact ratings."*
 
 ### A. Kitchen & Refrigeration
 | Appliance | Default Running Watts ($W_r$) | Default Starting Watts ($W_s$) | Surge Delta ($\Delta W$) | Has Motor Surge? | Typical Nameplate Notes |
@@ -162,117 +165,124 @@ All default wattages are derived from US Department of Energy, manufacturer name
 
 ## 6. Calculation Engine & Engineering Methodology
 
-### A. Core Mathematical Definitions
-For each appliance $i$ in the user's selected equipment list with quantity $Q_i$, running wattage $W_{r,i}$, and starting wattage $W_{s,i}$:
+### A. Core Mathematical Definitions & Five-Variable Sizing Engine
+The sizing engine is defined explicitly using five core variables:
 
-1. **Item Continuous Load:**
-   $$P_{r,i} = Q_i \times W_{r,i}$$
-
-2. **Item Motor Surge Delta:**
-   $$\Delta W_i = \max(0, W_{s,i} - W_{r,i})$$
-
-3. **Total Running Watts ($W_{running}$):**
+1. **Total Running Watts ($W_{running}$):**
+   Sum of all selected appliance running watts:
    $$W_{running} = \sum_{i=1}^{n} (Q_i \times W_{r,i})$$
 
----
+2. **Largest Additional Starting Watts ($\Delta W_{max}$):**
+   The maximum additional surge demand among all active loads (defined as starting watts minus running watts):
+   $$\Delta W_i = \max(0, W_{s,i} - W_{r,i})$$
+   $$\Delta W_{max} = \max_{i=1}^{n} (\Delta W_i)$$
 
-### B. Startup / Surge Demand: Defense of the "Largest Single Motor Surge" Method
-A central flaw of poor calculators is the **Naive Summation Method**, which calculates surge as $\sum (Q_i \times W_{s,i})$. 
-- *Why is Naive Summation technically incorrect for generator sizing?*  
-  Electric motors draw starting surge (Locked Rotor Amps) for only **0.5 to 3 seconds** while accelerating up to nominal RPM. Under ordinary residential or jobsite conditions, appliances operate on asynchronous, independent thermodynamic or mechanical cycles. A refrigerator compressor, sump pump, and furnace blower do not start at the identical millisecond unless power has just been restored simultaneously to all circuits.
-- Even upon power restoration, manual circuit breakers or transfer switch interlocks are energized sequentially.
-- Sizing for 100% simultaneous motor surges forces a homeowner with $2,500\text{W}$ of running load to purchase a $12,000\text{W}$ generator instead of a perfectly adequate $4,500\text{W}$ generator.
+3. **Peak Starting Demand ($W_{peak}$):**
+   Total Running Watts plus the Largest Additional Starting Watts:
+   $$W_{peak} = W_{running} + \Delta W_{max}$$
 
-#### The Standard Electrical Engineering Rule (IEEE / Electrical Contractor Standard):
-Peak starting demand is governed by the base running load of all operating appliances **plus the single largest motor startup surge** among all active equipment:
+4. **Planning Headroom ($W_{headroom}$):**
+   Total Running Watts multiplied by the CalcMyPower planning headroom factor:
+   $$W_{headroom} = W_{running} \times 1.25$$
 
-$$W_{surge\_demand} = W_{running} + \max_{i=1}^{n} (\Delta W_i)$$
+5. **Final Minimum Generator Capacity ($W_{capacity\_min}$):**
+   The greater of Peak Starting Demand and Planning Headroom:
+   $$W_{capacity\_min} = \max(W_{peak}, W_{headroom})$$
 
-*Example:*
-- Refrigerator: $180\text{W}$ running, $1,200\text{W}$ starting ($\Delta W = 1,020\text{W}$)
-- Sump Pump: $800\text{W}$ running, $1,800\text{W}$ starting ($\Delta W = 1,000\text{W}$)
-- LED Lighting: $100\text{W}$ running, $100\text{W}$ starting ($\Delta W = 0\text{W}$)
-- TV & Router: $150\text{W}$ running, $150\text{W}$ starting ($\Delta W = 0\text{W}$)
-
-$$W_{running} = 180 + 800 + 100 + 150 = 1,230\text{ Watts}$$
-$$\max(\Delta W) = \max(1020, 1000, 0, 0) = 1,020\text{ Watts (Refrigerator)}$$
-$$W_{surge\_demand} = 1,230 + 1,020 = 2,250\text{ Watts}$$
+> **Important Engineering Notice:** This is a practical planning model and not a substitute for manufacturer-specific generator sizing or professional engineering analysis.
 
 ---
 
-### C. Continuous Generator Operating Headroom (The 80% Rule)
-Generators are internal combustion engines powering an alternator. Operating a generator at 100% of its rated continuous capacity causes:
-- Rapid engine overheating and premature wear
-- High fuel consumption
-- Severe voltage and frequency sag when small transient loads cycle on
+### B. Startup / Surge Demand: The "Largest Single Motor Surge" Planning Model
+A central flaw of simplistic generator calculators is the **Naive Summation Method**, which adds together the starting watts of every appliance: $\sum (Q_i \times W_{s,i})$.
+
+> **Core Principle:** Adding every appliance's starting surge assumes all startup events occur simultaneously and can substantially overstate the required generator capacity.
+
+- **Asynchronous Motor Cycling:** Electric motors draw starting surge (Locked Rotor Amps / inrush current) for only **0.5 to 3 seconds** while accelerating up to nominal operating RPM. Under ordinary residential, RV, or jobsite conditions, appliances operate on independent, asynchronous duty cycles governed by thermostats, pressure switches, or manual switches. A refrigerator compressor, sump pump, and HVAC furnace blower do not initiate startup at the identical fraction of a second during normal operation.
+- **Staged Reconnection:** Even following a power outage, circuits are energized sequentially via manual circuit breakers or transfer switch interlocks, rather than all inductive motor loads starting at the exact same millisecond.
+- **Engineering Standard:** The simplified planning model accounts for full continuous running load across all operating equipment plus the single largest additional startup surge ($\Delta W_{max} = W_{s} - W_{r}$) among active loads.
+
+---
+
+### C. Continuous Generator Operating Margin: CalcMyPower Planning Headroom Factor
+Generators are internal combustion engines coupled to an alternator. Operating a generator at 100% of its continuous rated capacity causes:
+- Accelerated engine wear and thermal stress
+- Excessive fuel consumption
+- Severe voltage and frequency instability when transient loads cycle on
 - Risk of tripping the generator's main circuit breaker
 
-**Standard Recommendation:** Sizing should target running continuous loads at approximately **75% to 80% of the generator's rated continuous capacity** (or adding a **20% to 25% safety buffer**):
-
-$$W_{rated\_recommended} = \frac{W_{running}}{0.80} = W_{running} \times 1.25$$
-
----
-
-### D. Generator Sizing Capacity Formulation
-A generator has two distinct nameplate ratings:
-1. **Rated (Running) Watts:** Continuous output capability.
-2. **Surge (Starting / Maximum) Watts:** Short-term momentary capacity (typically 2 to 10 seconds).
-
-The calculator outputs both dimensions:
-- **Minimum Continuous Generator Rating ($W_{rated\_min}$):**
-  $$W_{rated\_min} = \lceil W_{running} \times 1.20 \rceil$$
-  (Rounded up to nearest 100W or standard generator class).
-- **Minimum Surge / Peak Generator Rating ($W_{surge\_min}$):**
-  $$W_{surge\_min} = \lceil \max(W_{surge\_demand}, W_{running} \times 1.25) \rceil$$
-- **Recommended Generator Class Range:**
-  To assist buyers in real-world retail categories (e.g. 3,500W, 5,000W, 7,500W, 10,000W), the calculator provides a recommended band:
-  - Lower bound: $W_{rated\_min}$
-  - Upper bound: Standard commercial generator category that provides $\ge 25\%$ headroom above continuous load and fully absorbs $W_{surge\_demand}$.
+- **CalcMyPower Planning Headroom Factor:** Sizing includes a **25% continuous headroom buffer** on running load:
+  $$W_{headroom} = W_{running} \times 1.25$$
+  This effectively targets continuous operation at approximately 80% of rated continuous generator capacity.
+- **Methodology Transparency:** The 25% buffer is the **CalcMyPower planning headroom factor** and is **not** a universal National Electrical Code (NEC) requirement. While the NEC specifies an 80% continuous duty rating for branch circuits (loads operating for 3 hours or more per NEC 210.20), generator manufacturers and alternative sizing methodologies may use different operating margins (e.g., 10% to 30%, depending on fuel type, prime vs. standby ratings, and ambient temperature/altitude deratings).
 
 ---
 
-### E. kW and kVA Conversions
-Generators are rated in Kilowatts ($kW$) for active power and Kilovolt-Amperes ($kVA$) for apparent power.
-- **Kilowatt Conversion:**
+### D. Capacity Output & Generator Specification Comparison
+The calculator avoids arbitrarily shoehorning results into fixed, ungrounded retail product buckets. Instead, it provides three precise calculated electrical thresholds and guides the user on how to compare them against actual generator nameplates:
+
+1. **Minimum Calculated Running Capacity ($W_{running}$):**
+   The minimum continuous electrical power required to keep all selected equipment operating simultaneously.
+2. **Minimum Calculated Peak / Startup Capacity ($W_{peak}$):**
+   The momentary surge capacity required to start the largest motor load while all other selected equipment continues running.
+3. **Planning Capacity After Headroom ($W_{headroom}$):**
+   The recommended continuous capacity incorporating the 25% CalcMyPower planning headroom factor to avoid operating the generator at 100% continuous load.
+4. **Final Minimum Generator Capacity ($W_{capacity\_min}$):**
+   $$\max(W_{peak}, W_{headroom})$$
+
+#### What Generator Nameplate Specifications to Compare:
+When evaluating portable, inverter, or standby generators, users must compare their calculated results to two standard nameplate ratings:
+- **Rated / Running Watts:** Compare to **Minimum Calculated Running Capacity** and **Planning Capacity After Headroom**. The generator's continuous rated wattage should meet or exceed these values to sustain the continuous load safely.
+- **Surge / Starting (Peak) Watts:** Compare to **Minimum Calculated Peak / Startup Capacity**. The generator's surge or maximum starting wattage rating must meet or exceed this value to start motor loads without stalling the engine or tripping the alternator circuit breaker.
+
+---
+
+### E. kW and kVA Conversions & Power Factor
+Generators and electrical loads are rated in Kilowatts ($kW$) for active power and Kilovolt-Amperes ($kVA$) for apparent power.
+
+- **Active Power ($kW$):**
   $$kW = \frac{W}{1000}$$
-- **kVA Conversion & Power Factor ($PF$):**
-  Standard US residential standby and commercial generators are rated at **$0.80$ power factor lagging** ($PF = 0.8$):
-  $$kVA = \frac{kW}{0.80} = kW \times 1.25$$
-  - *Small Portable Inverters ($< 5\text{ kW}$):* Usually rated at $1.0\text{ PF}$ ($1\text{ kW} = 1\text{ kVA}$).
-  - *Standby & Commercial Sets ($\ge 6\text{ kW}$):* Rated at $0.8\text{ PF}$.
-  - The calculator transparently displays both kW and kVA metrics, explicitly annotating the $PF=0.8$ standard assumption.
+
+- **Apparent Power ($kVA$) & Power Factor ($PF$):**
+  $$kVA = \frac{kW}{PF}$$
+  - **Power Factor Guidance:** A power factor of **$0.80$** may be used as an illustrative planning assumption for some generator applications (standard for larger commercial sets and many residential standby generators). However, actual generator and load power factor should be verified from the applicable equipment specifications. Small portable inverter generators typically operate near unity power factor ($PF \approx 1.0$), where $1\text{ kW} \approx 1\text{ kVA}$. The calculator transparently displays both kW and kVA metrics with the illustrative $PF=0.80$ condition noted.
 
 ---
 
 ## 7. Outputs & Result Hierarchy
 
-The result presentation must adhere to CalcMyPower's established visual hierarchy:
+The result presentation adheres to CalcMyPower's established visual hierarchy:
 
 ```
 +-------------------------------------------------------------+
-| [Badge] ESTIMATED GENERATOR CAPACITY RANGE                  |
+| [Badge] MINIMUM RECOMMENDED GENERATOR CAPACITY              |
 |                                                             |
-|           5,500 W – 7,500 W Rated                           |
-|         (7,000 W – 9,000 W Starting Surge)                  |
+|                    6,813 Watts                              |
+|             (Final Minimum Generator Capacity)              |
 |                                                             |
-| Subtext: Sized for 3,850W running load with 25% headroom     |
-|          and absorbing a 1,600W single largest motor surge. |
+| Subtext: Sized to sustain 5,450W continuous load with 25%    |
+|          planning headroom while absorbing a 1,600W surge.  |
 +-------------------------------------------------------------+
-| Stat 1: Total Running Load       | Stat 2: Peak Surge Demand|
-| 3,850 Watts (3.85 kW)            | 5,450 Watts (5.45 kW)    |
-| Continuous draw across 8 loads   | Running + largest surge  |
+| Stat 1: Running Capacity         | Stat 2: Peak Startup     |
+| 5,450 Watts (5.45 kW)            | 7,050 Watts (7.05 kW)    |
+| Minimum continuous load          | Running + largest surge  |
 +----------------------------------+--------------------------+
-| Stat 3: Minimum Generator Rating | Stat 4: Apparent Power   |
-| 4,800 Watts continuous           | 6.1 kVA (Standby PF 0.8) |
-| Includes 20% continuous headroom | For standby sizing       |
+| Stat 3: Planning Headroom        | Stat 4: Apparent Power   |
+| 6,813 Watts (125% running)       | 8.5 kVA (at 0.80 PF)     |
+| CalcMyPower planning headroom    | Illustrative reference   |
++-------------------------------------------------------------+
+| [Guide] HOW TO MATCH YOUR GENERATOR SPECIFICATIONS          |
+| • Check Generator Rated Watts  ≥ 6,813 W (Continuous)       |
+| • Check Generator Surge Watts  ≥ 7,050 W (Momentary Peak)   |
 +-------------------------------------------------------------+
 ```
 
 ### Explanatory Methodology Breakdown (Always Visible to User):
 Below the primary result card, a clear formula explanation card dynamically explains:
-1. **Continuous Load Sum:** Sum of all active appliances ($W_{running}$).
-2. **Surge Driver:** Identifies which specific selected appliance is driving the peak startup event ($\max \Delta W$).
-3. **Continuous Headroom Rationale:** Explains that operating at 75–80% load preserves engine life, improves fuel economy, and prevents breaker trips when additional items turn on.
+1. **Total Running Watts:** Sum of all active appliances ($W_{running}$).
+2. **Surge Driver:** Identifies the specific selected appliance driving the peak startup event ($\Delta W_{max}$).
+3. **Planning Headroom Rationale:** Explains that operating with 25% headroom preserves engine life, improves fuel economy, and prevents breaker trips.
+4. **Nameplate Comparison Guide:** Explicitly outlines how to match rated watts and surge watts against generator spec sheets.
 
 ---
 
@@ -281,20 +291,21 @@ Below the primary result card, a clear formula explanation card dynamically expl
 Generator operation poses severe real-world safety hazards. In compliance with `GEMINI.md` Section 10, the following safety guardrails are mandatory in the UI:
 
 ### A. Carbon Monoxide (CO) Poisoning & Generator Placement
-- **Strict Warning:** Portable generators produce deadly, odorless carbon monoxide gas.
-- **Rules Cited:**
-  - **NEVER** operate a generator indoors, in a garage, in a basement, or in a crawlspace, even with windows open.
-  - Operate generators outdoors only, **at least 20 feet away** from all windows, doors, and fresh air intake vents, with the exhaust pointed away from living spaces (CDC / CPSC / OSHA guidelines).
-  - Install battery-powered or battery-backup CO alarms in the home.
+- **Strict Warning:** Portable generators produce deadly, odorless, and colorless carbon monoxide (CO) gas.
+- **20-Foot Outdoor Rule (CDC & CPSC Guidance):**
+  - **NEVER** operate a generator indoors, inside a garage, in a basement, shed, or crawlspace, even if doors and windows are open.
+  - Operate generators **outdoors only, at least 20 feet away** from all windows, doors, and fresh air intake vents, with the engine exhaust directed away from homes and occupied structures.
+  - Sourced directly from current guidance from the **Centers for Disease Control and Prevention (CDC)** and the **U.S. Consumer Product Safety Commission (CPSC)**.
+  - Install working, battery-powered or battery-backup CO alarms on every level of the home and outside sleeping areas.
 
-### B. Backfeeding Hazards & Transfer Switch Compliance
-- **Strict Warning:** Connecting a generator directly to a standard wall outlet or appliance receptacle ("backfeeding" with a male-to-male suicide cord) is illegal, exceptionally dangerous, and violates the National Electrical Code.
+### B. Backfeeding Hazards & Transfer Equipment Compliance
+- **Strict Warning:** Connecting a generator directly to a standard wall outlet, clothes dryer receptacle, or electrical panel breaker using an unapproved "suicide cord" (male-to-male extension cord) is known as **backfeeding**. It is illegal, exceptionally dangerous, and creates severe life-safety hazards.
 - **Hazards Explained:**
-  - Backfed electrical power energizes utility lines outside the home, stepping up through neighborhood transformers to thousands of Volts and creating lethal electrocution risks for utility line workers.
-  - Inadvertent utility power restoration while backfeeding can destroy the generator and cause an immediate house fire.
-- **Required Equipment:**
-  - **Manual Transfer Switch or Interlock Kit:** Required by **NEC Article 702 (Optional Standby Systems)** to physically break the utility connection before connecting generator power ("break-before-make").
-  - **Power Inlet Box:** Exterior-mounted NEMA inlet (e.g. L14-30 inlet) hardwired to the transfer equipment.
+  - Backfed electrical power travels backward through the home service panel, through the utility meter, and into distribution transformers, stepping up from 120V/240V to thousands of Volts. This creates lethal electrocution hazards for utility line workers and emergency crews working to restore power.
+  - When utility power is restored unexpectedly while backfeeding, two unsynchronized AC power sources collide, typically resulting in catastrophic generator failure, electrical explosion, and structure fires.
+- **Transfer Equipment Standards:**
+  - **Cautious Standard Language:** "Use properly installed transfer equipment or an approved interlock arrangement where applicable to prevent unintended interconnection with utility power. Follow applicable NEC and local code requirements and use qualified electrical professionals for installation."
+  - Transfer equipment (manual transfer switches, automatic transfer switches, or panel interlock devices) ensures a "break-before-make" mechanical separation that isolates the home from the utility grid before generator power is applied.
 
 ### C. Total Harmonic Distortion (THD) & Sensitive Electronics
 - Conventional open-frame portable generators often exhibit high Total Harmonic Distortion ($THD > 10\% - 20\%$).
@@ -318,10 +329,10 @@ Generator operation poses severe real-world safety hazards. In compliance with `
 
 ### C. Quick Presets
 One-click buttons that clear existing items and load pre-configured scenarios:
-1. **"Essential Outage" (2,200W–3,500W class):** Refrigerator, Sump Pump 1/3 HP, Wi-Fi Router, 4 LED Light rooms, Phone Charger.
-2. **"Comfort Home Backup" (5,500W–7,500W class):** Essential Outage + Furnace Blower (Gas/Oil 1/2 HP), Microwave Oven, 65" TV, Laptop.
-3. **"RV 30-Amp Summer" (3,500W–4,500W class):** RV Rooftop A/C (13.5k BTU), RV Converter / Charger, RV Refrigerator, Microwave.
-4. **"Small Jobsite" (3,000W–4,000W class):** Portable Air Compressor (1.5 HP), Circular Saw (15A), Battery Tool Dual Charger.
+1. **"Essential Outage":** Refrigerator, Sump Pump 1/3 HP, Wi-Fi Router, 4 LED Light rooms, Phone Charger.
+2. **"Comfort Home Backup":** Essential Outage + Furnace Blower (Gas/Oil 1/2 HP), Microwave Oven, 65" TV, Laptop.
+3. **"RV 30-Amp Summer":** RV Rooftop A/C (13.5k BTU), RV Converter / Charger, RV Refrigerator, Microwave.
+4. **"Small Jobsite":** Portable Air Compressor (1.5 HP), Circular Saw (15A), Battery Tool Dual Charger.
 
 ---
 
@@ -347,15 +358,15 @@ One-click buttons that clear existing items and load pre-configured scenarios:
 
 ### Target FAQ Candidates
 1. **What size generator do I need to run a refrigerator and a freezer?**  
-   *Answer:* A modern refrigerator runs on approximately 150–200 Watts but requires 1,200 Watts during compressor startup. A separate freezer requires 150–300 Watts running and 1,200–1,600 Watts starting. A 2,500 to 3,500 Watt inverter generator provides ample capacity to run both units simultaneously while absorbing startup surges.
+   *Answer:* A modern refrigerator runs on approximately 150–200 Watts but requires about 1,200 Watts during compressor startup. A separate freezer requires 150–300 Watts running and 1,200–1,600 Watts starting. Under our practical planning model, a 2,500 to 3,500 Watt rated inverter generator provides ample capacity to run both units continuously while absorbing the single largest compressor startup surge.
 2. **Can a 5,000-Watt generator run a whole house?**  
    *Answer:* A 5,000W generator can easily power essential household circuits (refrigerator, sump pump, gas furnace blower, lights, Wi-Fi, television, and microwave). However, it cannot run large 240V whole-house central air conditioning compressors (3 to 5 tons) or electric range/water heating loads simultaneously.
 3. **What is the difference between starting watts and running watts?**  
-   *Answer:* Running watts (rated watts) is the continuous power an appliance consumes while operating normally. Starting watts (surge watts) is the temporary extra power (up to 3 times running watts) needed for 1 to 3 seconds by motor-driven equipment (refrigerators, pumps, air conditioners) to start moving against mechanical load.
+   *Answer:* Running watts (rated watts) is the continuous power an appliance consumes while operating normally. Starting watts (surge watts) is the temporary extra power (up to 3 times running watts) needed for 1 to 3 seconds by motor-driven equipment (refrigerators, pumps, air conditioners) to start moving against mechanical inertia.
 4. **How do I connect a generator to my house safely without backfeeding?**  
-   *Answer:* To safely power household circuits, install a manual transfer switch or an electrical panel interlock kit connected to an exterior power inlet box. This satisfies National Electrical Code (NEC Article 702) requirements by ensuring utility power is completely disconnected before generator power is applied, preventing deadly backfeed into utility lines.
+   *Answer:* Use properly installed transfer equipment or an approved interlock arrangement where applicable to prevent unintended interconnection with utility power. Follow applicable NEC and local code requirements and use qualified electrical professionals for installation. Never attempt to "backfeed" a generator through an ordinary wall outlet or dryer plug, which creates deadly electrocution hazards for utility lineworkers and can cause an electrical fire when utility power returns.
 5. **What size generator is needed for a 30-amp RV?**  
-   *Answer:* A 30-amp RV service operates at 120 Volts, representing a maximum capacity of 3,600 Watts ($30\text{A} \times 120\text{V}$). Sizing a 3,500W to 4,500W starting generator allows you to start and run a 13,500 or 15,000 BTU rooftop air conditioner while running the internal RV converter charger and residential electronics.
+   *Answer:* A 30-amp RV service operates at 120 Volts, representing a maximum electrical capacity of 3,600 Watts ($30\text{A} \times 120\text{V}$). Sizing a 3,500W to 4,500W starting generator allows you to start and run a 13,500 or 15,000 BTU rooftop air conditioner while running the internal RV converter charger and residential electronics.
 
 ### Internal Link Targets
 - Cross-link to `/ups-battery-backup-calculator`: *"Planning battery backup for electronics or short power outages? Explore our UPS Battery Backup Run-Time Calculator."*
@@ -382,33 +393,47 @@ Affiliate monetization follows `GEMINI.md` Section 11: strictly secondary to the
 
 ---
 
-## 12. Detailed Calculation Test Plan (16 Test Cases)
+## 12. Detailed Calculation Test Plan (Cases A through H)
 
 The following test scenarios must be implemented in automated Vitest tests (`src/lib/calculators/__tests__/generator-size.test.ts`) during the implementation phase:
 
-| # | Scenario / Description | Inputs | Expected Logic | Expected Output | Purpose of Test |
+| Case | Scenario / Description | Inputs | Mathematical Computation | Expected Outputs | Verification Purpose |
 |---|---|---|---|---|---|
-| **TC-01** | Single Resistive Load | Space Heater: Qty 1, $1,500W_r$, $1,500W_s$ | $W_r=1500$, $\Delta W=0$. Surge demand = 1500. Headroom ($x1.2$) = 1800W. | Running: **1,500W**<br>Peak: **1,500W**<br>Min Rated: **1,800W** | Validates baseline resistive load without motor surge. |
-| **TC-02** | Multiple Resistive Loads | 10 LED bulbs ($10\times 10W_r=100W$), Toaster ($850W_r$), Coffee Maker ($1,000W_r$) | $W_r=1950$, $\Delta W=0$. Surge demand = 1950. Headroom ($x1.2$) = 2340W. | Running: **1,950W**<br>Peak: **1,950W**<br>Min Rated: **2,340W** | Validates multi-item pure resistive summation. |
-| **TC-03** | Single Inductive Motor Load | Refrigerator: Qty 1, $180W_r$, $1,200W_s$ | $W_r=180$, $\Delta W=1020$. Surge demand = $180+1020=1200W$. Headroom = $180\times 1.25=225W$. | Running: **180W**<br>Peak: **1,200W**<br>Min Surge: **1,200W** | Validates single compressor starting surge handling. |
-| **TC-04** | Single High-Surge Pump | Sump Pump (1/2 HP): Qty 1, $1,050W_r$, $2,200W_s$ | $W_r=1050$, $\Delta W=1150$. Surge demand = $1050+1150=2200W$. Headroom = $1050\times 1.25=1313W$. | Running: **1,050W**<br>Peak: **2,200W**<br>Min Rated: **1,313W** | Validates motor surge on critical water pump. |
-| **TC-05** | RV Rooftop Air Conditioner | RV A/C (13.5k BTU): Qty 1, $1,500W_r$, $3,200W_s$ + Converter $600W_r$ | $W_r=2100$, $\Delta W=1700$. Peak = $2100+1700=3800W$. Headroom = $2100\times 1.25=2625W$. | Running: **2,100W**<br>Peak: **3,800W**<br>Min Surge: **3,800W** | Validates typical RV 30-amp sizing threshold. |
-| **TC-06** | Microwave with Transformer Inrush | Microwave: Qty 1, $1,200W_r$, $1,500W_s$ | $W_r=1200$, $\Delta W=300$. Peak = $1200+300=1500W$. Headroom = $1200\times 1.25=1500W$. | Running: **1,200W**<br>Peak: **1,500W**<br>Min Rated: **1,500W** | Validates minor inductive surge characteristic. |
-| **TC-07** | Mixed Residential Outage Load | Fridge ($180/1200$), Sump ($800/1800$), Wi-Fi ($25/25$), Lights ($100/100$) | $W_r=1105W$. $\Delta W_{fridge}=1020$, $\Delta W_{sump}=1000$. Max surge delta = 1020. Peak = $1105+1020=2125W$. | Running: **1,105W**<br>Peak: **2,125W**<br>Min Rated: **1,381W** | Validates "largest single motor surge" rule across mixed loads. |
-| **TC-08** | Multiple Competing High Surges | Fridge ($180/1200$, $\Delta=1020$) + Furnace Blower ($800/2300$, $\Delta=1500$) + Sump ($800/1800$, $\Delta=1000$) | $W_r=1780W$. Max surge = 1500W (Furnace). Peak demand = $1780+1500=3280W$. (Not naive $1200+2300+1800=5300W$). | Running: **1,780W**<br>Peak: **3,280W**<br>Min Rated: **2,225W** | Proves prevention of naive summation error. |
-| **TC-09** | Zero Load Edge Case | All quantities = 0 or empty list | $W_r=0$, Peak=0, Headroom=0. Valid state, no crash. | Running: **0W**<br>Peak: **0W**<br>Min Rated: **0W** | Prevents arithmetic crash on empty input state. |
-| **TC-10** | Negative / Invalid Input Sanitization | Quantity = -2, Running Watts = -500 | Sanitizer clamps values: Qty $\ge 0$, Watts $\ge 0$. Flag non-silent validation warning. | Running: **0W**<br>Error array populated | Validates non-silent error handling. |
-| **TC-11** | Heavy Whole-House Load | Central AC 3-Ton ($3500/10000$), Well Pump 1HP ($2000/4500$), Water Heater ($4500/4500$), Fridge ($200/1200$) | $W_r=10200W$. Max surge = 6500W (Central AC). Peak = $10200+6500=16700W$. Headroom = $10200\times 1.25=12750W$. | Running: **10,200W**<br>Peak: **16,700W**<br>Standby kVA: **15.9 kVA** | Validates large residential standby generator sizing. |
-| **TC-12** | Custom User Appliance Row | Custom Appliance: "Air Fryer", Qty 1, $1,750W_r$, $1,750W_s$ | Dynamically appends to load list and computes totals. | Running: **1,750W**<br>Peak: **1,750W** | Validates custom item integration. |
-| **TC-13** | Recommended Generator Range Logic | $W_{running} = 3,200W$, Peak = $4,700W$ | Lower bound = $\max(3200\times 1.20, 4700\times 0.8) \approx 3,840W$. Recommended retail band: 4,000W – 5,500W class. | Band: **4,000W – 5,500W** | Validates retail category bucket mapping. |
-| **TC-14** | Kilowatt Conversion | Running = 4,500W, Peak = 6,250W | $kW = W / 1000$. Precision strictly 2 decimal places. | Running: **4.50 kW**<br>Peak: **6.25 kW** | Validates kW scaling precision. |
-| **TC-15** | kVA Conversion (Standby PF = 0.8) | Continuous = 8,000W (8.0 kW) | $kVA = 8.0 / 0.80 = 10.0\text{ kVA}$. | Apparent Power: **10.0 kVA** | Validates standard generator power factor conversion. |
-| **TC-16** | Extreme Surge Appliance vs High Continuous Load | Scenario A: 1 load ($200W_r / 4000W_s$); Scenario B: 1 load ($4000W_r / 4000W_s$) | Scenario A: Peak = 4,000W, Running = 200W. Sizing driven by surge. Scenario B: Peak = 4,000W, Running = 4,000W. Sizing driven by continuous headroom ($4000\times 1.25 = 5000W$). | Scenario A: **4,000W Surge Class**<br>Scenario B: **5,000W Rated Class** | Confirms capacity engine properly balances continuous vs surge constraints. |
+| **Case A** | Running requirement > startup requirement | 3 Space Heaters ($3 \times 1,500W_r / 1,500W_s$) | $W_{running} = 4,500W$<br>$\Delta W_{max} = 0W$<br>$W_{peak} = 4,500W$<br>$W_{headroom} = 4,500 \times 1.25 = 5,625W$ | **Running:** 4,500 W<br>**Peak:** 4,500 W<br>**Headroom:** 5,625 W<br>**Final Capacity:** 5,625 W | Confirms planning headroom governs when continuous load exceeds peak surge demand. |
+| **Case B** | Startup requirement > 25% headroom requirement | 1 HP Submersible Well Pump ($2,000W_r / 4,500W_s$) | $W_{running} = 2,000W$<br>$\Delta W_{max} = 4,500 - 2,000 = 2,500W$<br>$W_{peak} = 2,000 + 2,500 = 4,500W$<br>$W_{headroom} = 2,000 \times 1.25 = 2,500W$ | **Running:** 2,000 W<br>**Peak:** 4,500 W<br>**Headroom:** 2,500 W<br>**Final Capacity:** 4,500 W | Confirms startup surge dictates final capacity when peak starting demand exceeds 25% headroom. |
+| **Case C** | 25% headroom > startup requirement | Microwave ($1,200W_r / 1,500W_s$) + Coffee Maker ($1,000W_r / 1,000W_s$) + Toaster ($850W_r / 850W_s$) | $W_{running} = 3,050W$<br>$\Delta W_{max} = 1,500 - 1,200 = 300W$<br>$W_{peak} = 3,050 + 300 = 3,350W$<br>$W_{headroom} = 3,050 \times 1.25 = 3,812.5W \approx 3,813W$ | **Running:** 3,050 W<br>**Peak:** 3,350 W<br>**Headroom:** 3,813 W<br>**Final Capacity:** 3,813 W | Confirms 25% headroom governs when high continuous load has small motor surge. |
+| **Case D** | Multiple motor loads — largest additional startup surge only | Fridge ($180W_r / 1,200W_s$, $\Delta=1,020W$) + Furnace Blower ($800W_r / 2,300W_s$, $\Delta=1,500W$) + Sump Pump ($800W_r / 1,800W_s$, $\Delta=1,000W$) | $W_{running} = 1,780W$<br>$\Delta W_i \in \{1020, 1500, 1000\} \implies \Delta W_{max} = 1,500W$<br>$W_{peak} = 1,780 + 1,500 = 3,280W$<br>(Not naive $1,200+2,300+1,800=5,300W$)<br>$W_{headroom} = 1,780 \times 1.25 = 2,225W$ | **Running:** 1,780 W<br>**Peak:** 3,280 W<br>**Headroom:** 2,225 W<br>**Final Capacity:** 3,280 W | Validates that only the single largest surge delta is added under the simplified planning model. |
+| **Case E** | No startup loads (pure resistive) | 10 LED Fixtures ($10 \times 10W_r = 100W$) + Space Heater ($1,500W_r / 1,500W_s$) + Wi-Fi ($25W_r / 25W_s$) | $W_{running} = 1,625W$<br>$\Delta W_{max} = 0W$<br>$W_{peak} = 1,625W$<br>$W_{headroom} = 1,625 \times 1.25 = 2,031.25W \approx 2,032W$ | **Running:** 1,625 W<br>**Peak:** 1,625 W<br>**Headroom:** 2,032 W<br>**Final Capacity:** 2,032 W | Validates behavior when all active loads have zero motor surge delta ($\Delta W = 0$). |
+| **Case F** | All zero (empty load list or 0 qty) | Load list empty or all $Q_i = 0$ | $W_{running} = 0W$<br>$\Delta W_{max} = 0W$<br>$W_{peak} = 0W$<br>$W_{headroom} = 0W$ | **Running:** 0 W<br>**Peak:** 0 W<br>**Headroom:** 0 W<br>**Final Capacity:** 0 W | Confirms zero division avoidance, safe defaults, and clean handling of empty input state. |
+| **Case G** | Custom appliance addition | Custom Load: "Portable Air Fryer", Qty 1, $1,750W_r$, $1,750W_s$ | $W_{running} = 1,750W$<br>$\Delta W_{max} = 0W$<br>$W_{peak} = 1,750W$<br>$W_{headroom} = 1,750 \times 1.25 = 2,187.5W \approx 2,188W$ | **Running:** 1,750 W<br>**Peak:** 1,750 W<br>**Headroom:** 2,188 W<br>**Final Capacity:** 2,188 W | Validates dynamic user-defined custom appliance integration into calculation pipeline. |
+| **Case H** | Very large whole-house load | Central AC 3-Ton ($3,500W_r / 10,000W_s$, $\Delta=6,500W$) + Well Pump 1HP ($2,000W_r / 4,500W_s$, $\Delta=2,500W$) + Water Heater ($4,500W_r / 4,500W_s$) + Fridge ($200W_r / 1,200W_s$, $\Delta=1,000W$) | $W_{running} = 10,200W$<br>$\Delta W_{max} = 6,500W$ (Central AC)<br>$W_{peak} = 10,200 + 6,500 = 16,700W$<br>$W_{headroom} = 10,200 \times 1.25 = 12,750W$ | **Running:** 10,200 W (10.2 kW)<br>**Peak:** 16,700 W (16.7 kW)<br>**Headroom:** 12,750 W (12.75 kW)<br>**Final Capacity:** 16,700 W<br>**Apparent Power (PF=0.8):** 15.94 kVA running / 20.88 kVA peak | Validates heavy residential whole-house standby generator capacity without precision loss. |
+| **Case I** | Input Sanitization & Error Handling | Negative quantity (-2) or negative running watts (-500) | Clamped to $\ge 0$ with non-silent user validation error array populated | **Running:** 0 W<br>**Errors:** `["Quantity must be >= 0", "Watts must be >= 0"]` | Confirms non-silent sanitization per Decision 007 and GEMINI.md Section 5. |
+| **Case J** | Power Factor & kVA Precision | $W_{running} = 8,000W$ ($8.0kW$), $PF = 0.80$ | $kW = 8000 / 1000 = 8.0 kW$<br>$kVA = 8.0 / 0.80 = 10.0 kVA$ | **kW:** 8.00 kW<br>**kVA:** 10.00 kVA | Confirms exact scaling and formatting of apparent power metrics. |
 
 ---
 
-## 13. Documentation & Verification Sign-Off
+## 13. Authoritative Sources & Technical References
 
-- **Lead Approval Status:** AWAITING LEAD REVIEW BEFORE IMPLEMENTATION.
-- **Git Commit Planned:** `docs(spec): add generator size calculator specification`
-- **Implementation Status:** STRICTLY UNIMPLEMENTED pending ChatGPT lead approval.
+In compliance with `GEMINI.md` Section 9, all technical claims, safety rules, and formulas are grounded in authoritative primary sources:
+
+1. **CDC (Centers for Disease Control and Prevention):**  
+   *Carbon Monoxide Poisoning Prevention: Guidelines for Portable Generator Safety.* (Mandating outdoor operation at least 20 feet from all open doors, windows, and vents).
+2. **CPSC (U.S. Consumer Product Safety Commission):**  
+   *Safety Alert: Portable Generator Hazards and Carbon Monoxide Prevention.* Document #5123.
+3. **U.S. Department of Energy (DOE) & Energy Star:**  
+   *Estimating Appliance and Home Electronic Energy Use.* Energy.gov appliance wattage database and typical inrush multipliers for household motor equipment.
+4. **NFPA 70 / National Electrical Code (NEC):**  
+   - *Article 702 (Optional Standby Systems):* Safety interlocks and transfer equipment to isolate standby power from utility distribution lines.  
+   - *Article 210.20:* Continuous duty ratings (125% factor / 80% continuous branch circuit load rule).
+5. **IEEE Standard 446 (The Emerald Book):**  
+   *Recommended Practice for Emergency and Standby Power Systems for Industrial and Commercial Applications.* Principles of motor inrush starting demand, asynchronous load diversity, and alternator voltage dip management.
+6. **OSHA (Occupational Safety and Health Administration):**  
+   *Fact Sheet: Grounding and Operating Portable Generators Safely on Jobsites.*
+
+---
+
+## 14. Documentation & Verification Sign-Off
+
+- **Lead Approval Status:** APPROVED WITH REVISIONS — PENDING IMPLEMENTATION AUTHORIZATION.
+- **Git Commit Planned:** `docs(spec): revise generator size calculator specification per lead review`
+- **Implementation Status:** STRICTLY UNIMPLEMENTED pending ChatGPT lead command.
