@@ -36,3 +36,18 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Context:** Using `<label>` tags as visual section headers (e.g. `<label>Common Load Presets</label>`) without an `htmlFor` attribute or nested form control triggers browser accessibility audits ("No label associated with a form field").
 - **Rule:** Use semantic `<p>` or `<span>` elements for group headers and preset buttons. Reserve `<label htmlFor="...">` strictly for actual associated `<input>`, `<select>`, and `<textarea>` controls.
 - **Prevention:** Run Chrome DevTools `list_console_messages` during QA and verify 0 accessibility issues.
+
+---
+
+## Lesson 006: Avoiding Naive Summation in Multi-Motor Surge Sizing
+- **Context:** Online generator calculators frequently sum all appliance starting watts ($\sum W_{starting}$), assuming all compressors and motor inrushes occur at the exact same millisecond. This misleads users into purchasing generators 2x to 3x larger than technically necessary.
+- **Rule:** Clearly explain asynchronous motor cycling; size peak surge demand as Total Continuous Running Watts plus the Single Largest Motor Surge Delta, while applying continuous headroom to the running load.
+- **Prevention:** Emphasize this methodology in the specification, worked examples, and automated test cases.
+
+---
+
+## Lesson 007: Mandatory Carbon Monoxide & Backfeeding Electrical Disclaimers for Generator Tools
+- **Context:** Generator sizing tools guide purchasing decisions, but portable generator misuse causes dozens of carbon monoxide fatalities and severe utility worker electrocution accidents annually from illegal backfeeding.
+- **Rule:** Any generator calculator or article must prominently feature unmissable safety advisories regarding outdoor placement (at least 20 feet away from windows, doors, and vents) and code-compliant transfer switches/interlock kits per NEC Article 702.
+- **Prevention:** Standardize dedicated safety alert components in generator calculator specifications and UI layouts.
+

@@ -89,3 +89,22 @@ This log records major technical and product decisions, context, rationale, and 
 - **Decision:** Explicitly export canonical `https://calcmypower.com` on `src/app/page.tsx` and inject `WebSite` JSON-LD structured data.
 - **Rationale:** Prevents search engines from experiencing canonical ambiguity across trailing slash or protocol variants, adhering to GEMINI.md Section 7.
 
+---
+
+## Decision 009: Generator Sizing Methodology — "Largest Single Motor Surge" Rule
+- **Date:** 2026-09-26
+- **Status:** Approved for Specification
+- **Context:** Sizing algorithms that sum all starting surges assume that every motor in a facility or home starts at the exact same millisecond. This causes severe, expensive oversizing.
+- **Decision:** Sizing for peak/surge capacity will be calculated as Total Continuous Running Watts plus the single largest motor surge delta among active loads: $W_{surge\_demand} = W_{running} + \max(W_{starting} - W_{running})$.
+- **Rationale:** Reflects asynchronous real-world motor cycling and manual/automatic circuit staging, complying with IEEE and electrical contractor standards.
+
+---
+
+## Decision 010: Generator Operating Headroom (75–80% Continuous Load Target)
+- **Date:** 2026-09-26
+- **Status:** Approved for Specification
+- **Context:** Internal combustion engine generators operated continuously at 100% rated capacity experience thermal stress, high fuel burn rates, voltage/frequency instability, and frequent breaker trips.
+- **Decision:** Apply a continuous operating headroom buffer of 20% to 25% to running loads ($W_{rated\_recommended} \ge W_{running} \times 1.25$) when establishing the recommended generator capacity range.
+- **Rationale:** Ensures long engine life, acceptable fuel efficiency, and transient reserve capacity for unexpected loads.
+
+
