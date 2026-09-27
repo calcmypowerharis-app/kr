@@ -2,6 +2,9 @@ import { describe, it, expect } from "vitest";
 import {
   calculateGeneratorSize,
   getEssentialOutagePreset,
+  GENERATOR_SCENARIO_PRESETS,
+  getGeneratorScenario,
+  formatGeneratorSummaryForClipboard,
   SelectedAppliance,
 } from "../generator-size";
 
@@ -362,5 +365,68 @@ describe("Generator Size Calculator Engine", () => {
     expect(result.isValid).toBe(true);
     expect(result.totalRunningWatts).toBeGreaterThan(1000);
     expect(result.planningCapacityWatts).toBeGreaterThan(2000);
+  });
+
+  // P1: Article Worked Example Winter Essentials Scenario Verification
+  describe("P1: Winter Storm Essentials Scenario Preset", () => {
+    it("matches the exact article worked example numbers (2,955W running, 1,100W surge, 4,055W peak, 5,069W planning)", () => {
+      const scenario = getGeneratorScenario("winter-essentials");
+      expect(scenario).not.toBeNull();
+      expect(scenario?.appliances.length).toBe(7);
+
+      const result = calculateGeneratorSize({ appliances: scenario!.appliances });
+      expect(result.isValid).toBe(true);
+      expect(result.totalRunningWatts).toBe(2955);
+      expect(result.largestAdditionalStartingWatts).toBe(1100);
+      expect(result.surgeDriverName).toBe("Gas Furnace Blower Fan (1/2 HP)");
+      expect(result.peakStartingDemand).toBe(4055);
+      expect(result.planningCapacityWatts).toBe(5068.75);
+      expect(Math.round(result.planningCapacityWatts)).toBe(5069);
+      expect(result.planningKw).toBeCloseTo(5.06875, 4);
+      expect(Number(result.planningKw.toFixed(1))).toBe(5.1);
+    });
+
+    it("returns null for non-existent or invalid scenario keys", () => {
+      expect(getGeneratorScenario(undefined)).toBeNull();
+      expect(getGeneratorScenario(null)).toBeNull();
+      expect(getGeneratorScenario("")).toBeNull();
+      expect(getGeneratorScenario("unknown_scenario")).toBeNull();
+    });
+  });
+
+  // P2: Contractor / Electrician Clipboard Summary Formatter Verification
+  describe("P2: Contractor / Electrician Clipboard Summary Formatter", () => {
+    it("formats a complete plain-text summary with exact calculations, loads, and safety notes", () => {
+      const scenario = GENERATOR_SCENARIO_PRESETS["winter-essentials"];
+      const result = calculateGeneratorSize({ appliances: scenario.appliances });
+      const summary = formatGeneratorSummaryForClipboard(result, scenario.appliances);
+
+      expect(summary).toContain("CalcMyPower Generator Sizing Summary");
+      expect(summary).toContain("Total Running Load: 2,955 W (2.96 kW continuous)");
+      expect(summary).toContain(
+        "Largest Additional Startup Demand: +1,100 W (Gas Furnace Blower Fan (1/2 HP))"
+      );
+      expect(summary).toContain("Peak Starting Demand: 4,055 W (4.05 kW momentary)");
+      expect(summary).toContain("Calculated Planning Capacity (1.25x Headroom): 5,069 W");
+      expect(summary).toContain("Gas Furnace Blower Fan (1/2 HP)");
+      expect(summary).toContain("Refrigerator / Freezer (Energy Star)");
+      expect(summary).toContain("Sump Pump (1/3 HP)");
+      expect(summary).toContain("Generator Configuration Considerations:");
+      expect(summary).toContain("Voltage & Connection:");
+      expect(summary).toContain("Note:");
+      expect(summary).toContain(
+        "This is a planning estimate, not a final electrical installation or code determination."
+      );
+      expect(summary).toContain("https://calcmypower.com/generator-size-calculator");
+    });
+
+    it("handles empty appliance list cleanly without errors", () => {
+      const emptyResult = calculateGeneratorSize({ appliances: [] });
+      const summary = formatGeneratorSummaryForClipboard(emptyResult, []);
+
+      expect(summary).toContain("Total Running Load: 0 W");
+      expect(summary).toContain("(No appliances currently selected)");
+      expect(summary).toContain("CalcMyPower Generator Sizing Summary");
+    });
   });
 });

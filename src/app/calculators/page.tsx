@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function CalculatorsDirectoryPage() {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
+    <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 space-y-10">
       <header className="space-y-3">
         <h1 className="text-3xl md:text-4xl font-black tracking-tight text-slate-900">
           Electrical &amp; Power Calculators
@@ -23,7 +23,7 @@ export default function CalculatorsDirectoryPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Active: UPS Battery Backup */}
         <Link
           href="/ups-battery-backup-calculator"

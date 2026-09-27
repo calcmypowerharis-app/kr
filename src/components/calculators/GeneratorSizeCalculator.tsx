@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useCallback, Suspense } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import {
   Zap,
   RotateCcw,
@@ -17,6 +18,9 @@ import {
   Compass,
   ShoppingBag,
   ExternalLink,
+  Copy,
+  Check,
+  ClipboardList,
 } from "lucide-react";
 import { CalculatorShell } from "./CalculatorShell";
 import { FormulaSection } from "./FormulaSection";
@@ -28,6 +32,8 @@ import { RelatedCalculators } from "./RelatedCalculators";
 import {
   calculateGeneratorSize,
   getEssentialOutagePreset,
+  getGeneratorScenario,
+  formatGeneratorSummaryForClipboard,
   DEFAULT_APPLIANCES,
   GENERATOR_PRESETS,
   APPLIANCE_CATEGORIES,
@@ -35,14 +41,43 @@ import {
   ApplianceCategory,
 } from "@/lib/calculators/generator-size";
 
-export const GeneratorSizeCalculator: React.FC = () => {
+const GeneratorSizeCalculatorInner: React.FC = () => {
+  const searchParams = useSearchParams();
+  const scenarioParam = searchParams.get("scenario");
+
   // State: selected appliances initialized with the "Essential Outage" editable preset
   const [selectedAppliances, setSelectedAppliances] = useState<SelectedAppliance[]>(
-    () => getEssentialOutagePreset()
+    () => {
+      if (scenarioParam) {
+        const scenario = getGeneratorScenario(scenarioParam);
+        if (scenario) return scenario.appliances;
+      }
+      return getEssentialOutagePreset();
+    }
   );
 
   // State: Active preset tracker for UX feedback
-  const [activePresetId, setActivePresetId] = useState<string | null>("essential_outage");
+  const [activePresetId, setActivePresetId] = useState<string | null>(() => {
+    if (scenarioParam) {
+      const scenario = getGeneratorScenario(scenarioParam);
+      if (scenario) return scenario.id;
+    }
+    return "essential_outage";
+  });
+
+  // Load scenario when URL parameter changes
+  useEffect(() => {
+    if (scenarioParam) {
+      const scenario = getGeneratorScenario(scenarioParam);
+      if (scenario) {
+        setSelectedAppliances(scenario.appliances);
+        setActivePresetId(scenario.id);
+      }
+    }
+  }, [scenarioParam]);
+
+  // State: Copy summary feedback
+  const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
 
   // State: Search and category filters for available appliances library
   const [searchQuery, setSearchQuery] = useState("");
@@ -119,6 +154,52 @@ export const GeneratorSizeCalculator: React.FC = () => {
     setCustomNoSurge(false);
     setCustomError(null);
   };
+
+  // Copy Summary Handler for Contractor / Electrician
+  const handleCopySummary = useCallback(async () => {
+    const summaryText = formatGeneratorSummaryForClipboard(
+      calculation,
+      selectedAppliances
+    );
+    let success = false;
+
+    if (typeof window !== "undefined") {
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(summaryText);
+          success = true;
+        } catch {
+          // Fall back to execCommand
+        }
+      }
+
+      if (!success) {
+        try {
+          const textArea = document.createElement("textarea");
+          textArea.value = summaryText;
+          textArea.style.position = "fixed";
+          textArea.style.left = "-999999px";
+          textArea.style.top = "-999999px";
+          textArea.setAttribute("aria-hidden", "true");
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          success = document.execCommand("copy");
+          document.body.removeChild(textArea);
+        } catch {
+          success = false;
+        }
+      }
+    }
+
+    if (success) {
+      setCopyState("copied");
+      setTimeout(() => setCopyState("idle"), 2500);
+    } else {
+      setCopyState("error");
+      setTimeout(() => setCopyState("idle"), 3000);
+    }
+  }, [calculation, selectedAppliances]);
 
   // Appliance List Item Handlers
   const handleAddFromLibrary = (defId: string) => {
@@ -316,6 +397,24 @@ export const GeneratorSizeCalculator: React.FC = () => {
             <span>
               <strong>Example Scenario — editable:</strong> Pre-loaded with common essential home circuits. Adjust quantities below or add custom loads.
             </span>
+          </div>
+        )}
+
+        {activePresetId === "winter-essentials" && (
+          <div className="text-[11px] text-indigo-950 bg-indigo-50/90 border border-indigo-200 rounded-xl px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-indigo-600 flex-shrink-0" />
+              <span>
+                <strong>Loaded Storm Scenario:</strong> Winter Storm Essentials (5.1 kW Outage Scenario). Edit wattages or quantities below to model your home.
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={handleResetDefaults}
+              className="text-xs text-indigo-600 hover:text-indigo-800 font-semibold underline shrink-0 text-left sm:text-right"
+            >
+              Reset to Defaults
+            </button>
           </div>
         )}
       </div>
@@ -943,6 +1042,57 @@ export const GeneratorSizeCalculator: React.FC = () => {
         </div>
       </div>
 
+      {/* Contractor & Electrician Clipboard Export Card */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3.5">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <ClipboardList className="w-4 h-4 text-blue-600 shrink-0" />
+            <h3 className="font-bold text-slate-900 text-sm">
+              Contractor &amp; Electrician Summary
+            </h3>
+          </div>
+          <span className="text-[10px] text-slate-400 font-medium">1-Click Export</span>
+        </div>
+
+        <p className="text-xs text-slate-600 leading-relaxed">
+          Copy this summary to share your calculated load with an electrician or contractor for equipment selection and transfer switch planning.
+        </p>
+
+        <button
+          type="button"
+          onClick={handleCopySummary}
+          className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition duration-150 focus:outline-hidden focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+            copyState === "copied"
+              ? "bg-emerald-600 text-white"
+              : copyState === "error"
+              ? "bg-rose-600 text-white"
+              : "bg-slate-900 text-white hover:bg-slate-800 cursor-pointer"
+          }`}
+          aria-label="Copy load calculation summary to clipboard"
+        >
+          {copyState === "copied" ? (
+            <>
+              <Check className="w-4 h-4 text-white" />
+              <span>Copied to Clipboard!</span>
+            </>
+          ) : copyState === "error" ? (
+            <>
+              <AlertTriangle className="w-4 h-4 text-white" />
+              <span>Could Not Copy Automatically</span>
+            </>
+          ) : (
+            <>
+              <Copy className="w-4 h-4 text-slate-300" />
+              <span>Copy for Electrician / Contractor</span>
+            </>
+          )}
+        </button>
+
+        <p className="text-[11px] text-slate-400 leading-normal text-center">
+          Includes continuous load, surge drivers, voltage notes, and safety disclaimers.
+        </p>
+      </div>
+
       {/* Generator Specification Matching Guide */}
       <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-5 text-xs text-emerald-950 space-y-3">
         <div className="flex items-center gap-2">
@@ -1075,6 +1225,30 @@ export const GeneratorSizeCalculator: React.FC = () => {
       resultSection={resultSectionContent}
     >
       <div className="space-y-10">
+        {/* Contextual Guide Link / Banner */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/70 border border-blue-200/80 text-xs sm:text-sm text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <Info className="w-4 h-4 text-blue-600 shrink-0" />
+            <p>
+              Need help understanding running watts, starting surge, and home generator sizing? Read our{" "}
+              <Link
+                href="/what-size-generator-do-i-need-for-my-house"
+                className="font-bold text-blue-700 hover:text-blue-900 underline"
+              >
+                House Generator Sizing Guide
+              </Link>
+              .
+            </p>
+          </div>
+          <Link
+            href="/what-size-generator-do-i-need-for-my-house"
+            className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 shrink-0"
+          >
+            <span>Read guide</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
         {/* Formula Section */}
         <FormulaSection
           title="The Four-Step Generator Sizing Methodology"
@@ -1399,5 +1573,13 @@ export const GeneratorSizeCalculator: React.FC = () => {
         />
       </div>
     </CalculatorShell>
+  );
+};
+
+export const GeneratorSizeCalculator: React.FC = () => {
+  return (
+    <Suspense fallback={null}>
+      <GeneratorSizeCalculatorInner />
+    </Suspense>
   );
 };

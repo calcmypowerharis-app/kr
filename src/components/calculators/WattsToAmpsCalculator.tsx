@@ -129,68 +129,80 @@ export const WattsToAmpsCalculator: React.FC = () => {
             }
           />
 
-          {/* Power Input */}
-          <InputField
-            id="powerWatts"
-            label="Real Power"
-            value={powerWatts}
-            onChange={setPowerWatts}
-            unit="Watts (W)"
-            min={0}
-            max={500000}
-            step={50}
-            helpText="Enter the total electrical power consumed by the equipment."
-            required
-          />
-
-          {/* Voltage Input + Quick Select Buttons */}
-          <div className="space-y-2">
+          {/* Power Input & Voltage Input (Responsive 2-column grid) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
             <InputField
-              id="voltage"
-              label="Operating Voltage"
-              value={voltage}
-              onChange={setVoltage}
-              unit="Volts (V)"
-              min={1}
-              max={1000}
-              step={1}
-              helpText="RMS voltage for AC or continuous voltage for DC."
+              id="powerWatts"
+              label="Real Power"
+              value={powerWatts}
+              onChange={setPowerWatts}
+              unit="Watts (W)"
+              min={0}
+              max={500000}
+              step={50}
+              helpText="Enter the total electrical power consumed by the equipment."
               required
             />
 
-            <div className="flex flex-wrap items-center gap-1.5 pt-1">
-              <span className="text-[11px] font-semibold text-slate-500 mr-1">Quick Select:</span>
-              {[12, 24, 48, 120, 208, 240, 277, 480].map((v) => (
-                <button
-                  key={v}
-                  type="button"
-                  onClick={() => setVoltage(v)}
-                  className={`text-[11px] px-2.5 py-1 rounded border font-mono transition ${
-                    voltage === v
-                      ? "bg-slate-900 text-white border-slate-900"
-                      : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
-                  }`}
-                >
-                  {v}V
-                </button>
-              ))}
+            {/* Voltage Input + Quick Select Buttons */}
+            <div className="space-y-2">
+              <InputField
+                id="voltage"
+                label="Operating Voltage"
+                value={voltage}
+                onChange={setVoltage}
+                unit="Volts (V)"
+                min={1}
+                max={1000}
+                step={1}
+                helpText="RMS voltage for AC or continuous voltage for DC."
+                required
+              />
+
+              <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                <span className="text-[11px] font-semibold text-slate-500 mr-1">Quick Select:</span>
+                {[12, 24, 48, 120, 208, 240, 277, 480].map((v) => (
+                  <button
+                    key={v}
+                    type="button"
+                    onClick={() => setVoltage(v)}
+                    className={`text-[11px] px-2.5 py-1 rounded border font-mono transition ${
+                      voltage === v
+                        ? "bg-slate-900 text-white border-slate-900"
+                        : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                    }`}
+                  >
+                    {v}V
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Three-Phase Voltage Type Selector */}
-          {currentType === "ac_three" && (
-            <SelectField
-              id="voltageType"
-              label="Three-Phase Voltage Reference"
-              value={voltageType}
-              options={threePhaseOptions}
-              onChange={(val) => setVoltageType(val as ThreePhaseVoltageType)}
-              helpText="Line-to-line is measured across two phase legs; line-to-neutral is measured from one phase leg to the neutral conductor."
-            />
-          )}
-
-          {/* Power Factor (AC Only) */}
-          {currentType !== "dc" && (
+          {/* AC Parameters: Three-Phase Reference & Power Factor */}
+          {currentType === "ac_three" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
+              <SelectField
+                id="voltageType"
+                label="Three-Phase Voltage Reference"
+                value={voltageType}
+                options={threePhaseOptions}
+                onChange={(val) => setVoltageType(val as ThreePhaseVoltageType)}
+                helpText="Line-to-line is measured across two phase legs; line-to-neutral is measured from one phase leg to neutral."
+              />
+              <InputField
+                id="powerFactor"
+                label="Power Factor (PF)"
+                value={powerFactor}
+                onChange={setPowerFactor}
+                unit="0.1 – 1.0"
+                min={0.1}
+                max={1.0}
+                step={0.05}
+                helpText="Default is 1.0 (pure resistive loads). Enter motor/equipment nameplate PF when available."
+              />
+            </div>
+          ) : currentType !== "dc" ? (
             <InputField
               id="powerFactor"
               label="Power Factor (PF)"
@@ -202,7 +214,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
               step={0.05}
               helpText="Default is 1.0 (pure resistive loads like heaters and incandescent bulbs). When manufacturer equipment documentation specifies a power factor, enter that value."
             />
-          )}
+          ) : null}
 
           {/* Non-Silent Validation Errors */}
           {results.errors.length > 0 && (

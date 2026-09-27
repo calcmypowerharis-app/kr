@@ -27,7 +27,7 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
   children,
 }) => {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-10">
+    <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-10">
       {/* Top Header & Breadcrumb Context */}
       <header className="space-y-3">
         <div className="flex flex-wrap items-center gap-2 text-xs">

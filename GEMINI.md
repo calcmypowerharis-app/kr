@@ -931,6 +931,8 @@ General target:
 Do not make article text excessively wide.
 Do not allow large unexplained empty space on desktop when a useful navigation sidebar would improve usability.
 
+IMPORTANT NOTE: This editorial reading layout applies ONLY to editorial guides and articles. It must NEVER be applied to calculator or interactive tool pages (see Section 25 for the Calculator Application Design System).
+
 #### 19. Desktop "On This Page"
 For long-form articles, use a desktop sticky table of contents when useful.
 
@@ -1360,3 +1362,196 @@ REMOTE RDP WORKSPACE
 → REMOTE PRODUCTION QA
 
 End of Section 23.
+
+## 24. Calculator Research & Validation Standard (No Blind Calculator Development)
+
+This standard applies to ALL future new calculator ideas.
+
+A new calculator must NOT be designed or implemented merely because:
+- the Lead or Gemini has a good idea
+- a competitor has one
+- the topic sounds useful
+- the keyword sounds popular
+- the tool would look good on the site
+- an AI agent suggests it
+
+Before proposing or implementing a NEW calculator, complete this research:
+
+### A. SEMRUSH VALIDATION
+Use actual SEMrush data supplied by the Lead or available through the authorized workflow.
+
+Record:
+- primary keyword
+- related keywords
+- U.S. search volume
+- keyword difficulty
+- search intent
+- CPC where available
+- trend where relevant
+- commercially relevant variations
+- long-tail opportunities
+
+Do not invent SEMrush metrics.
+
+### B. GOOGLE SERP VALIDATION
+Check the current U.S. Google SERP for the primary query.
+
+Identify:
+- dominant search intent
+- calculator/tool results
+- informational pages
+- manufacturer/retailer pages
+- People Also Ask questions
+- SERP features
+- obvious content gaps
+- whether competitors actually satisfy the query
+
+Do not assume the query requires a calculator simply because the keyword contains "calculator".
+
+### C. USER PROBLEM VALIDATION
+Define the exact problem the tool would solve.
+
+Answer:
+- What does the user enter?
+- What does the user need to know?
+- What calculation is actually required?
+- What existing tools already solve it?
+- What would CalcMyPower do better or more transparently?
+
+If the user problem is not clear, do not build the tool.
+
+### D. TECHNICAL VALIDATION
+Before implementation, define:
+- formula
+- units
+- assumptions
+- edge cases
+- safety implications
+- limits of the model
+- whether the result is an estimate or installation/code requirement
+
+For electrical/engineering calculators:
+- verify equations
+- verify assumptions
+- distinguish planning estimates from code requirements
+- identify values that are manufacturer/model-specific
+
+### E. COMPETITOR / GAP ANALYSIS
+Review relevant competitors.
+
+Do not copy their:
+- wording
+- UI
+- formulas without verification
+- content structure
+- claims
+
+Instead identify:
+- what they do well
+- what they omit
+- what is confusing
+- where CalcMyPower can provide genuine additional value
+
+### F. MONETIZATION FIT
+Evaluate whether the calculator naturally supports:
+- AdSense informational traffic
+- Amazon Associates where relevant
+- useful internal links
+- related calculators
+- future content clusters
+
+Do NOT add affiliate intent merely to justify a calculator.
+
+### G. TOPICAL CLUSTER FIT
+Ask whether the new calculator strengthens an existing CalcMyPower topic:
+
+Examples:
+- generator / backup power
+- electrical calculations
+- battery / UPS
+- solar
+- RV power
+- EV charging
+
+Prefer calculators that create a coherent cluster rather than unrelated tools.
+
+### H. GO / NO-GO BRIEF
+Before implementation, produce a short research brief containing:
+1. Primary keyword
+2. Secondary keyword cluster
+3. SEMrush metrics
+4. U.S. SERP findings
+5. User problem
+6. Technical formula/method
+7. Competitor gap
+8. Internal-link opportunities
+9. Monetization fit
+10. Risks/limitations
+11. Proposed route
+12. Reason the calculator belongs on CalcMyPower
+
+Only after Lead approval should implementation begin.
+
+### I. NO VOLUME-ONLY DECISIONS
+High search volume alone is NOT sufficient.
+
+A calculator should generally have a combination of:
+- meaningful U.S. demand
+- achievable competition
+- clear search intent
+- real user utility
+- technical feasibility
+- topical fit
+- sustainable content opportunities
+
+Do not chase search volume blindly.
+
+### J. EXISTING-CALCULATOR-FIRST RULE
+Before creating a new calculator:
+- check whether an existing CalcMyPower calculator can already solve the underlying problem
+- check whether a feature/extension would solve it better than creating another tool
+- prefer improving a strong existing tool when appropriate
+
+### K. ARTICLE & CALCULATOR RELATIONSHIP STANDARD
+When an article and calculator target the same user problem:
+
+ARTICLE:
+- explain
+- educate
+- demonstrate
+- answer questions
+- link to calculator
+
+CALCULATOR:
+- let the user calculate
+- accept their own values
+- provide transparent results
+- link back to explanatory content
+
+Avoid keyword cannibalization through unnecessary duplicate pages.
+
+End of Section 24.
+
+## 25. Design System Separation: Calculator Pages vs. Editorial Articles
+
+CalcMyPower operates two separate, strictly divided design systems. Each system serves a distinct user intent and must never be conflated:
+
+### A. Calculator & Interactive Tool Pages (Application Workspace)
+- **Primary Intent:** Fast calculation, parameter experimentation, immediate data feedback, and code-informed electrical sizing.
+- **Desktop Layout:** Wide application workspace (`max-w-[1320px]`).
+- **Responsive Split:** 2-column desktop split (~58% input controls on `lg:col-span-7`, ~42% live results on `lg:col-span-5`).
+- **Sticky Interaction:** Live result card is sticky (`top-6`) in the right column, remaining continuously pinned in view as the user scrolls through inputs, presets, or load lists.
+- **Above-The-Fold Priority:** Calculator inputs and primary outputs must be visible immediately without forcing users to scroll past lengthy editorial text.
+- **Prose Guard:** Header descriptions and supporting methodology/worked examples use card grids, definition lists, or contained text widths (`max-w-3xl` or `max-w-4xl`) so reading lines never stretch uncomfortably across the 1320px container.
+- **Strictly Prohibited on Calculator Pages:**
+  - DO NOT apply editorial article sidebars.
+  - DO NOT apply long-form Table of Contents (TOC) or sticky "On This Page" widgets.
+  - DO NOT apply reading progress bars or floating reading navigators.
+  - DO NOT force narrow reading-column widths (`max-w-3xl` or `max-w-5xl`) on the interactive application grid.
+
+### B. Editorial Articles & Guides (Long-Form Reading)
+- **Primary Intent:** In-depth educational reading, concept explanation, code compliance, decision guidance, and outage planning.
+- **Desktop Layout:** Editorial layout (`max-w-7xl` or ~1100–1200px) with reading column (~740–820px) and sticky navigation sidebar (~260–300px).
+- **Navigation:** Desktop sticky TOC with reading percentage, active section tracking, and contextual tool links; mobile collapsible floating navigator.
+- **Prose Focus:** Natural human editorial writing, varied paragraph rhythm, verified technical citations, and zero em-dash punctuation.
+- **Calculator Integration:** Direct, contextual links and scenario bridges (e.g. "Load This Scenario" with URL parameters) driving readers into the dedicated calculator tools.

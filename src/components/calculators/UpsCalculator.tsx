@@ -190,29 +190,31 @@ export const UpsCalculator: React.FC = () => {
           </div>
 
           {showAdvanced && (
-            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-4">
-              <InputField
-                id="inverterEfficiency"
-                label="Inverter Conversion Efficiency"
-                value={inverterEfficiency}
-                onChange={setInverterEfficiency}
-                unit="%"
-                min={50}
-                max={99}
-                step={1}
-                helpText="Standard modern pure sine wave inverters operate between 85% and 92% efficiency."
-              />
+            <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+                <InputField
+                  id="inverterEfficiency"
+                  label="Inverter Conversion Efficiency"
+                  value={inverterEfficiency}
+                  onChange={setInverterEfficiency}
+                  unit="%"
+                  min={50}
+                  max={99}
+                  step={1}
+                  helpText="Standard modern pure sine wave inverters operate between 85% and 92% efficiency."
+                />
 
-              <InputField
-                id="powerFactor"
-                label="Load Power Factor (PF)"
-                value={powerFactor}
-                onChange={setPowerFactor}
-                min={0.5}
-                max={1.0}
-                step={0.05}
-                helpText="Typically 0.8 for computer power supplies and electronic equipment; 1.0 for resistive heating."
-              />
+                <InputField
+                  id="powerFactor"
+                  label="Load Power Factor (PF)"
+                  value={powerFactor}
+                  onChange={setPowerFactor}
+                  min={0.5}
+                  max={1.0}
+                  step={0.05}
+                  helpText="Typically 0.8 for computer power supplies and electronic equipment; 1.0 for resistive heating."
+                />
+              </div>
             </div>
           )}
         </div>

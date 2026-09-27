@@ -21,6 +21,10 @@ import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TOC_ITEMS } from "@/components/article/tocData";
+import {
+  calculateGeneratorSize,
+  GENERATOR_SCENARIO_PRESETS,
+} from "@/lib/calculators/generator-size";
 
 export const metadata: Metadata = {
   title: "What Size Generator Do I Need for My House? Sizing Guide",
@@ -111,6 +115,12 @@ export default function GeneratorSizingGuidePage() {
   ]);
 
   const faqSchema = generateFaqSchema(FAQ_DATA);
+
+  const winterScenario = GENERATOR_SCENARIO_PRESETS["winter-essentials"];
+  const winterCalc = calculateGeneratorSize({
+    appliances: winterScenario.appliances,
+  });
+  const winterPlanningKwDisplay = `${winterCalc.planningKw.toFixed(1)} kW`;
 
   return (
     <>
@@ -550,6 +560,29 @@ export default function GeneratorSizingGuidePage() {
                 </span>
               </div>
             </div>
+          </div>
+
+          {/* Worked Example Deep Link CTA */}
+          <div className="my-6 p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50/90 to-indigo-50/90 border border-blue-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div className="space-y-1.5">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800">
+                <Sliders className="w-3 h-3 text-blue-700" />
+                <span>Interactive Load Model</span>
+              </span>
+              <h3 className="font-bold text-slate-900 text-base sm:text-lg">
+                Explore or Customize This Exact Load Profile
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
+                Want to try the same load profile with your own appliances? Load this example into the calculator and edit the values.
+              </p>
+            </div>
+            <Link
+              href="/generator-size-calculator?scenario=winter-essentials"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 text-white font-bold text-xs sm:text-sm hover:bg-blue-500 shadow-sm transition shrink-0 w-full sm:w-auto text-center"
+            >
+              <span>Open This {winterPlanningKwDisplay} Storm Scenario in Generator Calculator</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
 
           <div className="space-y-3 pt-2">

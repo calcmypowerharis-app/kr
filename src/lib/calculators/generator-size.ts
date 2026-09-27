@@ -503,6 +503,196 @@ export function getEssentialOutagePreset(): SelectedAppliance[] {
   return result;
 }
 
+export interface GeneratorScenarioPreset {
+  id: string;
+  name: string;
+  description: string;
+  appliances: SelectedAppliance[];
+}
+
+/**
+ * Named pre-configured scenarios linkable via URL parameter:
+ * e.g. /generator-size-calculator?scenario=winter-essentials
+ */
+export const GENERATOR_SCENARIO_PRESETS: Record<string, GeneratorScenarioPreset> = {
+  "winter-essentials": {
+    id: "winter-essentials",
+    name: "Winter Storm Essentials (5.1 kW Outage Scenario)",
+    description:
+      "Critical winter storm emergency circuits: refrigerator, 1/2 HP gas furnace blower, 1/3 HP sump pump, microwave, Wi-Fi router, 5 rooms LED lighting, and chargers.",
+    appliances: [
+      {
+        id: "scenario_refrigerator",
+        name: "Refrigerator / Freezer (Energy Star)",
+        category: "kitchen",
+        quantity: 1,
+        runningWatts: 180,
+        startingWatts: 1200,
+        isCustom: false,
+      },
+      {
+        id: "scenario_furnace_blower",
+        name: "Gas Furnace Blower Fan (1/2 HP)",
+        category: "hvac",
+        quantity: 1,
+        runningWatts: 700,
+        startingWatts: 1800,
+        isCustom: false,
+      },
+      {
+        id: "scenario_sump_pump",
+        name: "Sump Pump (1/3 HP)",
+        category: "water_pumps",
+        quantity: 1,
+        runningWatts: 600,
+        startingWatts: 1400,
+        isCustom: false,
+      },
+      {
+        id: "scenario_microwave",
+        name: "Microwave Oven",
+        category: "kitchen",
+        quantity: 1,
+        runningWatts: 1200,
+        startingWatts: 1200,
+        isCustom: false,
+      },
+      {
+        id: "scenario_router",
+        name: "Internet Router & Fiber ONT",
+        category: "electronics",
+        quantity: 1,
+        runningWatts: 25,
+        startingWatts: 25,
+        isCustom: false,
+      },
+      {
+        id: "scenario_lighting",
+        name: "Rooms LED Lighting (5 Rooms)",
+        category: "electronics",
+        quantity: 1,
+        runningWatts: 150,
+        startingWatts: 150,
+        isCustom: false,
+      },
+      {
+        id: "scenario_chargers",
+        name: "Phone & Laptop Chargers",
+        category: "electronics",
+        quantity: 1,
+        runningWatts: 100,
+        startingWatts: 100,
+        isCustom: false,
+      },
+    ],
+  },
+};
+
+/**
+ * Resolves a scenario preset by identifier, or returns null if not found.
+ */
+export function getGeneratorScenario(
+  scenarioId?: string | null
+): GeneratorScenarioPreset | null {
+  if (!scenarioId) return null;
+  return GENERATOR_SCENARIO_PRESETS[scenarioId] || null;
+}
+
+/**
+ * Formats a clean, professional plain-text summary of the user's calculated generator load
+ * for sharing with an electrician or contractor.
+ *
+ * Complies with GEMINI.md:
+ * - Dynamic based on active appliances and calculations
+ * - Does NOT hardcode 30A/L14-30/specific breakers or wire gauges unless equipment requires it
+ * - Explicitly highlights planning headroom, starting surge drivers, and safety disclaimers
+ */
+export function formatGeneratorSummaryForClipboard(
+  result: GeneratorSizeOutputs,
+  appliances: SelectedAppliance[]
+): string {
+  const activeAppliances = appliances.filter((item) => Number(item.quantity) > 0);
+
+  const lines: string[] = [
+    "CalcMyPower Generator Sizing Summary",
+    "=====================================",
+    "",
+    `Total Running Load: ${result.totalRunningWatts.toLocaleString()} W (${(result.totalRunningWatts / 1000).toFixed(2)} kW continuous)`,
+    `Largest Additional Startup Demand: +${result.largestAdditionalStartingWatts.toLocaleString()} W${
+      result.surgeDriverName ? ` (${result.surgeDriverName})` : " (No motor surge)"
+    }`,
+    `Peak Starting Demand: ${result.peakStartingDemand.toLocaleString()} W (${(result.peakStartingDemand / 1000).toFixed(2)} kW momentary)`,
+    `Calculated Planning Capacity (1.25x Headroom): ${Math.round(
+      result.planningCapacityWatts
+    ).toLocaleString()} W (${result.planningKw.toFixed(2)} kW / ${result.planningKva.toFixed(2)} kVA @ ${result.powerFactorUsed.toFixed(2)} PF)`,
+    "",
+    "Loads Included:",
+  ];
+
+  if (activeAppliances.length === 0) {
+    lines.push("- (No appliances currently selected)");
+  } else {
+    for (const item of activeAppliances) {
+      const qty = Number(item.quantity);
+      const run = Number(item.runningWatts);
+      const start = Number(item.startingWatts);
+      const totalRun = qty * run;
+      const surgeDelta = Math.max(0, start - run);
+      const surgeText =
+        surgeDelta > 0
+          ? ` [Startup surge: ${start.toLocaleString()}W / +${surgeDelta.toLocaleString()}W delta]`
+          : "";
+      const qtyText = qty > 1 ? `${qty}× ` : "";
+
+      lines.push(
+        `- ${qtyText}${item.name}: ${totalRun.toLocaleString()}W continuous${surgeText}`
+      );
+    }
+  }
+
+  lines.push("");
+  lines.push("Generator Configuration Considerations:");
+
+  // Check for 240V or high power needs
+  const has240VAppliance = activeAppliances.some(
+    (a) =>
+      a.id.includes("well_pump") ||
+      a.id.includes("water_heater") ||
+      a.id.includes("central_ac") ||
+      a.name.toLowerCase().includes("240v")
+  );
+  const isHighLoad =
+    result.totalRunningWatts >= 5000 || result.planningCapacityWatts >= 6000;
+
+  if (has240VAppliance || isHighLoad) {
+    lines.push(
+      "• Voltage & Connection: Selected loads or total continuous demand require dual-voltage 120V/240V split-phase capacity (such as a 120V/240V transfer switch or panel interlock kit). Standard 120V-only generators cannot power 240V circuits or energize both split-phase panel bus bars."
+    );
+  } else {
+    lines.push(
+      "• Voltage & Connection: For whole-panel backup via manual transfer switch or interlock kit, verify whether your panel circuits require a 120V/240V dual-voltage generator to feed both panel bus bars, or isolated 120V branch circuits via individual cords."
+    );
+  }
+
+  lines.push(
+    "• Fuel & Altitude Derating: Multi-fuel and dual-fuel units typically deliver 10% to 20% lower output on liquid propane (LPG) or natural gas compared to gasoline. Reduce continuous ratings accordingly if operating above 2,000 ft elevation."
+  );
+  lines.push(
+    "• Operating Duty Cycle: For engine longevity and fuel economy, maintain continuous loads within approximately 70% to 80% of rated running capacity."
+  );
+
+  lines.push("");
+  lines.push("Note:");
+  lines.push(
+    "This is a planning estimate, not a final electrical installation or code determination. Generator, transfer equipment, inlet, breaker, conductor, and installation requirements must be verified for the actual equipment and installation by a licensed electrical professional."
+  );
+  lines.push("");
+  lines.push("CalcMyPower:");
+  lines.push("https://calcmypower.com/generator-size-calculator");
+
+  return lines.join("\n");
+}
+
 /**
  * Pure calculation engine for generator sizing.
  *
