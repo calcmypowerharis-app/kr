@@ -1155,7 +1155,7 @@ when the designated remote RDP environment can perform the task.
 
 The Lead may use their browser to review screenshots/results and provide approval.
 
-### 11. REMOTE CREDENTIAL SECURITY
+### 11. REMOTE CREDENTIAL SECURITY & LOCAL-ONLY ISOLATION
 
 Never expose:
 - GitHub PATs
@@ -1174,12 +1174,12 @@ Use the configured authentication mechanism of the remote environment.
 If a credential becomes exposed, stop credential reuse and report that it
 must be rotated/revoked.
 
-#### 11.1 LOCAL WORKSPACE AUTHENTICATION
-
-For repository synchronization (`origin/main`), the local workspace `.git/config`
-is configured with repository-scoped access to prevent credential collisions with
-global system accounts. The agent shall verify local repository connectivity
-without exposing credentials in output logs, chat messages, or commits.
+#### 11.1 STRICT LOCAL-ONLY STORAGE (ZERO-LEAKAGE INVARIANT)
+- **Local Machine Only:** GitHub Personal Access Tokens (PATs), API keys, and deployment secrets must live strictly on the local remote machine disk (inside `.git/config` which is local metadata and never tracked by Git).
+- **Never on GitHub:** Never commit, stage, or push credentials to any repository file, markdown doc, code file, or version control.
+- **Never in Visible Output:** Never print or echo raw PAT strings in chat messages, reports, or PR descriptions.
+- **Pre-Commit Secret Scan:** Before every commit, verify via `git diff --staged` that no credentials or private token patterns are being added to version control.
+- **Ephemeral Usage:** If credentials must be referenced in automation scripts, use in-memory ephemeral variables that do not persist in script files or commit history.
 
 ### 12. FINAL REPORT
 
