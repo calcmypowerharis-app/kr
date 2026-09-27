@@ -1174,6 +1174,13 @@ Use the configured authentication mechanism of the remote environment.
 If a credential becomes exposed, stop credential reuse and report that it
 must be rotated/revoked.
 
+#### 11.1 LOCAL WORKSPACE AUTHENTICATION
+
+For repository synchronization (`origin/main`), the local workspace `.git/config`
+is configured with repository-scoped access to prevent credential collisions with
+global system accounts. The agent shall verify local repository connectivity
+without exposing credentials in output logs, chat messages, or commits.
+
 ### 12. FINAL REPORT
 
 When remote execution is complete, report:
