@@ -123,7 +123,7 @@ export default function RefrigeratorGeneratorSizingPage() {
     dateModified: "2026-09-27T16:30:00Z",
     images: [
       "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.jpg",
-      "https://calcmypower.com/images/articles/portable-generator-outdoor-safety.jpg",
+      "https://calcmypower.com/images/articles/refrigerator-electrical-rating-label.jpg",
     ],
   });
 
@@ -532,6 +532,21 @@ export default function RefrigeratorGeneratorSizingPage() {
                 <li>On the exterior back panel near the lower compressor access grille.</li>
               </ul>
 
+              <figure className="space-y-2 my-5">
+                <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
+                  <Image
+                    src="/images/articles/refrigerator-electrical-rating-label.jpg"
+                    alt="Interior fresh food compartment of a residential refrigerator showing an electrical data rating plate label with 115V AC and 6.0 Amps specifications"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 800px"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="text-xs text-slate-500 text-center">
+                  A typical residential refrigerator electrical data plate on the interior fresh food compartment wall, showing voltage (115V AC), frequency (60 Hz), and rated operating current (6.0 Amps).
+                </figcaption>
+              </figure>
+
               <h3 className="text-xl font-bold text-slate-900">
                 2. Reading Voltage, Amperage, and Locked Rotor Amps
               </h3>
@@ -935,22 +950,6 @@ export default function RefrigeratorGeneratorSizingPage() {
               <p>
                 Operating a generator during a power outage introduces serious electrical and respiratory hazards if proper safety procedures are ignored.
               </p>
-
-              {/* Safety Image */}
-              <figure className="space-y-2 my-4">
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
-                  <Image
-                    src="/images/articles/portable-generator-outdoor-safety.jpg"
-                    alt="A portable inverter generator positioned outdoors in a backyard at a safe distance from house windows and doors"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 800px"
-                    className="object-cover"
-                  />
-                </div>
-                <figcaption className="text-xs text-slate-500 text-center">
-                  Always operate portable generators outdoors at least 20 feet away from windows, doors, and vents with the exhaust directed away from living spaces.
-                </figcaption>
-              </figure>
 
               <div className="border border-red-200 bg-red-50/70 rounded-2xl p-5 sm:p-6 space-y-3">
                 <div className="flex items-center gap-2 text-red-900 font-bold text-base">

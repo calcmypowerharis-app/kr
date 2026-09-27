@@ -1,0 +1,210 @@
+import fs from "fs";
+import path from "path";
+import { describe, expect, it } from "vitest";
+import {
+  calculateGeneratorSize,
+  getGeneratorScenario,
+} from "@/lib/calculators/generator-size";
+import { TOC_ITEMS as HOUSE_TOC_ITEMS } from "@/components/article/tocData";
+
+const APP_DIR = path.resolve(process.cwd(), "src/app");
+const PUBLIC_DIR = path.resolve(process.cwd(), "public");
+
+/**
+ * Helper to discover all editorial article page.tsx files in src/app.
+ * Editorial articles are identified by using generateArticleSchema.
+ */
+function getEditorialArticlePages(): { route: string; filePath: string; content: string }[] {
+  const entries = fs.readdirSync(APP_DIR, { withFileTypes: true });
+  const articles: { route: string; filePath: string; content: string }[] = [];
+
+  for (const entry of entries) {
+    if (!entry.isDirectory()) continue;
+    const pagePath = path.join(APP_DIR, entry.name, "page.tsx");
+    if (!fs.existsSync(pagePath)) continue;
+
+    const content = fs.readFileSync(pagePath, "utf8");
+    if (content.includes("generateArticleSchema")) {
+      articles.push({
+        route: `/${entry.name}`,
+        filePath: pagePath,
+        content,
+      });
+    }
+  }
+
+  return articles;
+}
+
+describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
+  const articles = getEditorialArticlePages();
+
+  it("discovers existing editorial articles in src/app", () => {
+    expect(articles.length).toBeGreaterThanOrEqual(2);
+    const routes = articles.map((a) => a.route);
+    expect(routes).toContain("/what-size-generator-do-i-need-for-my-house");
+    expect(routes).toContain("/what-size-generator-to-run-a-refrigerator");
+  });
+
+  describe("1. Article Image Uniqueness & Physical Existence (Section 28)", () => {
+    it("ensures every referenced article image physically exists in public/ and has descriptive alt text", () => {
+      for (const article of articles) {
+        const imageRegex = /\/images\/articles\/[a-zA-Z0-9_-]+\.(jpg|jpeg|png|webp|svg)/g;
+        const matches = Array.from(new Set(article.content.match(imageRegex) || []));
+
+        expect(
+          matches.length,
+          `Article ${article.route} should reference at least one image in /images/articles/`
+        ).toBeGreaterThanOrEqual(1);
+
+        for (const imgRelPath of matches) {
+          const fullPublicPath = path.join(PUBLIC_DIR, imgRelPath);
+          expect(
+            fs.existsSync(fullPublicPath),
+            `Image ${imgRelPath} referenced in ${article.route} does not exist at ${fullPublicPath}`
+          ).toBe(true);
+
+          const stat = fs.statSync(fullPublicPath);
+          expect(
+            stat.size,
+            `Image ${imgRelPath} in ${article.route} is empty (0 bytes)`
+          ).toBeGreaterThan(1000);
+        }
+
+        // Verify all <Image ... /> tags have meaningful alt attributes (>= 20 chars)
+        const jsxImageBlocks = article.content.match(/<Image[\s\S]*?\/>/g) || [];
+        expect(jsxImageBlocks.length).toBeGreaterThanOrEqual(1);
+
+        for (const block of jsxImageBlocks) {
+          const altMatch = block.match(/alt="([^"]+)"/);
+          expect(
+            altMatch,
+            `<Image> tag in ${article.route} is missing a static string alt attribute:\n${block}`
+          ).not.toBeNull();
+          expect(
+            altMatch![1].trim().length,
+            `Alt text "${altMatch![1]}" in ${article.route} is too short; must be descriptive (>= 20 chars)`
+          ).toBeGreaterThanOrEqual(20);
+        }
+      }
+    });
+
+    it("enforces zero image asset reuse across different editorial articles (Section 28 Non-Repetition Rule)", () => {
+      const assetOwnerMap = new Map<string, string>();
+
+      for (const article of articles) {
+        const imageRegex = /\/images\/articles\/[a-zA-Z0-9_-]+\.(jpg|jpeg|png|webp|svg)/g;
+        const uniqueAssetsInArticle = Array.from(
+          new Set(article.content.match(imageRegex) || [])
+        );
+
+        for (const asset of uniqueAssetsInArticle) {
+          const existingOwner = assetOwnerMap.get(asset);
+          expect(
+            existingOwner,
+            `Section 28 Violation: Image asset "${asset}" is reused across multiple articles (${existingOwner} and ${article.route}). Every article must use 100% unique visual assets.`
+          ).toBeUndefined();
+
+          assetOwnerMap.set(asset, article.route);
+        }
+      }
+    });
+  });
+
+  describe("2. Zero Em-Dash Editorial Punctuation Standard (Section 4 & 22)", () => {
+    it("ensures no editorial article contains em-dash characters (—)", () => {
+      for (const article of articles) {
+        const emDashCount = (article.content.match(/\u2014/g) || []).length;
+        expect(
+          emDashCount,
+          `Article ${article.route} contains ${emDashCount} forbidden em-dash (—) character(s)`
+        ).toBe(0);
+      }
+    });
+  });
+
+  describe("3. Table of Contents (TOC) Anchor Link Integrity", () => {
+    it("verifies every TOC item ID matches a rendered section or heading ID in the article", () => {
+      for (const article of articles) {
+        let tocIds: string[] = [];
+
+        // Extract inline TocItem[] definitions if present in page.tsx
+        const inlineTocMatches = Array.from(
+          article.content.matchAll(/\{\s*id:\s*"([^"]+)",\s*label:\s*"([^"]+)"\s*\}/g)
+        );
+
+        if (inlineTocMatches.length > 0) {
+          tocIds = inlineTocMatches.map((m) => m[1]);
+        } else if (article.route === "/what-size-generator-do-i-need-for-my-house") {
+          tocIds = HOUSE_TOC_ITEMS.map((item) => item.id);
+        }
+
+        expect(
+          tocIds.length,
+          `Could not find TOC items for article ${article.route}`
+        ).toBeGreaterThanOrEqual(5);
+
+        for (const id of tocIds) {
+          const hasTargetId = article.content.includes(`id="${id}"`);
+          expect(
+            hasTargetId,
+            `TOC anchor id="${id}" in ${article.route} does not match any element id="${id}" on the page`
+          ).toBe(true);
+        }
+      }
+    });
+  });
+
+  describe("4. Article Worked Example ↔ Calculator Scenario Single Source of Truth (Section 26-C)", () => {
+    it("verifies all deep-linked calculator scenarios exist and match worked example numbers in article text", () => {
+      for (const article of articles) {
+        const scenarioLinks = Array.from(
+          article.content.matchAll(/\/generator-size-calculator\?scenario=([a-zA-Z0-9_-]+)/g)
+        );
+
+        expect(
+          scenarioLinks.length,
+          `Article ${article.route} should contain a deep link to a calculator scenario`
+        ).toBeGreaterThanOrEqual(1);
+
+        for (const match of scenarioLinks) {
+          const scenarioKey = match[1];
+          const scenario = getGeneratorScenario(scenarioKey);
+
+          expect(
+            scenario,
+            `Deep-linked scenario "?scenario=${scenarioKey}" in ${article.route} does not exist in GENERATOR_SCENARIO_PRESETS`
+          ).not.toBeNull();
+
+          const calc = calculateGeneratorSize({ appliances: scenario!.appliances });
+          expect(calc.isValid).toBe(true);
+
+          const formattedRunning = calc.totalRunningWatts.toLocaleString("en-US");
+          const formattedSurgeDelta = calc.largestAdditionalStartingWatts.toLocaleString("en-US");
+          const formattedPeak = calc.peakStartingDemand.toLocaleString("en-US");
+          const formattedPlanning = Math.round(calc.planningCapacityWatts).toLocaleString("en-US");
+
+          expect(
+            article.content.includes(formattedRunning),
+            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing totalRunningWatts (${formattedRunning})`
+          ).toBe(true);
+
+          expect(
+            article.content.includes(formattedSurgeDelta),
+            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing largestAdditionalStartingWatts (${formattedSurgeDelta})`
+          ).toBe(true);
+
+          expect(
+            article.content.includes(formattedPeak),
+            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing peakStartingDemand (${formattedPeak})`
+          ).toBe(true);
+
+          expect(
+            article.content.includes(formattedPlanning),
+            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing planningCapacityWatts (${formattedPlanning})`
+          ).toBe(true);
+        }
+      }
+    });
+  });
+});
