@@ -17,9 +17,13 @@ import {
   generateBreadcrumbSchema,
   generateFaqSchema,
 } from "@/lib/seo/schema";
+import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
+import { TableOfContents } from "@/components/article/TableOfContents";
+import { MobileTableOfContents } from "@/components/article/MobileTableOfContents";
+import { TOC_ITEMS } from "@/components/article/tocData";
 
 export const metadata: Metadata = {
-  title: "What Size Generator Do I Need for My House? Sizing Guide | CalcMyPower",
+  title: "What Size Generator Do I Need for My House? Sizing Guide",
   description:
     "Calculate the generator size you need for your house based on running watts, motor startup surges, and essential circuits rather than misleading square-footage rules.",
   alternates: {
@@ -123,7 +127,9 @@ export default function GeneratorSizingGuidePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-10">
+      <ReadingProgressBar />
+
+      <article className="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-10">
         {/* Header Section */}
         <header className="space-y-4 border-b border-slate-200 pb-8">
           <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
@@ -164,7 +170,7 @@ export default function GeneratorSizingGuidePage() {
               alt="Suburban detached home exterior with an automatic whole-house standby generator installed on a concrete pad next to the electrical utility meter"
               fill
               priority
-              sizes="(max-width: 896px) 100vw, 896px"
+              sizes="(max-width: 1024px) 100vw, 1160px"
               className="object-cover"
             />
           </div>
@@ -173,59 +179,76 @@ export default function GeneratorSizingGuidePage() {
           </figcaption>
         </figure>
 
-        {/* Direct Answer / Opening Section */}
-        <section className="space-y-4 text-slate-700 leading-relaxed text-base">
-          <p className="text-lg font-medium text-slate-900 leading-relaxed">
-            Sizing an emergency home generator comes down to an early planning decision: are you powering selected critical circuits to ride out a storm, or are you backing up the entire service panel so life continues without interruption?
-          </p>
+        {/* Mobile On This Page */}
+        <MobileTableOfContents items={TOC_ITEMS} />
 
-          <p>
-            For basic emergency preservation—keeping food cold in a refrigerator, powering a natural gas furnace blower for heat, running a Wi-Fi router, charging phones, and operating several LED lights—most homes require approximately <strong>3,500 to 5,000 running Watts</strong>. If your basement relies on a 1/2 HP sump pump to prevent flooding or domestic water comes from a 240V deep-well submersible pump, planned capacity rises to <strong>5,000 to 7,500 Watts</strong>.
-          </p>
+        {/* Two-Column Editorial Layout */}
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] xl:grid-cols-[minmax(0,1fr)_300px] lg:gap-10 items-start">
+          {/* Main Article Content */}
+          <div id="article-content" className="min-w-0 space-y-12 text-slate-700 leading-relaxed text-base">
+            {/* Direct Answer / Opening Section */}
+            <section className="space-y-4">
+              <p className="text-lg font-medium text-slate-900 leading-relaxed">
+                Sizing an emergency home generator comes down to an early planning decision: are you powering selected critical circuits to ride out a storm, or are you backing up the entire service panel so life continues without interruption?
+              </p>
 
-          <p>
-            Whole-house backup that includes central air conditioning (3 to 4 tons), an electric water heater, or an electric range enters a different class altogether: either an oversized portable generator producing <strong>9,000 to 12,000 Watts</strong>, or a permanently installed standby generator rated between <strong>18,000 and 24,000 Watts (18–24 kW)</strong>.
-          </p>
+              <p>
+                For basic emergency preservation—keeping food cold in a refrigerator, powering a natural gas furnace blower for heat, running a Wi-Fi router, charging phones, and operating several LED lights—most homes require approximately <strong>3,500 to 5,000 running Watts</strong>. If your basement relies on a 1/2 HP sump pump to prevent flooding or domestic water comes from a 240V deep-well submersible pump, planned capacity rises to <strong>5,000 to 7,500 Watts</strong>. Sizing your electrical requirements with our{" "}
+                <Link
+                  href="/generator-size-calculator"
+                  className="text-blue-600 font-semibold hover:underline"
+                >
+                  interactive generator sizing tool
+                </Link>{" "}
+                helps pinpoint your specific household starting and running demands before purchasing equipment.
+              </p>
 
-          {/* Quick Reference Summary */}
-          <div className="border border-slate-200 rounded-2xl p-5 sm:p-6 bg-slate-50/80 space-y-4 my-6">
-            <h2 className="text-slate-900 font-bold text-base flex items-center gap-2">
-              <Zap className="w-4 h-4 text-blue-600" />
-              Typical Residential Generator Sizing Brackets
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
-              <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
-                <span className="font-mono font-bold text-blue-600 text-base block">3,500W – 5,000W</span>
-                <span className="font-semibold text-slate-800 block">Critical Essentials</span>
-                <p className="text-slate-600 text-xs">
-                  Refrigerator, gas furnace blower, internet router, phone chargers, TV, and basic room lighting.
-                </p>
+              <p>
+                Whole-house backup that includes central air conditioning (3 to 4 tons), an electric water heater, or an electric range enters a different class altogether: either an oversized portable generator producing <strong>9,000 to 12,000 Watts</strong>, or a permanently installed standby generator rated between <strong>18,000 and 24,000 Watts (18–24 kW)</strong>.
+              </p>
+
+              {/* Quick Reference Summary */}
+              <div className="border border-slate-200 rounded-2xl p-5 sm:p-6 bg-slate-50/80 space-y-4 my-6">
+                <h2 id="quick-answer" className="text-slate-900 font-bold text-base flex items-center gap-2 scroll-mt-24">
+                  <Zap className="w-4 h-4 text-blue-600" />
+                  Typical Residential Generator Sizing Brackets
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 text-base block">3,500W – 5,000W</span>
+                    <span className="font-semibold text-slate-800 block">Critical Essentials</span>
+                    <p className="text-slate-600 text-xs">
+                      Refrigerator, gas furnace blower, internet router, phone chargers, TV, and basic room lighting.
+                    </p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 text-base block">5,000W – 8,000W</span>
+                    <span className="font-semibold text-slate-800 block">Pumps &amp; Heavy Essentials</span>
+                    <p className="text-slate-600 text-xs">
+                      Essentials plus a 1/2 HP sump pump, a 240V well pump, microwave oven, and an occasional small window AC.
+                    </p>
+                  </div>
+                  <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
+                    <span className="font-mono font-bold text-blue-600 text-base block">18,000W – 24,000W</span>
+                    <span className="font-semibold text-slate-800 block">Whole-House Standby</span>
+                    <p className="text-slate-600 text-xs">
+                      Central air conditioning (3–5 tons), electric water heating, electric cooking, and unmanaged circuit usage.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
-                <span className="font-mono font-bold text-blue-600 text-base block">5,000W – 8,000W</span>
-                <span className="font-semibold text-slate-800 block">Pumps &amp; Heavy Essentials</span>
-                <p className="text-slate-600 text-xs">
-                  Essentials plus a 1/2 HP sump pump, a 240V well pump, microwave oven, and an occasional small window AC.
-                </p>
-              </div>
-              <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
-                <span className="font-mono font-bold text-blue-600 text-base block">18,000W – 24,000W</span>
-                <span className="font-semibold text-slate-800 block">Whole-House Standby</span>
-                <p className="text-slate-600 text-xs">
-                  Central air conditioning (3–5 tons), electric water heating, electric cooking, and unmanaged circuit usage.
-                </p>
-              </div>
-            </div>
-          </div>
 
-          <p>
-            Square footage does not dictate electrical demand. Two homes with the exact same 2,000-square-foot floor plan can have completely different power requirements depending on whether heating and cooking rely on natural gas or high-draw 240-volt electric heating elements.
-          </p>
-        </section>
+              <p>
+                Square footage does not dictate electrical demand. Two homes with the exact same 2,000-square-foot floor plan can have completely different power requirements depending on whether heating and cooking rely on natural gas or high-draw 240-volt electric heating elements.
+              </p>
+            </section>
 
         {/* Section: How Generator Size Is Determined */}
-        <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        <section className="space-y-4 border-t border-slate-200 pt-8">
+          <h2
+            id="how-generator-size-is-determined"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             How Generator Size Is Determined
           </h2>
 
@@ -252,7 +275,16 @@ export default function GeneratorSizingGuidePage() {
               <span className="w-6 h-6 rounded-full bg-blue-100 text-blue-700 text-xs flex items-center justify-center font-bold shrink-0 mt-0.5">3</span>
               <div>
                 <strong className="text-slate-900 block text-sm">Simultaneous Operation (Load Concurrency):</strong>
-                <span className="text-xs sm:text-sm text-slate-600">Which appliances realistically operate at the same time. In an emergency, heating and cooling do not run simultaneously, and high-draw countertop appliances can be used one at a time.</span>
+                <span className="text-xs sm:text-sm text-slate-600">
+                  Which appliances realistically operate at the same time. In an emergency, heating and cooling do not run simultaneously, and high-draw countertop appliances can be used one at a time. If you also plan to keep internet routers or home medical devices running during the initial minutes of an outage before a generator starts, calculate your runtime with a{" "}
+                  <Link
+                    href="/ups-battery-backup-calculator"
+                    className="text-blue-600 font-semibold hover:underline"
+                  >
+                    dedicated battery backup calculator
+                  </Link>
+                  .
+                </span>
               </div>
             </li>
             <li className="flex items-start gap-3">
@@ -266,8 +298,11 @@ export default function GeneratorSizingGuidePage() {
         </section>
 
         {/* Section: Running Watts vs Starting Watts */}
-        <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        <section className="space-y-4 border-t border-slate-200 pt-8">
+          <h2
+            id="running-vs-starting-watts"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             Running Watts vs. Starting Watts
           </h2>
 
@@ -276,7 +311,14 @@ export default function GeneratorSizingGuidePage() {
           </p>
 
           <p>
-            Resistive loads—including incandescent lights, electric space heaters, toasters, and water heater elements—turn electricity directly into heat or light through simple resistance. These devices exhibit virtually zero startup surge. A 1,500-Watt space heater draws 1,500 Watts the moment it turns on and continues drawing 1,500 Watts until the thermostat clicks off.
+            Resistive loads—including incandescent lights, electric space heaters, toasters, and water heater elements—turn electricity directly into heat or light through simple resistance. These devices exhibit virtually zero startup surge. A 1,500-Watt space heater draws 1,500 Watts the moment it turns on and continues drawing 1,500 Watts until the thermostat clicks off. To convert individual equipment ratings between electrical units, you can use our{" "}
+            <Link
+              href="/watts-to-amps-calculator"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Watts to Amps calculator
+            </Link>{" "}
+            to determine the exact circuit breaker current required across 120-volt or 240-volt systems.
           </p>
 
           <p>
@@ -360,8 +402,11 @@ export default function GeneratorSizingGuidePage() {
         </section>
 
         {/* Section: How to Calculate Generator Size */}
-        <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        <section className="space-y-4 border-t border-slate-200 pt-8">
+          <h2
+            id="how-to-calculate-generator-size"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             How to Calculate Generator Size
           </h2>
 
@@ -374,7 +419,14 @@ export default function GeneratorSizingGuidePage() {
           </p>
 
           <p>
-            To reflect real-world operating conditions, CalcMyPower uses an established four-step planning model:
+            To reflect real-world operating conditions without overpaying for excess capacity, CalcMyPower uses an established four-step planning model based on our broader suite of{" "}
+            <Link
+              href="/calculators"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              electrical and power calculation tools
+            </Link>
+            :
           </p>
 
           <div className="bg-slate-900 text-white rounded-2xl p-5 sm:p-6 space-y-3 font-mono text-xs sm:text-sm">
@@ -414,8 +466,11 @@ export default function GeneratorSizingGuidePage() {
         </section>
 
         {/* Section: Worked Example */}
-        <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        <section className="space-y-4 border-t border-slate-200 pt-8">
+          <h2
+            id="worked-example"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             Worked Example: Sizing a Generator for Essential Home Loads
           </h2>
 
@@ -522,8 +577,11 @@ export default function GeneratorSizingGuidePage() {
         </section>
 
         {/* Section: Square Footage Analysis */}
-        <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+        <section className="space-y-4 border-t border-slate-200 pt-8">
+          <h2
+            id="square-footage"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             What Size Generator for a 1,500, 2,000, or 2,500 Sq Ft House?
           </h2>
 
@@ -532,7 +590,14 @@ export default function GeneratorSizingGuidePage() {
           </p>
 
           <p>
-            Square footage gives a rough sense of house scale, but it does not determine generator size by itself. What matters is the mechanical fuel source and equipment type. Consider two homes of the exact same size:
+            Square footage gives a rough sense of house scale, but it does not determine generator size by itself. What matters is the mechanical fuel source and equipment type. Running your numbers through our{" "}
+            <Link
+              href="/generator-size-calculator"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              home generator calculator
+            </Link>{" "}
+            reveals how connected wattage diverges based on appliances rather than floor space. Consider two homes of the exact same size:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
@@ -599,7 +664,10 @@ export default function GeneratorSizingGuidePage() {
 
         {/* Section: Common Appliances Sizing */}
         <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h2
+            id="common-appliances"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             What Size Generator Do I Need for Common Appliances?
           </h2>
 
@@ -660,12 +728,22 @@ export default function GeneratorSizingGuidePage() {
 
         {/* Section: Portable vs Standby */}
         <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h2
+            id="portable-vs-standby"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             Portable Generator vs. Whole-House Standby Generator
           </h2>
 
           <p>
-            Once you estimate your wattage demand, the primary equipment choice is between a portable unit and a permanently installed standby system.
+            Once you estimate your wattage demand, the primary equipment choice is between a portable unit and a permanently installed standby system. When planning transfer hardware or generator cord sizing, converting wattage to current with our{" "}
+            <Link
+              href="/watts-to-amps-calculator"
+              className="text-blue-600 font-semibold hover:underline"
+            >
+              Watts to Amps Calculator
+            </Link>{" "}
+            ensures you match your 30-amp or 50-amp inlet safely.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
@@ -699,7 +777,10 @@ export default function GeneratorSizingGuidePage() {
 
         {/* Section: Common Sizing Mistakes */}
         <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h2
+            id="sizing-mistakes"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             Common Generator Sizing Mistakes
           </h2>
 
@@ -764,7 +845,10 @@ export default function GeneratorSizingGuidePage() {
               <span>Interactive Sizing Engine</span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+            <h2
+              id="calculator"
+              className="text-2xl sm:text-3xl font-black tracking-tight text-white scroll-mt-24"
+            >
               Calculate Your Custom Household Generator Size
             </h2>
 
@@ -792,7 +876,10 @@ export default function GeneratorSizingGuidePage() {
 
         {/* Section: Safety Considerations */}
         <section className="space-y-4 text-slate-700 leading-relaxed border-t border-slate-200 pt-8">
-          <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          <h2
+            id="safety"
+            className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+          >
             Critical Generator Safety Rules
           </h2>
 
@@ -851,7 +938,10 @@ export default function GeneratorSizingGuidePage() {
         {/* Section: FAQ */}
         <section className="space-y-6 border-t border-slate-200 pt-8">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            <h2
+              id="faq"
+              className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
+            >
               Frequently Asked Questions
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -965,6 +1055,13 @@ export default function GeneratorSizingGuidePage() {
             </li>
           </ul>
         </footer>
+          </div>
+
+          {/* Desktop Sticky Table of Contents Sidebar */}
+          <aside className="hidden lg:block">
+            <TableOfContents items={TOC_ITEMS} />
+          </aside>
+        </div>
       </article>
     </>
   );
