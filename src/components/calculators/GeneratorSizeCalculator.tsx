@@ -417,6 +417,24 @@ const GeneratorSizeCalculatorInner: React.FC = () => {
             </button>
           </div>
         )}
+
+        {activePresetId === "refrigerator-outage" && (
+          <div className="text-[11px] text-blue-950 bg-blue-50/90 border border-blue-200 rounded-xl px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
+              <span>
+                <strong>Loaded Refrigerator Scenario:</strong> Kitchen Refrigerator Outage Plan (from Sizing Guide). Edit wattages or quantities below to model your home.
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={handleResetDefaults}
+              className="text-xs text-blue-600 hover:text-blue-800 font-semibold underline shrink-0 text-left sm:text-right"
+            >
+              Reset to Defaults
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Selected Loads Section */}
@@ -1230,23 +1248,32 @@ const GeneratorSizeCalculatorInner: React.FC = () => {
           <div className="flex items-center gap-2.5">
             <Info className="w-4 h-4 text-blue-600 shrink-0" />
             <p>
-              Need help understanding running watts, starting surge, and home generator sizing? Read our{" "}
+              Need help understanding running watts, starting surge, and sizing? Read our{" "}
               <Link
                 href="/what-size-generator-do-i-need-for-my-house"
                 className="font-bold text-blue-700 hover:text-blue-900 underline"
               >
-                House Generator Sizing Guide
+                House Generator Guide
+              </Link>
+              {" "}or our dedicated{" "}
+              <Link
+                href="/what-size-generator-to-run-a-refrigerator"
+                className="font-bold text-blue-700 hover:text-blue-900 underline"
+              >
+                Refrigerator Sizing Guide
               </Link>
               .
             </p>
           </div>
-          <Link
-            href="/what-size-generator-do-i-need-for-my-house"
-            className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800 shrink-0"
-          >
-            <span>Read guide</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+          <div className="flex items-center gap-2 shrink-0">
+            <Link
+              href="/what-size-generator-to-run-a-refrigerator"
+              className="inline-flex items-center gap-1 text-xs font-bold text-blue-600 hover:text-blue-800"
+            >
+              <span>Fridge Guide</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
 
         {/* Formula Section */}

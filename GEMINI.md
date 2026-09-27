@@ -1555,3 +1555,35 @@ CalcMyPower operates two separate, strictly divided design systems. Each system 
 - **Navigation:** Desktop sticky TOC with reading percentage, active section tracking, and contextual tool links; mobile collapsible floating navigator.
 - **Prose Focus:** Natural human editorial writing, varied paragraph rhythm, verified technical citations, and zero em-dash punctuation.
 - **Calculator Integration:** Direct, contextual links and scenario bridges (e.g. "Load This Scenario" with URL parameters) driving readers into the dedicated calculator tools.
+
+## 26. Permanent Technical Accuracy & Sizing Standards
+
+To maintain technical credibility and prevent recurring inaccuracies, all future editorial articles and calculator integrations must adhere to the following standards:
+
+### A. Extension Cord Sizing Principle (Load and Length Co-Dependency)
+- **Never present cord gauge as a length-only recommendation:** Recommending wire gauge based solely on distance (e.g., "14 AWG for 50 ft, 12 AWG for 100 ft") ignores the physical relationship of current, resistance, and voltage drop ($V = I \times R$).
+- **Mandatory Sizing Criteria:** Cord selection must evaluate:
+  1. Actual connected electrical load (continuous running amperage and momentary motor startup surge).
+  2. Cord run length (distance from generator to appliance).
+  3. Cord continuous amperage rating.
+  4. Outdoor weather listing (UL or ETL listed, marked with a "W" designation such as SJTW).
+  5. Appliance manufacturer instructions and warranty requirements.
+  6. Applicable local electrical codes and safety rules.
+- **Illustrative Examples Rule:** Any illustrative example must state **both conductor gauge and corresponding load amperage together** (e.g., "14 AWG for continuous loads up to 15 amps at 50 feet; 12 AWG for continuous loads up to 20 amps at 50 feet, or loads up to 15 amps up to 100 feet").
+- **Authoritative Grounding:** Reference safety organizations such as the Electrical Safety Foundation International (ESFI), OSHA, CPSC, or manufacturer instructions.
+
+### B. Sizing Formula Headroom Terminology
+Never call the $1.25\times$ planning headroom output "starting watts" or "surge watts". Maintain strict distinction among these four concepts:
+1. **Running Watts:** Steady operating power drawn while an appliance motor or compressor runs continuously.
+2. **Starting / Surge Watts:** Momentary inrush power required by an individual motor to overcome rotor inertia from a dead stop.
+3. **Peak Starting Demand (Baseline Surge Demand):** Combined active running load of all connected devices plus the single largest motor surge delta ($\text{Total Running Watts} + \max(\text{Starting Watts} - \text{Running Watts})$).
+4. **CalcMyPower Planning Capacity:** Sizing target incorporating 25% continuous equipment operating headroom ($\text{Baseline Surge Demand} \times 1.25$).
+
+### C. Article-to-Calculator Deep Linking & Scenario Data Parity
+- **Verify Actual Parameters:** Never guess URL query parameters. Inspect calculator source code (`?scenario=...`) to use supported routes.
+- **Exact Data Parity:** When an article features a worked outage plan and links to a calculator scenario, both must utilize the exact same appliance wattages, quantities, surge deltas, and calculated outputs.
+
+### D. Appliance Nameplate & Grounding Claims
+- **Always Qualify Generic Ranges:** Wattage ranges (such as 100 to 200 running watts or 800 to 1,200 starting surge watts) must be explicitly identified as representative, illustrative examples typical of modern residential units.
+- **No Universal Generalizations:** State that power demands vary by compressor design (digital variable-speed inverter vs. single-speed reciprocating), unit volume, ambient conditions, and age.
+- **Instruct Verification:** Direct users to verify exact ratings on their appliance data rating plate, owner manual, or manufacturer specification sheet.

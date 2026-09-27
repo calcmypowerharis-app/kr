@@ -586,6 +586,50 @@ export const GENERATOR_SCENARIO_PRESETS: Record<string, GeneratorScenarioPreset>
       },
     ],
   },
+  "refrigerator-outage": {
+    id: "refrigerator-outage",
+    name: "Kitchen Refrigerator Outage Plan",
+    description:
+      "Essential food preservation and communication circuits: Energy Star French-door refrigerator, Wi-Fi router, LED room lighting, and phone/laptop charging.",
+    appliances: [
+      {
+        id: "scenario_refrigerator",
+        name: "French-Door Refrigerator (Energy Star)",
+        category: "kitchen",
+        quantity: 1,
+        runningWatts: 160,
+        startingWatts: 1200,
+        isCustom: false,
+      },
+      {
+        id: "scenario_router",
+        name: "Internet Router & Fiber ONT",
+        category: "electronics",
+        quantity: 1,
+        runningWatts: 25,
+        startingWatts: 25,
+        isCustom: false,
+      },
+      {
+        id: "scenario_lighting",
+        name: "LED Lighting (4 Rooms / 8 Bulbs)",
+        category: "electronics",
+        quantity: 1,
+        runningWatts: 60,
+        startingWatts: 60,
+        isCustom: false,
+      },
+      {
+        id: "scenario_chargers",
+        name: "Smartphone & Laptop Chargers",
+        category: "electronics",
+        quantity: 1,
+        runningWatts: 80,
+        startingWatts: 80,
+        isCustom: false,
+      },
+    ],
+  },
 };
 
 /**

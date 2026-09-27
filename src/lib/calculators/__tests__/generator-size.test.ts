@@ -394,6 +394,25 @@ describe("Generator Size Calculator Engine", () => {
     });
   });
 
+  describe("P1: Kitchen Refrigerator Outage Plan Scenario Preset", () => {
+    it("matches the exact article worked example numbers (325W running, 1,040W surge delta, 1,365W peak, 1,706W planning capacity)", () => {
+      const scenario = getGeneratorScenario("refrigerator-outage");
+      expect(scenario).not.toBeNull();
+      expect(scenario?.appliances.length).toBe(4);
+
+      const result = calculateGeneratorSize({ appliances: scenario!.appliances });
+      expect(result.isValid).toBe(true);
+      expect(result.totalRunningWatts).toBe(325);
+      expect(result.largestAdditionalStartingWatts).toBe(1040);
+      expect(result.surgeDriverName).toBe("French-Door Refrigerator (Energy Star)");
+      expect(result.peakStartingDemand).toBe(1365);
+      expect(result.planningCapacityWatts).toBe(1706.25);
+      expect(Math.round(result.planningCapacityWatts)).toBe(1706);
+      expect(result.planningKw).toBeCloseTo(1.70625, 4);
+      expect(Number(result.planningKw.toFixed(1))).toBe(1.7);
+    });
+  });
+
   // P2: Contractor / Electrician Clipboard Summary Formatter Verification
   describe("P2: Contractor / Electrician Clipboard Summary Formatter", () => {
     it("formats a complete plain-text summary with exact calculations, loads, and safety notes", () => {
