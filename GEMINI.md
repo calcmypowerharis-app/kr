@@ -947,6 +947,11 @@ Requirements:
 
 Do not list every H3 or minor subsection.
 
+Sticky Sidebar Grid Rule:
+- Never apply `items-start` (`align-items: start`) to the parent grid container wrapping `<aside>`. In CSS Grid, `items-start` collapses the `<aside>` track height to match its content, eliminating the vertical track needed for `position: sticky` and causing the sidebar to scroll off-screen.
+- Allow the `<aside>` grid column to stretch to the full height of the adjacent article content so sticky navigation stays pinned down the entire page.
+- Keep the sticky sidebar component compact (under ~650px total height) so the header, reading percentage, active section label, all section links, useful tools, and CTA button remain visible inside 800px to 900px desktop viewports without vertical clipping.
+
 #### 20. Active Section Tracking
 When a TOC exists:
 - highlight the section currently being read

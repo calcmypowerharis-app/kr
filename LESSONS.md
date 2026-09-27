@@ -121,3 +121,25 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Rule:** Never truncate technical identifiers, appliance lists, or calculation drivers with `line-clamp`. Allow text to wrap naturally within responsive grid cells.
 - **Prevention:** Visual audit across mobile (`390px`) and desktop (`1280px`/`1440px`) viewports.
 
+---
+
+## Lesson 018: Never Place `items-start` on Parent Grid Containers Wrapping Sticky `<aside>`
+- **Context:** Setting `items-start` (`align-items: start`) on a CSS Grid container (`<div className="lg:grid ... items-start">`) collapses the `<aside>` grid column height to the height of its immediate content (~650px) rather than stretching to the full height of the adjacent article content (~12,000px). Because a `position: sticky` child can only stick within the bounds of its direct parent, `<nav className="sticky top-20">` runs out of vertical track immediately and scrolls off-screen.
+- **Rule:** Never apply `items-start` to grid wrappers containing a sticky sidebar. Allow the grid column to stretch to the full height of the article row. Additionally, keep the sidebar component compact (under ~650px total height) so the reading percentage, active section label, all section links, useful tools, and CTA button remain visible inside 800px–900px viewports without vertical clipping.
+- **Prevention:** Test desktop scrolling at both mid-article and end-of-article scroll offsets using Chrome DevTools screenshots to confirm the sidebar remains pinned throughout the entire page.
+
+---
+
+## Lesson 019: Absolute Prohibition of Em/En Dashes and Double/Triple Hyphens in Article Prose
+- **Context:** Large language models routinely insert em dashes (`—`), en dashes (`–`), or double/triple hyphens (`--`/`---`) as sentence breaks, parenthetical breaks, or range indicators, creating recognizable synthetic writing patterns in violation of GEMINI.md.
+- **Rule:** Ban `—`, `–`, `--`, and `---` from normal editorial prose. Use standard commas, parentheses, colons, or periods for sentence breaks. Use the word "to" for all numerical and unit ranges (e.g., `5 to 10 kW`, `$600 to $2,500`, `18 to 24 kW`). Hyphens (`-`) are permitted only inside compound adjectives (e.g. `whole-house`, `120-volt`), code, and URLs.
+- **Prevention:** Run an automated pre-commit script scanning article source files for `—`, `–`, `--`, and `---` before declaring any editorial article complete.
+
+---
+
+## Lesson 020: Autonomous End-to-End Live Deployment Execution
+- **Context:** Hesitating or pausing between git commit, git push, and live verification when the Lead has provided explicit authorization creates unnecessary round-trips.
+- **Rule:** When the Lead authorizes a live deployment, execute the full pipeline end-to-end without pausing: run tests, typecheck, lint, build, staged secret scan, git commit, git push origin main, poll live production URL for 200 OK + expected content, and perform live Chrome DevTools smoke QA with screenshots.
+- **Prevention:** Follow Section 23 deployment order deterministically and verify the live production URL directly.
+
+
