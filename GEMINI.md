@@ -564,6 +564,139 @@ When an article is complete, report:
 
 STOP after the report unless the Lead gives another instruction.
 
+### 23. U.S. English, Audience & Editorial Language Standard
+
+#### U.S. Audience Targeting
+
+CalcMyPower primarily targets U.S. readers.
+
+All future English editorial content should use natural U.S. English and U.S.-appropriate terminology unless the article specifically targets another market.
+
+Use:
+- U.S. spelling
+- U.S. terminology
+- U.S. residential/electrical vocabulary
+- U.S. examples and context
+- U.S. safety agencies and standards when appropriate
+
+Examples:
+- color, not colour
+- center, not centre
+- analyze, not analyse
+- program, not programme
+- apartment/condo where appropriate to U.S. context
+- utility outage
+- breaker panel
+- transfer switch
+- central air / central AC
+- furnace
+- homeowner
+- utility company
+- ZIP code
+- feet, inches, miles, pounds, gallons where appropriate
+
+Use U.S. customary units where they are natural for the subject.
+Keep SI/electrical units such as W, kW, A, V, Ah, kWh where technically required.
+
+Do not convert every technical quantity into unnecessary dual units.
+
+#### Natural U.S. Voice
+
+Write in clear, conversational U.S. technical English.
+
+The tone should be:
+- practical
+- direct
+- knowledgeable
+- calm
+- easy for a U.S. homeowner to understand
+
+Do not imitate slang.
+
+Do not use Pakistani, South Asian, British, or translated phrasing unless the article explicitly targets that audience.
+
+Do not write overly formal textbook English when ordinary U.S. wording is clearer.
+
+Do not overuse phrases such as:
+- "whilst"
+- "amongst"
+- "whilst using"
+- "in order to"
+- "the aforementioned"
+- "henceforth"
+- "therein"
+
+Prefer plain U.S. wording.
+
+#### U.S. Reader Context
+
+Where appropriate, use realistic U.S. household examples:
+- 120/240V residential service
+- 60 Hz
+- central AC
+- furnace
+- refrigerator/freezer
+- sump pump
+- well pump
+- utility outage
+- standby generator
+- portable generator
+- transfer switch
+
+Do not assume every U.S. home has the same electrical system or appliance mix.
+
+Qualify regional/model-specific differences.
+
+#### U.S. Source Preference
+
+When sourcing safety, electrical, energy, or residential claims, prioritize relevant U.S. sources where available, such as:
+- CPSC
+- CDC
+- DOE
+- NFPA
+- state/local authorities
+- manufacturer documentation
+
+Do not fabricate U.S. experience or credentials.
+
+#### Human Editorial Language
+
+Before completion, read the complete article as a U.S. reader.
+
+Look for:
+- translated wording
+- robotic wording
+- excessive formality
+- repetitive sentence structures
+- repetitive section openings
+- unnatural keyword placement
+- unnecessary marketing phrases
+- repetitive conclusions
+- repetitive "This means..." patterns
+- unnecessary "It is important to note..." language
+- excessive use of colons and semicolons
+- overly polished AI-style phrasing
+
+Prefer:
+- clear direct statements
+- concrete examples
+- natural transitions
+- varied sentence lengths
+- normal U.S. editorial language
+
+Do not intentionally write to evade AI detectors.
+The goal is genuinely useful, original, human-reviewed content.
+
+#### Do Not Make the Article Longer Just to Look "Human"
+
+Do NOT add paragraphs simply to:
+- make the article longer
+- create visual fullness
+- increase keyword coverage
+- appear less AI-generated
+
+Improve wording by editing, combining, removing, and clarifying.
+
 ## 22. Permanent Article Editorial + UX Standard
 
 ### A. Human Editorial Quality
@@ -722,16 +855,18 @@ Do not make unsupported definitive claims.
 
 ### B. Punctuation Standard
 
-#### 15. Em Dash Prohibition
-Do NOT use the em dash character:
-"—"
-as sentence punctuation anywhere in normal article prose.
+#### 15. Em Dash & Dash-Sequence Prohibition
+For editorial articles, do NOT use:
+- em dash: "—"
+- en dash: "–"
+- double hyphen used as punctuation: "--"
+- triple hyphen used as punctuation: "---"
 
-Do NOT use the en dash character:
-"–"
-as decorative prose punctuation.
+Do NOT use the em dash character "—" as sentence punctuation anywhere in normal article prose.
+Do NOT use the en dash character "–" as decorative prose punctuation.
+These characters/sequences must NOT appear as sentence-break punctuation.
 
-For ranges, prefer:
+For ranges, write:
 "5 to 10 kW"
 instead of:
 "5–10 kW"
@@ -743,25 +878,28 @@ For sentence breaks use:
 - semicolon
 - parentheses
 
-The normal hyphen "-" remains allowed where grammatically or technically appropriate:
+The normal hyphen "-" remains allowed only when grammatically or technically appropriate:
 - whole-house
 - 120-volt
 - 240-volt
 - fuel-specific
 
-Hyphens remain allowed in:
+Hyphens remain allowed inside:
 - URLs
 - slugs
 - filenames
 - code
 - technical identifiers
 
-#### 16. Final Punctuation Check
-Before reporting an article complete:
-- search the article prose for "—"
-- search the article prose for "–"
+#### 16. Final Punctuation Check / Final Prose Scan
+Before an article is reported complete, search the article source/text for:
+- "—"
+- "–"
+- "--"
+- "---"
 
-Neither should remain in normal prose.
+Any occurrence in ordinary prose must be reviewed and removed so none remain in normal prose.
+Do not blindly remove valid code, URLs, slugs, or technical identifiers.
 
 ### C. Article UX / Information Architecture
 

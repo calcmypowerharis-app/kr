@@ -19,7 +19,7 @@ import {
 } from "@/lib/seo/schema";
 import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { TableOfContents } from "@/components/article/TableOfContents";
-import { MobileTableOfContents } from "@/components/article/MobileTableOfContents";
+import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TOC_ITEMS } from "@/components/article/tocData";
 
 export const metadata: Metadata = {
@@ -59,7 +59,7 @@ const FAQ_DATA = [
   {
     question: "What size generator do I need for a house?",
     answer:
-      "For basic survival circuits (refrigerator, natural gas furnace blower, internet router, lights, and phones), most homes require 3,500 to 5,000 running Watts. If your home depends on a 1/2 HP sump pump or deep-well pump, plan for 5,000 to 7,500 Watts to handle motor starting inrush. Powering a 3-ton to 4-ton central air conditioner or an all-electric home requires roughly 9,000 to 12,000 Watts on a large portable generator or 18,000 to 24,000 Watts (18–24 kW) on a permanent standby generator.",
+      "For basic survival circuits (refrigerator, natural gas furnace blower, internet router, lights, and phones), most homes require 3,500 to 5,000 running Watts. If your home depends on a 1/2 HP sump pump or deep-well pump, plan for 5,000 to 7,500 Watts to handle motor starting inrush. Powering a 3-ton to 4-ton central air conditioner or an all-electric home requires roughly 9,000 to 12,000 Watts on a large portable generator or 18,000 to 24,000 Watts (18 to 24 kW) on a permanent standby generator.",
   },
   {
     question: "Is a 5,000-watt generator enough for a house?",
@@ -79,7 +79,7 @@ const FAQ_DATA = [
   {
     question: "What is the difference between running watts and starting watts?",
     answer:
-      "Running watts (continuous watts) is the steady power an appliance consumes during normal operation. Starting watts (surge watts) is the momentary surge of power—often 2 to 3 times the running watts—required for 1 to 3 seconds by motor-driven equipment (refrigerators, pumps, air conditioners) to break mechanical inertia and spin up from a stop.",
+      "Running watts (continuous watts) is the steady power an appliance consumes during normal operation. Starting watts (surge watts) is the momentary surge of power (often 2 to 3 times the running watts) required for 1 to 3 seconds by motor-driven equipment (refrigerators, pumps, air conditioners) to break mechanical inertia and spin up from a stop.",
   },
   {
     question: "What size generator do I need for a 2,000 sq ft house?",
@@ -179,11 +179,11 @@ export default function GeneratorSizingGuidePage() {
           </figcaption>
         </figure>
 
-        {/* Mobile On This Page */}
-        <MobileTableOfContents items={TOC_ITEMS} />
+        {/* Floating Mobile Navigator */}
+        <MobileArticleNavigator items={TOC_ITEMS} />
 
         {/* Two-Column Editorial Layout */}
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] xl:grid-cols-[minmax(0,1fr)_300px] lg:gap-10 items-start">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] xl:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
           {/* Main Article Content */}
           <div id="article-content" className="min-w-0 space-y-12 text-slate-700 leading-relaxed text-base">
             {/* Direct Answer / Opening Section */}
@@ -193,7 +193,7 @@ export default function GeneratorSizingGuidePage() {
               </p>
 
               <p>
-                For basic emergency preservation—keeping food cold in a refrigerator, powering a natural gas furnace blower for heat, running a Wi-Fi router, charging phones, and operating several LED lights—most homes require approximately <strong>3,500 to 5,000 running Watts</strong>. If your basement relies on a 1/2 HP sump pump to prevent flooding or domestic water comes from a 240V deep-well submersible pump, planned capacity rises to <strong>5,000 to 7,500 Watts</strong>. Sizing your electrical requirements with our{" "}
+                For basic emergency preservation (keeping food cold in a refrigerator, powering a natural gas furnace blower for heat, running a Wi-Fi router, charging phones, and operating several LED lights), most homes require approximately <strong>3,500 to 5,000 running Watts</strong>. If your basement relies on a 1/2 HP sump pump to prevent flooding or domestic water comes from a 240V deep-well submersible pump, planned capacity rises to <strong>5,000 to 7,500 Watts</strong>. Sizing your electrical requirements with our{" "}
                 <Link
                   href="/generator-size-calculator"
                   className="text-blue-600 font-semibold hover:underline"
@@ -204,7 +204,7 @@ export default function GeneratorSizingGuidePage() {
               </p>
 
               <p>
-                Whole-house backup that includes central air conditioning (3 to 4 tons), an electric water heater, or an electric range enters a different class altogether: either an oversized portable generator producing <strong>9,000 to 12,000 Watts</strong>, or a permanently installed standby generator rated between <strong>18,000 and 24,000 Watts (18–24 kW)</strong>.
+                Whole-house backup that includes central air conditioning (3 to 4 tons), an electric water heater, or an electric range enters a different class altogether: either an oversized portable generator producing <strong>9,000 to 12,000 Watts</strong>, or a permanently installed standby generator rated between <strong>18,000 and 24,000 Watts (18 to 24 kW)</strong>.
               </p>
 
               {/* Quick Reference Summary */}
@@ -215,24 +215,24 @@ export default function GeneratorSizingGuidePage() {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
                   <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 text-base block">3,500W – 5,000W</span>
+                    <span className="font-mono font-bold text-blue-600 text-base block">3,500W to 5,000W</span>
                     <span className="font-semibold text-slate-800 block">Critical Essentials</span>
                     <p className="text-slate-600 text-xs">
                       Refrigerator, gas furnace blower, internet router, phone chargers, TV, and basic room lighting.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 text-base block">5,000W – 8,000W</span>
+                    <span className="font-mono font-bold text-blue-600 text-base block">5,000W to 8,000W</span>
                     <span className="font-semibold text-slate-800 block">Pumps &amp; Heavy Essentials</span>
                     <p className="text-slate-600 text-xs">
                       Essentials plus a 1/2 HP sump pump, a 240V well pump, microwave oven, and an occasional small window AC.
                     </p>
                   </div>
                   <div className="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
-                    <span className="font-mono font-bold text-blue-600 text-base block">18,000W – 24,000W</span>
+                    <span className="font-mono font-bold text-blue-600 text-base block">18,000W to 24,000W</span>
                     <span className="font-semibold text-slate-800 block">Whole-House Standby</span>
                     <p className="text-slate-600 text-xs">
-                      Central air conditioning (3–5 tons), electric water heating, electric cooking, and unmanaged circuit usage.
+                      Central air conditioning (3 to 5 tons), electric water heating, electric cooking, and unmanaged circuit usage.
                     </p>
                   </div>
                 </div>
@@ -311,7 +311,7 @@ export default function GeneratorSizingGuidePage() {
           </p>
 
           <p>
-            Resistive loads—including incandescent lights, electric space heaters, toasters, and water heater elements—turn electricity directly into heat or light through simple resistance. These devices exhibit virtually zero startup surge. A 1,500-Watt space heater draws 1,500 Watts the moment it turns on and continues drawing 1,500 Watts until the thermostat clicks off. To convert individual equipment ratings between electrical units, you can use our{" "}
+            Resistive loads (including incandescent lights, electric space heaters, toasters, and water heater elements) turn electricity directly into heat or light through simple resistance. These devices exhibit virtually zero startup surge. A 1,500-Watt space heater draws 1,500 Watts the moment it turns on and continues drawing 1,500 Watts until the thermostat clicks off. To convert individual equipment ratings between electrical units, you can use our{" "}
             <Link
               href="/watts-to-amps-calculator"
               className="text-blue-600 font-semibold hover:underline"
@@ -339,57 +339,57 @@ export default function GeneratorSizingGuidePage() {
               <tbody className="divide-y divide-slate-200 bg-white">
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">Refrigerator / Freezer (Energy Star)</td>
-                  <td className="p-3">150 – 200 W</td>
+                  <td className="p-3">150 to 200 W</td>
                   <td className="p-3">1,200 W</td>
-                  <td className="p-3 text-amber-700 font-semibold">+1,000 – 1,050 W</td>
+                  <td className="p-3 text-amber-700 font-semibold">+1,000 to 1,050 W</td>
                   <td className="p-3 text-slate-500">Inductive (Motor)</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">Sump Pump (1/2 HP, 120V)</td>
-                  <td className="p-3">800 – 1,000 W</td>
-                  <td className="p-3">1,800 – 2,200 W</td>
-                  <td className="p-3 text-amber-700 font-semibold">+1,000 – 1,200 W</td>
+                  <td className="p-3">800 to 1,000 W</td>
+                  <td className="p-3">1,800 to 2,200 W</td>
+                  <td className="p-3 text-amber-700 font-semibold">+1,000 to 1,200 W</td>
                   <td className="p-3 text-slate-500">Inductive (Motor)</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">Submersible Well Pump (1/2 HP, 240V)</td>
-                  <td className="p-3">1,000 – 1,200 W</td>
-                  <td className="p-3">2,500 – 3,000 W</td>
-                  <td className="p-3 text-amber-700 font-semibold">+1,500 – 1,800 W</td>
+                  <td className="p-3">1,000 to 1,200 W</td>
+                  <td className="p-3">2,500 to 3,000 W</td>
+                  <td className="p-3 text-amber-700 font-semibold">+1,500 to 1,800 W</td>
                   <td className="p-3 text-slate-500">Inductive (240V Motor)</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">Gas Furnace Blower Fan (1/2 HP)</td>
-                  <td className="p-3">600 – 800 W</td>
-                  <td className="p-3">1,600 – 2,000 W</td>
-                  <td className="p-3 text-amber-700 font-semibold">+1,000 – 1,200 W</td>
+                  <td className="p-3">600 to 800 W</td>
+                  <td className="p-3">1,600 to 2,000 W</td>
+                  <td className="p-3 text-amber-700 font-semibold">+1,000 to 1,200 W</td>
                   <td className="p-3 text-slate-500">Inductive (Motor)</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">Central AC (3-Ton / 36,000 BTU)</td>
-                  <td className="p-3">3,200 – 3,800 W</td>
-                  <td className="p-3">7,500 – 9,500 W</td>
-                  <td className="p-3 text-amber-700 font-semibold">+4,300 – 5,700 W</td>
+                  <td className="p-3">3,200 to 3,800 W</td>
+                  <td className="p-3">7,500 to 9,500 W</td>
+                  <td className="p-3 text-amber-700 font-semibold">+4,300 to 5,700 W</td>
                   <td className="p-3 text-slate-500">Heavy Inductive</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">Microwave Oven (1,000W Cooking)</td>
-                  <td className="p-3">1,200 – 1,500 W</td>
-                  <td className="p-3">1,200 – 1,500 W</td>
+                  <td className="p-3">1,200 to 1,500 W</td>
+                  <td className="p-3">1,200 to 1,500 W</td>
                   <td className="p-3 text-slate-500">0 W</td>
                   <td className="p-3 text-slate-500">Resistive / Electronic</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">Home Wi-Fi Router &amp; ONT</td>
-                  <td className="p-3">20 – 35 W</td>
-                  <td className="p-3">20 – 35 W</td>
+                  <td className="p-3">20 to 35 W</td>
+                  <td className="p-3">20 to 35 W</td>
                   <td className="p-3 text-slate-500">0 W</td>
                   <td className="p-3 text-slate-500">Electronic</td>
                 </tr>
                 <tr>
                   <td className="p-3 font-semibold text-slate-900">LED Home Lighting (4 Rooms)</td>
-                  <td className="p-3">120 – 160 W</td>
-                  <td className="p-3">120 – 160 W</td>
+                  <td className="p-3">120 to 160 W</td>
+                  <td className="p-3">120 to 160 W</td>
                   <td className="p-3 text-slate-500">0 W</td>
                   <td className="p-3 text-slate-500">Lighting</td>
                 </tr>
@@ -564,7 +564,7 @@ export default function GeneratorSizingGuidePage() {
                 <strong>Continuous Rating:</strong> Total continuous running load in this scenario is 2,955 Watts. While a 5,000-Watt rated continuous generator can carry the running load, our calculated planning capacity of 5,069 Watts (which includes the 25% planning margin above the single-motor peak) slightly exceeds 5,000 Watts. To maintain comfortable headroom and avoid loading the engine past 80%, equipment in the illustrative <strong>5,500 to 6,500-Watt continuous class</strong> serves as a practical target for this load profile.
               </li>
               <li>
-                <strong>Surge Capability:</strong> The generator&apos;s momentary surge rating must comfortably exceed the 4,055-Watt peak. Portable generators in this illustrative 5,500W–6,500W continuous class frequently provide around 6,800W to 8,500W of starting surge capacity depending on the manufacturer and model, easily absorbing the furnace blower&apos;s inrush demand.
+                <strong>Surge Capability:</strong> The generator&apos;s momentary surge rating must comfortably exceed the 4,055-Watt peak. Portable generators in this illustrative 5,500W to 6,500W continuous class frequently provide around 6,800W to 8,500W of starting surge capacity depending on the manufacturer and model, easily absorbing the furnace blower&apos;s inrush demand.
               </li>
               <li>
                 <strong>Voltage &amp; Circuit Requirements:</strong> Because this setup feeds circuits across both panel bus bars through a home transfer switch, a dual-voltage 120V/240V connection is required (a common example on portable generators in this class is a 120/240V, 30A 4-prong locking configuration such as a NEMA L14-30 receptacle and power inlet box). The actual generator outlet, inlet box, transfer switch, wire gauge, and circuit breaker ratings must match your specific equipment and electrical installation requirements. A standard 120V-only generator cannot energize both bus bars in a split-phase panel without specialized transfer equipment.
@@ -692,7 +692,7 @@ export default function GeneratorSizingGuidePage() {
               <h3 className="font-bold text-slate-900 text-sm flex flex-wrap items-center justify-between gap-1">
                 <span>Running Central Air Conditioning</span>
                 <span className="text-xs font-mono font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                  Isolated Load: ~7,500–9,500W Starting Surge
+                  Isolated Load: ~7,500 to 9,500W Starting Surge
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -704,7 +704,7 @@ export default function GeneratorSizingGuidePage() {
               <h3 className="font-bold text-slate-900 text-sm flex flex-wrap items-center justify-between gap-1">
                 <span>Running a Sump Pump</span>
                 <span className="text-xs font-mono font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                  Isolated Load: ~1,800–2,200W Starting Surge
+                  Isolated Load: ~1,800 to 2,200W Starting Surge
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -716,7 +716,7 @@ export default function GeneratorSizingGuidePage() {
               <h3 className="font-bold text-slate-900 text-sm flex flex-wrap items-center justify-between gap-1">
                 <span>Running a Submersible Well Pump</span>
                 <span className="text-xs font-mono font-semibold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                  Isolated Load: ~2,500–3,500W Starting Surge (240V Required)
+                  Isolated Load: ~2,500 to 3,500W Starting Surge (240V Required)
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
@@ -750,10 +750,10 @@ export default function GeneratorSizingGuidePage() {
             <div className="border border-slate-200 rounded-2xl p-5 bg-white space-y-2.5 shadow-sm">
               <div className="flex items-center gap-2 text-slate-900 font-bold">
                 <Sliders className="w-5 h-5 text-blue-600" />
-                <h3 className="text-base">Portable Generators (3 kW – 12 kW)</h3>
+                <h3 className="text-base">Portable Generators (3 kW to 12 kW)</h3>
               </div>
               <ul className="text-xs sm:text-sm text-slate-600 space-y-1.5">
-                <li>• <strong>Typical Cost:</strong> $600 – $2,500 for the unit; $800 – $1,500 for transfer switch and inlet box installation.</li>
+                <li>• <strong>Typical Cost:</strong> $600 to $2,500 for the unit; $800 to $1,500 for transfer switch and inlet box installation.</li>
                 <li>• <strong>Fuel:</strong> Gasoline, 20-lb propane tanks, or dual-fuel options. Requires fresh fuel storage and regular stabilizer treatment.</li>
                 <li>• <strong>Operation:</strong> Manual setup. Must be wheeled outdoors, fueled, plugged in, and started in storm conditions.</li>
                 <li>• <strong>Best Suited For:</strong> Sump pumps, refrigeration, heating controls, and homeowners comfortable with manual deployment.</li>
@@ -763,11 +763,11 @@ export default function GeneratorSizingGuidePage() {
             <div className="border border-slate-200 rounded-2xl p-5 bg-white space-y-2.5 shadow-sm">
               <div className="flex items-center gap-2 text-slate-900 font-bold">
                 <Plug className="w-5 h-5 text-emerald-600" />
-                <h3 className="text-base">Whole-House Standby (14 kW – 26 kW)</h3>
+                <h3 className="text-base">Whole-House Standby (14 kW to 26 kW)</h3>
               </div>
               <ul className="text-xs sm:text-sm text-slate-600 space-y-1.5">
-                <li>• <strong>Typical Cost:</strong> $4,000 – $7,500 for the unit; $3,000 – $6,000 for electrical wiring, gas piping, and municipal permits.</li>
-                <li>• <strong>Fuel:</strong> Hard-plumbed to natural gas utility lines or a large 250–500 gallon propane tank. Continuous runtime without refueling.</li>
+                <li>• <strong>Typical Cost:</strong> $4,000 to $7,500 for the unit; $3,000 to $6,000 for electrical wiring, gas piping, and municipal permits.</li>
+                <li>• <strong>Fuel:</strong> Hard-plumbed to natural gas utility lines or a large 250 to 500 gallon propane tank. Continuous runtime without refueling.</li>
                 <li>• <strong>Operation:</strong> Fully automatic. Senses utility outage, starts the engine, and transfers load within 10 to 20 seconds.</li>
                 <li>• <strong>Best Suited For:</strong> Central air conditioning, medical equipment, all-electric homes, and hands-off reliability.</li>
               </ul>
@@ -910,7 +910,7 @@ export default function GeneratorSizingGuidePage() {
                 Carbon Monoxide (CO) Poisoning (CDC &amp; CPSC Rule)
               </h3>
               <p className="text-xs sm:text-sm leading-relaxed">
-                The U.S. Consumer Product Safety Commission (CPSC) and Centers for Disease Control and Prevention (CDC) issue clear guidance: portable generator exhaust produces high levels of carbon monoxide (CO)—a colorless, odorless, and lethal gas.
+                The U.S. Consumer Product Safety Commission (CPSC) and Centers for Disease Control and Prevention (CDC) issue clear guidance: portable generator exhaust produces high levels of carbon monoxide (CO), a colorless, odorless, and lethal gas.
               </p>
               <ul className="text-xs sm:text-sm space-y-1 list-disc pl-5">
                 <li>Operate portable generators exclusively outdoors, at least <strong>20 feet (6 meters)</strong> away from all windows, doors, vents, and air intakes.</li>
@@ -1043,11 +1043,11 @@ export default function GeneratorSizingGuidePage() {
             </li>
             <li>
               <strong>U.S. Department of Energy (DOE):</strong>{" "}
-              <span className="italic">Energy Saver — Estimating Appliance and Home Electronic Energy Use</span>.
+              <span className="italic">Energy Saver: Estimating Appliance and Home Electronic Energy Use</span>.
             </li>
             <li>
               <strong>Manufacturer Engineering Guidelines:</strong>{" "}
-              <span className="italic">Cummins Power Generation, Generac Power Systems, and Kohler Power Systems Technical Sizing Manuals</span> (Motor starting inrush, Locked Rotor Amps, and 70–80% continuous operating band recommendations).
+              <span className="italic">Cummins Power Generation, Generac Power Systems, and Kohler Power Systems Technical Sizing Manuals</span> (Motor starting inrush, Locked Rotor Amps, and 70 to 80% continuous operating band recommendations).
             </li>
             <li>
               <strong>Small Engine &amp; Generator Manufacturer Guidelines:</strong>{" "}

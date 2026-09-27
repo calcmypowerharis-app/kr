@@ -1,45 +1,20 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { Zap, ArrowRight, BookOpen, Calculator, Cpu, BatteryCharging } from "lucide-react";
 import { TOC_ITEMS, TocItem } from "./tocData";
-import { useReadingProgress } from "./useReadingProgress";
+import { useReadingProgress, useActiveSection } from "./useReadingProgress";
 
 interface TableOfContentsProps {
   items?: TocItem[];
 }
 
 export const TableOfContents: React.FC<TableOfContentsProps> = ({ items = TOC_ITEMS }) => {
-  const [activeId, setActiveId] = useState<string>(items[0]?.id || "");
+  const activeId = useActiveSection(items);
   const progress = useReadingProgress("article-content");
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Collect intersecting entries
-        const intersecting = entries.filter((entry) => entry.isIntersecting);
-        if (intersecting.length > 0) {
-          // Select the top-most intersecting section
-          const sorted = intersecting.sort(
-            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
-          );
-          setActiveId(sorted[0].target.id);
-        }
-      },
-      {
-        rootMargin: "-100px 0px -65% 0px",
-        threshold: 0,
-      }
-    );
-
-    items.forEach((item) => {
-      const el = document.getElementById(item.id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [items]);
+  const currentItem = items.find((item) => item.id === activeId) || items[0];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -47,30 +22,41 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items = TOC_IT
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
       history.pushState(null, "", `#${id}`);
-      setActiveId(id);
     }
   };
 
   return (
     <nav
       aria-label="Table of contents"
-      className="sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto space-y-5 pr-2 select-none"
+      className="sticky top-20 space-y-3 select-none"
     >
-      {/* On This Page Navigation Module */}
-      <div className="border border-slate-200 rounded-2xl p-4 bg-white shadow-sm space-y-3">
-        <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+      {/* 1. Header with Reading Progress & Currently Reading Section */}
+      <div className="border border-slate-200 rounded-2xl p-3.5 bg-white shadow-sm space-y-2.5">
+        {/* Progress pill & label */}
+        <div className="flex items-center justify-between border-b border-slate-100 pb-2">
           <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-blue-600" />
+            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
             <span className="font-bold text-slate-900 text-xs uppercase tracking-wider">
               On This Page
             </span>
           </div>
-          <span className="text-[11px] font-mono font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full">
+          <span className="text-[11px] font-mono font-bold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-full">
             {progress}% read
           </span>
         </div>
 
-        <ul className="space-y-1 text-xs border-l border-slate-200 ml-1">
+        {/* 2. Currently Reading Indicator */}
+        <div className="bg-slate-50 border border-slate-200/80 rounded-xl px-2.5 py-2 space-y-0.5">
+          <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">
+            Currently Reading
+          </span>
+          <p className="text-xs font-semibold text-slate-900 leading-snug truncate">
+            {currentItem?.label}
+          </p>
+        </div>
+
+        {/* 3. On This Page Section Anchors */}
+        <ul className="space-y-0.5 text-xs border-l border-slate-200 ml-1 pt-0.5">
           {items.map((item) => {
             const isActive = activeId === item.id;
             return (
@@ -78,7 +64,8 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items = TOC_IT
                 <a
                   href={`#${item.id}`}
                   onClick={(e) => handleScrollTo(e, item.id)}
-                  className={`block py-1 pl-3 -ml-px border-l-2 transition rounded-r-md ${
+                  aria-current={isActive ? "location" : undefined}
+                  className={`block py-1 pl-3 -ml-px border-l-2 transition rounded-r-md leading-snug ${
                     isActive
                       ? "border-blue-600 text-blue-700 font-semibold bg-blue-50/70"
                       : "border-transparent text-slate-600 hover:text-slate-900 hover:border-slate-300"
@@ -92,20 +79,20 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items = TOC_IT
         </ul>
       </div>
 
-      {/* Useful Tools Sidebar Module */}
-      <div className="border border-slate-200 rounded-2xl p-4 bg-slate-50/80 shadow-sm space-y-3">
+      {/* 4. Useful Power Tools Module */}
+      <div className="border border-slate-200 rounded-2xl p-3.5 bg-slate-50/80 shadow-sm space-y-2.5">
         <div className="flex items-center gap-2">
-          <Calculator className="w-4 h-4 text-blue-600" />
+          <Calculator className="w-3.5 h-3.5 text-blue-600" />
           <h3 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
             Useful Power Tools
           </h3>
         </div>
 
-        <ul className="space-y-2 text-xs">
+        <ul className="space-y-1 text-xs">
           <li>
             <Link
               href="/generator-size-calculator"
-              className="font-medium text-slate-700 hover:text-blue-600 flex items-center justify-between group p-1.5 rounded-lg hover:bg-white transition"
+              className="font-medium text-slate-700 hover:text-blue-600 flex items-center justify-between group px-1.5 py-1 rounded-lg hover:bg-white transition"
             >
               <span className="flex items-center gap-2">
                 <Zap className="w-3.5 h-3.5 text-blue-500" />
@@ -117,7 +104,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items = TOC_IT
           <li>
             <Link
               href="/watts-to-amps-calculator"
-              className="font-medium text-slate-700 hover:text-blue-600 flex items-center justify-between group p-1.5 rounded-lg hover:bg-white transition"
+              className="font-medium text-slate-700 hover:text-blue-600 flex items-center justify-between group px-1.5 py-1 rounded-lg hover:bg-white transition"
             >
               <span className="flex items-center gap-2">
                 <Cpu className="w-3.5 h-3.5 text-blue-500" />
@@ -129,7 +116,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items = TOC_IT
           <li>
             <Link
               href="/ups-battery-backup-calculator"
-              className="font-medium text-slate-700 hover:text-blue-600 flex items-center justify-between group p-1.5 rounded-lg hover:bg-white transition"
+              className="font-medium text-slate-700 hover:text-blue-600 flex items-center justify-between group px-1.5 py-1 rounded-lg hover:bg-white transition"
             >
               <span className="flex items-center gap-2">
                 <BatteryCharging className="w-3.5 h-3.5 text-blue-500" />
