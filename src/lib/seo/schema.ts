@@ -81,3 +81,55 @@ export function generateWebSiteSchema({
   };
 }
 
+export function generateArticleSchema({
+  headline,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  authorName = "CalcMyPower Technical Publishing",
+  publisherName = "CalcMyPower",
+  publisherUrl = "https://calcmypower.com",
+  images = [],
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+  authorName?: string;
+  publisherName?: string;
+  publisherUrl?: string;
+  images?: string[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline,
+    description,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    url,
+    datePublished,
+    dateModified,
+    author: {
+      "@type": "Organization",
+      name: authorName,
+      url: publisherUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: publisherName,
+      url: publisherUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${publisherUrl}/icon.svg`,
+      },
+    },
+    image: images,
+  };
+}
+
+
