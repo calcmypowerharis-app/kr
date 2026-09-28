@@ -205,3 +205,38 @@ This log records major technical and product decisions, context, rationale, and 
 - **Decision:** Structure the homepage around four focused sections: (1) Compact Hero, (2) 3 Live Calculators with governing equations and bulleted outputs, (3) Compact "More Calculators in Development" roadmap table, and (4) Brief Methodology & Standards Note.
 - **Rationale:** Surfaces all live tools above or near the fold, eliminates card duplication, and maintains honest roadmap signaling.
 
+---
+
+## Decision 020: Flat Root-Slug URL Architecture Combined with Topical Cluster Hub
+- **Date:** 2026-09-28
+- **Status:** Approved & Implemented
+- **Context:** Power and electrical tools frequently bridge multiple categories (e.g. `watts-to-amps-calculator` applies to Electricity, Solar, Batteries, and Generators; `ups-battery-backup-calculator` spans UPS and Battery Storage). Moving existing live URLs into nested `/[category]/[slug]` folders would create redirect debt, URL word repetition (`/generator/generator-size-calculator`), and rigid siloing.
+- **Decision:** Keep all calculator and editorial guide URLs at clean root-level slugs (`/[slug]`), organize topical clusters in `src/lib/seo/registry.ts` and on `/calculators` via cluster anchors (`/calculators#generators`, `/calculators#ups-battery`, `/calculators#electricity`), and gate standalone category index pages until a cluster contains at least 3 live calculators and 2 supporting guides.
+- **Rationale:** Preserves 100% of live indexed URLs, avoids thin 1-item category pages (complying with Google's Scaled Content Abuse policy), and establishes topical hierarchy through internal links, visible breadcrumbs, and structured data.
+
+---
+
+## Decision 021: Leaf-Level Suspense Boundary for `useSearchParams()` in Static Calculators
+- **Date:** 2026-09-28
+- **Status:** Approved & Implemented
+- **Context:** Calling `useSearchParams()` at the top of `GeneratorSizeCalculatorInner` and wrapping the entire `<CalculatorShell>` inside `<Suspense fallback={null}>` caused Next.js 15 to emit `BAILOUT_TO_CLIENT_SIDE_RENDERING` for the entire `/generator-size-calculator` page, leaving `<main>` devoid of `<h1>`, body text, and internal links in the static SSR HTML.
+- **Decision:** Isolate `useSearchParams()` into a leaf synchronization component (`<ScenarioUrlSync />`) wrapped in `<Suspense fallback={null}>` inside `<CalculatorShell>`. Initialize all calculator state deterministically on the server.
+- **Rationale:** Guarantees 100% static HTML pre-rendering of the `<h1>`, default calculation, formulas, worked examples, tables, FAQs, and internal links at build time while preserving client-side `?scenario=...` deep-link preloading.
+
+---
+
+## Decision 022: Native HTML5 `<details>` / `<summary>` for Calculator FAQs (`FaqSection.tsx`)
+- **Date:** 2026-09-28
+- **Status:** Approved & Implemented
+- **Context:** Conditionally mounting FAQ answers in React via `{isOpen && <div>{faq.answer}</div>}` with `openIndex = null` omitted all FAQ answers from the SSR HTML DOM, violating Google's `FAQPage` structured data visibility rules and hiding answers from non-clicking crawlers and browser `Ctrl+F` search.
+- **Decision:** Render all calculator FAQs using native HTML5 `<details>` and `<summary>` elements (with the first item open by default, `open={idx === 0}`).
+- **Rationale:** Ensures 100% of FAQ answers exist in the initial SSR HTML DOM, works without JavaScript, supports native browser Find-in-Page, and satisfies Google Search Central structured data and AEO/GEO requirements.
+
+---
+
+## Decision 023: Centralized SEO Registry & Verifiable Sitemap `lastModified` Dates
+- **Date:** 2026-09-28
+- **Status:** Approved & Implemented
+- **Context:** Google Search Central documentation specifies that `<priority>` and `<changefreq>` are ignored in XML sitemaps, and `<lastmod>` is only trusted when it accurately reflects the real modification date of a page rather than `new Date()` on every build.
+- **Decision:** Centralize all route metadata, topical cluster assignments, and explicit `YYYY-MM-DD` `lastModified` dates in `src/lib/seo/registry.ts`, driving `src/app/sitemap.ts` and automated SEO guardrails (`src/lib/seo/__tests__/seo-foundation.test.ts`).
+- **Rationale:** Prevents orphaned routes, eliminates inaccurate sitemap timestamps, and enforces automated build-time verification of titles, canonicals, and internal link density.

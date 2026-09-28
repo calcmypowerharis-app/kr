@@ -5,32 +5,16 @@ import {
   generateBreadcrumbSchema,
   generateFaqSchema,
 } from "@/lib/seo/schema";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Generator Size Calculator (Home Backup, RV & Portable)",
   description:
     "Calculate what size generator you need for home emergency backup, RV camping, or jobsite tools based on running watts, motor startup surges, and planning headroom.",
-  keywords: [
-    "generator size calculator",
-    "generator calculator",
-    "generator sizing calculator",
-    "generator load calculator",
-    "house generator size calculator",
-    "generator electric wattage calculator",
-    "what size generator do i need",
-    "rv generator size calculator",
-  ],
-  alternates: {
-    canonical: "https://calcmypower.com/generator-size-calculator",
-  },
-  openGraph: {
-    title: "Generator Size Calculator (Home Backup, RV & Portable) | CalcMyPower",
-    description:
-      "Calculate generator wattage requirements for home outages, RV air conditioning, or jobsite tools with motor surge handling and 25% planning headroom.",
-    url: "https://calcmypower.com/generator-size-calculator",
-    type: "website",
-  },
-};
+  path: "/generator-size-calculator",
+  ogDescription:
+    "Calculate generator wattage requirements for home outages, RV air conditioning, or jobsite tools with motor surge handling and 25% planning headroom.",
+});
 
 export default function GeneratorSizePage() {
   const webAppSchema = generateWebApplicationSchema({

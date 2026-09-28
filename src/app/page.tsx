@@ -15,16 +15,19 @@ import {
   Clock,
   Sparkles,
 } from "lucide-react";
-import { generateWebSiteSchema } from "@/lib/seo/schema";
+import {
+  generateOrganizationSchema,
+  generateWebSiteSchema,
+} from "@/lib/seo/schema";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "CalcMyPower | Power, Energy & Electrical Calculators",
   description:
     "Size backup battery banks, convert watts to amps across DC and AC circuits, and calculate portable or standby generator wattage with explicit equations and NEC-referenced assumptions.",
-  alternates: {
-    canonical: "https://calcmypower.com",
-  },
-};
+  path: "/",
+  isRoot: true,
+});
 
 interface LiveTool {
   id: string;
@@ -129,10 +132,15 @@ const PLANNED_TOOLS: PlannedTool[] = [
 ];
 
 export default function HomePage() {
+  const organizationSchema = generateOrganizationSchema();
   const websiteSchema = generateWebSiteSchema();
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
@@ -386,6 +394,43 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
+          </div>
+
+          {/* Secondary Featured Guide Card: Refrigerator Generator Sizing */}
+          <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-3xl">
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Appliance Outage Guide
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>10 min read</span>
+                </span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+                <Link
+                  href="/what-size-generator-to-run-a-refrigerator"
+                  className="hover:text-indigo-600 transition"
+                >
+                  What Size Generator Do I Need to Run a Refrigerator?
+                </Link>
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Determine exact running watts and compressor startup surge requirements for residential kitchen refrigerators, garage deep freezers, and simultaneous outage circuits, with extension cord AWG safety guidelines.
+              </p>
+            </div>
+
+            <Link
+              href="/what-size-generator-to-run-a-refrigerator"
+              className="px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-indigo-600 text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition shrink-0 self-start md:self-center"
+            >
+              <span>Read Fridge Sizing Guide</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </section>
 

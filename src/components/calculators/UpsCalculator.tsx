@@ -465,6 +465,12 @@ export const UpsCalculator: React.FC = () => {
             category: "Generator Sizing",
           },
           {
+            title: "What Size Generator Do I Need for My House?",
+            description: "Compare residential outage backup tiers from 3,500W essential circuits to whole-house standby systems.",
+            href: "/what-size-generator-do-i-need-for-my-house",
+            category: "Sizing Guide",
+          },
+          {
             title: "More Electrical & Power Calculators",
             description: "Browse all live power, battery backup, and electrical sizing calculators.",
             href: "/calculators",

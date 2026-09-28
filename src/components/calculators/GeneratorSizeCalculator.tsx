@@ -41,40 +41,42 @@ import {
   ApplianceCategory,
 } from "@/lib/calculators/generator-size";
 
-const GeneratorSizeCalculatorInner: React.FC = () => {
+const ScenarioUrlSync: React.FC<{
+  onScenarioLoad: (appliances: SelectedAppliance[], presetId: string) => void;
+}> = ({ onScenarioLoad }) => {
   const searchParams = useSearchParams();
   const scenarioParam = searchParams.get("scenario");
 
-  // State: selected appliances initialized with the "Essential Outage" editable preset
-  const [selectedAppliances, setSelectedAppliances] = useState<SelectedAppliance[]>(
-    () => {
-      if (scenarioParam) {
-        const scenario = getGeneratorScenario(scenarioParam);
-        if (scenario) return scenario.appliances;
-      }
-      return getEssentialOutagePreset();
-    }
-  );
-
-  // State: Active preset tracker for UX feedback
-  const [activePresetId, setActivePresetId] = useState<string | null>(() => {
-    if (scenarioParam) {
-      const scenario = getGeneratorScenario(scenarioParam);
-      if (scenario) return scenario.id;
-    }
-    return "essential_outage";
-  });
-
-  // Load scenario when URL parameter changes
   useEffect(() => {
     if (scenarioParam) {
       const scenario = getGeneratorScenario(scenarioParam);
       if (scenario) {
-        setSelectedAppliances(scenario.appliances);
-        setActivePresetId(scenario.id);
+        onScenarioLoad(scenario.appliances, scenario.id);
       }
     }
-  }, [scenarioParam]);
+  }, [scenarioParam, onScenarioLoad]);
+
+  return null;
+};
+
+export const GeneratorSizeCalculator: React.FC = () => {
+  // State: selected appliances initialized deterministically with the "Essential Outage" preset for SSR
+  const [selectedAppliances, setSelectedAppliances] = useState<SelectedAppliance[]>(
+    () => getEssentialOutagePreset()
+  );
+
+  // State: Active preset tracker for UX feedback
+  const [activePresetId, setActivePresetId] = useState<string | null>(
+    "essential_outage"
+  );
+
+  const handleScenarioLoad = useCallback(
+    (appliances: SelectedAppliance[], presetId: string) => {
+      setSelectedAppliances(appliances);
+      setActivePresetId(presetId);
+    },
+    []
+  );
 
   // State: Copy summary feedback
   const [copyState, setCopyState] = useState<"idle" | "copied" | "error">("idle");
@@ -1243,6 +1245,9 @@ const GeneratorSizeCalculatorInner: React.FC = () => {
       resultSection={resultSectionContent}
     >
       <div className="space-y-10">
+        <Suspense fallback={null}>
+          <ScenarioUrlSync onScenarioLoad={handleScenarioLoad} />
+        </Suspense>
         {/* Contextual Guide Link / Banner */}
         <div className="p-4 sm:p-5 rounded-2xl bg-blue-50/70 border border-blue-200/80 text-xs sm:text-sm text-slate-700 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2.5">
@@ -1576,6 +1581,13 @@ const GeneratorSizeCalculatorInner: React.FC = () => {
         <RelatedCalculators
           calculators={[
             {
+              title: "What Size Generator Do I Need for My House?",
+              description:
+                "Step-by-step residential outage sizing guide for furnaces, sump pumps, well pumps, and central air conditioners.",
+              href: "/what-size-generator-do-i-need-for-my-house",
+              category: "Sizing Guide",
+            },
+            {
               title: "UPS Battery Backup Run-Time Hours Calculator",
               description:
                 "Estimate how long an uninterruptible power supply or battery bank will sustain electronics, Wi-Fi, or computers during an outage.",
@@ -1600,13 +1612,5 @@ const GeneratorSizeCalculatorInner: React.FC = () => {
         />
       </div>
     </CalculatorShell>
-  );
-};
-
-export const GeneratorSizeCalculator: React.FC = () => {
-  return (
-    <Suspense fallback={null}>
-      <GeneratorSizeCalculatorInner />
-    </Suspense>
   );
 };

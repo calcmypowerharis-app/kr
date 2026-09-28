@@ -27,7 +27,7 @@ import { MobileArticleNavigator } from "@/components/article/MobileArticleNaviga
 import { TocItem } from "@/components/article/tocData";
 
 export const metadata: Metadata = {
-  title: "What Size Generator to Run a Refrigerator? Sizing Guide | CalcMyPower",
+  title: "What Size Generator to Run a Refrigerator? Sizing Guide",
   description:
     "Determine what size generator you need to run a refrigerator during a power outage based on running watts, compressor startup surge, and simultaneous household loads.",
   alternates: {
@@ -130,6 +130,10 @@ export default function RefrigeratorGeneratorSizingPage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
     {
+      name: "Generator Size Calculator",
+      url: "https://calcmypower.com/generator-size-calculator",
+    },
+    {
       name: "What Size Generator Do I Need to Run a Refrigerator?",
       url: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
     },
@@ -155,16 +159,23 @@ export default function RefrigeratorGeneratorSizingPage() {
       <ReadingProgressBar />
       <MobileArticleNavigator items={REFRIGERATOR_TOC_ITEMS} />
 
-      <main className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Breadcrumb Context */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-xs text-slate-500 mb-6"
+          className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6"
         >
           <Link href="/" className="hover:text-blue-600 transition">
             Home
           </Link>
-          <span>/</span>
+          <span aria-hidden="true">/</span>
+          <Link
+            href="/generator-size-calculator"
+            className="hover:text-blue-600 transition"
+          >
+            Generator Size Calculator
+          </Link>
+          <span aria-hidden="true">/</span>
           <span className="text-slate-800 font-semibold truncate">
             What Size Generator Do I Need to Run a Refrigerator?
           </span>
@@ -1043,6 +1054,103 @@ export default function RefrigeratorGeneratorSizingPage() {
                 ))}
               </div>
             </section>
+
+            {/* Section 14: Related Power & Sizing Tools */}
+            <section className="space-y-4 border-t border-slate-200 pt-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                Related Power, Generator &amp; Sizing Tools
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500">
+                Explore companion calculators and residential outage guides on CalcMyPower:
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                <Link
+                  href="/generator-size-calculator"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Plug className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    Generator Size Calculator
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Calculate running watts, single-motor starting surge, and 1.25x recommended generator capacity.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/what-size-generator-do-i-need-for-my-house"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    What Size Generator Do I Need for My House?
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Complete residential sizing guide covering furnace blowers, sump pumps, well pumps, and central AC.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/watts-to-amps-calculator"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Cpu className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    Watts to Amps Calculator
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Convert refrigerator nameplate Amperes and Volts to Watts or verify 15A/20A circuit loading.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/ups-battery-backup-calculator"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <BatteryCharging className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    UPS &amp; Battery Backup Runtime Calculator
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Estimate how many hours a portable power station or LiFePO4 battery bank will sustain your fridge.
+                  </p>
+                </Link>
+              </div>
+            </section>
+
+            {/* Section 15: Authoritative Sources & References */}
+            <footer className="border-t border-slate-200 pt-8 space-y-3 text-xs text-slate-500">
+              <h2 className="font-bold text-slate-700 text-sm">
+                Authoritative Sources &amp; References
+              </h2>
+              <ul className="space-y-1.5 list-disc pl-5">
+                <li>
+                  <strong>U.S. Department of Energy (DOE) &amp; ENERGY STAR:</strong>{" "}
+                  <span className="italic">Residential Refrigerator and Freezer Energy Use Benchmarks</span>.
+                </li>
+                <li>
+                  <strong>U.S. Consumer Product Safety Commission (CPSC) &amp; CDC:</strong>{" "}
+                  <span className="italic">Carbon Monoxide Poisoning Prevention and 20-Foot Outdoor Portable Generator Placement Rule</span>.
+                </li>
+                <li>
+                  <strong>Electrical Safety Foundation International (ESFI):</strong>{" "}
+                  <span className="italic">Portable Generator &amp; Outdoor Extension Cord Gauge Safety Guidelines</span>.
+                </li>
+                <li>
+                  <strong>National Fire Protection Association (NFPA):</strong>{" "}
+                  <span className="italic">NFPA 70: National Electrical Code (NEC)</span>, Article 702 (Optional Standby Systems) &amp; Article 430 (Motors and Hermetic Refrigerant Motor-Compressors).
+                </li>
+              </ul>
+            </footer>
           </article>
 
           {/* Desktop Sticky Sidebar (4 cols on lg) */}
@@ -1050,7 +1158,7 @@ export default function RefrigeratorGeneratorSizingPage() {
             <TableOfContents items={REFRIGERATOR_TOC_ITEMS} />
           </aside>
         </div>
-      </main>
+      </div>
     </>
   );
 }

@@ -5,32 +5,16 @@ import {
   generateBreadcrumbSchema,
   generateFaqSchema,
 } from "@/lib/seo/schema";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC)",
   description:
     "Convert Watts to Amps with our electrical calculator. Supports DC circuits, 120V/240V single-phase AC, and balanced 208V/480V three-phase systems with power factor.",
-  keywords: [
-    "watts to amps",
-    "watts to amps calculator",
-    "convert watts to amps",
-    "how to calculate amps from watts",
-    "watts to amps 120v",
-    "watts to amps 12v",
-    "watts to amps 240v",
-    "3 phase watts to amps",
-  ],
-  alternates: {
-    canonical: "https://calcmypower.com/watts-to-amps-calculator",
-  },
-  openGraph: {
-    title: "Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC) | CalcMyPower",
-    description:
-      "Convert electrical power in Watts to current in Amperes across DC, AC single-phase, and balanced three-phase systems.",
-    url: "https://calcmypower.com/watts-to-amps-calculator",
-    type: "website",
-  },
-};
+  path: "/watts-to-amps-calculator",
+  ogDescription:
+    "Convert electrical power in Watts to current in Amperes across DC, AC single-phase, and balanced three-phase systems.",
+});
 
 export default function WattsToAmpsPage() {
   const webAppSchema = generateWebApplicationSchema({

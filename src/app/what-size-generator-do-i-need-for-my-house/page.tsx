@@ -109,6 +109,10 @@ export default function GeneratorSizingGuidePage() {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
     {
+      name: "Generator Size Calculator",
+      url: "https://calcmypower.com/generator-size-calculator",
+    },
+    {
       name: "What Size Generator Do I Need for My House?",
       url: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
     },
@@ -142,9 +146,13 @@ export default function GeneratorSizingGuidePage() {
       <article className="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-10">
         {/* Header Section */}
         <header className="space-y-4 border-b border-slate-200 pb-8">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-semibold text-slate-500">
+          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500">
             <Link href="/" className="text-blue-600 hover:underline">
               Home
+            </Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/generator-size-calculator" className="text-blue-600 hover:underline">
+              Generator Size Calculator
             </Link>
             <span aria-hidden="true">/</span>
             <span className="text-slate-700 truncate">What Size Generator Do I Need for My House?</span>
@@ -1008,7 +1016,7 @@ export default function GeneratorSizingGuidePage() {
             Explore companion calculators on CalcMyPower to plan electrical circuits and battery backups:
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
             <Link
               href="/generator-size-calculator"
               className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
@@ -1021,6 +1029,21 @@ export default function GeneratorSizingGuidePage() {
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
                 Tally your exact appliances, calculate single-motor surge demand, and size your generator with planning headroom.
+              </p>
+            </Link>
+
+            <Link
+              href="/what-size-generator-to-run-a-refrigerator"
+              className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+            >
+              <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                <Zap className="w-4 h-4" />
+              </div>
+              <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                What Size Generator to Run a Refrigerator?
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Detailed wattage guide for household refrigerators, deep freezers, compressor startup surges, and extension cord sizing.
               </p>
             </Link>
 

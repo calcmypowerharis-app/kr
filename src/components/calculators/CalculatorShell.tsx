@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { Zap, RotateCcw, Share2 } from "lucide-react";
+import Link from "next/link";
+import { Zap, RotateCcw } from "lucide-react";
 
 interface CalculatorShellProps {
   title: string;
@@ -28,9 +29,24 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
 }) => {
   return (
     <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-10">
-      {/* Top Header & Breadcrumb Context */}
+      {/* Top Header & Visible Breadcrumb Navigation */}
       <header className="space-y-3">
-        <div className="flex flex-wrap items-center gap-2 text-xs">
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center gap-2 text-xs font-medium text-slate-500"
+        >
+          <Link href="/" className="hover:text-blue-600 transition">
+            Home
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/calculators" className="hover:text-blue-600 transition">
+            Calculators
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-slate-800 font-semibold truncate">{title}</span>
+        </nav>
+
+        <div className="flex flex-wrap items-center gap-2 text-xs pt-1">
           <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-semibold uppercase tracking-wider">
             {category}
           </span>

@@ -142,4 +142,23 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Rule:** When the Lead authorizes a live deployment, execute the full pipeline end-to-end without pausing: run tests, typecheck, lint, build, staged secret scan, git commit, git push origin main, poll live production URL for 200 OK + expected content, and perform live Chrome DevTools smoke QA with screenshots.
 - **Prevention:** Follow Section 23 deployment order deterministically and verify the live production URL directly.
 
+---
 
+## Lesson 021: Never Wrap `<CalculatorShell>` in `<Suspense fallback={null}>` for `useSearchParams()`
+- **Context:** Calling `useSearchParams()` at the top of a calculator component wrapped in `<Suspense fallback={null}>` triggers `BAILOUT_TO_CLIENT_SIDE_RENDERING` for the entire page during `next build`, resulting in an empty `<main>` with no `<h1>`, no text, and no links in the pre-rendered static `.html` file.
+- **Rule:** Always isolate `useSearchParams()` inside a tiny child component (`<ScenarioUrlSync />`) that returns `null` and is wrapped in its own leaf `<Suspense fallback={null}>` boundary inside `<CalculatorShell>`.
+- **Prevention:** Enforced by `seo-foundation.test.ts` and verified by checking `.next/server/app/*.html` for `<h1>` presence during build QA.
+
+---
+
+## Lesson 022: Never Conditionally Unmount FAQ Answers (`{isOpen && ...}`) When Using `FAQPage` Schema
+- **Context:** Using `useState<number | null>(null)` with `{isOpen && <div>{faq.answer}</div>}` omits all FAQ answers from the initial SSR HTML DOM, violating Google's `FAQPage` visibility requirement and hiding answer text from crawlers and browser `Ctrl+F`.
+- **Rule:** Use semantic HTML5 `<details>` and `<summary>` elements in `FaqSection.tsx` so all FAQ questions and answers are always present in the SSR HTML DOM.
+- **Prevention:** Enforced by `seo-foundation.test.ts` and verified against stripped `.next/server/app/*.html` output.
+
+---
+
+## Lesson 023: Never Include `| CalcMyPower` in Child Page `metadata.title`
+- **Context:** Root `src/app/layout.tsx` sets `title.template = "%s | CalcMyPower"`. Including `| CalcMyPower` inside a child page's `metadata.title` string produces a duplicate suffix (`| CalcMyPower | CalcMyPower`) in the rendered `<title>` tag.
+- **Rule:** Always pass clean page titles without the brand suffix (or use `buildPageMetadata()` from `src/lib/seo/metadata.ts`, which strips any accidental `| CalcMyPower` suffix automatically).
+- **Prevention:** Enforced across all `src/app/*/page.tsx` routes by `seo-foundation.test.ts`.

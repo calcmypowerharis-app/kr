@@ -514,6 +514,12 @@ export const WattsToAmpsCalculator: React.FC = () => {
             category: "Generator Sizing",
           },
           {
+            title: "What Size Generator to Run a Refrigerator?",
+            description: "See how refrigerator nameplate amps and volts translate into running and compressor starting watts.",
+            href: "/what-size-generator-to-run-a-refrigerator",
+            category: "Sizing Guide",
+          },
+          {
             title: "More Electrical & Power Calculators",
             description: "Browse all live power, battery backup, and generator sizing tools.",
             href: "/calculators",

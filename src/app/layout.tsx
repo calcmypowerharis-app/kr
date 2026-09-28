@@ -6,19 +6,11 @@ import { Footer } from "@/components/layout/Footer";
 export const metadata: Metadata = {
   metadataBase: new URL("https://calcmypower.com"),
   title: {
-    default: "CalcMyPower — Power, Energy & Electrical Calculators",
+    default: "CalcMyPower | Power, Energy & Electrical Calculators",
     template: "%s | CalcMyPower",
   },
   description:
     "Practical electrical, battery backup, solar, and power calculators with transparent formulas and clear engineering baselines.",
-  keywords: [
-    "power calculator",
-    "ups runtime calculator",
-    "battery backup calculator",
-    "solar calculator",
-    "watts to amps",
-    "wire size calculator",
-  ],
   authors: [{ name: "CalcMyPower Technical Publishing" }],
   creator: "CalcMyPower",
   publisher: "CalcMyPower",
@@ -32,15 +24,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://calcmypower.com",
     siteName: "CalcMyPower",
-    title: "CalcMyPower — Electrical & Power Calculators",
+    title: "CalcMyPower | Electrical & Power Calculators",
     description:
-      "Clear power calculations for UPS systems, battery backups, solar arrays, and electrical circuits.",
+      "Clear power calculations for UPS systems, battery backups, generators, solar arrays, and electrical circuits.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CalcMyPower — Power & Electrical Calculators",
+    title: "CalcMyPower | Power & Electrical Calculators",
     description:
-      "Accurate power calculations for UPS systems, solar arrays, battery backups, and wire gauges.",
+      "Accurate power calculations for UPS systems, generators, solar arrays, battery backups, and wire gauges.",
   },
   robots: {
     index: true,

@@ -5,22 +5,17 @@ import {
   generateBreadcrumbSchema,
   generateFaqSchema,
 } from "@/lib/seo/schema";
+import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: "UPS Battery Backup Run-Time Hours Calculator",
   description:
     "Estimate uninterruptible power supply (UPS) backup hours and battery run-time from appliance wattage, battery voltage, and Amp-hour capacity.",
-  alternates: {
-    canonical: "https://calcmypower.com/ups-battery-backup-calculator",
-  },
-  openGraph: {
-    title: "UPS & Battery Backup Run-Time Calculator | CalcMyPower",
-    description:
-      "Estimate how many hours your UPS or battery backup system will run connected equipment during a power outage.",
-    url: "https://calcmypower.com/ups-battery-backup-calculator",
-    type: "website",
-  },
-};
+  path: "/ups-battery-backup-calculator",
+  ogTitle: "UPS & Battery Backup Run-Time Calculator | CalcMyPower",
+  ogDescription:
+    "Estimate how many hours your UPS or battery backup system will run connected equipment during a power outage.",
+});
 
 export default function UpsCalculatorPage() {
   const webAppSchema = generateWebApplicationSchema({
