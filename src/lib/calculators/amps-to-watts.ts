@@ -52,10 +52,15 @@ export interface AmpsToWattsOutputs {
   /** Formatted apparent power string (e.g. '1,800 VA') */
   formattedVa?: string;
   /**
-   * Reference Continuous Load Capacity (NEC 80% Branch Circuit Benchmark)
-   * Under NEC Section 210.19(A)(1) & 210.20(A), standard branch circuit
-   * overcurrent protection serving continuous loads (running 3+ hours)
-   * is evaluated with a 125% factor, limiting continuous draw to 80% of rating.
+   * Reference Continuous Load Planning Benchmark (NEC Article 210)
+   * Pure mathematical conversion (P = V × I × PF) determines total active power.
+   * For branch circuit design, NEC Article 100 defines a continuous load as
+   * continuing for 3 hours or more. Under NEC 210.19(A)(1) and 210.20(A), standard
+   * non-100%-rated branch circuit protective devices and conductors are sized for
+   * 125% of continuous load, which establishes an 80% continuous design benchmark.
+   * This is an electrical code sizing reference, not an unconditional safe limit;
+   * actual installation safety also requires verified conductor gauge, terminal
+   * temperature limits (60°C/75°C per NEC 110.14(C)), and deratings.
    */
   continuousLoadWattsRef: number;
   /** Formatted continuous load capacity string */
@@ -100,7 +105,7 @@ export const AMPS_TO_WATTS_PRESETS: PresetCircuit[] = [
     voltage: 120,
     system: "ac_single",
     pf: 1.0,
-    description: "Standard 15A household circuit (1,800W maximum / 1,440W continuous reference)",
+    description: "Standard 15A household circuit (1,800W nominal max / 1,440W continuous benchmark for 3+ hr duty)",
   },
   {
     label: "20A @ 120V (Kitchen / Bath Circuit)",
@@ -108,7 +113,7 @@ export const AMPS_TO_WATTS_PRESETS: PresetCircuit[] = [
     voltage: 120,
     system: "ac_single",
     pf: 1.0,
-    description: "Kitchen small appliance or bathroom 20A circuit (2,400W maximum / 1,920W continuous reference)",
+    description: "Kitchen small appliance or bathroom 20A circuit (2,400W nominal max / 1,920W continuous benchmark for 3+ hr duty)",
   },
   {
     label: "30A @ 240V (Electric Dryer / RV 30A)",
@@ -251,9 +256,10 @@ export function calculateAmpsToWatts(inputs: AmpsToWattsInputs): AmpsToWattsOutp
     }
   }
 
-  // 80% Continuous-Duty Planning Benchmark
-  // On standard non-100%-rated branch circuit overcurrent protective devices (breakers),
-  // continuous loads running 3+ hours are evaluated at 80% of nominal breaker rating.
+  // NEC Continuous-Duty Planning Benchmark (NEC Article 100, 210.19(A)(1), 210.20(A))
+  // Mathematical conversion calculates absolute instantaneous active power.
+  // For standard non-100%-rated branch circuit overcurrent protective devices (breakers),
+  // loads operating continuously for 3 hours or more are designed to an 80% benchmark (I_cont <= 0.80 * I_breaker).
   const continuousLoadWattsRef = calculatedWatts * 0.80;
 
   // High current warning

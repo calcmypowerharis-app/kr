@@ -20,12 +20,12 @@ const FAQ_DATA = [
   {
     question: "How many watts is 15 amps at 120 volts?",
     answer:
-      "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts (15A × 120V = 1,800W). For continuous loads operating 3 hours or more, electrical codes limit branch circuit loading to 80%, which corresponds to 1,440 Watts.",
+      "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts of physical power (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated circuit breakers, electrical codes (NEC Article 210) benchmark continuous duty to 80% of rating, which equals 1,440 Watts (12A). Intermittent non-continuous loads may utilize up to the full 1,800 Watts.",
   },
   {
     question: "How many watts is 20 amps at 120 volts?",
     answer:
-      "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces 2,400 Watts of electrical power (20A × 120V = 2,400W). Under the standard 80% continuous load rule for circuit breakers, continuous draw should be limited to 1,920 Watts.",
+      "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces exactly 2,400 Watts of electrical power (20A × 120V = 2,400W). Under standard NEC branch circuit design rules for non-100%-rated breakers, loads running continuously for 3 hours or more are designed to an 80% benchmark (1,920 Watts or 16A), while non-continuous equipment may draw up to 2,400 Watts.",
   },
   {
     question: "How do you convert amps to watts?",

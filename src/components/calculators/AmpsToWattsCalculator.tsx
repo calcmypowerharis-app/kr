@@ -254,9 +254,9 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 subtext: "Standard equipment metric (kW)",
               },
               {
-                label: "80% Continuous Benchmark",
+                label: "80% Continuous Ref (NEC)",
                 value: results.isValid ? results.formattedContinuousWattsRef : "--",
-                subtext: "Max load for continuous duty (3+ hrs)",
+                subtext: "Standard breakers for 3+ hr loads",
               },
               ...(results.apparentPowerVa !== undefined
                 ? [
@@ -305,11 +305,25 @@ export const AmpsToWattsCalculator: React.FC = () => {
           <div className="bg-slate-50/80 rounded-2xl border border-slate-200/90 p-5 space-y-3">
             <div className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wider">
               <HelpCircle className="w-4 h-4 text-blue-600" />
-              <span>Continuous Load Planning (NEC Article 210)</span>
+              <span>Continuous Load Sizing Rules (NEC Article 100 &amp; 210)</span>
             </div>
             <p className="text-xs text-slate-600 leading-relaxed">
-              Under National Electrical Code (NEC) Sections 210.19(A)(1) and 210.20(A), standard non-100%-rated branch circuit overcurrent protective devices (breakers) serving continuous loads (loads operating continuously for 3 hours or more, such as electric heating or EV charging) must not be loaded beyond 80% of their rated capacity. Non-continuous loads may utilize full rated capacity.
+              Mathematical power conversion determines absolute instantaneous wattage (P = V × I × PF). Branch circuit electrical sizing, however, distinguishes between continuous and non-continuous loads under the National Electrical Code (NEC / NFPA 70):
             </p>
+            <ul className="text-xs text-slate-600 space-y-2 list-disc list-inside">
+              <li>
+                <strong>Continuous Load Definition (NEC Article 100):</strong> A load where the maximum current is expected to continue for 3 hours or more (such as electric vehicle charging, water heaters, or continuous space heaters).
+              </li>
+              <li>
+                <strong>Standard Overcurrent Sizing (NEC 210.19(A)(1) &amp; 210.20(A)):</strong> For standard (non-100%-rated) branch circuit breakers, the overcurrent device and conductor must be sized for at least 125% of continuous load plus 100% of non-continuous load. On a given standard breaker, this restricts continuous duty to 80% of rated capacity (e.g., 12A / 1,440W continuous on a 15A breaker).
+              </li>
+              <li>
+                <strong>Non-Continuous Duty:</strong> Intermittent appliances operating under 3 hours (microwaves, blenders, power tools) are permitted to draw up to 100% of the breaker rating, subject to receptacle limits.
+              </li>
+              <li>
+                <strong>Installation Safety Beyond 80%:</strong> An 80% continuous benchmark is an overcurrent sizing threshold, not an unconditional guarantee of circuit safety. Safe continuous wattage also requires verifying conductor gauge (14 AWG for 15A, 12 AWG for 20A copper), conductor terminal temperature limits (60°C vs. 75°C per NEC 110.14(C)), ambient temperature corrections, raceway conductor bundling deratings, and voltage drop.
+              </li>
+            </ul>
           </div>
 
           {/* Diagnostic Gear Reference (Amazon Associate) */}
@@ -418,7 +432,7 @@ export const AmpsToWattsCalculator: React.FC = () => {
             </h3>
           </div>
           <p className="text-xs text-slate-600">
-            The table below provides maximum theoretical capacity and the standard 80% continuous-duty reference for typical US branch circuits and equipment:
+            The table below compares nominal mathematical power with the standard 80% continuous-duty planning reference for common US branch circuits and equipment:
           </p>
 
           <div className="overflow-x-auto rounded-xl border border-slate-200">
@@ -427,8 +441,8 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 <tr>
                   <th className="py-2.5 px-3">Circuit Specification</th>
                   <th className="py-2.5 px-3">System Type</th>
-                  <th className="py-2.5 px-3">Max Power (Watts)</th>
-                  <th className="py-2.5 px-3">80% Continuous Limit</th>
+                  <th className="py-2.5 px-3">Nominal Max Power</th>
+                  <th className="py-2.5 px-3">80% Continuous Ref (NEC)</th>
                   <th className="py-2.5 px-3">Typical Application</th>
                 </tr>
               </thead>
@@ -492,6 +506,12 @@ export const AmpsToWattsCalculator: React.FC = () => {
               </tbody>
             </table>
           </div>
+
+          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
+            <p>
+              <strong>Code Distinction:</strong> Nominal Max Power represents pure mathematical conversion (P = V × I × PF). The 80% Continuous Reference applies specifically to standard non-100%-rated branch circuit overcurrent protective devices serving continuous loads (loads operating for 3 hours or more per NEC Article 100). Intermittent non-continuous loads may utilize up to nominal breaker rating, subject to device ratings and conductor sizing rules.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -549,7 +569,7 @@ export const AmpsToWattsCalculator: React.FC = () => {
       {/* Worked Examples Section */}
       <WorkedExampleSection
         title="Verified Worked Calculations"
-        scenario="Determining the maximum wattage capacity of a residential 15A 120V household branch circuit."
+        scenario="Determining the power capacity of a residential 15A 120V household branch circuit."
         steps={[
           {
             stepNumber: 1,
@@ -559,18 +579,18 @@ export const AmpsToWattsCalculator: React.FC = () => {
           },
           {
             stepNumber: 2,
-            title: "Apply Single-Phase Power Formula",
+            title: "Apply Single-Phase Power Formula (Pure Mathematical Conversion)",
             calculation: "P = 15 A × 120 V × 1.0 = 1,800 Watts",
-            explanation: "Multiplying current by voltage and unity power factor gives the absolute mathematical maximum continuous rating.",
+            explanation: "Multiplying current by voltage and unity power factor gives the exact physical active power rating of 1,800 Watts.",
           },
           {
             stepNumber: 3,
-            title: "Calculate 80% Continuous-Load Planning Benchmark",
-            calculation: "Continuous Benchmark = 1,800 W × 0.80 = 1,440 Watts",
-            explanation: "Under NEC Section 210.19/210.20, continuous loads running for 3 hours or longer must not exceed 80% of circuit breaker rating. A 1,500W space heater running continuously exceeds 1,440W and should be connected to a 20A branch circuit.",
+            title: "Evaluate Continuous-Duty Code Sizing (NEC 210.19 / 210.20)",
+            calculation: "Continuous Design Benchmark = 1,800 W × 0.80 = 1,440 Watts (or 15 A × 0.80 = 12.0 A)",
+            explanation: "Under NEC Sections 210.19(A)(1) and 210.20(A), branch circuit conductors and standard non-100%-rated breakers serving continuous loads (running 3 hours or more) are sized at 125% of the continuous load, which limits continuous duty to 80% of rating. A 1,500W portable heater running continuously exceeds this 1,440W benchmark and requires a 20A branch circuit, whereas intermittent operation under 3 hours is within the 1,800W mathematical rating.",
           },
         ]}
-        conclusion="A 15A 120V circuit provides a theoretical maximum capacity of 1,800 Watts and a continuous-duty planning limit of 1,440 Watts."
+        conclusion="A 15A 120V circuit has a mathematical power capacity of 1,800 Watts. When supplying continuous loads operating 3 hours or longer on standard non-100%-rated breakers, electrical codes benchmark continuous duty to 1,440 Watts (12A). Intermittent non-continuous loads may utilize up to the full 1,800 Watts."
       />
 
       {/* Assumptions Section */}
@@ -592,10 +612,10 @@ export const AmpsToWattsCalculator: React.FC = () => {
             impact: "Lower power factor decreases real Watts produced for a given current, while apparent power (VA) remains unchanged.",
           },
           {
-            parameter: "Continuous Load Factor",
+            parameter: "Continuous Duty Sizing Factor",
             defaultVal: "80% (0.80)",
             realisticRange: "80% to 100%",
-            impact: "Evaluates branch circuit loading for equipment running 3+ continuous hours per NEC Article 100/210.",
+            impact: "Standard non-100%-rated breakers serving continuous loads (3+ hours per NEC Article 100) require a 125% sizing factor (80% load benchmark per NEC 210.19/210.20). Non-continuous loads evaluate at 100%.",
           },
           {
             parameter: "Conductor Resistance & Voltage Drop",
@@ -612,7 +632,7 @@ export const AmpsToWattsCalculator: React.FC = () => {
         points={[
           "This calculator provides mathematical power calculations based on user-entered values and does not approve electrical installations, circuit breaker ratings, or branch wiring compliance.",
           "Circuit breaker selection and wire sizing must account for conductor ampacity, insulation temperature ratings (60°C/75°C/90°C), raceway derating factors, and applicable local electrical codes.",
-          "The 80% continuous benchmark represents standard NEC overcurrent design guidance for loads operating 3+ continuous hours; it does not replace professional electrical engineering review.",
+          "The 80% continuous benchmark represents standard NEC overcurrent design guidance for loads operating 3+ continuous hours on non-100%-rated equipment. It does not represent an unconditional safe wattage for all scenarios, nor does it replace conductor ampacity verification, temperature derating, or professional electrical engineering approval.",
           "Always consult the National Electrical Code (NEC / NFPA 70) and verify critical electrical modifications with a licensed electrician.",
         ]}
       />
@@ -623,12 +643,12 @@ export const AmpsToWattsCalculator: React.FC = () => {
           {
             question: "How many watts is 15 amps at 120 volts?",
             answer:
-              "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts (15A × 120V = 1,800W). For continuous loads operating 3 hours or more, electrical codes limit branch circuit loading to 80%, which corresponds to 1,440 Watts.",
+              "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts of physical power (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated circuit breakers, electrical codes (NEC Article 210) benchmark continuous duty to 80% of rating, which equals 1,440 Watts (12A). Intermittent non-continuous loads may utilize up to the full 1,800 Watts.",
           },
           {
             question: "How many watts is 20 amps at 120 volts?",
             answer:
-              "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces 2,400 Watts of electrical power (20A × 120V = 2,400W). Under the standard 80% continuous load rule for circuit breakers, continuous draw should be limited to 1,920 Watts.",
+              "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces exactly 2,400 Watts of electrical power (20A × 120V = 2,400W). Under standard NEC branch circuit design rules for non-100%-rated breakers, loads running continuously for 3 hours or more are designed to an 80% benchmark (1,920 Watts or 16A), while non-continuous equipment may draw up to 2,400 Watts.",
           },
           {
             question: "How do you convert amps to watts?",

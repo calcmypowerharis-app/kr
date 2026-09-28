@@ -99,7 +99,7 @@ const LIVE_CALCULATORS: LiveTool[] = [
       "Convert electrical current (Amps) and voltage to real power (Watts) and apparent power (VA) across DC, single-phase 120V/240V, and balanced 3-phase circuits.",
     outputs: [
       "Real power (Watts) and apparent power (VA)",
-      "Continuous load threshold (80% safe rating)",
+      "NEC continuous-load benchmark (80% for 3+ hr duty on standard breakers)",
       "Standard 15A & 20A household circuit capacity benchmarks",
       "DC, single-phase AC, and three-phase AC configurations",
     ],

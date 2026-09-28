@@ -37,22 +37,22 @@ export default function WattsToAmpsPage() {
     {
       question: "How do I convert 1,500 Watts to Amps at 120 Volts?",
       answer:
-        "In a standard 120V household circuit with a resistive load (power factor = 1.0), divide 1,500 Watts by 120 Volts: Current = 1,500 / 120 = 12.50 Amps. For continuous operation (3 hours or longer), electrical codes limit a 15A circuit to 12.0A (80%). Because 12.5A exceeds 12.0A, a 20A branch circuit is recommended for continuous space heating.",
+        "In a standard 120V household circuit with a resistive load (power factor = 1.0), divide 1,500 Watts by 120 Volts: Current = 1,500 / 120 = 12.50 Amps. For continuous operation (loads operating 3 hours or more per NEC Article 100), standard non-100%-rated branch breakers are evaluated at 80% (12.0A on a 15A breaker). Because 12.5A exceeds 12.0A, a 20A branch circuit is required for continuous space heating, whereas non-continuous duty operates within a 15A circuit.",
     },
     {
       question: "Why does 100 Watts produce different Amps on 12V DC compared to 120V AC?",
       answer:
-        "Current is inversely proportional to voltage (I = P / V). At 120V AC, 100 Watts requires approximately 0.83 Amps. At 12V DC, that same 100 Watts draws 8.33 Amps—ten times more current.",
+        "Current is inversely proportional to voltage (I = P / V). At 120V AC, 100 Watts requires approximately 0.83 Amps. At 12V DC (automotive or solar battery bank), that same 100 Watts draws 8.33 Amps: ten times more current. Higher current creates more resistance and heat, requiring substantially thicker wire.",
     },
     {
       question: "What is power factor, and when should I change it?",
       answer:
-        "Power factor (PF) is the ratio of real power (Watts) to apparent power (Volt-Amperes) in AC circuits. Pure resistive loads have a PF of 1.0. Inductive devices with electric motors or compressors typically have a PF between 0.75 and 0.90.",
+        "Power factor (PF) is the ratio of real power (Watts) to apparent power (Volt-Amperes) in AC circuits. Pure resistive loads have a PF of 1.0. Inductive devices with electric motors or compressors (refrigerators, air conditioners, power tools) typically have a PF between 0.75 and 0.90. When equipment nameplate data is available, enter that specific value.",
     },
     {
       question: "What does the 125% continuous-load reference mean?",
       answer:
-        "The National Electrical Code defines a continuous load as any load where maximum current is expected to continue for 3 hours or more. Standard overcurrent devices are designed to carry continuous loads up to 80% of their rating. To account for this, engineers size protective equipment for at least 125% of the continuous current (I × 1.25).",
+        "Under National Electrical Code (NEC) Article 100, a continuous load is defined as any load where maximum current is expected to continue for 3 hours or more. Under NEC Sections 210.19(A)(1) and 210.20(A), branch circuit conductors and standard non-100%-rated overcurrent devices must be sized for at least 125% of the continuous load (I × 1.25), which restricts continuous duty to 80% of standard breaker rating. This is an installation sizing rule, not a change in mathematical current or an unconditional safety guarantee.",
     },
     {
       question: "How do you calculate three-phase Watts to Amps?",
