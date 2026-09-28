@@ -165,6 +165,27 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     formula: "I = P ÷ (V × PF) | 3Φ: I = P ÷ (√3 × V × PF)",
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
+      "/amps-to-watts-calculator",
+      "/ups-battery-backup-calculator",
+      "/generator-size-calculator",
+    ],
+    relatedGuidePaths: ["/what-size-generator-do-i-need-for-my-house"],
+  },
+  {
+    slug: "amps-to-watts-calculator",
+    path: "/amps-to-watts-calculator",
+    title: "Amps to Watts Electrical Calculator",
+    shortTitle: "Amps to Watts",
+    metaTitle: "Amps to Watts Calculator (DC, 120V/240V AC & 3-Phase)",
+    metaDescription:
+      "Convert Amps to Watts with our electrical calculator. Calculate real power (W) and apparent power (VA) across DC, 120V/240V single-phase, and 3-phase circuits.",
+    cluster: "electricity",
+    secondaryClusters: ["generators", "ups-battery", "solar"],
+    primaryKeyword: "amps to watts",
+    formula: "P = I × V × PF | 3Φ: P = √3 × V × I × PF",
+    lastModified: "2026-09-28",
+    relatedCalculatorPaths: [
+      "/watts-to-amps-calculator",
       "/ups-battery-backup-calculator",
       "/generator-size-calculator",
     ],

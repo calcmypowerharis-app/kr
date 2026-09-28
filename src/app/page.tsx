@@ -89,6 +89,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     ],
     cta: "Open Watts to Amps Calculator",
   },
+  {
+    id: "watts-tool",
+    title: "Amps to Watts Calculator",
+    href: "/amps-to-watts-calculator",
+    icon: Zap,
+    formula: "P = I × V × PF | 3Φ: P = √3 × V × I × PF",
+    summary:
+      "Convert electrical current (Amps) and voltage to real power (Watts) and apparent power (VA) across DC, single-phase 120V/240V, and balanced 3-phase circuits.",
+    outputs: [
+      "Real power (Watts) and apparent power (VA)",
+      "Continuous load threshold (80% safe rating)",
+      "Standard 15A & 20A household circuit capacity benchmarks",
+      "DC, single-phase AC, and three-phase AC configurations",
+    ],
+    cta: "Open Amps to Watts Calculator",
+  },
 ];
 
 interface PlannedTool {
@@ -190,6 +206,13 @@ export default function HomePage() {
               <span>Watts to Amps</span>
             </a>
             <a
+              href="#watts-tool"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
+            >
+              <Zap className="w-3.5 h-3.5 text-blue-600" />
+              <span>Amps to Watts</span>
+            </a>
+            <a
               href="#featured-guides"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 text-xs font-semibold text-slate-700 hover:text-indigo-700 transition shadow-xs"
             >
@@ -215,7 +238,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. Three Live Calculators (Wide Application Grid) */}
+        {/* 2. Four Live Calculators (Wide Application Grid) */}
         <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-4">
             <div>
@@ -228,11 +251,11 @@ export default function HomePage() {
             </div>
             <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full self-start sm:self-auto flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>3 Active Tools</span>
+              <span>4 Active Tools</span>
             </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             {LIVE_CALCULATORS.map((tool) => {
               const Icon = tool.icon;
               return (

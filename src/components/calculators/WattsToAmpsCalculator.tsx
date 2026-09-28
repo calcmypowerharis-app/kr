@@ -275,6 +275,26 @@ export const WattsToAmpsCalculator: React.FC = () => {
             warnings={results.warnings}
           />
 
+          {/* Sister Tool Callout */}
+          <div className="bg-blue-50/70 rounded-2xl border border-blue-200/80 p-5 space-y-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-blue-900 uppercase tracking-wider">
+              <Sliders className="w-4 h-4 text-blue-600" />
+              <span>Dedicated Sister Tool</span>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed">
+              Converting known circuit Amperes and voltage back into total Watts or circuit capacity? Use our dedicated reciprocal calculator:
+            </p>
+            <div>
+              <Link
+                href="/amps-to-watts-calculator"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 transition"
+              >
+                <span>Open Amps to Watts Electrical Calculator</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
           {/* Dedicated Conductor Sizing Callout (Architecture Separation) */}
           <div className="bg-slate-50/80 rounded-2xl border border-slate-200/90 p-5 space-y-3">
             <div className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wider">
@@ -501,6 +521,12 @@ export const WattsToAmpsCalculator: React.FC = () => {
       {/* Related Calculators */}
       <RelatedCalculators
         calculators={[
+          {
+            title: "Amps to Watts Electrical Calculator",
+            description: "Convert electrical current (Amps) and voltage to real power (Watts) and apparent power (VA).",
+            href: "/amps-to-watts-calculator",
+            category: "Electrical Circuits",
+          },
           {
             title: "UPS & Battery Backup Run-Time Calculator",
             description: "Determine how long battery backups and UPS systems will power your equipment.",

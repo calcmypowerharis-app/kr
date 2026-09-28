@@ -1,0 +1,687 @@
+"use client";
+
+import React, { useState, useMemo } from "react";
+import Link from "next/link";
+import {
+  calculateAmpsToWatts,
+  ElectricalSystemType,
+  ThreePhaseVoltageType,
+  COMMON_CIRCUIT_VOLTAGES,
+  AMPS_TO_WATTS_PRESETS,
+  PresetCircuit,
+} from "@/lib/calculators/amps-to-watts";
+import { InputField } from "@/components/ui/InputField";
+import { SelectField } from "@/components/ui/SelectField";
+import { ResultCard } from "@/components/ui/ResultCard";
+import { CalculatorShell } from "@/components/calculators/CalculatorShell";
+import { FormulaSection } from "@/components/calculators/FormulaSection";
+import { WorkedExampleSection } from "@/components/calculators/WorkedExampleSection";
+import { AssumptionsSection } from "@/components/calculators/AssumptionsSection";
+import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
+import { FaqSection } from "@/components/calculators/FaqSection";
+import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
+import {
+  AlertCircle,
+  ExternalLink,
+  Sliders,
+  ShoppingBag,
+  ArrowRight,
+  HelpCircle,
+  Table,
+} from "lucide-react";
+
+export const AmpsToWattsCalculator: React.FC = () => {
+  // Input states with sensible defaults (Standard US 15A @ 120V)
+  const [currentAmps, setCurrentAmps] = useState<number>(15);
+  const [voltage, setVoltage] = useState<number>(120);
+  const [currentType, setCurrentType] = useState<ElectricalSystemType>("ac_single");
+  const [voltageType, setVoltageType] = useState<ThreePhaseVoltageType>("line_to_line");
+  const [powerFactor, setPowerFactor] = useState<number>(1.0);
+
+  // Pure calculation
+  const results = useMemo(() => {
+    return calculateAmpsToWatts({
+      currentAmps,
+      voltage,
+      currentType,
+      voltageType,
+      powerFactor,
+    });
+  }, [currentAmps, voltage, currentType, voltageType, powerFactor]);
+
+  const handleReset = () => {
+    setCurrentAmps(15);
+    setVoltage(120);
+    setCurrentType("ac_single");
+    setVoltageType("line_to_line");
+    setPowerFactor(1.0);
+  };
+
+  const handlePreset = (preset: PresetCircuit) => {
+    setCurrentAmps(preset.amps);
+    setVoltage(preset.voltage);
+    setCurrentType(preset.system);
+    if (preset.voltageType) setVoltageType(preset.voltageType);
+    setPowerFactor(preset.pf);
+  };
+
+  const systemOptions = [
+    { value: "ac_single", label: "AC Single-Phase (Residential & General)" },
+    { value: "dc", label: "Direct Current (DC - Solar / Battery / Vehicle)" },
+    { value: "ac_three", label: "AC Three-Phase (Commercial & Industrial)" },
+  ];
+
+  const threePhaseOptions = [
+    { value: "line_to_line", label: "Line-to-Line (V_LL - 208V, 480V)" },
+    { value: "line_to_neutral", label: "Line-to-Neutral (V_LN - 120V, 277V)" },
+  ];
+
+  return (
+    <CalculatorShell
+      title="Amps to Watts Electrical Calculator"
+      badge="Electrical & Circuit Sizing"
+      category="Electrical"
+      lastUpdated="September 2026"
+      description="Convert electrical current in Amperes (Amps) to real power in Watts (W) and Kilowatts (kW) for Direct Current (DC), Single-Phase AC, and balanced Three-Phase systems with power factor and apparent power (VA)."
+      onReset={handleReset}
+      inputSection={
+        <div className="space-y-5">
+          {/* Presets */}
+          <div>
+            <p className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">
+              Common Circuit &amp; Breaker Presets
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {AMPS_TO_WATTS_PRESETS.map((p) => {
+                const isActive =
+                  currentAmps === p.amps &&
+                  voltage === p.voltage &&
+                  currentType === p.system;
+                return (
+                  <button
+                    key={p.label}
+                    type="button"
+                    onClick={() => handlePreset(p)}
+                    className={`text-xs px-3 py-1.5 rounded-lg border font-medium transition ${
+                      isActive
+                        ? "bg-blue-600 text-white border-blue-600 shadow-sm"
+                        : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
+                    }`}
+                  >
+                    {p.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* System Selection */}
+          <SelectField
+            id="currentType"
+            label="Electrical System"
+            value={currentType}
+            options={systemOptions}
+            onChange={(val) => setCurrentType(val as ElectricalSystemType)}
+            helpText={
+              currentType === "dc"
+                ? "DC circuits have no alternating frequency or phase shift; power factor is inherently 1.0."
+                : currentType === "ac_three"
+                ? "Assumes a symmetrical, balanced three-phase commercial or industrial system."
+                : "Standard single-phase alternating current used in residential and light commercial circuits."
+            }
+          />
+
+          {/* Current & Voltage Input Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
+            <InputField
+              id="currentAmps"
+              label="Electrical Current"
+              value={currentAmps}
+              onChange={setCurrentAmps}
+              unit="Amperes (A)"
+              min={0}
+              max={2000}
+              step={1}
+              helpText="Enter circuit breaker rating or measured operational current."
+              required
+            />
+
+            {/* Voltage Input + Quick Select Buttons */}
+            <div className="space-y-2">
+              <InputField
+                id="voltage"
+                label="Operating Voltage"
+                value={voltage}
+                onChange={setVoltage}
+                unit="Volts (V)"
+                min={1}
+                max={1000}
+                step={1}
+                helpText="Nominal circuit voltage (RMS for AC or steady voltage for DC)."
+                required
+              />
+
+              <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                <span className="text-[11px] font-semibold text-slate-500 mr-1">Quick Select:</span>
+                {COMMON_CIRCUIT_VOLTAGES.map((v) => (
+                  <button
+                    key={v.value}
+                    type="button"
+                    onClick={() => setVoltage(v.value)}
+                    className={`text-[11px] px-2.5 py-1 rounded border font-mono transition ${
+                      voltage === v.value
+                        ? "bg-slate-900 text-white border-slate-900"
+                        : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                    }`}
+                  >
+                    {v.value}V
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* AC Parameters: Three-Phase Reference & Power Factor */}
+          {currentType === "ac_three" ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
+              <SelectField
+                id="voltageType"
+                label="Three-Phase Voltage Reference"
+                value={voltageType}
+                options={threePhaseOptions}
+                onChange={(val) => setVoltageType(val as ThreePhaseVoltageType)}
+                helpText="Line-to-line is measured across two phase legs; line-to-neutral is measured from one phase leg to neutral."
+              />
+              <InputField
+                id="powerFactor"
+                label="Power Factor (PF)"
+                value={powerFactor}
+                onChange={setPowerFactor}
+                unit="0.1 to 1.0"
+                min={0.1}
+                max={1.0}
+                step={0.05}
+                helpText="Default is 1.0 (pure resistive loads). Enter motor/equipment nameplate PF when available."
+              />
+            </div>
+          ) : currentType !== "dc" ? (
+            <InputField
+              id="powerFactor"
+              label="Power Factor (PF)"
+              value={powerFactor}
+              onChange={setPowerFactor}
+              unit="0.1 to 1.0"
+              min={0.1}
+              max={1.0}
+              step={0.05}
+              helpText="Default is 1.0 (resistive loads like space heaters and water heating elements). For motor-driven compressors or inductive equipment, enter the verified nameplate power factor (typically 0.80 to 0.90)."
+            />
+          ) : null}
+
+          {/* Non-Silent Validation Errors */}
+          {results.errors.length > 0 && (
+            <div role="alert" aria-live="polite" className="p-4 rounded-xl bg-red-50 border border-red-200 space-y-2">
+              <div className="flex items-center gap-2 text-red-800 font-bold text-xs uppercase tracking-wider">
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+                <span>Input Validation Notice</span>
+              </div>
+              <ul className="list-disc list-inside space-y-1 text-xs text-red-700">
+                {results.errors.map((err, idx) => (
+                  <li key={idx}>{err.message}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      }
+      resultSection={
+        <div className="space-y-6">
+          <ResultCard
+            icon="zap"
+            primaryTitle="Calculated Real Power"
+            primaryValue={results.isValid ? results.formattedWatts : "--"}
+            primarySubtext={
+              results.isValid
+                ? `At ${voltage}V ${results.systemLabel} with ${currentAmps}A${
+                    currentType !== "dc" ? ` (PF: ${powerFactor})` : ""
+                  }`
+                : "Awaiting valid electrical inputs"
+            }
+            stats={[
+              {
+                label: "Power in Kilowatts",
+                value: results.isValid ? results.formattedKw : "--",
+                subtext: "Standard equipment metric (kW)",
+              },
+              {
+                label: "80% Continuous Benchmark",
+                value: results.isValid ? results.formattedContinuousWattsRef : "--",
+                subtext: "Max load for continuous duty (3+ hrs)",
+              },
+              ...(results.apparentPowerVa !== undefined
+                ? [
+                    {
+                      label: "Apparent Power",
+                      value: results.formattedVa || `${results.apparentPowerVa} VA`,
+                      subtext: "Total circulating line power (S)",
+                    },
+                  ]
+                : []),
+              {
+                label: "Operating Voltage",
+                value: `${voltage} V`,
+                subtext: results.systemLabel,
+              },
+              {
+                label: "Circuit Current",
+                value: `${currentAmps} A`,
+                subtext: "Nominal load amperage",
+              },
+            ]}
+            warnings={results.warnings}
+          />
+
+          {/* Sister Tool Callout */}
+          <div className="bg-blue-50/70 rounded-2xl border border-blue-200/80 p-5 space-y-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-blue-900 uppercase tracking-wider">
+              <Sliders className="w-4 h-4 text-blue-600" />
+              <span>Dedicated Sister Tool</span>
+            </div>
+            <p className="text-xs text-slate-700 leading-relaxed">
+              Need to find how many Amperes a specific appliance or equipment wattage draws? Use our dedicated reciprocal calculator:
+            </p>
+            <div>
+              <Link
+                href="/watts-to-amps-calculator"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 transition"
+              >
+                <span>Open Watts to Amps Electrical Calculator</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Continuous-Duty Code Guidance Box */}
+          <div className="bg-slate-50/80 rounded-2xl border border-slate-200/90 p-5 space-y-3">
+            <div className="flex items-center gap-2 text-xs font-bold text-slate-800 uppercase tracking-wider">
+              <HelpCircle className="w-4 h-4 text-blue-600" />
+              <span>Continuous Load Planning (NEC Article 210)</span>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Under National Electrical Code (NEC) Sections 210.19(A)(1) and 210.20(A), standard non-100%-rated branch circuit overcurrent protective devices (breakers) serving continuous loads (loads operating continuously for 3 hours or more, such as electric heating or EV charging) must not be loaded beyond 80% of their rated capacity. Non-continuous loads may utilize full rated capacity.
+            </p>
+          </div>
+
+          {/* Diagnostic Gear Reference (Amazon Associate) */}
+          <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
+                <span>Electrical Diagnostic Tools</span>
+              </div>
+              <span className="text-[10px] text-slate-400">Amazon Associate</span>
+            </div>
+
+            <p className="text-xs text-slate-500 leading-normal">
+              Equipment for safely measuring live electrical current and line voltage:
+            </p>
+
+            <div className="space-y-2.5">
+              <a
+                href="https://www.amazon.com/s?k=digital+clamp+meter+true+rms&tag=calcmypower-20"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+              >
+                <div>
+                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                    True RMS AC/DC Clamp Meters
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Accurately measure running current without disconnecting wiring
+                  </div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+              </a>
+
+              <a
+                href="https://www.amazon.com/s?k=plug+in+power+meter+wattmeter&tag=calcmypower-20"
+                target="_blank"
+                rel="nofollow noopener noreferrer"
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+              >
+                <div>
+                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                    Plug-In Digital Power &amp; Watt Meters
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Monitor household plug loads in real-time Watts, Amps, and kWh
+                  </div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+              </a>
+            </div>
+
+            <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
+              As an Amazon Associate, CalcMyPower earns from qualifying purchases.
+            </p>
+          </div>
+        </div>
+      }
+    >
+      {/* Educational Content: Direct Answer & Variable Definitions */}
+      <section className="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 space-y-6">
+        <div className="space-y-3">
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900">
+            How to Convert Amps to Watts
+          </h2>
+          <p className="text-sm text-slate-700 leading-relaxed">
+            Converting Amperes (current) to Watts (power) requires multiplying current by circuit voltage. In alternating current (AC) circuits containing inductive components (such as electric motors, pumps, or transformers), you must also multiply by the power factor (PF) to account for phase displacement between voltage and current waveforms.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <h3 className="font-bold text-slate-900 text-sm">Direct Current (DC) Formula</h3>
+            <p className="font-mono text-xs font-semibold text-blue-700">Watts = Amps × Volts</p>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Direct current flows in one direction without waveform displacement. Power factor is inherently 1.0. Common in automotive, battery storage, and solar DC strings.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
+            <h3 className="font-bold text-slate-900 text-sm">AC Single-Phase Formula</h3>
+            <p className="font-mono text-xs font-semibold text-blue-700">Watts = Amps × Volts × Power Factor</p>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Standard residential 120V and 240V household power. Pure resistive loads (heaters, incandescent lamps) have PF = 1.0; motor-driven loads typically have PF between 0.75 and 0.90.
+            </p>
+          </div>
+        </div>
+
+        {/* Can you convert volts to watts directly? */}
+        <div className="p-5 rounded-xl bg-amber-50/70 border border-amber-200/80 space-y-2">
+          <h3 className="text-sm font-bold text-amber-950 flex items-center gap-1.5">
+            <HelpCircle className="w-4 h-4 text-amber-700 shrink-0" />
+            Can You Convert Volts to Watts Directly?
+          </h3>
+          <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
+            No. Volts alone cannot be directly converted into Watts. Voltage measures electrical potential difference (the electrical pressure driving charge), whereas Watts measures the rate of energy consumption (physical work or heat). To calculate Watts, you must know at least one additional electrical property: either circuit current in Amperes (using P = V × I) or circuit resistance in Ohms (using P = V² / R). A 120-volt outlet delivers zero watts until a device drawing current is connected.
+          </p>
+        </div>
+
+        {/* Quick Reference Table */}
+        <div className="space-y-3 pt-2">
+          <div className="flex items-center gap-2">
+            <Table className="w-4 h-4 text-blue-600" />
+            <h3 className="text-base font-bold text-slate-900">
+              Quick Reference: Common US Voltage &amp; Amperage Capacities
+            </h3>
+          </div>
+          <p className="text-xs text-slate-600">
+            The table below provides maximum theoretical capacity and the standard 80% continuous-duty reference for typical US branch circuits and equipment:
+          </p>
+
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full text-left text-xs">
+              <thead className="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+                <tr>
+                  <th className="py-2.5 px-3">Circuit Specification</th>
+                  <th className="py-2.5 px-3">System Type</th>
+                  <th className="py-2.5 px-3">Max Power (Watts)</th>
+                  <th className="py-2.5 px-3">80% Continuous Limit</th>
+                  <th className="py-2.5 px-3">Typical Application</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-600">
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">15 Amps @ 120 Volts</td>
+                  <td className="py-2 px-3">AC Single-Phase</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">1,800 W (1.80 kW)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">1,440 W</td>
+                  <td className="py-2 px-3">Standard bedroom / living room receptacle</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">20 Amps @ 120 Volts</td>
+                  <td className="py-2 px-3">AC Single-Phase</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">2,400 W (2.40 kW)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">1,920 W</td>
+                  <td className="py-2 px-3">Kitchen small appliance &amp; bathroom branch circuits</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">20 Amps @ 240 Volts</td>
+                  <td className="py-2 px-3">AC Single-Phase</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">4,800 W (4.80 kW)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">3,840 W</td>
+                  <td className="py-2 px-3">Large air compressor or baseboard heater zone</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">30 Amps @ 240 Volts</td>
+                  <td className="py-2 px-3">AC Single-Phase</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">7,200 W (7.20 kW)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">5,760 W</td>
+                  <td className="py-2 px-3">Electric clothes dryer, water heater, 30A RV</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">50 Amps @ 240 Volts</td>
+                  <td className="py-2 px-3">AC Single-Phase</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">12,000 W (12.0 kW)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">9,600 W</td>
+                  <td className="py-2 px-3">Level 2 EV charger, electric range, 50A RV</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">20 Amps @ 208V 3-Phase</td>
+                  <td className="py-2 px-3">AC 3-Phase (PF 0.90)</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">6,485 W (7,205 VA)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">5,188 W</td>
+                  <td className="py-2 px-3">Commercial 3-phase kitchen &amp; HVAC equipment</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">30 Amps @ 480V 3-Phase</td>
+                  <td className="py-2 px-3">AC 3-Phase (PF 0.85)</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">21,200 W (24,942 VA)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">16,960 W</td>
+                  <td className="py-2 px-3">Industrial motor machinery &amp; chiller pumps</td>
+                </tr>
+                <tr className="hover:bg-slate-50/50">
+                  <td className="py-2 px-3 font-semibold text-slate-900">10 Amps @ 12 Volts</td>
+                  <td className="py-2 px-3">Direct Current (DC)</td>
+                  <td className="py-2 px-3 font-mono font-medium text-slate-800">120 W (0.12 kW)</td>
+                  <td className="py-2 px-3 font-mono text-blue-700">96 W</td>
+                  <td className="py-2 px-3">Automotive auxiliary socket or 12V LED string</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Formula & Methodology Section */}
+      <FormulaSection
+        formulaDisplay={
+          currentType === "dc"
+            ? "P = I × V"
+            : currentType === "ac_single"
+            ? "P = I × V × PF  |  Apparent Power: S = I × V"
+            : voltageType === "line_to_line"
+            ? "P = √3 × V_LL × I × PF  |  Apparent Power: S = √3 × V_LL × I"
+            : "P = 3 × V_LN × I × PF  |  Apparent Power: S = 3 × V_LN × I"
+        }
+        description="The conversion of electric current (Amperes) to active power (Watts) describes the rate at which electrical energy is transformed into mechanical work, heat, or illumination. In alternating current circuits, real power differs from apparent power whenever current and voltage waveforms are out of phase due to inductive or capacitive reactance."
+        variables={[
+          {
+            symbol: "P",
+            name: "Real Power",
+            unit: "Watts (W)",
+            description: "The rate at which electrical energy is converted into active physical work, heat, or light.",
+          },
+          {
+            symbol: "I",
+            name: "Current",
+            unit: "Amperes (A)",
+            description: "The volume of electric charge flowing through the circuit conductor per unit of time.",
+          },
+          {
+            symbol: "V",
+            name: "Voltage",
+            unit: "Volts (V)",
+            description: "The electrical potential difference across the circuit (continuous for DC, RMS for AC).",
+          },
+          {
+            symbol: "PF",
+            name: "Power Factor",
+            unit: "Decimal (0.1 to 1.0)",
+            description: "The ratio of real power (W) to apparent power (VA). Resistive heating has PF = 1.0.",
+          },
+          {
+            symbol: "S",
+            name: "Apparent Power",
+            unit: "Volt-Amperes (VA)",
+            description: "Total circulating line power, representing the mathematical product of RMS voltage and RMS current.",
+          },
+        ]}
+        notes={[
+          "Balanced System Rule: Three-phase calculations assume equal current distribution across all three phase conductors.",
+          "Single-Phase Power Factor: Resistive loads (incandescent bulbs, electric baseboards) operate at unity (1.0). Inductive loads (air conditioning compressors, induction motors) operate between 0.75 and 0.90.",
+          "DC Simplicity: Direct current has no sinusoidal frequency or inductive reactance, meaning real power equals total power without power factor adjustment.",
+        ]}
+      />
+
+      {/* Worked Examples Section */}
+      <WorkedExampleSection
+        title="Verified Worked Calculations"
+        scenario="Determining the maximum wattage capacity of a residential 15A 120V household branch circuit."
+        steps={[
+          {
+            stepNumber: 1,
+            title: "Identify Circuit Specifications",
+            calculation: "I = 15 Amperes, V = 120 Volts AC, PF = 1.0",
+            explanation: "Standard residential branch receptacles are wired to a 15-Amp circuit breaker at 120V nominal voltage.",
+          },
+          {
+            stepNumber: 2,
+            title: "Apply Single-Phase Power Formula",
+            calculation: "P = 15 A × 120 V × 1.0 = 1,800 Watts",
+            explanation: "Multiplying current by voltage and unity power factor gives the absolute mathematical maximum continuous rating.",
+          },
+          {
+            stepNumber: 3,
+            title: "Calculate 80% Continuous-Load Planning Benchmark",
+            calculation: "Continuous Benchmark = 1,800 W × 0.80 = 1,440 Watts",
+            explanation: "Under NEC Section 210.19/210.20, continuous loads running for 3 hours or longer must not exceed 80% of circuit breaker rating. A 1,500W space heater running continuously exceeds 1,440W and should be connected to a 20A branch circuit.",
+          },
+        ]}
+        conclusion="A 15A 120V circuit provides a theoretical maximum capacity of 1,800 Watts and a continuous-duty planning limit of 1,440 Watts."
+      />
+
+      {/* Assumptions Section */}
+      <AssumptionsSection
+        title="Physical & Technical Assumptions"
+        impactHeader="Effect on Wattage"
+        description="Amps to Watts calculations depend on electrical system type, load duration, and wave properties:"
+        assumptions={[
+          {
+            parameter: "Three-Phase Symmetrical Balance",
+            defaultVal: "100% Balanced",
+            realisticRange: "98% to 100% balance",
+            impact: "Unbalanced commercial loads draw different amperages per line, causing phase-dependent power variation.",
+          },
+          {
+            parameter: "AC Power Factor (PF)",
+            defaultVal: "1.0 (Unity)",
+            realisticRange: "0.75 to 1.0",
+            impact: "Lower power factor decreases real Watts produced for a given current, while apparent power (VA) remains unchanged.",
+          },
+          {
+            parameter: "Continuous Load Factor",
+            defaultVal: "80% (0.80)",
+            realisticRange: "80% to 100%",
+            impact: "Evaluates branch circuit loading for equipment running 3+ continuous hours per NEC Article 100/210.",
+          },
+          {
+            parameter: "Conductor Resistance & Voltage Drop",
+            defaultVal: "Neglected at Terminals",
+            realisticRange: "1% to 3% typical drop",
+            impact: "Long extension cord or feeder runs cause voltage drop, reducing terminal voltage delivered to the load.",
+          },
+        ]}
+      />
+
+      {/* Safety Disclaimer */}
+      <DisclaimerSection
+        title="Electrical Code & Safety Disclaimer"
+        points={[
+          "This calculator provides mathematical power calculations based on user-entered values and does not approve electrical installations, circuit breaker ratings, or branch wiring compliance.",
+          "Circuit breaker selection and wire sizing must account for conductor ampacity, insulation temperature ratings (60°C/75°C/90°C), raceway derating factors, and applicable local electrical codes.",
+          "The 80% continuous benchmark represents standard NEC overcurrent design guidance for loads operating 3+ continuous hours; it does not replace professional electrical engineering review.",
+          "Always consult the National Electrical Code (NEC / NFPA 70) and verify critical electrical modifications with a licensed electrician.",
+        ]}
+      />
+
+      {/* Native Semantic FAQ Section */}
+      <FaqSection
+        faqs={[
+          {
+            question: "How many watts is 15 amps at 120 volts?",
+            answer:
+              "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts (15A × 120V = 1,800W). For continuous loads operating 3 hours or more, electrical codes limit branch circuit loading to 80%, which corresponds to 1,440 Watts.",
+          },
+          {
+            question: "How many watts is 20 amps at 120 volts?",
+            answer:
+              "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces 2,400 Watts of electrical power (20A × 120V = 2,400W). Under the standard 80% continuous load rule for circuit breakers, continuous draw should be limited to 1,920 Watts.",
+          },
+          {
+            question: "How do you convert amps to watts?",
+            answer:
+              "To convert Amps to Watts, multiply current in Amperes by circuit voltage in Volts. For direct current (DC), the formula is P = I × V. For alternating current (AC) single-phase circuits, multiply by the power factor: P = I × V × PF. For balanced three-phase circuits, multiply by the square root of 3 (1.732): P = √3 × V_LL × I × PF.",
+          },
+          {
+            question: "Can volts be converted directly to watts?",
+            answer:
+              "No. Voltage is electrical potential difference, whereas wattage is the rate of energy consumption. You cannot convert volts directly into watts without knowing circuit current (Amperes) or electrical resistance (Ohms). A 120V outlet draws zero watts until a device drawing current is plugged in.",
+          },
+          {
+            question: "How do you calculate three-phase watts from amps?",
+            answer:
+              "For a balanced three-phase system using line-to-line voltage, multiply the square root of 3 (approximately 1.732) by line-to-line voltage, current in Amps, and power factor: Watts = √3 × V_LL × Amps × PF. For example, 20 Amps on a 208V three-phase circuit with a power factor of 0.90 yields approximately 6,485 Watts (6.48 kW).",
+          },
+          {
+            question: "What is the difference between watts and volt-amperes (VA)?",
+            answer:
+              "Watts (W) measures real active power that performs physical work or generates heat. Volt-Amperes (VA) measures apparent power, which is the total circulating voltage and current in an AC circuit. In circuits with motors or compressors, current and voltage are slightly out of phase, making VA higher than Watts (Watts = VA × Power Factor).",
+          },
+        ]}
+      />
+
+      {/* Related Calculators */}
+      <RelatedCalculators
+        calculators={[
+          {
+            title: "Watts to Amps Electrical Calculator",
+            description: "Convert appliance or equipment wattage back into electrical current in Amperes.",
+            href: "/watts-to-amps-calculator",
+            category: "Electrical",
+          },
+          {
+            title: "Generator Size Calculator",
+            description: "Calculate required running and starting wattage for portable and home standby generators.",
+            href: "/generator-size-calculator",
+            category: "Generator Sizing",
+          },
+          {
+            title: "UPS & Battery Backup Run-Time Calculator",
+            description: "Determine how long battery backups and UPS systems will power your equipment.",
+            href: "/ups-battery-backup-calculator",
+            category: "UPS & Battery",
+          },
+          {
+            title: "More Electrical & Power Calculators",
+            description: "Browse all live power, battery backup, and generator sizing tools on CalcMyPower.",
+            href: "/calculators",
+            category: "Directory",
+          },
+        ]}
+      />
+    </CalculatorShell>
+  );
+};
