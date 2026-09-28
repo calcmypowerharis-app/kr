@@ -455,6 +455,43 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+
+          {/* Tertiary Featured Guide Card: Battery Amp-Hours Explained */}
+          <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-3xl">
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Battery Engineering Guide
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>9 min read</span>
+                </span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+                <Link
+                  href="/what-does-ah-mean-on-a-battery"
+                  className="hover:text-indigo-600 transition"
+                >
+                  What Does Ah Mean on a Battery? Amp-Hours Explained
+                </Link>
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Understand battery charge capacity, convert Amp-hours to Watt-hours (Wh), and evaluate how chemistry, depth of discharge, and Peukert losses determine real-world runtime.
+              </p>
+            </div>
+
+            <Link
+              href="/what-does-ah-mean-on-a-battery"
+              className="px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-indigo-600 text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition shrink-0 self-start md:self-center"
+            >
+              <span>Read Battery Ah Guide</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </section>
 
         {/* 4. Actionable Roadmap & In Development Section */}

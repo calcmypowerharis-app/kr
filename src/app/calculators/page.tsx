@@ -235,7 +235,7 @@ export default function CalculatorsDirectoryPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <Link
               href="/what-size-generator-do-i-need-for-my-house"
               className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
@@ -282,6 +282,31 @@ export default function CalculatorsDirectoryPage() {
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Refrigerator Sizing Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+
+            <Link
+              href="/what-does-ah-mean-on-a-battery"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Battery Engineering Guide
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-500">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>9 min read</span>
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                What Does Ah Mean on a Battery? Amp-Hours Explained
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Understand battery charge capacity, convert Amp-hours to Watt-hours (Wh), and evaluate how chemistry, depth of discharge, and Peukert losses determine real-world runtime.
+              </p>
+              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
+                <span>Read Battery Ah Guide</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>

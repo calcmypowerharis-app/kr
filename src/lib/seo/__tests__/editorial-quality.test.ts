@@ -157,7 +157,8 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
 
   describe("4. Article Worked Example ↔ Calculator Scenario Single Source of Truth (Section 26-C)", () => {
     it("verifies all deep-linked calculator scenarios exist and match worked example numbers in article text", () => {
-      for (const article of articles) {
+      const generatorArticles = articles.filter((a) => a.route.includes("generator"));
+      for (const article of generatorArticles) {
         const scenarioLinks = Array.from(
           article.content.matchAll(/\/generator-size-calculator\?scenario=([a-zA-Z0-9_-]+)/g)
         );

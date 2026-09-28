@@ -149,7 +149,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/watts-to-amps-calculator",
       "/generator-size-calculator",
     ],
-    relatedGuidePaths: ["/what-size-generator-do-i-need-for-my-house"],
+    relatedGuidePaths: [
+      "/what-does-ah-mean-on-a-battery",
+      "/what-size-generator-do-i-need-for-my-house",
+    ],
   },
   {
     slug: "watts-to-amps-calculator",
@@ -189,7 +192,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/ups-battery-backup-calculator",
       "/generator-size-calculator",
     ],
-    relatedGuidePaths: ["/what-size-generator-do-i-need-for-my-house"],
+    relatedGuidePaths: [
+      "/what-does-ah-mean-on-a-battery",
+      "/what-size-generator-do-i-need-for-my-house",
+    ],
   },
 ];
 
@@ -258,6 +264,32 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/ups-battery-backup-calculator",
     ],
     relatedGuidePaths: ["/what-size-generator-do-i-need-for-my-house"],
+  },
+  {
+    slug: "what-does-ah-mean-on-a-battery",
+    path: "/what-does-ah-mean-on-a-battery",
+    title: "What Does Ah Mean on a Battery? Amp-Hours Explained",
+    shortTitle: "Battery Amp-Hours Explained",
+    metaTitle: "What Does Ah Mean on a Battery? Amp-Hours Explained",
+    metaDescription:
+      "Understand what Ah (Amp-hours) means on a battery, how to convert Ah to Watt-hours (Wh), and why usable battery runtime depends on chemistry and discharge rate.",
+    cluster: "ups-battery",
+    parentCalculatorPath: "/ups-battery-backup-calculator",
+    scenarioLink: "/ups-battery-backup-calculator",
+    primaryKeyword: "what does ah mean on a battery",
+    readingTime: "9 min read",
+    datePublished: "2026-09-28",
+    lastModified: "2026-09-28",
+    heroImage: "/images/articles/deep-cycle-battery-amp-hours.jpg",
+    relatedCalculatorPaths: [
+      "/ups-battery-backup-calculator",
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-size-generator-do-i-need-for-my-house",
+      "/what-size-generator-to-run-a-refrigerator",
+    ],
   },
 ];
 

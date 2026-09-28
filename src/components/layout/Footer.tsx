@@ -88,6 +88,14 @@ export const Footer: React.FC = () => {
                   Generator Size for a Refrigerator
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/what-does-ah-mean-on-a-battery"
+                  className="hover:text-white transition"
+                >
+                  Battery Amp-Hours (Ah) Explained
+                </Link>
+              </li>
             </ul>
           </div>
 
