@@ -339,7 +339,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </div>
 
               <p>
-                As the table demonstrates, <strong>Amp-hours tell you how much current can flow over time</strong>, but they say nothing about the pressure (voltage) driving that current. Without knowing the voltage, you cannot determine how much work the battery can actually perform.
+                As the table demonstrates, <strong>Amp-hours tell you how much current can flow over time</strong>, but they say nothing about the pressure (voltage) driving that current. Without knowing the voltage, you cannot determine how much work the battery can actually perform. For a comprehensive walkthrough of electrical energy units and utility billing calculations, read our foundational guide on <Link href="/what-is-a-watt-hour" className="text-blue-600 font-semibold hover:underline">What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained</Link>.
               </p>
             </section>
 
@@ -1067,6 +1067,21 @@ export default function BatteryAmpHoursExplainedPage() {
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
                     Convert circuit current in Amperes to real electrical power (Watts) and apparent power (VA).
+                  </p>
+                </Link>
+
+                <Link
+                  href="/what-is-a-watt-hour"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    What Is a Watt-Hour (Wh)?
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Learn how power over time translates to energy consumption, utility billing (kWh), and battery runtime.
                   </p>
                 </Link>
 

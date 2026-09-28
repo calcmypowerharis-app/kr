@@ -96,6 +96,14 @@ export const Footer: React.FC = () => {
                   Battery Amp-Hours (Ah) Explained
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/what-is-a-watt-hour"
+                  className="hover:text-white transition"
+                >
+                  Watt-Hours (Wh) Explained
+                </Link>
+              </li>
             </ul>
           </div>
 

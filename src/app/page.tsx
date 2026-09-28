@@ -492,6 +492,43 @@ export default function HomePage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
+
+          {/* Fourth Featured Guide Card: Watt-Hours Explained */}
+          <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-2 max-w-3xl">
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Energy Fundamentals
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>9 min read</span>
+                </span>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
+                <Link
+                  href="/what-is-a-watt-hour"
+                  className="hover:text-indigo-600 transition"
+                >
+                  What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained
+                </Link>
+              </h3>
+
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Discover the difference between instantaneous power (Watts) and energy consumed over time (Watt-hours), with practical battery runtime and utility billing calculations.
+              </p>
+            </div>
+
+            <Link
+              href="/what-is-a-watt-hour"
+              className="px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-indigo-600 text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition shrink-0 self-start md:self-center"
+            >
+              <span>Read Watt-Hour Guide</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </section>
 
         {/* 4. Actionable Roadmap & In Development Section */}

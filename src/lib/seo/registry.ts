@@ -150,6 +150,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/generator-size-calculator",
     ],
     relatedGuidePaths: [
+      "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
     ],
@@ -172,7 +173,11 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/ups-battery-backup-calculator",
       "/generator-size-calculator",
     ],
-    relatedGuidePaths: ["/what-size-generator-do-i-need-for-my-house"],
+    relatedGuidePaths: [
+      "/what-is-a-watt-hour",
+      "/what-does-ah-mean-on-a-battery",
+      "/what-size-generator-do-i-need-for-my-house",
+    ],
   },
   {
     slug: "amps-to-watts-calculator",
@@ -193,6 +198,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/generator-size-calculator",
     ],
     relatedGuidePaths: [
+      "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
     ],
@@ -287,8 +293,35 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/amps-to-watts-calculator",
     ],
     relatedGuidePaths: [
+      "/what-is-a-watt-hour",
       "/what-size-generator-do-i-need-for-my-house",
       "/what-size-generator-to-run-a-refrigerator",
+    ],
+  },
+  {
+    slug: "what-is-a-watt-hour",
+    path: "/what-is-a-watt-hour",
+    title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
+    shortTitle: "Watt-Hours (Wh) Explained",
+    metaTitle: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
+    metaDescription:
+      "Understand what a Watt-hour (Wh) measures, the crucial difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
+    cluster: "electricity",
+    parentCalculatorPath: "/watts-to-amps-calculator",
+    scenarioLink: "/watts-to-amps-calculator",
+    primaryKeyword: "watt hours",
+    readingTime: "9 min read",
+    datePublished: "2026-09-28",
+    lastModified: "2026-09-28",
+    heroImage: "/images/articles/watt-hour-energy-monitor.jpg",
+    relatedCalculatorPaths: [
+      "/ups-battery-backup-calculator",
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-does-ah-mean-on-a-battery",
+      "/what-size-generator-do-i-need-for-my-house",
     ],
   },
 ];

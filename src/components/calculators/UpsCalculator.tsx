@@ -453,6 +453,12 @@ export const UpsCalculator: React.FC = () => {
       <RelatedCalculators
         calculators={[
           {
+            title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
+            description: "Understand power vs. energy, convert Watts and Amps to Watt-hours, and calculate battery backup duration.",
+            href: "/what-is-a-watt-hour",
+            category: "Energy Guide",
+          },
+          {
             title: "What Does Ah Mean on a Battery? Amp-Hours Explained",
             description: "Understand battery charge capacity, convert Ah to Watt-hours, and learn why chemistry and Peukert discharge rates impact usable runtime.",
             href: "/what-does-ah-mean-on-a-battery",
