@@ -240,3 +240,13 @@ This log records major technical and product decisions, context, rationale, and 
 - **Context:** Google Search Central documentation specifies that `<priority>` and `<changefreq>` are ignored in XML sitemaps, and `<lastmod>` is only trusted when it accurately reflects the real modification date of a page rather than `new Date()` on every build.
 - **Decision:** Centralize all route metadata, topical cluster assignments, and explicit `YYYY-MM-DD` `lastModified` dates in `src/lib/seo/registry.ts`, driving `src/app/sitemap.ts` and automated SEO guardrails (`src/lib/seo/__tests__/seo-foundation.test.ts`).
 - **Rationale:** Prevents orphaned routes, eliminates inaccurate sitemap timestamps, and enforces automated build-time verification of titles, canonicals, and internal link density.
+
+---
+
+## Decision 024: Pure Library Export for Shared Structured Data Schemas
+- **Date:** 2026-09-29
+- **Status:** Approved & Implemented
+- **Context:** Exporting shared static data (such as FAQ arrays for `FAQPage` JSON-LD schemas) from a `'use client'` component file and importing it into a Server Component (`page.tsx`) causes Next.js 15 static prerendering to fail with `TypeError: a.map is not a function`, because client component module boundaries cannot pass non-component exports back to server components during build-time SSG.
+- **Decision:** All shared data arrays, structured data inputs, and formula definitions must be authored and exported from pure TypeScript modules (`src/lib/calculators/`) or directly within `page.tsx`. Client components import from the library; Server Components import from the library.
+- **Rationale:** Guarantees 100% build-time SSR/SSG compatibility while keeping structured data JSON-LD and visible client accordion components perfectly in sync.
+
