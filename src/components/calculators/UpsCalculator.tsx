@@ -453,6 +453,12 @@ export const UpsCalculator: React.FC = () => {
       <RelatedCalculators
         calculators={[
           {
+            title: "Battery Capacity & Sizing Calculator",
+            description: "Calculate battery capacity in Wh and Ah, evaluate usable energy across chemistries, and size battery banks for loads.",
+            href: "/battery-capacity-calculator",
+            category: "Battery Storage",
+          },
+          {
             title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
             description: "Understand power vs. energy, convert Watts and Amps to Watt-hours, and calculate battery backup duration.",
             href: "/what-is-a-watt-hour",

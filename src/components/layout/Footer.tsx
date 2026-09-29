@@ -44,6 +44,14 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
+                  href="/battery-capacity-calculator"
+                  className="hover:text-white transition"
+                >
+                  Battery Capacity Calculator
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/watts-to-amps-calculator"
                   className="hover:text-white transition"
                 >

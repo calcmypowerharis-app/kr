@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  Battery,
   Zap,
   BatteryCharging,
   Plug,
@@ -735,11 +736,18 @@ export default function WattHoursExplainedPage() {
 
                 <div className="flex flex-wrap items-center gap-3 pt-2">
                   <Link
-                    href="/ups-battery-backup-calculator"
+                    href="/battery-capacity-calculator"
                     className="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm inline-flex items-center gap-2 transition shadow-md"
                   >
-                    <span>Open UPS Battery Runtime Calculator</span>
+                    <span>Battery Capacity Calculator</span>
                     <ArrowRight className="w-4 h-4" />
+                  </Link>
+
+                  <Link
+                    href="/ups-battery-backup-calculator"
+                    className="px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-semibold text-sm inline-flex items-center gap-2 transition border border-slate-700"
+                  >
+                    <span>UPS Runtime Calculator</span>
                   </Link>
 
                   <Link
@@ -800,6 +808,21 @@ export default function WattHoursExplainedPage() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                <Link
+                  href="/battery-capacity-calculator"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Battery className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    Battery Capacity &amp; Sizing Calculator
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Calculate battery capacity in Wh and kWh, evaluate usable energy across chemistries, and size battery banks for loads.
+                  </p>
+                </Link>
+
                 <Link
                   href="/what-does-ah-mean-on-a-battery"
                   className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"

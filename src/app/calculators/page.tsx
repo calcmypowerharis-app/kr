@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import {
+  Battery,
   BatteryCharging,
   Cpu,
   Sliders,
@@ -142,6 +143,32 @@ export default function CalculatorsDirectoryPage() {
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
                 Estimate how long an uninterruptible power supply or deep-cycle battery bank will power your equipment during an outage.
+              </p>
+              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
+                <span>Open Calculator</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+
+            {/* Active: Battery Capacity & Sizing Calculator */}
+            <Link
+              id="battery-capacity"
+              href="/battery-capacity-calculator"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
+            >
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                  <Battery className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Live Tool • UPS &amp; Battery
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+                Battery Capacity &amp; Sizing Calculator
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Calculate battery energy storage in Watt-hours (Wh) and Amp-hours (Ah), evaluate usable capacity across chemistries, and size battery banks for loads.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>

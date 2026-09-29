@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
+  Battery,
   BatteryCharging,
   Zap,
   Plug,
@@ -463,6 +464,17 @@ export default function BatteryAmpHoursExplainedPage() {
                       Amp-hours = Watt-hours ÷ Nominal Voltage
                     </span>
                   </div>
+                </div>
+
+                <div className="pt-2 border-t border-slate-800 text-xs text-slate-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <span>Need to convert Ah to Wh and calculate usable energy for your specific battery?</span>
+                  <Link
+                    href="/battery-capacity-calculator"
+                    className="inline-flex items-center gap-1.5 font-bold text-emerald-400 hover:text-emerald-300 transition"
+                  >
+                    <span>Open Battery Capacity Calculator</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
               </div>
 
@@ -1025,6 +1037,21 @@ export default function BatteryAmpHoursExplainedPage() {
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                <Link
+                  href="/battery-capacity-calculator"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Battery className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    Battery Capacity &amp; Sizing Calculator
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Calculate battery capacity in Wh/kWh, compare usable energy across chemistries, and size battery banks for loads.
+                  </p>
+                </Link>
+
                 <Link
                   href="/ups-battery-backup-calculator"
                   className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"

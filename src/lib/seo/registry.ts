@@ -146,6 +146,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     formula: "T = (V × Ah × DoD × η) ÷ P",
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
+      "/battery-capacity-calculator",
       "/watts-to-amps-calculator",
       "/generator-size-calculator",
     ],
@@ -153,6 +154,29 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
+    ],
+  },
+  {
+    slug: "battery-capacity-calculator",
+    path: "/battery-capacity-calculator",
+    title: "Battery Capacity & Sizing Calculator",
+    shortTitle: "Battery Capacity",
+    metaTitle: "Battery Capacity Calculator (Ah to Wh & Sizing)",
+    metaDescription:
+      "Calculate battery capacity in Watt-hours (Wh) and Amp-hours (Ah). Estimate usable energy and size battery capacity for a load and runtime.",
+    cluster: "ups-battery",
+    secondaryClusters: ["electricity", "solar", "rv-power"],
+    primaryKeyword: "battery capacity calculator",
+    formula: "Wh = V × Ah | Wh_usable = Wh × DoD | Ah_req = (P × t) ÷ (V × η × DoD)",
+    lastModified: "2026-09-29",
+    relatedCalculatorPaths: [
+      "/ups-battery-backup-calculator",
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-does-ah-mean-on-a-battery",
+      "/what-is-a-watt-hour",
     ],
   },
   {
@@ -170,6 +194,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
       "/amps-to-watts-calculator",
+      "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
       "/generator-size-calculator",
     ],
@@ -194,6 +219,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
       "/watts-to-amps-calculator",
+      "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
       "/generator-size-calculator",
     ],
@@ -288,6 +314,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     lastModified: "2026-09-28",
     heroImage: "/images/articles/deep-cycle-battery-amp-hours.jpg",
     relatedCalculatorPaths: [
+      "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
       "/watts-to-amps-calculator",
       "/amps-to-watts-calculator",
@@ -315,6 +342,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     lastModified: "2026-09-28",
     heroImage: "/images/articles/watt-hour-energy-monitor.jpg",
     relatedCalculatorPaths: [
+      "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
       "/watts-to-amps-calculator",
       "/amps-to-watts-calculator",

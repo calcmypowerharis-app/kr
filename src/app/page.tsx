@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import {
+  Battery,
   Zap,
   BatteryCharging,
   ArrowRight,
@@ -74,6 +75,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     cta: "Open UPS Runtime Calculator",
   },
   {
+    id: "battery-capacity-tool",
+    title: "Battery Capacity & Sizing Calculator",
+    href: "/battery-capacity-calculator",
+    icon: Battery,
+    formula: "Wh = V × Ah | Wh_usable = Wh × DoD | Ah_req = (P × t) ÷ (V × η × DoD)",
+    summary:
+      "Calculate battery storage in Watt-hours (Wh) and Amp-hours (Ah). Evaluate usable capacity across LiFePO4 and lead-acid chemistries, or size battery banks and unit counts for target loads.",
+    outputs: [
+      "Nominal and usable energy in Wh and kWh",
+      "Depth of discharge (DoD) benchmarks for LiFePO4, AGM, and NMC",
+      "Series vs. parallel bank voltage and capacity calculations",
+      "Appliance load sizing with inverter efficiency derating",
+    ],
+    cta: "Open Battery Capacity Calculator",
+  },
+  {
     id: "amps-tool",
     title: "Watts to Amps Calculator",
     href: "/watts-to-amps-calculator",
@@ -122,10 +139,10 @@ const PLANNED_TOOLS: PlannedTool[] = [
     icon: Sun,
   },
   {
-    category: "Battery Storage",
-    title: "Amp-Hours (Ah) to Watt-Hours (Wh) Converter",
-    scope: "Nominal voltage energy conversion and series/parallel battery bank configuration.",
-    icon: BatteryCharging,
+    category: "Wiring & Safety",
+    title: "Wire Gauge Sizing & DC Voltage Drop Calculator",
+    scope: "Calculate minimum AWG copper conductor size for battery banks and solar arrays per NEC 310.",
+    icon: Sliders,
   },
   {
     category: "Electricity Cost",
