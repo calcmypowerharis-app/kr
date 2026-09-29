@@ -712,17 +712,17 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   {
                     label: "Bank Capacity (Ah)",
                     value: evalResults.isValid ? evalResults.formattedBankAh : "--",
-                    subtext: `@ ${evalResults.bankVoltage}V DC`,
+                    subtext: "Nominal Amp-hours",
+                  },
+                  {
+                    label: "Bank Voltage",
+                    value: evalResults.isValid ? `${evalResults.bankVoltage} V` : "--",
+                    subtext: evalCount > 1 ? `${evalCount} units in ${evalWiring}` : "Single battery",
                   },
                   {
                     label: "Depth of Discharge",
                     value: `${evalResults.dodPercentUsed}%`,
                     subtext: BATTERY_CHEMISTRY_PRESETS[evalChemistry].shortName,
-                  },
-                  {
-                    label: "Typical Cycle Life",
-                    value: BATTERY_CHEMISTRY_PRESETS[evalChemistry].cycleLifeTypical,
-                    subtext: "Expected longevity",
                   },
                 ]}
                 warnings={evalResults.warnings}

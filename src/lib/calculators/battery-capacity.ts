@@ -35,7 +35,6 @@ export interface ChemistryPreset {
   name: string;
   shortName: string;
   defaultDoD: number; // e.g. 0.85
-  cycleLifeTypical: string;
   description: string;
 }
 
@@ -44,7 +43,6 @@ export const BATTERY_CHEMISTRY_PRESETS: Record<BatteryChemistry, ChemistryPreset
     name: "Lithium Iron Phosphate (LiFePO4)",
     shortName: "LiFePO4",
     defaultDoD: 0.85,
-    cycleLifeTypical: "3,000–5,000+ cycles",
     description:
       "Modern deep-cycle standard with flat discharge voltage. Safely delivers 80% to 90% usable capacity without significant cycle-life degradation.",
   },
@@ -52,7 +50,6 @@ export const BATTERY_CHEMISTRY_PRESETS: Record<BatteryChemistry, ChemistryPreset
     name: "Lead-Acid (AGM, Gel, Flooded Deep-Cycle)",
     shortName: "Lead-Acid",
     defaultDoD: 0.50,
-    cycleLifeTypical: "300–800 cycles",
     description:
       "Traditional lead-acid chemistry. Industry standard guidelines recommend a 50% maximum depth of discharge to prevent rapid sulfation and plate damage.",
   },
@@ -60,7 +57,6 @@ export const BATTERY_CHEMISTRY_PRESETS: Record<BatteryChemistry, ChemistryPreset
     name: "Lithium-Ion (NMC / Portable Power Stations)",
     shortName: "Lithium-Ion (NMC)",
     defaultDoD: 0.80,
-    cycleLifeTypical: "800–1,500 cycles",
     description:
       "Common in portable solar generators and consumer electronics. Typically operated up to 80% DoD for balanced energy density and cycle life.",
   },
@@ -68,7 +64,6 @@ export const BATTERY_CHEMISTRY_PRESETS: Record<BatteryChemistry, ChemistryPreset
     name: "Custom Depth of Discharge",
     shortName: "Custom",
     defaultDoD: 0.85,
-    cycleLifeTypical: "Manufacturer specific",
     description:
       "User-specified depth of discharge percentage matching manufacturer specifications.",
   },
