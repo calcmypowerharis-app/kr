@@ -33,6 +33,7 @@ import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
+import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 
 export const metadata: Metadata = {
   title: "How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide",
@@ -225,22 +226,21 @@ export default function BatteryRuntimeGuidePage() {
               </p>
             </header>
 
-            {/* Hero Image */}
-            <figure className="space-y-2">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm">
-                <Image
-                  src="/images/articles/12v-100ah-battery-runtime-comparison.jpg"
-                  alt="Educational chart comparing 12V 100Ah battery runtime in hours across common electrical loads for modern LiFePO4 at 90 percent depth of discharge versus lead-acid AGM at 50 percent depth of discharge"
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 800px"
-                  className="object-contain"
-                />
-              </div>
-              <figcaption className="text-xs text-slate-500 text-center">
-                Comparing delivered operating runtime across common DC and AC loads for a 12V 100Ah LiFePO4 lithium battery versus a deep-cycle lead-acid AGM battery under benchmark test assumptions.
-              </figcaption>
-            </figure>
+            {/* Hero Image with Fullscreen Lightbox Zoom */}
+            <ZoomableArticleImage
+              src="/images/articles/12v-100ah-battery-runtime-comparison.jpg"
+              alt="Educational chart comparing 12V 100Ah battery runtime in hours across common electrical loads for modern LiFePO4 at 90 percent depth of discharge versus lead-acid AGM at 50 percent depth of discharge"
+              caption="Comparing delivered operating runtime across common DC and AC loads for a 12V 100Ah LiFePO4 lithium battery versus a deep-cycle lead-acid AGM battery under benchmark test assumptions."
+            >
+              <Image
+                src="/images/articles/12v-100ah-battery-runtime-comparison.jpg"
+                alt="Educational chart comparing 12V 100Ah battery runtime in hours across common electrical loads for modern LiFePO4 at 90 percent depth of discharge versus lead-acid AGM at 50 percent depth of discharge"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 800px"
+                className="object-contain"
+              />
+            </ZoomableArticleImage>
 
             {/* Section 1: Direct Answer */}
             <section id="quick-answer" className="space-y-4 scroll-mt-24">
