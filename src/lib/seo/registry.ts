@@ -151,6 +151,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/generator-size-calculator",
     ],
     relatedGuidePaths: [
+      "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
@@ -175,6 +176,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/amps-to-watts-calculator",
     ],
     relatedGuidePaths: [
+      "/how-long-will-a-100ah-battery-last",
       "/what-does-ah-mean-on-a-battery",
       "/what-is-a-watt-hour",
     ],
@@ -320,6 +322,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/amps-to-watts-calculator",
     ],
     relatedGuidePaths: [
+      "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
       "/what-size-generator-do-i-need-for-my-house",
       "/what-size-generator-to-run-a-refrigerator",
@@ -348,8 +351,36 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/amps-to-watts-calculator",
     ],
     relatedGuidePaths: [
+      "/how-long-will-a-100ah-battery-last",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
+    ],
+  },
+  {
+    slug: "how-long-will-a-100ah-battery-last",
+    path: "/how-long-will-a-100ah-battery-last",
+    title: "How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide",
+    shortTitle: "100Ah Battery Runtime Guide",
+    metaTitle: "How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide",
+    metaDescription:
+      "Find out how long a 12V 100Ah battery will run a refrigerator, TV, CPAP, or inverter. See realistic runtime estimates for LiFePO4 and lead-acid deep-cycle batteries.",
+    cluster: "ups-battery",
+    parentCalculatorPath: "/ups-battery-backup-calculator",
+    scenarioLink: "/ups-battery-backup-calculator",
+    primaryKeyword: "12v 100ah battery",
+    readingTime: "12 min read",
+    datePublished: "2026-09-29",
+    lastModified: "2026-09-29",
+    heroImage: "/images/articles/12v-100ah-battery-runtime-comparison.jpg",
+    relatedCalculatorPaths: [
+      "/ups-battery-backup-calculator",
+      "/battery-capacity-calculator",
+      "/watts-to-amps-calculator",
+      "/generator-size-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-does-ah-mean-on-a-battery",
+      "/what-is-a-watt-hour",
     ],
   },
 ];

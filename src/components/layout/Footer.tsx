@@ -112,6 +112,14 @@ export const Footer: React.FC = () => {
                   Watt-Hours (Wh) Explained
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-long-will-a-100ah-battery-last"
+                  className="hover:text-white transition"
+                >
+                  100Ah Battery Runtime Guide
+                </Link>
+              </li>
             </ul>
           </div>
 

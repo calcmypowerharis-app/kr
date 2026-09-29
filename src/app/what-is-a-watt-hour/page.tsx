@@ -579,6 +579,17 @@ export default function WattHoursExplainedPage() {
               <p>
                 <strong>No. Real-world runtime will always be lower than the theoretical formula suggests.</strong> In practice, a 12V 100Ah battery running a 100W load will deliver approximately <strong>5.1 hours</strong> (for traditional lead-acid) to <strong>9.2 hours</strong> (for modern LiFePO4 lithium).
               </p>
+
+              <p className="text-xs sm:text-sm text-slate-600 bg-blue-50/70 p-4 rounded-xl border border-blue-200 leading-relaxed">
+                For complete appliance runtimes covering refrigerators, TVs, laptops, CPAP machines, and inverters, read our dedicated guide on{" "}
+                <Link
+                  href="/how-long-will-a-100ah-battery-last"
+                  className="text-blue-700 font-bold hover:underline"
+                >
+                  How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide
+                </Link>
+                .
+              </p>
             </section>
 
             {/* Section 8: Real-World Runtime Factors */}
@@ -880,6 +891,21 @@ export default function WattHoursExplainedPage() {
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
                     Convert circuit current in Amperes to real electrical power (Watts) and apparent power (VA).
+                  </p>
+                </Link>
+
+                <Link
+                  href="/how-long-will-a-100ah-battery-last"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    100Ah Battery Runtime Guide
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Practical appliance runtime benchmarks for refrigerators, CPAP machines, laptops, TVs, and inverters.
                   </p>
                 </Link>
               </div>

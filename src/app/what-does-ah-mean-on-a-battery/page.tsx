@@ -572,6 +572,17 @@ export default function BatteryAmpHoursExplainedPage() {
               <p>
                 <strong>No. In the real world, you will never get 12 hours of runtime from a 12V 100Ah battery running a 100W load.</strong> Depending on the internal battery chemistry, your delivered runtime will range from roughly 5.1 hours to 9.2 hours. Here is why the numbers diverge.
               </p>
+
+              <p className="text-xs sm:text-sm text-slate-600 bg-blue-50/70 p-4 rounded-xl border border-blue-200 leading-relaxed">
+                For a detailed appliance-by-appliance breakdown covering refrigerators, TVs, laptops, CPAP machines, and continuous AC loads, read our comprehensive guide on{" "}
+                <Link
+                  href="/how-long-will-a-100ah-battery-last"
+                  className="text-blue-700 font-bold hover:underline"
+                >
+                  How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide
+                </Link>
+                .
+              </p>
             </section>
 
             {/* Section 7: Why Actual Runtime Differs */}
@@ -1124,6 +1135,21 @@ export default function BatteryAmpHoursExplainedPage() {
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
                     Complete residential backup sizing guide covering furnace blowers, sump pumps, and transfer switches.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/how-long-will-a-100ah-battery-last"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Clock className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    How Long Will a 100Ah Battery Last?
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Realistic runtime benchmarks for refrigerators, CPAP machines, laptops, TVs, and inverters across LiFePO4 and lead-acid batteries.
                   </p>
                 </Link>
               </div>

@@ -459,6 +459,12 @@ export const UpsCalculator: React.FC = () => {
             category: "Battery Storage",
           },
           {
+            title: "How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide",
+            description: "Practical runtime estimates for refrigerators, CPAP machines, TVs, and inverters across LiFePO4 and lead-acid batteries.",
+            href: "/how-long-will-a-100ah-battery-last",
+            category: "Runtime Guide",
+          },
+          {
             title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
             description: "Understand power vs. energy, convert Watts and Amps to Watt-hours, and calculate battery backup duration.",
             href: "/what-is-a-watt-hour",

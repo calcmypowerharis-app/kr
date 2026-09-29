@@ -803,18 +803,26 @@ export const BatteryCapacityCalculator: React.FC = () => {
             </>
           )}
 
-          {/* Quick Cross-Link to UPS Runtime Calculator */}
+          {/* Quick Cross-Link to UPS Runtime & 100Ah Runtime Guide */}
           <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-3">
             <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
-            <div className="space-y-1">
+            <div className="space-y-1.5">
               <span className="font-bold">Need to calculate exact backup runtime for an existing battery?</span>
               <p className="text-blue-800 leading-relaxed">
-                If you already own a specific battery bank and want to determine runtime hours across varying household loads, use our dedicated{" "}
+                If you already own a battery bank and want custom runtime hours across varying household loads, use our dedicated{" "}
                 <Link
                   href="/ups-battery-backup-calculator"
                   className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  UPS &amp; Battery Backup Run-Time Hours Calculator
+                  UPS &amp; Battery Backup Calculator
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+                . For realistic appliance benchmarks (refrigerators, CPAP, TVs, and inverters), read our{" "}
+                <Link
+                  href="/how-long-will-a-100ah-battery-last"
+                  className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  12V 100Ah Battery Runtime Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
                 .
