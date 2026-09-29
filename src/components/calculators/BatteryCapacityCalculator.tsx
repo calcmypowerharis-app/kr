@@ -40,6 +40,13 @@ type CalculatorMode = "evaluate" | "size";
 
 const RELATED_TOOLS: RelatedTool[] = [
   {
+    title: "Solar Panel Tilt Angle Calculator",
+    description:
+      "Calculate the optimal solar panel tilt angle, compass orientation, and roof pitch differences for your latitude.",
+    href: "/solar-panel-tilt-calculator",
+    category: "Solar PV",
+  },
+  {
     title: "UPS Battery Backup Run-Time Hours Calculator",
     description:
       "Estimate runtime hours and continuous DC current draw for your appliances on a battery backup system.",
@@ -862,7 +869,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
           </div>
           <div className="prose prose-slate max-w-none text-sm md:text-base leading-relaxed space-y-4 text-slate-700">
             <p>
-              When evaluating deep-cycle batteries for off-grid solar, RV boondocking, or home emergency backup, the single most common sizing mistake is assuming that 100% of a battery&apos;s nameplate capacity can be drawn into appliances. A battery labeled &quot;100 Amp-hours at 12 Volts&quot; stores <strong>1,200 Watt-hours (Wh)</strong> of raw chemical energy, but the amount of electrical energy you can extract safely depends on its internal chemistry.
+              When evaluating deep-cycle batteries for off-grid solar, RV boondocking, or home emergency backup, the single most common sizing mistake is assuming that 100% of a battery&apos;s nameplate capacity can be drawn into appliances. A battery labeled &quot;100 Amp-hours at 12 Volts&quot; stores <strong>1,200 Watt-hours (Wh)</strong> of raw chemical energy, but the amount of electrical energy you can extract safely depends on its internal chemistry. If you are charging batteries with solar modules, calculate your array&apos;s optimal tilt angle and roof pitch using our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link>.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose my-6">
               <div className="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">

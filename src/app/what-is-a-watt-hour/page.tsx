@@ -667,7 +667,7 @@ export default function WattHoursExplainedPage() {
                     <span>Off-Grid Solar Storage</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    A 400-Watt rooftop solar array in a location with 5 peak sun hours generates roughly 2,000 Watt-hours (2 kWh) of energy per day. Sizing your battery bank to store at least 2,000Wh ensures you capture that energy without overfilling the bank.
+                    A 400-Watt rooftop solar array in a location with 5 peak sun hours generates roughly 2,000 Watt-hours (2 kWh) of energy per day. Sizing your battery bank to store at least 2,000Wh ensures you capture that energy without overfilling the bank. To maximize daily generation, use our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link> to determine the optimal tilt for your latitude.
                   </p>
                 </div>
 

@@ -1,4 +1,4 @@
-# CalcMyPower — Architectural & Technical Decisions (DECISIONS.md)
+# CalcMyPower - Architectural & Technical Decisions (DECISIONS.md)
 
 This log records major technical and product decisions, context, rationale, and consequences in accordance with GEMINI.md Section 17.
 
@@ -91,7 +91,7 @@ This log records major technical and product decisions, context, rationale, and 
 
 ---
 
-## Decision 009: Generator Sizing Methodology — "Largest Single Motor Surge" Rule
+## Decision 009: Generator Sizing Methodology: "Largest Single Motor Surge" Rule
 - **Date:** 2026-09-26
 - **Status:** Approved & Implemented
 - **Context:** Sizing algorithms that sum all starting surges assume that every motor in a facility or home starts at the exact same millisecond. This causes severe, expensive oversizing.
@@ -250,3 +250,14 @@ This log records major technical and product decisions, context, rationale, and 
 - **Decision:** All shared data arrays, structured data inputs, and formula definitions must be authored and exported from pure TypeScript modules (`src/lib/calculators/`) or directly within `page.tsx`. Client components import from the library; Server Components import from the library.
 - **Rationale:** Guarantees 100% build-time SSR/SSG compatibility while keeping structured data JSON-LD and visible client accordion components perfectly in sync.
 
+---
+
+## Decision 025: Solar Panel Tilt Calculation Methodology: Heuristics, Exact Geometry and Simulation Separation
+- **Date:** 2026-09-29
+- **Status:** Approved & Implemented
+- **Context:** Solar panel angle tools often conflate simple rule-of-thumb heuristics with rigorous structural engineering or complex site-specific kilowatt-hour energy simulations. This misleads homeowners and creates unsafe assumptions regarding wind loads, roof modifications, and actual power harvest.
+- **Decision:** Clearly partition the Solar Panel Tilt Angle Calculator (`/solar-panel-tilt-calculator`) into three rigorous methodology tiers:
+  1. **Tier A (Exact Geometry):** Roof pitch trigonometry ($\theta_{\text{roof}} = \arctan(\text{pitch}/12) \times 180/\pi$) and angle difference ($\Delta\theta = \theta_{\text{target}} - \theta_{\text{roof}}$) are mathematical conversions only. They must never be described as structural engineering, wind-load analysis, racking certification, or installation approval.
+  2. **Tier B (Documented Heuristics):** Latitude baseline ($\text{tilt} \approx \text{latitude}$) is labeled as a rule-of-thumb baseline. Seasonal adjustments ($\text{latitude} \pm 15^\circ$) are labeled heuristic planning estimates. The Landau empirical formula ($\text{tilt} = [\text{latitude} \times 0.76] + 3.1^\circ$) is restricted strictly to its stated valid latitude range of 25° to 50° N and labeled an empirical estimate, never an NREL formula or universal physical law.
+  3. **Tier C (Site-Specific Simulation):** The tool explicitly refrains from calculating actual annual kilowatt-hour (kWh) generation. Explanatory copy notes that production modeling requires TMY3 weather files, inverter clipping, DC-to-AC derating, temperature coefficients, and shading profiles, directly referring users to NREL PVWatts (pvwatts.nrel.gov).
+- **Rationale:** Preserves engineering integrity, complies with GEMINI.md Sections 9, 10, and 15, and prevents misleading technical claims while delivering maximum practical utility for residential, ground-mount, and RV solar users.

@@ -1,4 +1,4 @@
-# CalcMyPower — Lessons & Mistake Prevention Log (LESSONS.md)
+# CalcMyPower - Lessons & Mistake Prevention Log (LESSONS.md)
 
 This log documents lessons learned, bugs found, root causes, and prevention strategies in accordance with GEMINI.md Section 17.
 
@@ -111,7 +111,7 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 
 ## Lesson 016: Keep Native `<select>` `<option>` Text Concise for `390px` Mobile Viewports
 - **Context:** Native mobile `<select>` controls do not wrap single-line text in their closed state. Option labels longer than ~38 characters (especially when combined with an appended `(sublabel)`) clip horizontally on `390px` viewports.
-- **Rule:** Keep `<option>` label + sublabel combinations concise (e.g., `"LiFePO4 — Lithium (90% DoD)"`, `"AC Single-Phase (Residential)"`) and place longer explanatory definitions in the field's `helperText`.
+- **Rule:** Keep `<option>` label + sublabel combinations concise (e.g., `"LiFePO4 - Lithium (90% DoD)"`, `"AC Single-Phase (Residential)"`) and place longer explanatory definitions in the field's `helperText`.
 - **Prevention:** Visually inspect every `<select>` element at `390×844` via Chrome DevTools screenshots.
 
 ---
@@ -131,9 +131,9 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 ---
 
 ## Lesson 019: Absolute Prohibition of Em/En Dashes and Double/Triple Hyphens in Article Prose
-- **Context:** Large language models routinely insert em dashes (`—`), en dashes (`–`), or double/triple hyphens (`--`/`---`) as sentence breaks, parenthetical breaks, or range indicators, creating recognizable synthetic writing patterns in violation of GEMINI.md.
-- **Rule:** Ban `—`, `–`, `--`, and `---` from normal editorial prose. Use standard commas, parentheses, colons, or periods for sentence breaks. Use the word "to" for all numerical and unit ranges (e.g., `5 to 10 kW`, `$600 to $2,500`, `18 to 24 kW`). Hyphens (`-`) are permitted only inside compound adjectives (e.g. `whole-house`, `120-volt`), code, and URLs.
-- **Prevention:** Run an automated pre-commit script scanning article source files for `—`, `–`, `--`, and `---` before declaring any editorial article complete.
+- **Context:** Large language models routinely insert em dashes, en dashes, or double/triple hyphens (`--`/`---`) as sentence breaks, parenthetical breaks, or range indicators, creating recognizable synthetic writing patterns in violation of GEMINI.md.
+- **Rule:** Ban em dashes, en dashes, `--`, and `---` from normal editorial prose. Use standard commas, parentheses, colons, or periods for sentence breaks. Use the word "to" for all numerical and unit ranges (e.g., `5 to 10 kW`, `$600 to $2,500`, `18 to 24 kW`). Hyphens (`-`) are permitted only inside compound adjectives (e.g. `whole-house`, `120-volt`), code, and URLs.
+- **Prevention:** Run an automated pre-commit script scanning article source files for em dashes, en dashes, `--`, and `---` before declaring any editorial article complete.
 
 ---
 
@@ -162,3 +162,14 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 - **Context:** Root `src/app/layout.tsx` sets `title.template = "%s | CalcMyPower"`. Including `| CalcMyPower` inside a child page's `metadata.title` string produces a duplicate suffix (`| CalcMyPower | CalcMyPower`) in the rendered `<title>` tag.
 - **Rule:** Always pass clean page titles without the brand suffix (or use `buildPageMetadata()` from `src/lib/seo/metadata.ts`, which strips any accidental `| CalcMyPower` suffix automatically).
 - **Prevention:** Enforced across all `src/app/*/page.tsx` routes by `seo-foundation.test.ts`.
+
+---
+
+## Lesson 024: Non-Dogmatic Framing for Solar Tilt Heuristics and Drainage Thresholds
+- **Context:** Generic solar calculators frequently present rule-of-thumb heuristics (such as tilt = latitude or 10° minimum drainage) as dogmatic physical laws or building code mandates. This creates misleading technical claims, fails to acknowledge real-world flush-mount residential roofing practices, and overlooks the fact that solar panels generate power at any angle.
+- **Rule:** When implementing solar tilt and roof pitch tools:
+  1. Clearly label latitude baselines and seasonal adjustments ($\pm 15^\circ$) as planning heuristics rather than universal optima.
+  2. Frame 10° low-tilt thresholds as manufacturer/installer rainwater cleaning and drainage guidelines, not as physical operating cutoffs.
+  3. Clearly separate geometric angle differences from structural engineering, wind uplift analysis, and racking certification.
+  4. Defer location-specific kilowatt-hour (kWh) solar generation modeling to authoritative meteorological simulators (NREL PVWatts) rather than attempting ungrounded energy production forecasts.
+- **Prevention:** Verify all explanatory copy, warning notes, and FAQ answers in `src/lib/calculators/solar-panel-tilt.ts` adhere to non-dogmatic engineering definitions.

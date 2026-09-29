@@ -60,9 +60,9 @@ export const TOPICAL_CLUSTERS: Record<ClusterId, TopicalCluster> = {
     name: "Solar PV & Off-Grid Systems",
     shortName: "Solar PV",
     description:
-      "Size solar panel arrays, MPPT charge controllers, and off-grid solar storage from daily kWh consumption and peak sun hours.",
+      "Calculate optimal solar panel tilt angles, compare roof pitch slopes, size solar panel arrays, and evaluate off-grid solar storage.",
     hubAnchor: "/calculators#solar",
-    status: "planned",
+    status: "active",
   },
   "ev-charging": {
     id: "ev-charging",
@@ -174,6 +174,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/ups-battery-backup-calculator",
       "/watts-to-amps-calculator",
       "/amps-to-watts-calculator",
+      "/solar-panel-tilt-calculator",
     ],
     relatedGuidePaths: [
       "/how-long-will-a-100ah-battery-last",
@@ -198,6 +199,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/amps-to-watts-calculator",
       "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
+      "/solar-panel-tilt-calculator",
       "/generator-size-calculator",
     ],
     relatedGuidePaths: [
@@ -222,6 +224,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     relatedCalculatorPaths: [
       "/watts-to-amps-calculator",
       "/battery-capacity-calculator",
+      "/solar-panel-tilt-calculator",
       "/ups-battery-backup-calculator",
       "/generator-size-calculator",
     ],
@@ -229,6 +232,29 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
+    ],
+  },
+  {
+    slug: "solar-panel-tilt-calculator",
+    path: "/solar-panel-tilt-calculator",
+    title: "Solar Panel Tilt Angle Calculator",
+    shortTitle: "Solar Panel Tilt",
+    metaTitle: "Solar Panel Tilt Angle Calculator (Optimal Angle & Roof Pitch)",
+    metaDescription:
+      "Calculate the optimal solar panel tilt angle and compass orientation for your latitude. Compare roof pitch angles, seasonal adjustments, and mounting options.",
+    cluster: "solar",
+    secondaryClusters: ["rv-power", "home-energy"],
+    primaryKeyword: "solar panel angle calculator",
+    formula: "θ_roof = atan(pitch/12) × (180/π) | Tilt_winter = lat + 15° | Tilt_summer = lat - 15°",
+    lastModified: "2026-09-29",
+    relatedCalculatorPaths: [
+      "/battery-capacity-calculator",
+      "/watts-to-amps-calculator",
+      "/ups-battery-backup-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-is-a-watt-hour",
+      "/how-long-will-a-100ah-battery-last",
     ],
   },
 ];

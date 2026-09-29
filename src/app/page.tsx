@@ -122,6 +122,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     ],
     cta: "Open Amps to Watts Calculator",
   },
+  {
+    id: "solar-tilt-tool",
+    title: "Solar Panel Tilt Angle Calculator",
+    href: "/solar-panel-tilt-calculator",
+    icon: Sun,
+    formula: "θ_roof = atan(pitch/12) × (180/π) | Tilt_winter = lat + 15°",
+    summary:
+      "Calculate optimal solar panel tilt angles, compass orientation, and roof pitch differences for your latitude across year-round, winter, and summer optimization targets.",
+    outputs: [
+      "Optimal tilt angle and empirical Landau estimate (25° to 50° N)",
+      "Roof pitch slope conversion (0/12 to 12/12) and geometric delta",
+      "True South (180°) and True North (0°) compass azimuth guidance",
+      "Low-tilt rainwater drainage and cold-climate snow shedding advisories",
+    ],
+    cta: "Open Solar Panel Tilt Calculator",
+  },
 ];
 
 interface PlannedTool {

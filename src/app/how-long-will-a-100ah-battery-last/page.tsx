@@ -880,7 +880,7 @@ export default function BatteryRuntimeGuidePage() {
                     </div>
                   </div>
                   <p className="text-xs md:text-sm text-slate-600">
-                    On a 100Ah LiFePO4 battery (1,080 Wh usable), the camper can boondock for <strong>almost two full days (46 hours)</strong> with zero solar generation. On lead-acid (600 Wh usable), the battery must be recharged every 24 hours.
+                    On a 100Ah LiFePO4 battery (1,080 Wh usable), the camper can boondock for <strong>almost two full days (46 hours)</strong> with zero solar generation. On lead-acid (600 Wh usable), the battery must be recharged every 24 hours. Pairing rooftop solar panels tilted with our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link> allows off-grid replenishment during sunny daylight hours.
                   </p>
                 </div>
               </div>
