@@ -428,7 +428,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     readingTime: "12 min read",
     datePublished: "2026-09-30",
     lastModified: "2026-09-30",
-    heroImage: "/images/articles/solar-panels-series-vs-parallel-wiring.jpg",
+    heroImage: "/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     relatedCalculatorPaths: [
       "/watts-to-amps-calculator",
       "/amps-to-watts-calculator",

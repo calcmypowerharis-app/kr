@@ -298,7 +298,7 @@ The page must inject three structured data scripts via `src/lib/seo/schema.ts`:
 ## 12. Image & Asset Requirements
 
 * **Hero Image:**
-  * Path: `/images/articles/solar-panels-series-vs-parallel-wiring.jpg`
+  * Path: `/images/articles/solar-panels-series-vs-parallel-wiring.webp`
   * Description: Real technical photograph or clean 3D render of an off-grid solar installation with visible wiring and charge controller.
   * Alt Text: `Solar panel array wiring showing series and parallel connections to an MPPT charge controller.`
   * Size: `< 150 KB` in WebP format; dimensions `1200x675` or `1200x630`.

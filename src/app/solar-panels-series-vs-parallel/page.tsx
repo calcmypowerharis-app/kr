@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     type: "article",
     images: [
       {
-        url: "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.jpg",
+        url: "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
         width: 1200,
         height: 675,
         alt: "Solar panel array wiring showing series and parallel connections to an MPPT charge controller.",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     description:
       "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
     images: [
-      "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.jpg",
+      "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     ],
   },
 };
@@ -124,7 +124,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
     datePublished: "2026-09-30T00:00:00Z",
     dateModified: "2026-09-30T00:00:00Z",
     images: [
-      "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.jpg",
+      "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     ],
   });
 
@@ -264,13 +264,13 @@ export default function SolarPanelsSeriesVsParallelPage() {
               {/* Featured Visual Asset with Click-to-Zoom */}
               <div className="space-y-3">
                 <ZoomableArticleImage
-                  src="/images/articles/solar-panels-series-vs-parallel-wiring.jpg"
+                  src="/images/articles/solar-panels-series-vs-parallel-wiring.webp"
                   alt="Solar panel array wiring showing series and parallel connections to an MPPT charge controller."
                   title="Solar Panels: Series vs. Parallel Wiring"
                   caption="Figure 1: Monocrystalline photovoltaic modules wired with heavy-duty MC4 connectors into an off-grid combiner box and MPPT solar charge controller."
                 >
                   <Image
-                    src="/images/articles/solar-panels-series-vs-parallel-wiring.jpg"
+                    src="/images/articles/solar-panels-series-vs-parallel-wiring.webp"
                     alt="Solar panel array wiring showing series and parallel connections to an MPPT charge controller."
                     fill
                     priority
