@@ -196,11 +196,6 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </span>
                 <span className="text-slate-400">•</span>
                 <span className="text-slate-500">Updated September 2026</span>
-                <span className="text-slate-400">•</span>
-                <span className="inline-flex items-center gap-1.5 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>NEC 690 &amp; IEEE Compliant Methodology</span>
-                </span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
