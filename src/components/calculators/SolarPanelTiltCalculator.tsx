@@ -46,6 +46,13 @@ import {
 
 const RELATED_TOOLS: RelatedTool[] = [
   {
+    title: "Solar Battery Calculator",
+    description:
+      "Size off-grid and backup solar battery banks in kWh and Amp-hours based on daily energy consumption and days of autonomy.",
+    href: "/solar-battery-calculator",
+    category: "Solar PV",
+  },
+  {
     title: "Battery Capacity & Sizing Calculator",
     description:
       "Size off-grid and battery backup storage capacity in Watt-hours (Wh) and Amp-hours (Ah) for solar PV arrays.",

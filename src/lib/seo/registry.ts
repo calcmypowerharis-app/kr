@@ -171,6 +171,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     formula: "Wh = V × Ah | Wh_usable = Wh × DoD | Ah_req = (P × t) ÷ (V × η × DoD)",
     lastModified: "2026-09-29",
     relatedCalculatorPaths: [
+      "/solar-battery-calculator",
       "/ups-battery-backup-calculator",
       "/watts-to-amps-calculator",
       "/amps-to-watts-calculator",
@@ -251,6 +252,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     formula: "θ_roof = atan(pitch/12) × (180/π) | Tilt_winter = lat + 15° | Tilt_summer = lat - 15°",
     lastModified: "2026-09-29",
     relatedCalculatorPaths: [
+      "/solar-battery-calculator",
       "/battery-capacity-calculator",
       "/watts-to-amps-calculator",
       "/ups-battery-backup-calculator",
@@ -259,6 +261,31 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/what-is-a-watt-hour",
       "/how-long-will-a-100ah-battery-last",
       "/solar-panels-series-vs-parallel",
+    ],
+  },
+  {
+    slug: "solar-battery-calculator",
+    path: "/solar-battery-calculator",
+    title: "Solar Battery Calculator",
+    shortTitle: "Solar Battery",
+    metaTitle: "Solar Battery Calculator (Size Battery Bank for Solar PV)",
+    metaDescription:
+      "Calculate the battery bank capacity needed for your off-grid or backup solar system. Size storage in kWh and Amp-hours based on daily usage and autonomy.",
+    cluster: "solar",
+    secondaryClusters: ["ups-battery", "rv-power"],
+    primaryKeyword: "solar battery calculator",
+    formula: "E_nom = (E_daily × N_days) ÷ (η_inv × DoD) | Ah = E_nom ÷ V_dc",
+    lastModified: "2026-09-30",
+    relatedCalculatorPaths: [
+      "/battery-capacity-calculator",
+      "/solar-panel-tilt-calculator",
+      "/watts-to-amps-calculator",
+      "/ups-battery-backup-calculator",
+    ],
+    relatedGuidePaths: [
+      "/solar-panels-series-vs-parallel",
+      "/how-long-will-a-100ah-battery-last",
+      "/what-is-a-watt-hour",
     ],
   },
 ];

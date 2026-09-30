@@ -138,6 +138,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     ],
     cta: "Open Solar Panel Tilt Calculator",
   },
+  {
+    id: "solar-battery-tool",
+    title: "Solar Battery Calculator",
+    href: "/solar-battery-calculator",
+    icon: BatteryCharging,
+    formula: "E_nom = (E_daily × N_days) ÷ (η_inv × DoD) | Ah = E_nom ÷ V_dc",
+    summary:
+      "Size off-grid and backup solar battery banks in kWh and Amp-hours based on daily energy consumption, days of autonomy, inverter losses, and usable depth of discharge.",
+    outputs: [
+      "Nominal storage capacity in kWh and Watt-hours",
+      "Battery-bank Amp-hours at 12V, 24V, and 48V DC bus",
+      "Load-side autonomy energy and inverter delivery energy",
+      "Simplified solar PV array replenishment wattage estimate",
+    ],
+    cta: "Open Solar Battery Calculator",
+  },
 ];
 
 interface PlannedTool {

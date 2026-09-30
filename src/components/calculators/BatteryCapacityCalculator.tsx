@@ -40,6 +40,13 @@ type CalculatorMode = "evaluate" | "size";
 
 const RELATED_TOOLS: RelatedTool[] = [
   {
+    title: "Solar Battery Calculator",
+    description:
+      "Size off-grid and backup solar battery banks in kWh and Amp-hours based on daily energy consumption and days of autonomy.",
+    href: "/solar-battery-calculator",
+    category: "Solar PV",
+  },
+  {
     title: "Solar Panel Tilt Angle Calculator",
     description:
       "Calculate the optimal solar panel tilt angle, compass orientation, and roof pitch differences for your latitude.",

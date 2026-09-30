@@ -835,6 +835,21 @@ export default function WattHoursExplainedPage() {
                 </Link>
 
                 <Link
+                  href="/solar-battery-calculator"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <SunMedium className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    Solar Battery Calculator
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Size off-grid and backup solar battery banks in kWh and Amp-hours based on daily energy consumption and days of autonomy.
+                  </p>
+                </Link>
+
+                <Link
                   href="/what-does-ah-mean-on-a-battery"
                   className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                 >
