@@ -155,133 +155,84 @@ export default function SolarPanelsSeriesVsParallelPage() {
       />
 
       <ReadingProgressBar />
+      <MobileArticleNavigator items={TOC_ITEMS} />
 
-      <div className="min-h-screen bg-slate-50/60 pb-20">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
         {/* Breadcrumb Navigation */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-500">
-            <Link href="/" className="hover:text-blue-600 transition">
-              Home
-            </Link>
-            <span>/</span>
-            <Link href="/calculators" className="hover:text-blue-600 transition">
-              Guides
-            </Link>
-            <span>/</span>
-            <span className="text-slate-800 font-medium truncate max-w-[260px] sm:max-w-none">
-              Solar Panels in Series vs. Parallel
-            </span>
-          </nav>
-        </div>
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6"
+        >
+          <Link href="/" className="hover:text-blue-600 transition">
+            Home
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/calculators" className="hover:text-blue-600 transition">
+            Guides
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-slate-800 font-semibold truncate">
+            Solar Panels in Series vs. Parallel
+          </span>
+        </nav>
 
-        {/* Hero Header */}
-        <header className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10">
-          <div className="max-w-4xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 text-xs font-semibold">
-              <Sun className="w-3.5 h-3.5 text-amber-600" />
-              <span>Solar PV Circuit Design &amp; Wiring Guide</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-[1.15]">
-              Solar Panels in Series vs Parallel: Wiring, Voltage &amp; Current Explained
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
-              Learn how connecting solar panels in series versus parallel alters array operating voltage, circuit amperage, wire gauge requirements, and charge controller compatibility. Review clear technical wiring diagrams, cold-weather voltage limits, and practical off-grid sizing examples.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 pt-2 border-t border-slate-200">
-              <span className="inline-flex items-center gap-1.5 font-medium text-slate-700">
-                <Clock className="w-4 h-4 text-slate-400" />
-                <span>12 min read</span>
-              </span>
-              <span>•</span>
-              <span>Updated September 2026</span>
-              <span>•</span>
-              <span className="inline-flex items-center gap-1.5 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                <span>NEC 690 &amp; IEEE Compliant Methodology</span>
-              </span>
-            </div>
-          </div>
-        </header>
-
-        {/* Main Content Layout with Sticky Sidebar */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-            {/* Sticky Table of Contents (Desktop) */}
-            <aside className="hidden lg:block lg:col-span-3">
-              <div className="sticky top-24 space-y-6">
-                <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs">
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-slate-500" />
-                    <span>Table of Contents</span>
-                  </div>
-                  <TableOfContents items={TOC_ITEMS} />
-                </div>
-
-                {/* Quick Calculator Bridge Card */}
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50/50 rounded-2xl p-5 border border-blue-200/80 space-y-3">
-                  <div className="text-xs font-bold text-blue-900 flex items-center gap-1.5">
-                    <Calculator className="w-4 h-4 text-blue-600" />
-                    <span>Quick Conversion Tools</span>
-                  </div>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    Need to calculate cable amps, breaker sizing, or roof tilt angles for your solar array?
-                  </p>
-                  <div className="space-y-1.5 pt-1 text-xs">
-                    <Link
-                      href="/watts-to-amps-calculator"
-                      className="block text-blue-700 hover:text-blue-900 font-semibold transition"
-                    >
-                      → Watts to Amps Calculator
-                    </Link>
-                    <Link
-                      href="/amps-to-watts-calculator"
-                      className="block text-blue-700 hover:text-blue-900 font-semibold transition"
-                    >
-                      → Amps to Watts Calculator
-                    </Link>
-                    <Link
-                      href="/solar-panel-tilt-calculator"
-                      className="block text-blue-700 hover:text-blue-900 font-semibold transition"
-                    >
-                      → Solar Panel Tilt Calculator
-                    </Link>
-                    <Link
-                      href="/battery-capacity-calculator"
-                      className="block text-blue-700 hover:text-blue-900 font-semibold transition"
-                    >
-                      → Battery Capacity Calculator
-                    </Link>
-                  </div>
-                </div>
+        {/* Article Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Main Content Column (8 cols on lg) */}
+          <article
+            id="article-content"
+            className="lg:col-span-8 space-y-10 text-slate-700 leading-relaxed text-base md:text-lg"
+          >
+            {/* Article Header */}
+            <header className="space-y-4 border-b border-slate-200 pb-8">
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200/80 text-amber-800 font-semibold">
+                  Solar PV Circuit Design &amp; Wiring Guide
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>12 min read</span>
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="text-slate-500">Updated September 2026</span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1.5 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  <span>NEC 690 &amp; IEEE Compliant Methodology</span>
+                </span>
               </div>
-            </aside>
 
-            {/* Editorial Article Body */}
-            <article className="lg:col-span-9 space-y-12 text-slate-800">
-              {/* Featured Visual Asset with Click-to-Zoom */}
-              <div className="space-y-3">
-                <ZoomableArticleImage
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                Solar Panels in Series vs Parallel: Wiring, Voltage &amp; Current Explained
+              </h1>
+
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
+                Learn how connecting solar panels in series versus parallel alters array operating voltage, circuit amperage, wire gauge requirements, and charge controller compatibility. Review clear technical wiring diagrams, cold-weather voltage limits, and practical off-grid sizing examples.
+              </p>
+            </header>
+
+            {/* Featured Visual Asset with Click-to-Zoom */}
+            <div className="space-y-3">
+              <ZoomableArticleImage
+                src="/images/articles/solar-panels-series-vs-parallel-wiring.webp"
+                alt="Solar panel array wiring showing series and parallel connections to an MPPT charge controller."
+                title="Solar Panels: Series vs. Parallel Wiring"
+                caption="Figure 1: Monocrystalline photovoltaic modules wired with heavy-duty MC4 connectors into an off-grid combiner box and MPPT solar charge controller."
+              >
+                <Image
                   src="/images/articles/solar-panels-series-vs-parallel-wiring.webp"
                   alt="Solar panel array wiring showing series and parallel connections to an MPPT charge controller."
-                  title="Solar Panels: Series vs. Parallel Wiring"
-                  caption="Figure 1: Monocrystalline photovoltaic modules wired with heavy-duty MC4 connectors into an off-grid combiner box and MPPT solar charge controller."
-                >
-                  <Image
-                    src="/images/articles/solar-panels-series-vs-parallel-wiring.webp"
-                    alt="Solar panel array wiring showing series and parallel connections to an MPPT charge controller."
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 800px"
-                    className="object-cover"
-                  />
-                </ZoomableArticleImage>
-              </div>
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover"
+                />
+              </ZoomableArticleImage>
+            </div>
 
-              {/* SECTION 1: Quick Summary */}
-              <section id="quick-summary" className="space-y-6 scroll-mt-24">
+            {/* SECTION 1: Quick Summary */}
+            <section id="quick-summary" className="space-y-6 scroll-mt-24">
                 <div className="border-b border-slate-200 pb-3">
                   <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                     Quick Summary: Series vs. Parallel at a Glance
@@ -1282,11 +1233,12 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </div>
               </section>
             </article>
-          </div>
-        </div>
 
-        {/* Mobile Sticky Table of Contents Navigator */}
-        <MobileArticleNavigator items={TOC_ITEMS} />
+            {/* Desktop Sticky Sidebar (4 cols on lg) */}
+            <aside className="hidden lg:block lg:col-span-4">
+              <TableOfContents items={TOC_ITEMS} />
+            </aside>
+        </div>
       </div>
     </>
   );
