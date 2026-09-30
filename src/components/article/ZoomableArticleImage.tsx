@@ -7,6 +7,7 @@ import { ZoomIn, ZoomOut, RotateCcw, X } from "lucide-react";
 interface ZoomableArticleImageProps {
   src: string;
   alt: string;
+  title?: string;
   caption?: string;
   children: React.ReactNode;
 }
@@ -14,6 +15,7 @@ interface ZoomableArticleImageProps {
 export default function ZoomableArticleImage({
   src,
   alt,
+  title,
   caption,
   children,
 }: ZoomableArticleImageProps) {
@@ -302,7 +304,7 @@ export default function ZoomableArticleImage({
             <div className="relative z-20 flex items-center justify-between p-3 sm:p-4 text-white">
               <div className="flex items-center gap-2">
                 <span className="text-xs sm:text-sm font-semibold text-slate-200 truncate max-w-[200px] sm:max-w-md">
-                  12V 100Ah Battery Runtime Comparison
+                  {title || caption || alt}
                 </span>
                 <span className="hidden md:inline-block text-xs text-slate-400">
                   (Scroll to zoom, drag to pan, Esc to close)

@@ -832,6 +832,14 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   12V 100Ah Battery Runtime Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
+                , or learn how to wire solar panels to charge your battery bank in our{" "}
+                <Link
+                  href="/solar-panels-series-vs-parallel"
+                  className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  Solar Panels Series vs Parallel Guide
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
                 .
               </p>
             </div>

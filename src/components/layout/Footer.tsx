@@ -128,6 +128,14 @@ export const Footer: React.FC = () => {
                   100Ah Battery Runtime Guide
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/solar-panels-series-vs-parallel"
+                  className="hover:text-white transition"
+                >
+                  Solar Panels Series vs Parallel Guide
+                </Link>
+              </li>
             </ul>
           </div>
 

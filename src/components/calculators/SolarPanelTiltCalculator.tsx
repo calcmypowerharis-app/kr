@@ -60,6 +60,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Electrical",
   },
   {
+    title: "Solar Panels Series vs Parallel Guide",
+    description:
+      "Learn how series and parallel wiring configurations affect solar array voltage, current, and charge controller sizing.",
+    href: "/solar-panels-series-vs-parallel",
+    category: "Solar Engineering Guide",
+  },
+  {
     title: "UPS Battery Backup Run-Time Hours Calculator",
     description:
       "Estimate how many backup hours your solar-charged battery bank can sustain critical loads during outages.",

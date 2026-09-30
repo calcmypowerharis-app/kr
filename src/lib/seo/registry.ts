@@ -180,6 +180,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/how-long-will-a-100ah-battery-last",
       "/what-does-ah-mean-on-a-battery",
       "/what-is-a-watt-hour",
+      "/solar-panels-series-vs-parallel",
     ],
   },
   {
@@ -206,6 +207,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
+      "/solar-panels-series-vs-parallel",
     ],
   },
   {
@@ -232,6 +234,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
+      "/solar-panels-series-vs-parallel",
     ],
   },
   {
@@ -255,6 +258,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     relatedGuidePaths: [
       "/what-is-a-watt-hour",
       "/how-long-will-a-100ah-battery-last",
+      "/solar-panels-series-vs-parallel",
     ],
   },
 ];
@@ -406,6 +410,33 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       "/what-does-ah-mean-on-a-battery",
+      "/what-is-a-watt-hour",
+    ],
+  },
+  {
+    slug: "solar-panels-series-vs-parallel",
+    path: "/solar-panels-series-vs-parallel",
+    title: "Solar Panels in Series vs Parallel: Wiring, Voltage & Current Explained",
+    shortTitle: "Solar Panels in Series vs Parallel",
+    metaTitle: "Solar Panels in Series vs Parallel: Wiring Diagrams & Sizing",
+    metaDescription:
+      "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
+    cluster: "solar",
+    parentCalculatorPath: "/solar-panel-tilt-calculator",
+    scenarioLink: "/solar-panel-tilt-calculator",
+    primaryKeyword: "solar panels serial or parallel",
+    readingTime: "12 min read",
+    datePublished: "2026-09-30",
+    lastModified: "2026-09-30",
+    heroImage: "/images/articles/solar-panels-series-vs-parallel-wiring.jpg",
+    relatedCalculatorPaths: [
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+      "/solar-panel-tilt-calculator",
+      "/battery-capacity-calculator",
+    ],
+    relatedGuidePaths: [
+      "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
     ],
   },
