@@ -22,16 +22,16 @@ export const Header: React.FC = () => {
         </Link>
 
         {/* Navigation Categories */}
-        <nav className="flex items-center gap-5 text-sm font-medium text-slate-600">
+        <nav className="flex items-center gap-3 sm:gap-5 text-sm font-medium text-slate-600">
           <Link
             href="/ups-battery-backup-calculator"
-            className="hover:text-blue-600 transition hidden md:block"
+            className="hover:text-blue-600 transition hidden lg:block"
           >
             UPS Runtime
           </Link>
           <Link
             href="/watts-to-amps-calculator"
-            className="hover:text-blue-600 transition hidden md:block"
+            className="hover:text-blue-600 transition hidden lg:block"
           >
             Watts to Amps
           </Link>
@@ -42,8 +42,14 @@ export const Header: React.FC = () => {
             Generator Size
           </Link>
           <Link
+            href="/calculators#sizing-guides"
+            className="hover:text-blue-600 transition text-slate-700 font-medium"
+          >
+            Sizing Guides
+          </Link>
+          <Link
             href="/calculators"
-            className="text-slate-900 hover:text-blue-600 font-semibold transition"
+            className="text-slate-900 hover:text-blue-600 font-semibold transition bg-slate-100 hover:bg-blue-50 px-3 py-1.5 rounded-lg border border-slate-200"
           >
             All Calculators
           </Link>

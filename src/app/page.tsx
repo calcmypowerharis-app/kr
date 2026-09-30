@@ -155,12 +155,6 @@ const PLANNED_TOOLS: PlannedTool[] = [
     icon: Sun,
   },
   {
-    category: "Wiring & Safety",
-    title: "Wire Gauge Sizing & DC Voltage Drop Calculator",
-    scope: "Calculate minimum AWG copper conductor size for battery banks and solar arrays per NEC 310.",
-    icon: Sliders,
-  },
-  {
     category: "Electricity Cost",
     title: "Appliance kWh & Monthly Cost Calculator",
     scope: "Daily and monthly utility billing estimates from wattage, duty cycle, and $/kWh rate.",
@@ -232,6 +226,13 @@ export default function HomePage() {
               <span>UPS &amp; Battery Runtime</span>
             </a>
             <a
+              href="#battery-capacity-tool"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
+            >
+              <Battery className="w-3.5 h-3.5 text-blue-600" />
+              <span>Battery Capacity</span>
+            </a>
+            <a
               href="#amps-tool"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
             >
@@ -244,6 +245,13 @@ export default function HomePage() {
             >
               <Zap className="w-3.5 h-3.5 text-blue-600" />
               <span>Amps to Watts</span>
+            </a>
+            <a
+              href="#solar-tilt-tool"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
+            >
+              <Sun className="w-3.5 h-3.5 text-blue-600" />
+              <span>Solar Panel Tilt</span>
             </a>
             <a
               href="#featured-guides"
@@ -271,7 +279,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 2. Four Live Calculators (Wide Application Grid) */}
+        {/* 2. Live Interactive Calculators (Balanced 3-Column Grid) */}
         <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-4">
             <div>
@@ -284,11 +292,11 @@ export default function HomePage() {
             </div>
             <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full self-start sm:self-auto flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>4 Active Tools</span>
+              <span>6 Live Calculators</span>
             </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {LIVE_CALCULATORS.map((tool) => {
               const Icon = tool.icon;
               return (
@@ -452,115 +460,155 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Secondary Featured Guide Card: Refrigerator Generator Sizing */}
-          <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-3xl">
-              <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Appliance Outage Guide
-                </span>
-                <span className="text-slate-400">•</span>
-                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>10 min read</span>
-                </span>
+          {/* Secondary Guides (Balanced 2x2 Grid) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Guide 1: 100Ah Battery Runtime (Flagship) */}
+            <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col justify-between space-y-4">
+              <div className="space-y-2.5">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                    Battery Runtime Guide
+                  </span>
+                  <span className="text-slate-400">•</span>
+                  <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>12 min read</span>
+                  </span>
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+                  <Link
+                    href="/how-long-will-a-100ah-battery-last"
+                    className="hover:text-indigo-600 transition"
+                  >
+                    How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide
+                  </Link>
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Realistic delivered runtime estimates for refrigerators, CPAP machines, laptops, TVs, and inverters across LiFePO4 and lead-acid deep-cycle batteries.
+                </p>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-                <Link
-                  href="/what-size-generator-to-run-a-refrigerator"
-                  className="hover:text-indigo-600 transition"
-                >
-                  What Size Generator Do I Need to Run a Refrigerator?
-                </Link>
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Determine exact running watts and compressor startup surge requirements for residential kitchen refrigerators, garage deep freezers, and simultaneous outage circuits, with extension cord AWG safety guidelines.
-              </p>
+              <Link
+                href="/how-long-will-a-100ah-battery-last"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-1"
+              >
+                <span>Read 100Ah Runtime Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
 
-            <Link
-              href="/what-size-generator-to-run-a-refrigerator"
-              className="px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-indigo-600 text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition shrink-0 self-start md:self-center"
-            >
-              <span>Read Fridge Sizing Guide</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+            {/* Guide 2: Refrigerator Generator Sizing */}
+            <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col justify-between space-y-4">
+              <div className="space-y-2.5">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                    Appliance Outage Guide
+                  </span>
+                  <span className="text-slate-400">•</span>
+                  <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>10 min read</span>
+                  </span>
+                </div>
 
-          {/* Tertiary Featured Guide Card: Battery Amp-Hours Explained */}
-          <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-3xl">
-              <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Battery Engineering Guide
-                </span>
-                <span className="text-slate-400">•</span>
-                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>9 min read</span>
-                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+                  <Link
+                    href="/what-size-generator-to-run-a-refrigerator"
+                    className="hover:text-indigo-600 transition"
+                  >
+                    What Size Generator Do I Need to Run a Refrigerator?
+                  </Link>
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Determine exact running watts and compressor startup surge requirements for residential kitchen refrigerators, garage freezers, and extension cord AWG safety.
+                </p>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-                <Link
-                  href="/what-does-ah-mean-on-a-battery"
-                  className="hover:text-indigo-600 transition"
-                >
-                  What Does Ah Mean on a Battery? Amp-Hours Explained
-                </Link>
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Understand battery charge capacity, convert Amp-hours to Watt-hours (Wh), and evaluate how chemistry, depth of discharge, and Peukert losses determine real-world runtime.
-              </p>
+              <Link
+                href="/what-size-generator-to-run-a-refrigerator"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-1"
+              >
+                <span>Read Refrigerator Sizing Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
 
-            <Link
-              href="/what-does-ah-mean-on-a-battery"
-              className="px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-indigo-600 text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition shrink-0 self-start md:self-center"
-            >
-              <span>Read Battery Ah Guide</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+            {/* Guide 3: Battery Amp-Hours Explained */}
+            <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col justify-between space-y-4">
+              <div className="space-y-2.5">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                    Battery Engineering Guide
+                  </span>
+                  <span className="text-slate-400">•</span>
+                  <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>9 min read</span>
+                  </span>
+                </div>
 
-          {/* Fourth Featured Guide Card: Watt-Hours Explained */}
-          <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="space-y-2 max-w-3xl">
-              <div className="flex flex-wrap items-center gap-2 text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Energy Fundamentals
-                </span>
-                <span className="text-slate-400">•</span>
-                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>9 min read</span>
-                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+                  <Link
+                    href="/what-does-ah-mean-on-a-battery"
+                    className="hover:text-indigo-600 transition"
+                  >
+                    What Does Ah Mean on a Battery? Amp-Hours Explained
+                  </Link>
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Understand battery charge capacity, convert Amp-hours to Watt-hours (Wh), and evaluate how chemistry, depth of discharge, and Peukert losses determine runtime.
+                </p>
               </div>
 
-              <h3 className="text-xl sm:text-2xl font-bold text-slate-900">
-                <Link
-                  href="/what-is-a-watt-hour"
-                  className="hover:text-indigo-600 transition"
-                >
-                  What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained
-                </Link>
-              </h3>
-
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Discover the difference between instantaneous power (Watts) and energy consumed over time (Watt-hours), with practical battery runtime and utility billing calculations.
-              </p>
+              <Link
+                href="/what-does-ah-mean-on-a-battery"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-1"
+              >
+                <span>Read Battery Ah Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
 
-            <Link
-              href="/what-is-a-watt-hour"
-              className="px-4 py-2.5 rounded-xl bg-indigo-50 hover:bg-indigo-600 text-indigo-700 hover:text-white border border-indigo-200 hover:border-indigo-600 text-xs sm:text-sm font-bold inline-flex items-center gap-2 transition shrink-0 self-start md:self-center"
-            >
-              <span>Read Watt-Hour Guide</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+            {/* Guide 4: Watt-Hours Explained */}
+            <div className="bg-white rounded-2xl border border-slate-200 hover:border-indigo-400 hover:shadow-md transition p-6 flex flex-col justify-between space-y-4">
+              <div className="space-y-2.5">
+                <div className="flex flex-wrap items-center gap-2 text-xs">
+                  <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                    Energy Fundamentals
+                  </span>
+                  <span className="text-slate-400">•</span>
+                  <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                    <Clock className="w-3.5 h-3.5" />
+                    <span>9 min read</span>
+                  </span>
+                </div>
+
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 leading-snug">
+                  <Link
+                    href="/what-is-a-watt-hour"
+                    className="hover:text-indigo-600 transition"
+                  >
+                    What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained
+                  </Link>
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Discover the difference between instantaneous power (Watts) and energy consumed over time (Watt-hours), with practical battery runtime and utility calculations.
+                </p>
+              </div>
+
+              <Link
+                href="/what-is-a-watt-hour"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-1"
+              >
+                <span>Read Watt-Hour Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -617,8 +665,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Other Planned Tools Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Other Planned Tools Grid (4 Columns) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {PLANNED_TOOLS.map((item) => {
               const Icon = item.icon;
               return (
