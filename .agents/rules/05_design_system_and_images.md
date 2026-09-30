@@ -49,8 +49,12 @@ CalcMyPower operates two separate, strictly divided design systems. Each system 
 
 ### B. Editorial Articles & Guides (Long-Form Reading)
 - **Primary Intent:** In-depth educational reading, concept explanation, code compliance, decision guidance, and outage planning.
-- **Desktop Layout:** Editorial layout (`max-w-7xl` or ~1100–1200px) with reading column (~740–820px) and sticky navigation sidebar (~260–300px).
-- **Navigation:** Desktop sticky TOC with reading percentage, active section tracking, and contextual tool links; mobile collapsible floating navigator.
+- **Desktop Layout:** Editorial layout (`max-w-[1320px]` container with `grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12`).
+- **Strict Sidebar Placement Invariant (NEVER INVERT):**
+  - **Left Column (Primary):** `<article id="article-content" className="lg:col-span-8 ...">` MUST ALWAYS be first in DOM and visually positioned on the LEFT.
+  - **Right Column (Secondary):** `<aside className="hidden lg:block lg:col-span-4">` containing `<TableOfContents />` MUST ALWAYS be second in DOM and visually positioned on the RIGHT.
+  - **Prohibition:** NEVER place the Table of Contents or `<aside>` on the left side or before the `<article>` tag.
+- **Navigation:** Desktop sticky TOC with reading percentage, active section tracking, and contextual tool links; mobile collapsible floating navigator (`MobileArticleNavigator` anchored at bottom-right).
 - **Prose Focus:** Natural human editorial writing, varied paragraph rhythm, verified technical citations, and zero em-dash punctuation.
 - **Calculator Integration:** Direct, contextual links and scenario bridges (e.g. "Load This Scenario" with URL parameters) driving readers into the dedicated calculator tools.
 

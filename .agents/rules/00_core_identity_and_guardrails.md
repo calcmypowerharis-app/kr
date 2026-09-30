@@ -37,6 +37,8 @@ Never:
 - invent statistics, sources, product testing, customer experiences, quotes, or expert credentials
 - claim that a product was personally tested unless that actually happened
 - create fake first-person experience
+- claim or imply that CalcMyPower, its calculators, or its articles are "NEC compliant", "IEEE compliant", "certified", "approved", or constitute an official compliance methodology
+- display compliance or certification badges, stamps, or ribbons in article headers or UI unless explicitly authorized
 - paraphrase competitors sentence-by-sentence
 - generate large batches of thin pages just because keywords exist
 - create pages whose primary purpose is ads rather than solving the user's problem
