@@ -72,15 +72,25 @@ def run_qa():
     print(f'7. Illustrative Roof Area text present: {roof_text in html}')
     assert roof_text in html
 
-    # 8. Structured Data JSON-LD
+    # 8. Structured Data JSON-LD & Date Label Check
+    assert 'Published October 2026' in html, 'Published October 2026 not found in HTML'
+    assert 'Updated October 2026' not in html, 'Updated October 2026 still present in HTML'
+    print('8a. Editorial Date Label: Published October 2026 (PASS)')
+
     scripts = re.findall(r'<script[^>]+type=[\"\']application/ld\+json[\"\'][^>]*>(.*?)</script>', html, re.DOTALL)
-    print(f'8. JSON-LD scripts found: {len(scripts)}')
+    print(f'8b. JSON-LD scripts found: {len(scripts)}')
     schemas = [json.loads(s) for s in scripts]
     types = [s.get('@type') for s in schemas]
     print(f'   Schema types: {types}')
     assert 'Article' in types
     assert 'BreadcrumbList' in types
     assert 'FAQPage' in types
+
+    article_schema = next(s for s in schemas if s.get('@type') == 'Article')
+    print(f'   Article datePublished: {article_schema.get("datePublished")}')
+    print(f'   Article dateModified: {article_schema.get("dateModified")}')
+    assert article_schema.get("datePublished") == "2026-10-01T00:00:00Z"
+    assert article_schema.get("dateModified") == "2026-10-01T00:00:00Z"
 
     # 9. Internal Links
     required_links = [
