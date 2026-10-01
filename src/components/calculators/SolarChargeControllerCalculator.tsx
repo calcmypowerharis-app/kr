@@ -50,6 +50,13 @@ import {
 
 const RELATED_TOOLS: RelatedTool[] = [
   {
+    title: "Solar System Size Calculator",
+    description:
+      "Calculate the solar system size in kW and approximate panel count required to power your home based on monthly kWh electricity consumption.",
+    href: "/solar-system-size-calculator",
+    category: "Solar PV",
+  },
+  {
     title: "Solar Battery Sizing Calculator",
     description:
       "Size your off-grid or hybrid battery bank in Amp-hours and Watt-hours based on daily energy consumption and days of autonomy.",

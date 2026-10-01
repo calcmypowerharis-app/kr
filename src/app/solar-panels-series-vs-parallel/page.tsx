@@ -1206,6 +1206,19 @@ export default function SolarPanelsSeriesVsParallelPage() {
                   </Link>
 
                   <Link
+                    href="/solar-system-size-calculator"
+                    className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                  >
+                    <div className="flex items-center gap-2 text-blue-600 font-bold text-sm">
+                      <Sun className="w-4 h-4" />
+                      <span>Solar System Size Calculator</span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Calculate required solar system size in kW and approximate panel count based on monthly kWh electricity consumption.
+                    </p>
+                  </Link>
+
+                  <Link
                     href="/battery-capacity-calculator"
                     className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                   >

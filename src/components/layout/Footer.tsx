@@ -99,6 +99,14 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/solar-system-size-calculator"
+                  className="hover:text-white transition"
+                >
+                  Solar System Size Calculator
+                </Link>
+              </li>
+              <li>
                 <Link href="/calculators" className="hover:text-white transition">
                   All Calculators Directory
                 </Link>

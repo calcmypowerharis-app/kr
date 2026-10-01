@@ -81,6 +81,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     href: "/solar-panels-series-vs-parallel",
     category: "Solar Engineering Guide",
   },
+  {
+    title: "Solar System Size Calculator",
+    description:
+      "Calculate the solar system size in kW and approximate panel count required to power your home based on monthly kWh electricity consumption.",
+    href: "/solar-system-size-calculator",
+    category: "Solar PV",
+  },
 ];
 
 export const VoltageDropCalculator: React.FC = () => {

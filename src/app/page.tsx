@@ -186,6 +186,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     ],
     cta: "Open Voltage Drop Calculator",
   },
+  {
+    id: "solar-system-size-tool",
+    title: "Solar System Size Calculator",
+    href: "/solar-system-size-calculator",
+    icon: Sun,
+    formula: "P_array_kW = (E_daily × Offset%) ÷ (PSH × PR) | Panels = Math.ceil(P_array_W ÷ W_panel)",
+    summary:
+      "Calculate the residential solar system size in kW and approximate panel count required to offset monthly electricity usage based on local peak sun hours.",
+    outputs: [
+      "Estimated system size (kW DC) and panel count",
+      "Daily and annual solar energy generation targets",
+      "Net module area and gross roof space with fire setbacks",
+      "Module wattage comparison across 330W to 450W panels",
+    ],
+    cta: "Open Solar System Size Calculator",
+  },
 ];
 
 interface PlannedTool {
@@ -196,12 +212,6 @@ interface PlannedTool {
 }
 
 const PLANNED_TOOLS: PlannedTool[] = [
-  {
-    category: "Solar PV",
-    title: "Solar PV Array Sizing Calculator",
-    scope: "PV array wattage from daily kWh consumption, peak sun hours, and system derating.",
-    icon: Sun,
-  },
   {
     category: "Electricity Cost",
     title: "Appliance kWh & Monthly Cost Calculator",
@@ -302,6 +312,13 @@ export default function HomePage() {
               <span>Solar Panel Tilt</span>
             </a>
             <a
+              href="#solar-system-size-tool"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
+            >
+              <Sun className="w-3.5 h-3.5 text-blue-600" />
+              <span>Solar System Size</span>
+            </a>
+            <a
               href="#featured-guides"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 text-xs font-semibold text-slate-700 hover:text-indigo-700 transition shadow-xs"
             >
@@ -340,7 +357,7 @@ export default function HomePage() {
             </div>
             <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full self-start sm:self-auto flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>6 Live Calculators</span>
+              <span>{LIVE_CALCULATORS.length} Live Calculators</span>
             </span>
           </div>
 

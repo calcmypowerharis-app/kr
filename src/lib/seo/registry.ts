@@ -280,6 +280,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-30",
     relatedCalculatorPaths: [
       "/solar-charge-controller-calculator",
+      "/solar-system-size-calculator",
       "/voltage-drop-calculator",
       "/battery-capacity-calculator",
       "/solar-panel-tilt-calculator",
@@ -307,6 +308,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-10-01",
     relatedCalculatorPaths: [
       "/solar-battery-calculator",
+      "/solar-system-size-calculator",
       "/voltage-drop-calculator",
       "/solar-panel-tilt-calculator",
       "/battery-capacity-calculator",
@@ -336,11 +338,38 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/amps-to-watts-calculator",
       "/solar-battery-calculator",
       "/solar-charge-controller-calculator",
+      "/solar-system-size-calculator",
     ],
     relatedGuidePaths: [
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
+    ],
+  },
+  {
+    slug: "solar-system-size-calculator",
+    path: "/solar-system-size-calculator",
+    title: "Solar System Size Calculator",
+    shortTitle: "Solar System Size",
+    metaTitle: "Solar System Size Calculator (How Many Solar Panels Do I Need?)",
+    metaDescription:
+      "Calculate the solar system size and number of solar panels needed for your home. Estimate required array kW, panel count, and roof space based on electricity usage and peak sun hours.",
+    cluster: "solar",
+    secondaryClusters: ["home-energy", "rv-power"],
+    primaryKeyword: "solar system size calculator",
+    formula: "P_array_kW = (E_daily × Offset%) ÷ (PSH × PR) | Panels = Math.ceil(P_array_W ÷ W_panel)",
+    lastModified: "2026-10-01",
+    relatedCalculatorPaths: [
+      "/solar-battery-calculator",
+      "/solar-charge-controller-calculator",
+      "/solar-panel-tilt-calculator",
+      "/voltage-drop-calculator",
+      "/watts-to-amps-calculator",
+    ],
+    relatedGuidePaths: [
+      "/solar-panels-series-vs-parallel",
+      "/what-is-a-watt-hour",
+      "/how-long-will-a-100ah-battery-last",
     ],
   },
 ];
