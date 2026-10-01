@@ -195,7 +195,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
                   <span>12 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Updated September 2026</span>
+                <span className="text-slate-500">Published September 2026</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

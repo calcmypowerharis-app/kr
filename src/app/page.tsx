@@ -454,7 +454,7 @@ export default function HomePage() {
                 <span>12 min read</span>
               </span>
               <span className="text-slate-400">•</span>
-              <span className="text-slate-400">Updated September 2026</span>
+              <span className="text-slate-400">Published September 2026</span>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
