@@ -788,7 +788,7 @@ export const SolarChargeControllerCalculator: React.FC = () => {
         title="Step-by-Step Worked Example: 400W Solar Array on 12V Battery with Cold-Weather Voc Check"
         scenario="A mobile RV solar system features a 400-watt solar array (two 200W panels in series, Voc_STC = 48.6V, temp coeff α = -0.30%/°C) charging a 12V battery bank. The lowest expected winter temperature is -10°C, and the owner is evaluating a charge controller rated for 100V maximum PV input."
         steps={workedSteps}
-        conclusion="For this 400W 12V system, nominal charging current is 33.3 Amps. Adding an illustrative 20% planning buffer yields 40.0 Amps, indicating a standard 40A controller rating class. Under -10°C winter conditions, the array's open-circuit voltage rises to 53.7V, safely within the controller's 100V maximum PV input limit with 46.3V of headroom."
+        conclusion="For this 400W 12V system, calculated nominal charging current is 33.3 Amps (400W ÷ 12V). Adding an illustrative 20% planning buffer yields an illustrative planning value of 40.0 Amps, indicating that a standard 40A controller rating class may be considered under these planning assumptions. Under -10°C winter conditions, the array's open-circuit voltage rises to 53.7V, which is within the entered controller voltage limit of 100V with 46.3V of calculated headroom."
       />
 
       {/* Engineering Assumptions & Variables */}
@@ -804,7 +804,7 @@ export const SolarChargeControllerCalculator: React.FC = () => {
         faqs={SOLAR_CHARGE_CONTROLLER_FAQS}
       />
 
-      {/* Regulatory & Safety Disclaimers */}
+      {/* Regulatory & Electrical Disclaimers */}
       <DisclaimerSection
         title="Preliminary Planning & Electrical Engineering Disclaimer"
         points={[

@@ -171,7 +171,7 @@ def create_hero_image():
 
     # 5. Footer Information Bar
     draw.rectangle([(40, 555), (1160, 645)], fill=(24, 34, 53), outline=(51, 65, 85), width=1)
-    draw.text((60, 568), "CRITICAL SIZING SPECIFICATIONS & SAFETY CHECKLIST:", fill=(245, 158, 11), font=font_brand)
+    draw.text((60, 568), "CRITICAL SIZING SPECIFICATIONS & ENGINEERING CHECKLIST:", fill=(245, 158, 11), font=font_brand)
     draw.text(
         (60, 590),
         "1. Nominal Current: Calculate baseline DC output (Array Watts ÷ Battery Voltage).  2. Planning Buffer: Add illustrative 20% margin for peak irradiance.",

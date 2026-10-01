@@ -262,7 +262,7 @@ export const SolarChargeControllerFlowDiagram: React.FC<SolarChargeControllerFlo
                 fontSize="11"
                 fontWeight="500"
               >
-                Max PV Input: {formatVolts(controllerMaxVoc)} {isExceeded ? "(EXCEEDED)" : "(Safe)"}
+                Max PV Input: {formatVolts(controllerMaxVoc)} {isExceeded ? "(EXCEEDED)" : "(Within Limit)"}
               </text>
             ) : (
               <text x="16" y="152" fill="#64748b" fontSize="11">
