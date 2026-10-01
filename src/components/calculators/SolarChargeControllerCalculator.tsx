@@ -84,6 +84,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     href: "/watts-to-amps-calculator",
     category: "Electrical",
   },
+  {
+    title: "Voltage Drop Calculator",
+    description:
+      "Calculate circuit voltage drop and size conductors between solar PV arrays, charge controllers, and battery banks.",
+    href: "/voltage-drop-calculator",
+    category: "Electrical Circuits",
+  },
 ];
 
 export const SolarChargeControllerCalculator: React.FC = () => {

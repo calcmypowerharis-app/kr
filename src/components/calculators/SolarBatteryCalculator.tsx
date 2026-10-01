@@ -91,6 +91,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Electrical",
   },
   {
+    title: "Voltage Drop Calculator",
+    description:
+      "Calculate circuit voltage loss and verify wire gauge sizing for high-amperage 12V, 24V, and 48V DC battery inverter cables.",
+    href: "/voltage-drop-calculator",
+    category: "Electrical Circuits",
+  },
+  {
     title: "What Is a Watt-Hour (Wh)?",
     description:
       "Learn the fundamental difference between instantaneous power (Watts) and total energy consumed or stored over time (Watt-hours).",

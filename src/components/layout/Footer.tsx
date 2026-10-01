@@ -91,6 +91,14 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/voltage-drop-calculator"
+                  className="hover:text-white transition"
+                >
+                  Voltage Drop Calculator
+                </Link>
+              </li>
+              <li>
                 <Link href="/calculators" className="hover:text-white transition">
                   All Calculators Directory
                 </Link>

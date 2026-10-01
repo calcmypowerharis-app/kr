@@ -307,23 +307,31 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            {/* Coming Next: Wire Size */}
-            <div className="p-6 rounded-2xl bg-slate-50/80 border border-slate-200 space-y-3">
+            {/* Active: Voltage Drop Calculator */}
+            <Link
+              id="voltage-drop"
+              href="/voltage-drop-calculator"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
+            >
               <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
                   <Sliders className="w-5 h-5" />
                 </div>
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-200 text-slate-700">
-                  In Development
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Live Tool • Electricity
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-slate-700">
-                Wire Gauge (AWG) &amp; Voltage Drop Calculator
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+                Voltage Drop Calculator
               </h3>
-              <p className="text-xs md:text-sm text-slate-500 leading-relaxed">
-                Calculate required wire gauge based on circuit amperage, voltage drop limit (typically 3%), and circuit run distance.
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Calculate voltage drop for DC, single-phase, and balanced three-phase circuits. Determine voltage loss, percentage drop, receiving voltage, and evaluate adjacent wire sizes.
               </p>
-            </div>
+              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
+                <span>Open Calculator</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </section>
 

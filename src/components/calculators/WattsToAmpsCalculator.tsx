@@ -529,6 +529,12 @@ export const WattsToAmpsCalculator: React.FC = () => {
             category: "Electrical Circuits",
           },
           {
+            title: "Voltage Drop Calculator",
+            description: "Calculate circuit voltage drop, percentage loss, and receiving terminal voltage across DC and AC wire runs.",
+            href: "/voltage-drop-calculator",
+            category: "Electrical Circuits",
+          },
+          {
             title: "UPS & Battery Backup Run-Time Calculator",
             description: "Determine how long battery backups and UPS systems will power your equipment.",
             href: "/ups-battery-backup-calculator",

@@ -405,7 +405,14 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </p>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  When you double operating voltage by wiring panels in series, you transmit the exact same wattage at half the amperage. Cutting current in half reduces conductor power dissipation to one-fourth (0.5² = 0.25). This allows installers to use smaller, lighter, and more economical copper cables (such as 10 AWG or 12 AWG PV wire) over runs of 50 to 100 feet without suffering unacceptable voltage drop. You can verify total wattage across varying voltage and current combinations with our{" "}
+                  When you double operating voltage by wiring panels in series, you transmit the exact same wattage at half the amperage. Cutting current in half reduces conductor power dissipation to one-fourth (0.5² = 0.25). This allows installers to use smaller, lighter, and more economical copper cables (such as 10 AWG or 12 AWG PV wire) over runs of 50 to 100 feet without suffering unacceptable voltage drop. You can calculate conductor resistance and percentage drop for any wire run with our{" "}
+                  <Link
+                    href="/voltage-drop-calculator"
+                    className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
+                  >
+                    voltage drop calculator
+                  </Link>
+                  , or verify total wattage across varying voltage and current combinations with our{" "}
                   <Link
                     href="/amps-to-watts-calculator"
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"

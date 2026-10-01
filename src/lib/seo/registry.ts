@@ -199,6 +199,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
       "/amps-to-watts-calculator",
+      "/voltage-drop-calculator",
       "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
       "/solar-panel-tilt-calculator",
@@ -226,6 +227,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
       "/watts-to-amps-calculator",
+      "/voltage-drop-calculator",
       "/battery-capacity-calculator",
       "/solar-panel-tilt-calculator",
       "/ups-battery-backup-calculator",
@@ -278,6 +280,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-30",
     relatedCalculatorPaths: [
       "/solar-charge-controller-calculator",
+      "/voltage-drop-calculator",
       "/battery-capacity-calculator",
       "/solar-panel-tilt-calculator",
       "/watts-to-amps-calculator",
@@ -304,9 +307,35 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-10-01",
     relatedCalculatorPaths: [
       "/solar-battery-calculator",
+      "/voltage-drop-calculator",
       "/solar-panel-tilt-calculator",
       "/battery-capacity-calculator",
       "/watts-to-amps-calculator",
+    ],
+    relatedGuidePaths: [
+      "/solar-panels-series-vs-parallel",
+      "/what-is-a-watt-hour",
+      "/what-does-ah-mean-on-a-battery",
+    ],
+  },
+  {
+    slug: "voltage-drop-calculator",
+    path: "/voltage-drop-calculator",
+    title: "Voltage Drop Calculator",
+    shortTitle: "Voltage Drop",
+    metaTitle: "Voltage Drop Calculator (AC & DC Wire Size Sizing)",
+    metaDescription:
+      "Calculate voltage drop for DC, single-phase, and three-phase circuits. Determine voltage loss, percentage drop, and receiving voltage based on current, distance, conductor material, and wire size.",
+    cluster: "electricity",
+    secondaryClusters: ["solar", "rv-power", "generators"],
+    primaryKeyword: "voltage drop calculator",
+    formula: "VD = multiplier × I × (L ÷ 1,000) × R | 1Φ: mult = 2 | 3Φ: mult = √3",
+    lastModified: "2026-10-01",
+    relatedCalculatorPaths: [
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+      "/solar-battery-calculator",
+      "/solar-charge-controller-calculator",
     ],
     relatedGuidePaths: [
       "/solar-panels-series-vs-parallel",

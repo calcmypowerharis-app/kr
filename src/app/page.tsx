@@ -170,6 +170,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     ],
     cta: "Open Charge Controller Calculator",
   },
+  {
+    id: "voltage-drop-tool",
+    title: "Voltage Drop Calculator",
+    href: "/voltage-drop-calculator",
+    icon: Sliders,
+    formula: "VD = mult × I × (L ÷ 1,000) × R | 1Φ: 2 | 3Φ: √3",
+    summary:
+      "Calculate circuit voltage drop, percentage loss, and receiving terminal voltage across DC, single-phase AC, and balanced three-phase AC systems.",
+    outputs: [
+      "Calculated voltage loss (Volts) and drop percentage (%)",
+      "Receiving terminal voltage at connected load",
+      "Total circuit loop resistance (75°C stranded baseline)",
+      "Adjacent AWG & kcmil conductor comparison table",
+    ],
+    cta: "Open Voltage Drop Calculator",
+  },
 ];
 
 interface PlannedTool {

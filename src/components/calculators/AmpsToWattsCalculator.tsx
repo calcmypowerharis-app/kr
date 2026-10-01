@@ -683,6 +683,12 @@ export const AmpsToWattsCalculator: React.FC = () => {
             category: "Electrical",
           },
           {
+            title: "Voltage Drop Calculator",
+            description: "Calculate circuit voltage drop, percentage loss, and receiving terminal voltage across DC and AC wire runs.",
+            href: "/voltage-drop-calculator",
+            category: "Electrical",
+          },
+          {
             title: "Generator Size Calculator",
             description: "Calculate required running and starting wattage for portable and home standby generators.",
             href: "/generator-size-calculator",
