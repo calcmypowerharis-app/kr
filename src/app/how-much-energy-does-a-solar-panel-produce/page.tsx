@@ -109,7 +109,7 @@ const FAQ_DATA = [
   {
     question: "How many solar panels do I need to power my house?",
     answer:
-      "The average US single-family home consumes approximately 890 kWh per month (around 30 kWh per day). If each 400-watt panel produces approximately 1.40 kWh per day under 4.5 peak sun hours with standard planning losses, the home requires roughly 22 solar panels (an 8.8 kW DC array) to offset 100% of its annual electricity usage.",
+      "In an illustrative planning scenario based on historical US Energy Information Administration (EIA 2022-2023) residential data averaging approximately 890 kWh per month (roughly 30 kWh per day), a home would need about 22 solar panels rated at 400 watts (an 8.8 kW DC array) under 4.5 peak sun hours and an illustrative 78% planning performance factor to match annual electricity use. Actual panel requirements depend on individual utility usage, local solar irradiance, roof orientation, and shading.",
   },
   {
     question: "Does solar panel wattage determine energy production?",
@@ -522,26 +522,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 </div>
               </div>
 
-              <p className="text-sm text-slate-600">
-                Across various US geographic regions, a single 400W residential module typically delivers between <strong>380 kWh and 650 kWh</strong> over a full 12-month calendar year:
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-bold text-slate-900">Northern &amp; Pacific Northwest</div>
-                  <div className="text-slate-600">3.2–3.8 avg PSH → <strong>365–430 kWh/year</strong> per panel</div>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-bold text-slate-900">Midwest &amp; Northeast</div>
-                  <div className="text-slate-600">3.8–4.3 avg PSH → <strong>430–490 kWh/year</strong> per panel</div>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-bold text-slate-900">Southeast &amp; Mid-Atlantic</div>
-                  <div className="text-slate-600">4.5–5.0 avg PSH → <strong>510–570 kWh/year</strong> per panel</div>
-                </div>
-                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="font-bold text-slate-900">Southwest &amp; Southern California</div>
-                  <div className="text-slate-600">5.5–6.2 avg PSH → <strong>620–700 kWh/year</strong> per panel</div>
-                </div>
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-sm text-slate-700 leading-relaxed">
+                <p>
+                  Annual energy production varies by location, solar resource, orientation, tilt, shading, temperature, system losses, and availability. A simple planning example can illustrate the math, but actual annual production requires site-specific solar-resource and system modeling rather than a flat geographic multiplier.
+                </p>
               </div>
             </section>
 
@@ -723,7 +707,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
               </div>
 
               <p>
-                Higher rated wattage creates greater electrical generation capability under identical solar irradiance, but wattage by itself does not guarantee high annual kilowatt-hours.
+                Higher rated wattage creates greater electrical generation capability under identical solar irradiance, but wattage by itself does not assure high annual kilowatt-hours.
               </p>
 
               <div className="space-y-3">
@@ -814,55 +798,64 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 <table className="w-full text-xs sm:text-sm text-left border-collapse">
                   <thead>
                     <tr className="border-b border-slate-200 bg-slate-100/80 text-slate-800 font-bold">
-                      <th className="py-3 px-3">US Geographic Zone</th>
-                      <th className="py-3 px-3">Example States</th>
-                      <th className="py-3 px-3">Annual Avg PSH</th>
-                      <th className="py-3 px-3">Est. Daily kWh (400W Panel)</th>
-                      <th className="py-3 px-3">Est. Annual kWh (400W Panel)</th>
+                      <th className="py-3 px-3">Solar Resource Region</th>
+                      <th className="py-3 px-3">Representative States</th>
+                      <th className="py-3 px-3">Daily Avg PSH (NREL NSRDB)</th>
+                      <th className="py-3 px-3">Daily Planning Formula</th>
+                      <th className="py-3 px-3">Illustrative Daily Output (400W)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-slate-700">
                     <tr>
-                      <td className="py-3 px-3 font-semibold text-slate-900">Southwest Desert</td>
+                      <td className="py-3 px-3 font-semibold text-slate-900">Desert Southwest</td>
                       <td className="py-3 px-3">AZ, NV, Southern CA, NM</td>
-                      <td className="py-3 px-3 font-mono">5.5 – 6.2 PSH</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.72 – 1.93 kWh</td>
-                      <td className="py-3 px-3 font-semibold text-slate-900">620 – 700 kWh</td>
+                      <td className="py-3 px-3 font-mono">5.5 to 6.2 PSH</td>
+                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
+                      <td className="py-3 px-3 font-bold text-blue-900">1.72 to 1.93 kWh/day</td>
                     </tr>
                     <tr className="bg-slate-50/50">
                       <td className="py-3 px-3 font-semibold text-slate-900">South &amp; Southeast</td>
                       <td className="py-3 px-3">TX, FL, GA, NC, SC</td>
-                      <td className="py-3 px-3 font-mono">4.5 – 5.2 PSH</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.40 – 1.62 kWh</td>
-                      <td className="py-3 px-3 font-semibold text-slate-900">510 – 590 kWh</td>
+                      <td className="py-3 px-3 font-mono">4.5 to 5.2 PSH</td>
+                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
+                      <td className="py-3 px-3 font-bold text-blue-900">1.40 to 1.62 kWh/day</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-3 font-semibold text-slate-900">Midwest &amp; Mid-Atlantic</td>
                       <td className="py-3 px-3">IL, OH, PA, VA, MO</td>
-                      <td className="py-3 px-3 font-mono">4.0 – 4.5 PSH</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.25 – 1.40 kWh</td>
-                      <td className="py-3 px-3 font-semibold text-slate-900">455 – 512 kWh</td>
+                      <td className="py-3 px-3 font-mono">4.0 to 4.5 PSH</td>
+                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
+                      <td className="py-3 px-3 font-bold text-blue-900">1.25 to 1.40 kWh/day</td>
                     </tr>
                     <tr className="bg-slate-50/50">
                       <td className="py-3 px-3 font-semibold text-slate-900">Northeast</td>
                       <td className="py-3 px-3">NY, MA, CT, NJ, ME</td>
-                      <td className="py-3 px-3 font-mono">3.8 – 4.2 PSH</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.19 – 1.31 kWh</td>
-                      <td className="py-3 px-3 font-semibold text-slate-900">430 – 480 kWh</td>
+                      <td className="py-3 px-3 font-mono">3.8 to 4.2 PSH</td>
+                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
+                      <td className="py-3 px-3 font-bold text-blue-900">1.19 to 1.31 kWh/day</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-3 font-semibold text-slate-900">Pacific Northwest</td>
-                      <td className="py-3 px-3">WA, OR (coastal)</td>
-                      <td className="py-3 px-3 font-mono">3.2 – 3.8 PSH</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.00 – 1.19 kWh</td>
-                      <td className="py-3 px-3 font-semibold text-slate-900">365 – 430 kWh</td>
+                      <td className="py-3 px-3 font-semibold text-slate-900">Pacific Northwest Coastal</td>
+                      <td className="py-3 px-3">Western WA, Western OR</td>
+                      <td className="py-3 px-3 font-mono">3.2 to 3.8 PSH</td>
+                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
+                      <td className="py-3 px-3 font-bold text-blue-900">1.00 to 1.19 kWh/day</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <p className="text-xs text-slate-500 italic">
-                Production estimates apply the illustrative 78% planning performance factor. Data synthesized from NREL national solar radiation databases.
-              </p>
+
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-700 space-y-2">
+                <p className="font-semibold text-slate-900">
+                  Why Annual Energy Cannot Be Estimated by a Flat Daily Multiplier:
+                </p>
+                <p>
+                  Annual energy production varies by location, solar resource, orientation, tilt, shading, temperature, system losses, and availability. A simple planning example can illustrate the math, but actual annual production requires site-specific solar-resource and system modeling.
+                </p>
+                <p>
+                  Multiplying an illustrative daily average across 365 days does not capture critical real-world factors. Northern regions experience dramatic seasonal variations, generating several times more energy in summer than during short, overcast winter days with potential snow cover. Desert climates enjoy abundant sunlight but face steep high-temperature efficiency deratings during hot months. Accurate annual generation modeling requires tools like NREL PVWatts that evaluate all 8,760 hours of typical meteorological year data for a specific site.
+                </p>
+              </div>
             </section>
 
             {/* SECTION 10: Roof Direction and Tilt */}
@@ -933,23 +926,72 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
 
               <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 space-y-4">
                 <div className="font-bold text-slate-900 text-base">
-                  Whole-Home Solar Sizing Example:
+                  Whole-Home Solar Sizing Example (Transparent Planning Method):
                 </div>
-                <div className="space-y-2 text-xs sm:text-sm text-slate-700">
-                  <p>
-                    1. <strong>Home Electricity Consumption:</strong> The average US single-family home consumes approximately <strong>890 kWh per month</strong> (EIA national baseline), or about 30 kWh per day.
-                  </p>
-                  <p>
-                    2. <strong>Per-Panel Generation:</strong> Under 4.5 peak sun hours and a 78% planning performance factor, one 400W panel produces <strong>1.404 kWh per day</strong>.
-                  </p>
-                  <p>
-                    3. <strong>Required Panel Count:</strong> Dividing total home daily energy by per-panel production gives:
-                  </p>
-                  <div className="p-3 bg-white rounded-xl border border-slate-200 font-mono text-center font-bold text-blue-900 text-sm">
-                    30 kWh/day ÷ 1.404 kWh/panel/day = 21.36 → 22 Solar Panels
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  The following transparent step-by-step example illustrates how individual panel generation connects to whole-home array sizing. This is strictly a simplified planning exercise, not an engineering recommendation or definitive production forecast.
+                </p>
+
+                <div className="space-y-3 text-xs sm:text-sm text-slate-700">
+                  <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                    <p className="font-semibold text-slate-900">
+                      Step 1: Monthly Household Electricity Baseline (Historical Statistical Benchmark)
+                    </p>
+                    <p className="text-slate-600">
+                      According to historical data from the US Energy Information Administration (EIA 2022-2023 residential reports), an average American household consumed approximately <strong>890 kWh per month</strong>. Actual residential consumption varies widely depending on home size, heating fuel, climate zone, and seasonal air conditioning use.
+                    </p>
                   </div>
+
+                  <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                    <p className="font-semibold text-slate-900">
+                      Step 2: Annual Household Electricity Usage
+                    </p>
+                    <p className="font-mono text-blue-900 font-semibold">
+                      890 kWh/month × 12 months = 10,680 kWh/year
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                    <p className="font-semibold text-slate-900">
+                      Step 3: Simplified Daily Solar Generation Requirement
+                    </p>
+                    <p className="font-mono text-blue-900 font-semibold">
+                      10,680 kWh/year ÷ 365 days ≈ 29.26 kWh/day (roughly 30 kWh/day)
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                    <p className="font-semibold text-slate-900">
+                      Step 4: Single-Panel Daily Output with Planning Performance Factor
+                    </p>
+                    <p className="text-slate-600 mb-1">
+                      Assuming an illustrative location with 4.5 peak sun hours per day and CalcMyPower&apos;s 78% illustrative planning performance factor for a 400W (0.40 kW) module:
+                    </p>
+                    <p className="font-mono text-blue-900 font-semibold">
+                      0.40 kW × 4.5 PSH × 0.78 = 1.404 kWh/day per panel
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                    <p className="font-semibold text-slate-900">
+                      Step 5: Array Size and Panel Count
+                    </p>
+                    <p className="text-slate-600 mb-1">
+                      Dividing daily requirement by single-panel daily generation:
+                    </p>
+                    <p className="font-mono text-blue-900 font-bold text-sm">
+                      29.26 kWh/day ÷ 1.404 kWh/panel/day = 20.84 → rounded to 21 or 22 Solar Panels
+                    </p>
+                    <p className="text-slate-600 text-xs mt-1">
+                      Array power requirement: 29.26 kWh/day ÷ (4.5 PSH × 0.78) ≈ 8.34 kW DC. With 22 panels of 400W, total array capacity is 8,800 Watts (8.8 kW DC). (Using an unrounded 30 kWh/day target gives 30 ÷ 1.404 = 21.36 → 22 panels).
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-amber-50/70 border border-amber-200/70 text-xs text-amber-900 space-y-1">
+                  <p className="font-semibold">Planning Notice:</p>
                   <p>
-                    4. <strong>Total Array Size:</strong> 22 panels × 400 Watts = <strong>8,800 Watts (8.8 kW DC array)</strong>.
+                    This calculation does not imply that 22 panels are universally required for an 890 kWh/month home, nor that 4.5 PSH applies to every roof. A home in Arizona with 6.0 PSH may need only 16 panels, whereas a home in the Pacific Northwest with 3.5 PSH may need 27 or more panels for the identical kilowatt-hour offset. Actual system design requires site-specific solar analysis by a licensed professional.
                   </p>
                 </div>
 
@@ -1129,7 +1171,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 <span>Preliminary Planning &amp; Engineering Disclaimer</span>
               </div>
               <p>
-                This guide and its calculation models provide preliminary educational estimates based on user-entered solar module wattage and standard solar irradiance baselines. It does not constitute formal engineering design, structural roof certification, or definitive energy generation forecasts.
+                This guide and its calculation models provide preliminary educational estimates based on user-entered solar module wattage and standard solar irradiance baselines. It does not constitute formal engineering design, structural roof assessment, or definitive energy generation forecasts.
               </p>
               <p>
                 Actual rooftop photovoltaic production depends on roof compass azimuth, pitch, local shading obstructions, inverter clipping, electrical panel busbar limitations, and utility interconnection rules. Working with high-voltage direct current and utility electrical panels involves risks of shock and fire hazard. Always consult a qualified licensed solar contractor or professional electrical engineer to verify physical equipment sizing and local code compliance prior to purchasing or installing solar equipment.

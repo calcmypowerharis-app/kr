@@ -72,6 +72,15 @@ def run_qa():
     print(f'   PVWatts simplified modeling disclosure present: {pvwatts_text in html}')
     assert pvwatts_text in html
 
+    # 6b. Issue 1 & Issue 2 checks
+    assert '380 kWh and 650 kWh' not in html, 'Found unsourced 380-650 kWh range'
+    assert '365–430 kWh/year' not in html, 'Found unsourced 365-430 range'
+    assert '620–700 kWh/year' not in html, 'Found unsourced 620-700 range'
+    assert 'EIA 2022-2023' in html, 'EIA 2022-2023 benchmark not found'
+    preferred_geo_text = 'Annual energy production varies by location, solar resource, orientation, tilt, shading, temperature, system losses, and availability. A simple planning example can illustrate the math, but actual annual production requires site-specific solar-resource and system modeling'
+    assert preferred_geo_text in html, 'Preferred geographic variation text not found'
+    print('6b. Issue 1 (annual ranges removed) & Issue 2 (EIA 2022-2023 benchmark) verified: PASS')
+
     # 7. Editorial Date Label Check
     assert 'Published October 2026' in html, 'Published October 2026 not found in HTML'
     assert 'Updated October 2026' not in html, 'Updated October 2026 present in HTML'
