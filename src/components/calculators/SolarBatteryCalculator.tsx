@@ -501,10 +501,10 @@ export const SolarBatteryCalculator: React.FC = () => {
                   value={customDoD}
                   onChange={(val) => setCustomDoD(val)}
                   unit="%"
-                  min={10}
+                  min={20}
                   max={100}
                   step={1}
-                  helpText="Enter the usable discharge fraction specified by your battery manufacturer (e.g., 80% or 90%)."
+                  helpText="Enter the usable discharge fraction specified by your battery manufacturer (20% to 100%)."
                 />
               </div>
             )}
@@ -713,7 +713,7 @@ export const SolarBatteryCalculator: React.FC = () => {
       <FormulaSection
         title="Solar Battery Sizing Formulas"
         description="The mathematical progression required to size an off-grid or emergency backup battery storage bank based on daily load, reserve autonomy, and efficiency deratings."
-        formulaDisplay="E_nominal (Wh) = (E_daily × N_autonomy) ÷ (η_inverter × DoD) | Ah = E_nominal ÷ V_dc"
+        formulaDisplay="E_nominal (Wh) = (E_daily × N_autonomy) ÷ (η_inverter × DoD) | Ah = E_nominal ÷ V_dc | P_pv (W) = E_daily ÷ (PSH × η_sys)"
         variables={[
           {
             symbol: "E_daily",
@@ -736,8 +736,8 @@ export const SolarBatteryCalculator: React.FC = () => {
           {
             symbol: "DoD",
             name: "Usable Depth of Discharge",
-            unit: "Decimal (0.10 - 1.00)",
-            description: "Safe usable fraction of battery capacity (0.85 for LiFePO4; 0.50 for Lead-Acid).",
+            unit: "Decimal (0.20 - 1.00)",
+            description: "Safe usable fraction of battery capacity (illustrative defaults: 0.85 for LiFePO4; 0.50 for Lead-Acid).",
           },
           {
             symbol: "V_dc",
@@ -746,16 +746,29 @@ export const SolarBatteryCalculator: React.FC = () => {
             description: "System nominal DC voltage (12V, 24V, or 48V) connecting battery to inverter.",
           },
           {
+            symbol: "PSH",
+            name: "Peak Sun Hours",
+            unit: "Hours/day",
+            description: "Equivalent hours per day of 1,000 W/m² peak solar irradiance at your installation location.",
+          },
+          {
+            symbol: "η_sys",
+            name: "PV System Efficiency",
+            unit: "Decimal (0.78 Baseline)",
+            description: "Illustrative 78% balance-of-system efficiency derating factor for thermal loss, wiring resistance, and MPPT tracking.",
+          },
+          {
             symbol: "P_pv",
             name: "Estimated PV Replenishment",
             unit: "Watts (W)",
-            description: "Simplified solar array wattage needed to recharge one day of energy consumption.",
+            description: "Simplified solar array wattage needed to replenish one day of energy consumption under local peak sun hours.",
           },
         ]}
         notes={[
           "Nominal capacity represents the total nameplate chemical energy of the battery cells.",
           "Usable capacity is the energy safely extracted during daily cycling without premature cell degradation.",
           "Higher DC bus voltages (48V) decrease operating current, reducing required wire gauge sizes and resistive thermal losses.",
+          "Solar replenishment wattage uses a disclosed 78% balance-of-system planning baseline to account for temperature derating, wiring resistance, and dust/soiling.",
         ]}
       />
 

@@ -25,9 +25,9 @@ describe("Solar Battery Calculator Engine", () => {
 
       expect(result.isValid).toBe(true);
       expect(result.autonomyLoadEnergyWh).toBe(1200);
-      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(1411.76, 1);
-      expect(result.nominalCapacityWh).toBeCloseTo(1660.90, 1);
-      expect(result.batteryBankAh).toBeCloseTo(138.41, 1);
+      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(1411.76, 2);
+      expect(result.nominalCapacityWh).toBeCloseTo(1660.90, 2);
+      expect(result.batteryBankAh).toBeCloseTo(138.41, 2);
       expect(result.nominalCapacityKwh).toBeCloseTo(1.66, 2);
     });
 
@@ -43,9 +43,9 @@ describe("Solar Battery Calculator Engine", () => {
 
       expect(result.isValid).toBe(true);
       expect(result.autonomyLoadEnergyWh).toBe(8000);
-      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(8888.89, 1);
-      expect(result.nominalCapacityWh).toBeCloseTo(10457.52, 1);
-      expect(result.batteryBankAh).toBeCloseTo(435.73, 1);
+      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(8888.89, 2);
+      expect(result.nominalCapacityWh).toBeCloseTo(10457.52, 2);
+      expect(result.batteryBankAh).toBeCloseTo(435.73, 2);
       expect(result.nominalCapacityKwh).toBeCloseTo(10.46, 2);
     });
 
@@ -61,9 +61,9 @@ describe("Solar Battery Calculator Engine", () => {
 
       expect(result.isValid).toBe(true);
       expect(result.autonomyLoadEnergyWh).toBe(8000);
-      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(8888.89, 1);
-      expect(result.nominalCapacityWh).toBeCloseTo(10457.52, 1);
-      expect(result.batteryBankAh).toBeCloseTo(217.86, 1);
+      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(8888.89, 2);
+      expect(result.nominalCapacityWh).toBeCloseTo(10457.52, 2);
+      expect(result.batteryBankAh).toBeCloseTo(217.86, 2);
       expect(result.nominalCapacityKwh).toBeCloseTo(10.46, 2);
     });
 
@@ -79,9 +79,9 @@ describe("Solar Battery Calculator Engine", () => {
 
       expect(result.isValid).toBe(true);
       expect(result.autonomyLoadEnergyWh).toBe(9000);
-      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(10588.24, 1);
-      expect(result.nominalCapacityWh).toBeCloseTo(21176.47, 1);
-      expect(result.batteryBankAh).toBeCloseTo(882.35, 1);
+      expect(result.batteryDeliveryEnergyWh).toBeCloseTo(10588.24, 2);
+      expect(result.nominalCapacityWh).toBeCloseTo(21176.47, 2);
+      expect(result.batteryBankAh).toBeCloseTo(882.35, 2);
       expect(result.nominalCapacityKwh).toBeCloseTo(21.18, 2);
     });
 
@@ -98,7 +98,7 @@ describe("Solar Battery Calculator Engine", () => {
       });
 
       expect(result.isValid).toBe(true);
-      expect(result.pvReplenishmentWatts).toBeCloseTo(1139.60, 1);
+      expect(result.pvReplenishmentWatts).toBeCloseTo(1139.60, 2);
     });
   });
 
@@ -174,7 +174,7 @@ describe("Solar Battery Calculator Engine", () => {
       expect(tooHigh.length).toBeGreaterThan(0);
     });
 
-    it("flags invalid custom DoD (<= 0 or > 1.0)", () => {
+    it("flags invalid custom DoD (< 0.20 or > 1.0)", () => {
       const tooHighDoD = validateSolarBatteryInputs({
         ...SOLAR_BATTERY_DEFAULTS,
         chemistry: "custom",
@@ -182,12 +182,19 @@ describe("Solar Battery Calculator Engine", () => {
       });
       expect(tooHighDoD.length).toBeGreaterThan(0);
 
-      const zeroDoD = validateSolarBatteryInputs({
+      const tooLowDoD = validateSolarBatteryInputs({
         ...SOLAR_BATTERY_DEFAULTS,
         chemistry: "custom",
-        customDoD: 0,
+        customDoD: 0.15, // 15% is below 20% minimum
       });
-      expect(zeroDoD.length).toBeGreaterThan(0);
+      expect(tooLowDoD.length).toBeGreaterThan(0);
+
+      const validMinDoD = validateSolarBatteryInputs({
+        ...SOLAR_BATTERY_DEFAULTS,
+        chemistry: "custom",
+        customDoD: 0.20, // 20% is valid minimum
+      });
+      expect(validMinDoD.length).toBe(0);
     });
 
     it("flags invalid system voltage", () => {

@@ -122,7 +122,7 @@ export interface SolarBatteryInputs {
   autonomyDays: number;
   systemVoltage: number;
   chemistry: BatteryChemistryType;
-  customDoD?: number; // 0.01 - 1.00
+  customDoD?: number; // 0.20 - 1.00 (20% to 100%)
   inverterEfficiency: number; // 0.70 - 1.00 (default 0.85)
   peakSunHours?: number; // default 4.5
   systemEfficiency?: number; // default 0.78 (78% balance of system)
@@ -207,8 +207,8 @@ export function validateSolarBatteryInputs(inputs: SolarBatteryInputs): string[]
     ? inputs.customDoD
     : CHEMISTRY_DEFAULTS[inputs.chemistry]?.defaultDoD;
 
-  if (typeof dod !== "number" || isNaN(dod) || dod <= 0 || dod > 1.0) {
-    errors.push("Usable battery fraction (DoD) must be between 0.01 (1%) and 1.00 (100%).");
+  if (typeof dod !== "number" || isNaN(dod) || dod < 0.20 || dod > 1.0) {
+    errors.push("Usable battery fraction (DoD) must be between 0.20 (20%) and 1.00 (100%).");
   }
 
   if (inputs.peakSunHours !== undefined && (isNaN(inputs.peakSunHours) || inputs.peakSunHours <= 0)) {
