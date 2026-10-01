@@ -168,6 +168,14 @@ export const Footer: React.FC = () => {
                   Solar Panels Series vs Parallel Guide
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-many-solar-panels-do-i-need"
+                  className="hover:text-white transition"
+                >
+                  How Many Solar Panels Do I Need?
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -367,6 +367,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/watts-to-amps-calculator",
     ],
     relatedGuidePaths: [
+      "/how-many-solar-panels-do-i-need",
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
       "/how-long-will-a-100ah-battery-last",
@@ -549,6 +550,34 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       "/how-long-will-a-100ah-battery-last",
+      "/what-is-a-watt-hour",
+    ],
+  },
+  {
+    slug: "how-many-solar-panels-do-i-need",
+    path: "/how-many-solar-panels-do-i-need",
+    title: "How Many Solar Panels Do I Need to Power My House?",
+    shortTitle: "Solar Panel Sizing Guide",
+    metaTitle: "How Many Solar Panels Do I Need to Power My House?",
+    metaDescription:
+      "Learn how to estimate how many solar panels your home needs using electricity usage, peak sun hours, system performance, and panel wattage. Includes examples and a free solar sizing calculator.",
+    cluster: "solar",
+    parentCalculatorPath: "/solar-system-size-calculator",
+    scenarioLink: "/solar-system-size-calculator",
+    primaryKeyword: "how many solar panels do i need to power my house",
+    readingTime: "14 min read",
+    datePublished: "2026-10-01",
+    lastModified: "2026-10-01",
+    heroImage: "/images/articles/how-many-solar-panels-do-i-need.webp",
+    relatedCalculatorPaths: [
+      "/solar-system-size-calculator",
+      "/solar-battery-calculator",
+      "/solar-charge-controller-calculator",
+      "/solar-panel-tilt-calculator",
+      "/voltage-drop-calculator",
+    ],
+    relatedGuidePaths: [
+      "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
     ],
   },
