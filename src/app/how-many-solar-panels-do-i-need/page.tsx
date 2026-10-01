@@ -210,7 +210,7 @@ export default function HowManySolarPanelsDoINeedPage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Updated October 2026</span>
+                <span className="text-slate-500">Published October 2026</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
