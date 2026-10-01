@@ -109,7 +109,7 @@ const FAQ_DATA = [
   {
     question: "How many solar panels do I need to power my house?",
     answer:
-      "In an illustrative planning scenario based on historical US Energy Information Administration (EIA 2022-2023) residential data averaging approximately 890 kWh per month (roughly 30 kWh per day), a home would need about 22 solar panels rated at 400 watts (an 8.8 kW DC array) under 4.5 peak sun hours and an illustrative 78% planning performance factor to match annual electricity use. Actual panel requirements depend on individual utility usage, local solar irradiance, roof orientation, and shading.",
+      "In an illustrative planning scenario based on historical US Energy Information Administration (EIA 2022-2023) residential benchmarks of approximately 890 kWh per month (around 29.26 kWh per day), a home would need roughly 21 solar panels rated at 400 watts (an 8.4 kW DC array) under 4.5 peak sun hours and an illustrative 78% planning performance factor to match annual electricity use. Actual panel requirements depend on individual utility usage, local solar irradiance, roof orientation, and shading.",
   },
   {
     question: "Does solar panel wattage determine energy production?",
@@ -794,52 +794,56 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 Solar irradiance varies dramatically across the United States. Atmospheric clarity, latitude, and weather patterns establish the daily average peak sun hours available to your roof:
               </p>
 
+              <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200/70 text-xs sm:text-sm text-amber-950 space-y-1">
+                <p className="font-semibold text-slate-900">
+                  Solar Resource Sizing Rule:
+                </p>
+                <p>
+                  Solar resource varies substantially by location. For a real project, use a site-specific solar-resource model such as PVWatts rather than assigning a fixed peak-sun-hour value to an entire region.
+                </p>
+              </div>
+
               <div className="overflow-x-auto rounded-xl border border-slate-200">
                 <table className="w-full text-xs sm:text-sm text-left border-collapse">
                   <thead>
                     <tr className="border-b border-slate-200 bg-slate-100/80 text-slate-800 font-bold">
-                      <th className="py-3 px-3">Solar Resource Region</th>
-                      <th className="py-3 px-3">Representative States</th>
-                      <th className="py-3 px-3">Daily Avg PSH (NREL NSRDB)</th>
-                      <th className="py-3 px-3">Daily Planning Formula</th>
-                      <th className="py-3 px-3">Illustrative Daily Output (400W)</th>
+                      <th className="py-3 px-3">Region / Site Context</th>
+                      <th className="py-3 px-3">Illustrative Planning PSH</th>
+                      <th className="py-3 px-3">Important Limitation</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 text-slate-700">
                     <tr>
-                      <td className="py-3 px-3 font-semibold text-slate-900">Desert Southwest</td>
-                      <td className="py-3 px-3">AZ, NV, Southern CA, NM</td>
-                      <td className="py-3 px-3 font-mono">5.5 to 6.2 PSH</td>
-                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.72 to 1.93 kWh/day</td>
+                      <td className="py-3 px-3 font-semibold text-slate-900">Southwestern Sunbelt &amp; Desert</td>
+                      <td className="py-3 px-3 font-mono">
+                        5.5 PSH<br/>
+                        <span className="text-xs text-slate-500 font-sans italic">Illustrative planning assumption, not a location-specific solar-resource measurement.</span>
+                      </td>
+                      <td className="py-3 px-3 text-slate-600">High annual solar irradiance, but extreme summer ambient temperatures require thermal cell derating analysis.</td>
                     </tr>
                     <tr className="bg-slate-50/50">
-                      <td className="py-3 px-3 font-semibold text-slate-900">South &amp; Southeast</td>
-                      <td className="py-3 px-3">TX, FL, GA, NC, SC</td>
-                      <td className="py-3 px-3 font-mono">4.5 to 5.2 PSH</td>
-                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.40 to 1.62 kWh/day</td>
+                      <td className="py-3 px-3 font-semibold text-slate-900">Southern &amp; Sunbelt States</td>
+                      <td className="py-3 px-3 font-mono">
+                        4.8 PSH<br/>
+                        <span className="text-xs text-slate-500 font-sans italic">Illustrative planning assumption, not a location-specific solar-resource measurement.</span>
+                      </td>
+                      <td className="py-3 px-3 text-slate-600">Favorable year-round sun, but summer humidity, convective clouds, and coastal patterns introduce local microclimates.</td>
                     </tr>
                     <tr>
-                      <td className="py-3 px-3 font-semibold text-slate-900">Midwest &amp; Mid-Atlantic</td>
-                      <td className="py-3 px-3">IL, OH, PA, VA, MO</td>
-                      <td className="py-3 px-3 font-mono">4.0 to 4.5 PSH</td>
-                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.25 to 1.40 kWh/day</td>
+                      <td className="py-3 px-3 font-semibold text-slate-900">Midwestern &amp; Mid-Atlantic Areas</td>
+                      <td className="py-3 px-3 font-mono">
+                        4.2 PSH<br/>
+                        <span className="text-xs text-slate-500 font-sans italic">Illustrative planning assumption, not a location-specific solar-resource measurement.</span>
+                      </td>
+                      <td className="py-3 px-3 text-slate-600">Moderate solar resource with significant seasonal disparity between long summer daylight and short winter days.</td>
                     </tr>
                     <tr className="bg-slate-50/50">
-                      <td className="py-3 px-3 font-semibold text-slate-900">Northeast</td>
-                      <td className="py-3 px-3">NY, MA, CT, NJ, ME</td>
-                      <td className="py-3 px-3 font-mono">3.8 to 4.2 PSH</td>
-                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.19 to 1.31 kWh/day</td>
-                    </tr>
-                    <tr>
-                      <td className="py-3 px-3 font-semibold text-slate-900">Pacific Northwest Coastal</td>
-                      <td className="py-3 px-3">Western WA, Western OR</td>
-                      <td className="py-3 px-3 font-mono">3.2 to 3.8 PSH</td>
-                      <td className="py-3 px-3 font-mono text-slate-600">0.40 kW × PSH × 0.78</td>
-                      <td className="py-3 px-3 font-bold text-blue-900">1.00 to 1.19 kWh/day</td>
+                      <td className="py-3 px-3 font-semibold text-slate-900">Northern &amp; Pacific Northwest Coastal</td>
+                      <td className="py-3 px-3 font-mono">
+                        3.5 PSH<br/>
+                        <span className="text-xs text-slate-500 font-sans italic">Illustrative planning assumption, not a location-specific solar-resource measurement.</span>
+                      </td>
+                      <td className="py-3 px-3 text-slate-600">Persistent winter cloud cover and lower sun angles require site-specific simulation rather than regional rules of thumb.</td>
                     </tr>
                   </tbody>
                 </table>
@@ -972,26 +976,23 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                     </p>
                   </div>
 
-                  <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-1">
+                  <div className="p-3 bg-white rounded-xl border border-slate-200 space-y-2">
                     <p className="font-semibold text-slate-900">
                       Step 5: Array Size and Panel Count
                     </p>
-                    <p className="text-slate-600 mb-1">
-                      Dividing daily requirement by single-panel daily generation:
+                    <p className="text-slate-600">
+                      Using these simplified assumptions, 29.26 kWh/day ÷ 1.404 kWh/day per panel = 20.84 panels. Rounding up gives approximately 21 panels, or an 8.4 kW DC array (21 × 400W = 8,400 Watts). This is a simplified planning example, not a universal system design.
                     </p>
-                    <p className="font-mono text-blue-900 font-bold text-sm">
-                      29.26 kWh/day ÷ 1.404 kWh/panel/day = 20.84 → rounded to 21 or 22 Solar Panels
-                    </p>
-                    <p className="text-slate-600 text-xs mt-1">
-                      Array power requirement: 29.26 kWh/day ÷ (4.5 PSH × 0.78) ≈ 8.34 kW DC. With 22 panels of 400W, total array capacity is 8,800 Watts (8.8 kW DC). (Using an unrounded 30 kWh/day target gives 30 ÷ 1.404 = 21.36 → 22 panels).
-                    </p>
+                    <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 font-mono text-center font-bold text-blue-900 text-sm">
+                      29.26 kWh/day ÷ 1.404 kWh/panel/day = 20.84 panels, so 21 panels when rounded up (8.4 kW DC)
+                    </div>
                   </div>
                 </div>
 
                 <div className="p-3 rounded-xl bg-amber-50/70 border border-amber-200/70 text-xs text-amber-900 space-y-1">
                   <p className="font-semibold">Planning Notice:</p>
                   <p>
-                    This calculation does not imply that 22 panels are universally required for an 890 kWh/month home, nor that 4.5 PSH applies to every roof. A home in Arizona with 6.0 PSH may need only 16 panels, whereas a home in the Pacific Northwest with 3.5 PSH may need 27 or more panels for the identical kilowatt-hour offset. Actual system design requires site-specific solar analysis by a licensed professional.
+                    This calculation does not imply that 21 panels are universally required for an 890 kWh/month home, nor that 4.5 PSH applies to every roof. A home in Arizona with 6.0 PSH may need only 16 panels, whereas a home in the Pacific Northwest with 3.5 PSH may need 27 or more panels for the identical kilowatt-hour offset. Actual system design requires site-specific solar analysis by a licensed professional.
                   </p>
                 </div>
 

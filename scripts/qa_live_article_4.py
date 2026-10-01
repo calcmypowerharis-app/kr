@@ -72,14 +72,23 @@ def run_qa():
     print(f'   PVWatts simplified modeling disclosure present: {pvwatts_text in html}')
     assert pvwatts_text in html
 
-    # 6b. Issue 1 & Issue 2 checks
+    # 6b. Issue 1 (Panel count consistency) & Issue 2 (Regional table safe structure)
     assert '380 kWh and 650 kWh' not in html, 'Found unsourced 380-650 kWh range'
     assert '365–430 kWh/year' not in html, 'Found unsourced 365-430 range'
     assert '620–700 kWh/year' not in html, 'Found unsourced 620-700 range'
     assert 'EIA 2022-2023' in html, 'EIA 2022-2023 benchmark not found'
     preferred_geo_text = 'Annual energy production varies by location, solar resource, orientation, tilt, shading, temperature, system losses, and availability. A simple planning example can illustrate the math, but actual annual production requires site-specific solar-resource and system modeling'
     assert preferred_geo_text in html, 'Preferred geographic variation text not found'
-    print('6b. Issue 1 (annual ranges removed) & Issue 2 (EIA 2022-2023 benchmark) verified: PASS')
+    pvwatts_geo_rule = 'Solar resource varies substantially by location. For a real project, use a site-specific solar-resource model such as PVWatts rather than assigning a fixed peak-sun-hour value to an entire region.'
+    assert pvwatts_geo_rule in html, 'Solar resource sizing rule text not found'
+    assert 'Illustrative planning assumption, not a location-specific solar-resource measurement' in html, 'Safe PSH label not found'
+    assert '5.5 to 6.2' not in html, 'Found unsourced 5.5 to 6.2 range'
+    assert '4.5 to 5.2' not in html, 'Found unsourced 4.5 to 5.2 range'
+    assert '21 to 22' not in html, 'Found 21 to 22 range'
+    assert '21 or 22' not in html, 'Found 21 or 22 range'
+    assert '21 Solar Panels' in html, '21 Solar Panels not found'
+    assert '8.4 kW DC' in html, '8.4 kW DC array not found'
+    print('6b. Issue 1 (21 panels / 8.4 kW DC consistent math) & Issue 2 (safe regional structure & PVWatts rule) verified: PASS')
 
     # 7. Editorial Date Label Check
     assert 'Published October 2026' in html, 'Published October 2026 not found in HTML'
