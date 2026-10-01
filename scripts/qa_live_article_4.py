@@ -86,7 +86,7 @@ def run_qa():
     assert '4.5 to 5.2' not in html, 'Found unsourced 4.5 to 5.2 range'
     assert '21 to 22' not in html, 'Found 21 to 22 range'
     assert '21 or 22' not in html, 'Found 21 or 22 range'
-    assert '21 Solar Panels' in html, '21 Solar Panels not found'
+    assert '21 panels' in html, '21 panels not found'
     assert '8.4 kW DC' in html, '8.4 kW DC array not found'
     print('6b. Issue 1 (21 panels / 8.4 kW DC consistent math) & Issue 2 (safe regional structure & PVWatts rule) verified: PASS')
 
