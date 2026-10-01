@@ -44,7 +44,7 @@ export const SolarSystemSizeFlowDiagram: React.FC<SolarSystemSizeFlowDiagramProp
           </p>
         </div>
         <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-200 self-start sm:self-auto">
-          NREL Planning Model
+          Planning Sizing Model
         </span>
       </div>
 
@@ -185,10 +185,10 @@ export const SolarSystemSizeFlowDiagram: React.FC<SolarSystemSizeFlowDiagramProp
             <line x1="20" y1="92" x2="150" y2="92" stroke="#fde68a" strokeWidth="1" />
 
             <text x="85" y="112" textAnchor="middle" fill="#78350f" fontSize="11" fontWeight="600">
-              Performance Ratio:
+              Planning Factor:
             </text>
             <text x="85" y="128" textAnchor="middle" fill="#92400e" fontSize="13" fontWeight="700">
-              {prPercent}% (22% losses)
+              {prPercent}% Planning Factor
             </text>
 
             <text x="85" y="152" textAnchor="middle" fill="#78350f" fontSize="10">
@@ -285,7 +285,7 @@ export const SolarSystemSizeFlowDiagram: React.FC<SolarSystemSizeFlowDiagramProp
             </text>
 
             <text x="85" y="198" textAnchor="middle" fill="#059669" fontSize="9">
-              Grid-Tied AC Delivery
+              Estimated Solar Production
             </text>
           </g>
         </svg>
@@ -299,7 +299,7 @@ export const SolarSystemSizeFlowDiagram: React.FC<SolarSystemSizeFlowDiagramProp
         </div>
         <div>
           <span className="font-semibold text-slate-800">2. Solar Insolation: </span>
-          {peakSunHours.toFixed(1)} peak sun hours combined with a {prPercent}% performance factor yields {(peakSunHours * performanceRatio).toFixed(2)} usable kWh per kW of array capacity daily.
+          {peakSunHours.toFixed(1)} peak sun hours combined with a {prPercent}% planning performance factor yields {(peakSunHours * performanceRatio).toFixed(2)} estimated kWh per kW of array capacity daily.
         </div>
         <div>
           <span className="font-semibold text-slate-800">3. Module Count: </span>

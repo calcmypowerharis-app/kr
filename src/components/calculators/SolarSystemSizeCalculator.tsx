@@ -137,7 +137,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
     setPeakSunHours(psh);
   };
 
-  // Worked Example steps for 900 kWh/mo, 100% offset, 4.5 PSH, 78% PR, 400W
+  // Worked Example steps for 900 kWh/mo, 100% offset, 4.5 PSH, 78% planning performance factor, 400W
   const workedSteps: WorkedStep[] = [
     {
       stepNumber: 1,
@@ -159,7 +159,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
       calculation:
         "Daily Yield Factor = 4.5 PSH × 0.78 = 3.51 kWh/kW/day\nSystem Size = 30.00 kWh/day ÷ 3.51 kWh/kW/day = 8.547 kW DC (8,547 Watts)",
       explanation:
-        "Combining 4.5 peak sun hours with a 78% balance-of-system performance ratio accounts for real-world inverter conversion, temperature derating, wiring resistance, and soiling. Dividing target daily energy by daily yield yields the required DC nameplate capacity.",
+        "Combining 4.5 peak sun hours with a 78% illustrative planning performance factor accounts for real-world inverter conversion, temperature derating, wiring resistance, and soiling. Dividing target daily energy by daily yield yields the required DC nameplate capacity.",
     },
     {
       stepNumber: 4,
@@ -173,9 +173,9 @@ export const SolarSystemSizeCalculator: React.FC = () => {
       stepNumber: 5,
       title: "Verify Actual Array Rating and Physical Roof Footprint",
       calculation:
-        "Installed Array Rating = (22 × 400 W) ÷ 1,000 = 8.80 kW DC\nEstimated Module Footprint = 22 × 21 sq ft = 462 sq ft\nGross Roof Area with Fire Setbacks = 22 × 25 sq ft = 550 sq ft",
+        "Installed Array Rating = (22 × 400 W) ÷ 1,000 = 8.80 kW DC\nIllustrative Roof Area Estimate = 22 × 21 sq ft = 462 sq ft",
       explanation:
-        "An installation of 22 panels produces an 8.80 kW nameplate array. Sizing requires roughly 460 to 550 square feet of unobstructed, unshaded roof space facing south or west.",
+        "An installation of 22 panels produces an 8.80 kW nameplate array with an illustrative module area of approximately 462 sq ft. This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.",
     },
   ];
 
@@ -196,18 +196,18 @@ export const SolarSystemSizeCalculator: React.FC = () => {
         "Peak sun hours represent cumulative daily solar radiation normalized to 1,000 W/m². Actual solar harvest varies significantly by latitude, climate, seasonality, and local cloud cover.",
     },
     {
-      parameter: "System Performance Ratio (PR)",
-      defaultVal: "78% (0.78 Derate Factor)",
-      realisticRange: "72% to 85% depending on equipment, climate, and pitch",
+      parameter: "Planning Performance Factor",
+      defaultVal: "78% (0.78 Planning Factor)",
+      realisticRange: "72% to 85% depending on equipment, climate, and site conditions",
       impact:
-        "Accounts for real-world system derating including high cell temperature losses (typically 8% to 12% in summer), inverter DC-to-AC conversion (3% to 5%), wiring resistance, module mismatch, and atmospheric dust/soiling.",
+        "CalcMyPower uses 78% as an illustrative planning performance factor for this simplified estimate. Actual PV system performance varies with solar resource, tilt, azimuth, shading, soiling, temperature, wiring, inverter behavior, and other site-specific conditions.",
     },
     {
       parameter: "Solar Panel Module Area",
       defaultVal: "21.0 sq ft per 400W Module",
       realisticRange: "18 to 23 sq ft per residential module",
       impact:
-        "Standard modern residential 54-cell / 108-half-cell monocrystalline panels measure approximately 68 inches by 44 inches (~20.8 sq ft). Gross roof requirements increase to roughly 25 sq ft per module to accommodate mounting rails, row gaps, and building-code perimeter setbacks.",
+        "Standard modern residential 54-cell / 108-half-cell monocrystalline panels measure approximately 68 inches by 44 inches (~20.8 sq ft). This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.",
     },
   ];
 
@@ -388,7 +388,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
               className="flex items-center gap-2 text-xs font-bold text-slate-700 hover:text-blue-600 transition"
             >
               <Sliders className="w-4 h-4" />
-              <span>{showAdvanced ? "Hide Equipment & Loss Parameters" : "Adjust Panel Wattage & Performance Ratio"}</span>
+              <span>{showAdvanced ? "Hide Equipment & Loss Parameters" : "Adjust Panel Wattage & Planning Performance Factor"}</span>
             </button>
           </div>
 
@@ -430,22 +430,22 @@ export const SolarSystemSizeCalculator: React.FC = () => {
                 />
               </div>
 
-              {/* Input 5: System Performance Ratio */}
+              {/* Input 5: Planning Performance Factor */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-800">System Performance Ratio (PR)</span>
+                  <span className="font-bold text-slate-800">Planning Performance Factor</span>
                   <span className="font-mono font-bold text-blue-700">{performanceRatioPercent}%</span>
                 </div>
                 <InputField
                   id="performance-ratio-input"
-                  label="Performance Derate Ratio (%)"
+                  label="Planning Performance Factor (%)"
                   value={performanceRatioPercent}
                   onChange={(val) => setPerformanceRatioPercent(val)}
                   min={50}
                   max={95}
                   step={1}
                   unit="%"
-                  helpText="NREL PVWatts default baseline is 78% (accounting for 22% balance-of-system losses across temperature, inverter, wiring, and soiling)."
+                  helpText="CalcMyPower uses 78% as an illustrative planning performance factor for this simplified estimate. Actual PV system performance varies with solar resource, tilt, azimuth, shading, soiling, temperature, wiring, inverter behavior, and other site-specific conditions."
                 />
               </div>
             </div>
@@ -471,9 +471,9 @@ export const SolarSystemSizeCalculator: React.FC = () => {
                 subtext: `${solarOffsetPercent}% offset of daily consumption`,
               },
               {
-                label: "Est. Module Roof Area",
+                label: "Illustrative Roof Area Estimate",
                 value: `~${result.estimatedRoofAreaModulesSqFt} sq ft`,
-                subtext: `~${result.estimatedRoofAreaTotalSqFt} sq ft with fire setbacks`,
+                subtext: "Module surface area only",
               },
               {
                 label: "Installed Array Rating",
@@ -592,35 +592,28 @@ export const SolarSystemSizeCalculator: React.FC = () => {
               </table>
             </div>
             <p className="text-[11px] text-slate-500 italic">
-              Module areas calculated using standard 21 sq ft per panel. Roof space with fire pathways and setbacks typically requires 20% to 25% additional clearance.
+              Illustrative module area calculated using approximately 21 sq ft per panel. This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.
             </p>
           </div>
 
-          {/* Roof Space Planning Guidance Card */}
+          {/* Illustrative Roof Area Estimate Card */}
           <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2.5">
             <div className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
               <Maximize2 className="w-4 h-4 text-blue-600" />
-              <span>Roof Space & Physical Layout Guidance</span>
+              <span>Illustrative Roof Area Estimate</span>
             </div>
-            <p className="text-xs text-slate-700 leading-relaxed">
-              Your estimated array of <span className="font-bold text-slate-900">~{result.roundedPanelCount} panels</span> requires approximately <span className="font-bold text-blue-700">{result.estimatedRoofAreaModulesSqFt} sq ft</span> of clean, contiguous module surface, or approximately <span className="font-bold text-slate-900">{result.estimatedRoofAreaTotalSqFt} sq ft</span> of total roof surface when accommodating mounting rails, valley setbacks, and building-code ridge pathways.
+            <div className="p-3 rounded-xl bg-white border border-slate-200">
+              <div className="text-xs font-semibold text-slate-600">Estimated Module Surface Area</div>
+              <div className="text-lg font-black text-blue-700 font-mono mt-0.5">
+                ~{result.estimatedRoofAreaModulesSqFt} sq ft
+              </div>
+              <div className="text-[11px] text-slate-500 mt-0.5">
+                Based on ~{result.roundedPanelCount} modules at approximately 21 sq ft per panel
+              </div>
+            </div>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.
             </p>
-            <div className="grid grid-cols-2 gap-2 text-xs pt-1">
-              <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                <div className="font-bold text-slate-900">Net Module Area</div>
-                <div className="text-base font-black text-blue-700 font-mono mt-0.5">
-                  ~{result.estimatedRoofAreaModulesSqFt} sq ft
-                </div>
-                <div className="text-[10px] text-slate-500 mt-0.5">Physical glass surface</div>
-              </div>
-              <div className="p-2.5 rounded-xl bg-white border border-slate-200">
-                <div className="font-bold text-slate-900">Gross Roof Needed</div>
-                <div className="text-base font-black text-slate-900 font-mono mt-0.5">
-                  ~{result.estimatedRoofAreaTotalSqFt} sq ft
-                </div>
-                <div className="text-[10px] text-slate-500 mt-0.5">Includes 3 ft fire walkways</div>
-              </div>
-            </div>
           </div>
         </div>
       }
@@ -703,7 +696,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
           </p>
 
           <h3 className="text-lg md:text-xl font-bold text-slate-900 pt-2">
-            Deconstructing the Solar Performance Ratio and System Losses
+            Understanding the Planning Performance Factor and System Losses
           </h3>
           <p>
             Solar panels carry a laboratory DC nameplate rating measured at Standard Test Conditions (STC: cell temperature of 25°C / 77°F, irradiance of 1,000 W/m², and air mass 1.5). Rooftop panels never operate permanently at STC. Several real-world factors reduce power generation:
@@ -735,7 +728,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
             </div>
           </div>
           <p>
-            Combining these derating factors produces an overall <span className="font-semibold text-slate-900">System Performance Ratio (PR)</span>, commonly modeled at 75% to 82% (or 0.75 to 0.82) in standard NREL PVWatts analyses. CalcMyPower uses an industry-standard 78% default performance factor for preliminary residential planning.
+            Combining these derating factors produces an overall <span className="font-semibold text-slate-900">Planning Performance Factor</span>. CalcMyPower uses 78% as an illustrative planning performance factor for this simplified estimate. Actual PV system performance varies with solar resource, tilt, azimuth, shading, soiling, temperature, wiring, inverter behavior, and other site-specific conditions.
           </p>
 
           <h3 className="text-lg md:text-xl font-bold text-slate-900 pt-2">
@@ -757,20 +750,20 @@ export const SolarSystemSizeCalculator: React.FC = () => {
           </p>
 
           <h3 className="text-lg md:text-xl font-bold text-slate-900 pt-2">
-            Roof Space, Pitch, and Fire Code Setback Constraints
+            Roof Plane Sizing and Physical Layout Considerations
           </h3>
           <p>
-            Calculating that you need 22 panels does not automatically guarantee your roof can accommodate them. Photovoltaic installations must comply with local residential building and fire safety codes (such as NFPA 1 / International Residential Code Section R324.6):
+            Calculating that an array requires approximately 22 panels provides an illustrative module surface estimate of roughly 460 square feet. However, this illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements. Real-world rooftop planning involves several site-specific physical factors:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>
-              <span className="font-semibold text-slate-900">Perimeter fire pathways:</span> Building codes typically require a 36-inch (3-foot) clear setback along roof ridges, hips, and valleys to allow firefighters safe roof ventilation access.
+              <span className="font-semibold text-slate-900">Local setback and pathway requirements:</span> Municipal building codes often specify access margins along ridges, hips, or valleys to accommodate emergency access and ventilation, which vary by jurisdiction and roof architecture.
             </li>
             <li>
               <span className="font-semibold text-slate-900">Roof pitch and azimuth:</span> True south-facing roofs (180° azimuth) at a tilt angle approximately equal to local latitude capture maximum annual solar energy. West-facing roofs produce slightly less annual total energy but align favorably with afternoon peak utility rates.
             </li>
             <li>
-              <span className="font-semibold text-slate-900">Structural framing capacity:</span> Solar panels, racking rails, and mounting hardware add approximately 2.8 to 4.0 pounds per square foot of dead load to roof rafters or trusses. Older roofs may require structural verification or reroofing before mounting solar equipment.
+              <span className="font-semibold text-slate-900">Structural framing capacity:</span> Solar panels, racking rails, and mounting hardware add dead load to roof rafters or trusses. Older roofs may require structural verification or reroofing before mounting equipment.
             </li>
           </ul>
 
@@ -796,7 +789,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
         <FormulaSection
           title="Solar System Sizing Calculation Formulas"
           description="Mathematical formulas used to determine daily solar energy target, required DC array nameplate size, approximate panel count, and spatial roof area."
-          formulaDisplay="System Size (kW DC) = E_target ÷ (Peak Sun Hours × PR) | Panel Count = Math.ceil(P_array_W ÷ W_panel)"
+          formulaDisplay="System Size (kW DC) = E_target ÷ (Peak Sun Hours × Planning Performance Factor) | Panel Count = Math.ceil(P_array_W ÷ W_panel)"
           variables={[
             {
               symbol: "E_target",
@@ -817,10 +810,10 @@ export const SolarSystemSizeCalculator: React.FC = () => {
               description: "Average daily solar insolation in equivalent hours at 1,000 W/m² (NSRDB / NREL reference)",
             },
             {
-              symbol: "PR",
-              name: "Performance Ratio",
+              symbol: "Factor",
+              name: "Planning Performance Factor",
               unit: "Unitless (0.50 - 0.95)",
-              description: "Balance-of-system derate factor (default 78% / 0.78 for temperature, inverter, and wiring losses)",
+              description: "Illustrative planning factor (default 78% / 0.78 for temperature, inverter, wiring, and soiling losses)",
             },
             {
               symbol: "W_panel",
@@ -837,7 +830,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
           ]}
           notes={[
             "Assumes a standard 30-day billing cycle divisor for converting monthly utility usage to daily energy demand.",
-            "Balance-of-system performance ratio (78%) aligns with standard NREL PVWatts residential loss factors.",
+            "CalcMyPower uses 78% as an illustrative planning performance factor for this simplified estimate. Actual PV system performance varies with solar resource, tilt, azimuth, shading, soiling, temperature, wiring, inverter behavior, and other site-specific conditions.",
             "Panel count rounding up provides a conservative planning margin; actual string inverter configurations may require specific panel multiples (such as even string lengths).",
             "This model provides preliminary energy planning; it does not replace site-specific shading, azimuth, or electrical service panel busbar evaluations.",
           ]}
@@ -846,9 +839,9 @@ export const SolarSystemSizeCalculator: React.FC = () => {
         {/* Step-by-Step Worked Example */}
         <WorkedExampleSection
           title="Worked Example: Sizing an Average U.S. Household Solar Array (900 kWh/mo)"
-          scenario="A single-family residence consumes an average of 900 kWh monthly according to utility billing statements. The home is located in a region receiving 4.5 peak sun hours per day and the homeowner wishes to offset 100% of their consumption using modern 400-Watt monocrystalline modules at a 78% system performance factor."
+          scenario="A single-family residence consumes an average of 900 kWh monthly according to utility billing statements. The home is located in a region receiving 4.5 peak sun hours per day and the homeowner wishes to offset 100% of their consumption using modern 400-Watt monocrystalline modules at a 78% planning performance factor."
           steps={workedSteps}
-          conclusion="Sizing for 900 kWh/month under 4.5 peak sun hours with a 78% performance ratio requires an 8.55 kW DC array, or approximately 22 modern 400-Watt panels occupying roughly 460 to 550 square feet of unobstructed roof space."
+          conclusion="Sizing for 900 kWh/month under 4.5 peak sun hours with a 78% planning performance factor requires an 8.55 kW DC array, or approximately 22 modern 400-Watt panels with an illustrative module area of approximately 462 square feet. This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements."
         />
 
         {/* Sizing Assumptions Section */}
@@ -871,7 +864,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
         <DisclaimerSection
           title="Preliminary Planning & Engineering Disclaimer"
           points={[
-            "This solar system size calculator provides preliminary mathematical estimates based on simplified balance-of-system models and user-entered utility consumption data. It does not constitute professional engineering advice, structural roof certification, electrical design, or guaranteed energy generation forecasts.",
+            "This solar system size calculator provides preliminary mathematical estimates based on simplified balance-of-system models and user-entered utility consumption data. It does not constitute professional engineering advice, structural roof certification, electrical design, or definitive energy generation forecasts.",
             "Actual solar production depends heavily on exact roof compass orientation (azimuth), roof pitch, local microclimate cloud cover, tree and chimney shading, inverter clipping thresholds, electrical panel busbar limitations (NEC Section 705.12), and utility interconnection rules.",
             "Working with high-voltage photovoltaic direct current and utility electrical panels involves severe risks of electrical shock, arc flash, roof falls, and fire hazards. Always consult a qualified licensed solar contractor or professional electrical engineer to verify physical equipment sizing, roof structural integrity, and local permitting compliance prior to purchasing or installing solar equipment.",
           ]}

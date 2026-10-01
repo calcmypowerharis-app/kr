@@ -17,9 +17,9 @@
  *   P_array_W = P_array_kW * 1000
  *
  *   Where:
- *   - peak_sun_hours: Average daily solar insolation in equivalent hours at 1,000 W/m² (NREL NSRDB standard)
- *   - performance_ratio: System balance-of-system derate factor (default 0.78, accounting for temperature derating,
- *     inverter conversion, wiring resistance, soiling, and module mismatch)
+ *   - peak_sun_hours: Average daily solar insolation in equivalent hours at 1,000 W/m² (NSRDB standard)
+ *   - performance_ratio: Planning performance factor (default 0.78 / 78%, accounting for temperature derating,
+ *     inverter conversion, wiring resistance, and soiling)
  *
  * Step 4: Approximate Panel Count
  *   raw_panel_count = P_array_W / panel_wattage
@@ -29,8 +29,8 @@
  *   actual_array_kW = (rounded_panel_count * panel_wattage) / 1000
  *   est_daily_production_kWh = actual_array_kW * peak_sun_hours * performance_ratio
  *   est_annual_production_kWh = est_daily_production_kWh * 365
- *   est_roof_sqft_modules = rounded_panel_count * 21.0 (approx 21 sq ft per modern 400W residential module)
- *   est_roof_sqft_total = rounded_panel_count * 25.0 (includes mounting spacing and perimeter fire-code setbacks)
+ *   est_roof_sqft_modules = rounded_panel_count * 21.0 (illustrative module footprint at approx 21 sq ft per module)
+ *   est_roof_sqft_total = rounded_panel_count * 25.0 (secondary reference footprint)
  */
 
 export interface SolarSystemSizeInputs {
@@ -38,7 +38,7 @@ export interface SolarSystemSizeInputs {
   daysInMonth?: number; // default 30
   solarOffsetPercent?: number; // default 100%
   peakSunHours?: number; // default 4.5 hours/day
-  performanceRatioPercent?: number; // default 78% (0.78 derate factor)
+  performanceRatioPercent?: number; // default 78% (0.78 planning performance factor)
   panelWattage?: number; // default 400 W
 }
 
@@ -61,7 +61,7 @@ export interface SolarSystemSizeOutputs {
   targetDailySolarKwh: number;
   targetAnnualSolarKwh: number;
   peakSunHours: number;
-  performanceRatio: number;
+  performanceRatio: number; // Planning performance factor (e.g. 0.78)
   panelWattage: number;
 
   // Primary Sizing Results
@@ -74,8 +74,8 @@ export interface SolarSystemSizeOutputs {
   // Secondary Production & Spatial Estimates
   estimatedDailyProductionKwh: number;
   estimatedAnnualProductionKwh: number;
-  estimatedRoofAreaModulesSqFt: number; // Net module footprint (~21 sq ft / module)
-  estimatedRoofAreaTotalSqFt: number; // Gross footprint with setbacks (~25 sq ft / module)
+  estimatedRoofAreaModulesSqFt: number; // Illustrative module footprint (~21 sq ft / module)
+  estimatedRoofAreaTotalSqFt: number; // Secondary reference footprint (~25 sq ft / module)
 
   // Comparison Across Common Panel Wattages
   comparisonRows: PanelComparisonRow[];
@@ -226,7 +226,7 @@ export function validateSolarSystemSizeInputs(inputs: SolarSystemSizeInputs): st
     inputs.performanceRatioPercent !== undefined &&
     (typeof inputs.performanceRatioPercent !== "number" || isNaN(inputs.performanceRatioPercent) || inputs.performanceRatioPercent < 50 || inputs.performanceRatioPercent > 95)
   ) {
-    errors.push("System performance ratio must be between 50% and 95%.");
+    errors.push("Planning performance factor must be between 50% and 95%.");
   }
 
   if (
@@ -305,7 +305,7 @@ export function calculateSolarSystemSize(inputs: SolarSystemSizeInputs): SolarSy
   // Step 6: Estimated Roof Spatial Requirements
   // Standard modern 400W residential module is ~68" x 44" = 20.77 sq ft (~21 sq ft)
   const estimatedRoofAreaModulesSqFt = Math.round(roundedPanelCount * 21.0);
-  // Gross footprint with inter-row spacing and fire setbacks (~25 sq ft per module)
+  // Secondary reference footprint (~25 sq ft per module)
   const estimatedRoofAreaTotalSqFt = Math.round(roundedPanelCount * 25.0);
 
   // Comparison Across Common Panel Wattages
@@ -377,14 +377,14 @@ export const SOLAR_SYSTEM_SIZE_FAQS: SolarSystemSizeFaqItem[] = [
     shortAnswer:
       "Most average American homes require between 18 and 26 solar panels (rated at 400 Watts each) to offset 100% of their annual electricity consumption.",
     fullExplanation:
-      "According to the U.S. Energy Information Administration (EIA), the average U.S. household consumes approximately 860 to 900 kWh of electricity per month, or about 30 kWh per day. In a region receiving an average of 4.5 peak sun hours per day with a standard 78% system performance factor, powering this average home requires an 8.55 kW DC solar array, which equates to approximately 22 modern 400-Watt panels.",
+      "According to the U.S. Energy Information Administration (EIA), the average U.S. household consumes approximately 860 to 900 kWh of electricity per month, or about 30 kWh per day. In a region receiving an average of 4.5 peak sun hours per day with a 78% planning performance factor, powering this average home requires an 8.55 kW DC solar array, which equates to approximately 22 modern 400-Watt panels.",
   },
   {
     question: "How do you calculate solar system size?",
     shortAnswer:
-      "Divide your target daily electricity consumption in kilowatt-hours by the product of your local peak sun hours and your system performance ratio: System Size (kW) = Daily kWh ÷ (Peak Sun Hours × Performance Ratio).",
+      "Divide your target daily electricity consumption in kilowatt-hours by the product of your local peak sun hours and your planning performance factor: System Size (kW) = Daily kWh ÷ (Peak Sun Hours × Planning Performance Factor).",
     fullExplanation:
-      "To calculate system size, first determine your average daily electricity usage from your utility bill (Monthly kWh divided by 30 days). Multiply this by your target offset fraction. Then divide that daily energy requirement by your location's daily peak sun hours multiplied by a system derate factor (typically 0.75 to 0.82 to account for real-world inverter, temperature, and wiring losses). The resulting figure represents the required DC nameplate solar capacity in kilowatts.",
+      "To calculate system size, first determine your average daily electricity usage from your utility bill (Monthly kWh divided by 30 days). Multiply this by your target offset fraction. Then divide that daily energy requirement by your location's daily peak sun hours multiplied by a planning performance factor (such as 0.78 to account for real-world inverter, temperature, wiring, and soiling losses). The resulting figure represents the required DC nameplate solar capacity in kilowatts.",
   },
   {
     question: "What are peak sun hours and how do they differ from daylight hours?",
@@ -403,16 +403,16 @@ export const SOLAR_SYSTEM_SIZE_FAQS: SolarSystemSizeFaqItem[] = [
   {
     question: "How much roof space do solar panels require?",
     shortAnswer:
-      "A typical modern 400-Watt residential solar panel occupies approximately 21 square feet of module area, or about 25 square feet including required inter-row spacing and fire-code perimeter setbacks.",
+      "A typical modern 400-Watt residential solar panel occupies approximately 21 square feet of module area. A 22-panel system provides an illustrative module footprint of approximately 460 square feet.",
     fullExplanation:
-      "A standard residential 54-cell or 108-half-cell photovoltaic module measures roughly 68 inches long by 44 inches wide, creating a net surface area of approximately 20.8 square feet. A typical 22-panel residential system requires approximately 460 square feet of net module space, or 550 square feet of total unshaded south- or west-facing roof space once building code setbacks from roof ridges, eaves, and valleys are incorporated.",
+      "A standard residential 54-cell or 108-half-cell photovoltaic module measures roughly 68 inches long by 44 inches wide, creating an illustrative net module area of approximately 20.8 to 21 square feet. For an array of 22 panels, the illustrative module area is roughly 460 square feet. This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.",
   },
   {
-    question: "What is a solar system performance ratio or derate factor?",
+    question: "What is a solar planning performance factor or derate factor?",
     shortAnswer:
-      "The system performance ratio accounts for real-world electrical and thermal losses that reduce solar production below laboratory nameplate ratings, typically averaging 75% to 82%.",
+      "A planning performance factor accounts for real-world electrical, thermal, and environmental losses that reduce solar generation below ideal laboratory nameplate ratings.",
     fullExplanation:
-      "Solar panels are rated at Standard Test Conditions (STC) in a laboratory at a cell temperature of 25°C (77°F). Under real-world rooftop conditions, panels heat up in direct sunlight (reducing voltage), inverters lose 3% to 5% converting DC electricity to AC power, conductors exhibit internal resistance voltage drop, and dust, soiling, and module mismatch create further minor losses. NREL's PVWatts model standardizes these factors into an overall performance ratio, commonly centered around 78% for modern residential installations.",
+      "Solar panels are rated at Standard Test Conditions (STC) in a laboratory at a cell temperature of 25°C (77°F). Under real-world rooftop conditions, panels heat up in direct sunlight (reducing voltage), inverters lose 3% to 5% converting DC electricity to AC power, conductors exhibit resistance voltage drop, and dust, soiling, and module mismatch create further minor losses. CalcMyPower uses 78% as an illustrative planning performance factor for this simplified estimate. Actual PV system performance varies with solar resource, tilt, azimuth, shading, soiling, temperature, wiring, inverter behavior, and other site-specific conditions.",
   },
   {
     question: "Why is a solar sizing calculator only an educational planning estimate?",

@@ -14,7 +14,7 @@ import {
 
 describe("Solar System Size Calculator Engine", () => {
   describe("Approved Deterministic Benchmark Scenarios", () => {
-    test("Scenario 1: Typical Residential (900 kWh/mo, 100% Offset, 4.5 PSH, 78% PR, 400W Panel)", () => {
+    test("Scenario 1: Typical Residential (900 kWh/mo, 100% Offset, 4.5 PSH, 78% Planning Factor, 400W Panel)", () => {
       const result = calculateSolarSystemSize({
         monthlyKwh: 900,
         daysInMonth: 30,
@@ -52,7 +52,7 @@ describe("Solar System Size Calculator Engine", () => {
       expect(result.estimatedRoofAreaTotalSqFt).toBe(22 * 25); // 550 sq ft
     });
 
-    test("Scenario 2: Lower-Consumption Household (500 kWh/mo, 100% Offset, 4.2 PSH, 78% PR, 400W Panel)", () => {
+    test("Scenario 2: Lower-Consumption Household (500 kWh/mo, 100% Offset, 4.2 PSH, 78% Planning Factor, 400W Panel)", () => {
       const result = calculateSolarSystemSize({
         monthlyKwh: 500,
         daysInMonth: 30,
@@ -79,7 +79,7 @@ describe("Solar System Size Calculator Engine", () => {
       expect(result.actualArraySizeKw).toBe(5.2);
     });
 
-    test("Scenario 3: Higher-Consumption Household (1,500 kWh/mo, 100% Offset, 5.0 PSH, 80% PR, 400W Panel)", () => {
+    test("Scenario 3: Higher-Consumption Household (1,500 kWh/mo, 100% Offset, 5.0 PSH, 80% Planning Factor, 400W Panel)", () => {
       const result = calculateSolarSystemSize({
         monthlyKwh: 1500,
         daysInMonth: 30,
@@ -106,7 +106,7 @@ describe("Solar System Size Calculator Engine", () => {
       expect(result.actualArraySizeKw).toBe(12.8);
     });
 
-    test("Scenario 4: Partial-Offset System (1,200 kWh/mo, 75% Offset, 4.5 PSH, 78% PR, 400W Panel)", () => {
+    test("Scenario 4: Partial-Offset System (1,200 kWh/mo, 75% Offset, 4.5 PSH, 78% Planning Factor, 400W Panel)", () => {
       const result = calculateSolarSystemSize({
         monthlyKwh: 1200,
         daysInMonth: 30,
@@ -129,7 +129,7 @@ describe("Solar System Size Calculator Engine", () => {
       expect(result.actualArraySizeKw).toBe(8.8);
     });
 
-    test("Scenario 5: Alternative Higher-Wattage Panel (900 kWh/mo, 100% Offset, 4.5 PSH, 78% PR, 450W Panel)", () => {
+    test("Scenario 5: Alternative Higher-Wattage Panel (900 kWh/mo, 100% Offset, 4.5 PSH, 78% Planning Factor, 450W Panel)", () => {
       const result = calculateSolarSystemSize({
         monthlyKwh: 900,
         daysInMonth: 30,
@@ -173,7 +173,7 @@ describe("Solar System Size Calculator Engine", () => {
       expect(errHigh.length).toBeGreaterThan(0);
     });
 
-    test("rejects out-of-range performance ratio", () => {
+    test("rejects out-of-range planning performance factor", () => {
       const errLow = validateSolarSystemSizeInputs({ monthlyKwh: 900, performanceRatioPercent: 40 });
       expect(errLow.length).toBeGreaterThan(0);
 
