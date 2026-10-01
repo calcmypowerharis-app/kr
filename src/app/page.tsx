@@ -15,6 +15,7 @@ import {
   FileText,
   Clock,
   Sparkles,
+  Activity,
 } from "lucide-react";
 import {
   generateOrganizationSchema,
@@ -201,6 +202,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
       "Module wattage comparison across 330W to 450W panels",
     ],
     cta: "Open Solar System Size Calculator",
+  },
+  {
+    id: "three-phase-power-tool",
+    title: "Three Phase Power Calculator",
+    href: "/three-phase-power-calculator",
+    icon: Activity,
+    formula: "P = √3 × V_LL × I × PF | S = √3 × V_LL × I | I = P ÷ (√3 × V_LL × PF)",
+    summary:
+      "Calculate 3-phase real power (kW), apparent power (kVA), reactive power (kVAR), and line current (Amps) across balanced commercial and industrial circuits.",
+    outputs: [
+      "Real active power (kW) and apparent demand (kVA)",
+      "Line current (Amps) solved bidirectionally from load power",
+      "Line-to-line (V_LL) and line-to-neutral (V_LN) conversion",
+      "Power triangle decomposition (kW, kVA, and kVAR)",
+    ],
+    cta: "Open Three Phase Power Calculator",
   },
 ];
 

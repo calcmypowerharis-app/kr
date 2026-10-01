@@ -774,6 +774,13 @@ export default function WattHoursExplainedPage() {
                   >
                     <span>Amps to Watts Calculator</span>
                   </Link>
+
+                  <Link
+                    href="/three-phase-power-calculator"
+                    className="px-5 py-3 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-semibold text-sm inline-flex items-center gap-2 transition border border-slate-700"
+                  >
+                    <span>Three Phase Power Calculator</span>
+                  </Link>
                 </div>
               </div>
             </section>

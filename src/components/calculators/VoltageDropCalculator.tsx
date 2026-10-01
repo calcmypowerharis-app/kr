@@ -61,6 +61,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Electrical Circuits",
   },
   {
+    title: "Three Phase Power Calculator",
+    description:
+      "Calculate 3-phase real power (kW), apparent power (kVA), and line current across balanced circuits.",
+    href: "/three-phase-power-calculator",
+    category: "Electrical Circuits",
+  },
+  {
     title: "Solar Battery Sizing Calculator",
     description:
       "Size off-grid and backup battery storage capacity in Amp-hours and Watt-hours based on daily energy consumption.",

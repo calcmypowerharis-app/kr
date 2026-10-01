@@ -683,6 +683,12 @@ export const AmpsToWattsCalculator: React.FC = () => {
             category: "Electrical",
           },
           {
+            title: "Three Phase Power Calculator",
+            description: "Dedicated calculator for commercial 3-phase real power (kW), apparent power (kVA), and line current.",
+            href: "/three-phase-power-calculator",
+            category: "Electrical",
+          },
+          {
             title: "Voltage Drop Calculator",
             description: "Calculate circuit voltage drop, percentage loss, and receiving terminal voltage across DC and AC wire runs.",
             href: "/voltage-drop-calculator",

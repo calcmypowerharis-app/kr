@@ -199,6 +199,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
       "/amps-to-watts-calculator",
+      "/three-phase-power-calculator",
       "/voltage-drop-calculator",
       "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
@@ -227,6 +228,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
       "/watts-to-amps-calculator",
+      "/three-phase-power-calculator",
       "/voltage-drop-calculator",
       "/battery-capacity-calculator",
       "/solar-panel-tilt-calculator",
@@ -336,6 +338,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     relatedCalculatorPaths: [
       "/watts-to-amps-calculator",
       "/amps-to-watts-calculator",
+      "/three-phase-power-calculator",
       "/solar-battery-calculator",
       "/solar-charge-controller-calculator",
       "/solar-system-size-calculator",
@@ -372,6 +375,32 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
       "/how-long-will-a-100ah-battery-last",
+    ],
+  },
+  {
+    slug: "three-phase-power-calculator",
+    path: "/three-phase-power-calculator",
+    title: "Three Phase Power Calculator",
+    shortTitle: "Three Phase Power",
+    metaTitle: "Three Phase Power Calculator (kW, Amps & Power Factor)",
+    metaDescription:
+      "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports line-to-line (208V, 240V, 480V) and line-to-neutral voltages with power factor.",
+    cluster: "electricity",
+    secondaryClusters: ["generators", "solar"],
+    primaryKeyword: "3 phase electrical power calculator",
+    formula: "P = √3 × V_LL × I × PF | S = √3 × V_LL × I | I = P ÷ (√3 × V_LL × PF)",
+    lastModified: "2026-10-01",
+    relatedCalculatorPaths: [
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+      "/voltage-drop-calculator",
+      "/generator-size-calculator",
+      "/solar-system-size-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-is-a-watt-hour",
+      "/what-size-generator-do-i-need-for-my-house",
+      "/solar-panels-series-vs-parallel",
     ],
   },
 ];

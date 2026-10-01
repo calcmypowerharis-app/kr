@@ -40,7 +40,7 @@ const FAQ_DATA = [
   {
     question: "How do you calculate three-phase watts from amps?",
     answer:
-      "For a balanced three-phase system using line-to-line voltage, multiply the square root of 3 (approximately 1.732) by line-to-line voltage, current in Amps, and power factor: Watts = √3 × V_LL × Amps × PF. For example, 20 Amps on a 208V three-phase circuit with a power factor of 0.90 yields approximately 6,485 Watts (6.48 kW).",
+      "For a balanced three-phase system using line-to-line voltage, multiply the square root of 3 (approximately 1.732) by line-to-line voltage, current in Amps, and power factor: Watts = √3 × V_LL × Amps × PF. For example, 20 Amps on a 208V three-phase circuit with a power factor of 0.90 yields approximately 6,485 Watts (6.48 kW). For dedicated polyphase analysis, kVA transformer sizing, and bidirectional solving, use our Three Phase Power Calculator (/three-phase-power-calculator).",
   },
   {
     question: "What is the difference between watts and volt-amperes (VA)?",
