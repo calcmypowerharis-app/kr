@@ -47,6 +47,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
+    title: "Solar Charge Controller Calculator",
+    description:
+      "Size MPPT and PWM charge controllers from solar array wattage, battery voltage, and verify cold-temperature Voc headroom.",
+    href: "/solar-charge-controller-calculator",
+    category: "Solar PV",
+  },
+  {
     title: "Solar Panel Tilt Angle Calculator",
     description:
       "Calculate the optimal solar panel tilt angle, compass orientation, and roof pitch differences for your latitude.",

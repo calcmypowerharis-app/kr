@@ -277,6 +277,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     formula: "E_nom = (E_daily × N_days) ÷ (η_inv × DoD) | Ah = E_nom ÷ V_dc",
     lastModified: "2026-09-30",
     relatedCalculatorPaths: [
+      "/solar-charge-controller-calculator",
       "/battery-capacity-calculator",
       "/solar-panel-tilt-calculator",
       "/watts-to-amps-calculator",
@@ -286,6 +287,31 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/solar-panels-series-vs-parallel",
       "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
+    ],
+  },
+  {
+    slug: "solar-charge-controller-calculator",
+    path: "/solar-charge-controller-calculator",
+    title: "Solar Charge Controller Calculator",
+    shortTitle: "Charge Controller",
+    metaTitle: "Solar Charge Controller Calculator (MPPT & PWM Sizing)",
+    metaDescription:
+      "Calculate the charge controller size needed for your solar panels. Sizing calculator for MPPT and PWM controllers based on array wattage, battery voltage, and Voc.",
+    cluster: "solar",
+    secondaryClusters: ["ups-battery", "rv-power"],
+    primaryKeyword: "solar charge controller calculator",
+    formula: "I_nom = P_arr ÷ V_bat | I_plan = I_nom × 1.20 | Voc_cold = Voc_STC × [1 + α × (T_min - 25°C)]",
+    lastModified: "2026-10-01",
+    relatedCalculatorPaths: [
+      "/solar-battery-calculator",
+      "/solar-panel-tilt-calculator",
+      "/battery-capacity-calculator",
+      "/watts-to-amps-calculator",
+    ],
+    relatedGuidePaths: [
+      "/solar-panels-series-vs-parallel",
+      "/what-is-a-watt-hour",
+      "/what-does-ah-mean-on-a-battery",
     ],
   },
 ];
@@ -457,10 +483,11 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     lastModified: "2026-09-30",
     heroImage: "/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     relatedCalculatorPaths: [
-      "/watts-to-amps-calculator",
-      "/amps-to-watts-calculator",
+      "/solar-charge-controller-calculator",
       "/solar-panel-tilt-calculator",
       "/battery-capacity-calculator",
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
     ],
     relatedGuidePaths: [
       "/how-long-will-a-100ah-battery-last",

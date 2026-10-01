@@ -1147,6 +1147,19 @@ export default function SolarPanelsSeriesVsParallelPage() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <Link
+                    href="/solar-charge-controller-calculator"
+                    className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                  >
+                    <div className="flex items-center gap-2 text-blue-600 font-bold text-sm">
+                      <Zap className="w-4 h-4" />
+                      <span>Solar Charge Controller Calculator</span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Size MPPT and PWM charge controllers from array wattage and verify cold-temperature open-circuit voltage limits.
+                    </p>
+                  </Link>
+
+                  <Link
                     href="/watts-to-amps-calculator"
                     className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                   >

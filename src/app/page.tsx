@@ -154,6 +154,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     ],
     cta: "Open Solar Battery Calculator",
   },
+  {
+    id: "charge-controller-tool",
+    title: "Solar Charge Controller Calculator",
+    href: "/solar-charge-controller-calculator",
+    icon: Zap,
+    formula: "I_nominal = P_array ÷ V_battery | Voc_cold = Voc_STC × [1 + α × (T_min - 25°C)]",
+    summary:
+      "Calculate the required charge controller amperage rating and verify cold-temperature open-circuit voltage headroom across MPPT and PWM technologies.",
+    outputs: [
+      "Nominal and planning charging current (Amps)",
+      "Standard controller current rating class recommendation",
+      "Cold-weather Voc expansion check (NEC 690.7)",
+      "12V, 24V, and 48V DC battery system voltage support",
+    ],
+    cta: "Open Charge Controller Calculator",
+  },
 ];
 
 interface PlannedTool {
@@ -166,7 +182,7 @@ interface PlannedTool {
 const PLANNED_TOOLS: PlannedTool[] = [
   {
     category: "Solar PV",
-    title: "Solar Panel Array & Charge Controller Sizing",
+    title: "Solar PV Array Sizing Calculator",
     scope: "PV array wattage from daily kWh consumption, peak sun hours, and system derating.",
     icon: Sun,
   },

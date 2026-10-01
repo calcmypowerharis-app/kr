@@ -53,6 +53,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
+    title: "Solar Charge Controller Calculator",
+    description:
+      "Size MPPT and PWM charge controllers from solar array wattage, battery voltage, and verify cold-temperature Voc headroom.",
+    href: "/solar-charge-controller-calculator",
+    category: "Solar PV",
+  },
+  {
     title: "Battery Capacity & Sizing Calculator",
     description:
       "Size off-grid and battery backup storage capacity in Watt-hours (Wh) and Amp-hours (Ah) for solar PV arrays.",
