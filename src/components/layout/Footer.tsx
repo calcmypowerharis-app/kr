@@ -176,6 +176,14 @@ export const Footer: React.FC = () => {
                   How Many Solar Panels Do I Need?
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-much-energy-does-a-solar-panel-produce"
+                  className="hover:text-white transition"
+                >
+                  How Much Energy Does a Solar Panel Produce?
+                </Link>
+              </li>
             </ul>
           </div>
 

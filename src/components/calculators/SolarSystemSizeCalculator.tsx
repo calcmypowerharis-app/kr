@@ -71,6 +71,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
+    title: "How Much Energy Does a Solar Panel Produce?",
+    description:
+      "Understand daily, monthly, and annual solar panel generation models, 400W reference examples, and balance-of-system performance factors.",
+    href: "/how-much-energy-does-a-solar-panel-produce",
+    category: "Solar Energy Guide",
+  },
+  {
     title: "How Many Solar Panels Do I Need to Power My House?",
     description:
       "Step-by-step homeowner guide to estimating residential solar panel counts, electricity usage baselines, and roof space requirements.",

@@ -367,6 +367,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/watts-to-amps-calculator",
     ],
     relatedGuidePaths: [
+      "/how-much-energy-does-a-solar-panel-produce",
       "/how-many-solar-panels-do-i-need",
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
@@ -577,6 +578,35 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/voltage-drop-calculator",
     ],
     relatedGuidePaths: [
+      "/solar-panels-series-vs-parallel",
+      "/what-is-a-watt-hour",
+    ],
+  },
+  {
+    slug: "how-much-energy-does-a-solar-panel-produce",
+    path: "/how-much-energy-does-a-solar-panel-produce",
+    title: "How Much Energy Does a Solar Panel Produce? 400W Panel Examples",
+    shortTitle: "Solar Panel Energy Production Guide",
+    metaTitle: "How Much Energy Does a Solar Panel Produce? 400W Panel Examples",
+    metaDescription:
+      "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
+    cluster: "solar",
+    parentCalculatorPath: "/solar-system-size-calculator",
+    scenarioLink: "/solar-system-size-calculator",
+    primaryKeyword: "how much energy does a solar panel produce",
+    readingTime: "14 min read",
+    datePublished: "2026-10-01",
+    lastModified: "2026-10-01",
+    heroImage: "/images/articles/how-much-energy-does-a-solar-panel-produce.webp",
+    relatedCalculatorPaths: [
+      "/solar-system-size-calculator",
+      "/solar-panel-tilt-calculator",
+      "/solar-battery-calculator",
+      "/solar-charge-controller-calculator",
+      "/voltage-drop-calculator",
+    ],
+    relatedGuidePaths: [
+      "/how-many-solar-panels-do-i-need",
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
     ],

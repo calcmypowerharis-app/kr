@@ -989,6 +989,19 @@ export default function HowManySolarPanelsDoINeedPage() {
                     Learn how series and parallel panel wiring configurations alter circuit voltage, current, wire size, and shading behavior.
                   </p>
                 </Link>
+
+                <Link
+                  href="/how-much-energy-does-a-solar-panel-produce"
+                  className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="flex items-center gap-2 text-amber-600 font-bold text-sm">
+                    <Sun className="w-4 h-4" />
+                    <span>How Much Energy Does a Solar Panel Produce?</span>
+                  </div>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Explore daily, monthly, and annual energy output benchmarks for 400W panels with peak sun hours and system losses.
+                  </p>
+                </Link>
               </div>
             </section>
 

@@ -550,6 +550,31 @@ export default function CalculatorsDirectoryPage() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
+
+            <Link
+              href="/how-much-energy-does-a-solar-panel-produce"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Solar Energy Production Guide
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-500">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>14 min read</span>
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                How Much Energy Does a Solar Panel Produce?
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Learn daily, monthly, and annual solar panel electricity generation. 400W reference examples, peak sun hours, system deratings, and production variables.
+              </p>
+              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
+                <span>Read Production Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </section>
       </div>
