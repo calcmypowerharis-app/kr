@@ -514,7 +514,7 @@ export default function HowToCalculateElectricityUsagePage() {
                 Household Appliance Energy Audit Breakdown
               </h2>
               <p>
-                To see how individual appliances aggregate into a monthly utility bill, review this illustrative bottom-up energy audit for a typical American single-family household. Assumptions are explicitly stated for each category.
+                To see how individual appliances aggregate into a monthly utility bill, review this illustrative whole-house appliance audit. Assumptions are explicitly stated for each category.
               </p>
 
               {/* Appliance Audit Table */}
