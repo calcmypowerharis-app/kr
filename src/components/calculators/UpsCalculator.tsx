@@ -17,6 +17,7 @@ import { AssumptionsSection } from "@/components/calculators/AssumptionsSection"
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
+import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import { ShoppingBag, ExternalLink, Zap, Info } from "lucide-react";
 
 interface PresetAppliance {
@@ -88,15 +89,12 @@ export const UpsCalculator: React.FC = () => {
       ? `${batteryVoltage}V ${batteryCapacityAh}Ah Deep-Cycle AGM Batteries`
       : `${batteryVoltage}V ${batteryCapacityAh}Ah Deep-Cycle LiFePO4 Batteries`;
 
-  const batterySearchQuery = encodeURIComponent(
+  const batterySearchRaw =
     batteryChemistry === "lead_acid"
       ? `${batteryVoltage}V ${batteryCapacityAh}Ah AGM deep cycle battery`
-      : `${batteryVoltage}V ${batteryCapacityAh}Ah LiFePO4 battery`
-  );
+      : `${batteryVoltage}V ${batteryCapacityAh}Ah LiFePO4 battery`;
 
-  const inverterSearchQuery = encodeURIComponent(
-    `${batteryVoltage}V pure sine wave inverter ${results.recommendedInverterWatts}W`
-  );
+  const inverterSearchRaw = `${batteryVoltage}V pure sine wave inverter ${results.recommendedInverterWatts}W`;
 
   return (
     <CalculatorShell
@@ -272,9 +270,9 @@ export const UpsCalculator: React.FC = () => {
 
             <div className="space-y-2.5">
               <a
-                href={`https://www.amazon.com/s?k=${batterySearchQuery}&tag=calcmypower-20`}
+                href={getAmazonSearchUrl(batterySearchRaw)}
                 target="_blank"
-                rel="nofollow noopener noreferrer"
+                rel={AMAZON_LINK_REL}
                 className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>
@@ -289,9 +287,9 @@ export const UpsCalculator: React.FC = () => {
               </a>
 
               <a
-                href={`https://www.amazon.com/s?k=${inverterSearchQuery}&tag=calcmypower-20`}
+                href={getAmazonSearchUrl(inverterSearchRaw)}
                 target="_blank"
-                rel="nofollow noopener noreferrer"
+                rel={AMAZON_LINK_REL}
                 className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>

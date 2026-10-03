@@ -20,6 +20,7 @@ import { AssumptionsSection } from "@/components/calculators/AssumptionsSection"
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
+import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   AlertCircle,
   ExternalLink,
@@ -342,9 +343,9 @@ export const AmpsToWattsCalculator: React.FC = () => {
 
             <div className="space-y-2.5">
               <a
-                href="https://www.amazon.com/s?k=digital+clamp+meter+true+rms&tag=calcmypower-20"
+                href={getAmazonSearchUrl("digital clamp meter true rms")}
                 target="_blank"
-                rel="nofollow noopener noreferrer"
+                rel={AMAZON_LINK_REL}
                 className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>
@@ -359,9 +360,9 @@ export const AmpsToWattsCalculator: React.FC = () => {
               </a>
 
               <a
-                href="https://www.amazon.com/s?k=plug+in+power+meter+wattmeter&tag=calcmypower-20"
+                href={getAmazonSearchUrl("plug in power meter wattmeter")}
                 target="_blank"
-                rel="nofollow noopener noreferrer"
+                rel={AMAZON_LINK_REL}
                 className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
               >
                 <div>

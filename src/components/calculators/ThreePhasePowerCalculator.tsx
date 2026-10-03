@@ -43,7 +43,10 @@ import {
   ArrowRight,
   HelpCircle,
   RotateCcw,
+  ShoppingBag,
+  ExternalLink,
 } from "lucide-react";
+import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 
 const RELATED_TOOLS: RelatedTool[] = [
   {
@@ -804,6 +807,61 @@ export const ThreePhasePowerCalculator: React.FC = () => {
               ))}
             </div>
           )}
+
+          {/* Contextual Amazon Hardware Reference Card (Secondary) */}
+          <div className="bg-slate-50/60 rounded-xl border border-slate-200/80 p-4 space-y-3 text-xs">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+                <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
+                <span>Diagnostic Instrumentation</span>
+              </div>
+              <span className="text-[10px] text-slate-400">Amazon Associate</span>
+            </div>
+
+            <p className="text-slate-500 leading-normal">
+              Field test equipment for 3-phase phase balancing, motor rotation, and power quality analysis:
+            </p>
+
+            <div className="space-y-2.5">
+              <a
+                href={getAmazonSearchUrl("three phase power quality analyzer clamp meter")}
+                target="_blank"
+                rel={AMAZON_LINK_REL}
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+              >
+                <div>
+                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                    3-Phase Power Quality Analyzers &amp; Clamp Meters
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Simultaneous True-RMS voltage, line current, power factor, and harmonic distortion
+                  </div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+              </a>
+
+              <a
+                href={getAmazonSearchUrl("three phase motor rotation indicator tester")}
+                target="_blank"
+                rel={AMAZON_LINK_REL}
+                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+              >
+                <div>
+                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                    Motor &amp; Phase Rotation Testers
+                  </div>
+                  <div className="text-[11px] text-slate-500">
+                    Verify clockwise / counterclockwise phase sequence before energizing commercial motors
+                  </div>
+                </div>
+                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+              </a>
+            </div>
+
+            <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
+              As an Amazon Associate, CalcMyPower earns from qualifying purchases.
+            </p>
+          </div>
         </div>
       }
     >

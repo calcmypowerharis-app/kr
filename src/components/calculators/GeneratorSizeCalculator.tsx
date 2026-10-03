@@ -29,6 +29,7 @@ import { AssumptionsSection } from "./AssumptionsSection";
 import { DisclaimerSection } from "./DisclaimerSection";
 import { FaqSection } from "./FaqSection";
 import { RelatedCalculators } from "./RelatedCalculators";
+import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   calculateGeneratorSize,
   getEssentialOutagePreset,
@@ -1158,9 +1159,9 @@ export const GeneratorSizeCalculator: React.FC = () => {
 
         <div className="space-y-2.5">
           <a
-            href="https://www.amazon.com/s?k=dual+fuel+inverter+generator+3500w+4500w&tag=calcmypower-20"
+            href={getAmazonSearchUrl("dual fuel inverter generator 3500w 4500w")}
             target="_blank"
-            rel="nofollow noopener noreferrer"
+            rel={AMAZON_LINK_REL}
             className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
           >
             <div>
@@ -1175,9 +1176,9 @@ export const GeneratorSizeCalculator: React.FC = () => {
           </a>
 
           <a
-            href="https://www.amazon.com/s?k=30+amp+50+amp+generator+power+inlet+box+nema+3r&tag=calcmypower-20"
+            href={getAmazonSearchUrl("30 amp 50 amp generator power inlet box nema 3r")}
             target="_blank"
-            rel="nofollow noopener noreferrer"
+            rel={AMAZON_LINK_REL}
             className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
           >
             <div>
@@ -1192,9 +1193,9 @@ export const GeneratorSizeCalculator: React.FC = () => {
           </a>
 
           <a
-            href="https://www.amazon.com/s?k=manual+generator+transfer+switch+kit+30+amp&tag=calcmypower-20"
+            href={getAmazonSearchUrl("manual generator transfer switch kit 30 amp")}
             target="_blank"
-            rel="nofollow noopener noreferrer"
+            rel={AMAZON_LINK_REL}
             className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
           >
             <div>
@@ -1209,9 +1210,9 @@ export const GeneratorSizeCalculator: React.FC = () => {
           </a>
 
           <a
-            href="https://www.amazon.com/s?k=10+awg+l14-30p+generator+cord+4+prong&tag=calcmypower-20"
+            href={getAmazonSearchUrl("10 awg l14-30p generator cord 4 prong")}
             target="_blank"
-            rel="nofollow noopener noreferrer"
+            rel={AMAZON_LINK_REL}
             className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
           >
             <div>

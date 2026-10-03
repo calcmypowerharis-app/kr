@@ -20,6 +20,8 @@ import {
   Snowflake,
   Layers,
   HelpCircle,
+  ShoppingBag,
+  ExternalLink,
 } from "lucide-react";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
@@ -28,6 +30,7 @@ import { AssumptionsSection } from "@/components/calculators/AssumptionsSection"
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
+import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   ApplianceInput,
   calculateTotalElectricityUse,
@@ -783,6 +786,61 @@ export const ElectricityUseCalculator: React.FC = () => {
         >
           <span>Read Comprehensive Electricity Usage Guide &rarr;</span>
         </Link>
+      </div>
+
+      {/* Contextual Amazon Hardware Reference Card (Secondary) */}
+      <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3 text-xs">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
+            <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
+            <span>Energy Audit Tools</span>
+          </div>
+          <span className="text-[10px] text-slate-400">Amazon Associate</span>
+        </div>
+
+        <p className="text-slate-500 leading-normal">
+          Diagnostic instruments for measuring individual plug-load wattages and whole-house consumption:
+        </p>
+
+        <div className="space-y-2.5">
+          <a
+            href={getAmazonSearchUrl("plug in power meter electricity usage monitor")}
+            target="_blank"
+            rel={AMAZON_LINK_REL}
+            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+          >
+            <div>
+              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                Plug-In Electricity Usage Monitors
+              </div>
+              <div className="text-[11px] text-slate-500">
+                Measure real running watts, phantom vampire loads, and cumulative kWh per appliance
+              </div>
+            </div>
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+          </a>
+
+          <a
+            href={getAmazonSearchUrl("smart home energy monitor panel")}
+            target="_blank"
+            rel={AMAZON_LINK_REL}
+            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
+          >
+            <div>
+              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
+                Whole-Home Smart Energy Monitors
+              </div>
+              <div className="text-[11px] text-slate-500">
+                Real-time circuit-level panel monitoring for 120V/240V appliances and HVAC
+              </div>
+            </div>
+            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+          </a>
+        </div>
+
+        <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
+          As an Amazon Associate, CalcMyPower earns from qualifying purchases.
+        </p>
       </div>
     </div>
   );
