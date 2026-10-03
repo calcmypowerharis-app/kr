@@ -405,6 +405,32 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/solar-panels-series-vs-parallel",
     ],
   },
+  {
+    slug: "electricity-use-calculator",
+    path: "/electricity-use-calculator",
+    title: "Electricity Use Calculator",
+    shortTitle: "Electricity Use",
+    metaTitle: "Electricity Use Calculator (Calculate kWh & Energy Consumption)",
+    metaDescription:
+      "Calculate appliance electricity use in Wh and kWh from watts, hours, and usage frequency. Estimate daily and monthly energy consumption and optional utility costs.",
+    cluster: "electricity",
+    secondaryClusters: ["home-energy", "solar", "ups-battery"],
+    primaryKeyword: "electricity use calculator",
+    formula: "Daily Wh = W × Hours × Qty | Daily kWh = Wh ÷ 1,000 | Monthly kWh = (Daily kWh) × Days",
+    lastModified: "2026-10-03",
+    relatedCalculatorPaths: [
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+      "/battery-capacity-calculator",
+      "/solar-system-size-calculator",
+      "/generator-size-calculator",
+    ],
+    relatedGuidePaths: [
+      "/how-to-calculate-electricity-usage",
+      "/what-is-a-watt-hour",
+      "/how-many-solar-panels-do-i-need",
+    ],
+  },
 ];
 
 export interface GuideRegistryEntry {
@@ -652,14 +678,15 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     metaDescription:
       "Learn how to calculate electricity usage for appliances and your entire home. Master Watt-hours, kWh conversions, duty cycles, standby power, and electric bill cost calculations.",
     cluster: "electricity",
-    parentCalculatorPath: "/watts-to-amps-calculator",
-    scenarioLink: "/watts-to-amps-calculator",
+    parentCalculatorPath: "/electricity-use-calculator",
+    scenarioLink: "/electricity-use-calculator",
     primaryKeyword: "how to calculate electricity usage",
     readingTime: "15 min read",
     datePublished: "2026-10-03",
     lastModified: "2026-10-03",
     heroImage: "/images/articles/how-to-calculate-electricity-usage.webp",
     relatedCalculatorPaths: [
+      "/electricity-use-calculator",
       "/watts-to-amps-calculator",
       "/amps-to-watts-calculator",
       "/battery-capacity-calculator",

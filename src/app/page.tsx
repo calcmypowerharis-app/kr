@@ -219,6 +219,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
     ],
     cta: "Open Three Phase Power Calculator",
   },
+  {
+    id: "electricity-use-tool",
+    title: "Electricity Use Calculator",
+    href: "/electricity-use-calculator",
+    icon: Zap,
+    formula: "E_daily = P × t × DF × Q | E_monthly = (E_daily × 30) ÷ 1,000 | Cost = E_monthly × Rate",
+    summary:
+      "Calculate daily and monthly electricity usage in Watt-hours and kilowatt-hours across household appliances with duty cycles and utility cost estimates.",
+    outputs: [
+      "Appliance energy consumption in daily/monthly Wh and kWh",
+      "Multi-appliance inventory total with visual consumption share",
+      "Compressor and thermostatic duty cycle scaling (10% to 100%)",
+      "Estimated monthly electricity utility charge based on local rate",
+    ],
+    cta: "Open Electricity Use Calculator",
+  },
 ];
 
 interface PlannedTool {
@@ -230,9 +246,9 @@ interface PlannedTool {
 
 const PLANNED_TOOLS: PlannedTool[] = [
   {
-    category: "Electricity Cost",
-    title: "Appliance kWh & Monthly Cost Calculator",
-    scope: "Daily and monthly utility billing estimates from wattage, duty cycle, and $/kWh rate.",
+    category: "Off-Grid Solar",
+    title: "Off-Grid Inverter Continuous & Surge Load Budget",
+    scope: "Continuous running wattage, motor startup surge multipliers, and inverter capacity headroom.",
     icon: Zap,
   },
   {

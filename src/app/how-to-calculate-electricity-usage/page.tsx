@@ -251,6 +251,16 @@ export default function HowToCalculateElectricityUsagePage() {
                   . Over a 30-day billing cycle, that equals{" "}
                   <span className="font-mono font-semibold text-slate-900">15 kWh per month</span>. At an illustrative electricity rate of $0.16 per kWh, running that television costs approximately $2.40 per month.
                 </p>
+                <div className="pt-2">
+                  <Link
+                    href="/electricity-use-calculator"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm shadow-xs transition"
+                  >
+                    <Calculator className="w-4 h-4" />
+                    <span>Calculate Your Appliances with the Electricity Use Calculator</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
               </div>
             </section>
 
@@ -854,6 +864,20 @@ export default function HowToCalculateElectricityUsagePage() {
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                  <Link
+                    href="/electricity-use-calculator"
+                    className="p-4 rounded-xl bg-blue-800/80 hover:bg-blue-750 text-slate-200 transition border border-blue-500/50 block group sm:col-span-2 shadow-sm"
+                  >
+                    <div className="flex items-center justify-between text-xs font-semibold text-emerald-300 mb-1">
+                      <span>Interactive Appliance Calculator</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition" />
+                    </div>
+                    <div className="font-bold text-white text-base">Electricity Use Calculator</div>
+                    <p className="text-xs text-slate-300 mt-1">
+                      Calculate daily and monthly energy consumption in Wh and kWh across multiple household appliances with duty cycles and utility cost estimates.
+                    </p>
+                  </Link>
+
                   <Link
                     href="/watts-to-amps-calculator"
                     className="p-4 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 transition border border-slate-700 block group"

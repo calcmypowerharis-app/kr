@@ -837,6 +837,21 @@ export default function WattHoursExplainedPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                 <Link
+                  href="/electricity-use-calculator"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2 sm:col-span-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Zap className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    Electricity Use Calculator
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Calculate daily and monthly energy consumption in Watt-hours (Wh) and kilowatt-hours (kWh) across multiple appliances with duty cycles and utility cost estimates.
+                  </p>
+                </Link>
+
+                <Link
                   href="/battery-capacity-calculator"
                   className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                 >
