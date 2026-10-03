@@ -387,7 +387,13 @@ export default function HowManySolarPanelsDoINeedPage() {
                     <span>1. Electricity Consumption</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Your electricity usage in kilowatt-hours (kWh) over a full 12-month period is the primary foundation of system sizing. Annual review is crucial because seasonal heating and cooling cause significant month-to-month swings.
+                    Your electricity usage in kilowatt-hours (kWh) over a full 12-month period is the primary foundation of system sizing. Annual review is crucial because seasonal heating and cooling cause significant month-to-month swings. If you need to estimate your usage from individual appliances, see our step-by-step guide on{" "}
+                    <Link
+                      href="/how-to-calculate-electricity-usage"
+                      className="text-blue-600 font-semibold hover:underline"
+                    >
+                      how to calculate electricity usage
+                    </Link>.
                   </p>
                 </div>
 

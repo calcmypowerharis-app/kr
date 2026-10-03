@@ -602,6 +602,31 @@ export default function CalculatorsDirectoryPage() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
+
+            <Link
+              href="/how-to-calculate-electricity-usage"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Energy Auditing Guide
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-500">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>15 min read</span>
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                How to Calculate Electricity Usage: kWh, Appliance Audits &amp; Costs
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Step-by-step methodology for converting Watts to kWh, calculating single appliance and household consumption, factoring duty cycles and standby phantom power, and estimating monthly utility costs.
+              </p>
+              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
+                <span>Read Electricity Usage Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </section>
       </div>

@@ -207,6 +207,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/generator-size-calculator",
     ],
     relatedGuidePaths: [
+      "/how-to-calculate-electricity-usage",
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
@@ -236,6 +237,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/generator-size-calculator",
     ],
     relatedGuidePaths: [
+      "/how-to-calculate-electricity-usage",
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
@@ -523,6 +525,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/amps-to-watts-calculator",
     ],
     relatedGuidePaths: [
+      "/how-to-calculate-electricity-usage",
       "/how-long-will-a-100ah-battery-last",
       "/what-does-ah-mean-on-a-battery",
       "/what-size-generator-do-i-need-for-my-house",
@@ -638,6 +641,35 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/how-many-solar-panels-do-i-need",
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
+    ],
+  },
+  {
+    slug: "how-to-calculate-electricity-usage",
+    path: "/how-to-calculate-electricity-usage",
+    title: "How to Calculate Electricity Usage: kWh, Appliance Audits & Costs",
+    shortTitle: "Calculate Electricity Usage",
+    metaTitle: "How to Calculate Electricity Usage (kWh, Appliance Audits & Cost)",
+    metaDescription:
+      "Learn how to calculate electricity usage for appliances and your entire home. Master Watt-hours, kWh conversions, duty cycles, standby power, and electric bill cost calculations.",
+    cluster: "electricity",
+    parentCalculatorPath: "/watts-to-amps-calculator",
+    scenarioLink: "/watts-to-amps-calculator",
+    primaryKeyword: "how to calculate electricity usage",
+    readingTime: "15 min read",
+    datePublished: "2026-10-03",
+    lastModified: "2026-10-03",
+    heroImage: "/images/articles/how-to-calculate-electricity-usage.webp",
+    relatedCalculatorPaths: [
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+      "/battery-capacity-calculator",
+      "/solar-system-size-calculator",
+      "/generator-size-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-is-a-watt-hour",
+      "/how-many-solar-panels-do-i-need",
+      "/how-much-energy-does-a-solar-panel-produce",
     ],
   },
 ];

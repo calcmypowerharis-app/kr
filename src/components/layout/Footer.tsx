@@ -192,6 +192,14 @@ export const Footer: React.FC = () => {
                   How Much Energy Does a Solar Panel Produce?
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-to-calculate-electricity-usage"
+                  className="hover:text-white transition"
+                >
+                  How to Calculate Electricity Usage
+                </Link>
+              </li>
             </ul>
           </div>
 

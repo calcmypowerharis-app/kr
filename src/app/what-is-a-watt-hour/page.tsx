@@ -509,6 +509,16 @@ export default function WattHoursExplainedPage() {
                     <strong>Calculate cost at an assumed rate:</strong> If your local electric utility charges an illustrative average rate of <strong>$0.16 per kWh</strong>, running that heater costs: 12 kWh × $0.16 = <strong>$1.92 per night</strong> (roughly $57.60 per month).
                   </li>
                 </ol>
+
+                <p className="text-xs sm:text-sm text-slate-600 bg-slate-100/70 p-3.5 rounded-xl border border-slate-200 leading-relaxed mt-3">
+                  For a complete walkthrough of calculating appliance energy consumption, duty cycles, standby phantom power, and electric bill cost calculations, read our in-depth guide on{" "}
+                  <Link
+                    href="/how-to-calculate-electricity-usage"
+                    className="text-blue-700 font-semibold hover:underline"
+                  >
+                    How to Calculate Electricity Usage: kWh, Appliance Audits &amp; Costs
+                  </Link>.
+                </p>
               </div>
             </section>
 
@@ -928,6 +938,21 @@ export default function WattHoursExplainedPage() {
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
                     Practical appliance runtime benchmarks for refrigerators, CPAP machines, laptops, TVs, and inverters.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/how-to-calculate-electricity-usage"
+                  className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                    <Receipt className="w-4 h-4" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
+                    How to Calculate Electricity Usage
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Step-by-step appliance energy audits, Watt-hours to kWh conversions, duty cycles, and electric bill cost calculations.
                   </p>
                 </Link>
               </div>

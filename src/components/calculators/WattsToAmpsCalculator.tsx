@@ -65,13 +65,13 @@ export const WattsToAmpsCalculator: React.FC = () => {
 
   const systemOptions = [
     { value: "ac_single", label: "AC Single-Phase (Residential)" },
-    { value: "dc", label: "Direct Current (DC — Solar / Battery)" },
+    { value: "dc", label: "Direct Current (DC - Solar / Battery)" },
     { value: "ac_three", label: "AC Three-Phase (Commercial)" },
   ];
 
   const threePhaseOptions = [
-    { value: "line_to_line", label: "Line-to-Line (V_LL — 208V, 480V)" },
-    { value: "line_to_neutral", label: "Line-to-Neutral (V_LN — 120V, 277V)" },
+    { value: "line_to_line", label: "Line-to-Line (V_LL: 208V, 480V)" },
+    { value: "line_to_neutral", label: "Line-to-Neutral (V_LN: 120V, 277V)" },
   ];
 
   return (
@@ -557,6 +557,12 @@ export const WattsToAmpsCalculator: React.FC = () => {
             description: "See how refrigerator nameplate amps and volts translate into running and compressor starting watts.",
             href: "/what-size-generator-to-run-a-refrigerator",
             category: "Sizing Guide",
+          },
+          {
+            title: "How to Calculate Electricity Usage",
+            description: "Learn how to calculate appliance consumption, Watt-hours, kWh, and electric bill costs.",
+            href: "/how-to-calculate-electricity-usage",
+            category: "Energy Guide",
           },
           {
             title: "More Electrical & Power Calculators",
