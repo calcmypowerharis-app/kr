@@ -339,7 +339,7 @@ export const ElectricityUseCalculator: React.FC = () => {
 
       {/* 3. Multi-Appliance List */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="text-sm font-bold text-slate-900 flex items-center gap-2">
             <Layers className="w-4 h-4 text-blue-600" />
             <span>Appliance Inventory ({appliances.length})</span>
@@ -352,7 +352,7 @@ export const ElectricityUseCalculator: React.FC = () => {
               name="libraryApplianceSelect"
               value={selectedLibraryId}
               onChange={(e) => handleAddFromLibrary(e.target.value)}
-              className="text-xs py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-700 font-medium hover:border-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+              className="text-xs py-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-300 text-slate-700 font-medium hover:border-slate-400 focus:outline-hidden focus:ring-2 focus:ring-blue-500 max-w-[170px] sm:max-w-xs truncate"
               aria-label="Add common appliance from library"
             >
               <option value="">+ Add From Library...</option>
