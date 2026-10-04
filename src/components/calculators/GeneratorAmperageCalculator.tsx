@@ -695,6 +695,22 @@ export const GeneratorAmperageCalculator: React.FC = () => {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
           <Link
+            href="/generator-wattage-chart"
+            className="group p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-xs transition bg-slate-50/50 hover:bg-white block space-y-1.5"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Appliance Reference</span>
+              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition" />
+            </div>
+            <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition">
+              Generator Wattage Chart
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Look up running and starting surge watts for 35+ appliances with real-time outage demand estimation.
+            </p>
+          </Link>
+
+          <Link
             href="/generator-size-calculator"
             className="group p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-xs transition bg-slate-50/50 hover:bg-white block space-y-1.5"
           >
@@ -723,6 +739,22 @@ export const GeneratorAmperageCalculator: React.FC = () => {
             </h4>
             <p className="text-xs text-slate-600 leading-relaxed">
               Master the difference between running watts and starting surges, motor inrush math, and extension cord rules.
+            </p>
+          </Link>
+
+          <Link
+            href="/continuous-power-generators"
+            className="group p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:shadow-xs transition bg-slate-50/50 hover:bg-white block space-y-1.5"
+          >
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">Industrial Power Guide</span>
+              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 transition" />
+            </div>
+            <h4 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition">
+              Continuous Power Generators
+            </h4>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Learn how ISO 8528 continuous ratings work, 1800 RPM engine lifespans, and why standby units cannot run 24/7.
             </p>
           </Link>
         </div>

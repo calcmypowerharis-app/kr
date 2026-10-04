@@ -813,13 +813,24 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 </Link>
 
                 <Link
-                  href="/how-to-calculate-electricity-usage"
+                  href="/generator-wattage-chart"
                   className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-blue-500 transition block space-y-1"
                 >
-                  <span className="text-xs font-bold text-blue-600 uppercase">Energy Guide</span>
-                  <h4 className="text-sm font-bold text-slate-900">How to Calculate Electricity Usage</h4>
+                  <span className="text-xs font-bold text-blue-600 uppercase">Appliance Matrix</span>
+                  <h4 className="text-sm font-bold text-slate-900">Generator Wattage Chart</h4>
                   <p className="text-xs text-slate-600">
-                    Calculate appliance energy consumption in kilowatt-hours (kWh) from Watts and operating hours.
+                    Running and starting surge wattage reference table for 35+ household appliances and workshop tools.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/continuous-power-generators"
+                  className="p-4 rounded-xl border border-slate-200 bg-slate-50/50 hover:bg-white hover:border-blue-500 transition block space-y-1"
+                >
+                  <span className="text-xs font-bold text-blue-600 uppercase">Industrial Power</span>
+                  <h4 className="text-sm font-bold text-slate-900">Continuous Power Generators</h4>
+                  <p className="text-xs text-slate-600">
+                    Understand ISO 8528 continuous ratings, 1800 RPM engines, and wet stacking prevention.
                   </p>
                 </Link>
               </div>

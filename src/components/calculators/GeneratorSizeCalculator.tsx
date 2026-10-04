@@ -398,7 +398,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
           <div className="text-[11px] text-blue-800 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
             <span>
-              <strong>Example Scenario — editable:</strong> Pre-loaded with common essential home circuits. Adjust quantities below or add custom loads.
+              <strong>Example Scenario (Editable):</strong> Pre-loaded with common essential home circuits. Adjust quantities below or add custom loads.
             </span>
           </div>
         )}
@@ -461,7 +461,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
           </div>
         ) : (
           <>
-            {/* Mobile (<640px) Card/Row Layout — No Horizontal Scrolling Required */}
+            {/* Mobile (<640px) Card/Row Layout: No Horizontal Scrolling Required */}
             <div className="sm:hidden space-y-2.5">
               {selectedAppliances.map((item) => {
                 const isDriver = calculation.surgeDriverName === item.name;
@@ -1166,7 +1166,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
           >
             <div>
               <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                Dual-Fuel Inverter Generators (3,500W – 4,500W)
+                Dual-Fuel Inverter Generators (3,500W to 4,500W)
               </div>
               <div className="text-[11px] text-slate-500">
                 Clean power (&lt;3% THD) for electronics; operates on gasoline or propane
@@ -1393,8 +1393,8 @@ export const GeneratorSizeCalculator: React.FC = () => {
                   <td className="py-3 px-3 text-emerald-700 font-semibold">
                     Clean (&lt;3% THD)
                   </td>
-                  <td className="py-3 px-3 text-slate-600">Quiet (50–65 dBA)</td>
-                  <td className="py-3 px-3 text-slate-600">High (40–120 lbs)</td>
+                  <td className="py-3 px-3 text-slate-600">Quiet (50 to 65 dBA)</td>
+                  <td className="py-3 px-3 text-slate-600">High (40 to 120 lbs)</td>
                   <td className="py-3 px-3 text-slate-600">Gasoline / Dual-Fuel</td>
                   <td className="py-3 px-3 text-slate-600">
                     Electronics, camping, RVs, essential home circuits
@@ -1406,9 +1406,9 @@ export const GeneratorSizeCalculator: React.FC = () => {
                     Conventional Open-Frame
                   </td>
                   <td className="py-3 px-3 text-amber-700 font-semibold">
-                    Distorted (10–25% THD)
+                    Distorted (10% to 25% THD)
                   </td>
-                  <td className="py-3 px-3 text-slate-600">Loud (68–80+ dBA)</td>
+                  <td className="py-3 px-3 text-slate-600">Loud (68 to 80+ dBA)</td>
                   <td className="py-3 px-3 text-slate-600">Moderate (Wheeled)</td>
                   <td className="py-3 px-3 text-slate-600">Gasoline</td>
                   <td className="py-3 px-3 text-slate-600">
@@ -1438,7 +1438,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
                   <td className="py-3 px-3 text-emerald-700 font-semibold">
                     Utility grade (&lt;5% THD)
                   </td>
-                  <td className="py-3 px-3 text-slate-600">Baffled (60–70 dBA)</td>
+                  <td className="py-3 px-3 text-slate-600">Baffled (60 to 70 dBA)</td>
                   <td className="py-3 px-3 text-slate-600">Permanent outdoor pad</td>
                   <td className="py-3 px-3 text-blue-700 font-semibold">
                     Piped Natural Gas / LP
@@ -1582,11 +1582,32 @@ export const GeneratorSizeCalculator: React.FC = () => {
         <RelatedCalculators
           calculators={[
             {
+              title: "Generator Wattage Chart & Appliance Reference",
+              description:
+                "Look up running and starting surge watts for 35+ appliances with real-time outage demand estimation.",
+              href: "/generator-wattage-chart",
+              category: "Appliance Reference",
+            },
+            {
+              title: "Generator Amperage Chart & Electrical Calculator",
+              description:
+                "Convert generator Watts to Amps at 120V and 240V split-phase with 80% continuous operating limits.",
+              href: "/generator-amperage-chart-calculator",
+              category: "Electrical Sizing",
+            },
+            {
               title: "What Size Generator Do I Need for My House?",
               description:
                 "Step-by-step residential outage sizing guide for furnaces, sump pumps, well pumps, and central air conditioners.",
               href: "/what-size-generator-do-i-need-for-my-house",
               category: "Sizing Guide",
+            },
+            {
+              title: "Continuous Power Generators Explained",
+              description:
+                "Understand ISO 8528 continuous ratings (COP vs PRP vs ESP), 1800 RPM engines, and wet stacking prevention.",
+              href: "/continuous-power-generators",
+              category: "Industrial Power",
             },
             {
               title: "UPS Battery Backup Run-Time Hours Calculator",
@@ -1601,13 +1622,6 @@ export const GeneratorSizeCalculator: React.FC = () => {
                 "Convert appliance nameplate Watts to Amperes across DC, 120V/240V single-phase, and balanced three-phase AC circuits.",
               href: "/watts-to-amps-calculator",
               category: "Electrical Sizing",
-            },
-            {
-              title: "More Electrical & Power Calculators",
-              description:
-                "Explore our directory of power, battery backup, and electrical sizing tools.",
-              href: "/calculators",
-              category: "Directory",
             },
           ]}
         />
