@@ -268,7 +268,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                   </p>
                 </div>
                 <div className="p-5 rounded-xl border border-slate-200 bg-white space-y-2">
-                  <span className="text-xs font-bold uppercase tracking-wider text-amber-600 block">
+                  <span className="text-xs font-bold uppercase tracking-wider text-amber-700 block">
                     Momentary Inrush
                   </span>
                   <h3 className="text-base font-bold text-slate-900">Starting Surge Watts</h3>
@@ -467,7 +467,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                       <td className="py-2.5 px-3.5 font-medium text-slate-900">Natural Gas Furnace Blower</td>
                       <td className="py-2.5 px-3 font-mono">800 W</td>
                       <td className="py-2.5 px-3 font-mono">1,900 W</td>
-                      <td className="py-2.5 px-3 font-mono font-bold text-amber-600">1,100 W (Largest)</td>
+                      <td className="py-2.5 px-3 font-mono font-bold text-amber-700">1,100 W (Largest)</td>
                     </tr>
                     <tr>
                       <td className="py-2.5 px-3.5 font-medium text-slate-900">Household Refrigerator / Freezer</td>
@@ -511,9 +511,9 @@ export default function HowToCalculateWattsForAGeneratorPage() {
 
               {/* Exact Formula Application */}
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 space-y-3 text-xs sm:text-sm">
-                <h4 className="font-bold text-slate-900 uppercase tracking-wide text-xs">
+                <h3 className="font-bold text-slate-900 uppercase tracking-wide text-xs">
                   Calculating Total System Requirements:
-                </h4>
+                </h3>
                 <div className="space-y-1 font-mono text-slate-800">
                   <p>1. Total Running Demand: <strong>2,955</strong> Watts</p>
                   <p>2. Largest Additional Starting Surge: <strong>1,100</strong> Watts (Furnace Blower)</p>

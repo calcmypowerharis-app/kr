@@ -41,11 +41,11 @@ export const AssumptionsSection: React.FC<AssumptionsSectionProps> = ({
             <div className="font-bold text-slate-900 text-sm">{row.parameter}</div>
             <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-600">
               <div>
-                <span className="text-slate-400 font-medium">Default: </span>
+                <span className="text-slate-600 font-medium">Default: </span>
                 <span className="font-mono font-semibold text-blue-600">{row.defaultVal}</span>
               </div>
               <div>
-                <span className="text-slate-400 font-medium">Typical Range: </span>
+                <span className="text-slate-600 font-medium">Typical Range: </span>
                 <span className="text-slate-700">{row.realisticRange}</span>
               </div>
             </div>

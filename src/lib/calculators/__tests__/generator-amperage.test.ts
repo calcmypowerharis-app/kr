@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
   calculateGeneratorAmperage,
-  getStandardBreakerSize,
   GENERATOR_AMPERAGE_CHART_DATA,
   GENERATOR_VOLTAGE_OPTIONS,
   STANDARD_GENERATOR_PRESETS,
@@ -21,9 +20,8 @@ describe("Generator Amperage Calculator Logic", () => {
       expect(res.formattedRatedAmps).toBe("16.67 A");
       expect(res.continuousSafeAmps).toBeCloseTo(13.34, 2);
       expect(res.powerKw).toBe(2);
-      expect(res.recommendedBreakerAmps).toBe(20);
-      expect(res.recommendedReceptacleNema).toContain("NEMA 5-20R");
-      expect(res.recommendedMinCopperWireAwg).toContain("12 AWG");
+      expect(res.apparentPowerKva).toBe(2);
+      expect(res.nominalVoltage).toBe(120);
     });
 
     it("calculates correct amperage for a 3,500W 120V RV generator", () => {
@@ -36,14 +34,22 @@ describe("Generator Amperage Calculator Logic", () => {
       expect(res.isValid).toBe(true);
       expect(res.ratedAmps).toBeCloseTo(29.17, 2);
       expect(res.continuousSafeAmps).toBeCloseTo(23.34, 2);
-      expect(res.recommendedBreakerAmps).toBe(30);
-      expect(res.recommendedReceptacleNema).toContain("TT-30R");
-      expect(res.recommendedMinCopperWireAwg).toContain("10 AWG");
+    });
+
+    it("triggers high-current warning when 120V single-phase exceeds 30A", () => {
+      const res = calculateGeneratorAmperage({
+        powerWatts: 4000,
+        voltageConfig: "120v_single",
+        powerFactor: 1.0,
+      });
+
+      expect(res.ratedAmps).toBeCloseTo(33.33, 2);
+      expect(res.warnings.some((w) => w.includes("High Current on 120V"))).toBe(true);
     });
   });
 
   describe("2. Split-Phase 120/240V Calculations", () => {
-    it("calculates 240V and balanced 120V leg current for a 7,500W generator", () => {
+    it("calculates 240V line current and balanced 120V leg current for a 7,500W generator", () => {
       const res = calculateGeneratorAmperage({
         powerWatts: 7500,
         voltageConfig: "120_240v_split",
@@ -59,10 +65,7 @@ describe("Generator Amperage Calculator Logic", () => {
       expect(res.splitPhaseDetails?.ampsPer120VLeg).toBe(31.25);
       // Total combined 120V if summed across both legs: 7500 / 120 = 62.5 A
       expect(res.splitPhaseDetails?.total120VCombinedAmps).toBe(62.5);
-      expect(res.recommendedBreakerAmps).toBe(35);
-      expect(res.recommendedReceptacleNema).toContain("14-50R");
-      expect(res.warnings.length).toBeGreaterThan(0);
-      expect(res.warnings[0]).toContain("Split-Phase Leg Balancing");
+      expect(res.warnings.some((w) => w.includes("Split-Phase Leg Balancing"))).toBe(true);
     });
 
     it("calculates correct ratings for a 12,000W dual-fuel generator", () => {
@@ -77,8 +80,7 @@ describe("Generator Amperage Calculator Logic", () => {
       expect(res.continuousSafeAmps).toBe(40.0);
       expect(res.splitPhaseDetails?.ampsAt240V).toBe(50.0);
       expect(res.splitPhaseDetails?.ampsPer120VLeg).toBe(50.0);
-      expect(res.recommendedBreakerAmps).toBe(50);
-      expect(res.recommendedMinCopperWireAwg).toContain("6 AWG");
+      expect(res.splitPhaseDetails?.total120VCombinedAmps).toBe(100.0);
     });
 
     it("calculates whole-house 20,000W standby generator current", () => {
@@ -92,13 +94,27 @@ describe("Generator Amperage Calculator Logic", () => {
       // 20,000 / 240 = 83.33 A
       expect(res.ratedAmps).toBeCloseTo(83.33, 2);
       expect(res.continuousSafeAmps).toBeCloseTo(66.66, 2);
-      expect(res.recommendedBreakerAmps).toBe(90);
-      expect(res.recommendedReceptacleNema).toContain("Automatic Transfer Switch");
-      expect(res.recommendedMinCopperWireAwg).toContain("2 AWG");
+      expect(res.splitPhaseDetails?.ampsAt240V).toBeCloseTo(83.33, 2);
     });
   });
 
-  describe("3. Three-Phase Calculations", () => {
+  describe("3. Dedicated 240V Single-Phase Calculations", () => {
+    it("calculates correct current for dedicated 240V load", () => {
+      const res = calculateGeneratorAmperage({
+        powerWatts: 5000,
+        voltageConfig: "240v_single",
+        powerFactor: 1.0,
+      });
+
+      expect(res.isValid).toBe(true);
+      // 5000 / 240 = 20.83 A
+      expect(res.ratedAmps).toBeCloseTo(20.83, 2);
+      expect(res.continuousSafeAmps).toBeCloseTo(16.66, 2);
+      expect(res.splitPhaseDetails).toBeUndefined();
+    });
+  });
+
+  describe("4. Three-Phase Line-to-Line Calculations", () => {
     it("calculates balanced 208V three-phase current (I = P / (√3 × 208 × PF))", () => {
       const res = calculateGeneratorAmperage({
         powerWatts: 10000,
@@ -107,7 +123,7 @@ describe("Generator Amperage Calculator Logic", () => {
       });
 
       expect(res.isValid).toBe(true);
-      // I = 10000 / (1.73205 * 208 * 0.8) = 10000 / 288.27 = 34.69 A
+      // I = 10000 / (1.7320508 * 208 * 0.8) = 10000 / 288.2668 = 34.69 A
       expect(res.ratedAmps).toBeCloseTo(34.69, 1);
       expect(res.apparentPowerKva).toBeCloseTo(12.5, 1);
       expect(res.formulaExplanation).toContain("√3");
@@ -121,13 +137,13 @@ describe("Generator Amperage Calculator Logic", () => {
       });
 
       expect(res.isValid).toBe(true);
-      // I = 50000 / (1.73205 * 480 * 0.8) = 50000 / 665.107 = 75.18 A
+      // I = 50000 / (1.7320508 * 480 * 0.8) = 50000 / 665.1075 = 75.18 A
       expect(res.ratedAmps).toBeCloseTo(75.18, 1);
-      expect(res.recommendedBreakerAmps).toBe(80);
+      expect(res.apparentPowerKva).toBeCloseTo(62.5, 1);
     });
   });
 
-  describe("4. Power Factor & Continuous Rating Adjustments", () => {
+  describe("5. Power Factor & Continuous Rating Adjustments", () => {
     it("handles inductive load power factor derating (PF 0.8)", () => {
       const unity = calculateGeneratorAmperage({
         powerWatts: 5000,
@@ -144,6 +160,7 @@ describe("Generator Amperage Calculator Logic", () => {
       expect(unity.ratedAmps).toBeCloseTo(20.83, 2);
       expect(inductive.ratedAmps).toBeCloseTo(26.04, 2);
       expect(inductive.apparentPowerKva).toBeCloseTo(6.25, 2);
+      expect(inductive.warnings.some((w) => w.includes("Low Power Factor"))).toBe(true);
     });
 
     it("allows 100% maximum continuous load without 80% derating", () => {
@@ -157,7 +174,7 @@ describe("Generator Amperage Calculator Logic", () => {
     });
   });
 
-  describe("5. Validation and Edge Cases", () => {
+  describe("6. Validation and Edge Cases", () => {
     it("handles zero power input safely", () => {
       const res = calculateGeneratorAmperage({
         powerWatts: 0,
@@ -167,6 +184,7 @@ describe("Generator Amperage Calculator Logic", () => {
       expect(res.isValid).toBe(true);
       expect(res.ratedAmps).toBe(0);
       expect(res.formattedRatedAmps).toBe("0.00 A");
+      expect(res.continuousSafeAmps).toBe(0);
     });
 
     it("rejects negative wattage", () => {
@@ -190,18 +208,16 @@ describe("Generator Amperage Calculator Logic", () => {
       expect(res.isValid).toBe(false);
       expect(res.errors.some((e) => e.field === "powerFactor")).toBe(true);
     });
-  });
 
-  describe("6. Standard Breaker Sizing Helper", () => {
-    it("rounds up to standard US breaker sizes", () => {
-      expect(getStandardBreakerSize(12)).toBe(15);
-      expect(getStandardBreakerSize(15)).toBe(15);
-      expect(getStandardBreakerSize(16.5)).toBe(20);
-      expect(getStandardBreakerSize(20.8)).toBe(25);
-      expect(getStandardBreakerSize(28)).toBe(30);
-      expect(getStandardBreakerSize(31.25)).toBe(35);
-      expect(getStandardBreakerSize(48)).toBe(50);
-      expect(getStandardBreakerSize(83.3)).toBe(90);
+    it("rejects invalid continuous derating percent", () => {
+      const res = calculateGeneratorAmperage({
+        powerWatts: 5000,
+        voltageConfig: "120v_single",
+        continuousLoadPercent: 150,
+      });
+
+      expect(res.isValid).toBe(false);
+      expect(res.errors.some((e) => e.field === "continuousLoadPercent")).toBe(true);
     });
   });
 
@@ -233,8 +249,10 @@ describe("Generator Amperage Calculator Logic", () => {
           expect(row.ratedAmps240V).toBeCloseTo(expected240, 1);
         }
 
-        expect(row.typicalNemaOutlet.length).toBeGreaterThan(3);
-        expect(row.minWireGauge.length).toBeGreaterThan(3);
+        // Apparent power at 0.8 PF: watts / 800
+        const expectedKva = Math.round((row.watts / 800) * 100) / 100;
+        expect(row.apparentPowerKva08Pf).toBeCloseTo(expectedKva, 2);
+        expect(row.commonApplications.length).toBeGreaterThan(3);
       }
     });
 

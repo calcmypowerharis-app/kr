@@ -9,10 +9,10 @@
  * 2. AC Split-Phase (120/240V Dual Voltage):
  *    I_240V = P / (240 × PF)
  *    I_120V_per_leg = (P / 2) / (120 × PF) = I_240V
- *    I_120V_combined = P / (120 × PF) = 2 × I_240V (when parallel or full 120V winding switch is engaged)
+ *    I_120V_combined = P / (120 × PF) = 2 × I_240V
  * 3. AC Three-Phase (Balanced Line-to-Line):
  *    I = P / (√3 × V_LL × PF)
- * 4. Continuous Safe Operating Load (NEC Article 210.20):
+ * 4. Continuous Operating Current (80% Reference Band):
  *    I_continuous = I_rated × 0.80
  */
 
@@ -30,7 +30,7 @@ export interface GeneratorAmperageInputs {
   voltageConfig: GeneratorVoltageConfig;
   /** Power factor (0.5 to 1.0). Default is 1.0 for portable/residential generators */
   powerFactor?: number;
-  /** Continuous load derating percentage (e.g., 80 for 80% NEC rule, 100 for unrated maximum) */
+  /** Continuous load operating threshold percentage (e.g., 80 for 80% reference band, 100 for unrated maximum) */
   continuousLoadPercent?: number;
 }
 
@@ -56,8 +56,9 @@ export interface GeneratorAmperageOutputs {
   powerWatts: number;
   /** Real power in Kilowatts (kW) */
   powerKw: number;
-  /** Apparent power in Volt-Amperes (VA or kVA) */
+  /** Apparent power in Volt-Amperes (VA) */
   apparentPowerVa: number;
+  /** Apparent power in Kilovolt-Amperes (kVA) */
   apparentPowerKva: number;
   /** Active voltage configuration */
   voltageConfig: GeneratorVoltageConfig;
@@ -68,17 +69,11 @@ export interface GeneratorAmperageOutputs {
   /** Full rated output current in Amperes (A) */
   ratedAmps: number;
   formattedRatedAmps: string;
-  /** Continuous safe operating current (typically 80% of rated amps) */
+  /** Continuous operating current (typically 80% of rated amps) */
   continuousSafeAmps: number;
   formattedContinuousSafeAmps: string;
   /** Breakdown for 120/240V split-phase systems */
   splitPhaseDetails?: SplitPhaseBreakdown;
-  /** Recommended standard circuit breaker rating in Amperes */
-  recommendedBreakerAmps: number;
-  /** Standard NEMA receptacle type typically installed on this generator size */
-  recommendedReceptacleNema: string;
-  /** Minimum copper conductor gauge (AWG) at 75°C insulation per NEC 310.16 */
-  recommendedMinCopperWireAwg: string;
   /** Summary formula explanation with substituted values */
   formulaExplanation: string;
   /** Validation errors */
@@ -97,8 +92,7 @@ export interface GeneratorChartRow {
   ratedAmps240V: number;
   continuousAmps120V: number;
   continuousAmps240V: number;
-  typicalNemaOutlet: string;
-  minWireGauge: string;
+  apparentPowerKva08Pf: number;
   commonApplications: string;
 }
 
@@ -124,17 +118,17 @@ export const GENERATOR_VOLTAGE_OPTIONS: {
     value: "240v_single",
     label: "240V Single-Phase (High Voltage Dedicated)",
     nominalVoltage: 240,
-    description: "Dedicated 240V single-phase circuit for pumps, welders, or heavy industrial equipment.",
+    description: "Dedicated 240V single-phase circuit for pumps, welders, or heavy equipment.",
   },
   {
     value: "208v_three",
-    label: "208V Three-Phase Balanced (Commercial)",
+    label: "208V Three-Phase Balanced (Commercial Line-to-Line)",
     nominalVoltage: 208,
     description: "Standard commercial 120/208V 3-phase wye service line-to-line voltage.",
   },
   {
     value: "480v_three",
-    label: "480V Three-Phase Balanced (Industrial)",
+    label: "480V Three-Phase Balanced (Industrial Line-to-Line)",
     nominalVoltage: 480,
     description: "Commercial and industrial standby prime generators feeding 277/480V wye distribution.",
   },
@@ -153,6 +147,7 @@ export const STANDARD_GENERATOR_PRESETS = [
 
 /**
  * Standard generator size matrix for reference charts (1,000W to 26,000W).
+ * Apparent power at 0.8 PF calculated as: (watts / 0.8) / 1000 = kw / 0.8
  */
 export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
   {
@@ -163,8 +158,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 0,
     continuousAmps120V: 6.7,
     continuousAmps240V: 0,
-    typicalNemaOutlet: "NEMA 5-15R (15A Duplex)",
-    minWireGauge: "14 AWG Cu",
+    apparentPowerKva08Pf: 1.25,
     commonApplications: "Camping, tailgating, phone charging, LED lights, laptops",
   },
   {
@@ -174,9 +168,8 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps120V: 12.5,
     ratedAmps240V: 0,
     continuousAmps120V: 10.0,
-    typicalNemaOutlet: "NEMA 5-15R or 5-20R",
     continuousAmps240V: 0,
-    minWireGauge: "14 AWG Cu",
+    apparentPowerKva08Pf: 1.88,
     commonApplications: "Small refrigerator, television, internet router, CPAP machine",
   },
   {
@@ -187,8 +180,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 0,
     continuousAmps120V: 13.3,
     continuousAmps240V: 0,
-    typicalNemaOutlet: "NEMA 5-20R (20A Duplex)",
-    minWireGauge: "12 AWG Cu",
+    apparentPowerKva08Pf: 2.5,
     commonApplications: "Standard household refrigerator, TV, microwave (one at a time)",
   },
   {
@@ -199,8 +191,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 0,
     continuousAmps120V: 16.7,
     continuousAmps240V: 0,
-    typicalNemaOutlet: "NEMA 5-20R or TT-30R",
-    minWireGauge: "12 AWG Cu",
+    apparentPowerKva08Pf: 3.13,
     commonApplications: "RV 30A plug, refrigerator, small window air conditioner",
   },
   {
@@ -211,8 +202,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 0,
     continuousAmps120V: 20.0,
     continuousAmps240V: 0,
-    typicalNemaOutlet: "NEMA TT-30R (30A RV) or L5-30R",
-    minWireGauge: "10 AWG Cu",
+    apparentPowerKva08Pf: 3.75,
     commonApplications: "RV 13,500 BTU rooftop AC, refrigerator, power tools",
   },
   {
@@ -223,8 +213,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 0,
     continuousAmps120V: 23.3,
     continuousAmps240V: 0,
-    typicalNemaOutlet: "NEMA TT-30R / L5-30R",
-    minWireGauge: "10 AWG Cu",
+    apparentPowerKva08Pf: 4.38,
     commonApplications: "Full RV trailer power, jobsite air compressor, furnace blower",
   },
   {
@@ -235,8 +224,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 16.7,
     continuousAmps120V: 26.7,
     continuousAmps240V: 13.3,
-    typicalNemaOutlet: "NEMA L14-20R or L14-30R",
-    minWireGauge: "10 AWG Cu",
+    apparentPowerKva08Pf: 5.0,
     commonApplications: "Gas furnace, refrigerator, sump pump, lights, basic circuits",
   },
   {
@@ -247,8 +235,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 20.8,
     continuousAmps120V: 33.3,
     continuousAmps240V: 16.7,
-    typicalNemaOutlet: "NEMA L14-30R (30A 120/240V)",
-    minWireGauge: "10 AWG Cu",
+    apparentPowerKva08Pf: 6.25,
     commonApplications: "Home backup via manual transfer switch, 1/2 HP well pump, freezer",
   },
   {
@@ -259,8 +246,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 27.1,
     continuousAmps120V: 43.3,
     continuousAmps240V: 21.7,
-    typicalNemaOutlet: "NEMA L14-30R (30A 120/240V)",
-    minWireGauge: "10 AWG Cu",
+    apparentPowerKva08Pf: 8.13,
     commonApplications: "Essential circuits, 240V deep-well pump, gas water heater, furnace",
   },
   {
@@ -271,8 +257,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 31.3,
     continuousAmps120V: 50.0,
     continuousAmps240V: 25.0,
-    typicalNemaOutlet: "NEMA L14-30R (30A) or 14-50R",
-    minWireGauge: "10 AWG Cu (30A) / 8 AWG Cu",
+    apparentPowerKva08Pf: 9.38,
     commonApplications: "Standard 30A home inlet box, multiple pumps, furnace, refrigeration",
   },
   {
@@ -283,8 +268,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 35.4,
     continuousAmps120V: 56.7,
     continuousAmps240V: 28.3,
-    typicalNemaOutlet: "NEMA 14-50R (50A 120/240V)",
-    minWireGauge: "8 AWG Cu",
+    apparentPowerKva08Pf: 10.63,
     commonApplications: "Heavy emergency home backup, small central AC with soft starter",
   },
   {
@@ -295,8 +279,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 41.7,
     continuousAmps120V: 66.7,
     continuousAmps240V: 33.3,
-    typicalNemaOutlet: "NEMA 14-50R (50A) or Hardwire",
-    minWireGauge: "6 AWG Cu",
+    apparentPowerKva08Pf: 12.5,
     commonApplications: "50A transfer switch inlet, 3-ton central AC, whole-house subpanel",
   },
   {
@@ -307,8 +290,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 50.0,
     continuousAmps120V: 80.0,
     continuousAmps240V: 40.0,
-    typicalNemaOutlet: "NEMA 14-50R (50A) or Hardwire",
-    minWireGauge: "6 AWG Cu (50A breaker)",
+    apparentPowerKva08Pf: 15.0,
     commonApplications: "Full 50A utility service backup, central heat pump, water heater",
   },
   {
@@ -319,8 +301,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 62.5,
     continuousAmps120V: 100.0,
     continuousAmps240V: 50.0,
-    typicalNemaOutlet: "Hardwired to ATS (70A Breaker)",
-    minWireGauge: "4 AWG Cu",
+    apparentPowerKva08Pf: 18.75,
     commonApplications: "Whole-home standby generator with automatic transfer switch",
   },
   {
@@ -331,8 +312,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 75.0,
     continuousAmps120V: 120.0,
     continuousAmps240V: 60.0,
-    typicalNemaOutlet: "Hardwired to ATS (90A Breaker)",
-    minWireGauge: "3 AWG Cu",
+    apparentPowerKva08Pf: 22.5,
     commonApplications: "Whole-home automatic standby, 4-ton AC, electric range, water heater",
   },
   {
@@ -343,8 +323,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 83.3,
     continuousAmps120V: 133.3,
     continuousAmps240V: 66.7,
-    typicalNemaOutlet: "Hardwired to ATS (100A Breaker)",
-    minWireGauge: "2 AWG Cu",
+    apparentPowerKva08Pf: 25.0,
     commonApplications: "Most common residential whole-home standby size (100A service feed)",
   },
   {
@@ -355,8 +334,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 91.7,
     continuousAmps120V: 146.7,
     continuousAmps240V: 73.3,
-    typicalNemaOutlet: "Hardwired to ATS (100A Breaker)",
-    minWireGauge: "1 AWG Cu or 2 AWG Cu (75°C)",
+    apparentPowerKva08Pf: 27.5,
     commonApplications: "Full residential 100A whole-home coverage, two central AC units",
   },
   {
@@ -367,8 +345,7 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 100.0,
     continuousAmps120V: 160.0,
     continuousAmps240V: 80.0,
-    typicalNemaOutlet: "Hardwired to ATS (125A Breaker)",
-    minWireGauge: "1/0 AWG Cu",
+    apparentPowerKva08Pf: 30.0,
     commonApplications: "Large home whole-house standby, multiple heat pumps, electric utilities",
   },
   {
@@ -379,130 +356,15 @@ export const GENERATOR_AMPERAGE_CHART_DATA: GeneratorChartRow[] = [
     ratedAmps240V: 108.3,
     continuousAmps120V: 173.3,
     continuousAmps240V: 86.7,
-    typicalNemaOutlet: "Hardwired to ATS (125A to 150A Breaker)",
-    minWireGauge: "2/0 AWG Cu",
+    apparentPowerKva08Pf: 32.5,
     commonApplications: "Large luxury home or light commercial standby installation",
   },
 ];
 
 /**
- * Maps current in Amperes to the next standard US circuit breaker size.
- */
-export function getStandardBreakerSize(amps: number): number {
-  const standardBreakers = [
-    15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 110, 125, 150, 175, 200, 225, 250, 300, 400
-  ];
-  for (const size of standardBreakers) {
-    if (size >= amps) return size;
-  }
-  return standardBreakers[standardBreakers.length - 1];
-}
-
-/**
- * Determines typical NEMA outlet and recommended copper conductor gauge
- * based on generator rating, operating voltage, and calculated current.
- */
-function getOutletAndWireSpecs(
-  voltageConfig: GeneratorVoltageConfig,
-  ratedAmps: number,
-  nominalVoltage: number
-): { receptacle: string; wireGauge: string } {
-  if (voltageConfig === "120v_single") {
-    if (ratedAmps <= 15) {
-      return {
-        receptacle: "NEMA 5-15R (15A, 120V Standard Household Duplex)",
-        wireGauge: "14 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (ratedAmps <= 20) {
-      return {
-        receptacle: "NEMA 5-20R (20A, 120V T-Slot Commercial Duplex / GFCI)",
-        wireGauge: "12 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (ratedAmps <= 30) {
-      return {
-        receptacle: "NEMA TT-30R (30A, 120V RV Receptacle) or L5-30R Twist-Lock",
-        wireGauge: "10 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    return {
-      receptacle: "Direct Terminal Lugs or High-Current Cam-Lock",
-      wireGauge: "8 AWG Copper or larger",
-    };
-  }
-
-  if (voltageConfig === "120_240v_split" || voltageConfig === "240v_single") {
-    const checkAmps = voltageConfig === "120_240v_split" ? ratedAmps : ratedAmps;
-    if (checkAmps <= 20) {
-      return {
-        receptacle: "NEMA L14-20R (20A, 120/240V 4-Prong Twist-Lock)",
-        wireGauge: "12 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (checkAmps <= 30) {
-      return {
-        receptacle: "NEMA L14-30R (30A, 120/240V 4-Prong Twist-Lock)",
-        wireGauge: "10 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (checkAmps <= 50) {
-      return {
-        receptacle: "NEMA 14-50R (50A, 120/240V 4-Prong Straight Blade)",
-        wireGauge: "6 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (checkAmps <= 70) {
-      return {
-        receptacle: "Hardwired Distribution Block to Automatic Transfer Switch (ATS)",
-        wireGauge: "4 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (checkAmps <= 95) {
-      return {
-        receptacle: "Hardwired Distribution Block to 100A Automatic Transfer Switch",
-        wireGauge: "2 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (checkAmps <= 115) {
-      return {
-        receptacle: "Hardwired Distribution Block to 125A Automatic Transfer Switch",
-        wireGauge: "1 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    if (checkAmps <= 150) {
-      return {
-        receptacle: "Hardwired Distribution Block to 150A/200A Automatic Transfer Switch",
-        wireGauge: "2/0 AWG Copper (75°C THHN/THWN-2)",
-      };
-    }
-    return {
-      receptacle: "Hardwired 200A Service Entrance Rated ATS",
-      wireGauge: "4/0 AWG Copper or 250 kcmil Al (75°C)",
-    };
-  }
-
-  // Three-phase systems
-  if (ratedAmps <= 30) {
-    return {
-      receptacle: `NEMA L${nominalVoltage === 208 ? "21" : "22"}-30R Twist-Lock or Pin-and-Sleeve`,
-      wireGauge: "10 AWG Copper (75°C THHN/THWN-2)",
-    };
-  }
-  if (ratedAmps <= 50) {
-    return {
-      receptacle: "Industrial 50A 3-Phase Hubbell / Pin-and-Sleeve Receptacle",
-      wireGauge: "6 AWG Copper (75°C THHN/THWN-2)",
-    };
-  }
-  return {
-    receptacle: "Hardwired Mechanical Lugs or Series 16 Cam-Lock Connectors",
-    wireGauge: ratedAmps <= 85 ? "3 AWG Cu" : ratedAmps <= 130 ? "1/0 AWG Cu" : "4/0 AWG Cu",
-  };
-}
-
-/**
  * Pure generator amperage calculation function.
+ * Evaluates full-load current (Amps), apparent power (kVA),
+ * split-phase line balance, and continuous operating margins.
  */
 export function calculateGeneratorAmperage(
   inputs: GeneratorAmperageInputs
@@ -557,9 +419,6 @@ export function calculateGeneratorAmperage(
       formattedRatedAmps: "0.00 A",
       continuousSafeAmps: 0,
       formattedContinuousSafeAmps: "0.00 A",
-      recommendedBreakerAmps: 15,
-      recommendedReceptacleNema: "N/A",
-      recommendedMinCopperWireAwg: "14 AWG",
       formulaExplanation: "I = 0 A (Zero power entered)",
       errors,
       warnings,
@@ -596,7 +455,7 @@ export function calculateGeneratorAmperage(
       const amps240 = powerWatts / (240 * powerFactor);
       // Balanced 120V per leg: each leg handles half total watts at 120V
       const ampsPerLeg = (powerWatts / 2) / (120 * powerFactor);
-      // Total 120V combined current (if generator has 120V full-power switch engaged)
+      // Total 120V combined current (sum of both legs if perfectly balanced or with 120V full-power switch engaged)
       const ampsTotal120 = powerWatts / (120 * powerFactor);
 
       ratedAmps = amps240;
@@ -631,16 +490,6 @@ export function calculateGeneratorAmperage(
   const continuousDerateFactor = continuousLoadPercent / 100;
   const continuousSafeAmps = Math.round(roundedRatedAmps * continuousDerateFactor * 100) / 100;
 
-  // Determine standard circuit breaker
-  const recommendedBreakerAmps = getStandardBreakerSize(roundedRatedAmps);
-
-  // Determine outlet and wire specifications
-  const { receptacle, wireGauge } = getOutletAndWireSpecs(
-    voltageConfig,
-    roundedRatedAmps,
-    nominalVoltage
-  );
-
   // Engineering warnings
   if (voltageConfig === "120_240v_split") {
     warnings.push(
@@ -650,13 +499,13 @@ export function calculateGeneratorAmperage(
 
   if (roundedRatedAmps > 30 && voltageConfig === "120v_single") {
     warnings.push(
-      "High Current on 120V: At 120V, loads exceeding 30 Amps cause severe voltage drop and require heavy conductors (8 AWG or larger). For loads above 3,500 Watts, a 120/240V split-phase connection is strongly recommended."
+      "High Current on 120V: At 120V, loads exceeding 30 Amps draw substantial current through conductors. For continuous loads above 3,500 Watts, a 120/240V split-phase connection is recommended to reduce current and thermal stress."
     );
   }
 
   if (powerFactor < 0.85) {
     warnings.push(
-      `Low Power Factor (${powerFactor.toFixed(2)}): Reactive loads draw substantially more current (${apparentPowerKva} kVA) for the same real power (${(powerWatts / 1000).toFixed(1)} kW), which can overheat generator alternator windings.`
+      `Low Power Factor (${powerFactor.toFixed(2)}): Reactive motor loads draw substantially more apparent current (${apparentPowerKva} kVA) for the same real power (${(powerWatts / 1000).toFixed(1)} kW), which increases heating in generator alternator windings.`
     );
   }
 
@@ -673,9 +522,6 @@ export function calculateGeneratorAmperage(
     continuousSafeAmps,
     formattedContinuousSafeAmps: `${continuousSafeAmps.toFixed(2)} A`,
     splitPhaseDetails,
-    recommendedBreakerAmps,
-    recommendedReceptacleNema: receptacle,
-    recommendedMinCopperWireAwg: wireGauge,
     formulaExplanation,
     errors,
     warnings,

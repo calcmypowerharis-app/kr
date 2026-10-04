@@ -38,14 +38,14 @@ export const FormulaSection: React.FC<FormulaSectionProps> = ({
 
       {/* Formula Code / Display Box */}
       <div className="bg-slate-900 text-emerald-400 font-mono text-sm md:text-base p-4 md:p-5 rounded-xl border border-slate-800 shadow-inner mb-6 overflow-x-auto">
-        <div className="text-xs text-slate-500 uppercase tracking-wider mb-1">Formula</div>
+        <div className="text-xs text-slate-400 uppercase tracking-wider mb-1">Formula</div>
         <div className="font-semibold text-white tracking-wide">{formulaDisplay}</div>
       </div>
 
       {/* Variables Definition List */}
       <div className="space-y-3 mb-6">
-        <h3 className="text-sm font-semibold text-slate-900 uppercase tracking-wider text-slate-500">
-          Variables & Constants
+        <h3 className="text-sm font-semibold text-slate-700 uppercase tracking-wider">
+          Variables &amp; Constants
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {variables.map((v, i) => (

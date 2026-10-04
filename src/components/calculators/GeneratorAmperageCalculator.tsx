@@ -24,14 +24,11 @@ import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   AlertCircle,
   ExternalLink,
-  Sliders,
   ShoppingBag,
   ArrowRight,
   ShieldAlert,
   Zap,
-  Plug,
   Search,
-  CheckCircle2,
   Table as TableIcon,
 } from "lucide-react";
 
@@ -82,8 +79,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
         query === "" ||
         row.watts.toString().includes(query) ||
         row.kw.toString().includes(query) ||
-        row.typicalNemaOutlet.toLowerCase().includes(query) ||
-        row.minWireGauge.toLowerCase().includes(query) ||
+        row.category.toLowerCase().includes(query) ||
         row.commonApplications.toLowerCase().includes(query);
 
       return matchesCategory && matchesSearch;
@@ -98,10 +94,10 @@ export const GeneratorAmperageCalculator: React.FC = () => {
   return (
     <CalculatorShell
       title="Generator Amperage Chart & Electrical Calculator"
-      badge="Generator Electrical Sizing"
+      badge="Electrical Current Conversion"
       category="Generators & Outage Backup"
       lastUpdated="October 2026"
-      description="Calculate full-load output current (Amps) and 80% continuous safe operating capacity for portable and standby generators across 120V, 240V split-phase, and 3-phase circuits. Includes wire gauge, breaker sizing, and a complete generator amperage reference chart."
+      description="Calculate full-load output current (Amps), 80% continuous operating capacity, and apparent power in kVA for portable and standby generators across 120V, 240V split-phase, and 3-phase circuits. Includes a comprehensive generator amperage reference chart."
       onReset={handleReset}
       inputSection={
         <div className="space-y-6">
@@ -156,7 +152,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
             />
           </div>
 
-          {/* Advanced Controls: Power Factor and Continuous Derating */}
+          {/* Controls: Power Factor and Continuous Operating Band */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start pt-2 border-t border-slate-100">
             <InputField
               id="powerFactor"
@@ -172,7 +168,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
 
             <div>
               <span className="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">
-                Continuous Duty Band (NEC 80% Rule)
+                Continuous Operating Threshold
               </span>
               <div className="grid grid-cols-2 gap-2">
                 <button
@@ -195,11 +191,11 @@ export const GeneratorAmperageCalculator: React.FC = () => {
                       : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
                   }`}
                 >
-                  100% Unrated Peak Current
+                  100% Unrated Capacity
                 </button>
               </div>
               <p className="text-[11px] text-slate-500 mt-1">
-                NEC Article 210.20 requires continuous loads (lasting 3 hours or more) to not exceed 80% of circuit rating.
+                Standard operating practice recommends derating continuous loads to 80% to avoid thermal overload during multi-hour outages.
               </p>
             </div>
           </div>
@@ -248,12 +244,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
               {
                 label: "80% Continuous Safe Load",
                 value: results.formattedContinuousSafeAmps,
-                subtext: "NEC continuous duty limit",
-              },
-              {
-                label: "Recommended Breaker",
-                value: `${results.recommendedBreakerAmps} A`,
-                subtext: "Standard US thermal breaker",
+                subtext: "Recommended continuous duty band",
               },
               {
                 label: "Real Output Power",
@@ -263,7 +254,12 @@ export const GeneratorAmperageCalculator: React.FC = () => {
               {
                 label: "Apparent Power",
                 value: `${results.apparentPowerKva.toFixed(2)} kVA`,
-                subtext: `PF: ${results.powerFactor}`,
+                subtext: `Power Factor: ${results.powerFactor}`,
+              },
+              {
+                label: "Nominal Operating Voltage",
+                value: `${results.nominalVoltage} V`,
+                subtext: "RMS Circuit Potential",
               },
             ]}
             warnings={results.warnings}
@@ -274,9 +270,9 @@ export const GeneratorAmperageCalculator: React.FC = () => {
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 md:p-5 space-y-3">
               <div className="flex items-center gap-2">
                 <Zap className="w-4 h-4 text-blue-600" />
-                <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+                <h2 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
                   120/240V Dual-Voltage Leg Breakdown
-                </h4>
+                </h2>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
                 <div className="bg-white p-3 rounded-lg border border-slate-200">
@@ -310,43 +306,6 @@ export const GeneratorAmperageCalculator: React.FC = () => {
             </div>
           )}
 
-          {/* Installation Hardware Specifications */}
-          <div className="bg-white border border-slate-200 rounded-xl p-5 space-y-4">
-            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
-              <Plug className="w-4 h-4 text-emerald-600" />
-              Recommended Circuit &amp; Wiring Specifications
-            </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-              <div className="space-y-1">
-                <span className="text-slate-500 font-medium block">Standard Circuit Breaker:</span>
-                <span className="text-sm font-bold text-slate-900 font-mono block">
-                  {results.recommendedBreakerAmps} Amp Breaker
-                </span>
-                <span className="text-[11px] text-slate-500">
-                  Standard US thermal-magnetic breaker size to protect circuit conductors
-                </span>
-              </div>
-              <div className="space-y-1">
-                <span className="text-slate-500 font-medium block">Typical NEMA Receptacle:</span>
-                <span className="text-sm font-bold text-slate-900 block">
-                  {results.recommendedReceptacleNema}
-                </span>
-                <span className="text-[11px] text-slate-500">
-                  Standard outlet installed on generator or power inlet box
-                </span>
-              </div>
-              <div className="space-y-1">
-                <span className="text-slate-500 font-medium block">Minimum Conductor (Copper):</span>
-                <span className="text-sm font-bold text-slate-900 block">
-                  {results.recommendedMinCopperWireAwg}
-                </span>
-                <span className="text-[11px] text-slate-500">
-                  Based on NEC Table 310.16 at 75 degrees C insulation rating
-                </span>
-              </div>
-            </div>
-          </div>
-
           {/* Formula Reference */}
           <div className="bg-slate-900 text-slate-200 rounded-xl p-4 font-mono text-xs overflow-x-auto space-y-1.5">
             <p className="text-slate-400 font-sans text-[11px] uppercase tracking-wider">
@@ -371,7 +330,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-600">
-              Quick reference guide comparing rated amperage, continuous safe current, standard outlets, and wire sizes.
+              Quick reference guide comparing rated output amperage, continuous safe current, and apparent power in kVA across popular generator ratings.
             </p>
           </div>
 
@@ -382,11 +341,11 @@ export const GeneratorAmperageCalculator: React.FC = () => {
               <input
                 id="chartSearch"
                 name="chartSearch"
-                aria-label="Search generator wattage or outlet"
+                aria-label="Search generator wattage or application"
                 type="text"
                 value={chartSearch}
                 onChange={(e) => setChartSearch(e.target.value)}
-                placeholder="Search wattage or outlet..."
+                placeholder="Search wattage or application..."
                 className="pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500 w-48 sm:w-56"
               />
             </div>
@@ -431,18 +390,21 @@ export const GeneratorAmperageCalculator: React.FC = () => {
           </div>
         </div>
 
-        {/* Responsive Table */}
+        {/* Responsive Table with semantic markup */}
         <div className="overflow-x-auto rounded-xl border border-slate-200">
-          <table className="w-full text-left text-xs">
+          <table className="w-full text-left text-xs" aria-label="Generator Amperage and Rating Reference Chart">
+            <caption className="sr-only">
+              Comprehensive reference chart of generator wattage to amperage conversions across 120V and 240V systems
+            </caption>
             <thead className="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200">
               <tr>
-                <th className="py-3 px-3.5">Generator Rating</th>
-                <th className="py-3 px-3">Amps @ 120V</th>
-                <th className="py-3 px-3">Amps @ 240V</th>
-                <th className="py-3 px-3">80% Safe Amps (240V / 120V)</th>
-                <th className="py-3 px-3">Standard Outlet / Plug</th>
-                <th className="py-3 px-3">Min Conductor</th>
-                <th className="py-3 px-3">Typical Applications</th>
+                <th scope="col" className="py-3 px-3.5">Generator Rating</th>
+                <th scope="col" className="py-3 px-3">Category</th>
+                <th scope="col" className="py-3 px-3">Amps @ 120V</th>
+                <th scope="col" className="py-3 px-3">Amps @ 240V</th>
+                <th scope="col" className="py-3 px-3">80% Safe Amps</th>
+                <th scope="col" className="py-3 px-3">kVA @ 0.8 PF</th>
+                <th scope="col" className="py-3 px-3">Typical Applications</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-200 bg-white">
@@ -453,12 +415,13 @@ export const GeneratorAmperageCalculator: React.FC = () => {
                     powerWatts === row.watts ? "bg-blue-50/70 font-semibold" : ""
                   }`}
                 >
-                  <td className="py-3 px-3.5 whitespace-nowrap">
+                  <th scope="row" className="py-3 px-3.5 whitespace-nowrap font-normal text-left">
                     <span className="font-bold text-slate-900 font-mono">
                       {row.watts.toLocaleString()} W
                     </span>
-                    <span className="text-[11px] text-slate-500 block">({row.kw.toFixed(1)} kW)</span>
-                  </td>
+                    <span className="text-[11px] text-slate-600 block">({row.kw.toFixed(1)} kW)</span>
+                  </th>
+                  <td className="py-3 px-3 text-slate-700 whitespace-nowrap">{row.category}</td>
                   <td className="py-3 px-3 font-mono text-slate-800 whitespace-nowrap">
                     {row.ratedAmps120V.toFixed(1)} A
                   </td>
@@ -470,8 +433,9 @@ export const GeneratorAmperageCalculator: React.FC = () => {
                       ? `${row.continuousAmps240V.toFixed(1)} A @ 240V`
                       : `${row.continuousAmps120V.toFixed(1)} A @ 120V`}
                   </td>
-                  <td className="py-3 px-3 text-slate-700">{row.typicalNemaOutlet}</td>
-                  <td className="py-3 px-3 text-slate-700 whitespace-nowrap">{row.minWireGauge}</td>
+                  <td className="py-3 px-3 font-mono text-slate-700 whitespace-nowrap">
+                    {row.apparentPowerKva08Pf.toFixed(2)} kVA
+                  </td>
                   <td className="py-3 px-3 text-slate-600 max-w-xs">{row.commonApplications}</td>
                 </tr>
               ))}
@@ -483,16 +447,16 @@ export const GeneratorAmperageCalculator: React.FC = () => {
         </p>
       </section>
 
-      {/* Recommended Hardware & Extension Cords (Rule 11 Affiliate Utility) */}
+      {/* Recommended Hardware & Diagnostic Tools (Rule 11 Affiliate Utility) */}
       <section className="bg-slate-50 rounded-2xl border border-slate-200 p-6 md:p-8 space-y-5">
         <div className="flex items-center gap-2">
           <ShoppingBag className="w-5 h-5 text-blue-600" />
           <h3 className="text-lg md:text-xl font-bold text-slate-900">
-            Recommended Generator Electrical Hardware &amp; Diagnostic Tools
+            Recommended Generator Cords &amp; Diagnostic Tools
           </h3>
         </div>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-          Ensure your generator hookup operates safely under high continuous current with properly rated cords, power inlet boxes, and diagnostic meters:
+          Ensure your generator hookup operates safely under continuous electrical current with properly rated cords, power inlet boxes, and diagnostic meters:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           <a
@@ -506,7 +470,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
               <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />
             </div>
             <p className="text-slate-600 text-[11px] leading-relaxed">
-              10 AWG 4-prong NEMA L14-30P twist-lock cord rated for 7,500W generators and 30A manual transfer switch boxes.
+              Heavy-duty 4-prong NEMA L14-30P twist-lock cord rated for 7,500W generators and 30A manual transfer switch boxes.
             </p>
           </a>
 
@@ -521,7 +485,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
               <ExternalLink className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" />
             </div>
             <p className="text-slate-600 text-[11px] leading-relaxed">
-              6 AWG heavy copper cord with NEMA 14-50P connection for 10,000W to 12,000W whole-house backup generators.
+              Heavy copper cord with NEMA 14-50P connection for 10,000W to 12,000W whole-house backup generators.
             </p>
           </a>
 
@@ -568,12 +532,12 @@ export const GeneratorAmperageCalculator: React.FC = () => {
    I_120V_per_leg = (P ÷ 2) ÷ (120V × PF) = I_240V
    I_120V_combined = P ÷ (120V × PF) = 2 × I_240V
 
-3. AC Balanced Three-Phase:
+3. AC Balanced Three-Phase (Line-to-Line):
    I = P ÷ (√3 × V_LL × PF) = P ÷ (1.732 × V_LL × PF)
 
-4. Continuous Safe Operating Current (NEC 80% Rule):
+4. Continuous Operating Current (80% Reference Band):
    I_continuous = I_rated × 0.80`}
-        description="Electrical current is inversely proportional to circuit voltage. Increasing the voltage from 120V to 240V cuts the required amperage exactly in half for the same wattage output, reducing conductor heating and wire gauge requirements."
+        description="Electrical current is inversely proportional to circuit voltage. Increasing the voltage from 120V to 240V cuts the required amperage exactly in half for the same wattage output, reducing conductor heating and thermal stress."
         variables={[
           {
             symbol: "I",
@@ -585,7 +549,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
             symbol: "P",
             name: "Real Power",
             unit: "Watts (W)",
-            description: "The rated continuous or running power capacity of the generator engine/alternator.",
+            description: "The rated continuous or running power capacity of the generator engine and alternator.",
           },
           {
             symbol: "V",
@@ -608,15 +572,15 @@ export const GeneratorAmperageCalculator: React.FC = () => {
 
       {/* Worked Example Section */}
       <WorkedExampleSection
-        title="Worked Example: Sizing Cords and Inlets for a 7,500-Watt Generator"
-        scenario="A homeowner owns a 7,500-Watt dual-fuel portable generator with a 120/240V 30-Amp twist-lock outlet (NEMA L14-30R). The generator powers essential circuits through an outdoor power inlet box and manual transfer switch."
+        title="Worked Example: Current and Leg Balance for a 7,500-Watt Generator"
+        scenario="A homeowner owns a 7,500-Watt dual-fuel portable generator with a 120/240V output. The generator powers essential household circuits through a transfer switch during a utility outage."
         steps={[
           {
             stepNumber: 1,
             title: "Calculate Rated 240V Current",
             calculation: "I = 7,500 W ÷ (240 V × 1.0) = 31.25 Amperes",
             explanation:
-              "At 240 Volts, the generator delivers 31.25 Amps across the two hot legs combined. This is the maximum line current flowing through a 4-conductor transfer switch cable.",
+              "At 240 Volts, the generator delivers 31.25 Amps across the two hot legs combined. This is the maximum line current flowing into a 240V transfer switch.",
           },
           {
             stepNumber: 2,
@@ -627,20 +591,20 @@ export const GeneratorAmperageCalculator: React.FC = () => {
           },
           {
             stepNumber: 3,
-            title: "Apply the NEC 80% Continuous Safe Load Rule",
+            title: "Apply the 80% Continuous Safe Load Margin",
             calculation: "I_continuous = 31.25 A × 0.80 = 25.0 Amperes continuous",
             explanation:
-              "To prevent nuisance circuit breaker tripping and engine overheating during outages lasting several hours, sustained electrical demand should not exceed 25 Amps at 240V (6,000 Watts).",
+              "To prevent engine overheating and internal thermal breaker trips during extended outages lasting several hours, continuous demand should be maintained at or below 25 Amps at 240V (6,000 Watts).",
           },
           {
             stepNumber: 4,
-            title: "Select Cable Gauge and Inlet Rating",
-            calculation: "30A NEMA L14-30 Inlet Box + 10 AWG 4-Conductor Copper Cable",
+            title: "Calculate Apparent Power Under Inductive Loads",
+            calculation: "S = 7,500 W ÷ 0.85 PF = 8,823.5 Volt-Amps = 8.82 kVA",
             explanation:
-              "A standard 30-Amp generator power inlet box and 10 AWG copper cord match this generator's continuous capacity. For cable runs exceeding 75 feet, upgrading to 8 AWG prevents excessive voltage drop.",
+              "When powering inductive motor loads with a 0.85 power factor (such as well pumps and compressors), the alternator must supply 8.82 kVA of apparent power, drawing roughly 36.8 Amps line current at 240V.",
           },
         ]}
-        conclusion="A 7,500W generator provides 31.25 rated Amps at 240V and safely sustains up to 25.0 continuous Amps. It pairs perfectly with a 30A transfer switch and 10 AWG heavy-duty extension cord."
+        conclusion="A 7,500W generator provides 31.25 rated Amps at 240V and safely sustains up to 25.0 continuous Amps. Ensuring circuits are balanced equally between Line 1 and Line 2 prevents premature breaker tripping."
       />
 
       {/* Assumptions Section */}
@@ -648,7 +612,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
         description="Generator output calculations rely on fundamental electrical principles. Real-world operating capacity is influenced by operating variables described below:"
         assumptions={[
           {
-            parameter: "Continuous Load Band (80% Rule)",
+            parameter: "Continuous Load Threshold",
             defaultVal: "80% of rated capacity",
             realisticRange: "70% to 85% recommended",
             impact:
@@ -673,7 +637,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
             defaultVal: "Under 3% for runs under 50 ft",
             realisticRange: "1% to 5% depending on wire length and gauge",
             impact:
-              "Long, undersized extension cords cause voltage drops that cause motor overheating and trip internal generator breakers.",
+              "Long extension cords cause voltage drops that can lead to motor overheating and trigger internal generator protection.",
           },
         ]}
       />
@@ -682,10 +646,10 @@ export const GeneratorAmperageCalculator: React.FC = () => {
       <DisclaimerSection
         title="Electrical Safety, Anti-Backfeeding & Carbon Monoxide Standards"
         points={[
-          "Anti-Backfeeding Requirement (NEC Article 702): Never connect a generator directly into a home wall receptacle using a suicide cord. Connecting a generator to household wiring requires a code-compliant transfer switch or mechanical breaker interlock installed by a licensed electrician.",
+          "Anti-Backfeeding Requirement: Never connect a generator directly into a home wall receptacle using a dual-male cord. Connecting a generator to household wiring requires a code-compliant transfer switch or mechanical interlock installed by a licensed electrician.",
           "Carbon Monoxide Hazard (CPSC / CDC / UL 2201): Always operate portable generators outdoors at least 20 feet (6 meters) away from all windows, doors, vents, and air intakes. Never operate a generator inside a home, garage, basement, or enclosed porch.",
-          "Split-Phase Leg Balancing: When powering a manual transfer switch, distribute 120V circuits equally between Line 1 and Line 2. Loading one leg to 35 Amps while the other draws 5 Amps will trip the generator breaker even if total wattage is well below rating.",
-          "Continuous Duty Rating: Sizing calculations reflect nominal electrical formulas. Verify your specific generator manufacturer specifications and engine derating curves in the official operator manual.",
+          "Split-Phase Leg Balancing: When powering a transfer switch, distribute 120V circuits equally between Line 1 and Line 2. Loading one leg to 35 Amps while the other draws 5 Amps will trip the generator breaker even if total wattage is well below rating.",
+          "Preliminary Estimation Only: These calculations provide nominal electrical conversions. Always verify your specific generator manufacturer specifications and consult a licensed electrician for circuit sizing, wire selection, and physical installation.",
         ]}
       />
 
@@ -696,7 +660,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
           {
             question: "How many amps does a 7,500-watt generator produce?",
             answer:
-              "At 240 Volts (the standard transfer switch voltage), a 7,500-Watt generator produces 31.25 rated Amps (7,500 / 240 = 31.25A). Following the National Electrical Code 80% continuous duty recommendation, its safe continuous capacity is 25.0 Amps. At 120 Volts across both legs combined, it can provide up to 62.5 Amps total.",
+              "At 240 Volts (the standard transfer switch voltage), a 7,500-Watt generator produces 31.25 rated Amps (7,500 / 240 = 31.25A). Following the recommended 80% continuous duty guideline, its safe continuous operating capacity is 25.0 Amps. At 120 Volts across both legs combined, it can provide up to 62.5 Amps total.",
           },
           {
             question: "What is the difference between generator amps at 120V vs 240V?",
@@ -704,14 +668,14 @@ export const GeneratorAmperageCalculator: React.FC = () => {
               "Current and voltage are inversely proportional for a given wattage. Doubling the voltage cuts the current in half. A 6,000-Watt generator produces 50 Amps at 120 Volts, but only 25 Amps at 240 Volts. Powering a home transfer switch at 240V requires smaller wire gauge and generates far less heat than attempting to route the same power through 120V circuits.",
           },
           {
-            question: "What size breaker and wire gauge do I need for a 30-amp generator?",
+            question: "How many watts can a 30-amp generator circuit deliver?",
             answer:
-              "A 30-Amp generator hookup requires a two-pole 30-Amp circuit breaker, a NEMA L14-30 inlet box, and minimum 10 AWG copper conductors (such as 10/3 with ground Romex NM-B for indoor wiring or 10 AWG SOOW for flexible outdoor generator extension cords). For cord lengths exceeding 75 to 100 feet, consider 8 AWG copper to prevent voltage drop exceeding 3%.",
+              "At 120 Volts, a 30-Amp circuit delivers up to 3,600 Watts maximum (2,880 Watts continuous at the 80% operating limit). At 240 Volts (such as through a standard 4-prong generator connection), a 30-Amp circuit can deliver up to 7,200 Watts maximum (5,760 Watts continuous). Always verify your specific generator nameplate specifications and consult a licensed electrician for circuit wiring and breaker protection.",
           },
           {
             question: "Can I get 50 amps from a 10,000-watt generator?",
             answer:
-              "A 10,000-Watt generator produces 41.7 Amps at 240 Volts (10,000 / 240 = 41.67A). While many 10,000W portable generators include a 50-Amp NEMA 14-50R outlet for convenience, the generator cannot supply a full continuous 50 Amps at 240V (which would require 12,000 Watts). Its 80% continuous capacity is approximately 33.3 Amps at 240V.",
+              "A 10,000-Watt generator produces 41.7 Amps at 240 Volts (10,000 / 240 = 41.67A). While many 10,000W portable generators include a 50-Amp outlet for convenience, the generator cannot supply a full continuous 50 Amps at 240V (which would require 12,000 Watts). Its 80% continuous capacity is approximately 33.3 Amps at 240V.",
           },
           {
             question: "What causes a generator breaker to trip when total watts are low?",

@@ -62,7 +62,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
               )}
             </div>
             {stat.subtext && (
-              <div className="text-[11px] text-slate-500 mt-0.5">{stat.subtext}</div>
+              <div className="text-[11px] text-slate-400 mt-0.5">{stat.subtext}</div>
             )}
           </div>
         ))}

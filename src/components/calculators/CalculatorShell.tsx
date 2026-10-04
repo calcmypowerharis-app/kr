@@ -50,10 +50,10 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
           <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-semibold uppercase tracking-wider">
             {category}
           </span>
-          <span className="text-slate-400">•</span>
-          <span className="text-slate-500 font-medium">{badge}</span>
-          <span className="text-slate-400">•</span>
-          <span className="text-slate-400">Updated {lastUpdated}</span>
+          <span className="text-slate-500">•</span>
+          <span className="text-slate-600 font-medium">{badge}</span>
+          <span className="text-slate-500">•</span>
+          <span className="text-slate-600">Updated {lastUpdated}</span>
         </div>
 
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">

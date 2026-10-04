@@ -10,10 +10,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Amperage Chart & Calculator (120V & 240V Amps)",
   description:
-    "Calculate generator amperage output at 120V and 240V. Includes a complete generator amp chart from 1kW to 26kW, wire gauge recommendations, and 80% continuous load limits.",
+    "Calculate generator amperage output at 120V and 240V. Includes a complete generator amp chart from 1kW to 26kW, single and split-phase conversions, and 80% continuous operating limits.",
   path: "/generator-amperage-chart-calculator",
   ogDescription:
-    "Calculate generator output amperage, circuit breaker sizing, and wire gauge across 120V, 240V split-phase, and 3-phase systems.",
+    "Calculate generator output amperage across 120V, 240V split-phase, and 3-phase systems with continuous safe operating thresholds and full amperage chart.",
 });
 
 export default function GeneratorAmperagePage() {
@@ -37,7 +37,7 @@ export default function GeneratorAmperagePage() {
     {
       question: "How many amps does a 7,500-watt generator produce?",
       answer:
-        "At 240 Volts (the standard transfer switch voltage), a 7,500-Watt generator produces 31.25 rated Amps (7,500 / 240 = 31.25A). Following the National Electrical Code 80% continuous duty recommendation, its safe continuous capacity is 25.0 Amps. At 120 Volts across both legs combined, it can provide up to 62.5 Amps total.",
+        "At 240 Volts (the standard transfer switch voltage), a 7,500-Watt generator produces 31.25 rated Amps (7,500 / 240 = 31.25A). Following the recommended 80% continuous duty guideline, its safe continuous operating capacity is 25.0 Amps. At 120 Volts across both legs combined, it can provide up to 62.5 Amps total.",
     },
     {
       question: "What is the difference between generator amps at 120V vs 240V?",
@@ -45,14 +45,14 @@ export default function GeneratorAmperagePage() {
         "Current and voltage are inversely proportional for a given wattage. Doubling the voltage cuts the current in half. A 6,000-Watt generator produces 50 Amps at 120 Volts, but only 25 Amps at 240 Volts. Powering a home transfer switch at 240V requires smaller wire gauge and generates far less heat than attempting to route the same power through 120V circuits.",
     },
     {
-      question: "What size breaker and wire gauge do I need for a 30-amp generator?",
+      question: "How many watts can a 30-amp generator circuit deliver?",
       answer:
-        "A 30-Amp generator hookup requires a two-pole 30-Amp circuit breaker, a NEMA L14-30 inlet box, and minimum 10 AWG copper conductors (such as 10/3 with ground Romex NM-B for indoor wiring or 10 AWG SOOW for flexible outdoor generator extension cords). For cord lengths exceeding 75 to 100 feet, consider 8 AWG copper to prevent voltage drop exceeding 3%.",
+        "At 120 Volts, a 30-Amp circuit delivers up to 3,600 Watts maximum (2,880 Watts continuous at the 80% operating limit). At 240 Volts (such as through a standard 4-prong generator connection), a 30-Amp circuit can deliver up to 7,200 Watts maximum (5,760 Watts continuous). Always verify your specific generator nameplate specifications and consult a licensed electrician for circuit wiring and breaker protection.",
     },
     {
       question: "Can I get 50 amps from a 10,000-watt generator?",
       answer:
-        "A 10,000-Watt generator produces 41.7 Amps at 240 Volts (10,000 / 240 = 41.67A). While many 10,000W portable generators include a 50-Amp NEMA 14-50R outlet for convenience, the generator cannot supply a full continuous 50 Amps at 240V (which would require 12,000 Watts). Its 80% continuous capacity is approximately 33.3 Amps at 240V.",
+        "A 10,000-Watt generator produces 41.7 Amps at 240 Volts (10,000 / 240 = 41.67A). While many 10,000W portable generators include a 50-Amp outlet for convenience, the generator cannot supply a full continuous 50 Amps at 240V (which would require 12,000 Watts). Its 80% continuous capacity is approximately 33.3 Amps at 240V.",
     },
     {
       question: "What causes a generator breaker to trip when total watts are low?",

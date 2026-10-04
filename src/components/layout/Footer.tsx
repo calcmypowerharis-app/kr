@@ -22,9 +22,9 @@ export const Footer: React.FC = () => {
 
           {/* Core Calculators */}
           <div>
-            <h4 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
+            <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
               Calculators
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
@@ -140,9 +140,9 @@ export const Footer: React.FC = () => {
 
           {/* Sizing Guides */}
           <div>
-            <h4 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
+            <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
               Sizing Guides
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
@@ -229,10 +229,10 @@ export const Footer: React.FC = () => {
 
           {/* Legal & Standards */}
           <div>
-            <h4 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
+            <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
               Standards &amp; Code
-            </h4>
-            <ul className="space-y-2 text-xs text-slate-500">
+            </h3>
+            <ul className="space-y-2 text-xs text-slate-400">
               <li>National Electrical Code (NEC)</li>
               <li>IEEE Battery Standard 485</li>
               <li>UL 1741 Inverter Standard</li>
@@ -242,16 +242,16 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Affiliate Disclosure & Safety Note */}
-        <div className="pt-8 border-t border-slate-800 text-xs space-y-3 text-slate-500">
+        <div className="pt-8 border-t border-slate-800 text-xs space-y-3 text-slate-400">
           <p>
-            <span className="font-semibold text-slate-400">Amazon Associates Disclosure: </span>
+            <span className="font-semibold text-slate-300">Amazon Associates Disclosure: </span>
             CalcMyPower.com is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com.
           </p>
           <p>
-            <span className="font-semibold text-slate-400">Disclaimer: </span>
+            <span className="font-semibold text-slate-300">Disclaimer: </span>
             Calculations provided on this website are for preliminary estimation and educational purposes only. Always verify critical power designs with a licensed electrician or professional electrical engineer in accordance with local building codes.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-between pt-4 text-slate-500 text-[11px] border-t border-slate-850">
+          <div className="flex flex-col sm:flex-row items-center justify-between pt-4 text-slate-400 text-[11px] border-t border-slate-850">
             <span>© {new Date().getFullYear()} CalcMyPower. All rights reserved.</span>
             <div className="flex gap-4 mt-2 sm:mt-0">
               <span>US-Focused Energy Tools</span>

@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
             <span className="text-lg font-black tracking-tight text-slate-900 group-hover:text-blue-600 transition whitespace-nowrap">
               CalcMyPower
             </span>
-            <span className="hidden sm:inline-block text-[11px] font-semibold text-slate-400 uppercase tracking-wider whitespace-nowrap">
+            <span className="hidden sm:inline-block text-[11px] font-semibold text-slate-600 uppercase tracking-wider whitespace-nowrap">
               Power Calculators
             </span>
           </div>
