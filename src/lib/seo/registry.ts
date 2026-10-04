@@ -469,11 +469,11 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Generator Wattage Chart",
     metaTitle: "Generator Wattage Chart (Running & Starting Watts by Appliance)",
     metaDescription:
-      "Complete generator wattage chart with running and starting surge watts for 35+ household appliances, tools, and HVAC equipment. Calculate simultaneous outage loads.",
+      "Comprehensive generator wattage chart with typical running and starting surge watts for 35+ appliances, workshop tools, and HVAC equipment. Reference and compare power demands.",
     cluster: "generators",
     secondaryClusters: ["electricity", "home-energy"],
     primaryKeyword: "wattage generator chart",
-    formula: "P_peak = Σ(P_running) + max(ΔP_surge) | P_rec = P_peak × 1.25",
+    formula: "P_running (continuous) | P_starting = P_running + ΔP_surge (inrush)",
     lastModified: "2026-10-04",
     relatedCalculatorPaths: [
       "/generator-size-calculator",

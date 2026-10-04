@@ -137,15 +137,13 @@ describe("Generator Wattage Chart Logic & Dataset", () => {
     });
   });
 
-  describe("3. Simultaneous Demand & Surge Calculation (Single-Largest-Surge Rule)", () => {
+  describe("3. Lightweight Appliance Reference Comparison", () => {
     it("returns zero metrics for empty selection", () => {
       const summary = calculateSelectedWattageSummary([]);
       expect(summary.selectedCount).toBe(0);
       expect(summary.totalRunningWatts).toBe(0);
       expect(summary.largestSurgeDelta).toBe(0);
       expect(summary.largestSurgeAppliance).toBe("None");
-      expect(summary.peakDemandWatts).toBe(0);
-      expect(summary.recommendedGeneratorWatts).toBe(0);
     });
 
     it("calculates single appliance accurately", () => {
@@ -156,12 +154,9 @@ describe("Generator Wattage Chart Logic & Dataset", () => {
       expect(summary.totalRunningWatts).toBe(700);
       expect(summary.largestSurgeDelta).toBe(800);
       expect(summary.largestSurgeAppliance).toBe(fridge.name);
-      expect(summary.peakDemandWatts).toBe(1500); // 700 + 800
-      // 1500 * 1.25 = 1875 -> rounded up to next 100W is 1900W
-      expect(summary.recommendedGeneratorWatts).toBe(1900);
     });
 
-    it("applies the Single-Largest-Surge Delta rule across multiple concurrent appliances", () => {
+    it("evaluates combined running wattage and largest surge delta across multiple appliances", () => {
       const fridge = APPLIANCE_WATTAGE_DATA.find((i) => i.id === "refrigerator-standard")!; // 700W run, 1500W start (delta 800)
       const windowAC = APPLIANCE_WATTAGE_DATA.find((i) => i.id === "window-ac-12k")!; // 1200W run, 2800W start (delta 1600)
       const tv = APPLIANCE_WATTAGE_DATA.find((i) => i.id === "smart-tv-65")!; // 120W run, 120W start (delta 0)
@@ -174,10 +169,6 @@ describe("Generator Wattage Chart Logic & Dataset", () => {
       // Largest surge delta is Window AC: 1600 W
       expect(summary.largestSurgeDelta).toBe(1600);
       expect(summary.largestSurgeAppliance).toBe(windowAC.name);
-      // Peak Starting Demand: 2020 + 1600 = 3620 W
-      expect(summary.peakDemandWatts).toBe(3620);
-      // Planning capacity (1.25x reserve): 3620 * 1.25 = 4525 W -> rounded up to 4600 W
-      expect(summary.recommendedGeneratorWatts).toBe(4600);
     });
 
     it("handles workshop load benchmark (Table Saw + Shop Vac + Battery Charger)", () => {
@@ -191,9 +182,6 @@ describe("Generator Wattage Chart Logic & Dataset", () => {
       expect(summary.totalRunningWatts).toBe(3250); // 1800 + 1200 + 250
       expect(summary.largestSurgeDelta).toBe(2000);
       expect(summary.largestSurgeAppliance).toBe(tableSaw.name);
-      expect(summary.peakDemandWatts).toBe(5250); // 3250 + 2000
-      // 5250 * 1.25 = 6562.5 -> ceil(65.625) * 100 = 6600 W
-      expect(summary.recommendedGeneratorWatts).toBe(6600);
     });
   });
 });

@@ -10,17 +10,17 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Wattage Chart (Running & Starting Watts by Appliance)",
   description:
-    "Complete generator wattage chart with running and starting surge watts for 35+ household appliances, tools, and HVAC equipment. Calculate simultaneous outage loads.",
+    "Comprehensive generator wattage chart with typical running and starting surge watts for 35+ appliances, workshop tools, and HVAC equipment. Reference and compare power demands.",
   path: "/generator-wattage-chart",
   ogDescription:
-    "Look up running and starting surge watts for 35+ home appliances and tools. Estimate simultaneous outage loads using the single-largest-surge formula.",
+    "Look up typical running and starting surge watts for 35+ home appliances and tools. Compare baseline continuous power and motor inrush requirements.",
 });
 
 export default function GeneratorWattageChartPage() {
   const webAppSchema = generateWebApplicationSchema({
-    name: "Generator Wattage Chart & Calculator",
+    name: "Generator Wattage Chart & Reference Tool",
     description:
-      "Interactive appliance generator wattage chart and outage load estimator. Reference running watts, motor startup surges, and calculate generator sizing requirements.",
+      "Interactive appliance generator wattage chart and power reference tool. Compare running watts, motor startup surges, and typical voltages across 35+ household appliances.",
     url: "https://calcmypower.com/generator-wattage-chart",
   });
 

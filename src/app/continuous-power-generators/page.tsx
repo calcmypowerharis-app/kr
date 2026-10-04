@@ -79,27 +79,27 @@ const FAQ_DATA = [
   {
     question: "Can a portable generator run 24 hours a day continuously?",
     answer:
-      "No. Standard portable generators are built with high-revving 3600 RPM air-cooled engines and splash-lubricated oil systems designed for intermittent emergency use (typically 8 to 12 hours at a time). Running them non-stop causes severe thermal stress, rapid oil breakdown, and premature engine seizure. They must be shut down periodically to cool and check engine oil.",
+      "No. Standard portable generators are built with high-revving 3600 RPM air-cooled engines and splash-lubricated oil systems designed for intermittent emergency use (typically 8 to 12 hours at a time). Running them non-stop causes severe thermal stress, rapid oil breakdown, and premature engine wear. They must be shut down periodically to cool and check engine oil.",
   },
   {
     question: "How long can a whole-house standby generator run continuously?",
     answer:
-      "Most residential standby generators are classified under ISO 8528 as Emergency Standby Power (ESP). While they can run for several days during a grid outage, manufacturers mandate shutting them down every 100 to 200 operating hours to change engine oil, inspect filters, and check valve lash. They are not rated to run non-stop for weeks or months as permanent continuous power supplies.",
+      "Most residential standby generators are classified under ISO 8528 as Emergency Standby Power (ESP). While they can run for several days during a grid outage, manufacturers mandate shutting them down periodically (typically every 100 to 200 operating hours) to check engine oil, replace filters, and inspect valve clearances. They are engineered for emergency utility interruption duty rather than non-stop continuous power supplies.",
   },
   {
     question: "What is the primary difference between continuous power (COP) and prime power (PRP)?",
     answer:
-      "Continuous Operating Power (COP) is designed for a constant, non-varying 100% load for an unlimited number of hours per year without overload capability. Prime Running Power (PRP) is designed for variable loads with an average load factor of approximately 70% over 24 hours, but includes a 10% overload reserve capability for 1 hour out of every 12 operating hours.",
+      "Continuous Operating Power (COP) is designed for a constant, non-varying 100% electrical load for unlimited hours per year with no sustained overload allowance under ISO 8528-1. Prime Running Power (PRP) is designed for variable loads with an average 24-hour load factor generally limited to 70% of PRP (unless specified otherwise by the manufacturer), and typically includes a 10% overload reserve capability for 1 hour out of every 12 operating hours where permitted by the engine manufacturer.",
   },
   {
     question: "What causes wet stacking in a diesel generator?",
     answer:
-      "Wet stacking happens when a diesel engine operates continuously under light electrical loads (below 30% to 50% of its rated capacity). The combustion chamber fails to reach proper operating temperatures, causing unburned fuel and lubricating oil to form thick, black unburned deposits in the exhaust manifold and turbocharger. Regular load banking or loading above 60% is required to clear it.",
+      "Wet stacking occurs when a diesel engine operates continuously under light electrical loads (typically below 30% to 40% of rated capacity). Incomplete combustion prevents exhaust temperatures from reaching the levels needed to vaporize unburned fuel, leading to soot and oil accumulation in exhaust manifolds and turbochargers. Regular operation under proper load (at least 60% capacity) or load banking helps prevent and clear these deposits.",
   },
   {
     question: "Why do continuous generators run at 1800 RPM instead of 3600 RPM?",
     answer:
-      "A 4-pole alternator generates standard 60 Hz North American AC power at 1800 RPM, whereas a 2-pole alternator requires 3600 RPM. Running at half the rotational speed cuts piston friction, bearing wear, and mechanical vibration dramatically. While 3600 RPM portable engines often wear out after 1,000 to 2,000 hours, 1800 RPM industrial engines routinely operate for 20,000 to 40,000 hours before overhaul.",
+      "To produce 60 Hz AC power, a 4-pole alternator operates at 1800 RPM, whereas a 2-pole alternator must spin at 3600 RPM. Running at half the rotational speed significantly lowers piston velocities, bearing wear, and mechanical vibration. While light 3600 RPM utility engines typically have service lifespans of 1,000 to 3,000 hours, heavy-duty 1800 RPM industrial diesels routinely achieve 10,000 to 30,000+ operating hours before major overhaul when properly maintained.",
   },
 ];
 
@@ -242,68 +242,73 @@ export default function ContinuousPowerGeneratorsPage() {
                 ISO 8528 Generator Rating Classifications (COP, PRP, ESP, LTP)
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                In electrical and mechanical power engineering, generator ratings are governed by <strong>ISO 8528-1</strong> (Reciprocating Internal Combustion Engine Driven Alternating Current Generating Sets). Choosing the wrong rating can lead to catastrophic mechanical failure or voided equipment warranties:
+                In electrical and mechanical power engineering, stationary generator sets are classified under <strong>ISO 8528-1:2018</strong> (Reciprocating Internal Combustion Engine Driven Alternating Current Generating Sets). Understanding these rating classes is critical to prevent premature engine failure, dangerous thermal overload, or voided commercial warranties:
               </p>
 
               {/* Comparison Table */}
               <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-xs">
                 <table className="w-full text-left text-xs sm:text-sm border-collapse">
                   <caption className="sr-only">
-                    ISO 8528 Generator Rating Standards Comparison
+                    ISO 8528-1 Generator Rating Standards Comparison
                   </caption>
                   <thead className="bg-slate-100 text-slate-800 font-bold border-b border-slate-200">
                     <tr>
                       <th scope="col" className="py-3 px-3.5">ISO Rating Class</th>
-                      <th scope="col" className="py-3 px-3">Annual Hours</th>
+                      <th scope="col" className="py-3 px-3">Annual Operating Hours</th>
                       <th scope="col" className="py-3 px-3">Average Load Factor</th>
                       <th scope="col" className="py-3 px-3">Overload Capability</th>
-                      <th scope="col" className="py-3 px-3.5">Typical Application</th>
+                      <th scope="col" className="py-3 px-3.5">Typical Applications</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 bg-white">
                     <tr>
                       <th scope="row" className="py-3 px-3.5 font-bold text-slate-900">
-                        COP (Continuous Power)
+                        COP (Continuous Operating Power)
                       </th>
-                      <td className="py-3 px-3 font-mono text-emerald-700 font-semibold">Unlimited (8,760 hrs)</td>
+                      <td className="py-3 px-3 font-mono text-emerald-700 font-semibold">Unlimited (8,760 hrs/yr)</td>
                       <td className="py-3 px-3 font-mono">100% constant</td>
-                      <td className="py-3 px-3 text-slate-500">None (0%)</td>
-                      <td className="py-3 px-3.5 text-slate-600">Base load grid, isolated microgrids, mining</td>
+                      <td className="py-3 px-3 text-slate-500">None (0%) under ISO 8528</td>
+                      <td className="py-3 px-3.5 text-slate-600">Base load grid supply, isolated microgrids, mining operations</td>
                     </tr>
                     <tr>
                       <th scope="row" className="py-3 px-3.5 font-bold text-slate-900">
-                        PRP (Prime Power)
+                        PRP (Prime Running Power)
                       </th>
-                      <td className="py-3 px-3 font-mono text-blue-700 font-semibold">Unlimited (8,760 hrs)</td>
-                      <td className="py-3 px-3 font-mono">Variable (~70% max)</td>
-                      <td className="py-3 px-3 text-emerald-700 font-semibold">+10% (1 hr / 12 hrs)</td>
-                      <td className="py-3 px-3.5 text-slate-600">Construction sites, rental fleets, variable off-grid</td>
+                      <td className="py-3 px-3 font-mono text-blue-700 font-semibold">Unlimited (8,760 hrs/yr)</td>
+                      <td className="py-3 px-3 font-mono">Variable (typically ≤ 70% over 24h)</td>
+                      <td className="py-3 px-3 text-emerald-700 font-semibold">+10% (1 hr / 12 hrs, max 25h/yr)</td>
+                      <td className="py-3 px-3.5 text-slate-600">Remote construction job sites, rental fleets, industrial variable power</td>
                     </tr>
                     <tr>
                       <th scope="row" className="py-3 px-3.5 font-bold text-slate-900">
-                        ESP (Emergency Standby)
+                        ESP (Emergency Standby Power)
                       </th>
-                      <td className="py-3 px-3 font-mono text-amber-700 font-semibold">100 to 200 hrs/year</td>
-                      <td className="py-3 px-3 font-mono">Variable (~70% max)</td>
+                      <td className="py-3 px-3 font-mono text-amber-700 font-semibold">Duration of utility outage (ISO baseline ≤ 200h)</td>
+                      <td className="py-3 px-3 font-mono">Variable (typically ≤ 70% over 24h)</td>
                       <td className="py-3 px-3 text-slate-500">None (0%)</td>
-                      <td className="py-3 px-3.5 text-slate-600">Residential homes, hospitals, commercial backup</td>
+                      <td className="py-3 px-3.5 text-slate-600">Residential homes, commercial facilities, hospitals during power outages</td>
                     </tr>
                     <tr>
                       <th scope="row" className="py-3 px-3.5 font-bold text-slate-900">
-                        LTP (Limited-Time Prime)
+                        LTP (Limited-Time Running Power)
                       </th>
                       <td className="py-3 px-3 font-mono text-slate-700 font-semibold">Up to 500 hrs/year</td>
-                      <td className="py-3 px-3 font-mono">100% constant</td>
+                      <td className="py-3 px-3 font-mono">100% constant non-varying</td>
                       <td className="py-3 px-3 text-slate-500">None (0%)</td>
-                      <td className="py-3 px-3.5 text-slate-600">Utility peak shaving, planned curtailment</td>
+                      <td className="py-3 px-3.5 text-slate-600">Utility peak shaving, interruptible power rate contracts</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
 
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                Notice the fundamental distinction between <strong>COP</strong> and <strong>ESP</strong>: a continuous rating allows 100% constant power indefinitely, but requires heavy derating from the engine peak capacity. A generator set rated for 1,000 kW in ESP mode will typically be rated for only 700 kW to 750 kW in continuous COP mode.
-              </p>
+              <div className="space-y-3 pt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <p>
+                  <strong>Standard Baselines vs. Manufacturer Ratings:</strong> While ISO 8528-1 defines the international standard framework, leading power system manufacturers (such as Cummins, Caterpillar, and Kohler) offer specialized commercial ratings. For example, data centers frequently specify proprietary ratings such as Data Center Continuous (DCC) or Mission Critical Standby, which permit sustained operation at up to 100% of rated capacity during utility outages without the 70% average 24-hour derating imposed by standard ESP. Always review manufacturer spec sheets and project engineering requirements for exact site allowances.
+                </p>
+                <p>
+                  <strong>The Sizing Derate Curve:</strong> On identical engine displacements, generator sets carry progressively lower kilowatt ratings as duty severity escalates. A heavy industrial diesel platform rated for 1,000 kW in Emergency Standby (ESP) mode is typically derated to approximately 900 kW for Prime Running (PRP) duty and 700 kW to 750 kW for true Continuous (COP) operation to ensure long-term thermal equilibrium and mechanical durability.
+                </p>
+              </div>
             </section>
 
             {/* Section 3: Mechanical Architecture */}
@@ -327,7 +332,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <ul className="text-xs text-slate-600 space-y-1.5 list-disc pl-4">
                     <li>Piston velocity is reduced by 50%, minimizing cylinder wall scuffing.</li>
                     <li>Operates well below engine torque redline for minimal vibration.</li>
-                    <li>Designed for <strong>20,000 to 40,000 operating hours</strong> before major engine overhaul.</li>
+                    <li>Designed for <strong>10,000 to 30,000+ operating hours</strong> before major overhaul when maintained to manufacturer specifications.</li>
                   </ul>
                 </div>
 
@@ -342,7 +347,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <ul className="text-xs text-amber-800 space-y-1.5 list-disc pl-4">
                     <li>Pistons cycle twice as fast per kilowatt of electrical output.</li>
                     <li>High thermal friction, loud acoustic decibel levels, and rapid oil degradation.</li>
-                    <li>Typical expected lifespan is only <strong>1,000 to 2,500 operating hours</strong>.</li>
+                    <li>Typical expected design lifespan is approximately <strong>1,000 to 3,000 operating hours</strong> under intermittent emergency duty.</li>
                   </ul>
                 </div>
               </div>
@@ -364,7 +369,7 @@ export default function ContinuousPowerGeneratorsPage() {
                     <span>Heavy Pressurized Lubrication &amp; Oil Sump Capacity</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    A small portable generator holds barely 1 quart (0.95 L) of motor oil, which breaks down rapidly under heat and shear within 50 to 100 operating hours. Continuous power diesel generators feature large cast-iron oil pans holding 5 to 30 gallons of heavy-duty engine oil, multi-stage spin-on oil filters, and automatic oil makeup reservoirs. These systems replenish burnt oil automatically from an external drum, allowing continuous run intervals of 500 hours or more between scheduled maintenance shutdowns.
+                    A small portable generator typically holds around 1 quart (0.95 L) of motor oil, which requires frequent inspection during prolonged emergency runs. Industrial continuous diesel generators incorporate deep-sump oil pans sized for multiple gallons of heavy-duty lubricant, multi-stage filtration, and optional automated oil replenishment reservoirs. Depending on engine displacement and manufacturer guidelines, these systems support scheduled maintenance intervals of 250 to 500 operating hours between oil services.
                   </p>
                 </div>
 
@@ -374,7 +379,7 @@ export default function ContinuousPowerGeneratorsPage() {
                     <span>Liquid Cooling and Thermal Equilibrium</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Air-cooled engines rely on cooling fins blown by engine flywheel fans. In hot summer weather or under high continuous electrical draw, air cooling cannot maintain uniform cylinder temperature, leading to thermal warping and valve guide degradation. Continuous generators utilize heavy industrial liquid cooling loops with ethylene glycol radiators, jacket water heaters, and thermostatically regulated fans that maintain block temperature between 180F and 195F regardless of outside ambient extremes.
+                    Air-cooled engines rely on cooling fins blown by engine flywheel fans. In hot summer weather or under high continuous electrical draw, air cooling cannot maintain uniform cylinder temperature, leading to thermal stress and valve guide degradation. Continuous generators utilize heavy industrial liquid cooling loops with ethylene glycol radiators, jacket water heaters, and thermostatically regulated fans that maintain stable engine operating temperatures (typically within standard manufacturer operating ranges around 170°F to 200°F) to prevent thermal cycling and premature mechanical fatigue.
                   </p>
                 </div>
               </div>
@@ -395,7 +400,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <h3>How Wet Stacking Occurs:</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
-                  Diesel engines rely on high cylinder compression heat to ignite atomized fuel completely. When an engine runs below 30% to 50% of its rated electrical capacity, combustion chamber temperatures drop below the flashpoint needed for full diesel combustion.
+                  Under standards such as NFPA 110 and engine manufacturer technical manuals (including Cummins and Caterpillar), diesel engines operating below 30% to 40% of rated capacity fail to reach optimum cylinder exhaust temperatures, preventing complete diesel fuel atomization and combustion.
                 </p>
                 <ul className="text-xs text-amber-800 space-y-1.5 list-disc pl-4">
                   <li>Unburned diesel fuel washes cylinder wall lubrication away, causing piston ring blow-by.</li>
@@ -404,7 +409,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <li>Over time, the engine loses horsepower, emits heavy black exhaust smoke, and risks an internal exhaust fire.</li>
                 </ul>
                 <p className="text-xs text-amber-900 font-semibold pt-1">
-                  Rule of Thumb: Continuous diesel generators must operate at a minimum of 60% to 80% continuous electrical load. Facilities with fluctuating light loads must install load banks or hybrid battery storage to maintain proper engine thermal loading.
+                  Engineering Best Practice: While continuous diesel generators can support variable demand, long-term operation is optimized above 60% rated capacity. Facilities with periods of light electrical load utilize supplemental resistive load banks or hybrid battery energy storage systems (BESS) to ensure engine thermal loading remains above wet-stacking thresholds.
                 </p>
               </div>
             </section>
@@ -454,8 +459,8 @@ export default function ContinuousPowerGeneratorsPage() {
                     <Fuel className="w-4 h-4 text-blue-600" />
                     <h3>Utility Natural Gas</h3>
                   </div>
-                  <p className="text-slate-600 text-xs">
-                    Provides theoretically infinite runtime without on-site storage. However, natural gas pressure can plummet during extreme freezing events or get shut off following seismic activity.
+                  <p className="text-slate-600 text-xs leading-relaxed">
+                    Provides continuous pipeline fuel delivery without requiring on-site storage tanks. However, utility pipeline supply can experience pressure drops during severe regional winter freezes or automated utility shutoffs following seismic events.
                   </p>
                 </div>
 
@@ -464,8 +469,8 @@ export default function ContinuousPowerGeneratorsPage() {
                     <Fuel className="w-4 h-4 text-amber-600" />
                     <h3>On-Site Diesel Fuel</h3>
                   </div>
-                  <p className="text-slate-600 text-xs">
-                    The standard for industrial continuous reliability. Requires on-site storage tanks (sub-base belly tanks), fuel polishing filtration, and biocide stabilizers to prevent microbial algae growth over 12 to 24 months.
+                  <p className="text-slate-600 text-xs leading-relaxed">
+                    The standard for autonomous off-grid and industrial continuous reliability. Requires on-site sub-base fuel tanks, routine filtration (fuel polishing), and fuel stabilizers where diesel is stored for prolonged periods (12 to 24 months) to prevent microbial contamination and particulate sediment.
                   </p>
                 </div>
 
@@ -474,8 +479,8 @@ export default function ContinuousPowerGeneratorsPage() {
                     <Fuel className="w-4 h-4 text-emerald-600" />
                     <h3>Liquid Propane (LP)</h3>
                   </div>
-                  <p className="text-slate-600 text-xs">
-                    Does not degrade over decades in pressurized tanks. However, heavy vapor draw in sub-zero winter temperatures causes tank freeze-up, requiring liquid-withdrawal vaporizers on large engines.
+                  <p className="text-slate-600 text-xs leading-relaxed">
+                    Propane does not degrade over time in pressurized storage vessels. However, high vapor withdrawal rates in severe sub-zero winter temperatures can lower container vaporization capacity, requiring properly sized storage tanks or liquid-withdrawal external vaporizers on large engines.
                   </p>
                 </div>
               </div>

@@ -3,7 +3,9 @@
  * Pure TypeScript: Decoupled from React and DOM
  * CalcMyPower.com
  *
- * Grounded in DOE, NREL, UL 2201, and standard electrical nameplate data.
+ * Appliance wattages are reference values compiled from manufacturer specifications,
+ * equipment nameplates, and authoritative technical references; actual running and
+ * starting demand varies by model, operating conditions, and load.
  */
 
 export type ApplianceCategory =
@@ -568,30 +570,28 @@ export function filterWattageChartData(
   });
 }
 
-export interface SelectedWattageSummary {
+export interface ApplianceComparisonSummary {
   selectedCount: number;
   totalRunningWatts: number;
   largestSurgeDelta: number;
   largestSurgeAppliance: string;
-  peakDemandWatts: number;
-  recommendedGeneratorWatts: number;
 }
 
 /**
- * Calculates simultaneous demand summary for user-selected appliances
- * using the standard Single-Largest-Surge Delta rule.
+ * Calculates a lightweight reference comparison for user-selected appliances.
+ * Summarizes combined continuous running wattage and the single largest surge delta.
+ * NOTE: For full whole-house generator sizing with duty cycles and continuous safety reserves,
+ * hand off to the Generator Size Calculator (/generator-size-calculator).
  */
 export function calculateSelectedWattageSummary(
   selectedItems: WattageChartItem[]
-): SelectedWattageSummary {
+): ApplianceComparisonSummary {
   if (selectedItems.length === 0) {
     return {
       selectedCount: 0,
       totalRunningWatts: 0,
       largestSurgeDelta: 0,
       largestSurgeAppliance: "None",
-      peakDemandWatts: 0,
-      recommendedGeneratorWatts: 0,
     };
   }
 
@@ -607,16 +607,10 @@ export function calculateSelectedWattageSummary(
     }
   }
 
-  const peakDemandWatts = totalRunningWatts + largestSurgeDelta;
-  // Apply 25% continuous planning headroom and round up to next 100W
-  const recommendedGeneratorWatts = Math.ceil((peakDemandWatts * 1.25) / 100) * 100;
-
   return {
     selectedCount: selectedItems.length,
     totalRunningWatts,
     largestSurgeDelta,
     largestSurgeAppliance,
-    peakDemandWatts,
-    recommendedGeneratorWatts,
   };
 }

@@ -98,7 +98,7 @@ export const GeneratorWattageChart: React.FC = () => {
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-3xl font-normal">
-            Reference starting surge and steady running watts for over 35 household appliances, heavy workshop tools, and HVAC equipment. Select items below to calculate simultaneous running wattage, single largest startup inrush, and recommended generator capacity with continuous safety reserve.
+            Reference starting surge and steady running watts for over 35 household appliances, heavy workshop tools, and HVAC equipment. Filter and compare power demands to understand baseline running needs and motor starting spikes before sizing your generator.
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-2 text-xs text-slate-300">
@@ -108,11 +108,11 @@ export const GeneratorWattageChart: React.FC = () => {
             </span>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span>Single-Largest-Surge Formula</span>
+              <span>Running &amp; Starting Surge Data</span>
             </span>
             <span className="flex items-center gap-1.5">
               <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span>NEC 125% Headroom Guidance</span>
+              <span>Direct Generator Sizing Handoff</span>
             </span>
           </div>
         </div>
@@ -142,12 +142,12 @@ export const GeneratorWattageChart: React.FC = () => {
         </div>
       </div>
 
-      {/* Interactive Estimator Drawer / Summary Banner */}
+      {/* Appliance Reference Comparison Drawer / Summary Banner */}
       <div
         id="quick-estimator-summary"
         className={`rounded-2xl border transition-all duration-300 p-5 sm:p-6 shadow-md ${
           summary.selectedCount > 0
-            ? "bg-blue-900 border-blue-700 text-white"
+            ? "bg-slate-900 border-slate-800 text-white"
             : "bg-slate-50 border-slate-200 text-slate-700"
         }`}
       >
@@ -156,13 +156,13 @@ export const GeneratorWattageChart: React.FC = () => {
             <div className="flex items-center gap-2">
               <SlidersHorizontal className="w-5 h-5 text-blue-400" />
               <h2 className="text-lg sm:text-xl font-bold tracking-tight">
-                Simultaneous Load Estimator ({summary.selectedCount} {summary.selectedCount === 1 ? "Appliance" : "Appliances"} Selected)
+                Appliance Wattage Comparison ({summary.selectedCount} {summary.selectedCount === 1 ? "Appliance" : "Appliances"} Selected)
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-300">
               {summary.selectedCount > 0
-                ? "Calculated using the Single-Largest-Surge Delta rule plus a 25% continuous planning buffer."
-                : "Select checkboxes in the chart below to tally your concurrent outage power demands."}
+                ? "Compare baseline running draw and identify the highest motor starting surge among your selected appliances."
+                : "Select checkboxes in the chart below to compare running power and surge demands side-by-side."}
             </p>
           </div>
 
@@ -170,81 +170,77 @@ export const GeneratorWattageChart: React.FC = () => {
             <button
               type="button"
               onClick={clearSelection}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-800/80 hover:bg-blue-800 text-blue-200 hover:text-white border border-blue-700 transition self-start lg:self-auto"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 transition self-start lg:self-auto cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
-              <span>Clear Selection</span>
+              <span>Clear Comparison</span>
             </button>
           )}
         </div>
 
         {summary.selectedCount > 0 ? (
-          <div className="mt-6 pt-6 border-t border-blue-800/80 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-            <div className="bg-blue-950/60 p-4 rounded-xl border border-blue-800">
-              <span className="block text-xs font-medium text-blue-300 uppercase tracking-wider">
-                Total Running Watts
+          <div className="mt-6 pt-6 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+            <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800">
+              <span className="block text-xs font-medium text-slate-400 uppercase tracking-wider">
+                Combined Running Draw
               </span>
               <span className="text-2xl sm:text-3xl font-black font-mono text-white mt-1 block">
                 {summary.totalRunningWatts.toLocaleString("en-US")} W
               </span>
-              <span className="text-[11px] text-blue-300/80 mt-1 block">
-                Continuous base load
+              <span className="text-[11px] text-slate-400 mt-1 block">
+                Continuous running demand reference
               </span>
             </div>
 
-            <div className="bg-blue-950/60 p-4 rounded-xl border border-blue-800">
-              <span className="block text-xs font-medium text-blue-300 uppercase tracking-wider">
-                Largest Surge Delta
+            <div className="bg-slate-950/80 p-4 rounded-xl border border-slate-800">
+              <span className="block text-xs font-medium text-amber-400 uppercase tracking-wider">
+                Highest Motor Surge Delta
               </span>
               <span className="text-2xl sm:text-3xl font-black font-mono text-amber-300 mt-1 block">
                 +{summary.largestSurgeDelta.toLocaleString("en-US")} W
               </span>
-              <span className="text-[11px] text-blue-300/80 mt-1 block truncate" title={summary.largestSurgeAppliance}>
+              <span className="text-[11px] text-slate-400 mt-1 block truncate" title={summary.largestSurgeAppliance}>
                 From: {summary.largestSurgeAppliance}
               </span>
             </div>
 
-            <div className="bg-blue-950/60 p-4 rounded-xl border border-blue-800">
-              <span className="block text-xs font-medium text-blue-300 uppercase tracking-wider">
-                Peak Demand Watts
-              </span>
-              <span className="text-2xl sm:text-3xl font-black font-mono text-emerald-300 mt-1 block">
-                {summary.peakDemandWatts.toLocaleString("en-US")} W
-              </span>
-              <span className="text-[11px] text-blue-300/80 mt-1 block">
-                Running + Max single surge
-              </span>
-            </div>
-
-            <div className="bg-blue-950/60 p-4 rounded-xl border border-blue-800 ring-2 ring-emerald-400/30">
-              <span className="block text-xs font-medium text-emerald-300 uppercase tracking-wider">
-                Recommended Generator
-              </span>
-              <span className="text-2xl sm:text-3xl font-black font-mono text-white mt-1 block">
-                {summary.recommendedGeneratorWatts.toLocaleString("en-US")} W
-              </span>
-              <span className="text-[11px] text-emerald-300 mt-1 block font-medium">
-                Includes 25% safety reserve
-              </span>
+            <div className="bg-blue-950/40 p-4 rounded-xl border border-blue-900/60 flex flex-col justify-between">
+              <div>
+                <span className="block text-xs font-medium text-blue-300 uppercase tracking-wider">
+                  Full Sizing &amp; Duty Cycles
+                </span>
+                <p className="text-xs text-slate-300 mt-1">
+                  Need to model simultaneous cycles, continuous reserves, or whole-house transfer switches?
+                </p>
+              </div>
+              <div className="pt-3">
+                <Link
+                  href="/generator-size-calculator"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 hover:text-emerald-300 transition"
+                >
+                  <span>Open Generator Size Calculator</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
           </div>
         ) : (
           <div className="mt-4 p-4 rounded-xl bg-white border border-slate-200 text-xs text-slate-600 flex items-center gap-3">
             <Info className="w-5 h-5 text-blue-600 shrink-0" />
-            <span>Check the box next to any appliance in the table to activate the real-time simultaneous load tally.</span>
+            <span>Select the checkbox next to any appliance in the table to compare continuous running watts and startup surges.</span>
           </div>
         )}
 
         {summary.selectedCount > 0 && (
-          <div className="mt-6 pt-4 border-t border-blue-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-blue-200 text-center sm:text-left">
-              Need to customize quantities, duty cycles, or room-by-room circuits? Use our dedicated generator sizing tool.
+          <div className="mt-6 pt-4 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-slate-300 text-center sm:text-left">
+              This reference matrix compares individual appliances. To calculate total simultaneous outage capacity with room-by-room duty cycles, visit our sizing tool.
             </p>
             <Link
               href="/generator-size-calculator"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm tracking-wide transition shadow-lg shrink-0 w-full sm:w-auto"
             >
-              <span>Launch Full Generator Size Calculator</span>
+              <span>Launch Generator Size Calculator</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -705,6 +701,16 @@ export const GeneratorWattageChart: React.FC = () => {
             <p className="pt-2 text-xs text-slate-600">
               Conclusion: A 6,500W running / 8,000W starting dual-fuel portable generator handles this entire outage profile with optimal engine margin and fuel economy.
             </p>
+
+            <div className="pt-3 border-t border-slate-200">
+              <Link
+                href="/generator-size-calculator"
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 hover:text-blue-900 transition"
+              >
+                <span>Calculate your customized multi-room outage load in the Generator Size Calculator</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -716,7 +722,7 @@ export const GeneratorWattageChart: React.FC = () => {
               <h3>Engineering Methodology &amp; Electrical Safety Disclaimer</h3>
             </div>
             <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
-              All wattage values in this chart represent typical North American nameplate averages. Actual power draw varies significantly based on appliance age, efficiency rating (such as Energy Star certification), ambient temperature, and compressor head pressure.
+              Appliance wattages in this chart are reference values compiled from manufacturer specifications, equipment nameplates, and authoritative technical references; actual running and starting demand varies by model, operating conditions, and load.
             </p>
             <p className="text-xs text-amber-800 leading-relaxed">
               This chart is provided for preliminary planning and educational sizing only. Never connect a portable generator directly into home wiring without an interlock kit or automatic transfer switch installed by a licensed electrician in accordance with NFPA 70 (National Electrical Code) and local utility regulations.
