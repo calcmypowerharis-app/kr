@@ -411,6 +411,32 @@ export default function CalculatorsDirectoryPage() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
+
+            {/* Active: Generator Amperage Chart & Calculator */}
+            <Link
+              id="generator-amperage"
+              href="/generator-amperage-chart-calculator"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
+            >
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                  <Plug className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Live Tool • Generators
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+                Generator Amperage Chart &amp; Calculator
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Calculate generator output current in Amps across 120V, 240V split-phase, and 3-phase circuits. Look up standard outlet ratings, breaker sizing, and wire gauges from 1kW to 26kW.
+              </p>
+              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
+                <span>Open Calculator</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </section>
 
@@ -650,6 +676,31 @@ export default function CalculatorsDirectoryPage() {
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Electricity Usage Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+
+            <Link
+              href="/how-to-calculate-watts-for-a-generator"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Generator Sizing Guide
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-500">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>14 min read</span>
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                How to Calculate Watts for a Generator: Running &amp; Starting Watts Explained
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Master running watts, starting surge demand, motor inrush math, and 25% safety margins to calculate the exact generator capacity needed during utility outages.
+              </p>
+              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
+                <span>Read Generator Watts Guide</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>

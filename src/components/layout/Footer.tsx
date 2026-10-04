@@ -123,6 +123,14 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/generator-amperage-chart-calculator"
+                  className="hover:text-white transition"
+                >
+                  Generator Amperage Chart
+                </Link>
+              </li>
+              <li>
                 <Link href="/calculators" className="hover:text-white transition">
                   All Calculators Directory
                 </Link>
@@ -206,6 +214,14 @@ export const Footer: React.FC = () => {
                   className="hover:text-white transition"
                 >
                   How to Calculate Electricity Usage
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/how-to-calculate-watts-for-a-generator"
+                  className="hover:text-white transition"
+                >
+                  How to Calculate Watts for a Generator
                 </Link>
               </li>
             </ul>

@@ -124,10 +124,12 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     formula: "W_planning = (W_running + ΔW_max) × 1.25",
     lastModified: "2026-09-28",
     relatedCalculatorPaths: [
+      "/generator-amperage-chart-calculator",
       "/ups-battery-backup-calculator",
       "/watts-to-amps-calculator",
     ],
     relatedGuidePaths: [
+      "/how-to-calculate-watts-for-a-generator",
       "/what-size-generator-do-i-need-for-my-house",
       "/what-size-generator-to-run-a-refrigerator",
     ],
@@ -431,6 +433,33 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/how-many-solar-panels-do-i-need",
     ],
   },
+  {
+    slug: "generator-amperage-chart-calculator",
+    path: "/generator-amperage-chart-calculator",
+    title: "Generator Amperage Chart & Electrical Calculator",
+    shortTitle: "Generator Amperage Chart",
+    metaTitle: "Generator Amperage Chart & Calculator (120V & 240V Amps)",
+    metaDescription:
+      "Calculate generator amperage output at 120V and 240V. Includes a complete generator amp chart from 1kW to 26kW, wire gauge recommendations, and 80% continuous load limits.",
+    cluster: "generators",
+    secondaryClusters: ["electricity"],
+    primaryKeyword: "generator amperage chart",
+    formula: "I = P ÷ (V × PF) | 3Φ: I = P ÷ (√3 × V × PF) | Continuous: I × 0.80",
+    lastModified: "2026-10-04",
+    relatedCalculatorPaths: [
+      "/generator-size-calculator",
+      "/watts-to-amps-calculator",
+      "/amps-to-watts-calculator",
+      "/voltage-drop-calculator",
+      "/three-phase-power-calculator",
+    ],
+    relatedGuidePaths: [
+      "/how-to-calculate-watts-for-a-generator",
+      "/what-size-generator-do-i-need-for-my-house",
+      "/what-size-generator-to-run-a-refrigerator",
+      "/what-is-a-watt-hour",
+    ],
+  },
 ];
 
 export interface GuideRegistryEntry {
@@ -697,6 +726,35 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/what-is-a-watt-hour",
       "/how-many-solar-panels-do-i-need",
       "/how-much-energy-does-a-solar-panel-produce",
+    ],
+  },
+  {
+    slug: "how-to-calculate-watts-for-a-generator",
+    path: "/how-to-calculate-watts-for-a-generator",
+    title: "How to Calculate Watts for a Generator: Running & Starting Watts Explained",
+    shortTitle: "Calculate Watts for Generator",
+    metaTitle: "How to Calculate Watts for a Generator: Running & Starting Watts",
+    metaDescription:
+      "Learn how to calculate watts for a generator during power outages. Master running vs starting watts, locked rotor surge inrush, 25% safety margins, and worked examples.",
+    cluster: "generators",
+    parentCalculatorPath: "/generator-size-calculator",
+    scenarioLink: "/generator-size-calculator?scenario=winter-essentials",
+    primaryKeyword: "calculating watts for generator",
+    readingTime: "14 min read",
+    datePublished: "2026-10-04",
+    lastModified: "2026-10-04",
+    heroImage: "/images/articles/how-to-calculate-watts-for-a-generator.webp",
+    relatedCalculatorPaths: [
+      "/generator-size-calculator",
+      "/generator-amperage-chart-calculator",
+      "/watts-to-amps-calculator",
+      "/voltage-drop-calculator",
+    ],
+    relatedGuidePaths: [
+      "/what-size-generator-do-i-need-for-my-house",
+      "/what-size-generator-to-run-a-refrigerator",
+      "/how-to-calculate-electricity-usage",
+      "/what-is-a-watt-hour",
     ],
   },
 ];
