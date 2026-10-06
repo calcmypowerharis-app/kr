@@ -59,6 +59,11 @@ export default function WattsToAmpsPage() {
       answer:
         "For a balanced three-phase system using line-to-line voltage (V_LL), divide Watts by the product of the square root of 3 (1.732), the line-to-line voltage, and the power factor: I = P / (√3 × V_LL × PF).",
     },
+    {
+      question: "How do you calculate inverter DC amp draw from AC watts?",
+      answer:
+        "To calculate how many DC Amps an inverter draws from a battery bank, divide the AC load wattage by the product of battery DC voltage and inverter efficiency: I_DC = P_AC / (V_DC × Efficiency). For example, running a 1,200-Watt appliance through a 12V inverter with 90% efficiency draws approximately 111.1 Amps DC (1,200 / [12 × 0.90]). On a 24V battery bank, that same 1,200W load draws only 55.6 Amps DC, and on a 48V bank it draws 27.8 Amps DC. Always include a safety margin for inverter standby idle draw and peak compressor motor surge.",
+    },
   ]);
 
   return (

@@ -131,6 +131,74 @@ describe("Amps to Watts Calculator Logic", () => {
       expect(result.formattedVa).toBe("1,200 VA");
       expect(result.continuousLoadWattsRef).toBe(816); // 1020 × 0.80
     });
+
+    it("Case 2F: Position 9 benchmark - true power of a 120V circuit operating at 10A with unity power factor", () => {
+      const result = calculateAmpsToWatts({
+        currentAmps: 10,
+        voltage: 120,
+        currentType: "ac_single",
+        powerFactor: 1.0,
+      });
+
+      expect(result.isValid).toBe(true);
+      expect(result.powerWatts).toBe(1200); // P = 120 × 10 × 1.0 = 1,200 W
+      expect(result.powerKw).toBe(1.2);
+      expect(result.formattedWatts).toBe("1,200 W");
+      expect(result.formattedKw).toBe("1.20 kW");
+      expect(result.apparentPowerVa).toBe(1200); // S = 120 × 10 = 1,200 VA
+      expect(result.formattedVa).toBe("1,200 VA");
+      expect(result.continuousLoadWattsRef).toBe(960); // 1200 × 0.80 = 960 W
+    });
+
+    it("Case 2G: 30A at 120V AC single-phase RV branch circuit (3,600W max)", () => {
+      const result = calculateAmpsToWatts({
+        currentAmps: 30,
+        voltage: 120,
+        currentType: "ac_single",
+        powerFactor: 1.0,
+      });
+
+      expect(result.isValid).toBe(true);
+      expect(result.powerWatts).toBe(3600);
+      expect(result.powerKw).toBe(3.6);
+      expect(result.continuousLoadWattsRef).toBe(2880);
+    });
+
+    it("Case 2H: 40A at 240V AC single-phase cooking range or subpanel (9,600W max)", () => {
+      const result = calculateAmpsToWatts({
+        currentAmps: 40,
+        voltage: 240,
+        currentType: "ac_single",
+        powerFactor: 1.0,
+      });
+
+      expect(result.isValid).toBe(true);
+      expect(result.powerWatts).toBe(9600);
+      expect(result.powerKw).toBe(9.6);
+      expect(result.continuousLoadWattsRef).toBe(7680);
+    });
+
+    it("Case 2I: Fractional 3.0A and 8.5A loads at 120V AC single-phase", () => {
+      const res3A = calculateAmpsToWatts({
+        currentAmps: 3.0,
+        voltage: 120,
+        currentType: "ac_single",
+        powerFactor: 1.0,
+      });
+      expect(res3A.isValid).toBe(true);
+      expect(res3A.powerWatts).toBe(360);
+      expect(res3A.continuousLoadWattsRef).toBe(288);
+
+      const res8_5A = calculateAmpsToWatts({
+        currentAmps: 8.5,
+        voltage: 120,
+        currentType: "ac_single",
+        powerFactor: 1.0,
+      });
+      expect(res8_5A.isValid).toBe(true);
+      expect(res8_5A.powerWatts).toBe(1020);
+      expect(res8_5A.continuousLoadWattsRef).toBe(816);
+    });
   });
 
   // 3. AC Three-Phase Conversions

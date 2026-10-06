@@ -196,7 +196,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 label="Power Factor (PF)"
                 value={powerFactor}
                 onChange={setPowerFactor}
-                unit="0.1 – 1.0"
+                unit="0.1 to 1.0"
                 min={0.1}
                 max={1.0}
                 step={0.05}
@@ -209,7 +209,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
               label="Power Factor (PF)"
               value={powerFactor}
               onChange={setPowerFactor}
-              unit="0.1 – 1.0"
+              unit="0.1 to 1.0"
               min={0.1}
               max={1.0}
               step={0.05}
@@ -323,10 +323,10 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
                 <span>Diagnostic Gear Reference</span>
               </div>
-              <span className="text-[10px] text-slate-400">Amazon Associate</span>
+              <span className="text-[10px] text-slate-600 font-medium">Amazon Associate</span>
             </div>
 
-            <p className="text-xs text-slate-500 leading-normal">
+            <p className="text-xs text-slate-600 leading-normal">
               Tools for measuring live circuit current and verifying branch-circuit loads:
             </p>
 
@@ -341,11 +341,11 @@ export const WattsToAmpsCalculator: React.FC = () => {
                   <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
                     Digital AC/DC Clamp Meters
                   </div>
-                  <div className="text-[11px] text-slate-500">
+                  <div className="text-[11px] text-slate-600">
                     Non-invasive live amperage measurement without breaking circuits
                   </div>
                 </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-blue-600 shrink-0 ml-2" />
               </a>
 
               <a
@@ -358,15 +358,15 @@ export const WattsToAmpsCalculator: React.FC = () => {
                   <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
                     Digital Circuit Breaker Finders
                   </div>
-                  <div className="text-[11px] text-slate-500">
+                  <div className="text-[11px] text-slate-600">
                     Trace branch circuits directly to panel overcurrent devices
                   </div>
                 </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-blue-600 shrink-0 ml-2" />
               </a>
             </div>
 
-            <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
+            <p className="text-[10px] text-slate-600 font-medium pt-1 border-t border-slate-200/70">
               As an Amazon Associate, CalcMyPower earns from qualifying purchases.
             </p>
           </div>
@@ -407,7 +407,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
           {
             symbol: "PF",
             name: "Power Factor",
-            unit: "Decimal (0.1 – 1.0)",
+            unit: "Decimal (0.1 to 1.0)",
             description: "Ratio of real power (W) to apparent power (VA). Pure resistive devices have a PF of 1.0.",
           },
         ]}
@@ -445,6 +445,59 @@ export const WattsToAmpsCalculator: React.FC = () => {
         conclusion="The 1,500W space heater draws 12.50 Amperes of operating current. Under NEC continuous-duty rules for standard breakers, continuous operation requires a 20-Amp branch circuit."
       />
 
+      {/* Inverter DC Current Draw Section (GSC Query Support) */}
+      <section className="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-7 space-y-4">
+        <div className="flex items-center gap-2">
+          <div className="p-1.5 rounded-lg bg-blue-50 text-blue-700">
+            <Sliders className="w-4 h-4" />
+          </div>
+          <div>
+            <h3 className="text-base font-bold text-slate-900">
+              Inverter DC Current Draw: Converting AC Watts to DC Battery Amps
+            </h3>
+            <p className="text-xs text-slate-500">
+              How to size 12V, 24V, or 48V battery wiring and fuses for AC loads powered through an inverter.
+            </p>
+          </div>
+        </div>
+
+        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+          When determining how many DC Amps an inverter draws from a battery bank to operate a 120V AC appliance, standard AC formulas (I = P / V) do not account for inversion losses. Power inverters consume energy during conversion (typically operating at 85% to 92% electrical efficiency) and draw ongoing idle tare power.
+        </p>
+
+        <div className="bg-slate-900 text-white p-4 rounded-xl font-mono text-xs sm:text-sm space-y-1">
+          <div className="text-blue-300 font-bold text-xs">Inverter DC Current Formula:</div>
+          <div className="text-emerald-400 font-bold text-sm sm:text-base">
+            I_DC ≈ P_AC ÷ ( V_DC × Inverter Efficiency )
+          </div>
+          <div className="text-slate-300 text-xs pt-1">
+            Example: A 1,200W AC microwave powered by a 12V battery bank with a 90% efficient inverter:
+          </div>
+          <div className="text-white font-semibold text-xs">
+            I_DC = 1,200 W ÷ ( 12 V × 0.90 ) = 1,200 ÷ 10.8 = 111.1 Amperes DC
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-600">
+          <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+            <div className="font-bold text-slate-800">12V Battery Bank:</div>
+            <div>1,200W AC load draws ~111 Amps DC (requires heavy 2 AWG or 1/0 AWG cabling).</div>
+          </div>
+          <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+            <div className="font-bold text-slate-800">24V Battery Bank:</div>
+            <div>1,200W AC load draws ~55.6 Amps DC (cuts conductor current and I²R heat in half).</div>
+          </div>
+          <div className="p-3 rounded-lg bg-slate-50 border border-slate-200 space-y-1">
+            <div className="font-bold text-slate-800">48V Battery Bank:</div>
+            <div>1,200W AC load draws ~27.8 Amps DC (ideal for whole-home solar battery systems).</div>
+          </div>
+        </div>
+
+        <p className="text-[11px] text-slate-500 leading-normal">
+          Note: This is an engineering estimate for battery fuse and cable sizing. Actual draw will vary based on battery state-of-charge (terminal voltage dropping under heavy load) and inverter standby consumption (typically 10W to 30W with zero AC load).
+        </p>
+      </section>
+
       {/* Assumptions Section */}
       <AssumptionsSection
         title="Physical & Technical Assumptions"
@@ -454,13 +507,13 @@ export const WattsToAmpsCalculator: React.FC = () => {
           {
             parameter: "Three-Phase Balance",
             defaultVal: "Balanced (Symmetrical)",
-            realisticRange: "98% – 100% balance",
+            realisticRange: "98% to 100% balance",
             impact: "Unbalanced commercial three-phase loads produce unequal line currents and carry neutral current.",
           },
           {
             parameter: "Single-Phase Power Factor",
             defaultVal: "1.0 (Unity)",
-            realisticRange: "0.75 – 1.0",
+            realisticRange: "0.75 to 1.0",
             impact: "Lower power factor increases the current (Amps) required to deliver the same real Wattage.",
           },
           {
@@ -472,7 +525,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
           {
             parameter: "Conductor Resistance",
             defaultVal: "Neglected at Terminals",
-            realisticRange: "0 – 5% drop",
+            realisticRange: "0 to 5% drop",
             impact: "Voltage drop over long distances reduces terminal voltage and increases current for constant-power loads.",
           },
         ]}
@@ -516,6 +569,11 @@ export const WattsToAmpsCalculator: React.FC = () => {
             question: "How do you calculate three-phase Watts to Amps?",
             answer:
               "For a balanced three-phase system using line-to-line voltage (V_LL), divide Watts by the product of the square root of 3 (1.732), the line-to-line voltage, and the power factor: I = P / (√3 × V_LL × PF). For example, a 10,000W load at 480V with PF 0.85 draws approximately 14.15 Amps per line.",
+          },
+          {
+            question: "How do you calculate inverter DC amp draw from AC watts?",
+            answer:
+              "To calculate how many DC Amps an inverter draws from a battery bank, divide the AC load wattage by the product of battery DC voltage and inverter efficiency: I_DC = P_AC / (V_DC × Efficiency). For example, running a 1,200-Watt appliance through a 12V inverter with 90% efficiency draws approximately 111.1 Amps DC (1,200 / [12 × 0.90]). On a 24V battery bank, that same 1,200W load draws only 55.6 Amps DC, and on a 48V bank it draws 27.8 Amps DC. Always include a safety margin for inverter standby idle draw and peak compressor motor surge.",
           },
         ]}
       />
