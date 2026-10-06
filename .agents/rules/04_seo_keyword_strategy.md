@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook: Domain 04: SEO, Keyword Research & Authoritative Sources
+# CalcMyPower Rulebook — Domain 04: SEO, Keyword Research & Authoritative Sources
 
 > Antigravity Modular Rule Specification: Category `04_seo_keyword_strategy.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.
@@ -65,11 +65,4 @@ When a calculation or recommendation could affect installation safety:
 - cite authoritative standards (e.g., NEC 690.7, NEC 690.9, NEC 702) purely as objective technical references for sizing equations and safety factors
 - do NOT present the site or its content as an accredited certification body or officially approved compliance methodology
 - do NOT introduce out-of-scope standards (such as IEEE 1547 for DC wiring guides) unless explicitly specified in the approved SEO handoff
-
-### GSC-Led Optimization & Query Ownership Principles
-When Google Search Console (GSC) reveals emerging impressions:
-- **Cannibalization Prevention:** Map queries to existing URL owners before ever considering new URLs.
-- **Amp-to-Watt Cluster Decision:** Early GSC data shows repeated amp-to-watt query variants. Because these variants map naturally to an existing /amps-to-watts-calculator page, the site will strengthen the existing page rather than create multiple URLs.
-- **Inverter Amp Draw Decision:** The inverter amp draw query is currently too weak to justify a dedicated URL. It will be treated as a secondary use case unless GSC impressions and/or broader keyword demand materially grow.
-- **Position 9 True-Power Near-Win Decision:** The position ~9 true-power query is a near-win and should be protected through minimal, intent-aligned optimization rather than a new page.
 

@@ -443,10 +443,10 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">1,800W @ 120V</span>
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                At <strong>120 Volts</strong> with unity power factor (PF = 1.0), 15 Amps equals exactly <strong>1,800 Watts</strong> (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated breakers, electrical codes (NEC Article 210) benchmark continuous duty to 80%, which equals <strong>1,440 Watts</strong> (12A).
+                At <strong>120 Volts</strong> with unity power factor (PF = 1.0), 15 Amps equals exactly <strong>1,800 Watts</strong> (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated breakers, standard branch-circuit planning guidelines benchmark continuous duty to 80%, which equals <strong>1,440 Watts</strong> (12A). Applicable continuous-load requirements depend on equipment listing, duty duration, and local code context.
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                At <strong>240 Volts</strong> (such as a 240V workshop circuit or water heater), 15 Amps delivers <strong>3,600 Watts</strong> (15A × 240V = 3,600W), with a continuous 80% benchmark of 2,880 Watts.
+                At <strong>240 Volts</strong> (such as a 240V workshop circuit or water heater), 15 Amps delivers <strong>3,600 Watts</strong> (15A × 240V = 3,600W), with an 80% continuous planning reference of 2,880 Watts for sustained loads.
               </p>
             </div>
 
@@ -471,10 +471,10 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 <span className="text-xs font-mono font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">3,600W / 7,200W</span>
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                At <strong>120 Volts</strong> (such as a 30-Amp RV park connection or TT-30 receptacle), 30 Amps provides <strong>3,600 Watts</strong> (30A × 120V = 3,600W), with an 80% continuous benchmark of 2,880 Watts.
+                At <strong>120 Volts</strong> (such as a 30-Amp RV park connection or TT-30 receptacle), 30 Amps provides <strong>3,600 Watts</strong> (30A × 120V = 3,600W), with an 80% continuous planning reference of 2,880 Watts for loads sustained over 3 hours.
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                At <strong>240 Volts</strong> (such as an electric clothes dryer or residential water heater), 30 Amps provides <strong>7,200 Watts</strong> (30A × 240V = 7,200W), with an 80% continuous benchmark of 5,760 Watts.
+                At <strong>240 Volts</strong> (such as an electric clothes dryer or residential water heater), 30 Amps provides <strong>7,200 Watts</strong> (30A × 240V = 7,200W), with an 80% continuous planning reference of 5,760 Watts for sustained duty.
               </p>
             </div>
 
@@ -485,10 +485,10 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 <span className="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">9,600W @ 240V</span>
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                At <strong>240 Volts</strong> (standard for electric cooking ranges and subpanel feeders), 40 Amps delivers <strong>9,600 Watts</strong> (40A × 240V = 9,600W). Under NEC 80% continuous sizing, maximum continuous duty is 7,680 Watts (32A).
+                At <strong>240 Volts</strong> (standard for electric cooking ranges and subpanel feeders), 40 Amps delivers <strong>9,600 Watts</strong> (40A × 240V = 9,600W). Where continuous duty of 3 hours or more applies on standard non-100%-rated equipment, continuous load is conventionally planned at 80% (7,680 Watts or 32A). Non-continuous equipment or 100%-rated assemblies operate under different criteria based on installation listing.
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                At <strong>120 Volts</strong>, 40 Amps produces <strong>4,800 Watts</strong> (40A × 120V = 4,800W), with a continuous benchmark of 3,840 Watts.
+                At <strong>120 Volts</strong>, 40 Amps produces <strong>4,800 Watts</strong> (40A × 120V = 4,800W), with an 80% continuous planning benchmark of 3,840 Watts.
               </p>
             </div>
           </div>
@@ -514,7 +514,7 @@ export const AmpsToWattsCalculator: React.FC = () => {
             </h3>
           </div>
           <p className="text-xs text-slate-600">
-            The table below compares nominal mathematical power with the standard 80% continuous-duty planning reference for common US branch circuits and equipment at unity power factor (PF = 1.0):
+            The table below compares nominal mathematical power with the standard 80% continuous-duty planning reference (for loads sustained 3+ hours on standard non-100%-rated equipment) for common US branch circuits at unity power factor (PF = 1.0):
           </p>
 
           <div className="overflow-x-auto rounded-xl border border-slate-200">
@@ -524,7 +524,7 @@ export const AmpsToWattsCalculator: React.FC = () => {
                   <th className="py-2.5 px-3">Circuit Specification</th>
                   <th className="py-2.5 px-3">System Type</th>
                   <th className="py-2.5 px-3">Nominal Max Power</th>
-                  <th className="py-2.5 px-3">80% Continuous Ref (NEC)</th>
+                  <th className="py-2.5 px-3">80% Continuous Planning Ref</th>
                   <th className="py-2.5 px-3">Typical Application</th>
                 </tr>
               </thead>
@@ -633,7 +633,7 @@ export const AmpsToWattsCalculator: React.FC = () => {
 
           <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
             <p>
-              <strong>Code Distinction:</strong> Nominal Max Power represents pure mathematical conversion (P = V × I × PF). The 80% Continuous Reference applies specifically to standard non-100%-rated branch circuit overcurrent protective devices serving continuous loads (loads operating for 3 hours or more per NEC Article 100). Intermittent non-continuous loads may utilize up to nominal breaker rating, subject to device ratings and conductor sizing rules.
+              <strong>Educational Planning Note:</strong> Nominal Max Power represents pure mathematical conversion (P = V × I × PF). The 80% Continuous Planning Reference illustrates conventional sizing practice where continuous loads (operating for 3 hours or longer) are connected to standard, non-100%-rated overcurrent protective devices (referencing NEC Article 100). Whether an 80% threshold applies depends on equipment listing, continuous duty duration, and applicable local codes. Intermittent non-continuous loads and 100%-rated equipment operate under different sizing criteria. This calculator provides preliminary planning estimates only and does not certify code compliance or installation safety. Always verify physical installations with a licensed electrician.
             </p>
           </div>
         </div>
@@ -709,12 +709,12 @@ export const AmpsToWattsCalculator: React.FC = () => {
           },
           {
             stepNumber: 3,
-            title: "Evaluate Continuous-Duty Code Sizing (NEC 210.19 / 210.20)",
-            calculation: "Continuous Design Benchmark = 1,800 W × 0.80 = 1,440 Watts (or 15 A × 0.80 = 12.0 A)",
-            explanation: "Under NEC Sections 210.19(A)(1) and 210.20(A), branch circuit conductors and standard non-100%-rated breakers serving continuous loads (running 3 hours or more) are sized at 125% of the continuous load, which limits continuous duty to 80% of rating. A 1,500W portable heater running continuously exceeds this 1,440W benchmark and requires a 20A branch circuit, whereas intermittent operation under 3 hours is within the 1,800W mathematical rating.",
+            title: "Evaluate Continuous-Duty Planning Benchmark (Referencing NEC 210.19 / 210.20)",
+            calculation: "Continuous Planning Benchmark = 1,800 W × 0.80 = 1,440 Watts (or 15 A × 0.80 = 12.0 A)",
+            explanation: "Under standard branch-circuit planning practice (referencing NEC Sections 210.19(A)(1) and 210.20(A) for non-100%-rated breakers), circuits supplying continuous loads (operating 3 hours or more) are conventionally sized with a 125% factor, representing an 80% continuous planning threshold (1,440W). Whether an 80% limit applies depends on equipment duty cycle, device listing, and installation context. Intermittent operation under 3 hours operates within the 1,800W physical rating.",
           },
         ]}
-        conclusion="A 15A 120V circuit has a mathematical power capacity of 1,800 Watts. When supplying continuous loads operating 3 hours or longer on standard non-100%-rated breakers, electrical codes benchmark continuous duty to 1,440 Watts (12A). Intermittent non-continuous loads may utilize up to the full 1,800 Watts."
+        conclusion="A 15A 120V circuit has a mathematical power capacity of 1,800 Watts. When supplying continuous loads operating 3 hours or longer on standard non-100%-rated breakers, standard guidelines benchmark continuous duty to 1,440 Watts (12A). Intermittent non-continuous loads may utilize up to the full 1,800 Watts based on equipment specifications and conductor ampacity."
       />
 
       {/* Assumptions Section */}
@@ -736,10 +736,10 @@ export const AmpsToWattsCalculator: React.FC = () => {
             impact: "Lower power factor decreases real Watts produced for a given current, while apparent power (VA) remains unchanged.",
           },
           {
-            parameter: "Continuous Duty Sizing Factor",
-            defaultVal: "80% (0.80)",
+            parameter: "Continuous Duty Planning Factor",
+            defaultVal: "80% (0.80) Reference",
             realisticRange: "80% to 100%",
-            impact: "Standard non-100%-rated breakers serving continuous loads (3+ hours per NEC Article 100) require a 125% sizing factor (80% load benchmark per NEC 210.19/210.20). Non-continuous loads evaluate at 100%.",
+            impact: "Standard non-100%-rated breakers serving continuous loads (3+ hours per NEC Article 100) are conventionally planned with a 125% factor (80% load). Non-continuous loads and 100%-rated assemblies evaluate at up to 100%. Requirements depend on equipment listing and local code context.",
           },
           {
             parameter: "Conductor Resistance & Voltage Drop",
@@ -756,8 +756,8 @@ export const AmpsToWattsCalculator: React.FC = () => {
         points={[
           "This calculator provides mathematical power calculations based on user-entered values and does not approve electrical installations, circuit breaker ratings, or branch wiring compliance.",
           "Circuit breaker selection and wire sizing must account for conductor ampacity, insulation temperature ratings (60°C/75°C/90°C), raceway derating factors, and applicable local electrical codes.",
-          "The 80% continuous benchmark represents standard NEC overcurrent design guidance for loads operating 3+ continuous hours on non-100%-rated equipment. It does not represent an unconditional safe wattage for all scenarios, nor does it replace conductor ampacity verification, temperature derating, or professional electrical engineering approval.",
-          "Always consult the National Electrical Code (NEC / NFPA 70) and verify critical electrical modifications with a licensed electrician.",
+          "The 80% continuous benchmark represents standard overcurrent design guidance for loads operating 3+ continuous hours on non-100%-rated equipment. It does not represent an unconditional safe wattage for all scenarios, nor does it replace conductor ampacity verification, temperature derating, or professional electrical engineering approval.",
+          "This calculator provides preliminary educational planning estimates and does not certify code compliance, electrical safety, or regulatory approval. Always consult the applicable National Electrical Code (NEC / NFPA 70) edition and verify installations with a licensed electrician.",
         ]}
       />
 
@@ -767,7 +767,7 @@ export const AmpsToWattsCalculator: React.FC = () => {
           {
             question: "How many watts is 15 amps at 120 volts?",
             answer:
-              "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts of physical power (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated circuit breakers, electrical codes (NEC Article 210) benchmark continuous duty to 80% of rating, which equals 1,440 Watts (12A). Intermittent non-continuous loads may utilize up to the full 1,800 Watts.",
+              "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts of physical power (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated circuit breakers, common sizing practice benchmarks continuous duty to 80% of rating (1,440 Watts or 12A per NEC guidelines). Applicable requirements depend on equipment duty, listing, and local codes; intermittent loads may operate up to the full 1,800 Watts based on circuit design.",
           },
           {
             question: "What is the true power of a 120V circuit operating at 10A with unity power factor?",
@@ -777,22 +777,22 @@ export const AmpsToWattsCalculator: React.FC = () => {
           {
             question: "How many watts is 10 amps at 120 volts?",
             answer:
-              "At 120 Volts with unity power factor (PF = 1.0), 10 Amps equals exactly 1,200 Watts (10A × 120V = 1,200W). Under NEC continuous load sizing guidelines for standard breakers, continuous operation for 3 hours or more is planned to an 80% benchmark of 960 Watts (8A). At 240 Volts, 10 Amps produces 2,400 Watts.",
+              "At 120 Volts with unity power factor (PF = 1.0), 10 Amps equals exactly 1,200 Watts (10A × 120V = 1,200W). For continuous duty operating 3 hours or more on standard non-100%-rated breakers, continuous duty is typically planned to an 80% benchmark of 960 Watts (8A), depending on the equipment listing and installation context. At 240 Volts, 10 Amps produces 2,400 Watts.",
           },
           {
             question: "How many watts is 20 amps at 120 volts?",
             answer:
-              "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces exactly 2,400 Watts of electrical power (20A × 120V = 2,400W). Under standard NEC branch circuit design rules for non-100%-rated breakers, loads running continuously for 3 hours or more are designed to an 80% benchmark (1,920 Watts or 16A), while non-continuous equipment may draw up to 2,400 Watts.",
+              "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces exactly 2,400 Watts of electrical power (20A × 120V = 2,400W). For continuous duty (3 hours or longer) on standard non-100%-rated breakers, sizing practice commonly uses an 80% planning benchmark (1,920 Watts or 16A), whereas non-continuous equipment may utilize up to 2,400 Watts subject to circuit and conductor design.",
           },
           {
             question: "How many watts is 30 amps at 120V and 240V?",
             answer:
-              "At 120 Volts (such as a 30A RV hookup or TT-30 receptacle), 30 Amps produces 3,600 Watts (30A × 120V = 3,600W), with an 80% continuous benchmark of 2,880 Watts. At 240 Volts (such as an electric clothes dryer or residential water heater), 30 Amps delivers 7,200 Watts (30A × 240V = 7,200W), with an 80% continuous benchmark of 5,760 Watts.",
+              "At 120 Volts (such as a 30A RV park receptacle), 30 Amps produces 3,600 Watts (30A × 120V = 3,600W), with an 80% continuous planning benchmark of 2,880 Watts for loads sustained over 3 hours. At 240 Volts (such as an electric clothes dryer or water heater), 30 Amps delivers 7,200 Watts (30A × 240V = 7,200W), with an 80% continuous planning reference of 5,760 Watts.",
           },
           {
             question: "How many watts is 40 amps at 240 volts?",
             answer:
-              "At 240 Volts with unity power factor (PF = 1.0), 40 Amps delivers 9,600 Watts (40A × 240V = 9,600W or 9.60 kW). Under the NEC continuous load 80% sizing benchmark, maximum continuous duty on standard 40A breakers is 7,680 Watts (32A). At 120 Volts, 40 Amps delivers 4,800 Watts.",
+              "At 240 Volts with unity power factor (PF = 1.0), 40 Amps delivers 9,600 Watts (40A × 240V = 9,600W or 9.60 kW). Where continuous duty of 3 hours or more applies on standard non-100%-rated equipment, planning guidelines benchmark continuous load to 80% (7,680 Watts or 32A). Actual limits depend on installation type, conductor temperature ratings, and local codes. At 120 Volts, 40 Amps delivers 4,800 Watts.",
           },
           {
             question: "How do you convert amps to watts?",

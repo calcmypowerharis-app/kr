@@ -538,7 +538,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
           "This calculator provides mathematical current conversions based on user-entered values and does not verify installation safety, breaker compatibility, or conductor ampacity.",
           "Overcurrent protection, circuit breaker sizing, and conductor selection must account for ambient temperature, raceway conductor bundling, termination temperature limits (60°C/75°C/90°C), and local building codes.",
           "The 125% continuous-load reference represents standard NEC overcurrent design guidance for loads operating 3+ continuous hours on non-100%-rated equipment. It does not replace comprehensive conductor sizing or professional electrical engineering approval.",
-          "Do not determine branch-circuit compliance solely from calculator outputs. Always consult the National Electrical Code (NEC / NFPA 70) and verify critical electrical modifications with a licensed electrician.",
+          "This calculator provides preliminary educational planning estimates and does not certify code compliance, electrical safety, or regulatory approval. Always consult the National Electrical Code (NEC / NFPA 70) and verify critical electrical modifications with a licensed electrician.",
         ]}
       />
 

@@ -20,7 +20,7 @@ const FAQ_DATA = [
   {
     question: "How many watts is 15 amps at 120 volts?",
     answer:
-      "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts of physical power (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated circuit breakers, electrical codes (NEC Article 210) benchmark continuous duty to 80% of rating, which equals 1,440 Watts (12A). Intermittent non-continuous loads may utilize up to the full 1,800 Watts.",
+      "In a standard 120V single-phase circuit with a resistive load (power factor = 1.0), 15 Amps equals exactly 1,800 Watts of physical power (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated circuit breakers, common sizing practice benchmarks continuous duty to 80% of rating (1,440 Watts or 12A per NEC guidelines). Applicable requirements depend on equipment duty, listing, and local codes; intermittent loads may operate up to the full 1,800 Watts based on circuit design.",
   },
   {
     question: "What is the true power of a 120V circuit operating at 10A with unity power factor?",
@@ -30,22 +30,22 @@ const FAQ_DATA = [
   {
     question: "How many watts is 10 amps at 120 volts?",
     answer:
-      "At 120 Volts with unity power factor (PF = 1.0), 10 Amps equals exactly 1,200 Watts (10A × 120V = 1,200W). Under NEC continuous load sizing guidelines for standard breakers, continuous operation for 3 hours or more is planned to an 80% benchmark of 960 Watts (8A). At 240 Volts, 10 Amps produces 2,400 Watts.",
+      "At 120 Volts with unity power factor (PF = 1.0), 10 Amps equals exactly 1,200 Watts (10A × 120V = 1,200W). For continuous duty operating 3 hours or more on standard non-100%-rated breakers, continuous duty is typically planned to an 80% benchmark of 960 Watts (8A), depending on the equipment listing and installation context. At 240 Volts, 10 Amps produces 2,400 Watts.",
   },
   {
     question: "How many watts is 20 amps at 120 volts?",
     answer:
-      "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces exactly 2,400 Watts of electrical power (20A × 120V = 2,400W). Under standard NEC branch circuit design rules for non-100%-rated breakers, loads running continuously for 3 hours or more are designed to an 80% benchmark (1,920 Watts or 16A), while non-continuous equipment may draw up to 2,400 Watts.",
+      "At 120 Volts with unity power factor (PF = 1.0), 20 Amps produces exactly 2,400 Watts of electrical power (20A × 120V = 2,400W). For continuous duty (3 hours or longer) on standard non-100%-rated breakers, sizing practice commonly uses an 80% planning benchmark (1,920 Watts or 16A), whereas non-continuous equipment may utilize up to 2,400 Watts subject to circuit and conductor design.",
   },
   {
     question: "How many watts is 30 amps at 120V and 240V?",
     answer:
-      "At 120 Volts (such as a 30A RV hookup or TT-30 receptacle), 30 Amps produces 3,600 Watts (30A × 120V = 3,600W), with an 80% continuous benchmark of 2,880 Watts. At 240 Volts (such as an electric clothes dryer or residential water heater), 30 Amps delivers 7,200 Watts (30A × 240V = 7,200W), with an 80% continuous benchmark of 5,760 Watts.",
+      "At 120 Volts (such as a 30A RV park receptacle), 30 Amps produces 3,600 Watts (30A × 120V = 3,600W), with an 80% continuous planning benchmark of 2,880 Watts for loads sustained over 3 hours. At 240 Volts (such as an electric clothes dryer or water heater), 30 Amps delivers 7,200 Watts (30A × 240V = 7,200W), with an 80% continuous planning reference of 5,760 Watts.",
   },
   {
     question: "How many watts is 40 amps at 240 volts?",
     answer:
-      "At 240 Volts with unity power factor (PF = 1.0), 40 Amps delivers 9,600 Watts (40A × 240V = 9,600W or 9.60 kW). Under the NEC continuous load 80% sizing benchmark, maximum continuous duty on standard 40A breakers is 7,680 Watts (32A). At 120 Volts, 40 Amps delivers 4,800 Watts.",
+      "At 240 Volts with unity power factor (PF = 1.0), 40 Amps delivers 9,600 Watts (40A × 240V = 9,600W or 9.60 kW). Where continuous duty of 3 hours or more applies on standard non-100%-rated equipment, planning guidelines benchmark continuous load to 80% (7,680 Watts or 32A). Actual limits depend on installation type, conductor temperature ratings, and local codes. At 120 Volts, 40 Amps delivers 4,800 Watts.",
   },
   {
     question: "How do you convert amps to watts?",
