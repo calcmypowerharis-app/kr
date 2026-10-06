@@ -154,11 +154,11 @@ export const ElectricityCostCalculator: React.FC = () => {
             helpText="Total kilowatt-hours billed during the monthly billing cycle (from meter read difference)."
           />
           <div className="flex items-center gap-1.5 text-xs text-slate-500 pl-1">
-            <span className="text-slate-400">Average Daily Usage:</span>
+            <span className="text-slate-600 font-medium">Average Daily Usage:</span>
             <span className="font-semibold text-slate-700">
               {monthlyKwh > 0 ? (monthlyKwh / (billingDays || 30)).toFixed(1) : 0} kWh / day
             </span>
-            <span className="text-slate-400 ml-2">National EIA Avg:</span>
+            <span className="text-slate-600 font-medium ml-2">National EIA Avg:</span>
             <span className="font-semibold text-slate-700">~30 kWh / day</span>
           </div>
         </div>
@@ -177,11 +177,11 @@ export const ElectricityCostCalculator: React.FC = () => {
             helpText="Volumetric rate charged per kWh (for example, $0.1600 corresponds to 16.0 cents per kWh)."
           />
           <div className="flex items-center gap-1.5 text-xs text-slate-500 pl-1">
-            <span className="text-slate-400">Equivalent in Cents:</span>
+            <span className="text-slate-600 font-medium">Equivalent in Cents:</span>
             <span className="font-semibold text-blue-700">
               {(energyRate * 100).toFixed(2)}¢ per kWh
             </span>
-            <span className="text-slate-400 ml-2">U.S. National Average:</span>
+            <span className="text-slate-600 font-medium ml-2">U.S. National Average:</span>
             <span className="font-semibold text-slate-700">~16.5¢ / kWh</span>
           </div>
         </div>
@@ -214,9 +214,14 @@ export const ElectricityCostCalculator: React.FC = () => {
 
         {/* Taxes and Surcharges Section */}
         <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-4">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-800 uppercase tracking-wider">
-            <Percent className="w-3.5 h-3.5 text-indigo-600" />
-            <span>Taxes &amp; Local Surcharges</span>
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-xs font-semibold text-slate-800 uppercase tracking-wider">
+              <Percent className="w-3.5 h-3.5 text-indigo-600" />
+              <span>Taxes &amp; Local Surcharges</span>
+            </div>
+            <p className="text-[11px] text-slate-600">
+              Note: This tool does not maintain regional tax database lookups. Enter your local municipal fee and tax rate directly from your statement.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -274,7 +279,7 @@ export const ElectricityCostCalculator: React.FC = () => {
             <Zap className="w-4 h-4 text-amber-400 fill-amber-400" />
             <span>Estimated Total Monthly Bill</span>
           </span>
-          <span className="text-xs text-slate-400 font-mono">
+          <span className="text-xs text-blue-200 font-mono">
             {billingDays}-Day Period
           </span>
         </div>
@@ -288,7 +293,7 @@ export const ElectricityCostCalculator: React.FC = () => {
             </span>
             <span className="text-lg sm:text-xl font-bold text-emerald-400 font-sans">total due</span>
           </div>
-          <div className="text-xs text-slate-400 pt-1">
+          <div className="text-xs text-blue-200 pt-1">
             Calculated for {results.monthlyKwh.toLocaleString()} kWh billed consumption
           </div>
         </div>
@@ -297,22 +302,35 @@ export const ElectricityCostCalculator: React.FC = () => {
         <div className="grid grid-cols-2 gap-3 pt-1 border-t border-blue-900/80">
           {/* Effective Rate */}
           <div className="p-3 rounded-xl bg-blue-900/40 border border-blue-700/40 space-y-0.5">
-            <div className="text-[11px] text-blue-300">Effective Unit Cost</div>
-            <div className="text-xl font-bold text-amber-300 font-mono">
-              {results.effectiveCentsPerKwh.toFixed(2)}¢
-            </div>
-            <div className="text-[10px] text-slate-400 font-mono">
-              (${results.effectiveRatePerKwh.toFixed(4)}/kWh)
-            </div>
+            <div className="text-[11px] text-blue-200 font-medium">Effective Unit Cost</div>
+            {results.monthlyKwh > 0 ? (
+              <>
+                <div className="text-xl font-bold text-amber-300 font-mono">
+                  {results.effectiveCentsPerKwh.toFixed(2)}¢
+                </div>
+                <div className="text-[10px] text-blue-200 font-mono">
+                  (${results.effectiveRatePerKwh.toFixed(4)}/kWh)
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="text-xl font-bold text-slate-200 font-mono">
+                  N/A
+                </div>
+                <div className="text-[10px] text-blue-200 font-sans">
+                  0 kWh metered (fixed fees only)
+                </div>
+              </>
+            )}
           </div>
 
           {/* Daily Average Cost */}
           <div className="p-3 rounded-xl bg-blue-900/40 border border-blue-700/40 space-y-0.5">
-            <div className="text-[11px] text-blue-300">Daily Average</div>
+            <div className="text-[11px] text-blue-200 font-medium">Daily Average</div>
             <div className="text-xl font-bold text-white font-mono">
               ${results.dailyEstimatedCost.toFixed(2)}
             </div>
-            <div className="text-[10px] text-slate-400 font-sans">
+            <div className="text-[10px] text-blue-200 font-sans">
               per calendar day
             </div>
           </div>
@@ -320,7 +338,7 @@ export const ElectricityCostCalculator: React.FC = () => {
 
         {/* Annual Projection */}
         <div className="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80 flex items-center justify-between text-xs">
-          <span className="text-slate-300">Annual Expenditure Projection:</span>
+          <span className="text-slate-200">Annual Expenditure Projection:</span>
           <span className="font-mono font-bold text-emerald-400 text-sm">
             ${results.annualEstimatedCost.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / yr
           </span>
@@ -374,6 +392,14 @@ export const ElectricityCostCalculator: React.FC = () => {
                 : idx === 2
                 ? "bg-purple-600"
                 : "bg-emerald-500";
+            const badge =
+              idx === 0
+                ? { label: "Automatically Calculated", bg: "bg-blue-100 text-blue-800" }
+                : idx === 1
+                ? { label: "User-Entered Fixed Fee", bg: "bg-amber-100 text-amber-900" }
+                : idx === 2
+                ? { label: "User-Entered Estimate", bg: "bg-purple-100 text-purple-900" }
+                : { label: "User-Entered Tax", bg: "bg-emerald-100 text-emerald-900" };
             return (
               <div
                 key={item.name}
@@ -382,15 +408,20 @@ export const ElectricityCostCalculator: React.FC = () => {
                 <div className="flex items-center gap-2">
                   <span className={`w-2.5 h-2.5 rounded-full ${dotColor} shrink-0`} />
                   <div>
-                    <div className="font-semibold text-slate-800">{item.name}</div>
-                    <div className="text-[11px] text-slate-500">{item.description}</div>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <span className="font-semibold text-slate-800">{item.name}</span>
+                      <span className={`text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded ${badge.bg}`}>
+                        {badge.label}
+                      </span>
+                    </div>
+                    <div className="text-[11px] text-slate-600 mt-0.5">{item.description}</div>
                   </div>
                 </div>
                 <div className="text-right shrink-0 pl-2">
                   <div className="font-bold text-slate-900 font-mono">
                     ${item.amount.toFixed(2)}
                   </div>
-                  <div className="text-[10px] text-slate-500">
+                  <div className="text-[10px] text-slate-600">
                     {item.percentOfTotal}%
                   </div>
                 </div>
@@ -402,22 +433,22 @@ export const ElectricityCostCalculator: React.FC = () => {
 
       {/* EIA National Benchmark Comparison Card */}
       <div className="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-2xl p-6 shadow-sm space-y-3">
-        <div className="flex items-center justify-between text-xs text-slate-300">
-          <span className="flex items-center gap-1.5 font-semibold uppercase tracking-wider text-blue-400">
+        <div className="flex items-center justify-between text-xs text-blue-200">
+          <span className="flex items-center gap-1.5 font-semibold uppercase tracking-wider text-blue-300">
             <TrendingUp className="w-3.5 h-3.5" />
             U.S. National Baseline (EIA)
           </span>
-          <span className="bg-slate-700/80 px-2 py-0.5 rounded text-[11px]">
+          <span className="bg-slate-700 px-2 py-0.5 rounded text-[11px] text-slate-200">
             EIA Form 861M
           </span>
         </div>
 
-        <p className="text-xs text-slate-300 leading-relaxed">
+        <p className="text-xs text-slate-200 leading-relaxed">
           The average U.S. residential customer consumes approximately 900 kWh per month with an average retail rate of ~16.5¢/kWh, yielding an estimated monthly bill of approximately $158.00.
         </p>
 
         <div className="pt-2 border-t border-slate-700/80 flex items-center justify-between text-xs">
-          <span className="text-slate-400">Comparison to EIA Average:</span>
+          <span className="text-slate-300">Comparison to EIA Average:</span>
           <span
             className={`font-bold font-mono px-2 py-0.5 rounded ${
               results.benchmarkComparison.differenceFromAverageDollars > 0
@@ -512,6 +543,17 @@ export const ElectricityCostCalculator: React.FC = () => {
             </Link>
           </div>
         </div>
+      </div>
+
+      {/* Important Notice on Utility Billing Variations */}
+      <div className="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-5 md:p-6 space-y-2 text-slate-800">
+        <div className="flex items-center gap-2 font-bold text-amber-950 text-sm">
+          <Zap className="w-4 h-4 text-amber-600 shrink-0" />
+          <span>Important Notice on Real-World Utility Tariff Variations</span>
+        </div>
+        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+          Actual electric utility statements vary widely depending on state Public Utility Commission (PUC) regulations, seasonal rate schedules (summer vs winter tiers), time-of-use (TOU) clock hours, and local municipal franchise agreements. Because electric utilities across the United States enforce thousands of distinct tariff formulas, this calculator does not fetch utility-specific tax codes automatically. Instead, it provides an engineering-grade model where you enter your specific utility statement charges directly to calculate your true effective kilowatt-hour cost.
+        </p>
       </div>
 
       {/* Formula & Methodology Section */}

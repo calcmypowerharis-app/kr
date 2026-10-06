@@ -536,7 +536,7 @@ export default function HowToCalculateElectricityBillPage() {
               {/* Steps Card Stack */}
               <div className="space-y-4">
                 <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-xs font-bold text-blue-700 uppercase tracking-wider">
                     <span>Step 1: Volumetric Energy Supply Charge</span>
                   </div>
                   <div className="font-mono text-sm bg-slate-900 text-emerald-400 p-3 rounded-xl">
@@ -548,7 +548,7 @@ export default function HowToCalculateElectricityBillPage() {
                 </div>
 
                 <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-amber-600 uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-xs font-bold text-amber-800 uppercase tracking-wider">
                     <span>Step 2: Add Fixed Customer Charge</span>
                   </div>
                   <div className="font-mono text-sm bg-slate-900 text-emerald-400 p-3 rounded-xl">
@@ -560,7 +560,7 @@ export default function HowToCalculateElectricityBillPage() {
                 </div>
 
                 <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-purple-600 uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-xs font-bold text-purple-700 uppercase tracking-wider">
                     <span>Step 3: Add Delivery Riders &amp; Environmental Programs</span>
                   </div>
                   <div className="font-mono text-sm bg-slate-900 text-emerald-400 p-3 rounded-xl">
@@ -572,7 +572,7 @@ export default function HowToCalculateElectricityBillPage() {
                 </div>
 
                 <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 uppercase tracking-wider">
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-800 uppercase tracking-wider">
                     <span>Step 4: Add Municipal Assessment &amp; Taxes</span>
                   </div>
                   <div className="font-mono text-sm bg-slate-900 text-emerald-400 p-3 rounded-xl">
