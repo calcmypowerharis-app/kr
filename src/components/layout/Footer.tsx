@@ -139,6 +139,14 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/electricity-cost-calculator"
+                  className="hover:text-white transition"
+                >
+                  Electricity Cost Calculator
+                </Link>
+              </li>
+              <li>
                 <Link href="/calculators" className="hover:text-white transition">
                   All Calculators Directory
                 </Link>
@@ -238,6 +246,14 @@ export const Footer: React.FC = () => {
                   className="hover:text-white transition"
                 >
                   Continuous Power Generators Guide
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/how-to-calculate-electricity-bill"
+                  className="hover:text-white transition"
+                >
+                  How to Calculate Electricity Bill
                 </Link>
               </li>
             </ul>

@@ -687,6 +687,27 @@ export default function HowToCalculateElectricityUsagePage() {
                 <p className="text-xs text-slate-600 leading-relaxed">
                   Notice that the fixed customer fee ($15.00) does not change whether you use 100 kWh or 2,000 kWh. Furthermore, many utilities employ <strong>tiered rates</strong> (where energy beyond 1,000 kWh is billed at a higher bracket) or <strong>Time-of-Use (TOU) rates</strong> (where on-peak afternoon electricity costs substantially more than off-peak overnight power). Check your recent electric bill to determine your exact rate structure.
                 </p>
+                <div className="p-3 bg-blue-50/80 border border-blue-200/80 rounded-xl text-xs text-blue-900 flex items-center justify-between gap-3">
+                  <div>
+                    <span className="font-bold">Want to calculate your full electric statement? </span>
+                    See our dedicated guide on{" "}
+                    <Link
+                      href="/how-to-calculate-electricity-bill"
+                      className="font-semibold underline hover:text-blue-700"
+                    >
+                      How to Calculate Your Electricity Bill
+                    </Link>{" "}
+                    or model charges in the{" "}
+                    <Link
+                      href="/electricity-cost-calculator"
+                      className="font-semibold underline hover:text-blue-700"
+                    >
+                      Electricity Cost Calculator
+                    </Link>
+                    .
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-blue-600 shrink-0" />
+                </div>
               </div>
             </section>
 
