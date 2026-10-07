@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { SITE_NAME, SITE_URL } from "./registry";
 
+export const DEFAULT_OG_IMAGE = {
+  url: `${SITE_URL}/og-image.jpg`,
+  width: 1200,
+  height: 630,
+  alt: "CalcMyPower Power, Energy and Electrical Sizing Calculators",
+};
+
 export interface BuildMetadataOptions {
   /**
    * Page title WITHOUT the "| CalcMyPower" brand suffix (unless isRoot is true).
@@ -43,6 +50,8 @@ export function buildPageMetadata({
   const socialTitle =
     ogTitle || (isRoot ? title : `${cleanTitle} | ${SITE_NAME}`);
   const socialDescription = ogDescription || description;
+  const resolvedImages =
+    images && images.length > 0 ? images : [DEFAULT_OG_IMAGE];
 
   return {
     title: isRoot ? { absolute: title } : cleanTitle,
@@ -58,15 +67,13 @@ export function buildPageMetadata({
       siteName: SITE_NAME,
       locale: "en_US",
       type: ogType,
-      ...(images && images.length > 0 ? { images } : {}),
+      images: resolvedImages,
     },
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
       description: socialDescription,
-      ...(images && images.length > 0
-        ? { images: images.map((img) => img.url) }
-        : {}),
+      images: resolvedImages.map((img) => img.url),
     },
   };
 }

@@ -27,12 +27,21 @@ export const metadata: Metadata = {
     title: "CalcMyPower | Electrical & Power Calculators",
     description:
       "Clear power calculations for UPS systems, battery backups, generators, solar arrays, and electrical circuits.",
+    images: [
+      {
+        url: "https://calcmypower.com/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "CalcMyPower Power, Energy and Electrical Sizing Calculators",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "CalcMyPower | Power & Electrical Calculators",
     description:
       "Accurate power calculations for UPS systems, generators, solar arrays, battery backups, and wire gauges.",
+    images: ["https://calcmypower.com/og-image.jpg"],
   },
   robots: {
     index: true,

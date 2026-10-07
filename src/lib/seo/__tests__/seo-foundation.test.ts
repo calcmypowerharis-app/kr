@@ -134,6 +134,11 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
         "https://calcmypower.com/sample-calculator"
       );
       expect(meta.openGraph?.siteName).toBe("CalcMyPower");
+      expect(meta.openGraph?.images).toBeDefined();
+      expect((meta.openGraph?.images as any[])[0].url).toBe(
+        "https://calcmypower.com/og-image.jpg"
+      );
+      expect(meta.twitter?.images).toBeDefined();
     });
   });
 
