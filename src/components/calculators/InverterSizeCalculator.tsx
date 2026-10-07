@@ -134,14 +134,14 @@ const WORKED_STEPS: WorkedStep[] = [
     title: "Identify Single Largest Motor Startup Surge",
     calculation: "Fridge: 1,200W starting - 150W running = 1,050W surge delta. Peak Surge = 1,430W + 1,050W = 2,480 Watts",
     explanation:
-      "Inductive motor loads draw heavy momentary inrush current when starting against head pressure. Under normal operation, only one major motor starts at any given split-second.",
+      "Inductive motor loads draw momentary inrush current when starting against head pressure. Modeling non-coincident starting provides a practical surge baseline; if multiple motors cycle concurrently, their combined surge must be evaluated.",
   },
   {
     stepNumber: 3,
     title: "Apply 25% Continuous Headroom Margin",
     calculation: "1,430 Watts * 1.25 Continuous Headroom = 1,788 Watts Continuous Rating",
     explanation:
-      "Operating inverters at 100% capacity continuously causes thermal throttling and reduces lifespan. A 25% continuous buffer keeps the inverter operating in its peak efficiency curve.",
+      "Operating inverters near 100% capacity continuously causes thermal throttling and reduces operating efficiency. A 20% to 25% continuous buffer keeps the inverter operating comfortably in its peak efficiency curve.",
   },
   {
     stepNumber: 4,
@@ -155,7 +155,7 @@ const WORKED_STEPS: WorkedStep[] = [
     title: "Calculate Battery DC Current Draw & Cable Sizing (24V System)",
     calculation: "Continuous: 1,430W / (24V * 0.90) = 66.2A DC | Max Rated: 2,000W / (24V * 0.90) = 92.6A DC",
     explanation:
-      "At 24V DC, continuous draw is 66.2A. Sizing for full 2,000W rated capacity (92.6A * 1.25 fuse factor = 115.8A) requires a 125A DC fuse and minimum 2 AWG pure copper battery cables.",
+      "At 24V DC, continuous draw is 66.2A. Sizing for full 2,000W rated capacity (92.6A * 1.25 fuse factor = 115.8A) illustrates a typical 125A DC fuse and minimum 2 AWG pure copper battery cables for short runs under 6ft total loop.",
   },
 ];
 
@@ -165,14 +165,14 @@ const ASSUMPTIONS: AssumptionItem[] = [
     defaultVal: "25% (1.25 multiplier)",
     realisticRange: "15% to 35%",
     impact:
-      "Prevents running the inverter near thermal throttling thresholds and accommodates minor load fluctuations.",
+      "Prevents running the inverter near thermal throttling thresholds and accommodates minor load fluctuations as a practical design margin, not a hard electrical law.",
   },
   {
     parameter: "Single-Largest-Surge Rule",
     defaultVal: "Largest active motor inrush",
     realisticRange: "2x to 8x running watts",
     impact:
-      "Models realistic non-coincident motor startup. Inductive compressor motors start independently rather than simultaneously.",
+      "Models typical non-coincident motor startup. If multiple inductive loads can cycle on concurrently (such as a well pump and compressor), their combined surge must be evaluated.",
   },
   {
     parameter: "Inverter Conversion Efficiency",
@@ -183,17 +183,17 @@ const ASSUMPTIONS: AssumptionItem[] = [
   },
   {
     parameter: "DC Cable Sizing Metric",
-    defaultVal: "NEC 75C/90C Ampacity (<6ft loop)",
+    defaultVal: "NEC 75C/90C Ampacity (<6ft loop estimate)",
     realisticRange: "8 AWG to Parallel 4/0 AWG",
     impact:
-      "Calculated for short high-current battery-to-inverter copper conductors to minimize resistive heat and fire risk.",
+      "Preliminary illustrative estimate for short (<6ft total loop) copper conductors at <=2% voltage drop. Longer runs, conduit fill, or specific insulation ratings require custom voltage drop calculations.",
   },
   {
     parameter: "Battery Safe C-Rate Limits",
-    defaultVal: "0.5C (LiFePO4) / 0.2C (Lead-Acid)",
+    defaultVal: "0.5C (LiFePO4) / 0.2C (Lead-Acid) Benchmark",
     realisticRange: "0.1C to 1.0C",
     impact:
-      "Ensures the battery bank Amp-hour capacity is large enough to sustain inverter DC draw without severe voltage collapse.",
+      "Illustrative benchmark limits to mitigate severe voltage sag. Actual continuous discharge limits are determined by manufacturer battery and BMS specifications.",
   },
 ];
 
@@ -708,24 +708,24 @@ export const InverterSizeCalculator: React.FC = () => {
                 subtext: `At full ${calculationResult.suggestedInverterRatingWatts}W rating`,
               },
               {
-                label: "Recommended DC Fuse",
+                label: "Estimated DC Fuse",
                 value: `${calculationResult.recommendedFuseAmps} A`,
-                subtext: "ANL / MRBF fuse rating (125% factor)",
+                subtext: "Illustrative estimate (125% of rated load; verify manual)",
               },
               {
-                label: "Minimum Pure Copper Cable",
+                label: "Estimated Cable Gauge",
                 value: calculationResult.recommendedCableGauge,
-                subtext: "Short run under 6ft total loop",
+                subtext: "Short-run estimate (<6ft loop; verify voltage drop)",
               },
               {
-                label: "Recommended Minimum Battery",
+                label: "Benchmark Battery Capacity",
                 value: `${calculationResult.recommendedMinBatteryCapacityAh} Ah`,
-                subtext: `${batteryChemistry === "lifepo4" ? "LiFePO4" : "Lead-Acid"} safe discharge capacity`,
+                subtext: `Benchmark discharge estimate (${batteryChemistry === "lifepo4" ? "0.5C" : "0.2C"})`,
               },
               {
                 label: "Waveform Type",
                 value: "Pure Sine Wave",
-                subtext: "Safe for sensitive electronics & motors",
+                subtext: "Recommended for sensitive electronics & motors",
               },
             ]}
           />
@@ -817,9 +817,9 @@ export const InverterSizeCalculator: React.FC = () => {
           },
           {
             symbol: "I_fuse",
-            name: "Overcurrent Protection",
-            unit: "Amperes (ANL / MRBF)",
-            description: "125% of rated full-load inverter DC current to protect cables against short circuits.",
+            name: "Estimated DC Fuse (Illustrative)",
+            unit: "Amperes (Illustrative)",
+            description: "Illustrative planning factor (125% of rated DC continuous load); actual overcurrent protection must comply with inverter manufacturer specifications, conductor ampacity, and AIC interrupt ratings.",
           },
         ]}
       />
@@ -828,7 +828,7 @@ export const InverterSizeCalculator: React.FC = () => {
         title="Real-World Worked Example: Off-Grid Cabin"
         scenario="A user wants to operate a residential refrigerator (150W run, 1,200W start), a 1,000W output microwave (1,100W run, 1,300W start), a remote workstation (120W), and a CPAP machine (60W) simultaneously on a 24V LiFePO4 battery bank."
         steps={WORKED_STEPS}
-        conclusion="A 2,000 Watt commercial pure sine wave inverter (with 4,000W momentary surge rating) on a 24V battery bank handles this entire cabin load with 25% continuous headroom, drawing a manageable 66.2 Amps continuous DC and protected by a 125A ANL fuse with 2 AWG pure copper cables."
+        conclusion="A 2,000 Watt commercial pure sine wave inverter (with 4,000W momentary surge rating) on a 24V battery bank handles this entire cabin load with 25% continuous headroom, drawing an estimated 66.2 Amps continuous DC and illustrates pairing with a 125A DC fuse and 2 AWG pure copper cables for short runs under 6ft total loop."
       />
 
       <AssumptionsSection
@@ -847,7 +847,7 @@ export const InverterSizeCalculator: React.FC = () => {
         points={[
           "This calculator provides preliminary engineering sizing estimates based on continuous resistive and inductive load assumptions.",
           "High continuous DC currents (especially exceeding 100 Amps on 12V systems) generate substantial thermal dissipation. Loose terminal connections, undersized copper conductors, or missing fuses present extreme fire hazards.",
-          "Overcurrent protection (ANL, Class T, or MRBF fuses) must be installed within 7 inches of the battery positive terminal in accordance with National Electrical Code (NEC Article 706 / NFPA 70).",
+          "Overcurrent protection (such as Class T, ANL, or MRBF fuses) should be installed on the positive DC cable as close to the battery source as practical. Marine and mobile standards (ABYC E-11) specify placement within 7 inches of the terminal, while stationary installations follow applicable National Electrical Code (NEC Article 706 / NFPA 70) guidelines. Always consult manufacturer manuals for required fuse type, interrupt ratings (AIC), and conductor requirements.",
           "Always verify local building regulations, equipment specifications, and consult a licensed electrician or NABCEP certified professional before installing high-voltage off-grid power systems.",
         ]}
       />

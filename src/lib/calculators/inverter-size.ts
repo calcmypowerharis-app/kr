@@ -7,12 +7,14 @@
  * 1. Total Continuous Running Load:
  *    P_running = Σ(quantity × runningWatts)
  *
- * 2. Peak Starting Surge Demand (Single-Largest-Motor Surge Rule):
+ * 2. Peak Starting Surge Demand (Non-Coincident Motor Surge Baseline):
  *    ΔP_surge_max = max(0, startingWatts - runningWatts) across active loads
  *    P_peak_surge = P_running + ΔP_surge_max
+ *    Note: Evaluates non-simultaneous starting; if multiple inductive loads cycle together, evaluate combined surge.
  *
  * 3. Recommended Inverter Continuous Rating (Continuous Headroom Factor):
- *    P_recommended_cont = P_running × Continuous Headroom (typically 1.25, or 25% safety margin)
+ *    P_recommended_cont = P_running × Continuous Headroom (typically 1.25, or 25% design margin)
+ *    Provides thermal margin and keeps inverter in peak efficiency window; not a mandatory electrical code rule.
  *
  * 4. Recommended Inverter Peak Surge Rating:
  *    P_recommended_surge = max(P_peak_surge, P_recommended_cont × 1.5)
@@ -25,15 +27,17 @@
  *    I_DC_rated = P_inverter_rated ÷ (V_DC × Inverter Efficiency)
  *    I_DC_surge = P_peak_surge ÷ (V_DC × Inverter Efficiency)
  *
- * 7. Overcurrent Protection (DC Fuse / Breaker Sizing):
- *    I_fuse_min = I_DC_rated × 1.25 (standard NEC continuous cable protection factor)
- *    Standard fuse ratings: 50A, 80A, 100A, 125A, 150A, 175A, 200A, 250A, 300A, 400A, 500A
+ * 7. Illustrative Overcurrent Protection (DC Fuse / Breaker Estimate):
+ *    I_fuse_target = I_DC_rated × 1.25 (illustrative 125% continuous protection guideline)
+ *    Actual DC overcurrent protection must follow inverter manufacturer specs, conductor ampacity, and AIC ratings.
  *
- * 8. Minimum Pure Copper Battery Cable Gauge (AWG):
- *    Sized for short runs (< 6ft total loop) based on NEC 75°C/90°C ampacity limits.
+ * 8. Illustrative Battery Cable Gauge Estimate (AWG):
+ *    Estimated for short runs (< 6ft total loop at <= 2% voltage drop) based on 75°C/90°C copper ampacity.
+ *    Longer runs require specific voltage drop calculations and manufacturer minimum conductor sizing.
  *
  * 9. Battery Bank Capacity Benchmark:
- *    Minimum recommended battery capacity (Ah) to stay within safe C-rate discharge thresholds.
+ *    Illustrative minimum battery capacity (Ah) using typical continuous discharge guidelines (0.5C LiFePO4, 0.2C Lead-Acid).
+ *    Actual discharge capability depends on manufacturer battery and BMS ratings.
  */
 
 export type InverterSystemVoltage = 12 | 24 | 48;
@@ -235,12 +239,12 @@ export interface InverterSizeOutputs {
   /** Momentary peak DC current drawn during motor surge event (Amps DC) */
   peakSurgeDcCurrentAmps: number;
 
-  /** Recommended minimum DC fuse / breaker rating (Amps DC) */
+  /** Illustrative minimum DC fuse / breaker rating estimate (Amps DC) */
   recommendedFuseAmps: number;
-  /** Recommended pure copper battery cable gauge (AWG) for short run */
+  /** Illustrative pure copper battery cable gauge estimate (AWG) for short runs (<6ft total loop) */
   recommendedCableGauge: string;
 
-  /** Minimum recommended battery bank capacity in Amp-hours (Ah) to prevent overload */
+  /** Illustrative benchmark battery bank capacity in Amp-hours (Ah) based on typical continuous C-rate limits */
   recommendedMinBatteryCapacityAh: number;
   /** Nominal battery bank voltage used */
   systemVoltageUsed: InverterSystemVoltage;
@@ -273,8 +277,10 @@ const STANDARD_FUSE_SIZES = [
 ];
 
 /**
- * Maps maximum continuous DC current to recommended pure copper cable gauge
- * based on standard battery inverter installation guidelines (< 6ft total loop, 75°C/90°C terminals).
+ * Provides an illustrative pure copper cable gauge estimate for short battery inverter runs
+ * (< 6ft total loop at <= 2% permissible voltage drop, assuming 75°C/90°C rated terminals).
+ * Actual conductor sizing must account for total round-trip cable length, acceptable voltage drop,
+ * ambient temperature derating, conduit fill, and inverter manufacturer minimum cable specifications.
  */
 export function getRecommendedCableGauge(dcAmps: number): string {
   if (dcAmps <= 40) return "8 AWG (Copper)";
@@ -289,7 +295,9 @@ export function getRecommendedCableGauge(dcAmps: number): string {
 }
 
 /**
- * Rounds up to the nearest standard commercial ANL / MRBF fuse rating.
+ * Rounds up to the nearest standard commercial ANL / MRBF / Class T fuse rating as an illustrative estimate.
+ * Actual DC overcurrent protection must be specified according to the inverter manufacturer manual,
+ * conductor ampacity, and battery short-circuit interrupt rating (AIC).
  */
 export function getStandardFuseRating(targetAmps: number): number {
   for (const size of STANDARD_FUSE_SIZES) {
@@ -376,8 +384,9 @@ export function calculateInverterSize(inputs: InverterSizeInputs): InverterSizeO
     const itemRunning = app.runningWatts * app.quantity;
     totalRunningWatts += itemRunning;
 
-    // Single largest motor starting surge calculation:
-    // Only one motor is assumed to start at a single instant
+    // Non-coincident motor starting surge calculation:
+    // Models typical single-motor startup surge as a practical baseline.
+    // If multiple inductive loads cycle concurrently, their combined surge should be evaluated.
     const singleSurgeDelta = Math.max(0, app.startingWatts - app.runningWatts);
     if (singleSurgeDelta > 0) {
       hasInductiveLoad = true;
@@ -440,16 +449,17 @@ export function calculateInverterSize(inputs: InverterSizeInputs): InverterSizeO
   const peakSurgeDcCurrentAmps =
     peakSurgeWatts > 0 ? Number((peakSurgeWatts / (systemVoltage * efficiency)).toFixed(1)) : 0;
 
-  // DC Fuse Sizing: 125% of maximum rated continuous DC current, rounded to standard commercial fuse
+  // DC Fuse Sizing: Illustrative 125% continuous rating estimate rounded to standard commercial sizes.
+  // Note: Actual fuse sizing and AIC rating must follow inverter manufacturer installation requirements.
   const targetFuseAmps = maxRatedDcCurrentAmps * 1.25;
   const recommendedFuseAmps = getStandardFuseRating(targetFuseAmps);
 
-  // Battery Cable Gauge
+  // Battery Cable Gauge: Short-run illustrative estimate (<6ft total loop at <=2% voltage drop)
   const recommendedCableGauge = getRecommendedCableGauge(maxRatedDcCurrentAmps);
 
-  // Minimum Battery Bank Capacity:
-  // LiFePO4: safe continuous discharge up to 0.5C (Ah = Amps / 0.5 = Amps * 2)
-  // Lead-Acid: safe continuous discharge up to 0.2C (Ah = Amps / 0.2 = Amps * 5) to prevent severe Peukert sag
+  // Illustrative Minimum Battery Bank Capacity:
+  // Typical benchmark limits: 0.5C for LiFePO4, 0.2C for Lead-Acid to mitigate voltage sag.
+  // Note: Actual continuous discharge capability is determined by manufacturer battery and BMS specs.
   const cRateDivisor = batteryChemistry === "lifepo4" ? 0.50 : 0.20;
   const rawMinAh = continuousDcCurrentAmps > 0 ? continuousDcCurrentAmps / cRateDivisor : 0;
   const recommendedMinBatteryCapacityAh = Math.ceil(rawMinAh / 10) * 10; // Rounded to nearest 10Ah
@@ -466,7 +476,7 @@ export function calculateInverterSize(inputs: InverterSizeInputs): InverterSizeO
 
   // Wave type recommendation
   const inverterTypeRecommendation = hasInductiveLoad || totalRunningWatts >= 500
-    ? "Pure Sine Wave (MANDATORY for motors, compressors, medical CPAP, and modern electronics to prevent overheating and harmonic noise)"
+    ? "Pure Sine Wave (Strongly recommended for motors, compressors, medical CPAP, and modern electronics to prevent overheating and harmonic noise)"
     : "Pure Sine Wave (Recommended for clean power and equipment longevity; Modified Sine Wave acceptable only for basic resistive heaters and incandescent bulbs)";
 
   if (suggestedInverterRatingWatts >= 5000 && systemVoltage === 12) {
@@ -509,12 +519,12 @@ export const INVERTER_FAQS: InverterFaqItem[] = [
   {
     question: "What size inverter do I need for my house or RV?",
     answer:
-      "To size an inverter properly, calculate two distinct numbers: total continuous running watts and peak starting surge watts. Sum the running wattage of all electrical items you plan to power at the exact same time, then multiply by 1.25 to add a 25% continuous headroom buffer. Next, identify the appliance with the single largest motor startup surge (such as a refrigerator, air conditioner, or water pump) and add that startup delta to your running load. The inverter you choose must meet or exceed both the continuous wattage rating and the momentary peak surge rating.",
+      "To estimate inverter requirements, calculate two distinct numbers: total continuous running watts and peak starting surge watts. Sum the running wattage of electrical appliances intended to operate concurrently, and add a recommended continuous headroom buffer (such as 20% to 25%) to operate within the inverter peak efficiency curve and prevent thermal throttling. Next, evaluate motor startup surges. Under typical non-coincident operating conditions, adding the surge delta from the single largest inductive motor provides a practical surge baseline. If multiple heavy motors cycle on simultaneously, their combined starting surge must be evaluated. The selected inverter should comfortably meet both continuous and momentary surge demands.",
   },
   {
     question: "Why should I choose Pure Sine Wave over Modified Sine Wave?",
     answer:
-      "Pure Sine Wave inverters replicate the smooth, continuous AC wave provided by utility grids. Modern electronics, variable-speed refrigerators, CPAP machines, audio equipment, microwave ovens, and induction motors operate efficiently without harmonic distortion or excess heat on pure sine wave power. Modified Sine Wave inverters produce a stepped, square-like waveform that causes inductive motors to run 20% to 30% hotter, produces audible buzzing in audio and fan motors, and can permanently damage sensitive medical hardware and battery chargers.",
+      "Pure Sine Wave inverters replicate the smooth, continuous AC wave provided by utility grids. Modern electronics, variable-speed refrigerators, CPAP machines, audio equipment, microwave ovens, and induction motors operate efficiently without harmonic distortion or excess heat on pure sine wave power. Modified Sine Wave inverters produce a stepped, square-like waveform that causes inductive motors to run hotter, produces audible buzzing in audio and fan motors, and can cause issues with sensitive medical hardware and battery chargers.",
   },
   {
     question: "When should I upgrade from a 12V inverter system to 24V or 48V?",
@@ -529,12 +539,12 @@ export const INVERTER_FAQS: InverterFaqItem[] = [
   {
     question: "Where should the DC fuse or circuit breaker be installed?",
     answer:
-      "Per National Electrical Code (NEC Article 706 and ABYC standard E-11 for marine and mobile applications), the overcurrent protection device (such as an ANL fuse, Class T fuse, or MRBF terminal fuse) must be installed on the positive (+) DC cable as close as physically possible to the battery positive terminal, typically within 7 inches. This location ensures that the entire length of the positive battery cable leading to the inverter is protected against high-current dead shorts.",
+      "Overcurrent protection (such as a Class T, ANL, or MRBF fuse) should be installed on the ungrounded positive (+) DC cable as close to the battery source as practical to protect the conductor from high-current short circuits. In marine and mobile installations, standards like ABYC E-11 specify placing the fuse within 7 inches of the battery terminal (or up to 40 inches if the cable is enclosed in a protective sleeve). In stationary battery energy storage systems, NEC guidelines require placing overcurrent protection as close as practical to the battery output terminals. Always follow your inverter and battery manufacturer specifications for exact fuse type, placement, and interrupt rating (AIC).",
   },
   {
     question: "What battery capacity (Amp-hours) is needed to support my inverter?",
     answer:
-      "Your battery bank must be sized not only for runtime, but also to satisfy maximum safe discharge current (C-rate). Lithium Iron Phosphate (LiFePO4) batteries comfortably support continuous discharge rates around 0.5C (for instance, a 100Ah battery safely supplies up to 50A continuous). Traditional Lead-Acid (AGM or Gel) batteries suffer severe Peukert capacity loss and voltage sag if discharged faster than 0.2C (a 100Ah lead-acid battery should not exceed 20A continuous draw). Sizing the battery bank to keep continuous draw within these thresholds prevents premature BMS low-voltage shutoffs and battery cell degradation.",
+      "Your battery bank must be sized not only for total runtime, but also to sustain continuous DC current without excessive voltage drop. Typical engineering benchmarks suggest continuous discharge rates around 0.5C for LiFePO4 (e.g., a 100Ah battery supplying up to 50A continuous) and 0.2C for traditional Lead-Acid / AGM batteries (a 100Ah battery supplying up to 20A continuous) to prevent severe Peukert capacity loss. However, actual continuous and peak discharge capabilities depend on specific manufacturer battery specifications and internal BMS current ratings.",
   },
 ];
 

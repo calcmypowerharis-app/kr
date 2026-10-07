@@ -67,7 +67,7 @@ const TOC_ITEMS: TocItem[] = [
   { id: "mppt-vs-pwm", label: "MPPT vs. PWM: Core Electrical Differences" },
   { id: "mppt-sizing-formula", label: "How to Calculate MPPT Controller Amperage" },
   { id: "pwm-sizing-formula", label: "How to Calculate PWM Controller Amperage" },
-  { id: "voc-cold-temperature", label: "Voltage Limits & Sub-Freezing Voc Rise (NEC 690.7)" },
+  { id: "voc-cold-temperature", label: "Voltage Limits & Sub-Freezing Voc Calculations" },
   { id: "worked-examples", label: "3 Real-World Sizing Scenarios (12V, 24V, 48V)" },
   { id: "overpaneling-rules", label: "Array Overpaneling & Current Clipping" },
   { id: "wire-and-fuse-sizing", label: "Wire Sizing, Breakers, and Safety Rules" },
@@ -89,7 +89,7 @@ const FAQ_DATA = [
   {
     question: "Why does cold weather increase solar panel open-circuit voltage (Voc)?",
     answer:
-      "Solar photovoltaic cells possess a negative temperature coefficient of voltage. As ambient temperatures drop below standard testing conditions (25 degrees Celsius or 77 degrees Fahrenheit), the semiconductor bandgap widens, causing panel output voltage to rise. On sub-freezing winter mornings, solar array Voc can increase by 10% to 20% above the factory label rating. If this cold Voc exceeds the charge controller maximum voltage rating, internal transistors suffer permanent electrical breakdown.",
+      "Solar photovoltaic cells possess a negative temperature coefficient of voltage. As ambient temperatures drop below standard testing conditions (25 degrees Celsius or 77 degrees Fahrenheit), the semiconductor bandgap widens, causing panel output voltage to rise. On sub-freezing winter mornings, solar array Voc can increase by 10% to 20% above the factory label rating. If this cold Voc exceeds the charge controller maximum voltage rating, internal components risk permanent electrical damage or failure.",
   },
   {
     question: "What is the difference between MPPT and PWM charge controller sizing?",
@@ -99,12 +99,12 @@ const FAQ_DATA = [
   {
     question: "What happens if I overpanel my MPPT charge controller?",
     answer:
-      "Overpaneling (connecting more solar panel wattage than the controller nominal rating) is standard practice in solar engineering. High-quality MPPT controllers automatically limit (clip) output current to their maximum rated specification (such as 40A). On overcast days or during morning and late afternoon hours, the extra panels harvest significantly more usable energy. However, you must always ensure the array maximum cold Voc never exceeds the controller input voltage ceiling.",
+      "Many modern MPPT controllers support array oversizing by automatically clipping output current to their maximum rated specification (such as 40A). On overcast days or during off-peak morning and evening hours, the extra panel wattage provides higher usable energy harvest. However, you must verify that the array does not exceed the manufacturer maximum allowable array wattage, short-circuit current (Isc) limits, and cold-temperature Voc rating.",
   },
   {
     question: "Where should the circuit breaker or fuse be placed relative to the charge controller?",
     answer:
-      "Two overcurrent protection devices are required: one on the positive wire between the solar array and the charge controller input (sized at 1.25 to 1.56 times array short-circuit current), and one on the positive wire between the charge controller output and the battery bank (sized at 1.25 times the controller rated output current, located within 7 inches of the battery terminal per NEC guidelines).",
+      "Two overcurrent protection devices are recommended: one on the positive conductor between the solar array and the charge controller input (typically sized at 1.25 to 1.56 times array short-circuit current), and one on the positive conductor between the charge controller output and the battery bank (sized at 1.25 times the controller rated continuous output current, installed as close to the battery terminal as practical to protect the cable; marine and mobile standards like ABYC E-11 specify within 7 inches). Always verify equipment manuals and applicable electrical codes for exact disconnect and overcurrent requirements.",
   },
 ];
 
@@ -224,7 +224,7 @@ export default function HowToSizeASolarChargeControllerPage() {
                   <h2>Quick Summary: Sizing Formulas at a Glance</h2>
                 </div>
                 <p className="text-sm text-blue-950 leading-relaxed">
-                  A solar charge controller regulates current and voltage moving from your photovoltaic panels into your battery bank to prevent overcharging. Sizing correctly comes down to two mandatory parameters:
+                  A solar charge controller regulates current and voltage moving from your photovoltaic panels into your battery bank to prevent overcharging. Sizing correctly comes down to two primary engineering parameters:
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
                   <div className="p-3.5 rounded-xl bg-white border border-blue-100 shadow-xs space-y-1">
@@ -247,8 +247,8 @@ export default function HowToSizeASolarChargeControllerPage() {
                   </div>
                 </div>
                 <div className="p-3 bg-amber-50/90 rounded-xl border border-amber-200 text-xs text-amber-900">
-                  <strong className="text-amber-950">Critical Safety Limit: </strong>
-                  The solar array open-circuit voltage corrected for the coldest expected winter temperature (Cold Voc) must NEVER exceed the charge controller maximum input voltage rating (such as 100V, 150V, or 250V). Exceeding this voltage ceiling destroys the controller instantly.
+                  <strong className="text-amber-950">Equipment Voltage Limit: </strong>
+                  The solar array open-circuit voltage corrected for the coldest expected winter temperature (Cold Voc) must never exceed the charge controller manufacturer maximum input voltage rating (such as 100V, 150V, or 250V). Exceeding this equipment voltage limit risks severe hardware damage, failure, and voiding manufacturer warranties.
                 </div>
               </div>
             </section>
@@ -281,8 +281,8 @@ export default function HowToSizeASolarChargeControllerPage() {
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-3.5 font-semibold text-slate-800">Energy Conversion Efficiency</td>
-                      <td className="p-3.5 font-bold text-emerald-700">97% to 99% efficient (15% to 30% higher energy harvest)</td>
-                      <td className="p-3.5 text-slate-700">70% to 75% practical seasonal efficiency</td>
+                      <td className="p-3.5 font-bold text-emerald-700">Typically 95% to 98% conversion efficiency; delivers up to 15% to 30% higher seasonal energy harvest depending on weather and voltage delta</td>
+                      <td className="p-3.5 text-slate-700">Dependent on panel-to-battery voltage match; seasonal yield is lower because excess voltage cannot be converted into charging current</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="p-3.5 font-semibold text-slate-800">Voltage Flexibility</td>
@@ -408,10 +408,10 @@ export default function HowToSizeASolarChargeControllerPage() {
             <section id="voc-cold-temperature" className="space-y-4 scroll-mt-24">
               <div className="flex items-center gap-2 text-slate-900 font-bold text-xl sm:text-2xl">
                 <ThermometerSnowflake className="w-6 h-6 text-blue-600" />
-                <h2>Voltage Limits &amp; Sub-Freezing Voc Rise (NEC 690.7)</h2>
+                <h2>Voltage Limits &amp; Sub-Freezing Voc Calculations</h2>
               </div>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                Every MPPT controller has a strict maximum input voltage rating, typically printed prominently on the unit (such as 100V, 150V, or 250V). This is a rigid semiconductor breakdown limit. If the open-circuit voltage (Voc) of your solar array exceeds this threshold even for a single millisecond, the internal MOSFET switching transistors will be destroyed.
+                Every MPPT controller has a maximum input voltage rating specified by the manufacturer (such as 100V, 150V, or 250V). Because internal semiconductor switching components are rated for specific peak voltages, exceeding this limit can cause permanent component damage, device failure, and void warranties. Sizing calculations must account for worst-case cold winter temperatures before connecting solar strings.
               </p>
 
               <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-900 space-y-2 leading-relaxed">
@@ -425,7 +425,7 @@ export default function HowToSizeASolarChargeControllerPage() {
               </div>
 
               <div className="space-y-3">
-                <h3 className="font-bold text-slate-900 text-base">Mathematical Formula for Maximum Cold Voc (NEC 690.7):</h3>
+                <h3 className="font-bold text-slate-900 text-base">Engineering Method for Estimating Cold Voc (Temperature Coefficient Method):</h3>
                 <div className="p-4 bg-slate-900 text-emerald-400 font-mono text-xs sm:text-sm rounded-xl border border-slate-800">
                   V_oc_cold = V_oc_STC * [ 1 + (beta_Voc / 100) * (T_min - 25) ]
                 </div>
@@ -434,6 +434,9 @@ export default function HowToSizeASolarChargeControllerPage() {
                   <li><strong>beta_Voc: </strong> Temperature coefficient of Voc, typically between -0.28%/C and -0.35%/C for monocrystalline silicon.</li>
                   <li><strong>T_min: </strong> The historical record-low ambient temperature at your installation site in degrees Celsius.</li>
                 </ul>
+                <p className="text-xs text-slate-500 pt-1">
+                  Note: This calculation provides an engineering estimate based on the module temperature coefficient. For code compliance in permitted installations, NEC Article 690.7 provides specific calculation methodologies and standard ambient temperature correction tables that should be reviewed with your local authority having jurisdiction (AHJ).
+                </p>
               </div>
 
               {/* Cold Voc Example Calculation */}
@@ -451,7 +454,7 @@ export default function HowToSizeASolarChargeControllerPage() {
                   V_oc_cold = 148.5V * 1.120 = 166.3 Volts
                 </div>
                 <p className="text-rose-800 font-medium">
-                  Result: On a cold sunny winter morning, the string voltage will reach 166.3V, instantly burning out the 150V controller. For this system, you must either rewire the array as a 2-series / parallel string or upgrade to a 200V or 250V MPPT controller.
+                  Result: On a cold sunny winter morning, the string voltage will reach approximately 166.3V, exceeding the 150V controller rating and risking hardware failure. For this system, the array should be rewired as a 2-series / parallel string or paired with a controller rated for at least 200V or 250V DC input.
                 </p>
               </div>
             </section>
@@ -566,13 +569,13 @@ export default function HowToSizeASolarChargeControllerPage() {
                 Overpaneling (or oversizing your solar array relative to charge controller wattage) is a standard design technique among experienced off-grid solar installers.
               </p>
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
-                <strong className="text-slate-900">How Current Clipping Works: </strong>
-                High-quality MPPT charge controllers have an internal current limiter. If you connect 1,200 Watts of solar panels to a 40A 24V MPPT controller (which nominally maxes out around 1,000 Watts at 24V), the controller will not burn out. During peak solar noon on a clear summer day, it simply caps (clips) its output to its maximum 40 Amps.
+                <strong className="text-slate-900">How Current Clipping Operates: </strong>
+                Many modern MPPT charge controllers include internal current limiting circuitry. If paired with an array that produces higher peak wattage than the controller nominal rating (such as 1,200W of panels on a 40A 24V controller that nominally delivers around 1,000W), the controller manages power by capping (clipping) its output current to its 40A maximum rating. However, allowable oversizing is equipment-specific: you must always verify the controller manufacturer maximum allowable PV array wattage and maximum input short-circuit current (Isc) ratings.
                 <p className="pt-1">
-                  <strong>The Major Advantage: </strong> Solar panels rarely produce 100% of their rated wattage due to dust, angle of incidence, heat derating, and haze. By overpaneling by 20% to 30%, your system reaches full charging output much earlier in the morning, maintains peak output during cloudy weather, and continues charging robustly later into the afternoon.
+                  <strong>The Engineering Advantage: </strong> Solar panels rarely operate at 100% rated capacity due to ambient heat, sub-optimal sun angles, dust, and atmospheric haze. Moderate oversizing (often 10% to 30%, where supported by manufacturer specifications) allows the system to reach full charging output earlier in the morning, sustain higher output during cloudy periods, and prolong daily harvesting hours.
                 </p>
                 <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-amber-900 font-medium">
-                  <strong>The One Inviolable Rule: </strong> You can safely overpanel array wattage and short-circuit amperage, but you must NEVER overpanel open-circuit voltage (Voc). Voltage clipping does not exist. Excess voltage destroys electronics instantly.
+                  <strong>The Critical Boundary: </strong> While MPPT controllers can regulate excess current through clipping, they cannot clip excess input voltage. Exceeding the controller maximum open-circuit voltage (Voc) rating risks permanent hardware failure and voids equipment warranties.
                 </div>
               </div>
             </section>
@@ -600,7 +603,7 @@ export default function HowToSizeASolarChargeControllerPage() {
                   <ul className="space-y-1.5 text-slate-600 list-disc list-inside">
                     <li>Carries high current at low battery voltage (e.g., 40A to 80A continuous).</li>
                     <li>Requires thick pure copper battery cables (e.g., 6 AWG, 4 AWG, or 2 AWG depending on distance) to keep voltage drop under 1.5%.</li>
-                    <li>Install an inline DC fuse (ANL or MRBF) sized at 1.25x controller rated current within 7 inches of the battery positive terminal.</li>
+                    <li>Install an inline DC overcurrent device (Class T, ANL, or MRBF fuse) sized at approximately 1.25x controller rated continuous current as close to the battery terminal as practical (marine/mobile standards like ABYC E-11 specify placement within 7 inches) to protect the battery conductor.</li>
                   </ul>
                 </div>
               </div>
