@@ -147,6 +147,14 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
+                <Link
+                  href="/inverter-size-calculator"
+                  className="hover:text-white transition"
+                >
+                  Inverter Size Calculator
+                </Link>
+              </li>
+              <li>
                 <Link href="/calculators" className="hover:text-white transition">
                   All Calculators Directory
                 </Link>
@@ -254,6 +262,14 @@ export const Footer: React.FC = () => {
                   className="hover:text-white transition"
                 >
                   How to Calculate Electricity Bill
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/how-to-size-a-solar-charge-controller"
+                  className="hover:text-white transition"
+                >
+                  How to Size a Solar Charge Controller
                 </Link>
               </li>
             </ul>

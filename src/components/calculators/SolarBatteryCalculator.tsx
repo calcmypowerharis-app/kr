@@ -77,6 +77,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
+    title: "Inverter Size Calculator",
+    description:
+      "Calculate continuous and surge wattage, DC battery current draw, cable gauge (AWG), and fuse sizing across 12V, 24V, and 48V systems.",
+    href: "/inverter-size-calculator",
+    category: "Inverters & DC Sizing",
+  },
+  {
     title: "Solar Panel Tilt Angle Calculator",
     description:
       "Calculate the optimal solar panel tilt angle and compass orientation for your latitude to maximize seasonal battery recharging.",
@@ -247,14 +254,14 @@ export const SolarBatteryCalculator: React.FC = () => {
       defaultVal: "LiFePO4: 85% | Lead-Acid AGM: 50%",
       realisticRange: "70% to 90% (LiFePO4) | 40% to 50% (Lead-Acid)",
       impact:
-        "Depth of discharge values are illustrative editable defaults. Always consult your specific battery manufacturer datasheet. Deeply discharging lead-acid batteries beyond 50% causes accelerated plate sulfation, while operating LiFePO4 within 80%–90% DoD optimizes cycle life.",
+        "Depth of discharge values are illustrative editable defaults. Always consult your specific battery manufacturer datasheet. Deeply discharging lead-acid batteries beyond 50% causes accelerated plate sulfation, while operating LiFePO4 within 80% to 90% DoD optimizes cycle life.",
     },
     {
       parameter: "Inverter Conversion Efficiency",
       defaultVal: "85% (Typical Real-World Baseline)",
       realisticRange: "80% to 94% across varying load percentages",
       impact:
-        "Inverter efficiency varies dynamically depending on connected load percentage and ambient operating temperature. Higher quality pure sine wave inverters operating near their sweet spot can reach 90%–94%, while light loads often drop efficiency to 75%–82%.",
+        "Inverter efficiency varies dynamically depending on connected load percentage and ambient operating temperature. Higher quality pure sine wave inverters operating near their sweet spot can reach 90% to 94%, while light loads often drop efficiency to 75% to 82%.",
     },
     {
       parameter: "DC System Bus Voltage",

@@ -57,6 +57,20 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
+    title: "How to Size a Solar Charge Controller",
+    description:
+      "Complete MPPT vs PWM sizing guide covering cold-weather Voc calculations, battery voltage matching, and overpaneling.",
+    href: "/how-to-size-a-solar-charge-controller",
+    category: "Solar Engineering Guide",
+  },
+  {
+    title: "Inverter Size Calculator",
+    description:
+      "Calculate continuous and surge wattage, DC battery current draw, cable gauge (AWG), and fuse sizing across 12V, 24V, and 48V systems.",
+    href: "/inverter-size-calculator",
+    category: "Inverters & DC Sizing",
+  },
+  {
     title: "Solar Battery Sizing Calculator",
     description:
       "Size your off-grid or hybrid battery bank in Amp-hours and Watt-hours based on daily energy consumption and days of autonomy.",
