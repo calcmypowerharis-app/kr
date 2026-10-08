@@ -87,6 +87,185 @@ A task is DONE only when all seven quality gates pass:
 6. Production build passes (`npm run build`).
 7. Git diff is clean, reviewed, and committed with descriptive message.
 
+### 7. Permanent Editorial Design Standard (Canonical Reference: /solar-panels-series-vs-parallel)
+
+**Reference Design:**
+Use the existing CalcMyPower editorial page:
+`/solar-panels-series-vs-parallel`
+as the canonical visual reference for future editorial article design.
+
+**Important Implementation Principles:**
+- Do not copy its exact content.
+- Do not force every article to use every component.
+- Use its design system, visual hierarchy, spacing, structure, and readability as the standard.
+
+#### 1. Canonical Article Shell
+Future editorial articles should follow the same overall publication shell:
+- clean site header
+- strong article hero/title area
+- contextual article image near the top
+- main article content first/left
+- supporting aside second/right on desktop
+- clear section hierarchy
+- readable content width
+- consistent card/callout treatment
+- consistent table styling
+- consistent CTA styling
+- consistent FAQ treatment
+- consistent sources/disclaimer treatment
+- consistent footer
+
+Desktop DOM order MUST remain:
+1. article/content
+2. aside/supporting content
+
+Never place the sidebar before the main article content in DOM order.
+
+#### 2. Design Consistency = Same System, Not Identical Pages
+Do not independently redesign each article.
+Reuse the established CalcMyPower editorial components and visual language whenever applicable.
+
+However:
+- do not force tables where a table is unnecessary
+- do not force diagrams where a diagram adds no value
+- do not force cards merely for decoration
+- do not force FAQs just to increase word count
+- do not duplicate components only to make pages look fuller
+
+A new article should feel like it belongs to the same CalcMyPower publication family.
+
+#### 3. Article Visual Rhythm
+Use a natural rhythm similar to the reference article:
+Hero -> contextual image -> quick summary/direct answer -> H2 section -> short explanatory paragraphs -> table/card/diagram when useful -> next H2 -> practical examples -> relevant calculator CTA -> FAQ -> sources/disclaimer
+
+Avoid giant uninterrupted content blocks.
+
+#### 4. Paragraph Readability
+Default editorial paragraph:
+- 1 to 2 short sentences
+- approximately 2 to 3 visual lines on a normal desktop reading width
+
+Avoid intentionally writing:
+- 4 to 6 line paragraphs
+- dense text walls
+- multi-sentence blocks with too many ideas
+- unnecessarily long introductions
+
+When an idea becomes too large:
+split it with a new paragraph, subheading, bullet list, example, table, or callout.
+
+IMPORTANT: "2 to 3 lines" is an editorial readability target, NOT a hard CSS line-count rule. Never manipulate font size or CSS just to force paragraph line counts.
+
+#### 5. Article Length
+Standard article target:
+- minimum around 1,500 words
+- maximum around 1,800 words
+- preferred range around 1,600 to 1,700 words
+
+Do not inflate content to reach 1,800 words.
+Do not add filler, repetitive explanations, unnecessary FAQs, or keyword-stuffed sections.
+A complete 1,500-word article is better than a padded 1,800-word article.
+
+#### 6. Heading Discipline
+Use meaningful H2/H3 sections.
+Do not create a heading every few sentences just for SEO.
+Each heading must represent a real topic change or useful content grouping.
+
+#### 7. Tables
+Use the established CalcMyPower table style.
+Use tables when:
+- comparing values
+- showing scenarios
+- showing calculations
+- showing practical reference data
+
+Do not convert ordinary prose into tables unnecessarily.
+
+#### 8. Callouts and Cards
+Use the established CalcMyPower informational cards for:
+- key takeaways
+- warnings
+- important assumptions
+- practical tips
+- calculator CTAs
+
+Cards must communicate useful information.
+Avoid decorative card spam.
+
+#### 9. Images and Diagrams
+Use contextual visuals that directly support the article subject.
+Article images must:
+- be unique to the article
+- never be reused across different editorial articles
+- have descriptive filenames
+- have useful alt text
+- visually fit the established editorial style
+
+Technical diagrams are encouraged when they make engineering concepts easier to understand.
+Do not add diagrams merely for decoration.
+
+#### 10. CTA / Internal Linking
+Calculator CTAs should feel like a natural continuation of the article.
+Use descriptive contextual anchors.
+Do not overload articles with internal links.
+The goal is: reader understands concept -> reader gets useful calculation tool.
+
+#### 11. FAQ
+FAQ belongs near the end of the article.
+Use FAQ only when it adds genuine search/user value.
+Visible FAQ questions and FAQ JSON-LD MUST remain identical.
+
+#### 12. Sources / Disclaimer
+Keep the established professional sources/disclaimer treatment near the end where relevant.
+Never make:
+- NEC compliant
+- code compliant
+- certified
+- approved
+- IEEE compliant
+claims for CalcMyPower unless explicitly and legitimately supported by the task and rules.
+
+#### 13. Mobile Readability
+Reference design must remain comfortable on approximately 390 CSS px width.
+Verify:
+- zero horizontal overflow
+- short readable paragraphs
+- readable headings
+- cards do not become excessively dense
+- tables remain usable
+- images remain responsive
+- content remains the primary focus
+
+#### 14. Article vs Calculator Design
+Do not merge the editorial and calculator design systems.
+Editorial article: content-first, reading/scanning experience.
+Calculator: interaction-first, calculation experience.
+
+#### 15. Future Article Pre-Check
+Before implementing a new article:
+- inspect /solar-panels-series-vs-parallel
+- inspect the latest approved article
+- reuse existing editorial components
+- preserve the same shell and visual language
+- choose modules based on actual content needs
+
+#### 16. No Automatic Mass Rewrite
+These rules apply primarily to FUTURE articles.
+Do not rewrite all existing articles just to conform to this rule unless a separate optimization task is explicitly approved.
+
+#### 17. Quality Gate
+Every future article must pass:
+- 1,500 to 1,800 word target unless justified otherwise
+- no intentionally dense 4 to 6 line paragraphs
+- visual consistency with /solar-panels-series-vs-parallel
+- content-left / aside-right DOM order
+- 390px mobile readability
+- no horizontal overflow
+- unique article image
+- no unnecessary decorative components
+- no filler content
+- SEO structure intact
+
 ---
 
 ## Modular Rulebook Directory Reference
