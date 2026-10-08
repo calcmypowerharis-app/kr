@@ -857,6 +857,31 @@ export default function CalculatorsDirectoryPage() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
+
+            <Link
+              href="/how-many-amp-hours-do-i-need"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Battery Storage Guide
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-500">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>13 min read</span>
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                How Many Amp Hours Do I Need for a Battery Bank?
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Calculate total battery bank amp-hours from daily appliance Watt-hours, nominal voltage (12V, 24V, 48V), autonomy days, usable depth of discharge, and inverter efficiency.
+              </p>
+              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
+                <span>Read Battery Bank Sizing Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </section>
       </div>

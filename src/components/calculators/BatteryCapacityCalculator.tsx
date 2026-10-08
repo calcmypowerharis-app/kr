@@ -846,6 +846,14 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   12V 100Ah Battery Runtime Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
+                , calculate total bank requirements from daily Watt-hour loads in our{" "}
+                <Link
+                  href="/how-many-amp-hours-do-i-need"
+                  className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  Battery Bank Amp Hour Sizing Guide
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
                 , or learn how to wire solar panels to charge your battery bank in our{" "}
                 <Link
                   href="/solar-panels-series-vs-parallel"
@@ -896,7 +904,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose my-6">
               <div className="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">
                 <div className="font-bold text-emerald-900 text-sm mb-1">LiFePO4 Lithium</div>
-                <div className="text-2xl font-black text-emerald-700 mb-2">80% – 90%</div>
+                <div className="text-2xl font-black text-emerald-700 mb-2">80% to 90%</div>
                 <p className="text-xs text-emerald-800 leading-relaxed">
                   Safely discharges 80% to 90% of rated capacity daily. Delivers 3,000 to 5,000+ full charge-discharge cycles without rapid degradation.
                 </p>
@@ -962,7 +970,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
             </h2>
           </div>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
-            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters:
+            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. For a complete sizing walkthrough from daily Watt-hours to total bank Ah, read our guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-medium">how many amp hours you need for a battery bank</Link>:
           </p>
 
           <div className="overflow-x-auto mb-6">

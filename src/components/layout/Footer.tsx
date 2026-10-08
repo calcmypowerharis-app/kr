@@ -272,6 +272,14 @@ export const Footer: React.FC = () => {
                   How to Size a Solar Charge Controller
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-many-amp-hours-do-i-need"
+                  className="hover:text-white transition"
+                >
+                  How Many Amp Hours Do I Need?
+                </Link>
+              </li>
             </ul>
           </div>
 
