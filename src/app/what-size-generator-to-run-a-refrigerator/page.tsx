@@ -236,11 +236,19 @@ export default function RefrigeratorGeneratorSizingPage() {
               </h2>
 
               <p>
-                A generator rated for <strong>2,000 starting watts and 1,000 running watts</strong> can comfortably start and power virtually any standard residential kitchen refrigerator. A compact 2,000 to 2,200-watt portable inverter generator is typically the sweet spot for homeowners who simply want to preserve groceries and maintain critical baseline circuits during an electrical outage.
+                A generator rated for <strong>2,000 starting watts and 1,000 running watts</strong> can comfortably start and power virtually any standard residential kitchen refrigerator.
               </p>
 
               <p>
-                However, no single wattage number applies universally to every home. The wattage ratings cited throughout this guide (such as 100 to 200 running watts and 800 to 1,200 starting watts) serve as representative, illustrative examples for typical modern units. Your actual requirements depend on compressor design (inverter vs. single-speed reciprocating), unit volume, internal features, ambient conditions, and what other household circuits share generator capacity. Always consult your refrigerator data plate or manufacturer specifications for exact ratings.
+                A compact 2,000 to 2,200-watt portable inverter generator is typically the sweet spot for homeowners seeking to preserve food and maintain basic circuits during an outage.
+              </p>
+
+              <p>
+                No single wattage number applies universally to every home. The ratings cited throughout this guide (such as 100 to 200 running watts and 800 to 1,200 starting watts) serve as representative benchmarks for typical modern units.
+              </p>
+
+              <p>
+                Actual requirements depend on compressor type (inverter versus single-speed), cabinet volume, ambient temperature, and shared circuit loads. Always check your refrigerator data plate for exact ratings.
               </p>
 
               {/* Sizing Brackets Summary Callout */}
@@ -309,11 +317,19 @@ export default function RefrigeratorGeneratorSizingPage() {
               </h2>
 
               <p>
-                When homeowners research generator requirements, they frequently encounter confusing, contradictory wattage estimates. Some sources state that a refrigerator uses 800 watts, while energy monitoring agencies report that a modern Energy Star unit draws under 150 watts. Both figures stem from real measurements, but they represent entirely different operational states.
+                Homeowners researching generator sizing frequently encounter contradictory wattage estimates. Some sources list 800 watts, while energy monitors show a modern unit drawing under 150 watts.
               </p>
 
               <p>
-                In steady-state operation, modern residential refrigerators draw relatively little electrical power. The numbers below represent typical, illustrative examples for common U.S. residential units. Actual power requirements vary significantly by compressor technology (single-speed reciprocating versus variable-capacity inverter systems), cabinet size, ambient room temperature, and appliance age. Always verify your specific refrigerator ratings on its manufacturer data plate or owner manual:
+                Both figures stem from real electrical measurements, but they represent completely different operational states.
+              </p>
+
+              <p>
+                In steady-state operation, modern residential refrigerators draw relatively little electrical power. The figures below represent typical planning benchmarks for common US households.
+              </p>
+
+              <p>
+                Actual power varies by compressor technology, cabinet volume, ambient room temperature, and appliance age. Always verify your specific model on its manufacturer data plate:
               </p>
 
               <ul className="list-disc list-inside space-y-2 pl-2">
@@ -332,14 +348,23 @@ export default function RefrigeratorGeneratorSizingPage() {
               </ul>
 
               <p>
-                Crucially, a refrigerator does not run continuously 24 hours a day. The hermetic compressor cycles on and off via an internal thermostat, operating approximately 30% to 50% of each hour under normal room temperatures. Over a full 24-hour period, a modern 25 cubic foot refrigerator consumes roughly 1.0 to 1.8 kilowatt-hours (kWh) of total electrical energy.
+                Refrigerators do not run continuously around the clock. The compressor cycles on and off via an internal thermostat, running approximately 30% to 50% of each hour at normal room temperatures.
+              </p>
+
+              <p>
+                Over a full 24-hour period, a modern 25 cubic foot refrigerator consumes roughly 1.0 to 1.8 kilowatt-hours (kWh) of total electrical energy.
               </p>
 
               <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-950 flex items-start gap-3">
                 <Info className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                <p>
-                  <strong>Why internet wattage charts vary:</strong> Many online wattage guides list nameplate full-load amperes multiplied by 120 volts. A refrigerator label stating 6.5 amps indicates the maximum current the entire appliance can draw if the compressor, defrost heating element, evaporator fan, condenser fan, and ice maker motor all operate simultaneously. During an outage, your generator only supplies the steady cooling compressor load, which is substantially lower than the maximum nameplate safety rating.
-                </p>
+                <div className="space-y-2">
+                  <p>
+                    <strong>Why internet wattage charts vary:</strong> Online guides often multiply nameplate full-load amperes by 120 volts. A 6.5-amp label indicates the maximum current drawn if the compressor, defrost heater, fans, and ice maker all run simultaneously.
+                  </p>
+                  <p>
+                    During an outage, your generator primarily supplies the steady cooling compressor load, which is substantially lower than this theoretical maximum rating.
+                  </p>
+                </div>
               </div>
             </section>
 
@@ -354,11 +379,19 @@ export default function RefrigeratorGeneratorSizingPage() {
               </p>
 
               <p>
-                A refrigerator utilizes an electric motor inside its sealed compressor dome. When the internal thermostat calls for cooling, the rotor starts from a dead stop. At that initial moment, the motor draws a momentary surge of inrush current to overcome mechanical inertia and pump refrigerant vapor against static head pressure.
+                A refrigerator relies on an electric motor inside its sealed compressor dome. When cooling begins, the rotor starts from a dead stop.
               </p>
 
               <p>
-                This startup surge typically lasts between 0.5 and 2 seconds. In general AC electric motor engineering references, stationary induction motors commonly draw momentary inrush currents several times higher than steady-state operating levels before rotor rotation establishes counter-electromotive force. In residential refrigeration, however, actual inrush varies significantly depending on compressor engineering, refrigerant type, system head pressure, and ambient temperature. Modern digital inverter compressors ramp up gradually with negligible surge, whereas older reciprocating single-speed compressors experience higher momentary peaks. It should never be assumed that a single universal multiplier applies to every refrigerator.
+                At that moment, the motor draws inrush current to overcome mechanical inertia and compress refrigerant vapor against static head pressure.
+              </p>
+
+              <p>
+                This startup surge typically lasts between 0.5 and 2 seconds. Stationary induction motors commonly draw momentary inrush currents several times higher than continuous operating levels until rotor speed normalizes.
+              </p>
+
+              <p>
+                Actual inrush varies by compressor engineering, refrigerant type, head pressure, and ambient temperature. Modern inverter compressors ramp up gradually with negligible surge, whereas older reciprocating units experience higher peaks.
               </p>
 
               {/* Sizing Comparison Table */}
@@ -407,7 +440,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                 </table>
               </div>
               <p className="text-xs text-slate-500 italic">
-                Note: The wattages in this table are illustrative planning examples based on typical residential field measurements. Actual running and starting surge demands depend on individual model specifications, compressor head pressure at the moment of startup, and unit age. Check the manufacturer label on your specific appliance.
+                Note: Wattages in this table are illustrative planning benchmarks based on typical residential measurements.
+              </p>
+              <p className="text-xs text-slate-500 italic">
+                Actual running and surge demands depend on specific model engineering, compressor head pressure, and appliance age. Always verify your manufacturer label.
               </p>
 
               <p>
@@ -458,7 +494,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                       <span>Scenario 1: Refrigerator + Communication &amp; Lighting (Successful)</span>
                     </div>
                     <p className="text-emerald-800">
-                      Refrigerator (160W run / 1,200W start) + Wi-Fi router (25W) + 5 LED bulbs (45W) + 2 phone chargers (30W) = <strong>260W total continuous load</strong>. Even if the compressor kicks on while all devices are active, total momentary demand is 260W + 1,040W surge = <strong>1,300W peak</strong>. This fits comfortably within the 1,600W continuous / 2,000W surge threshold.
+                      Refrigerator (160W run / 1,200W start) + router (25W) + 5 LED bulbs (45W) + phone chargers (30W) totals <strong>260W continuous load</strong>.
+                    </p>
+                    <p className="text-emerald-800">
+                      When the compressor starts, peak demand reaches 260W + 1,040W surge = <strong>1,300W peak</strong>. This fits safely within standard 1,600W continuous / 2,000W surge ratings.
                     </p>
                   </div>
 
@@ -468,7 +507,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                       <span>Scenario 2: Refrigerator + Kitchen Microwave (Overload Trip)</span>
                     </div>
                     <p className="text-rose-800">
-                      A homeowner plugs a 1,000-watt countertop microwave into the same 2,000-watt generator. While the microwave is running, continuous draw is roughly 1,400 to 1,500 electrical watts (microwaves consume more input power than their cooking rating). If the refrigerator compressor suddenly turns on during cooking, total demand attempts to spike to 1,500W + 1,040W surge delta = <strong>2,540W</strong>. The generator output breaker trips immediately, shutting down both appliances.
+                      Plugging a 1,000-watt microwave into the same generator pulls roughly 1,400 to 1,500 continuous electrical watts during cooking.
+                    </p>
+                    <p className="text-rose-800">
+                      If the refrigerator starts while cooking, demand spikes to 1,500W + 1,040W surge = <strong>2,540W</strong>. The generator breaker trips immediately, shutting down both appliances.
                     </p>
                   </div>
                 </div>
@@ -516,7 +558,11 @@ export default function RefrigeratorGeneratorSizingPage() {
               </p>
 
               <p>
-                However, if power is restored to both units simultaneously after a multi-hour outage, both compressors may attempt to start at the exact same moment because both cabinet interiors have warmed up. If both 1,200W and 750W compressors start simultaneously, peak inrush can momentarily demand nearly 2,000 watts. To avoid nuisance tripping when plugging both warm units in at once, plug in the main refrigerator first, wait 60 seconds for its compressor to stabilize, and then connect the chest freezer.
+                After a multi-hour outage, both warmed cabinet interiors may attempt to start simultaneously when restored. If a 1,200W fridge and 750W freezer start at the exact same second, peak inrush approaches 2,000 watts.
+              </p>
+
+              <p>
+                To avoid nuisance tripping, connect the main refrigerator first. Wait 60 seconds for its compressor to stabilize before connecting the chest freezer.
               </p>
             </section>
 
@@ -582,7 +628,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                   Calculating Watts from Volts and Amps (P = V × I)
                 </span>
                 <p>
-                  Multiplying Volts by Amps (120V × 6.0A = 720 Watts) represents apparent power in Volt-Amps (VA), which accounts for maximum design capacity rather than steady-state active watts. In alternating current circuits with inductive motor loads, actual active power (Watts) is lower than apparent power due to the motor power factor (typically 0.85 to 0.95 for modern compressors). If you need to convert nameplate current to watts precisely, use our dedicated{" "}
+                  Multiplying Volts by Amps (120V × 6.0A = 720 Watts) gives apparent power in Volt-Amps (VA), reflecting maximum design capacity rather than steady active watts.
+                </p>
+                <p>
+                  Because inductive motor power factor ranges from 0.85 to 0.95, real active watts are lower. To convert nameplate current accurately, use our{" "}
                   <Link
                     href="/watts-to-amps-calculator"
                     className="font-bold text-blue-700 underline hover:text-blue-900"
@@ -597,10 +646,16 @@ export default function RefrigeratorGeneratorSizingPage() {
                 3. The EnergyGuide Label and Plug-In Watt Meters
               </h3>
               <p>
-                If you have your appliance yellow EnergyGuide label, look at the estimated annual electricity consumption in kilowatt-hours (kWh/yr). A label rating of 500 kWh per year equates to roughly 1.37 kWh per day. Dividing 1,370 watt-hours by 24 hours reveals that the average hourly consumption is only <strong>57 watts</strong>, accounting for both on and off compressor cycles.
+                If you have the yellow EnergyGuide label, find estimated annual consumption in kilowatt-hours (kWh/yr). A rating of 500 kWh per year equates to roughly 1.37 kWh per day.
               </p>
               <p>
-                To measure your refrigerator real-time active wattage before an emergency storm arrives, plug it into an inexpensive digital plug-in watt meter (such as a Kill A Watt) for 24 hours. The meter will display both the instantaneous running power and the highest peak starting surge recorded.
+                Dividing 1,370 watt-hours across 24 hours yields an average hourly continuous consumption of just <strong>57 watts</strong>, including on and off cycles.
+              </p>
+              <p>
+                To measure your refrigerator real-time active wattage before an emergency storm arrives, plug it into an inexpensive plug-in watt meter (such as a Kill A Watt) for 24 hours.
+              </p>
+              <p>
+                The meter displays both instantaneous running power and the highest peak starting surge recorded.
               </p>
             </section>
 
@@ -685,7 +740,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                       </code>
                     </p>
                     <p className="text-xs text-slate-500 pt-1">
-                      <strong>Planning distinction:</strong> Planning capacity is not the starting wattage rating of a single appliance. It is an overall sizing target that ensures your generator operates at approximately 75% to 80% of its continuous capability rather than redlining at maximum load. This continuous headroom maintains clean voltage regulation, prevents thermal circuit breaker trips, minimizes fuel consumption, and prolongs generator engine life.
+                      <strong>Planning distinction:</strong> Planning capacity is an overall sizing target rather than the starting rating of a single appliance. It ensures the generator operates at 75% to 80% load rather than running at its limit.
+                    </p>
+                    <p className="text-xs text-slate-500">
+                      This headroom maintains clean voltage regulation, prevents breaker trips, conserves fuel, and prolongs generator engine life.
                     </p>
                   </div>
                 </div>
@@ -881,7 +939,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                     1. Sizing Only for Running Watts
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600">
-                    Purchasing a generator rated for only 300 to 500 watts because your refrigerator runs at 150 watts is the most common mistake. When the compressor cycles on, the 1,000+ watt inrush surge will instantly stall the generator or trip its overload protection.
+                    Purchasing a generator rated for only 300 to 500 watts because your refrigerator runs at 150 watts is a common mistake.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600">
+                    When the compressor cycles on, the 1,000+ watt inrush surge will instantly stall the generator or trip its overload protection.
                   </p>
                 </div>
 
@@ -890,7 +951,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                     2. Adding All Motor Starting Watts Together
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600">
-                    Assuming that every motor starts at the exact same millisecond severely oversizes the generator. Sizing for refrigerator starting surge (1,200W) plus freezer surge (800W) plus sump pump surge (2,000W) simultaneously suggests you need a 7,000-watt generator. In reality, asynchronous cycling means only the single largest surge delta must be absorbed.
+                    Assuming every motor starts at the exact same millisecond severely oversizes the generator. Adding starting surges for a fridge (1,200W), freezer (800W), and sump pump (2,000W) suggests you need a 7,000-watt unit.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600">
+                    In reality, asynchronous thermostat cycling means you only need to absorb continuous loads plus the single largest surge delta.
                   </p>
                 </div>
 
@@ -927,7 +991,7 @@ export default function RefrigeratorGeneratorSizingPage() {
               </div>
 
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                Want to calculate exact generator requirements for your specific refrigerator, freezers, and household appliances? Use CalcMyPower interactive Generator Size Calculator. You can edit running and starting wattages, add custom electronics, and export a formatted summary for an electrician.
+                Want to calculate exact generator requirements for your specific refrigerator, freezer, and household appliances? Use our interactive Generator Size Calculator to adjust wattages and test custom scenarios.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
@@ -968,7 +1032,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                   <h3>Carbon Monoxide Warning (CPSC &amp; CDC Guidelines)</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-red-900 leading-relaxed">
-                  Portable generator exhaust contains high concentrations of carbon monoxide (CO), an odorless, colorless, invisible gas that can incapacitate and kill within minutes. According to the U.S. Consumer Product Safety Commission (CPSC) and the Centers for Disease Control and Prevention (CDC):
+                  Portable generator exhaust contains high concentrations of carbon monoxide (CO), an odorless and colorless gas that can kill within minutes.
+                </p>
+                <p className="text-xs sm:text-sm text-red-900 leading-relaxed">
+                  Safety guidance from the US Consumer Product Safety Commission (CPSC) and CDC specifies:
                 </p>
                 <ul className="list-disc list-inside text-xs sm:text-sm text-red-900 space-y-1 pl-2">
                   <li><strong>Never operate a generator inside a home, garage, basement, crawlspace, or shed</strong>, even with doors and windows open.</li>
@@ -981,7 +1048,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                 Safe Extension Cord Selection for Refrigerators
               </h3>
               <p>
-                When connecting a refrigerator to an outdoor portable generator, extension cord selection must protect both household safety and compressor motor life. In accordance with safety guidance from the Electrical Safety Foundation International (ESFI), OSHA, and appliance manufacturers, cord gauge is never determined by distance alone. Safe cord selection requires evaluating six interrelated factors:
+                Extension cord selection must protect both household safety and compressor motor life. Cord gauge is never determined by distance alone.
+              </p>
+              <p>
+                Under guidance from ESFI, OSHA, and appliance manufacturers, safe cord selection requires evaluating six interrelated factors:
               </p>
               <ul className="list-disc list-inside space-y-2 pl-2 text-sm">
                 <li>

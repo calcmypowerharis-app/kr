@@ -205,7 +205,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
-                Whether you are shopping for a home UPS battery backup, an RV house battery, a marine trolling motor pack, or an off-grid solar storage bank, the letters <strong>Ah</strong> are stamped across almost every label. Understanding what Amp-hours measure and why nominal Ah math does not guarantee real-world runtime is the key to sizing dependable backup power.
+                Whether shopping for a home UPS, RV battery, or off-grid solar bank, the letters <strong>Ah</strong> appear on almost every label. Understanding what Amp-hours measure is key to sizing dependable backup power.
               </p>
             </header>
 
@@ -341,7 +341,10 @@ export default function BatteryAmpHoursExplainedPage() {
               </div>
 
               <p>
-                As the table demonstrates, <strong>Amp-hours tell you how much current can flow over time</strong>, but they say nothing about the pressure (voltage) driving that current. Without knowing the voltage, you cannot determine how much work the battery can actually perform. For a comprehensive walkthrough of electrical energy units and utility billing calculations, read our foundational guide on <Link href="/what-is-a-watt-hour" className="text-blue-600 font-semibold hover:underline">What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained</Link>.
+                As the table demonstrates, <strong>Amp-hours tell you how much current can flow over time</strong>, but say nothing about the voltage driving that current. Without voltage, you cannot determine how much work the battery can actually perform.
+              </p>
+              <p>
+                For a comprehensive walkthrough of energy units and billing calculations, read our foundational guide on <Link href="/what-is-a-watt-hour" className="text-blue-600 font-semibold hover:underline">watt-hours versus watts</Link>.
               </p>
             </section>
 
@@ -362,7 +365,7 @@ export default function BatteryAmpHoursExplainedPage() {
                     <span>Amps (A) = Speedometer</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Amperes measure instantaneous flow rate. An electric trolling motor drawing 25 Amps is pulling 25 Coulombs of charge per second right at this exact moment. If you switch the motor off, instantaneous Amps drop to zero immediately.
+                    Amperes measure instantaneous current flow. An electric trolling motor drawing 25 Amps pulls 25 Coulombs of charge per second, and drops to zero immediately when switched off.
                   </p>
                 </div>
 
@@ -372,7 +375,7 @@ export default function BatteryAmpHoursExplainedPage() {
                     <span>Amp-Hours (Ah) = Fuel Gauge</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Amp-hours measure cumulative stored volume over time. A 100Ah battery contains a reservoir of 100 Amp-hours. Running that 25-Amp motor consumes 25 Amp-hours every hour, which drains the full reservoir in 4 hours under ideal theoretical conditions.
+                    Amp-hours measure cumulative stored volume over time. A 100Ah battery running that 25-Amp motor consumes 25 Amp-hours every hour, draining the reservoir in 4 hours under ideal conditions.
                   </p>
                 </div>
               </div>
@@ -421,7 +424,10 @@ export default function BatteryAmpHoursExplainedPage() {
               </div>
 
               <p>
-                Notice that both the 12V marine battery and the 48V server rack battery share the exact same <strong>100Ah</strong> label on their faceplates. However, because the server rack battery operates at four times the electrical potential (48V vs. 12V), it contains <strong>four times as much total energy</strong> (4,800Wh vs. 1,200Wh).
+                Notice that both the 12V marine battery and the 48V server rack battery share the exact same <strong>100Ah</strong> label on their faceplates.
+              </p>
+              <p>
+                However, because the server rack battery operates at four times the electrical potential (48V versus 12V), it contains <strong>four times as much total energy</strong> (4,800Wh versus 1,200Wh).
               </p>
 
               <p className="font-semibold text-slate-800">
@@ -571,7 +577,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </p>
 
               <p>
-                <strong>No. In the real world, you will never get 12 hours of runtime from a 12V 100Ah battery running a 100W load.</strong> Depending on the internal battery chemistry, your delivered runtime will range from roughly 5.1 hours to 9.2 hours. Here is why the numbers diverge.
+                In the real world, you will not get 12 hours of runtime from a 12V 100Ah battery running a 100W load. Depending on chemistry, delivered runtime ranges from 5.1 to 9.2 hours because of real-world losses.
               </p>
 
               <p className="text-xs sm:text-sm text-slate-600 bg-blue-50/70 p-4 rounded-xl border border-blue-200 leading-relaxed">
@@ -634,7 +640,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     Discovered by German scientist Wilhelm Peukert in 1897, Peukert&apos;s Law states that as the rate of discharge increases, the available capacity of a lead-acid battery decreases non-linearly.
                   </p>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Lead-acid batteries are rated at the <strong>20-hour rate (C/20)</strong>. A 100Ah battery earns that 100Ah rating only if discharged over 20 hours (a tiny 5-Amp load). If you connect a heavy 50-Amp load (such as a 600W microwave or inverter load), internal electrolyte diffusion cannot keep pace with the chemical reaction, and internal resistance rises. At that discharge rate, a 100Ah lead-acid battery may deliver only <strong>60 to 70 total Amp-hours</strong> before its voltage collapses.
+                    Lead-acid batteries are rated at the <strong>20-hour rate (C/20)</strong>, delivering full capacity only under a light 5-Amp discharge over 20 hours.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Under a heavy 50-Amp load, internal resistance rises rapidly. At that rate, a 100Ah lead-acid pack may deliver only <strong>60 to 70 total Amp-hours</strong> before voltage collapses.
                   </p>
                   <p className="text-xs sm:text-sm text-slate-700 font-medium bg-slate-50 p-2.5 rounded-lg border border-slate-200">
                     <strong>Lithium Advantage:</strong> LiFePO4 cells have a Peukert exponent of roughly 1.02 to 1.05 (nearly ideal), meaning they deliver virtually their entire rated capacity whether discharged slowly over 20 hours or rapidly over 1 hour.
@@ -652,7 +661,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Batteries store direct current (DC). To run standard 120-volt household AC loads, you must route battery power through an inverter. High-quality pure sine wave inverters operate at <strong>85% to 92% efficiency</strong>. The remaining 8% to 15% is converted into thermal heat by internal transformers, MOSFET switching circuits, and cooling fans.
+                    Batteries store direct current (DC), requiring an inverter to run standard 120-volt household AC loads.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Pure sine wave inverters operate at <strong>85% to 92% efficiency</strong>, losing the remaining 8% to 15% as heat through transformers and switching circuits.
                   </p>
                   <p className="text-xs sm:text-sm text-slate-700 font-mono">
                     Example: Powering a 100W load at 85% inverter efficiency draws: 100W ÷ 0.85 = 117.6W from the battery.
@@ -692,7 +704,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Under high electrical loads, internal cell resistance causes the terminal voltage to drop momentarily (voltage sag). Inverters have an automatic Low-Voltage Disconnect (typically set between 10.5V and 11.0V for 12V systems) to prevent over-discharging the battery. If a sudden surge load causes terminal voltage to dip below the LVD threshold, the inverter will shut down immediately, even if chemical charge remains inside the battery cells.
+                    Under heavy electrical loads, internal cell resistance causes terminal voltage to drop momentarily (voltage sag).
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Inverters use an automatic Low-Voltage Disconnect (10.5V to 11.0V on 12V systems) that shuts down power if surge loads dip below the threshold, even with charge remaining.
                   </p>
                 </div>
               </div>
@@ -742,7 +757,10 @@ export default function BatteryAmpHoursExplainedPage() {
               </h2>
 
               <p>
-                Not all Amp-hours are created equal. When evaluating battery capacity for UPS backups, RV boondocking, or solar storage, the underlying chemistry dictates how much of that capacity you can use, how many years the pack will survive, and how much the battery weighs.
+                Not all Amp-hours are created equal.
+              </p>
+              <p>
+                When evaluating capacity for UPS backups, RV boondocking, or solar storage, chemistry dictates usable energy, cycle life, and pack weight.
               </p>
 
               <div className="overflow-x-auto my-4">
@@ -827,7 +845,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     <span>1. Uninterruptible Power Supply (UPS) Runtime</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Most standard consumer UPS units use small sealed lead-acid (SLA) batteries rated between 7Ah and 9Ah at 12V. A 12V 9Ah battery contains roughly 108 nominal Watt-hours. Discharging it at 50% DoD gives 54 usable Watt-hours. Running a 150-Watt desktop computer workstation through an 85% efficient inverter consumes approximately 176 Watts from the battery, yielding about 18 minutes of backup runtime (54Wh ÷ 176W × 60 min ≈ 18 min).
+                    Most consumer UPS units use small 12V sealed lead-acid batteries rated between 7Ah and 9Ah, providing roughly 54 usable Watt-hours at 50% DoD.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    A 150W workstation through an 85% efficient inverter pulls about 176W from the battery, yielding roughly 18 minutes of runtime (54Wh ÷ 176W × 60 min ≈ 18 min).
                   </p>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     Upgrading to an external 100Ah LiFePO4 battery bank increases usable energy to over 900Wh, extending your emergency computer and networking runtime from 18 minutes to more than 5 hours.
@@ -851,7 +872,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     <li><strong>Total Daily Demand:</strong> Approximately <strong>92.6 Ah per day at 12V</strong></li>
                   </ul>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    With a traditional lead-acid battery setup (50% DoD), you would need at least <strong>two 100Ah batteries (200Ah total)</strong> just to survive a single 24-hour period off-grid. With a single 100Ah LiFePO4 battery (providing 90 usable Ah), you can cover almost the entire day from a single lightweight pack.
+                    With traditional lead-acid (50% DoD), you need at least <strong>two 100Ah batteries (200Ah total)</strong> to survive 24 hours off-grid.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    With a single 100Ah LiFePO4 battery (providing 90 usable Ah), you can cover almost the entire day from a single compact pack.
                   </p>
                 </div>
 
@@ -862,7 +886,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     <span>3. Off-Grid Solar Energy Storage Bank</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    When sizing solar battery banks, your daily solar panel generation must balance your battery Amp-hour storage capacity. A 400-Watt rooftop solar array operating in an area with 5 peak sun hours produces roughly 2,000 Watt-hours of gross energy per day (400W × 5h = 2,000Wh). Accounting for charge controller conversion losses (roughly 10%), that array delivers approximately 1,800Wh into a 12V battery bank, which equals 150 Amp-hours of daily charging current (1,800Wh ÷ 12V = 150Ah).
+                    When sizing solar battery storage, daily solar generation must replenish battery Amp-hour consumption.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    A 400W array receiving 5 peak sun hours generates 2,000Wh gross energy (400W × 5h). After roughly 10% controller losses, it delivers 1,800Wh (150Ah at 12V) of daily charging current.
                   </p>
                 </div>
               </div>
@@ -880,7 +907,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     Mistake 1: Confusing Starting Batteries (CCA) with Deep-Cycle Batteries (Ah)
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    Automotive starting batteries have thin, porous lead sponge plates designed to deliver massive burst current (Cold Cranking Amps or CCA) for 3 to 5 seconds to spin an internal combustion engine. They are not rated in Amp-hours and will fail rapidly if used for continuous UPS, RV, or solar power. Deep-cycle batteries use thick, solid lead plates or lithium chemistry designed for steady, sustained current discharge over hours.
+                    Starting batteries feature thin plates designed to deliver high burst current (CCA) for a few seconds to crank an engine. They lack Amp-hour ratings and fail quickly under cyclic loads.
+                  </p>
+                  <p className="text-amber-800 leading-relaxed">
+                    Deep-cycle batteries use thick solid plates or lithium cells engineered specifically for sustained discharge over many hours.
                   </p>
                 </div>
 
@@ -889,7 +919,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     Mistake 2: Discharging Lead-Acid Batteries Down to 0%
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    A completely drained lead-acid battery does not measure 0 Volts; an open-circuit voltage below 10.5V indicates a 100% discharged battery. Repeatedly running a lead-acid battery past 50% DoD causes permanent sulfation that can destroy the battery in as few as 50 to 100 cycles instead of the expected 500 cycles.
+                    A completely drained lead-acid battery does not measure 0 Volts; an open-circuit voltage below 10.5V indicates a 100% discharged battery.
+                  </p>
+                  <p className="text-amber-800 leading-relaxed">
+                    Repeatedly discharging lead-acid batteries past 50% DoD causes permanent sulfation that can destroy capacity in 50 to 100 cycles instead of the expected 500.
                   </p>
                 </div>
 
@@ -898,7 +931,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     Mistake 3: Forgetting Inverter No-Load Idle Consumption
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    Even when no appliances are plugged in or active, an inverter remains powered and consumes continuous background idle current (typically 1.0 to 2.5 Amps at 12V DC, or 12W to 30W). Leaving an inverter turned on 24 hours a day drains 24 to 60 Amp-hours from your battery bank just running the inverter idle circuitry.
+                    Even with no loads plugged in, an idle inverter consumes continuous background power (typically 1.0 to 2.5 Amps at 12V DC, or 12W to 30W).
+                  </p>
+                  <p className="text-amber-800 leading-relaxed">
+                    Leaving an inverter running continuously drains 24 to 60 Amp-hours per day solely to power its internal standby circuitry.
                   </p>
                 </div>
 
@@ -907,7 +943,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     Mistake 4: Mismatching Series and Parallel Battery Wiring
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    Wiring two identical 12V 100Ah batteries in <strong>parallel</strong> (positive to positive, negative to negative) maintains 12 Volts and doubles capacity to <strong>200Ah</strong> (2,400Wh). Wiring two identical 12V 100Ah batteries in <strong>series</strong> (positive of one to negative of the other) doubles voltage to <strong>24 Volts</strong> while capacity remains <strong>100Ah</strong> (2,400Wh). Total stored energy is identical in both configurations, but the electrical voltage is completely different.
+                    Wiring two 12V 100Ah batteries in parallel doubles capacity to 200Ah at 12V (2,400Wh). Wiring them in series doubles voltage to 24V while capacity remains 100Ah (2,400Wh).
+                  </p>
+                  <p className="text-amber-800 leading-relaxed">
+                    Total stored energy is identical across both setups, but operating voltages and inverter requirements are completely different.
                   </p>
                 </div>
               </div>
@@ -972,7 +1011,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     <span>Overcurrent Protection (Fusing)</span>
                   </div>
                   <p className="text-xs sm:text-sm text-red-900 leading-relaxed">
-                    Always install a high-interrupting-capacity fuse (such as a Class T or MRBF terminal fuse) on the positive cable as close as physically possible to the battery terminal (within 7 inches per ABYC and NEC guidelines). Class T fuses can safely interrupt 20,000 Amps DC without arcing over.
+                    Always install a high-interrupting-capacity fuse (such as Class T or MRBF) on the positive cable within 7 inches of the battery terminal per ABYC and NEC recommendations.
+                  </p>
+                  <p className="text-xs sm:text-sm text-red-900 leading-relaxed">
+                    Class T fuses safely interrupt up to 20,000 Amps DC without dangerous arcing.
                   </p>
                 </div>
 
@@ -982,7 +1024,7 @@ export default function BatteryAmpHoursExplainedPage() {
                     <span>Hydrogen Ventilation (Lead-Acid)</span>
                   </div>
                   <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
-                    Flooded lead-acid batteries emit flammable hydrogen gas during charging. They must always be mounted in a dedicated battery box vented to the outdoors. Never charge flooded lead-acid batteries inside living quarters, unventilated closets, or sealed camper compartments.
+                    Flooded lead-acid batteries emit flammable hydrogen gas during charging and must always be mounted in a battery box vented outdoors. Never charge flooded batteries inside living quarters, unventilated closets, or sealed compartments.
                   </p>
                 </div>
 
@@ -1002,7 +1044,10 @@ export default function BatteryAmpHoursExplainedPage() {
                     <span>Proper Cable Gauge Sizing</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Low DC voltages require thick copper conductors to carry high amperage safely without hazardous voltage drop and cable heating. For example, a 1,000-Watt inverter on a 12V battery pulls roughly 100 Amps DC, requiring heavy 2 AWG or 1/0 AWG battery cables.
+                    Low DC voltages require thick copper conductors to carry high amperage safely without hazardous voltage drop and cable heating.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    For example, a 1,000-Watt inverter on a 12V battery pulls roughly 100 Amps DC, requiring heavy 2 AWG or 1/0 AWG cables.
                   </p>
                 </div>
               </div>

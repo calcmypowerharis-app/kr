@@ -229,13 +229,19 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                   <h2>Quick Answer: The Generator Sizing Formula</h2>
                 </div>
                 <p className="text-slate-800 text-sm sm:text-base leading-relaxed">
-                  To calculate the generator wattage your home needs during a utility outage, sum the steady-state <strong>running watts</strong> of all appliances that operate at the same time, add the <strong>single largest starting surge delta</strong> among your motorized appliances, and apply a <strong>1.25 safety headroom factor (25% reserve)</strong>:
+                  To calculate generator wattage during an outage, sum the steady-state <strong>running watts</strong> of all appliances that run concurrently.
+                </p>
+                <p className="text-slate-800 text-sm sm:text-base leading-relaxed">
+                  Then add the <strong>single largest starting surge delta</strong> among motorized appliances, and apply a <strong>1.25 safety headroom factor (25% reserve)</strong>:
                 </p>
                 <div className="bg-white p-4 rounded-xl border border-blue-200 font-mono text-sm md:text-base text-slate-900 shadow-xs">
                   Generator Planning Watts = (Total Running Watts + Largest Additional Starting Surge) x 1.25
                 </div>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  For example, if your simultaneous emergency loads draw <strong>2,955 running Watts</strong> and your furnace blower motor produces the largest additional starting surge at <strong>1,100 surge Watts</strong>, your momentary peak demand is <strong>4,055 Watts</strong>. Multiplying by 1.25 yields a continuous planning capacity of <strong>5,069 Watts</strong>, indicating that a standard 5,000W to 5,500W running (6,500W surge) generator is the appropriate match.
+                  For example, if your simultaneous emergency loads draw <strong>2,955 running Watts</strong> and your furnace blower motor produces the largest additional starting surge at <strong>1,100 surge Watts</strong>, your momentary peak demand is <strong>4,055 Watts</strong>.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  Multiplying by 1.25 yields a continuous planning capacity of <strong>5,069 Watts</strong>, indicating that a standard 5,000W to 5,500W running (6,500W surge) generator is the appropriate match.
                 </p>
                 <div className="pt-2">
                   <Link
@@ -273,12 +279,18 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                   </span>
                   <h3 className="text-base font-bold text-slate-900">Starting Surge Watts</h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    The maximum instantaneous burst of electrical power the alternator can deliver for 2 to 3 seconds. Motor-driven appliances like refrigerator compressors, sump pumps, and furnace blowers require 2 to 3 times their running power momentarily to overcome mechanical inertia and spin up from a dead stop.
+                    The maximum instantaneous burst of electrical power the alternator delivers for 2 to 3 seconds.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Motor-driven appliances like refrigerator compressors and sump pumps need 2 to 3 times their running power momentarily to spin up from a dead stop.
                   </p>
                 </div>
               </div>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                If your steady connected load exceeds the rated running watts, the generator engine will bog down, drop electrical frequency below 60 Hz, and eventually trip its main circuit breaker. Conversely, if your generator lacks sufficient surge watts, an appliance motor will stall on startup, causing a brownout that can damage sensitive home electronics.
+                If connected load exceeds rated running watts, the engine will bog down, drop below 60 Hz, and trip its main breaker.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                Conversely, if surge capacity is insufficient, an appliance motor will stall on startup, causing brownouts that can damage electronics.
               </p>
             </section>
 
@@ -288,10 +300,16 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 Why Motors Surge: Locked Rotor Amps (LRA)
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                When an alternating-current (AC) induction motor is at rest, its rotor is completely stationary. At the precise millisecond power is applied, the motor acts as a dead electrical short circuit because there is no counter-electromotive force (back-EMF) yet generated by rotor motion to oppose current flow.
+                When an alternating-current (AC) induction motor is at rest, its rotor is completely stationary.
               </p>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                In electrical engineering and HVAC service, this initial current spike is formally designated as <strong>Locked Rotor Amps (LRA)</strong>. On equipment specification tags for air conditioners, heat pumps, and heavy pumps, manufacturers publish both <strong>Rated Load Amps (RLA)</strong> (or Full Load Amps, FLA) and <strong>LRA</strong>:
+                At the millisecond power is applied, the motor acts as a temporary electrical short circuit because no back-EMF yet exists to oppose current flow.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                In electrical engineering, this initial current spike is formally designated as <strong>Locked Rotor Amps (LRA)</strong>.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                Equipment tags for air conditioners, heat pumps, and heavy motors publish both <strong>Rated Load Amps (RLA / FLA)</strong> and <strong>LRA</strong>:
               </p>
               <ul className="space-y-2 text-xs sm:text-sm text-slate-700 list-disc pl-5">
                 <li>
@@ -304,7 +322,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800 space-y-1.5">
                 <span className="font-bold text-slate-900 block">Example Motor Calculation:</span>
                 <p>
-                  A 1/2 HP basement sump pump operating at 120V may draw 8.0 Full Load Amps while pumping water (8.0A x 120V = 960 running Watts). However, its nameplate LRA may be 21.0 Amps. On startup against head pressure, it momentarily pulls 21.0A x 120V = <strong>2,520 starting Watts</strong>. The additional startup surge delta is 2,520W - 960W = <strong>1,560 Watts</strong>.
+                  A 1/2 HP sump pump at 120V may draw 8.0 Full Load Amps (8.0A x 120V = 960 running Watts). With nameplate LRA of 21.0 Amps, it momentarily pulls 21.0A x 120V = <strong>2,520 starting Watts</strong>.
+                </p>
+                <p>
+                  The additional startup surge delta is 2,520W - 960W = <strong>1,560 Watts</strong>.
                 </p>
               </div>
             </section>
@@ -315,7 +336,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 The Single-Largest-Surge Sizing Principle
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                A frequent mistake made by homeowners is adding up the starting surge wattage of every motorized appliance in the house. For instance, summing the surges of a refrigerator (1,200W surge), a deep freezer (1,200W surge), a sump pump (2,100W surge), and a furnace blower (2,300W surge) produces an apparent surge requirement of nearly 7,000 Watts on top of running loads.
+                A frequent mistake is adding up the starting surge wattage of every motorized appliance in the home.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                For example, summing surges for a refrigerator (1,200W), deep freezer (1,200W), sump pump (2,100W), and furnace blower (2,300W) yields nearly 7,000 Watts on top of running loads.
               </p>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
                 In reality, electric motors do not cycle on simultaneously unless power was just restored after a complete grid outage. Under normal backup operation, household appliances cycle intermittently according to thermostats, pressure switches, and float sensors:
@@ -326,11 +350,17 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                   <span>The Established Industry Sizing Rule</span>
                 </div>
                 <p className="text-xs sm:text-sm leading-relaxed">
-                  Size the generator for the continuous running watts of all connected equipment operating together, plus <strong>only the single largest additional startup surge</strong> among all motorized loads. Once the largest motor is running at speed, the generator has ample rotating inertia to start smaller subsequent motors (such as the refrigerator compressor) without stalling.
+                  Size the generator for total continuous running watts operating together, plus <strong>only the single largest additional startup surge</strong> among motorized loads.
+                </p>
+                <p className="text-xs sm:text-sm leading-relaxed">
+                  Once that motor reaches speed, generator rotating inertia starts smaller subsequent motors (like a refrigerator compressor) without stalling.
                 </p>
               </div>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                If multiple large motors must start at the exact same moment (such as when utility power first transfers over to the generator), best practice is to stage the loads manually by turning branch circuit breakers on one at a time, starting with the largest motor first.
+                If multiple large motors must start simultaneously (such as during initial utility outage transfer), stage the loads manually.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                Turn branch circuit breakers on one at a time, beginning with the largest motor first.
               </p>
             </section>
 
@@ -423,7 +453,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 Continuous Duty Headroom (The 25% Reserve Margin)
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                Why shouldn&apos;t you buy a 4,000-Watt generator for a 4,000-Watt peak load? Portable generator engines are small displacement four-stroke internal combustion engines. Unlike utility grid transformers that absorb overloads gracefully, a generator engine operating at 100% capacity suffers from severe thermal and mechanical stresses:
+                Why shouldn&apos;t you buy a 4,000-Watt generator for a 4,000-Watt peak load? Operating portable small-displacement engines at 100% continuous capacity produces severe thermal and mechanical stresses:
               </p>
               <ul className="space-y-2 text-xs sm:text-sm text-slate-700 list-disc pl-5">
                 <li>
@@ -521,7 +551,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                   <p>4. Recommended Planning Capacity (1.25x Margin): 4,055 x 1.25 = <strong>5,069</strong> Watts</p>
                 </div>
                 <p className="text-slate-600 text-xs leading-relaxed pt-1">
-                  In this worked emergency scenario, total running load equals <strong>2,955</strong> Watts, the furnace blower produces the largest additional starting surge of <strong>1,100</strong> Watts, generating a peak starting demand of <strong>4,055</strong> Watts. Applying the continuous 25% safety reserve yields an engineering planning capacity of <strong>5,069</strong> Watts.
+                  In this worked emergency scenario, total running load equals <strong>2,955</strong> Watts and furnace blower surge is <strong>1,100</strong> Watts, generating a peak starting demand of <strong>4,055</strong> Watts.
+                </p>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  Applying the continuous 25% safety reserve yields an engineering planning capacity of <strong>5,069</strong> Watts.
                 </p>
                 <p className="text-xs text-blue-700 font-semibold pt-1">
                   Result: A portable generator with 5,000 to 5,500 running Watts and 6,500 starting Watts satisfies this entire household outage profile with safety reserve.
@@ -535,7 +568,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 Output Amperage &amp; Split-Phase Leg Balancing
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                Calculating generator wattage is only half of the installation equation; you must also evaluate circuit current in Amperes. Standard North American homes receive 120/240V split-phase utility service consisting of two 120V hot lines (Line 1 and Line 2), one neutral, and one equipment ground.
+                Calculating generator wattage is only half of the installation equation; you must also evaluate circuit current in Amperes.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                Standard North American homes receive 120/240V split-phase utility service consisting of two 120V hot lines (Line 1 and Line 2), one neutral, and one equipment ground.
               </p>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
                 Portable generators rated 5,000 Watts or larger generally feature a 4-prong 120/240V receptacle (NEMA L14-30R or 14-50R). Inside the alternator, half the generator&apos;s wattage is produced on Line 1, and half on Line 2:
@@ -543,7 +579,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
               <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-2 text-xs sm:text-sm">
                 <span className="font-bold text-slate-900 block">The Split-Phase Balancing Rule:</span>
                 <p className="text-slate-600 leading-relaxed">
-                  On an 8,000-Watt generator, each 120V hot leg provides a maximum of 4,000 Watts (33.3 Amps at 120V). If your manual transfer switch places a 1,500W space heater, a 1,200W toaster, and an 800W microwave all on circuits fed by Line 1, you draw 3,500 Watts on that single leg. If a 1,000W refrigerator compressor then attempts to start on Line 1, the combined inrush will trip the generator&apos;s Line 1 circuit breaker, even though Line 2 is completely idle and total generator load is below half capacity.
+                  On an 8,000-Watt generator, each 120V hot leg provides at most 4,000 Watts (33.3 Amps at 120V). Placing large appliances solely on Line 1 can draw 3,500 Watts while Line 2 remains idle.
+                </p>
+                <p className="text-slate-600 leading-relaxed">
+                  When another motor starts on Line 1, the resulting inrush trips that breaker despite total generator output being well below capacity.
                 </p>
               </div>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
@@ -604,7 +643,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 </table>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Excessive voltage drop (greater than 3% to 5%) starves motorized appliances of operating voltage. When voltage falls, motor windings draw increased current to maintain shaft power, causing overheating, thermal overload tripping, and shortened motor lifespan. For precise conductor calculations, check our{" "}
+                Excessive voltage drop (greater than 3% to 5%) starves motorized appliances of operating voltage.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                When voltage falls, motor windings draw increased current to maintain shaft power, causing thermal overload. For conductor calculations, check our{" "}
                 <Link
                   href="/voltage-drop-calculator"
                   className="text-blue-600 font-semibold hover:underline"
@@ -629,7 +671,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                     <span>Alternative Fuel Deratings</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Dual-fuel and tri-fuel generators produce lower power on gaseous fuels due to their lower energy density per unit volume. Liquid propane (LPG) yields roughly <strong>10% less wattage</strong> than gasoline. Natural gas (NG) produces roughly <strong>15% to 20% less wattage</strong>. A generator rated at 8,000 running Watts on gasoline may deliver only 7,200W on propane and 6,500W on natural gas.
+                    Dual-fuel and tri-fuel generators produce lower power on gaseous fuels. Liquid propane yields roughly <strong>10% less wattage</strong>, while natural gas yields <strong>15% to 20% less</strong>.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    An 8,000 running Watt gasoline generator may deliver only 7,200W on propane and 6,500W on natural gas.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-2">
@@ -638,7 +683,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                     <span>Altitude Derating Curve</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    At higher elevations, reduced atmospheric oxygen density impairs engine combustion. Naturally aspirated generator engines lose approximately <strong>3.5% of their horsepower for every 1,000 feet</strong> above sea level. At an elevation of 5,000 feet (such as Denver, Colorado), a generator loses roughly 17.5% of its maximum power output.
+                    At higher elevations, reduced atmospheric oxygen density impairs engine combustion. Naturally aspirated engines lose roughly <strong>3.5% horsepower per 1,000 feet</strong> elevation.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    At 5,000 feet (such as Denver, Colorado), a generator loses approximately 17.5% of its rated power output.
                   </p>
                 </div>
               </div>
@@ -656,7 +704,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
                   <span className="font-bold text-slate-900 text-sm block">1. Sizing by Home Square Footage</span>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Square footage does not consume electricity. Two identical 2,500-square-foot homes can have completely different power demands: one with natural gas heat and city water needs only 4,000 Watts, while one with a deep-well pump, electric water heater, and central heat pump requires 18,000 Watts.
+                    Square footage does not consume electricity. Two identical 2,500-square-foot homes can have completely different power demands.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    A home with natural gas heat and city water needs 4,000 Watts, while one with a well pump, electric water heater, and central heat pump requires 18,000 Watts.
                   </p>
                 </div>
                 <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
@@ -692,7 +743,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                     <span>Lethal Hazard: Carbon Monoxide (CPSC &amp; CDC 20-Foot Rule)</span>
                   </div>
                   <p className="text-xs sm:text-sm leading-relaxed">
-                    Internal combustion generator exhaust produces high concentrations of carbon monoxide (CO), a colorless, odorless, and lethal gas. According to the U.S. Consumer Product Safety Commission (CPSC) and Centers for Disease Control and Prevention (CDC), portable generators must operate strictly outdoors, at least <strong>20 feet (6 meters)</strong> away from all doors, windows, and ventilation intakes, with exhaust directed away from buildings. Never operate a generator in a garage, carport, basement, or enclosed porch.
+                    Internal combustion generator exhaust produces high concentrations of carbon monoxide (CO), a colorless, odorless, and lethal gas.
+                  </p>
+                  <p className="text-xs sm:text-sm leading-relaxed">
+                    Portable generators must operate strictly outdoors, at least <strong>20 feet (6 meters)</strong> away from doors, windows, and vents, with exhaust directed away. Never run a generator in a garage, carport, or basement.
                   </p>
                 </div>
 
@@ -702,7 +756,10 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                     <span>Anti-Backfeeding Requirement (NEC Article 702)</span>
                   </div>
                   <p className="text-xs sm:text-sm leading-relaxed">
-                    Never attempt to connect a portable generator to a household wall outlet using an illegal male-to-male suicide cord. This practice backfeeds electrical current through the utility transformer on the street, stepping generator voltage up to thousands of volts on downed utility lines, creating an immediate electrocution hazard for utility lineworkers. Connecting a generator to home electrical circuits requires an approved manual transfer switch or mechanical interlock kit compliant with NEC Article 702 installed by a licensed electrician.
+                    Never attempt to connect a portable generator to a household wall outlet using a hazardous male-to-male cord.
+                  </p>
+                  <p className="text-xs sm:text-sm leading-relaxed">
+                    This practice backfeeds current through utility transformers, stepping voltage up to thousands of volts on downed lines. Safe home connection requires an approved manual transfer switch or mechanical interlock kit per NEC Article 702 installed by a licensed electrician.
                   </p>
                 </div>
               </div>

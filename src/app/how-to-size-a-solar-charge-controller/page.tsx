@@ -321,7 +321,10 @@ export default function HowToSizeASolarChargeControllerPage() {
                 <h2>How to Calculate MPPT Controller Amperage</h2>
               </div>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                MPPT controllers are rated by the maximum output current they can deliver into the battery bank (for example, 20A, 30A, 40A, 60A, 80A, or 100A). Because power must be conserved across the DC-to-DC conversion (Watts In = Watts Out, minus minor thermal conversion loss), the output current is calculated by dividing total array wattage by the battery bank nominal voltage.
+                MPPT controllers are rated by the maximum output current they deliver into the battery bank (for example, 20A, 30A, 40A, 60A, 80A, or 100A).
+              </p>
+              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                Because power must be conserved across DC-to-DC conversion (Watts In = Watts Out, minus minor thermal conversion loss), output current equals total array wattage divided by battery bank nominal voltage.
               </p>
 
               {/* Formula Block */}
@@ -411,7 +414,10 @@ export default function HowToSizeASolarChargeControllerPage() {
                 <h2>Voltage Limits &amp; Sub-Freezing Voc Calculations</h2>
               </div>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                Every MPPT controller has a maximum input voltage rating specified by the manufacturer (such as 100V, 150V, or 250V). Because internal semiconductor switching components are rated for specific peak voltages, exceeding this limit can cause permanent component damage, device failure, and void warranties. Sizing calculations must account for worst-case cold winter temperatures before connecting solar strings.
+                Every MPPT controller has a maximum input voltage rating specified by the manufacturer (such as 100V, 150V, or 250V).
+              </p>
+              <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
+                Exceeding this limit causes permanent semiconductor damage and voids warranties. Sizing calculations must account for worst-case cold winter temperatures before connecting solar strings.
               </p>
 
               <div className="p-4 rounded-xl bg-rose-50 border border-rose-200 text-xs sm:text-sm text-rose-900 space-y-2 leading-relaxed">
@@ -443,7 +449,7 @@ export default function HowToSizeASolarChargeControllerPage() {
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm space-y-2">
                 <div className="font-bold text-slate-900">Practical Cold-Weather Verification Example:</div>
                 <p className="text-slate-700">
-                  Consider three 400W residential solar panels wired in series. Each panel has an STC Voc of 49.5V. Total string Voc at 25C is: 3 * 49.5V = 148.5 Volts.
+                  Consider three 400W residential solar panels wired in series, each with an STC Voc of 49.5V. Total string Voc at 25C is: 3 * 49.5V = 148.5 Volts.
                 </p>
                 <p className="text-slate-700">
                   At first glance, this might appear safe for a popular 150V MPPT charge controller (148.5V &lt; 150V). However, if your installation site reaches -15 degrees Celsius (5 degrees Fahrenheit) on winter mornings with a temperature coefficient of -0.30%/C:
@@ -454,7 +460,10 @@ export default function HowToSizeASolarChargeControllerPage() {
                   V_oc_cold = 148.5V * 1.120 = 166.3 Volts
                 </div>
                 <p className="text-rose-800 font-medium">
-                  Result: On a cold sunny winter morning, the string voltage will reach approximately 166.3V, exceeding the 150V controller rating and risking hardware failure. For this system, the array should be rewired as a 2-series / parallel string or paired with a controller rated for at least 200V or 250V DC input.
+                  Result: On a cold sunny winter morning, the string voltage will reach approximately 166.3V, exceeding the 150V controller rating and risking hardware failure.
+                </p>
+                <p className="text-rose-800 font-medium">
+                  For this system, rewire the array in series-parallel or select a controller rated for at least 200V or 250V DC input.
                 </p>
               </div>
             </section>
@@ -572,7 +581,10 @@ export default function HowToSizeASolarChargeControllerPage() {
                 <strong className="text-slate-900">How Current Clipping Operates: </strong>
                 Many modern MPPT charge controllers include internal current limiting circuitry. If paired with an array that produces higher peak wattage than the controller nominal rating (such as 1,200W of panels on a 40A 24V controller that nominally delivers around 1,000W), the controller manages power by capping (clipping) its output current to its 40A maximum rating. However, allowable oversizing is equipment-specific: you must always verify the controller manufacturer maximum allowable PV array wattage and maximum input short-circuit current (Isc) ratings.
                 <p className="pt-1">
-                  <strong>The Engineering Advantage: </strong> Solar panels rarely operate at 100% rated capacity due to ambient heat, sub-optimal sun angles, dust, and atmospheric haze. Moderate oversizing (often 10% to 30%, where supported by manufacturer specifications) allows the system to reach full charging output earlier in the morning, sustain higher output during cloudy periods, and prolong daily harvesting hours.
+                  <strong>The Engineering Advantage: </strong> Solar panels rarely operate at 100% rated capacity due to ambient heat, sub-optimal sun angles, dust, and atmospheric haze.
+                </p>
+                <p className="pt-1">
+                  Moderate oversizing (often 10% to 30%, where supported by manufacturer specifications) allows the system to reach full charging output earlier in the morning and prolong daily harvesting hours.
                 </p>
                 <div className="p-3 bg-amber-50 rounded-lg border border-amber-200 text-amber-900 font-medium">
                   <strong>The Critical Boundary: </strong> While MPPT controllers can regulate excess current through clipping, they cannot clip excess input voltage. Exceeding the controller maximum open-circuit voltage (Voc) rating risks permanent hardware failure and voids equipment warranties.
@@ -620,7 +632,7 @@ export default function HowToSizeASolarChargeControllerPage() {
                   Calculate Your Exact Controller Size in Seconds
                 </h2>
                 <p className="text-sm text-slate-300 leading-relaxed">
-                  Put theory into practice. Our interactive Solar Charge Controller Calculator models MPPT vs. PWM dynamics, checks sub-freezing Voc safety margins per NEC 690.7, and outputs exact fuse and cable recommendations.
+                  Put theory into practice. Our interactive Solar Charge Controller Calculator models MPPT and PWM dynamics, checks sub-freezing Voc safety margins per NEC 690.7, and outputs exact fuse and cable recommendations.
                 </p>
                 <div className="pt-2 flex flex-wrap gap-3">
                   <Link
@@ -674,7 +686,10 @@ export default function HowToSizeASolarChargeControllerPage() {
                 <span>Electrical Engineering Disclaimer</span>
               </div>
               <p className="leading-relaxed">
-                Photovoltaic systems involve high DC voltages and substantial continuous battery currents capable of causing electric shock, arc flash, and fire hazards. This sizing guide is for educational planning. Always consult a licensed electrical engineer, NABCEP certified solar professional, and verify that installations comply with NFPA 70 (National Electrical Code Articles 690 and 706) and local jurisdiction requirements.
+                Photovoltaic systems involve high DC voltages and substantial continuous battery currents capable of causing electric shock, arc flash, and fire hazards.
+              </p>
+              <p className="leading-relaxed">
+                This sizing guide is for educational planning. Always consult a licensed electrical engineer or NABCEP certified solar professional to verify compliance with NFPA 70 (NEC Articles 690 and 706) and local requirements.
               </p>
             </div>
           </div>

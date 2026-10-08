@@ -243,13 +243,16 @@ export default function HowToCalculateElectricityUsagePage() {
                   Energy (kWh) = [Power (Watts) × Time (Hours)] ÷ 1,000
                 </div>
                 <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
-                  For example, a 100-watt television running for 5 hours per day consumes:
+                  For example, a 100-watt television running 5 hours daily consumes:
                   <br />
                   <span className="font-mono font-semibold text-slate-900">
                     (100 W × 5 h) ÷ 1,000 = 0.5 kWh per day
                   </span>
-                  . Over a 30-day billing cycle, that equals{" "}
-                  <span className="font-mono font-semibold text-slate-900">15 kWh per month</span>. At an illustrative electricity rate of $0.16 per kWh, running that television costs approximately $2.40 per month.
+                  .
+                </p>
+                <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                  Over a 30-day billing cycle, that equals{" "}
+                  <span className="font-mono font-semibold text-slate-900">15 kWh per month</span>. At $0.16 per kWh, running that TV costs approximately $2.40 monthly.
                 </p>
                 <div className="pt-2">
                   <Link
@@ -273,7 +276,10 @@ export default function HowToCalculateElectricityUsagePage() {
                 Electricity bills are not charged based on how fast appliances consume electricity; they are charged based on the cumulative volume of electrical energy consumed over a billing cycle. To understand energy calculations, you must separate <strong>power</strong> from <strong>energy</strong>.
               </p>
               <p>
-                In physics and electrical engineering, power is the instantaneous rate of energy transfer, measured in Watts (W) or kilowatts (kW). Energy is the total work accomplished over a duration, measured in Watt-hours (Wh) or kilowatt-hours (kWh). One kilowatt-hour represents 1,000 Watts of electrical power delivered continuously for one hour.
+                In physics and electrical engineering, power is the instantaneous rate of energy transfer, measured in Watts (W) or kilowatts (kW).
+              </p>
+              <p>
+                Energy is the total work accomplished over duration, measured in Watt-hours (Wh) or kilowatt-hours (kWh). One kilowatt-hour represents 1,000 Watts delivered continuously for one hour.
               </p>
 
               {/* Equation Box */}
@@ -330,7 +336,7 @@ export default function HowToCalculateElectricityUsagePage() {
                   </div>
                   <div className="font-bold text-slate-900 text-lg">Watts (W) &amp; kW</div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Analogous to a car&apos;s speedometer (miles per hour). It tells you how fast electricity is flowing into the machine right now. 1 kW = 1,000 Watts.
+                    Analogous to a speedometer, indicating how fast electricity flows into a machine right now (1 kW = 1,000 Watts).
                   </p>
                 </div>
 
@@ -340,7 +346,7 @@ export default function HowToCalculateElectricityUsagePage() {
                   </div>
                   <div className="font-bold text-slate-900 text-lg">Watt-Hours (Wh)</div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Analogous to an odometer (miles driven). It measures the cumulative volume of electricity consumed over time. 1 Wh = 1 Watt drawn for 1 hour.
+                    Analogous to an odometer, measuring the cumulative volume of electricity consumed over time (1 Wh = 1 Watt drawn for 1 hour).
                   </p>
                 </div>
 
@@ -350,13 +356,16 @@ export default function HowToCalculateElectricityUsagePage() {
                   </div>
                   <div className="font-bold text-slate-900 text-lg">Kilowatt-Hours (kWh)</div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Standard utility billing quantity. 1 kWh = 1,000 Watt-hours. Running a 1,000W microwave for one hour consumes exactly 1 kWh of electricity.
+                    Standard utility billing quantity equal to 1,000 Watt-hours. Running a 1,000W microwave for one hour consumes exactly 1 kWh.
                   </p>
                 </div>
               </div>
 
               <p>
-                If you leave a 100-watt light bulb turned on for 10 hours, it consumes 1,000 Watt-hours (1 kWh). If you run a 1,000-watt space heater for 1 hour, it also consumes exactly 1,000 Watt-hours (1 kWh). Both scenarios result in identical energy use on your utility bill, even though the heater demanded ten times more instantaneous power from the electrical wiring. For a comprehensive look at the physical definitions of electrical work, read our companion guide on{" "}
+                If you leave a 100-watt bulb on for 10 hours, it consumes 1,000 Watt-hours (1 kWh). If you run a 1,000-watt space heater for 1 hour, it also consumes 1 kWh.
+              </p>
+              <p>
+                Both scenarios yield identical energy on your utility bill, despite different power draws. For full definitions, read our guide on{" "}
                 <Link
                   href="/what-is-a-watt-hour"
                   className="text-blue-600 hover:underline font-semibold"
@@ -386,7 +395,10 @@ export default function HowToCalculateElectricityUsagePage() {
                       Locate the Device Power Rating (Watts)
                     </h3>
                     <p className="text-sm text-slate-600 leading-relaxed">
-                      Inspect the manufacturer nameplate or electrical specification sticker on the back or bottom of the device. If the label lists Watts (W), use that number. If the label only lists Volts (V) and Amps (A), multiply Volts by Amps to find nominal Watts. For example, a 120V blender drawing 4 Amps has a nominal rating of 480 Watts (120 × 4 = 480W). If you need to convert current to wattage across single-phase or three-phase systems, use our{" "}
+                      Inspect the manufacturer nameplate or specification sticker on the device. If the label lists Watts (W), use that number; if it lists Volts (V) and Amps (A), multiply them to find nominal Watts (for example, 120V × 4A = 480W).
+                    </p>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      To convert current to wattage across single-phase or three-phase systems, use our{" "}
                       <Link
                         href="/amps-to-watts-calculator"
                         className="text-blue-600 hover:underline font-semibold"
@@ -406,7 +418,10 @@ export default function HowToCalculateElectricityUsagePage() {
                       Estimate Operating Hours per Day
                     </h3>
                     <p className="text-sm text-slate-600 leading-relaxed">
-                      Determine how many hours the appliance actively operates during a typical 24-hour day. If a device operates in minutes (such as a 15-minute microwave run or a 45-minute dishwasher cycle), convert minutes into decimal hours by dividing by 60 (for example, 15 minutes ÷ 60 = 0.25 hours).
+                      Determine how many hours the appliance actively operates during a typical 24-hour day.
+                    </p>
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      If a device runs in minutes (like a 15-minute microwave run), divide minutes by 60 to convert to decimal hours (for example, 15 minutes ÷ 60 = 0.25 hours).
                     </p>
                   </div>
                 </div>
@@ -479,10 +494,16 @@ export default function HowToCalculateElectricityUsagePage() {
                 Total Daily Energy (kWh) = kWh(Device 1) + kWh(Device 2) + ... + kWh(Device N)
               </div>
               <p>
-                According to the U.S. Energy Information Administration (EIA), the average American residential utility customer consumed approximately 10,500 kWh of electricity per year in recent historical benchmarks (2022 to 2023 data). Dividing 10,500 kWh by 365 days yields an average daily household consumption of roughly <strong>28.8 to 29.5 kWh per day</strong>.
+                According to the U.S. Energy Information Administration (EIA), average American residential customers consume approximately 10,500 kWh annually (2022 to 2023 benchmarks).
               </p>
               <p>
-                However, daily consumption is heavily seasonal. In summer months with central air conditioning running, or in winter months in homes utilizing resistance space heating or heat pumps, daily consumption often surges past 45 to 60 kWh per day. In mild spring and fall shoulder months, consumption can drop to 12 to 18 kWh per day.
+                Dividing 10,500 kWh by 365 days yields an average daily household consumption of roughly <strong>28.8 to 29.5 kWh per day</strong>.
+              </p>
+              <p>
+                However, daily consumption is heavily seasonal. In summer with central air conditioning or winter with electric space heating, daily demand often surges past 45 to 60 kWh per day.
+              </p>
+              <p>
+                In mild spring and fall shoulder months, consumption can drop to 12 to 18 kWh per day.
               </p>
             </section>
 
@@ -514,7 +535,10 @@ export default function HowToCalculateElectricityUsagePage() {
               </div>
 
               <p>
-                If you have access to your utility bills, you can compare your calculated bottom-up monthly estimate against your actual metered kWh history. If your bottom-up estimate is significantly lower than your utility bill, the difference is almost always driven by heating, ventilation, and air conditioning (HVAC) cycling, electric water heating, or unmeasured standby power.
+                If you have access to utility bills, compare your calculated bottom-up monthly estimate against your actual metered kWh history.
+              </p>
+              <p>
+                If your estimate is significantly lower than your bill, the difference is almost always driven by heating, cooling (HVAC) cycling, water heating, or standby power.
               </p>
             </section>
 
@@ -685,7 +709,10 @@ export default function HowToCalculateElectricityUsagePage() {
                   </div>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Notice that the fixed customer fee ($15.00) does not change whether you use 100 kWh or 2,000 kWh. Furthermore, many utilities employ <strong>tiered rates</strong> (where energy beyond 1,000 kWh is billed at a higher bracket) or <strong>Time-of-Use (TOU) rates</strong> (where on-peak afternoon electricity costs substantially more than off-peak overnight power). Check your recent electric bill to determine your exact rate structure.
+                  Notice that the fixed customer fee ($15.00) does not change whether you use 100 kWh or 2,000 kWh.
+                </p>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Furthermore, utilities may employ tiered rates (higher brackets beyond 1,000 kWh) or Time-of-Use (TOU) rates with afternoon peak pricing. Check your recent bill to verify your rate structure.
                 </p>
                 <div className="p-3 bg-blue-50/80 border border-blue-200/80 rounded-xl text-xs text-blue-900 flex items-center justify-between gap-3">
                   <div>
@@ -727,7 +754,10 @@ export default function HowToCalculateElectricityUsagePage() {
                     <span>Thermostatically Controlled Cycling</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Refrigerators, freezers, air conditioners, and heat pumps do not run continuously. Their internal compressors cycle on when cooling is needed and switch completely off once the target temperature is reached. A refrigerator rated at 150 Watts might only cycle on for 20 minutes out of every hour (a 33% duty cycle), consuming an average of roughly 50 Watts over time.
+                    Refrigerators, freezers, and heat pumps cycle compressors on when cooling is needed and switch off once the setpoint is reached.
+                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    A refrigerator rated at 150 Watts might cycle on 20 minutes per hour (a 33% duty cycle), averaging roughly 50 Watts over time.
                   </p>
                 </div>
 
@@ -749,7 +779,10 @@ export default function HowToCalculateElectricityUsagePage() {
                 Effective Daily kWh = [Rated Watts × (24 Hours × Duty Cycle %)] ÷ 1,000
               </div>
               <p>
-                For example, a 180-watt chest freezer operating at a 40% duty cycle runs actively for 9.6 hours per day (24 × 0.40). Its daily energy consumption is (180 W × 9.6 h) ÷ 1,000 = <strong>1.73 kWh per day</strong>. If you instead multiplied 180W by 24 hours, you would calculate 4.32 kWh per day, overestimating its energy consumption by 250%.
+                For example, a 180-watt chest freezer operating at a 40% duty cycle runs actively for 9.6 hours per day (24 × 0.40). Its daily energy consumption is (180 W × 9.6 h) ÷ 1,000 = <strong>1.73 kWh per day</strong>.
+              </p>
+              <p>
+                Multiplying 180W by 24 hours would yield 4.32 kWh per day, overestimating actual consumption by 250%.
               </p>
             </section>
 
@@ -759,7 +792,10 @@ export default function HowToCalculateElectricityUsagePage() {
                 Phantom Loads and Standby Electricity Consumption
               </h2>
               <p>
-                Many modern consumer electronics never truly shut off. Instead, they drop into a low-power standby mode to power internal clocks, Wi-Fi receivers, remote control sensors, and standby circuitry. This continuous draw is referred to as <strong>phantom load</strong>, vampire draw, or standby power.
+                Many modern consumer electronics never truly shut off. Instead, they enter low-power standby to run internal clocks, Wi-Fi receivers, and remote sensors.
+              </p>
+              <p>
+                This continuous draw is referred to as <strong>phantom load</strong>, vampire draw, or standby power.
               </p>
               <p>
                 While a single device drawing 5 Watts in standby seems negligible, multiplying that draw across 24 hours a day and 365 days a year reveals meaningful energy:
@@ -768,7 +804,10 @@ export default function HowToCalculateElectricityUsagePage() {
                 5 Watts × 24 hours × 365 days ÷ 1,000 = 43.8 kWh per year
               </div>
               <p>
-                In a home with 20 to 30 electronic devices (such as smart TVs, game consoles, audio receivers, cable set-top boxes, smart speakers, microwave clocks, and computer peripherals), continuous standby power can easily total 80 to 120 Watts across the entire home. That equates to <strong>700 to 1,050 kWh per year</strong>, simply maintaining idle electronics.
+                In a home with 20 to 30 electronic devices, continuous standby draw can easily total 80 to 120 Watts across the entire house.
+              </p>
+              <p>
+                That equates to <strong>700 to 1,050 kWh per year</strong>, simply maintaining idle electronics.
               </p>
             </section>
 
@@ -790,7 +829,10 @@ export default function HowToCalculateElectricityUsagePage() {
                     The FTC EnergyGuide Label
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Major appliances sold in the United States (refrigerators, freezers, dishwashers, clothes washers, and water heaters) feature a bright yellow <strong>EnergyGuide</strong> label. This label publishes an estimated annual electricity consumption figure in <strong>kWh/year</strong> based on standardized U.S. Department of Energy testing procedures. Dividing the label&apos;s annual kWh by 12 yields an immediate, reliable monthly estimate that already accounts for typical cycling.
+                    Major U.S. appliances feature a bright yellow <strong>EnergyGuide</strong> label with estimated annual consumption in <strong>kWh/year</strong>.
+                  </p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Dividing annual kWh by 12 yields a reliable monthly estimate that already accounts for typical duty cycling.
                   </p>
                 </div>
 
@@ -802,7 +844,10 @@ export default function HowToCalculateElectricityUsagePage() {
                     Plug-In Electricity Monitors
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    A plug-in digital wattmeter or energy monitor (such as the unit shown in our photo above) plugs directly into a standard 120V household wall receptacle. By plugging an appliance into the monitor and leaving it running for 24 to 72 hours, the device measures actual cumulative kilowatt-hours, capturing both active running power and idle standby draw under real-world household conditions.
+                    A plug-in digital wattmeter plugs into a standard 120V wall outlet to measure cumulative kilowatt-hours over 24 to 72 hours.
+                  </p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    This captures both active running power and idle standby draw under real-world household conditions.
                   </p>
                 </div>
 
@@ -814,7 +859,10 @@ export default function HowToCalculateElectricityUsagePage() {
                     Utility Smart Meters &amp; Green Button Data
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Most modern U.S. electric utilities have deployed digital smart meters (Advanced Metering Infrastructure). Through your online utility customer portal, you can often download interval data (15-minute or hourly kilowatt-hour readings) via the standardized Green Button format. This data allows you to track household energy spikes in real time when appliances cycle on.
+                    Most modern U.S. utilities deploy digital smart meters with downloadable interval data via the Green Button format.
+                  </p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    This data allows you to track household energy spikes in 15-minute or hourly increments as appliances cycle.
                   </p>
                 </div>
               </div>
@@ -835,7 +883,10 @@ export default function HowToCalculateElectricityUsagePage() {
                     1. Forgetting to Divide by 1,000
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    Multiplying 500 Watts by 4 hours gives 2,000 Watt-hours. If you multiply 2,000 by a $0.16/kWh rate without dividing by 1,000, you will incorrectly calculate a daily cost of $320 instead of the real cost of $0.32. Always ensure your energy total is in kilowatt-hours before applying electricity rates.
+                    Multiplying 500 Watts by 4 hours gives 2,000 Watt-hours. Forgetting to divide by 1,000 would incorrectly calculate a daily cost of $320 instead of $0.32 at $0.16/kWh.
+                  </p>
+                  <p className="text-amber-800 leading-relaxed">
+                    Always confirm your energy total is in kilowatt-hours before applying utility rates.
                   </p>
                 </div>
 
@@ -853,7 +904,10 @@ export default function HowToCalculateElectricityUsagePage() {
                     3. Ignoring Electric Water Heaters and HVAC
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    Homeowners often focus intensely on turning off 9-watt LED light bulbs or unplugging phone chargers while ignoring 4,500-watt electric water heaters and 3,500-watt air conditioners. In typical all-electric American homes, thermal conditioning and water heating account for over 50% to 65% of total annual kilowatt-hour consumption.
+                    Homeowners often focus intensely on turning off 9-watt LED light bulbs or unplugging phone chargers while ignoring 4,500-watt water heaters and 3,500-watt air conditioners.
+                  </p>
+                  <p className="text-amber-800 leading-relaxed">
+                    In typical all-electric American homes, climate control and water heating account for over 50% to 65% of total annual kilowatt-hour consumption.
                   </p>
                 </div>
 
@@ -862,7 +916,10 @@ export default function HowToCalculateElectricityUsagePage() {
                     4. Confusing Energy Sizing with Electrical Circuit Sizing
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    Calculating cumulative kilowatt-hours determines your energy bill and battery capacity requirements, but it does <strong>not</strong> size circuit breakers or wire gauges. Electrical safety standards require sizing circuit conductors and breakers based on peak amperage and continuous load rules (such as the 125% factor under NEC Article 210), not average energy use.
+                    Cumulative kilowatt-hours determine your utility bill and battery capacity, but do <strong>not</strong> size circuit breakers or wire gauges.
+                  </p>
+                  <p className="text-amber-800 leading-relaxed">
+                    Electrical conductors and breakers must be sized based on peak amperage and continuous load rules (such as NEC 125%), not average energy consumption.
                   </p>
                 </div>
               </div>
@@ -881,7 +938,10 @@ export default function HowToCalculateElectricityUsagePage() {
                 </h2>
 
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                  Manual math works well for quick single-device estimates. However, when you need to convert between Amps and Watts, account for AC power factor, size battery storage banks, or calculate how many solar panels are needed to offset your monthly kWh, dedicated engineering tools eliminate arithmetic errors.
+                  Manual math works well for quick single-device estimates.
+                </p>
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+                  When converting between Amps and Watts, accounting for power factor, or sizing battery banks, dedicated calculators prevent arithmetic errors.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">

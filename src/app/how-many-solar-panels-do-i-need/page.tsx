@@ -256,12 +256,18 @@ export default function HowManySolarPanelsDoINeedPage() {
                   <span>How many solar panels does an average home need?</span>
                 </div>
                 <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
-                  Under standard planning assumptions, an average American single-family household consuming <strong>900 kWh per month</strong> in an area with <strong>4.5 peak sun hours per day</strong> needs approximately <strong>22 modern 400-Watt panels</strong> (an <strong>8.55 kW DC array</strong>) to offset 100% of its electricity consumption. Across different home sizes, climates, and electricity habits, typical residential installations range between <strong>14 and 28 panels</strong>.
+                  Under standard planning assumptions, an average American single-family household consuming <strong>900 kWh per month</strong> in an area with <strong>4.5 peak sun hours per day</strong> needs approximately <strong>22 modern 400-Watt panels</strong> (an <strong>8.55 kW DC array</strong>) to offset 100% of its electricity consumption.
+                </p>
+                <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                  Across different home sizes, climates, and electricity habits, typical residential installations range between <strong>14 and 28 panels</strong>.
                 </p>
               </div>
 
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                When homeowners ask how many solar panels they need, they often expect a simple number based on house square footage. In practice, square footage does not consume electricity; air conditioners, water heaters, kitchen appliances, and lifestyle habits do. Two identical 2,500-square-foot homes on the same street can have drastically different power requirements. One home using natural gas for heating and water might consume 600 kWh per month, while an all-electric home with twin air conditioning compressors, a heated swimming pool, and an electric vehicle can easily use 2,000 kWh per month.
+                When homeowners ask how many solar panels they need, they often expect a simple number based on house square footage. In practice, square footage does not consume electricity; appliances, heating, cooling, and daily habits do.
+              </p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                Two identical 2,500-square-foot homes on the same street can have drastically different power requirements. A gas-heated home might consume 600 kWh per month, while an all-electric home with twin air conditioners, a heated pool, and an EV can easily use 2,000 kWh.
               </p>
 
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
@@ -387,7 +393,10 @@ export default function HowManySolarPanelsDoINeedPage() {
                     <span>1. Electricity Consumption</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Your electricity usage in kilowatt-hours (kWh) over a full 12-month period is the primary foundation of system sizing. Annual review is crucial because seasonal heating and cooling cause significant month-to-month swings. If you need to estimate your usage from individual appliances, see our step-by-step guide on{" "}
+                    Your electricity usage in kilowatt-hours (kWh) over a full 12-month period is the primary foundation of system sizing. Annual review is crucial because seasonal heating and cooling cause significant month-to-month swings.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    If you need to estimate your usage from individual appliances, see our step-by-step guide on{" "}
                     <Link
                       href="/how-to-calculate-electricity-usage"
                       className="text-blue-600 font-semibold hover:underline"
@@ -482,7 +491,7 @@ export default function HowManySolarPanelsDoINeedPage() {
                 <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
                   <div className="font-bold text-slate-900">Step 1: Find Your Monthly Electricity Consumption</div>
                   <p className="text-slate-600 text-xs sm:text-sm">
-                    Gather your electric utility statements from the past 12 months. Sum the total kilowatt-hours (kWh) consumed over the year and divide by 12 to find your true monthly average. If your annual usage is 10,800 kWh, your average monthly consumption is 900 kWh.
+                    Gather your electric utility statements from the past 12 months and sum the total kilowatt-hours. Divide by 12 to find your true monthly average (for instance, 10,800 kWh annually equals 900 kWh per month).
                   </p>
                 </div>
 
@@ -499,7 +508,7 @@ export default function HowManySolarPanelsDoINeedPage() {
                 <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
                   <div className="font-bold text-slate-900">Step 3: Choose Your Target Solar Offset Fraction</div>
                   <p className="text-slate-600 text-xs sm:text-sm">
-                    Decide what portion of your electricity you want your solar array to generate. A 100% offset targets zero net grid energy over the year. Multiply your daily demand by your offset fraction:
+                    Decide what portion of your electricity you want your solar array to generate. A 100% offset targets net-zero grid consumption across the full year:
                   </p>
                   <p className="font-mono text-xs bg-slate-50 p-2 rounded text-slate-800">
                     Target Daily Solar (kWh/day) = Daily Demand × (Offset % ÷ 100) = 30.00 × 1.00 = 30.00 kWh/day
@@ -509,7 +518,7 @@ export default function HowManySolarPanelsDoINeedPage() {
                 <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
                   <div className="font-bold text-slate-900">Step 4: Identify Your Location Peak Sun Hours (PSH)</div>
                   <p className="text-slate-600 text-xs sm:text-sm">
-                    Look up the annualized daily peak sun hours for your geographic region from public databases like the National Solar Radiation Database (NSRDB). Across the continental United States, annualized values typically range from 3.5 PSH in the cloudy North to 6.0+ PSH in the Southwest. The U.S. national planning average is approximately 4.5 PSH.
+                    Look up annualized daily peak sun hours for your region from databases like NSRDB. Across the continental U.S., values range from 3.5 PSH in the North to 6.0+ PSH in the Southwest (averaging 4.5 PSH).
                   </p>
                 </div>
 
@@ -547,7 +556,10 @@ export default function HowManySolarPanelsDoINeedPage() {
                 <div className="p-4 rounded-xl bg-white border border-slate-200 space-y-1.5">
                   <div className="font-bold text-slate-900">Step 8: Round Upward to the Nearest Whole Panel</div>
                   <p className="text-slate-600 text-xs sm:text-sm">
-                    Because physical solar panels cannot be installed as fractions, always round up to the nearest whole integer. Rounding 21.37 upward yields <strong>22 panels</strong>. Multiplying 22 panels by 400 Watts produces an actual installed capacity of <strong>8.80 kW DC</strong>, providing a comfortable margin above the exact baseline target.
+                    Because physical solar panels cannot be installed as fractions, always round up to the nearest whole integer. Rounding 21.37 upward yields <strong>22 panels</strong>.
+                  </p>
+                  <p className="text-slate-600 text-xs sm:text-sm">
+                    Multiplying 22 panels by 400 Watts produces an actual installed capacity of <strong>8.80 kW DC</strong>, providing a comfortable margin above the exact baseline target.
                   </p>
                 </div>
               </div>
@@ -567,7 +579,10 @@ export default function HowManySolarPanelsDoINeedPage() {
                   <span>Scenario: Standard U.S. Single-Family Residence</span>
                 </div>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  A homeowner reviews their utility statements and discovers their household consumed 10,800 kWh over the past 12 months, averaging exactly 900 kWh per month. The home is located in an area receiving an average of 4.5 peak sun hours per day. The homeowner wants to offset 100% of their utility electricity using modern 400-Watt monocrystalline panels.
+                  A homeowner reviews utility statements and discovers an annual consumption of 10,800 kWh, averaging 900 kWh per month. The home receives an average of 4.5 peak sun hours per day.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  The homeowner wants to offset 100% of their utility electricity using modern 400-Watt monocrystalline panels.
                 </p>
 
                 <div className="bg-white p-4 rounded-xl border border-slate-200 text-xs sm:text-sm space-y-2 font-mono">
@@ -607,7 +622,10 @@ export default function HowManySolarPanelsDoINeedPage() {
                 </div>
 
                 <p className="text-xs text-slate-600 leading-relaxed pt-1">
-                  <strong>Conclusion:</strong> Under these assumptions, the planning estimate is approximately 22 400W panels. This array provides an illustrative module surface area of approximately 462 square feet. This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.
+                  <strong>Conclusion:</strong> Under these assumptions, the planning estimate is approximately 22 400W panels. This array provides an illustrative module surface area of approximately 462 square feet.
+                </p>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.
                 </p>
               </div>
             </section>
@@ -685,7 +703,10 @@ export default function HowManySolarPanelsDoINeedPage() {
               </p>
 
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                Modern residential panels range from 350 Watts to 500 Watts. Installing higher-wattage panels allows you to generate identical system power using fewer total physical units on your roof. This is particularly advantageous for homes with dormers, skylights, plumbing vents, or limited south-facing roof planes.
+                Modern residential panels range from 350 Watts to 500 Watts. Installing higher-wattage panels allows you to generate identical system power using fewer total physical units on your roof.
+              </p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                This is particularly advantageous for homes with dormers, skylights, plumbing vents, or limited south-facing roof planes.
               </p>
 
               <div className="overflow-x-auto">
@@ -740,7 +761,10 @@ export default function HowManySolarPanelsDoINeedPage() {
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1.5">
                 <div className="font-semibold text-slate-800">Does higher wattage always mean a better system?</div>
                 <p>
-                  Not necessarily. Higher-wattage modules are often physically larger (using 72 full cells or 144 half-cells instead of standard 54/108-cell formats) and may carry a higher price per Watt. In addition, physical dimensions must match your specific roof plane layout. Working with standard 400W modules frequently offers the best balance of cost, ease of handling, and spatial layout flexibility for residential rooftops.
+                  Not necessarily. Higher-wattage modules are often physically larger (using 72 full cells or 144 half-cells instead of standard 54/108-cell formats) and may carry a higher price per Watt.
+                </p>
+                <p>
+                  Standard 400W modules frequently offer the best balance of cost, ease of handling, and spatial layout flexibility for residential rooftops.
                 </p>
               </div>
             </section>
@@ -760,7 +784,10 @@ export default function HowManySolarPanelsDoINeedPage() {
                   <span>Does a bigger house need more solar panels?</span>
                 </div>
                 <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
-                  No. Roof size and home square footage do not determine your electricity requirement. Your electricity consumption determines how many panels you need, while your available unshaded roof space determines whether that required array can physically fit. A small home with an electric heat pump and EV charger may need more solar panels than a sprawling home with efficient natural gas appliances.
+                  No. Roof size and home square footage do not determine your electricity requirement. Your electricity consumption determines how many panels you need, while available unshaded roof space determines whether that required array physically fits.
+                </p>
+                <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                  A small home with an electric heat pump and EV charger may need more solar panels than a sprawling home with efficient natural gas appliances.
                 </p>
               </div>
 
@@ -826,7 +853,10 @@ export default function HowManySolarPanelsDoINeedPage() {
               </div>
 
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                Roof pitch also influences harvest efficiency. For maximum annual production, optimal tilt roughly matches your geographical latitude. You can use our dedicated{" "}
+                Roof pitch also influences harvest efficiency. For maximum annual production, optimal tilt roughly matches your geographical latitude.
+              </p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                You can use our dedicated{" "}
                 <Link
                   href="/solar-panel-tilt-calculator"
                   className="text-blue-600 font-semibold underline hover:text-blue-800"
@@ -837,7 +867,10 @@ export default function HowManySolarPanelsDoINeedPage() {
               </p>
 
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                Partial shading from tall trees or neighboring buildings reduces output significantly. Modern module electronics such as microinverters or DC power optimizers isolate shaded panels so that one shadowed module does not pull down the entire array string. If you want to understand how panel strings interact electrically, read our comprehensive guide on{" "}
+                Partial shading from tall trees or neighboring buildings reduces output significantly. Modern module electronics such as microinverters or DC power optimizers isolate shaded panels so that one shadowed module does not pull down the entire array string.
+              </p>
+              <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                If you want to understand how panel strings interact electrically, read our comprehensive guide on{" "}
                 <Link
                   href="/solar-panels-series-vs-parallel"
                   className="text-blue-600 font-semibold underline hover:text-blue-800"
@@ -1049,7 +1082,10 @@ export default function HowManySolarPanelsDoINeedPage() {
                 This guide and its calculation models provide preliminary educational estimates based on user-entered utility consumption data and standard solar irradiance baselines. It does not constitute formal engineering design, structural roof certification, or definitive energy generation forecasts.
               </p>
               <p>
-                Actual rooftop photovoltaic production depends on roof compass azimuth, pitch, local shading obstructions, inverter clipping, electrical panel busbar limitations, and utility interconnection rules. Working with high-voltage direct current and utility electrical panels involves risks of shock and fire hazard. Always consult a qualified licensed solar contractor or professional electrical engineer to verify physical equipment sizing and local code compliance prior to purchasing or installing solar equipment.
+                Actual rooftop photovoltaic production depends on roof compass azimuth, pitch, local shading obstructions, inverter clipping, electrical panel busbar limitations, and utility interconnection rules.
+              </p>
+              <p>
+                Working with high-voltage direct current and utility electrical panels involves risks of shock and fire hazard. Always consult a qualified licensed solar contractor or professional electrical engineer to verify physical equipment sizing and local code compliance prior to purchasing or installing solar equipment.
               </p>
             </div>
           </article>

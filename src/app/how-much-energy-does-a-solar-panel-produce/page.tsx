@@ -253,7 +253,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                   <span>Direct Technical Answer</span>
                 </div>
                 <p className="text-sm sm:text-base leading-relaxed">
-                  A solar panel&apos;s daily energy production depends on its rated wattage and the amount of usable sunlight it receives. For example, a standard <strong>400-watt (0.40 kW)</strong> residential panel exposed to <strong>4.5 peak sun hours</strong> has a simple theoretical planning calculation of about <strong>1.80 kilowatt-hours (kWh) per day</strong> before applying system-performance assumptions.
+                  A solar panel&apos;s daily energy production depends on its rated wattage and the amount of usable sunlight it receives.
+                </p>
+                <p className="text-sm sm:text-base leading-relaxed">
+                  For example, a standard <strong>400-watt (0.40 kW)</strong> residential panel exposed to <strong>4.5 peak sun hours</strong> has a simple theoretical planning calculation of about <strong>1.80 kilowatt-hours (kWh) per day</strong> before applying system-performance assumptions.
                 </p>
                 <p className="text-sm sm:text-base leading-relaxed">
                   When applying a realistic <strong>78% planning performance factor</strong> to account for real-world balance-of-system losses (thermal cell heating, inverter conversion efficiency, wiring voltage drop, and surface soiling), that 400W panel produces approximately <strong>1.40 kWh per day</strong>, or roughly <strong>42 kWh per month</strong> (about 512 kWh annually).
@@ -271,7 +274,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                   <span>Crucial Distinction: Power (Watts) vs. Energy (Watt-Hours)</span>
                 </div>
                 <p>
-                  A 400-watt rating does <strong>not</strong> mean the panel produces 400 watts of power every hour of daylight. <strong>Watts (W)</strong> measure instantaneous power capacity, while <strong>Watt-hours (Wh)</strong> and <strong>kilowatt-hours (kWh)</strong> measure total electrical energy accumulated over time. The 400W nameplate rating represents maximum output under specific laboratory conditions. Real energy harvest follows the natural curve of the sun across the day.
+                  A 400-watt rating does <strong>not</strong> mean the panel produces 400 watts of power every hour of daylight. <strong>Watts (W)</strong> measure instantaneous capacity, while <strong>Watt-hours (Wh)</strong> and <strong>kilowatt-hours (kWh)</strong> measure electrical energy accumulated over time.
+                </p>
+                <p>
+                  The 400W nameplate rating represents maximum output under specific laboratory conditions. Real energy harvest follows the natural curve of the sun across the day.
                 </p>
               </div>
             </section>
@@ -371,7 +377,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                   </table>
                 </div>
                 <p className="text-xs text-slate-500 italic">
-                  Note: Values are rounded to two decimal places. Clear sky conditions assumed. Output will decrease during days with heavy overcast, rain, or snow cover.
+                  Note: Values are rounded to two decimal places assuming clear skies. Output decreases during days with heavy overcast, rain, or snow.
                 </p>
               </div>
             </section>
@@ -444,7 +450,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
               </div>
 
               <p className="text-sm text-slate-600">
-                These numbers illustrate why solar professionals evaluate seasonal irradiance rather than relying on a single day&apos;s peak output. On an exceptionally cool, sunny April afternoon in Colorado, a 400W panel might momentarily produce 390W or even slightly exceed 400W due to clear atmosphere and cold cells. Conversely, on a hot 95°F July day in Texas, thermal losses will drag peak production down to roughly 330W to 350W even under intense midday sun.
+                These numbers illustrate why solar professionals evaluate seasonal irradiance rather than relying on a single day&apos;s peak output. On a cool, sunny April afternoon in Colorado, a 400W panel might momentarily produce near 400W due to cold cells.
+              </p>
+              <p className="text-sm text-slate-600">
+                Conversely, on a hot 95°F July day in Texas, thermal losses drag peak production down to roughly 330W to 350W even under intense midday sun.
               </p>
             </section>
 
@@ -517,7 +526,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 <div className="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/70 text-xs text-amber-900 space-y-1">
                   <p className="font-semibold">Important Modeling Limitation:</p>
                   <p>
-                    Multiplying one fixed daily estimate by 365 is strictly a simplified annual planning approximation. In reality, no location experiences identical peak sun hours 365 days a year. Professional software suites like NREL PVWatts simulate performance across all 8,760 hours of a Typical Meteorological Year (TMY), capturing granular shifts in diffuse solar irradiance, ambient temperature, wind speed cooling, and sun angles.
+                    Multiplying one fixed daily estimate by 365 is strictly a simplified annual planning approximation. In reality, no location experiences identical peak sun hours 365 days a year.
+                  </p>
+                  <p>
+                    Professional software suites like NREL PVWatts simulate performance across all 8,760 hours of a Typical Meteorological Year (TMY), capturing granular shifts in diffuse irradiance, temperature, wind cooling, and sun angles.
                   </p>
                 </div>
               </div>
@@ -568,7 +580,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 </div>
 
                 <p className="text-sm text-slate-600">
-                  In practical outdoor installations, these three laboratory conditions rarely align simultaneously. When sunlight hits 1,000 W/m² on a clear summer day with an ambient temperature of 85°F (29°C), dark monocrystalline solar cells absorb thermal energy and rapidly heat up to <strong>120°F to 145°F (50°C to 63°C)</strong>. Because silicon semiconductors exhibit a negative temperature coefficient, elevated operating temperatures reduce panel voltage and trim real-world output by 8% to 15% below STC ratings.
+                  In practical outdoor installations, these three laboratory conditions rarely align simultaneously. On an 85°F summer day under 1,000 W/m² irradiance, solar cells heat up to <strong>120°F to 145°F (50°C to 63°C)</strong>.
+                </p>
+                <p className="text-sm text-slate-600">
+                  Because silicon semiconductors have a negative temperature coefficient, elevated operating temperatures reduce panel voltage and trim real-world output by 8% to 15% below STC ratings.
                 </p>
               </div>
             </section>
@@ -743,7 +758,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 </div>
 
                 <p className="text-sm text-slate-600">
-                  While a 500W commercial panel delivers 67% more energy than a 300W legacy panel, physical dimensions must be considered. Most 500W modules are commercial panels measuring over 7 feet long and weighing 60+ pounds, making them harder to manipulate around residential plumbing vents and roof valleys. Residential arrays predominantly deploy 380W to 420W modules because they maximize power density within residential roof constraints.
+                  While a 500W commercial panel delivers 67% more energy than a 300W legacy panel, physical dimensions must be considered. Most 500W modules measure over 7 feet long and weigh 60+ pounds, making them harder to manipulate around roof obstacles.
+                </p>
+                <p className="text-sm text-slate-600">
+                  Residential arrays predominantly deploy 380W to 420W modules because they maximize power density within residential roof constraints.
                 </p>
               </div>
             </section>
@@ -857,7 +875,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                   Annual energy production varies by location, solar resource, orientation, tilt, shading, temperature, system losses, and availability. A simple planning example can illustrate the math, but actual annual production requires site-specific solar-resource and system modeling.
                 </p>
                 <p>
-                  Multiplying an illustrative daily average across 365 days does not capture critical real-world factors. Northern regions experience dramatic seasonal variations, generating several times more energy in summer than during short, overcast winter days with potential snow cover. Desert climates enjoy abundant sunlight but face steep high-temperature efficiency deratings during hot months. Accurate annual generation modeling requires tools like NREL PVWatts that evaluate all 8,760 hours of typical meteorological year data for a specific site.
+                  Multiplying an illustrative daily average across 365 days does not capture critical real-world factors. Northern regions experience dramatic seasonal variations, generating several times more energy in summer than during short, overcast winter days.
+                </p>
+                <p>
+                  Desert climates enjoy abundant sunlight but face steep high-temperature efficiency deratings during hot months. Accurate annual generation modeling requires tools like NREL PVWatts that evaluate all 8,760 hours of typical meteorological year data for a specific site.
                 </p>
               </div>
             </section>
@@ -981,7 +1002,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                       Step 5: Array Size and Panel Count
                     </p>
                     <p className="text-slate-600">
-                      Using these simplified assumptions, 29.26 kWh/day ÷ 1.404 kWh/day per panel = 20.84 panels. Rounding up gives approximately 21 panels, or an 8.4 kW DC array (21 × 400W = 8,400 Watts). This is a simplified planning example, not a universal system design.
+                      Using these simplified assumptions, 29.26 kWh/day ÷ 1.404 kWh/day per panel = 20.84 panels. Rounding up gives approximately 21 panels, or an 8.4 kW DC array (21 × 400W = 8,400 Watts).
+                    </p>
+                    <p className="text-slate-600">
+                      This is a simplified planning example, not a universal system design.
                     </p>
                     <div className="p-2.5 bg-slate-50 rounded-lg border border-slate-200 font-mono text-center font-bold text-blue-900 text-sm">
                       29.26 kWh/day ÷ 1.404 kWh/panel/day = 20.84 panels, so 21 panels when rounded up (8.4 kW DC)
@@ -992,7 +1016,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 <div className="p-3 rounded-xl bg-amber-50/70 border border-amber-200/70 text-xs text-amber-900 space-y-1">
                   <p className="font-semibold">Planning Notice:</p>
                   <p>
-                    This calculation does not imply that 21 panels are universally required for an 890 kWh/month home, nor that 4.5 PSH applies to every roof. A home in Arizona with 6.0 PSH may need only 16 panels, whereas a home in the Pacific Northwest with 3.5 PSH may need 27 or more panels for the identical kilowatt-hour offset. Actual system design requires site-specific solar analysis by a licensed professional.
+                    This calculation does not imply that 21 panels are universally required for an 890 kWh/month home, nor that 4.5 PSH applies to every roof.
+                  </p>
+                  <p>
+                    A home in Arizona with 6.0 PSH may need only 16 panels, whereas a home in the Pacific Northwest with 3.5 PSH may need 27 or more panels for the identical kilowatt-hour offset. Actual system design requires site-specific solar analysis by a licensed professional.
                   </p>
                 </div>
 
@@ -1029,7 +1056,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 </div>
 
                 <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
-                  If you want to estimate the total solar array size for your home, use the CalcMyPower Solar System Size Calculator. It combines electricity usage, peak sun hours, a planning performance factor, solar offset, and panel wattage to estimate the required PV array and approximate panel count.
+                  If you want to estimate the total solar array size for your home, use our Solar System Size Calculator.
+                </p>
+                <p className="text-sm sm:text-base text-blue-100/90 leading-relaxed">
+                  It combines electricity usage, peak sun hours, performance factors, and panel wattage to determine the required PV array and panel count.
                 </p>
 
                 <div className="flex flex-wrap items-center gap-4 pt-2">
@@ -1175,7 +1205,10 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 This guide and its calculation models provide preliminary educational estimates based on user-entered solar module wattage and standard solar irradiance baselines. It does not constitute formal engineering design, structural roof assessment, or definitive energy generation forecasts.
               </p>
               <p>
-                Actual rooftop photovoltaic production depends on roof compass azimuth, pitch, local shading obstructions, inverter clipping, electrical panel busbar limitations, and utility interconnection rules. Working with high-voltage direct current and utility electrical panels involves risks of shock and fire hazard. Always consult a qualified licensed solar contractor or professional electrical engineer to verify physical equipment sizing and local code compliance prior to purchasing or installing solar equipment.
+                Actual rooftop photovoltaic production depends on roof compass azimuth, pitch, local shading obstructions, inverter clipping, electrical panel busbar limitations, and utility interconnection rules.
+              </p>
+              <p>
+                Working with high-voltage direct current and utility electrical panels involves risks of shock and fire hazard. Always consult a qualified licensed solar contractor or professional electrical engineer to verify physical equipment sizing and local code compliance prior to purchasing or installing solar equipment.
               </p>
             </div>
           </article>

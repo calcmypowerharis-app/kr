@@ -211,7 +211,11 @@ export default function GeneratorSizingGuidePage() {
               </p>
 
               <p>
-                For basic emergency preservation (keeping food cold in a refrigerator, powering a natural gas furnace blower for heat, running a Wi-Fi router, charging phones, and operating several LED lights), most homes require approximately <strong>3,500 to 5,000 running Watts</strong>. If your basement relies on a 1/2 HP sump pump to prevent flooding or domestic water comes from a 240V deep-well submersible pump, planned capacity rises to <strong>5,000 to 7,500 Watts</strong>. Sizing your electrical requirements with our{" "}
+                For basic emergency circuits (refrigerator, furnace blower, router, phones, and lights), most homes require approximately <strong>3,500 to 5,000 running Watts</strong>. Basements with a 1/2 HP sump pump or domestic deep-well pump increase that baseline to <strong>5,000 to 7,500 Watts</strong>.
+              </p>
+
+              <p>
+                Sizing your electrical requirements with our{" "}
                 <Link
                   href="/generator-size-calculator"
                   className="text-blue-600 font-semibold hover:underline"
@@ -222,7 +226,10 @@ export default function GeneratorSizingGuidePage() {
               </p>
 
               <p>
-                Whole-house backup that includes central air conditioning (3 to 4 tons), an electric water heater, or an electric range enters a different class altogether: either an oversized portable generator producing <strong>9,000 to 12,000 Watts</strong>, or a permanently installed standby generator rated between <strong>18,000 and 24,000 Watts (18 to 24 kW)</strong>.
+                Whole-house backup that includes central air conditioning (3 to 4 tons), an electric water heater, or an electric range enters a different class altogether.
+              </p>
+              <p>
+                This scale requires either an oversized portable generator producing <strong>9,000 to 12,000 Watts</strong>, or a permanently installed standby generator rated between <strong>18,000 and 24,000 Watts (18 to 24 kW)</strong>.
               </p>
 
               {/* Quick Reference Summary */}
@@ -329,18 +336,24 @@ export default function GeneratorSizingGuidePage() {
           </p>
 
           <p>
-            Resistive loads (including incandescent lights, electric space heaters, toasters, and water heater elements) turn electricity directly into heat or light through simple resistance. These devices exhibit virtually zero startup surge. A 1,500-Watt space heater draws 1,500 Watts the moment it turns on and continues drawing 1,500 Watts until the thermostat clicks off. To convert individual equipment ratings between electrical units, you can use our{" "}
+            Resistive loads (such as incandescent lights, space heaters, and water heaters) turn electricity directly into heat or light with zero startup surge. A 1,500-Watt space heater draws 1,500 Watts continuously while operating.
+          </p>
+          <p>
+            To convert individual ratings between electrical units, use our{" "}
             <Link
               href="/watts-to-amps-calculator"
               className="text-blue-600 font-semibold hover:underline"
             >
               Watts to Amps calculator
             </Link>{" "}
-            to determine the exact circuit breaker current required across 120-volt or 240-volt systems.
+            to determine breaker current across 120-volt or 240-volt circuits.
           </p>
 
           <p>
-            Motor-driven inductive equipment behaves differently. Compressors in refrigerators, air conditioners, and water pumps must overcome mechanical inertia and compress refrigerants or fluids from a dead stop. During that initial 1-to-3-second startup period, the motor draws what electrical specifications define as <strong>Locked Rotor Amps (LRA)</strong>. This starting inrush current can demand two to three times the appliance&apos;s steady-state running power.
+            Motor-driven inductive equipment behaves differently. Compressors in refrigerators, air conditioners, and water pumps must overcome mechanical inertia from a dead stop.
+          </p>
+          <p>
+            During that 1-to-3-second startup period, the motor draws <strong>Locked Rotor Amps (LRA)</strong>. This starting inrush current can demand two to three times steady-state running power.
           </p>
 
           <div className="overflow-x-auto my-6">
@@ -415,7 +428,7 @@ export default function GeneratorSizingGuidePage() {
             </table>
           </div>
           <p className="text-xs text-slate-500 italic">
-            *Illustrative baseline values derived from U.S. Department of Energy appliance energy estimates and standard generator manufacturer engineering tables. Actual nameplate ratings vary by age, size, and motor efficiency rating.
+            *Illustrative baseline values derived from US Department of Energy appliance energy estimates and standard generator manufacturer engineering tables. Actual nameplate ratings vary by age, size, and motor efficiency rating.
           </p>
         </section>
 
@@ -429,11 +442,14 @@ export default function GeneratorSizingGuidePage() {
           </h2>
 
           <p>
-            A common sizing error is adding every appliance&apos;s starting wattage together. If you list a refrigerator (1,200W starting), a sump pump (2,000W starting), and a furnace blower (1,800W starting), naive addition suggests you need 5,000 Watts of surge capacity just for those three items.
+            A common sizing error is adding every appliance&apos;s starting wattage together.
+          </p>
+          <p>
+            Listing a refrigerator (1,200W starting), a sump pump (2,000W), and a furnace blower (1,800W) suggests you need 5,000 Watts of surge capacity just for those three items.
           </p>
 
           <p>
-            In practice, electric motors cycle asynchronously. Your refrigerator compressor, sump pump float switch, and heating thermostat do not coordinate their startups. Adding every starting surge together assumes every motor starts at the exact same millisecond, leading to excessive oversizing and unnecessary equipment cost.
+            In practice, electric motors cycle asynchronously rather than coordinating their startups. Adding every starting surge together assumes all motors start simultaneously, leading to unnecessary oversizing and equipment cost.
           </p>
 
           <p>
@@ -472,10 +488,13 @@ export default function GeneratorSizingGuidePage() {
               <span>Understanding the 25% Planning Margin</span>
             </div>
             <p>
-              The <strong>1.25× planning headroom factor</strong> is an equipment planning margin used by CalcMyPower and recommended by generator manufacturers (such as Cummins, Generac, and Kohler). Small combustion engines run quieter, consume fuel more efficiently, and suffer less thermal stress when loaded to roughly 70% to 80% of their continuous rating.
+              The <strong>1.25× planning headroom factor</strong> is an equipment margin recommended by generator manufacturers (such as Cummins, Generac, and Kohler).
             </p>
             <p>
-              This 25% margin is a practical equipment guideline, not a universal National Electrical Code (NEC) requirement for portable generators. While NEC Article 210.20(A) requires a 125% continuous duty rating for fixed branch circuits carrying steady loads for three hours or more, generator manufacturers apply headroom to absorb secondary startup cycles, fuel variations, and altitude losses.
+              Combustion engines run quieter, consume fuel more efficiently, and suffer less thermal stress when loaded to roughly 70% to 80% of their continuous rating.
+            </p>
+            <p>
+              This 25% margin is a practical equipment guideline rather than an NEC code rule for portable generators. Manufacturers recommend this buffer to absorb secondary startup cycles, fuel variations, and altitude losses.
             </p>
             <p>
               Note also that this simplified model assumes only one major motor starts at a time. If an automated system re-energizes multiple large compressors simultaneously without staged delays, formal engineering load calculations are required.
@@ -631,14 +650,17 @@ export default function GeneratorSizingGuidePage() {
           </p>
 
           <p>
-            Square footage gives a rough sense of house scale, but it does not determine generator size by itself. What matters is the mechanical fuel source and equipment type. Running your numbers through our{" "}
+            Square footage indicates house scale, but mechanical fuel source and equipment determine actual power demand.
+          </p>
+          <p>
+            Running your numbers through our{" "}
             <Link
               href="/generator-size-calculator"
               className="text-blue-600 font-semibold hover:underline"
             >
               home generator calculator
             </Link>{" "}
-            reveals how connected wattage diverges based on appliances rather than floor space. Consider two homes of the exact same size:
+            reveals how connected wattage diverges based on appliances rather than floor space. Consider two homes of identical size:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
@@ -679,7 +701,10 @@ export default function GeneratorSizingGuidePage() {
                 Illustrative Sizing Profile for a 1,500 Sq Ft Home
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                In a typical 1,500 sq ft home with natural gas heating and city water, essential circuits (refrigerator, furnace fan, lights, and electronics) require roughly <strong>3,500W to 5,000W</strong> of capacity. If you want to power a central air conditioner (typically 2 to 2.5 tons for this footprint), continuous load rises toward <strong>7,500W to 9,500W</strong>. Full automatic whole-home backup for an all-electric 1,500 sq ft layout generally calls for an illustrative <strong>14 kW to 18 kW</strong> standby unit.
+                In a typical 1,500 sq ft home with gas heating and city water, essential circuits (refrigerator, furnace fan, lights, and electronics) require roughly <strong>3,500W to 5,000W</strong>.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Powering a 2-to-2.5-ton central AC increases load toward <strong>7,500W to 9,500W</strong>, while full whole-home backup for an all-electric layout calls for an illustrative <strong>14 kW to 18 kW</strong> standby unit.
               </p>
             </div>
 
@@ -688,7 +713,10 @@ export default function GeneratorSizingGuidePage() {
                 Illustrative Sizing Profile for a 2,000 Sq Ft Home
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                For a 2,000 sq ft property with gas heat, essential circuits require an illustrative <strong>4,500W to 6,500W</strong>. Adding a 3-ton central air conditioner raises demand to <strong>8,500W to 10,500W</strong>. For hands-off, automatic whole-house coverage supporting electric water heating and general convenience, a <strong>20 kW to 22 kW</strong> standby generator is standard.
+                For a 2,000 sq ft home with gas heat, essential circuits require an illustrative <strong>4,500W to 6,500W</strong>, rising to <strong>8,500W to 10,500W</strong> with a 3-ton central AC.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Full automatic whole-house coverage supporting electric water heating and convenience loads generally uses a <strong>20 kW to 22 kW</strong> standby generator.
               </p>
             </div>
 
@@ -697,7 +725,10 @@ export default function GeneratorSizingGuidePage() {
                 Illustrative Sizing Profile for a 2,500 Sq Ft Home
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                A 2,500 sq ft home frequently features dual heating zones, larger central air conditioning compressors (3.5 to 4 tons), and higher simultaneous lighting density. Essential circuits require roughly <strong>5,500W to 7,500W</strong>. Running central cooling alongside essentials demands <strong>10,000W to 12,500W</strong>. Whole-house automatic standby coverage typically requires a <strong>22 kW to 26 kW</strong> generator paired with an automatic transfer switch.
+                A 2,500 sq ft home frequently features dual heating zones and 3.5-to-4-ton central air conditioning, requiring roughly <strong>5,500W to 7,500W</strong> for essentials.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Running central cooling alongside essentials demands <strong>10,000W to 12,500W</strong>, while whole-house automatic standby coverage typically requires a <strong>22 kW to 26 kW</strong> generator with an automatic transfer switch.
               </p>
             </div>
           </div>
@@ -713,7 +744,10 @@ export default function GeneratorSizingGuidePage() {
           </h2>
 
           <p>
-            When sizing a generator for high-demand equipment, the figures below represent common residential baseline estimates. Because actual running and starting requirements vary by manufacturer, age, and compressor design, always check your equipment&apos;s data tag. Generator sizing also depends heavily on whether the appliance operates in isolation or alongside other household loads.
+            When sizing a generator for high-demand equipment, the figures below represent common residential baseline estimates.
+          </p>
+          <p>
+            Always check your equipment data tag because requirements vary by manufacturer, age, and whether loads run concurrently with other household circuits.
           </p>
 
           <div className="space-y-3 my-4">
@@ -725,7 +759,10 @@ export default function GeneratorSizingGuidePage() {
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                A modern residential refrigerator consumes only 150 to 200 running Watts. However, when the compressor cycles on, it demands a momentary startup surge of 1,000 to 1,500 Watts for approximately two seconds. In isolation, a small 2,000-Watt inverter generator handles a refrigerator with ease. In a home outage scenario where lights and a furnace blower are already running, factor in that 1,000W to 1,200W startup delta above the baseline load.
+                A modern refrigerator consumes only 150 to 200 running Watts, but demands a 1,000 to 1,500-Watt surge when the compressor starts.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                While a 2,000W generator handles a refrigerator in isolation, remember to factor that 1,000W to 1,200W startup delta into your concurrent outage load.
               </p>
             </div>
 
@@ -737,7 +774,10 @@ export default function GeneratorSizingGuidePage() {
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Central air conditioning is the heaviest motor load in residential homes. A 3-ton (36,000 BTU) unit draws roughly 3,500 running Watts, but starting inrush current can demand 7,500 to 9,500 Watts. Powering a central AC alongside basic home circuits typically requires at least an <strong>8,500W to 10,000W generator</strong>. However, installing an aftermarket compressor soft-starter (such as a Micro-Air EasyStart) reduces startup inrush by 60% to 70%, allowing a smaller 5,500W to 7,000W generator to start the AC without stalling the engine.
+                Central air conditioning is the heaviest residential motor load. A 3-ton unit draws roughly 3,500 running Watts, but demands 7,500 to 9,500 Watts during startup.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Running a central AC alongside basic home circuits typically requires an <strong>8,500W to 10,000W generator</strong>, though installing a soft-starter can reduce surge requirements to 5,500W to 7,000W.
               </p>
             </div>
 
@@ -749,7 +789,10 @@ export default function GeneratorSizingGuidePage() {
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                A 1/3 HP sump pump draws roughly 600W running and 1,400W starting. A heavier 1/2 HP pump draws 800W to 1,000W running and surges to 1,800W to 2,200W when pumping against head pressure. Operating a sump pump alongside refrigeration and lights generally requires a generator in the <strong>3,500W to 5,000W continuous range</strong> so that other appliances do not drop out when the pump switch engages.
+                A 1/3 HP sump pump draws roughly 600W running and 1,400W starting, while a 1/2 HP unit draws 800W to 1,000W running and surges to 1,800W to 2,200W.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Operating a sump pump alongside refrigeration and lights generally requires a <strong>3,500W to 5,000W continuous generator</strong> to absorb sudden float-switch starts.
               </p>
             </div>
 
@@ -761,7 +804,13 @@ export default function GeneratorSizingGuidePage() {
                 </span>
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Unlike 120-volt sump pumps, most residential submersible well pumps operate on <strong>240 Volts</strong>. For illustrative planning, a typical 1/2 HP well pump draws roughly 1,000W running and 2,500W starting, while a 1 HP pump draws around 1,500W running and 3,500W starting. Because well pumps require 240V, standard 120V-only portable generators cannot power them directly. You must select a generator capable of 120V/240V dual-voltage output (for instance, utilizing a 240V locking outlet such as a NEMA L14-30R or equivalent matching your transfer hardware) with sufficient running and surge capacity for the pump and concurrent household loads, typically starting around <strong>5,000 to 6,500 continuous Watts or higher</strong>. Always verify the pump motor nameplate data and consult a qualified electrician to ensure wire sizing and transfer hardware match the circuit requirements.
+                Unlike 120-volt sump pumps, most residential submersible well pumps operate on <strong>240 Volts</strong>. A 1/2 HP pump draws roughly 1,000W running and 2,500W starting, while a 1 HP pump draws around 1,500W running and 3,500W starting.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Because well pumps require 240V, standard 120V-only generators cannot power them directly. You must select a 120V/240V dual-voltage unit (such as a NEMA L14-30R outlet) rated around <strong>5,000 to 6,500 continuous Watts or higher</strong>.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Always verify pump nameplate data and consult a qualified electrician to confirm wire sizing and transfer hardware.
               </p>
             </div>
           </div>
@@ -777,7 +826,10 @@ export default function GeneratorSizingGuidePage() {
           </h2>
 
           <p>
-            Once you estimate your wattage demand, the primary equipment choice is between a portable unit and a permanently installed standby system. When planning transfer hardware or generator cord sizing, converting wattage to current with our{" "}
+            Once you estimate your wattage demand, the primary equipment choice is between a portable unit and a permanently installed standby system.
+          </p>
+          <p>
+            When planning transfer cords and hardware, converting wattage to current with our{" "}
             <Link
               href="/watts-to-amps-calculator"
               className="text-blue-600 font-semibold hover:underline"
@@ -872,7 +924,10 @@ export default function GeneratorSizingGuidePage() {
                 5. Neglecting Elevation Derating
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Atmospheric air density decreases at higher altitudes, reducing engine power output. Most small-engine and generator manufacturers provide model-specific altitude derating tables in their operator manuals (often advising a capacity reduction around 3% to 3.5% per 1,000 feet above a baseline elevation) along with carburetor jetting recommendations for high-altitude operation. Check your equipment manufacturer&apos;s manual if operating above 1,000 to 2,000 feet.
+                Atmospheric air density decreases at higher altitudes, reducing small-engine power output.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Manufacturers typically advise derating capacity by 3% to 3.5% per 1,000 feet above baseline elevation. Check your operator manual for altitude carburetor jetting guidelines.
               </p>
             </div>
           </div>
@@ -967,10 +1022,16 @@ export default function GeneratorSizingGuidePage() {
                 Anti-Backfeeding &amp; Transfer Equipment (NEC Article 702)
               </h3>
               <p className="text-xs sm:text-sm leading-relaxed">
-                Never connect a generator to home wiring using a male-to-male extension cord plugged into an ordinary wall outlet. This illegal practice, known as &quot;backfeeding,&quot; energizes the utility transformer on the street, stepping generator power up to thousands of volts on downed utility lines. This creates an immediate electrocution hazard for utility line workers and can start an electrical fire when utility power restores.
+                Never connect a generator to home wiring using a male-to-male cord into a wall outlet. This illegal practice, known as &quot;backfeeding,&quot; energizes the utility transformer and sends thousands of volts onto downed power lines.
               </p>
               <p className="text-xs sm:text-sm leading-relaxed">
-                Under the National Electrical Code (NEC Article 702), connecting a generator to a building&apos;s electrical panel requires an approved manual transfer switch or a mechanical breaker interlock kit. These devices physically prevent the home from connecting to utility power and generator power at the same time. Always hire a licensed electrician to install transfer equipment.
+                Backfeeding creates an immediate electrocution hazard for utility line crews and risks severe electrical fires when grid power restores.
+              </p>
+              <p className="text-xs sm:text-sm leading-relaxed">
+                Under NEC Article 702, connecting a generator to an electrical panel requires an approved manual transfer switch or mechanical interlock kit.
+              </p>
+              <p className="text-xs sm:text-sm leading-relaxed">
+                These devices prevent the home from connecting to utility and generator power simultaneously. Always hire a licensed electrician for installation.
               </p>
             </div>
           </div>

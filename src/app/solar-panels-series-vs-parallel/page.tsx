@@ -241,12 +241,21 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     <span>Do solar panels produce more voltage in series or parallel?</span>
                   </div>
                   <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
-                    Solar panels connected in <strong>series</strong> produce higher voltage, while panels connected in <strong>parallel</strong> produce higher current (amperage). In a series circuit, panel voltages add together while current remains constant (V<sub>total</sub> = V<sub>1</sub> + V<sub>2</sub>, I<sub>total</sub> = I<sub>1</sub>). In a parallel circuit, panel currents add together while voltage remains constant (V<sub>total</sub> = V<sub>1</sub>, I<sub>total</sub> = I<sub>1</sub> + I<sub>2</sub>). Under uniform sunlight and identical test conditions, the total theoretical power capacity (V × I) is the same in both configurations.
+                    Solar panels connected in <strong>series</strong> produce higher voltage, while panels connected in <strong>parallel</strong> produce higher current (amperage).
+                  </p>
+                  <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                    In series, voltages add while current stays constant (V<sub>total</sub> = V<sub>1</sub> + V<sub>2</sub>). In parallel, currents add while voltage stays constant (I<sub>total</sub> = I<sub>1</sub> + I<sub>2</sub>).
+                  </p>
+                  <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                    Under uniform sunlight, total power capacity (V × I) remains identical.
                   </p>
                 </div>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  When you connect two or more solar panels together, you are assembling an electrical photovoltaic (PV) array. The arrangement you choose fundamentally dictates how electrical power is transmitted from your array down to your solar charge controller and battery storage bank. While both configurations deliver the same total theoretical wattage under unshaded, standard test conditions, they perform completely differently with respect to wire gauge sizing, voltage drop over distance, partial shading sensitivity, and equipment safety margins.
+                  Connecting two or more solar panels together assembles an electrical photovoltaic (PV) array. This arrangement dictates how power travels to your charge controller and battery bank.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  While both configurations deliver the same total wattage under unshaded conditions, they behave differently regarding wire gauge, voltage drop, partial shading, and equipment safety limits.
                 </p>
 
                 {/* Master Comparison Table */}
@@ -311,7 +320,10 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </div>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  Before designing any photovoltaic circuit, you must examine the manufacturer specification label located on the rear of your solar panel. Every module displays four fundamental electrical ratings measured under Standard Test Conditions (STC: 1,000 W/m² solar irradiance, 25°C cell temperature, and Air Mass 1.5 spectrum). Knowing the difference between open-circuit, operating, and short-circuit values is essential for safe circuit sizing and charge controller selection.
+                  Before designing any photovoltaic circuit, examine the manufacturer specification label on the rear of your solar panel.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  Every module displays four fundamental ratings measured under Standard Test Conditions (STC: 1,000 W/m² irradiance, 25°C cell temperature, Air Mass 1.5). Knowing the difference between open-circuit, operating, and short-circuit values is essential for safe equipment sizing.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -354,7 +366,16 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     <span>The Nominal &quot;12V&quot; or &quot;24V&quot; Panel Fallacy</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Solar panels are frequently marketed as nominal &quot;12V&quot; or &quot;24V&quot; modules. However, a nominal 12V panel typically produces an open-circuit voltage (V<sub>oc</sub>) between 21V and 24.5V, and operates at a V<sub>mp</sub> around 18V to 20.5V. It requires this elevated voltage to drive charging current into a 12V lead-acid or lithium battery, which reaches 14.2V to 14.6V during absorption charging. Never use nominal battery voltages for circuit math; always use the physical V<sub>oc</sub> and V<sub>mp</sub> numbers from your panel label. For a detailed breakdown of how power converts to energy over time, review our guide on{" "}
+                    Solar panels are frequently marketed as nominal &quot;12V&quot; or &quot;24V&quot; modules.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    A nominal 12V panel typically produces an open-circuit voltage (V<sub>oc</sub>) between 21V and 24.5V, and operates at a V<sub>mp</sub> around 18V to 20.5V to charge a 12V battery bank.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Never use nominal battery voltages for circuit calculations; always use physical V<sub>oc</sub> and V<sub>mp</sub> ratings from your panel label.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    For a detailed breakdown of how power converts to energy over time, review our guide on{" "}
                     <Link
                       href="/what-is-a-watt-hour"
                       className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
@@ -401,11 +422,20 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </h3>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  Electrical power loss in any copper wire conductor follows Joule&apos;s Law: <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">P_loss = I² × R</code>, where <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">I</code> is current in Amperes and <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">R</code> is conductor resistance in Ohms. Notice that resistive power loss increases with the <em>square</em> of the current.
+                  Electrical power loss in any copper conductor follows Joule&apos;s Law: <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">P_loss = I² × R</code>.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  Here <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">I</code> is current in Amperes and <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">R</code> is conductor resistance in Ohms. Resistive power loss increases with the <em>square</em> of the current.
                 </p>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  When you double operating voltage by wiring panels in series, you transmit the exact same wattage at half the amperage. Cutting current in half reduces conductor power dissipation to one-fourth (0.5² = 0.25). This allows installers to use smaller, lighter, and more economical copper cables (such as 10 AWG or 12 AWG PV wire) over runs of 50 to 100 feet without suffering unacceptable voltage drop. You can calculate conductor resistance and percentage drop for any wire run with our{" "}
+                  When you double operating voltage by wiring panels in series, you transmit the exact same wattage at half the amperage. Cutting current in half reduces conductor power dissipation to one-fourth (0.5² = 0.25).
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  This allows installers to use smaller, more economical copper cables (such as 10 AWG or 12 AWG PV wire) over runs of 50 to 100 feet without excessive voltage drop.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  You can calculate conductor resistance and percentage drop for any wire run with our{" "}
                   <Link
                     href="/voltage-drop-calculator"
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
@@ -431,7 +461,10 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </div>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  In a two-panel series (2S) configuration, the positive terminal of Module 1 connects directly to the negative terminal of Module 2. The remaining free negative lead from Module 1 and free positive lead from Module 2 are routed into your MPPT charge controller.
+                  In a two-panel series (2S) configuration, the positive terminal of Module 1 connects directly to the negative terminal of Module 2.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  The remaining free negative lead from Module 1 and free positive lead from Module 2 route into your MPPT charge controller.
                 </p>
 
                 {/* DIAGRAM 1: 2S Series Technical Schematic (Accessible Clean SVG) */}
@@ -593,18 +626,24 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </h3>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  To wire two panels in parallel, installers commonly use <strong>MC4 2-to-1 Y-branch connectors</strong> (one pair: 2-male-to-1-female and 2-female-to-1-male). The positive leads from both panels plug into one branch connector, and the negative leads plug into the other, merging the outputs into a single pair of heavy-gauge home-run conductors.
+                  To wire two panels in parallel, installers commonly use <strong>MC4 2-to-1 Y-branch connectors</strong> (one pair: 2-male-to-1-female and 2-female-to-1-male).
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  The positive leads plug into one branch connector and negative leads into the other, merging outputs into a single pair of heavy-gauge home-run conductors.
                 </p>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  When combining three or more parallel modules, a dedicated weatherproof <strong>PV combiner box</strong> equipped with individual branch fuses and a DC disconnect switch is typically utilized. Because current multiplies with each parallel panel, installers must verify wire ampacity using our{" "}
+                  When combining three or more parallel modules, use a weatherproof <strong>PV combiner box</strong> equipped with individual branch fuses and a DC disconnect switch.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  Because current multiplies with each parallel panel, verify wire ampacity using our{" "}
                   <Link
                     href="/watts-to-amps-calculator"
                     className="text-blue-600 hover:text-blue-800 font-semibold underline underline-offset-2"
                   >
                     watts to amps electrical calculator
                   </Link>{" "}
-                  to select appropriately sized conductors that avoid resistive overheating and excessive voltage drop.
+                  to select conductors that avoid resistive overheating and voltage drop.
                 </p>
               </section>
 
@@ -761,7 +800,10 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </ul>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  A <strong>series-parallel (2S2P)</strong> configuration solves both dilemmas by pairing modules into two identical series strings (String A and String B), and then wiring those two strings together in parallel. Voltage doubles to 40.8V V<sub>mp</sub>, and current doubles to 19.60A I<sub>mp</sub>, keeping both parameters within comfortable operating ranges for standard 100V/30A or 150V/45A MPPT controllers while using standard 10 AWG solar cable.
+                  A <strong>series-parallel (2S2P)</strong> configuration solves both dilemmas by pairing modules into two identical series strings, and then wiring those two strings in parallel.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  Voltage doubles to 40.8V V<sub>mp</sub> and current doubles to 19.60A I<sub>mp</sub>. This keeps both parameters within standard MPPT controller limits while using common 10 AWG solar cable.
                 </p>
               </section>
 
@@ -893,7 +935,10 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     <span>Why does solar panel voltage increase in cold weather?</span>
                   </div>
                   <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
-                    Photovoltaic cells exhibit a negative temperature coefficient of voltage, meaning open-circuit voltage (V<sub>oc</sub>) increases as cell temperature drops below 25°C (77°F). In freezing conditions, array voltage can rise noticeably above nameplate ratings. Installers must calculate cold-weather V<sub>oc</sub> using the manufacturer&apos;s specific temperature coefficient per NEC 690.7 to ensure array voltage does not exceed the charge controller&apos;s maximum input voltage rating.
+                    Photovoltaic cells exhibit a negative temperature coefficient, meaning open-circuit voltage (V<sub>oc</sub>) increases as cell temperature drops below 25°C (77°F).
+                  </p>
+                  <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                    Installers must calculate cold-weather V<sub>oc</sub> using the module temperature coefficient per NEC 690.7 to prevent exceeding the controller maximum input voltage rating.
                   </p>
                 </div>
 
@@ -910,21 +955,30 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </div>
 
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  <strong>Important Compliance Note:</strong> The temperature coefficient of open-circuit voltage (<code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">α_Voc</code> or <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">γ_Voc</code>, typically between -0.26%/°C and -0.35%/°C) must be taken directly from the specific module manufacturer&apos;s datasheet or certification listing. Never assume a universal coefficient. Exceeding the controller&apos;s maximum PV input voltage can damage the controller and must be avoided.
+                  <strong>Important Compliance Note:</strong> The temperature coefficient of open-circuit voltage (<code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">α_Voc</code> or <code className="font-mono bg-slate-100 px-1 py-0.5 rounded text-slate-800">γ_Voc</code>, typically between -0.26%/°C and -0.35%/°C) must come directly from the module datasheet.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  Never assume a universal coefficient. Exceeding the controller maximum PV input voltage can damage hardware and void warranties.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
                   <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-2">
                     <h4 className="font-bold text-slate-900 text-sm">MPPT Controllers (Maximum Power Point Tracking)</h4>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      MPPT controllers utilize an internal high-frequency DC-DC buck converter. They operate most efficiently when incoming array voltage is significantly higher than battery voltage (e.g., 40V to 80V PV input charging a 12V or 24V battery). The controller dynamically tracks the V<sub>mp</sub> knee of the IV curve and steps down the excess voltage into additional charging current (P<sub>in</sub> ≈ P<sub>out</sub> × η). Series and series-parallel wiring are tailored for MPPT units.
+                      MPPT controllers utilize an internal high-frequency DC-DC buck converter. They operate most efficiently when incoming array voltage is significantly higher than battery voltage (e.g., 40V to 80V PV input charging a 12V or 24V battery).
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      The controller dynamically tracks the V<sub>mp</sub> knee of the curve and steps down excess voltage into additional charging current (P<sub>in</sub> ≈ P<sub>out</sub> × η). Series and series-parallel wiring are tailored for MPPT units.
                     </p>
                   </div>
 
                   <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-2">
                     <h4 className="font-bold text-slate-900 text-sm">PWM Controllers (Pulse Width Modulation)</h4>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      PWM controllers act as an electronic switch directly between the panel and the battery bank. When connected, a PWM controller pulls the panel operating voltage down to near the battery&apos;s immediate voltage (e.g., pulling a 20.4V V<sub>mp</sub> panel down to 12.8V). Actual delivered power depends on module operating curves, battery state of charge, irradiance, and cell temperature. Wiring panels in series with a PWM controller results in severe power dissipation, making parallel wiring mandatory for PWM systems.
+                      PWM controllers act as an electronic switch directly between the panel and the battery bank, pulling operating voltage down near battery voltage (e.g., pulling a 20.4V V<sub>mp</sub> panel down to 12.8V).
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                      Wiring panels in series with a PWM controller results in severe power loss, making parallel wiring standard for PWM systems.
                     </p>
                   </div>
                 </div>
@@ -957,21 +1011,30 @@ export default function SolarPanelsSeriesVsParallelPage() {
                 </h3>
 
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  Many crystalline silicon modules incorporate internal bypass diodes installed inside the rear junction box. These diodes divide the solar cells into series groups (typically three groups in a standard 60-cell or 72-cell module, or six sub-strings in split-cell modules). When one cell is shaded, its resistance spikes, causing it to consume rather than produce power. The bypass diode becomes forward-biased and diverts string current around the shaded cell group, preventing destructive hot-spots and allowing the remaining unshaded cell groups to continue generating power.
+                  Many crystalline silicon modules incorporate internal bypass diodes inside the rear junction box. These diodes divide cells into series groups (typically three groups in standard modules, or six in split-cell modules).
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  When a cell is shaded, the bypass diode diverts string current around the shaded group. This prevents destructive hot spots while allowing remaining unshaded cells to keep generating power.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div className="p-5 rounded-2xl bg-amber-50/60 border border-amber-200/80 space-y-2">
                     <h4 className="font-bold text-amber-950 text-sm">Shading in Series Strings</h4>
                     <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                      If bypass diodes activate, the string voltage drops by roughly one-third per diode group, but remaining unshaded panels continue generating power. However, if shading covers cells across multiple sub-strings, overall string voltage can drop below the MPPT tracking threshold, significantly reducing charging output for that string.
+                      If bypass diodes activate, string voltage drops by roughly one-third per diode group while unshaded panels continue generating power.
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      However, if shading covers cells across multiple sub-strings, overall string voltage can drop below the MPPT tracking threshold, significantly reducing charging output.
                     </p>
                   </div>
 
                   <div className="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200/80 space-y-2">
                     <h4 className="font-bold text-emerald-950 text-sm">Shading in Parallel Branches</h4>
                     <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                      In a parallel circuit, each panel operates as an independent electrical branch. If one module is partially shaded, its current output drops, but the adjacent unshaded parallel modules continue producing their full rated current into the combiner. For vehicles and camper vans with unavoidable rooftop obstructions, parallel wiring offers localized shading resilience.
+                      In a parallel circuit, each panel operates as an independent branch. If one module is partially shaded, adjacent unshaded modules continue producing full current into the combiner.
+                    </p>
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      For vehicles and camper vans with unavoidable rooftop obstructions, parallel wiring offers localized shading resilience.
                     </p>
                   </div>
                 </div>
@@ -1103,7 +1166,10 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     <span>Should I wire my solar panels in series or parallel?</span>
                   </div>
                   <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
-                    Wiring configuration depends on your charge controller specifications, cable distances, and installation environment. <strong>Series wiring</strong> is generally preferred when using an MPPT charge controller or when running cables over longer distances, as higher voltage reduces resistive power losses and allows for smaller wire gauges. <strong>Parallel wiring</strong> is typically used with PWM charge controllers or when modules are subject to frequent, independent partial shading. For systems with four or more panels, a <strong>series-parallel</strong> arrangement can provide a balance between voltage and current limits.
+                    Wiring configuration depends on your charge controller, cable run distance, and shading conditions.
+                  </p>
+                  <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-medium">
+                    <strong>Series wiring</strong> is ideal for MPPT controllers and long cable runs where higher voltage minimizes resistive loss. <strong>Parallel wiring</strong> suits PWM controllers or frequent shading, while <strong>series-parallel</strong> balances voltage and current for arrays of four or more panels.
                   </p>
                 </div>
 
@@ -1120,7 +1186,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">Scenario B</span>
                     <h3 className="font-bold text-slate-900 text-sm">RVs &amp; Camper Vans</h3>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                      Choose <strong>Parallel or 2S2P</strong>. Rooftop air conditioners, vents, and roof racks cause localized shading throughout the day. Short wire runs (under 15 ft) mean higher amperage can be handled safely with 8 or 10 AWG cable.
+                      Choose <strong>Parallel or 2S2P</strong> because rooftop vents and racks cause localized shading throughout the day. Short wire runs under 15 feet allow higher amperage with standard 8 or 10 AWG cable.
                     </p>
                   </div>
 

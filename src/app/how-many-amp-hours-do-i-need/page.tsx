@@ -284,25 +284,22 @@ export default function HowManyAmpHoursDoINeedPage() {
                   What Battery Bank Amp-Hours Actually Represent
                 </h2>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  An Amp-hour (Ah) is a measure of electric charge, representing
-                  the flow of one Ampere of electrical current continuously for
-                  one hour. When sizing an off-grid solar installation, an RV house
-                  system, or a home emergency backup bank, Amp-hours alone do not
-                  tell you how much work or energy is stored inside the battery.
+                  An Amp-hour (Ah) is a measure of electric charge, representing the flow of one Ampere of electrical current continuously for one hour.
                 </p>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  Electrical work is measured in Watt-hours (Wh) or kilowatt-hours
-                  (kWh). Stored energy is the product of current, time, and electrical
-                  potential (voltage):
+                  When sizing a solar installation, RV house system, or home backup bank, Amp-hours alone do not tell you how much energy is stored inside the battery.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  Electrical work is measured in Watt-hours (Wh) or kilowatt-hours (kWh). Stored energy is the product of current, time, and electrical potential (voltage):
                 </p>
                 <div className="p-4 bg-slate-100 rounded-lg text-slate-800 font-mono text-sm">
                   Energy (Watt-hours) = Charge (Amp-hours) × Nominal Potential (Volts)
                 </div>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  Because battery energy is voltage dependent, a 100Ah battery rated
-                  at 12V holds approximately one-fourth of the nominal stored energy of a 100Ah
-                  battery bank configured at 48V. For in-depth conceptual fundamentals,
-                  see our technical guides on{" "}
+                  Because battery energy depends on voltage, a 12V 100Ah battery holds roughly one-fourth of the nominal stored energy of a 48V 100Ah battery bank.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  For in-depth conceptual fundamentals, see our technical guides on{" "}
                   <Link
                     href="/what-does-ah-mean-on-a-battery"
                     className="text-sky-600 hover:text-sky-800 font-semibold underline"
@@ -465,10 +462,9 @@ export default function HowManyAmpHoursDoINeedPage() {
                 </h2>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
                   A battery nominal nameplate rating does not equal its practical usable capacity.
-                  Significant under-sizing can leave insufficient usable capacity and may cause
-                  the system to run out of stored energy sooner than expected. Therefore,
-                  calculations account for usable Depth of Discharge (DoD) by dividing your
-                  required autonomy capacity by an appropriate DoD planning factor:
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  Under-sizing leaves insufficient usable storage and causes the bank to deplete sooner than expected. Therefore, calculations divide required autonomy capacity by a DoD planning factor:
                 </p>
                 <div className="p-4 bg-slate-100 rounded-lg text-slate-800 font-mono text-sm">
                   Nameplate Bank Ah = Autonomy Ah ÷ Usable Depth of Discharge (DoD)
@@ -513,14 +509,17 @@ export default function HowManyAmpHoursDoINeedPage() {
 
                 <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 flex items-start gap-3 text-xs sm:text-sm text-amber-900">
                   <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
-                  <p>
-                    <strong>Important Engineering Qualification:</strong> The 80% to 90% and
-                    50% values used in these sizing examples are illustrative planning
-                    assumptions, not universal limits. Actual usable capacity and the recommended
-                    discharge floor depend on the specific battery chemistry, model, manufacturer
-                    guidelines, warranty conditions, discharge rate, temperature, and operating profile.
-                    Always check the manufacturer datasheet and technical documentation for your specific battery.
-                  </p>
+                  <div className="space-y-1.5">
+                    <p>
+                      <strong>Important Engineering Qualification:</strong> The 80% to 90% and 50% values used in these sizing examples are illustrative planning assumptions, not universal limits.
+                    </p>
+                    <p>
+                      Actual usable capacity and the recommended discharge floor depend on battery chemistry, model, manufacturer guidelines, warranty conditions, discharge rate, temperature, and operating profile.
+                    </p>
+                    <p>
+                      Always check the manufacturer datasheet and technical documentation for your specific battery.
+                    </p>
+                  </div>
                 </div>
               </section>
 
@@ -530,24 +529,16 @@ export default function HowManyAmpHoursDoINeedPage() {
                   Step 5: Account for Inverter & Wiring Conversion Losses
                 </h2>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  If your battery bank powers 120V or 240V AC appliances, DC electricity
-                  stored in the batteries is converted through an inverter. No inverter
-                  operates at 100% efficiency. Inverter efficiency varies based on equipment
-                  design, operating load percentage, and ambient temperatures. While pure
-                  sine wave inverters often operate in the 85% to 92% range under nominal load,
-                  this is an illustrative assumed efficiency for planning calculations. Sizing
-                  for physical installations should use the inverter manufacturer&apos;s specified
-                  efficiency rating for your operating load or measured system values when available.
+                  When powering 120V or 240V AC appliances, stored DC battery energy converts through an inverter. No inverter operates at 100% efficiency.
                 </p>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  In addition, DC conductors, overcurrent protection devices, and connections
-                  introduce resistive losses. DC overcurrent protection should be selected
-                  and installed according to the battery, inverter, conductor, protection-device,
-                  and applicable installation requirements. Follow the equipment manufacturer&apos;s
-                  instructions and applicable local electrical requirements. To account for
-                  conversion and delivery losses, calculations incorporate an overall system
-                  efficiency factor (such as an illustrative 0.85 to 0.90 for AC inverter circuits,
-                  or 0.95 to 0.98 for direct DC circuits):
+                  Pure sine wave inverters commonly operate between 85% and 92% efficiency under nominal load, which serves as an illustrative planning assumption. Sizing for physical installations should use the manufacturer&apos;s specified efficiency rating for your operating load.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  In addition, DC conductors, overcurrent protection devices, and connections introduce resistive losses. Follow equipment manufacturer instructions and applicable local electrical requirements when installing DC protection devices.
+                </p>
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
+                  To account for conversion and delivery losses, calculations incorporate an overall system efficiency factor (such as an illustrative 0.85 to 0.90 for AC inverter circuits, or 0.95 to 0.98 for direct DC circuits):
                 </p>
                 <div className="p-4 bg-slate-100 rounded-lg text-slate-800 font-mono text-sm">
                   Final Required Nameplate Ah = (Daily Wh × Autonomy) ÷ (Voltage × Usable DoD × Inverter Efficiency)
@@ -785,12 +776,14 @@ export default function HowManyAmpHoursDoINeedPage() {
                     </table>
                   </div>
 
-                  <p className="text-xs text-slate-500 leading-relaxed pt-1">
-                    <strong>Conductor Sizing Note:</strong> Actual conductor selection requires evaluating continuous current,
-                    one-way and round-trip cable length, permissible voltage drop (commonly 2% to 3%), conductor material
-                    and temperature ratings, conduit or free-air installation method, and equipment manufacturer requirements.
-                    Do not rely on fixed gauge rules without calculating specific circuit parameters and consulting applicable electrical codes.
-                  </p>
+                  <div className="text-xs text-slate-500 leading-relaxed pt-1 space-y-1">
+                    <p>
+                      <strong>Conductor Sizing Note:</strong> Conductor selection requires evaluating continuous current, one-way and round-trip cable length, permissible voltage drop (commonly 2% to 3%), and insulation temperature ratings.
+                    </p>
+                    <p>
+                      Do not rely on fixed gauge rules without calculating specific circuit parameters and consulting applicable electrical codes.
+                    </p>
+                  </div>
                 </div>
               </section>
 
@@ -841,7 +834,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                     href="/solar-panels-series-vs-parallel"
                     className="text-sky-600 hover:text-sky-800 font-semibold underline"
                   >
-                    series vs. parallel circuit configurations
+                    series versus parallel circuit configurations
                   </Link>.
                 </p>
               </section>
@@ -896,11 +889,10 @@ export default function HowManyAmpHoursDoINeedPage() {
                         Confusing Nameplate Ah with Usable Ah
                       </h3>
                       <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                        Assuming a battery can deliver 100% of its nameplate rating on every cycle.
-                        Significant under-sizing can leave insufficient usable capacity and may cause
-                        the system to run out of stored energy sooner than expected. Deep-cycle lead-acid
-                        units commonly use an illustrative 50% depth of discharge planning assumption for
-                        regular cycling, while lithium units allow deeper utilization depending on manufacturer specifications.
+                        Assuming a battery can deliver 100% of its nameplate rating on every cycle causes severe under-sizing.
+                      </p>
+                      <p className="text-xs sm:text-sm text-slate-600 mt-1">
+                        Deep-cycle lead-acid units commonly use an illustrative 50% depth of discharge planning assumption for regular cycling, while lithium units allow deeper utilization depending on manufacturer specifications.
                       </p>
                     </div>
                   </div>
@@ -985,31 +977,34 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <h3 className="font-semibold text-slate-900 text-sm">
                       1. Continuous Current & Maximum Discharge Rate (C-Rate)
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                      A battery with sufficient total Ah may still trip if your load
-                      exceeds its continuous discharge rating. For example, a single 12V
-                      100Ah LiFePO4 battery with a 100A BMS limit cannot power a 2,000W
-                      inverter at full output (which requires approximately 196A DC). System
-                      designers often parallel additional batteries or select higher-discharge
-                      units to accommodate the continuous current demand.
-                    </p>
+                    <div className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed space-y-1.5">
+                      <p>
+                        A battery with sufficient total Ah may still trip if your load exceeds its continuous discharge rating.
+                      </p>
+                      <p>
+                        For example, a single 12V 100Ah LiFePO4 battery with a 100A BMS limit cannot power a 2,000W inverter at full output (which requires approximately 196A DC).
+                      </p>
+                      <p>
+                        System designers often parallel additional batteries or select higher-discharge units to accommodate continuous current demand.
+                      </p>
+                    </div>
                   </div>
 
                   <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
                     <h3 className="font-semibold text-slate-900 text-sm">
                       2. Sub-Freezing Ambient Temperatures
                     </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                      Battery usable capacity, discharge performance, and allowable charging
-                      temperatures vary significantly with operating temperature and are
-                      model-specific. Many lithium iron phosphate (LiFePO4) battery management
-                      systems (BMS) restrict or prevent charging at sub-freezing temperatures
-                      (typically below 32°F / 0°C) to prevent lithium plating and cell degradation,
-                      though low-temperature charging capabilities or integrated heating pads
-                      vary by manufacturer. Similarly, lead-acid capacity decreases as electrolyte
-                      temperatures drop. Always consult the manufacturer datasheet and BMS operational
-                      limits for exact allowable charging and operating temperature ranges.
-                    </p>
+                    <div className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed space-y-1.5">
+                      <p>
+                        Battery usable capacity, discharge performance, and allowable charging temperatures vary significantly with temperature.
+                      </p>
+                      <p>
+                        Many LiFePO4 battery management systems (BMS) restrict charging below 32°F (0°C) to prevent lithium plating, though units with internal heating pads vary by manufacturer.
+                      </p>
+                      <p>
+                        Lead-acid capacity also drops as electrolyte temperatures fall. Always consult the manufacturer datasheet and BMS operational limits for exact allowable ranges.
+                      </p>
+                    </div>
                   </div>
 
                   <div className="p-4 bg-slate-50 rounded-lg border border-slate-200">
@@ -1122,9 +1117,14 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <strong>U.S. Department of Energy (DOE):</strong> Energy Saver Guidelines for Battery Storage and Backup Power Systems.
                   </li>
                 </ul>
-                <p className="pt-2 text-slate-500 border-t border-slate-200">
-                  <strong>Disclaimer:</strong> Sizing formulas and calculations presented on this page are for preliminary planning and educational purposes only. Applicable electrical codes and installation requirements may apply to stationary battery systems. Verify the requirements for the specific installation, equipment, jurisdiction, and applicable NEC edition with a qualified professional. Consult licensed electricians, system engineers, and manufacturer technical manuals when designing and installing electrical battery storage systems.
-                </p>
+                <div className="pt-2 text-slate-500 border-t border-slate-200 space-y-1">
+                  <p>
+                    <strong>Disclaimer:</strong> Sizing formulas and calculations presented on this page are for preliminary planning and educational purposes only.
+                  </p>
+                  <p>
+                    Applicable electrical codes and installation requirements may apply to stationary battery systems. Verify specific installation parameters with a qualified professional, and consult licensed electricians, system engineers, and manufacturer technical manuals when designing battery storage systems.
+                  </p>
+                </div>
               </section>
             </article>
 

@@ -211,7 +211,10 @@ export default function WattHoursExplainedPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
-                When sizing an emergency battery backup, buying a portable power station, calculating solar panel storage, or reading your monthly electric bill, you constantly encounter two related terms: <strong>Watts (W)</strong> and <strong>Watt-hours (Wh)</strong>. Confusing the two is the number one reason homeowners miscalculate backup runtimes and buy undersized equipment.
+                When sizing battery backups, portable power stations, or solar systems, you constantly encounter two related terms: <strong>Watts (W)</strong> and <strong>Watt-hours (Wh)</strong>.
+              </p>
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
+                Confusing the two is the primary reason homeowners miscalculate backup runtimes and buy undersized equipment.
               </p>
             </header>
 
@@ -239,7 +242,7 @@ export default function WattHoursExplainedPage() {
               </h2>
 
               <p>
-                <strong>A Watt-hour (symbol: Wh) is a unit of electrical energy.</strong> It quantifies the total volume of work performed or power consumed over a given period. One Watt-hour represents exactly one Watt of power delivered continuously for one hour.
+                <strong>A Watt-hour (symbol: Wh) is a unit of electrical energy</strong> that quantifies the total work performed or power consumed over time. One Watt-hour represents exactly one Watt of power delivered continuously for one hour.
               </p>
 
               <div className="p-5 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-2">
@@ -284,7 +287,7 @@ export default function WattHoursExplainedPage() {
                     <span>Watts (W) = Power (Rate)</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Watts measure instantaneous power demand. When a hair dryer is set to high, it demands roughly 1,500 Watts at that exact instant. If you turn it off after 10 seconds, its power draw drops to zero immediately. Watts describe how much electrical machinery is working right now.
+                    Watts measure instantaneous power demand. When a hair dryer is set to high, it demands roughly 1,500 Watts at that moment, dropping to zero immediately when switched off.
                   </p>
                 </div>
 
@@ -294,7 +297,7 @@ export default function WattHoursExplainedPage() {
                     <span>Watt-Hours (Wh) = Energy (Total Work)</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Watt-hours measure cumulative energy over time. Running that 1,500-Watt hair dryer for 20 minutes (one third of an hour) consumes 500 Watt-hours of energy (1,500W × 0.333h = 500Wh). Watt-hours describe the total volume of electricity drained from a battery or billed by your utility company.
+                    Watt-hours measure cumulative energy over time. Running that 1,500-Watt hair dryer for 20 minutes consumes 500 Watt-hours of energy (1,500W × 0.333h = 500Wh), representing total electricity consumed.
                   </p>
                 </div>
               </div>
@@ -313,7 +316,7 @@ export default function WattHoursExplainedPage() {
                   <li><strong>Watt-hours are like Miles Traveled (Distance):</strong> They indicate how much total ground you covered over time.</li>
                 </ul>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed pt-1">
-                  Driving at 60 mph for 1 hour covers 60 miles. Operating a 60-Watt light bulb for 1 hour consumes 60 Watt-hours. Driving at 60 mph for only 10 minutes covers 10 miles; running that bulb for 10 minutes consumes only 10 Watt-hours.
+                  Driving at 60 mph for 1 hour covers 60 miles, just as operating a 60-Watt bulb for 1 hour consumes 60 Watt-hours. Driving for 10 minutes covers 10 miles, while running that bulb for 10 minutes consumes 10 Watt-hours.
                 </p>
               </div>
             </section>
@@ -484,7 +487,10 @@ export default function WattHoursExplainedPage() {
               </div>
 
               <p>
-                While battery capacities and individual appliance draws are conveniently measured in Watt-hours, household electrical consumption is so large that utilities bill customers in <strong>kilowatt-hours (kWh)</strong>. An average American home consumes roughly 850 to 900 kWh per month, which equals 850,000 to 900,000 Watt-hours.
+                While battery capacities and individual appliance draws are measured in Watt-hours, household electrical consumption is billed in <strong>kilowatt-hours (kWh)</strong>.
+              </p>
+              <p>
+                An average American home consumes roughly 850 to 900 kWh per month, which equals 850,000 to 900,000 Watt-hours.
               </p>
 
               {/* Utility Billing Worked Calculation */}
@@ -529,7 +535,7 @@ export default function WattHoursExplainedPage() {
               </h2>
 
               <p>
-                Batteries are frequently stamped with an <strong>Amp-hour (Ah)</strong> capacity rather than a Watt-hour rating. However, Amp-hours only tell half the story. To find the total energy stored inside any battery, you must multiply the Amp-hours by the battery nominal operating voltage:
+                Batteries are frequently stamped with an <strong>Amp-hour (Ah)</strong> capacity rather than a Watt-hour rating. To find total energy stored inside any battery, multiply the Amp-hours by nominal operating voltage:
               </p>
 
               <div className="p-4 rounded-xl bg-slate-900 text-white font-mono text-center text-lg sm:text-xl font-bold shadow-xs">
@@ -618,7 +624,10 @@ export default function WattHoursExplainedPage() {
                     1. Usable Depth of Discharge (DoD) Limits
                   </span>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Discharging a lead-acid or AGM battery beyond 50% causes irreversible plate sulfation and drastically shortens cycle life. That means a 1,200Wh lead-acid battery only provides <strong>600 usable Watt-hours</strong>. In contrast, modern Lithium Iron Phosphate (LiFePO4) batteries safely sustain <strong>80% to 90% DoD</strong>, delivering <strong>960 to 1,080 usable Watt-hours</strong>.
+                    Discharging a lead-acid or AGM battery beyond 50% causes plate sulfation, meaning a 1,200Wh battery yields only <strong>600 usable Watt-hours</strong>.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    In contrast, Lithium Iron Phosphate (LiFePO4) batteries safely sustain <strong>80% to 90% DoD</strong>, delivering <strong>960 to 1,080 usable Watt-hours</strong>.
                   </p>
                 </div>
 
@@ -627,7 +636,10 @@ export default function WattHoursExplainedPage() {
                     2. Inverter DC-to-AC Conversion Efficiency
                   </span>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Batteries store low-voltage DC power. To run 120V AC household electronics, power must flow through an inverter. High-efficiency pure sine wave inverters convert power at <strong>85% to 92% efficiency</strong>; the remaining 8% to 15% is lost as thermal heat. Powering a 100W load at 85% inverter efficiency actually draws 117.6 Watts from the battery pack (100W ÷ 0.85 = 117.6W).
+                    Batteries store low-voltage DC power, requiring an inverter to run 120V AC household electronics.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Pure sine wave inverters convert power at <strong>85% to 92% efficiency</strong>, meaning a 100W load at 85% efficiency actually draws 117.6 Watts from the battery pack (100W ÷ 0.85 = 117.6W).
                   </p>
                 </div>
 
@@ -636,7 +648,7 @@ export default function WattHoursExplainedPage() {
                     3. Discharge Rate &amp; Peukert&apos;s Law
                   </span>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Lead-acid batteries are rated at a gentle 20-hour discharge rate. Pulling heavy current (such as running a microwave or power tool) increases internal cell resistance and cuts delivered capacity by 20% to 40%. Lithium batteries suffer almost zero Peukert losses.
+                    Lead-acid batteries are rated at a 20-hour discharge rate. Pulling heavy current increases internal resistance and cuts delivered capacity by 20% to 40%, whereas lithium batteries suffer almost zero Peukert losses.
                   </p>
                 </div>
 
@@ -677,7 +689,10 @@ export default function WattHoursExplainedPage() {
                     <span>Off-Grid Solar Storage</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    A 400-Watt rooftop solar array in a location with 5 peak sun hours generates roughly 2,000 Watt-hours (2 kWh) of energy per day. Sizing your battery bank to store at least 2,000Wh ensures you capture that energy without overfilling the bank. To maximize daily generation, use our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link> to determine the optimal tilt for your latitude.
+                    A 400-Watt solar array receiving 5 peak sun hours generates roughly 2,000 Watt-hours (2 kWh) per day. Sizing your battery bank to store at least 2,000Wh ensures you capture that daily production.
+                  </p>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    To maximize daily solar generation, use our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link> to determine optimal tilt for your latitude.
                   </p>
                 </div>
 
@@ -715,7 +730,7 @@ export default function WattHoursExplainedPage() {
                     Misconception 1: &ldquo;Watts per Hour&rdquo; Does Not Exist
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    People often say &ldquo;my house used 500 Watts per hour.&rdquo; This phrasing is physically meaningless. Power is already a rate (Joules per second). Dividing power by time makes no sense. The correct terminology is <strong>Watt-hours</strong> (power multiplied by time).
+                    Phrases like &ldquo;500 Watts per hour&rdquo; are physically inaccurate because power is already a rate (Joules per second). The correct terminology is <strong>Watt-hours</strong>, which represents power multiplied by time.
                   </p>
                 </div>
 
@@ -724,7 +739,7 @@ export default function WattHoursExplainedPage() {
                     Misconception 2: Treating Inverter Wattage as Storage Capacity
                   </span>
                   <p className="text-amber-800 leading-relaxed">
-                    An inverter rated at 2,000 Watts can supply up to 2,000 Watts of instantaneous power, but it stores zero energy. Stored energy comes solely from the battery bank connected to it. A 2,000W inverter connected to an empty battery delivers zero Watt-hours.
+                    An inverter rated at 2,000 Watts can supply 2,000 Watts of instantaneous power, but stores zero energy. Stored energy comes solely from the connected battery bank, so a 2,000W inverter on an empty battery delivers zero Watt-hours.
                   </p>
                 </div>
 

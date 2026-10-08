@@ -219,10 +219,16 @@ export default function ContinuousPowerGeneratorsPage() {
                   <h2>Quick Summary: What Defines a Continuous Power Generator?</h2>
                 </div>
                 <p className="text-slate-800 text-sm sm:text-base leading-relaxed">
-                  A <strong>continuous power generator</strong> (classified as <strong>Continuous Operating Power or COP</strong> under international engineering standard ISO 8528-1) is an electric generation system engineered to deliver a <strong>constant 100% electrical load for an unlimited number of hours per year</strong> without access to utility grid power.
+                  A <strong>continuous power generator</strong> is classified as <strong>Continuous Operating Power (COP)</strong> under international engineering standard ISO 8528-1.
+                </p>
+                <p className="text-slate-800 text-sm sm:text-base leading-relaxed">
+                  It is engineered to deliver a <strong>constant 100% electrical load for an unlimited number of hours per year</strong> without access to utility grid power.
                 </p>
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-                  Unlike residential emergency standby generators (which are designed for intermittent backup of only 100 to 200 hours per year) or consumer portable generators (which must cool down after 8 to 12 hours), true continuous generators serve as primary power stations. They operate in remote mining sites, off-grid telecommunications hubs, oil fields, and mission-critical data centers.
+                  Unlike residential standby generators or consumer portables, true continuous generators serve as primary standalone power stations.
+                </p>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                  They operate continuously in remote mining sites, off-grid telecommunications hubs, oil fields, and mission-critical data centers.
                 </p>
                 <div className="pt-2">
                   <Link
@@ -303,10 +309,25 @@ export default function ContinuousPowerGeneratorsPage() {
 
               <div className="space-y-3 pt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">
                 <p>
-                  <strong>Standard Baselines vs. Manufacturer Ratings:</strong> While ISO 8528-1 defines the international standard framework, leading power system manufacturers (such as Cummins, Caterpillar, and Kohler) offer specialized commercial ratings. For example, data centers frequently specify proprietary ratings such as Data Center Continuous (DCC) or Mission Critical Standby, which permit sustained operation at up to 100% of rated capacity during utility outages without the 70% average 24-hour derating imposed by standard ESP. Always review manufacturer spec sheets and project engineering requirements for exact site allowances.
+                  <strong>Standard Baselines vs. Manufacturer Ratings:</strong> While ISO 8528-1 defines the international standard framework, leading power system manufacturers (such as Cummins, Caterpillar, and Kohler) offer specialized commercial ratings.
                 </p>
                 <p>
-                  <strong>The Sizing Derate Curve:</strong> On identical engine displacements, generator sets carry progressively lower kilowatt ratings as duty severity escalates. A heavy industrial diesel platform rated for 1,000 kW in Emergency Standby (ESP) mode is typically derated to approximately 900 kW for Prime Running (PRP) duty and 700 kW to 750 kW for true Continuous (COP) operation to ensure long-term thermal equilibrium and mechanical durability.
+                  For example, data centers frequently specify ratings such as Data Center Continuous (DCC) or Mission Critical Standby.
+                </p>
+                <p>
+                  These permit sustained operation at up to 100% of rated capacity during outages without the 70% average 24-hour derating imposed by standard ESP.
+                </p>
+                <p>
+                  Always review manufacturer spec sheets and project engineering requirements for exact site allowances.
+                </p>
+                <p>
+                  <strong>The Sizing Derate Curve:</strong> On identical engine displacements, generator sets carry progressively lower kilowatt ratings as duty severity escalates.
+                </p>
+                <p>
+                  A heavy industrial diesel platform rated for 1,000 kW in Emergency Standby (ESP) mode is typically derated to approximately 900 kW for Prime Running (PRP) duty.
+                </p>
+                <p>
+                  That same engine is derated to 700 kW to 750 kW for true Continuous (COP) operation to maintain thermal equilibrium and mechanical durability.
                 </p>
               </div>
             </section>
@@ -369,7 +390,13 @@ export default function ContinuousPowerGeneratorsPage() {
                     <span>Heavy Pressurized Lubrication &amp; Oil Sump Capacity</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    A small portable generator typically holds around 1 quart (0.95 L) of motor oil, which requires frequent inspection during prolonged emergency runs. Industrial continuous diesel generators incorporate deep-sump oil pans sized for multiple gallons of heavy-duty lubricant, multi-stage filtration, and optional automated oil replenishment reservoirs. Depending on engine displacement and manufacturer guidelines, these systems support scheduled maintenance intervals of 250 to 500 operating hours between oil services.
+                    A small portable generator typically holds around 1 quart (0.95 L) of motor oil, requiring frequent inspection during prolonged emergency runs.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Industrial continuous diesels incorporate deep-sump oil pans sized for multiple gallons of heavy-duty lubricant, multi-stage filtration, and optional automated oil replenishment reservoirs.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Depending on engine displacement and manufacturer guidelines, these systems support scheduled maintenance intervals of 250 to 500 operating hours between oil services.
                   </p>
                 </div>
 
@@ -379,7 +406,13 @@ export default function ContinuousPowerGeneratorsPage() {
                     <span>Liquid Cooling and Thermal Equilibrium</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Air-cooled engines rely on cooling fins blown by engine flywheel fans. In hot summer weather or under high continuous electrical draw, air cooling cannot maintain uniform cylinder temperature, leading to thermal stress and valve guide degradation. Continuous generators utilize heavy industrial liquid cooling loops with ethylene glycol radiators, jacket water heaters, and thermostatically regulated fans that maintain stable engine operating temperatures (typically within standard manufacturer operating ranges around 170°F to 200°F) to prevent thermal cycling and premature mechanical fatigue.
+                    Air-cooled engines rely on cooling fins blown by engine flywheel fans. In hot weather or under high continuous draw, air cooling cannot maintain uniform cylinder temperature, leading to thermal stress and valve degradation.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    Continuous generators utilize heavy industrial liquid cooling loops with ethylene glycol radiators, jacket water heaters, and thermostatically regulated fans.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    These cooling loops maintain stable engine operating temperatures (typically around 170°F to 200°F) to prevent thermal cycling and premature mechanical fatigue.
                   </p>
                 </div>
               </div>
@@ -391,7 +424,10 @@ export default function ContinuousPowerGeneratorsPage() {
                 The Wet Stacking Danger: Why Under-Loading Ruins Engines
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                One of the most counterintuitive hazards in generator engineering is <strong>under-loading</strong>. Homeowners and facility operators frequently believe that buying an oversized continuous generator and running it at very low power (15% to 25% load) will preserve engine life. In reality, it causes rapid destruction through a phenomenon called <strong>wet stacking</strong>:
+                One of the most counterintuitive hazards in generator engineering is <strong>under-loading</strong>.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                Homeowners and operators often believe that running an oversized unit at 15% to 25% load preserves engine life. In reality, light loading causes rapid engine damage through <strong>wet stacking</strong>:
               </p>
 
               <div className="p-6 rounded-2xl bg-amber-50 border border-amber-200 space-y-3">
@@ -400,7 +436,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <h3>How Wet Stacking Occurs:</h3>
                 </div>
                 <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
-                  Under standards such as NFPA 110 and engine manufacturer technical manuals (including Cummins and Caterpillar), diesel engines operating below 30% to 40% of rated capacity fail to reach optimum cylinder exhaust temperatures, preventing complete diesel fuel atomization and combustion.
+                  Under standards such as NFPA 110 and manufacturer guidelines, diesel engines operating below 30% to 40% load fail to reach optimal cylinder exhaust temperatures. This prevents complete fuel atomization and combustion.
                 </p>
                 <ul className="text-xs text-amber-800 space-y-1.5 list-disc pl-4">
                   <li>Unburned diesel fuel washes cylinder wall lubrication away, causing piston ring blow-by.</li>
@@ -409,7 +445,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <li>Over time, the engine loses horsepower, emits heavy black exhaust smoke, and risks an internal exhaust fire.</li>
                 </ul>
                 <p className="text-xs text-amber-900 font-semibold pt-1">
-                  Engineering Best Practice: While continuous diesel generators can support variable demand, long-term operation is optimized above 60% rated capacity. Facilities with periods of light electrical load utilize supplemental resistive load banks or hybrid battery energy storage systems (BESS) to ensure engine thermal loading remains above wet-stacking thresholds.
+                  Engineering Best Practice: While continuous diesel generators support variable demand, long-term operation is optimized above 60% rated capacity. Facilities with light electrical loads utilize supplemental resistive load banks or hybrid battery systems (BESS) to maintain adequate thermal loading.
                 </p>
               </div>
             </section>
@@ -513,7 +549,10 @@ export default function ContinuousPowerGeneratorsPage() {
                     When an Emergency Standby (ESP) Generator is the Better Choice:
                   </span>
                   <p className="text-slate-600 leading-relaxed">
-                    For 99% of residential homes and commercial businesses with existing utility grid connections, an Emergency Standby (ESP) generator or a dual-fuel portable generator combined with an interlock kit is the correct, cost-effective engineering choice. Standby units provide reliable emergency power for days or weeks during severe outages at a fraction of the capital cost.
+                    For 99% of grid-tied homes and commercial businesses, an Emergency Standby (ESP) generator or a portable unit with an interlock kit is the cost-effective choice.
+                  </p>
+                  <p className="text-slate-600 leading-relaxed">
+                    Standby units provide reliable emergency power for days or weeks during severe outages at a fraction of the capital cost.
                   </p>
                 </div>
               </div>
@@ -569,10 +608,19 @@ export default function ContinuousPowerGeneratorsPage() {
 
                 <div className="space-y-2 pt-2 text-xs leading-relaxed text-slate-600">
                   <p>
-                    <strong>Residential Standby (ESP) Approach:</strong> Total simultaneous running load equals <strong>2,955</strong> Watts, with the 1/2 HP furnace blower motor generating the largest additional starting surge of <strong>1,100</strong> Watts, creating a peak starting demand of <strong>4,055</strong> Watts. Applying the standard continuous 25% safety reserve yields an engineering planning capacity of <strong>5,069</strong> Watts. A standard 5kW to 6kW portable generator easily handles this profile for intermittent outage duty.
+                    <strong>Residential Standby (ESP) Approach:</strong> Total simultaneous running load equals <strong>2,955</strong> Watts, with the 1/2 HP furnace blower motor generating the largest additional starting surge of <strong>1,100</strong> Watts, creating a peak starting demand of <strong>4,055</strong> Watts.
                   </p>
                   <p>
-                    <strong>Continuous Industrial (COP) Approach:</strong> If this <strong>2,955</strong> Watt load were an off-grid industrial telecommunications site operating 24 hours a day, 365 days a year without grid power, an engineer would size a continuous 1800 RPM generator operating at approximately 60% to 75% load factor. That requires a continuous rated unit of 4,000 to 5,000 Watts (often a small 6 kW to 8 kW industrial diesel generator), paired with dual fuel filtration and a high-capacity oil lubrication sump to prevent wet stacking while ensuring thermal stability.
+                    Applying the standard continuous 25% safety reserve yields an engineering planning capacity of <strong>5,069</strong> Watts. A standard 5kW to 6kW portable generator easily handles this profile for intermittent outage duty.
+                  </p>
+                  <p>
+                    <strong>Continuous Industrial (COP) Approach:</strong> Consider this <strong>2,955</strong> Watt load powering an off-grid telecommunications site 24/7 without grid power.
+                  </p>
+                  <p>
+                    An engineer would target an 1800 RPM continuous generator operating at roughly 60% to 75% load factor.
+                  </p>
+                  <p>
+                    That requires a continuous rating of 4,000 to 5,000 Watts (often a 6 kW to 8 kW industrial diesel unit), with dual fuel filtration and an extended oil sump for uninterrupted operation.
                   </p>
                 </div>
               </div>
@@ -625,7 +673,10 @@ export default function ContinuousPowerGeneratorsPage() {
                 <span>Electrical Engineering Disclaimer</span>
               </div>
               <p className="leading-relaxed">
-                Generator sizing and installation involve high-voltage electricity, lethal carbon monoxide exhaust, and fuel fire risks. This guide is for educational and preliminary planning purposes. Always consult a licensed electrical engineer and master electrician, and ensure all installations adhere to NFPA 70 (National Electrical Code), NFPA 110 (Emergency and Standby Power Systems), and local building codes.
+                Generator sizing and installation involve high-voltage electricity, carbon monoxide exhaust, and fuel fire risks. This guide is for educational and preliminary planning purposes.
+              </p>
+              <p className="leading-relaxed">
+                Always consult a licensed electrical engineer and master electrician, and ensure all installations adhere to NFPA 70 (National Electrical Code), NFPA 110, and local building codes.
               </p>
             </div>
           </div>

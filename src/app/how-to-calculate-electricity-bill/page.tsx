@@ -193,7 +193,10 @@ export default function HowToCalculateElectricityBillPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
-                Opening an electric utility statement often feels like deciphering a secret code. Between generation supply charges, delivery tariffs, fixed customer meter fees, and regulatory riders, your final balance rarely matches the simple kilowatt-hour rate advertised by your power company. This guide breaks down every line item on a residential electric bill and teaches you how to calculate your true effective cost per kilowatt-hour.
+                Opening an electric utility statement often feels like deciphering a complex code. Between generation charges, delivery tariffs, and meter fees, your total bill rarely matches the advertised kilowatt-hour rate.
+              </p>
+              <p className="text-base text-slate-600 leading-relaxed font-normal">
+                This guide breaks down every line item on a residential electric bill and teaches you how to calculate your true effective cost per kilowatt-hour.
               </p>
             </header>
 
@@ -259,7 +262,10 @@ export default function HowToCalculateElectricityBillPage() {
                 Reading Your Electric Meter &amp; Determining Billed kWh
               </h2>
               <p className="text-slate-700 leading-relaxed">
-                Every calculation begins with billed volume. Your electric meter continuously measures the cumulative quantity of electrical work delivered to your service panel in kilowatt-hours (kWh). One kilowatt-hour equals 1,000 Watts of electrical power sustained for one continuous hour (or ten 100-Watt incandescent light bulbs operated simultaneously for 60 minutes).
+                Every calculation begins with billed volume. Your electric meter continuously measures the cumulative quantity of electrical work delivered to your service panel in kilowatt-hours (kWh).
+              </p>
+              <p className="text-slate-700 leading-relaxed">
+                One kilowatt-hour equals 1,000 Watts of electrical power sustained for one continuous hour (or ten 100-Watt incandescent light bulbs operated simultaneously for 60 minutes).
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -279,7 +285,7 @@ export default function HowToCalculateElectricityBillPage() {
                     <span>Analog Dial Meters</span>
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Older electromechanical meters feature four or five rotating clock-like dials. You read the dials from left to right. When a pointer rests between two digits, always record the smaller number (unless it rests between 9 and 0, in which case record 9).
+                    Older electromechanical meters feature four or five rotating dials read from left to right. When a pointer rests between two digits, record the smaller number (or 9 if between 9 and 0).
                   </p>
                 </div>
               </div>
@@ -310,7 +316,10 @@ export default function HowToCalculateElectricityBillPage() {
                 Supply vs. Delivery: Where Your Money Actually Goes
               </h2>
               <p className="text-slate-700 leading-relaxed">
-                In deregulated electrical markets across the United States (including Texas, Pennsylvania, Ohio, Illinois, New York, and parts of New England), and even within vertically integrated regulated utility territories (like Florida, the Southeast, and California), electric statements separate charges into two distinct business functions: Generation Supply and Transmission/Distribution Delivery.
+                Across the United States, electric statements separate charges into two distinct business functions: Generation Supply and Transmission/Distribution Delivery.
+              </p>
+              <p className="text-slate-700 leading-relaxed">
+                This structure applies in competitive retail markets (such as Texas, Ohio, and New York) and traditionally regulated territories (such as Florida and California).
               </p>
 
               <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white">
@@ -371,7 +380,10 @@ export default function HowToCalculateElectricityBillPage() {
               </div>
 
               <p className="text-slate-700 leading-relaxed text-sm">
-                Understanding this split is critical when evaluating third-party energy marketing offers. An energy broker might offer an enticing supply rate of $0.09 per kWh. However, you will still pay your local electric distribution company an additional $0.07 to $0.10 per kWh for delivery, resulting in an actual energy cost of $0.16 to $0.19 per kWh before taxes and fixed charges.
+                Understanding this split is critical when evaluating third-party energy marketing offers. An energy broker might offer an enticing supply rate of $0.09 per kWh.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm">
+                However, you will still pay your local utility $0.07 to $0.10 per kWh for delivery, resulting in an actual energy cost of $0.16 to $0.19 per kWh before taxes and fixed charges.
               </p>
             </section>
 
@@ -381,7 +393,10 @@ export default function HowToCalculateElectricityBillPage() {
                 Fixed Customer Charges: The Grid Connection Fee
               </h2>
               <p className="text-slate-700 leading-relaxed">
-                Even if you turn off every circuit breaker in your house, leave on a 30-day vacation, and consume zero kilowatt-hours of electricity, you will still receive a bill. That minimum charge is your fixed monthly customer charge (frequently labeled &quot;Basic Service Fee&quot;, &quot;Customer Availability Charge&quot;, or &quot;Monthly System Access Fee&quot;).
+                Even if you turn off every circuit breaker in your house, leave on a 30-day vacation, and consume zero kilowatt-hours, you will still receive a bill.
+              </p>
+              <p className="text-slate-700 leading-relaxed">
+                That minimum charge is your fixed monthly customer charge (frequently labeled &quot;Basic Service Fee&quot;, &quot;Customer Availability Charge&quot;, or &quot;Monthly System Access Fee&quot;).
               </p>
 
               <div className="bg-amber-50/70 border border-amber-200/80 rounded-2xl p-5 space-y-2 text-xs sm:text-sm text-amber-900">
@@ -465,7 +480,10 @@ export default function HowToCalculateElectricityBillPage() {
                     </span>
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    Every kilowatt-hour consumed costs the exact same amount, regardless of when it is used or how much total energy you consume. If your rate is $0.16/kWh, kilowatt-hour number 1 costs $0.16 and kilowatt-hour number 1,200 costs $0.16. This is the simplest structure to calculate.
+                    Every kilowatt-hour consumed costs the exact same amount, regardless of when it is used or how much total energy you consume.
+                  </p>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    If your rate is $0.16/kWh, kilowatt-hour number 1 costs $0.16 and kilowatt-hour number 1,200 costs $0.16.
                   </p>
                 </div>
 

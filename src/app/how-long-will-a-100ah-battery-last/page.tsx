@@ -222,7 +222,10 @@ export default function BatteryRuntimeGuidePage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
-                A 12V 100Ah deep-cycle battery is the undisputed workhorse of American emergency backup systems, off-grid cabins, RVs, and marine power banks. Yet answering how long it will run your specific appliances is rarely a single number. Real-world runtime hinges on battery chemistry, inverter efficiency, discharge rates, and compressor cycling.
+                A 12V 100Ah deep-cycle battery is the undisputed workhorse of American backup systems, off-grid cabins, RVs, and marine setups.
+              </p>
+              <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
+                Yet determining real-world runtime is rarely a single number. Operating hours hinge on battery chemistry, inverter efficiency, discharge rates, and appliance duty cycles.
               </p>
             </header>
 
@@ -336,7 +339,10 @@ export default function BatteryRuntimeGuidePage() {
               </p>
 
               <p>
-                <strong>Amp-hours (Ah)</strong> measure electrical charge volume over time. A 100Ah rating means the battery can deliver 5 Amps for 20 hours, 10 Amps for 10 hours, or 20 Amps for 5 hours at its rated test conditions. However, Amp-hours alone do not tell you how much physical work the battery can perform because charge volume requires electrical pressure (voltage) to produce power.
+                <strong>Amp-hours (Ah)</strong> measure electrical charge volume over time. A 100Ah rating means the battery can deliver 5 Amps for 20 hours or 10 Amps for 10 hours at standard test rates.
+              </p>
+              <p>
+                However, Amp-hours alone do not tell you how much physical work the battery can perform. Stored energy requires electrical pressure (voltage) to produce usable power.
               </p>
 
               <p>
@@ -350,23 +356,26 @@ export default function BatteryRuntimeGuidePage() {
               </div>
 
               <p>
-                If you connect two 12V 100Ah batteries in series, the voltage doubles to 24V while capacity remains 100Ah, storing 2,400 Wh (24V × 100Ah). If you connect them in parallel, voltage remains 12V while capacity doubles to 200Ah, also storing 2,400 Wh (12V × 200Ah). In both arrangements, total stored energy is identical.
+                If you connect two 12V 100Ah batteries in series, the voltage doubles to 24V while capacity remains 100Ah, storing 2,400 Wh (24V × 100Ah).
+              </p>
+              <p>
+                If you connect them in parallel, voltage remains 12V while capacity doubles to 200Ah, also storing 2,400 Wh (12V × 200Ah). In both arrangements, total stored energy is identical.
               </p>
 
               <p>
-                For a deep dive into electrical charge fundamentals, read our guide on{" "}
+                For a deeper look into electrical charge fundamentals, read our guide on{" "}
                 <Link
                   href="/what-does-ah-mean-on-a-battery"
                   className="text-blue-600 font-semibold hover:underline"
                 >
-                  What Does Ah Mean on a Battery?
+                  battery amp-hour ratings
                 </Link>{" "}
                 or explore our companion tutorial on{" "}
                 <Link
                   href="/what-is-a-watt-hour"
                   className="text-blue-600 font-semibold hover:underline"
                 >
-                  What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained
+                  watt-hours versus watts
                 </Link>
                 .
               </p>
@@ -436,7 +445,10 @@ export default function BatteryRuntimeGuidePage() {
                 For traditional lead-acid chemistries (flooded, sealed AGM, and Gel), draining past 50% DoD causes rapid plate sulfation, grid corrosion, and premature cell failure. When a manufacturer recommends a 50% DoD ceiling, your 100Ah battery is effectively a 50Ah usable storage reservoir under daily cycling.
               </p>
               <p>
-                In contrast, Lithium Iron Phosphate (LiFePO4) chemistry allows deeper regular discharge. Most manufacturers approve discharging to 80% or 90% without rapid cell degradation. Discharging 90% of a 100Ah LiFePO4 battery releases 90Ah (1,080 Wh) of energy, giving you nearly double the operational service hours of an identically rated lead-acid unit.
+                In contrast, Lithium Iron Phosphate (LiFePO4) chemistry allows deeper regular discharge. Most manufacturers approve discharging to 80% or 90% without rapid cell degradation.
+              </p>
+              <p>
+                Discharging 90% of a 100Ah LiFePO4 battery releases 90Ah (1,080 Wh) of energy, giving you nearly double the operational service hours of an identically rated lead-acid unit.
               </p>
               <p className="text-xs text-slate-500 italic">
                 Note: Recommended DoD varies by battery model, operating temperature, and manufacturer specifications. The figures of 50% for lead-acid and 90% for LiFePO4 are illustrative engineering benchmarks used throughout this guide to demonstrate practical runtime differences.
@@ -446,10 +458,13 @@ export default function BatteryRuntimeGuidePage() {
                 Voltage Sag and Low-Voltage Inverter Cutoffs
               </h3>
               <p>
-                As a lead-acid battery discharges, its terminal voltage steadily drops. When powering heavy loads (such as a 600W microwave or blender), internal cell resistance causes immediate voltage sag. Even if the battery still has 40% of its charge remaining, terminal voltage may sag below 10.5 Volts, causing your inverter to beep and trip its low-voltage disconnect protection.
+                As a lead-acid battery discharges, its terminal voltage steadily drops. When powering heavy loads (such as a 600W microwave or blender), internal cell resistance causes immediate voltage sag.
               </p>
               <p>
-                LiFePO4 batteries feature an extraordinarily flat discharge curve. A lithium cell remains between 13.0V and 12.8V for almost its entire discharge cycle, ensuring your connected inverter and electronics receive steady voltage until the cell is virtually empty.
+                Even if the battery still has 40% of its charge remaining, terminal voltage may sag below 10.5 Volts, causing your inverter to beep and trip its low-voltage disconnect protection.
+              </p>
+              <p>
+                LiFePO4 batteries feature an extraordinarily flat discharge curve. A lithium cell remains between 13.0V and 12.8V for almost its entire discharge cycle, ensuring connected electronics receive steady voltage until the cell is virtually empty.
               </p>
             </section>
 
@@ -541,7 +556,10 @@ export default function BatteryRuntimeGuidePage() {
                 1. DC-to-AC Inversion Losses (8% to 15%)
               </h3>
               <p>
-                Batteries supply Direct Current (DC), but standard household appliances require 120-Volt Alternating Current (AC). Converting 12V DC into 120V AC involves rapid solid-state switching and magnetic induction through a transformer. Quality pure sine wave inverters operate at 88% to 92% peak efficiency, but cheaper modified sine wave units or inverters operating at very light loads often drop to 80% to 85% efficiency. The remaining 10% to 15% is lost as thermal heat through the cooling fan.
+                Batteries supply Direct Current (DC), but standard household appliances require 120-Volt Alternating Current (AC).
+              </p>
+              <p>
+                Quality pure sine wave inverters operate at 88% to 92% peak efficiency, but light loads or budget units often drop to 80% to 85%. The remaining 10% to 15% is lost as thermal heat through the cooling fan.
               </p>
 
               <h3 className="text-xl font-bold text-slate-900">
@@ -551,9 +569,9 @@ export default function BatteryRuntimeGuidePage() {
                 An inverter consumes electrical energy simply by being turned on, even if nothing is plugged into it. This standby draw, known as <strong>tare power</strong> or no-load idle consumption, typically ranges from:
               </p>
               <ul className="list-disc pl-5 text-sm md:text-base space-y-1">
-                <li><strong>Compact 300W–500W Inverters:</strong> 4 to 8 Watts of idle draw.</li>
-                <li><strong>Standard 1,000W–1,500W Inverters:</strong> 10 to 18 Watts of idle draw.</li>
-                <li><strong>Heavy-Duty 2,000W–3,000W Inverters:</strong> 20 to 35 Watts of idle draw.</li>
+                <li><strong>Compact 300W to 500W Inverters:</strong> 4 to 8 Watts of idle draw.</li>
+                <li><strong>Standard 1,000W to 1,500W Inverters:</strong> 10 to 18 Watts of idle draw.</li>
+                <li><strong>Heavy-Duty 2,000W to 3,000W Inverters:</strong> 20 to 35 Watts of idle draw.</li>
               </ul>
               <p>
                 If you leave a 2,000W inverter running overnight just to charge a 10W smartphone, the inverter itself will waste 20W to 25W continuously, burning over 200 Watt-hours of your battery solely to deliver 30 Watt-hours of phone charge.
@@ -565,7 +583,10 @@ export default function BatteryRuntimeGuidePage() {
                   <span>The Direct 12V DC Advantage</span>
                 </div>
                 <p className="leading-relaxed">
-                  Whenever possible, run equipment directly from 12V DC. Using a 12V DC car adapter for a laptop, 12V USB-C PD fast chargers for phones, 12V LED lighting, and a 12V cord for your CPAP bypasses the inverter entirely. Direct DC operation eliminates conversion losses and standby tare, extending your battery runtime by 15% to 30%.
+                  Whenever possible, run equipment directly from 12V DC circuits.
+                </p>
+                <p className="leading-relaxed">
+                  Using 12V DC car adapters, USB-C chargers, 12V LED lighting, or direct DC cords bypasses the inverter entirely. This eliminates conversion losses and standby tare, extending battery runtime by 15% to 30%.
                 </p>
               </div>
             </section>
@@ -577,7 +598,10 @@ export default function BatteryRuntimeGuidePage() {
               </h2>
 
               <p>
-                One of the most frequent search questions from homeowners preparing for storm outages is whether a single 12V 100Ah battery can keep their food cold. The answer is yes, but the calculation requires understanding compressor duty cycles rather than simple nameplate numbers.
+                One of the most frequent search questions from homeowners preparing for storm outages is whether a single 12V 100Ah battery can keep their food cold.
+              </p>
+              <p>
+                The answer is yes, but the calculation requires understanding compressor duty cycles rather than simple nameplate numbers.
               </p>
 
               <h3 className="text-xl font-bold text-slate-900">
@@ -590,7 +614,10 @@ export default function BatteryRuntimeGuidePage() {
                 Incorrect Assumption: 1,200 Wh battery ÷ 700 Watts = 1.7 hours of runtime
               </div>
               <p>
-                This calculation is completely wrong. That nameplate number reflects the maximum defrost heater current or locked-rotor startup draw. In reality, a modern refrigerator compressor only runs when cooling is demanded, cycling on and off throughout the day.
+                This calculation is completely misleading. That nameplate number reflects maximum defrost heater current or locked-rotor startup draw.
+              </p>
+              <p>
+                In reality, a modern refrigerator compressor only runs when cooling is demanded, cycling on and off throughout the day.
               </p>
 
               <h3 className="text-xl font-bold text-slate-900">
@@ -849,13 +876,13 @@ export default function BatteryRuntimeGuidePage() {
                     <div className="p-3 bg-emerald-50/60 rounded-xl border border-emerald-200 space-y-1">
                       <div className="font-bold text-emerald-950">Option A: Direct 12V DC Adapter (No Heat)</div>
                       <p className="text-slate-600">
-                        Draws roughly 12W to 18W (average ~15W). Over an 8-hour sleep cycle, it consumes ~120 Wh. A 100Ah LiFePO4 battery delivers <strong>8 to 9 full nights of sleep</strong>.
+                        Draws roughly 12W to 18W (average ~15W), consuming ~120 Wh over an 8-hour sleep cycle. A 100Ah LiFePO4 battery delivers <strong>8 to 9 full nights of sleep</strong>.
                       </p>
                     </div>
                     <div className="p-3 bg-amber-50/60 rounded-xl border border-amber-200 space-y-1">
                       <div className="font-bold text-amber-950">Option B: AC Inverter + Heated Humidifier &amp; Hose</div>
                       <p className="text-slate-600">
-                        Heating water and air pulls 60W to 80W continuous. Over 8 hours, it consumes 550 to 700 Wh. A 100Ah LiFePO4 battery lasts <strong>only 1 to 1.5 nights</strong>; a lead-acid battery is completely depleted before morning.
+                        Heating water and air pulls 60W to 80W continuous, consuming 550 to 700 Wh over 8 hours. A 100Ah LiFePO4 battery lasts <strong>only 1 to 1.5 nights</strong>, while lead-acid depletes before morning.
                       </p>
                     </div>
                   </div>
@@ -880,7 +907,10 @@ export default function BatteryRuntimeGuidePage() {
                     </div>
                   </div>
                   <p className="text-xs md:text-sm text-slate-600">
-                    On a 100Ah LiFePO4 battery (1,080 Wh usable), the camper can boondock for <strong>almost two full days (46 hours)</strong> with zero solar generation. On lead-acid (600 Wh usable), the battery must be recharged every 24 hours. Pairing rooftop solar panels tilted with our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link> allows off-grid replenishment during sunny daylight hours.
+                    On a 100Ah LiFePO4 battery (1,080 Wh usable), the camper can boondock for <strong>almost two full days (46 hours)</strong> with zero solar generation. On lead-acid (600 Wh usable), the battery must be recharged every 24 hours.
+                  </p>
+                  <p className="text-xs md:text-sm text-slate-600">
+                    Pairing rooftop solar panels tilted with our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link> allows off-grid replenishment during sunny daylight hours.
                   </p>
                 </div>
               </div>
@@ -903,7 +933,13 @@ export default function BatteryRuntimeGuidePage() {
                     <span>1. Discharge Rate &amp; Peukert&apos;s Law</span>
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Formulated by German scientist Wilhelm Peukert in 1897, Peukert&apos;s Law demonstrates that the available chemical capacity of a lead-acid battery diminishes significantly as discharge rate increases. Lead-acid batteries are rated at a slow 20-hour rate (C/20, or 5 Amps for a 100Ah pack). If you pull 50 Amps (powering a 500W inverter load), internal electrolyte resistance and chemical diffusion bottlenecks cause heating, cutting deliverable capacity by 20% to 35%. LiFePO4 lithium batteries exhibit an almost negligible Peukert exponent, maintaining over 95% of rated capacity even under heavy 0.5C to 1C discharge currents.
+                    Formulated in 1897, Peukert&apos;s Law shows that lead-acid chemical capacity drops rapidly as discharge current rises.
+                  </p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Lead-acid batteries carry a 20-hour rating (C/20, or 5 Amps for a 100Ah pack). Pulling 50 Amps cuts deliverable energy by 20% to 35% due to internal electrolyte resistance and diffusion limits.
+                  </p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    LiFePO4 lithium batteries exhibit an almost negligible Peukert exponent, maintaining over 95% of rated capacity even under heavy 0.5C to 1C discharge currents.
                   </p>
                 </div>
 
@@ -931,7 +967,13 @@ export default function BatteryRuntimeGuidePage() {
                     <span>3. DC Wire Gauge Resistance &amp; Voltage Drop</span>
                   </h3>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    Because a 12V battery operates at low voltage, high wattage requires immense electrical current. A 1,200W inverter pulls over 100 Amps of DC current from a 12V battery (Amps = Watts ÷ Volts). Using undersized battery cables (such as 6 AWG or 8 AWG) creates significant electrical resistance, dissipating power as heat and causing 0.5V to 1.0V of drop between the battery terminals and the inverter. This premature voltage drop triggers inverter low-voltage alarms long before the battery is actually discharged. Always use heavy 2 AWG, 1/0, or 2/0 pure copper cables with crimped lugs for 1,000W+ inverters.
+                    Because a 12V battery operates at low voltage, high wattage requires immense electrical current. A 1,200W inverter pulls over 100 Amps of DC current from a 12V battery (Amps = Watts ÷ Volts).
+                  </p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Using undersized battery cables (such as 6 AWG or 8 AWG) creates significant resistance, dissipating power as heat and causing 0.5V to 1.0V of drop between battery terminals and inverter.
+                  </p>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    This premature drop triggers inverter low-voltage alarms long before the battery is discharged. Always use heavy 2 AWG, 1/0, or 2/0 pure copper cables with crimped lugs for 1,000W+ inverters.
                   </p>
                 </div>
 
