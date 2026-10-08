@@ -87,32 +87,32 @@ const FAQ_DATA = [
   {
     question: "How many amp-hours do I need for a 1,000 Watt inverter?",
     answer:
-      "A 1,000W inverter running at full load on a 12V battery system draws approximately 98 Amps of continuous DC current (1,000W / (12V * 0.85 efficiency)). To run this 1,000W load for 2 continuous hours, you consume roughly 2,350 DC Watt-hours or 196 Ah at 12V. Accounting for an 85% usable depth of discharge, you need a minimum 230Ah 12V lithium (LiFePO4) battery bank, or roughly a 400Ah 12V lead-acid battery bank (limited to 50% depth of discharge).",
+      "A 1,000W inverter running at continuous load on a 12V battery system draws approximately 98 Amps of DC current assuming an illustrative 85% inverter efficiency (1,000W / (12V * 0.85)). To run this 1,000W load for 2 hours, the system requires roughly 2,353 DC Watt-hours or 196 Ah at 12V. Using an illustrative 85% usable depth of discharge planning assumption for LiFePO4, that equates to roughly 230 Ah at 12V. Using an illustrative 50% depth of discharge planning assumption for lead-acid, that equates to roughly 392 Ah at 12V. Actual requirements depend on inverter efficiency ratings, battery manufacturer discharge limits, and operating conditions.",
   },
   {
     question: "How many amp-hours do I need to run a household refrigerator?",
     answer:
-      "A standard residential refrigerator consumes roughly 1,000 to 1,500 Watt-hours (Wh) per day, taking into account compressor cycling. On a 12V battery bank with an 85% efficient inverter and an 80% usable depth of discharge, 1,200 Wh per day requires: 1,200 Wh / (12V * 0.80 * 0.85) = 147 Ah of nominal battery bank capacity for 24 hours of backup without solar or grid recharging.",
+      "A standard residential refrigerator consumes roughly 1,000 to 1,500 Watt-hours (Wh) per day, taking into account compressor duty cycles. In an illustrative sizing example using 1,200 Wh per day, a 12V battery bank, an assumed 85% efficient inverter, and an illustrative 80% usable depth of discharge planning assumption, the calculation yields: 1,200 Wh / (12V * 0.80 * 0.85) = approximately 147 Ah of nominal capacity for 24 hours of backup without solar or grid input. Actual consumption varies by appliance rating, ambient temperature, and equipment specifications.",
   },
   {
     question: "Can I mix different Amp-hour battery sizes in the same bank?",
     answer:
-      "No. You should never mix batteries of different Amp-hour capacities, different ages, or different chemistries within the same bank. In parallel strings, batteries with unequal internal resistance experience circulating balance currents, causing one unit to overcharge while the other undercharges. In series strings, the lower-capacity battery fully discharges first, risking cell reversal, thermal stress, and premature failure.",
+      "You should avoid mixing batteries of different Amp-hour capacities, different ages, or different chemistries within the same bank. In parallel strings, batteries with unequal internal resistance can experience circulating balance currents, which may cause one unit to overcharge while the other undercharges. In series strings, the lower-capacity unit discharges first, risking cell imbalance and accelerated degradation.",
   },
   {
-    question: "Why is a 24V or 48V battery bank better for larger power systems?",
+    question: "Why is a 24V or 48V battery bank beneficial for larger power systems?",
     answer:
-      "Because power equals voltage multiplied by current (P = V * I), doubling the system voltage cuts operating current in half for the exact same wattage. Operating a 3,000W inverter on 12V requires roughly 294 Amps DC, demanding very thick 4/0 AWG copper cables. On a 48V system, that same 3,000W load requires only 74 Amps DC, which uses lighter 4 AWG wire, reduces I2R resistive heat losses, and improves overall system efficiency.",
+      "Because power equals voltage multiplied by current (P = V * I), higher system voltages reduce operating current for the same wattage. For example, a 3,000W load at 12V requires roughly 250A to 294A DC (depending on inverter efficiency), which requires heavy gauge conductors to manage heat and voltage drop. At 48V, that same 3,000W load requires roughly 62A to 74A DC, which reduces resistive I2R losses and can allow smaller conductor sizes. Conductor sizing must always be verified based on circuit length, temperature ratings, allowable voltage drop, and applicable electrical codes.",
   },
   {
     question: "How do I determine the usable depth of discharge of my battery?",
     answer:
-      "Usable depth of discharge (DoD) is established by the battery manufacturer specification sheet. Deep-cycle lithium iron phosphate (LiFePO4) batteries are commonly rated for 80% to 90% usable depth of discharge while still delivering 3,000 to 5,000 cycles. Sealed AGM and flooded lead-acid deep-cycle batteries are typically sized for a maximum 50% depth of discharge under daily cycling to avoid rapid plate sulfation and early capacity loss.",
+      "Usable depth of discharge (DoD) is established by the battery manufacturer specification sheet. Sizing models often use an illustrative 80% to 90% DoD for deep-cycle LiFePO4 batteries and an illustrative 50% DoD for lead-acid batteries as starting planning assumptions. Actual usable capacity and the recommended discharge floor depend on the specific battery model, manufacturer warranty guidelines, discharge rate, operating temperature, and cycling frequency.",
   },
   {
     question: "What is the difference between battery Amp-hours and Watt-hours?",
     answer:
-      "Amp-hours (Ah) measure electric charge capacity at a specific nominal voltage, while Watt-hours (Wh) measure actual stored energy independent of voltage. To convert Ah to Wh, multiply Amp-hours by the nominal voltage (Wh = Ah * Volts). For example, a 12V 100Ah battery contains 1,200 Wh of energy, whereas a 48V 100Ah battery contains 4,800 Wh of energy, four times as much stored work capability.",
+      "Amp-hours (Ah) measure electric charge capacity at a specific nominal voltage, while Watt-hours (Wh) measure actual stored energy independent of voltage. To convert Ah to Wh, multiply Amp-hours by the nominal voltage (Wh = Ah * Volts). For example, a 12V 100Ah battery contains 1,200 Wh of nominal energy, whereas a 48V 100Ah battery contains 4,800 Wh of nominal energy, four times as much stored work capability.",
   },
 ];
 
@@ -222,7 +222,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                   <h2>Direct Answer: The Master Battery Sizing Formula</h2>
                 </div>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  To calculate the total Amp-hours (Ah) required for a battery bank,
+                  To estimate the total Amp-hours (Ah) required for a battery bank,
                   determine your total daily energy consumption in Watt-hours (Wh),
                   multiply by your required days of autonomy (backup reserve),
                   and divide by the product of your nominal system voltage,
@@ -236,24 +236,27 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <span className="font-semibold text-slate-800 block mb-1">
                       12V Setup (Small Loads):
                     </span>
-                    1,200 Wh/day at 1 day backup with LiFePO4 (85% DoD) and 85% inverter requires roughly{" "}
+                    1,200 Wh/day at 1 day backup with LiFePO4 (illustrative 85% DoD assumption) and an assumed 85% efficient inverter requires roughly{" "}
                     <strong className="text-slate-900">166 Ah at 12V</strong>.
                   </div>
                   <div className="p-3 bg-slate-50 rounded border border-slate-200">
                     <span className="font-semibold text-slate-800 block mb-1">
                       24V Setup (Medium Loads):
                     </span>
-                    2,400 Wh/day at 1 day backup with LiFePO4 (85% DoD) and 88% inverter requires roughly{" "}
+                    2,400 Wh/day at 1 day backup with LiFePO4 (illustrative 85% DoD assumption) and an assumed 88% efficient inverter requires roughly{" "}
                     <strong className="text-slate-900">160 Ah at 24V</strong>.
                   </div>
                   <div className="p-3 bg-slate-50 rounded border border-slate-200">
                     <span className="font-semibold text-slate-800 block mb-1">
                       48V Setup (Whole-Home):
                     </span>
-                    10,000 Wh/day at 1.5 days backup with LiFePO4 (90% DoD) and 92% inverter requires roughly{" "}
+                    10,000 Wh/day at 1.5 days backup with LiFePO4 (illustrative 90% DoD assumption) and an assumed 92% efficient inverter requires roughly{" "}
                     <strong className="text-slate-900">377 Ah at 48V</strong>.
                   </div>
                 </div>
+                <p className="text-[11px] text-slate-500 pt-1">
+                  Note: Inverter efficiencies and usable DoD figures above are illustrative planning assumptions. Sizing for real installations should use equipment manufacturer specifications.
+                </p>
               </section>
 
               {/* Unique Technical Diagram */}
@@ -297,7 +300,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                 </div>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
                   Because battery energy is voltage dependent, a 100Ah battery rated
-                  at 12V holds exactly one quarter of the stored energy of a 100Ah
+                  at 12V holds approximately one-fourth of the nominal stored energy of a 100Ah
                   battery bank configured at 48V. For in-depth conceptual fundamentals,
                   see our technical guides on{" "}
                   <Link
@@ -461,11 +464,11 @@ export default function HowManyAmpHoursDoINeedPage() {
                   Step 4: Account for Usable Capacity & Depth of Discharge (DoD)
                 </h2>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  A battery nominal nameplate rating is not equal to its usable energy.
-                  Discharging a battery to absolute zero percent state of charge
-                  damages internal chemistry, triggers low-voltage disconnects, or
-                  destroys cycle life. Therefore, you must divide your required capacity
-                  by the usable Depth of Discharge (DoD):
+                  A battery nominal nameplate rating does not equal its practical usable capacity.
+                  Significant under-sizing can leave insufficient usable capacity and may cause
+                  the system to run out of stored energy sooner than expected. Therefore,
+                  calculations account for usable Depth of Discharge (DoD) by dividing your
+                  required autonomy capacity by an appropriate DoD planning factor:
                 </p>
                 <div className="p-4 bg-slate-100 rounded-lg text-slate-800 font-mono text-sm">
                   Nameplate Bank Ah = Autonomy Ah ÷ Usable Depth of Discharge (DoD)
@@ -478,15 +481,15 @@ export default function HowManyAmpHoursDoINeedPage() {
                         Lithium Iron Phosphate (LiFePO4)
                       </span>
                       <span className="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-100 text-emerald-800">
-                        80% to 90% DoD
+                        80% to 90% Illustrative DoD
                       </span>
                     </div>
                     <p className="text-xs text-slate-600 leading-relaxed">
                       Deep-cycle LiFePO4 cells maintain flat discharge voltage curves
-                      and are commonly specified by manufacturers for 80% to 90% usable
-                      depth of discharge while retaining 3,000 to 5,000 charge cycles.
-                      Integrated Battery Management Systems (BMS) protect cells against
-                      over-discharge.
+                      and are commonly referenced in sizing models using an illustrative
+                      80% to 90% usable depth of discharge planning assumption for long
+                      cycle life. Integrated Battery Management Systems (BMS) protect cells
+                      against severe over-discharge.
                     </p>
                   </div>
 
@@ -496,14 +499,14 @@ export default function HowManyAmpHoursDoINeedPage() {
                         Deep-Cycle Lead-Acid (AGM / Gel / Flooded)
                       </span>
                       <span className="px-2 py-0.5 rounded text-xs font-semibold bg-amber-100 text-amber-800">
-                        50% DoD Benchmark
+                        50% Illustrative DoD Benchmark
                       </span>
                     </div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Lead-acid manufacturers strongly advise limiting daily discharge
-                      to 50% of nameplate rating. Discharging lead-acid to 80% or deeper
-                      accelerates plate sulfation and can reduce expected cycle life
-                      from 1,000 cycles down to under 300 cycles.
+                      Deep-cycle lead-acid systems (AGM, Gel, Flooded) typically use an
+                      illustrative 50% depth of discharge planning assumption for regular
+                      cycling, as deeper routine discharges accelerate plate sulfation and
+                      shorten expected service life.
                     </p>
                   </div>
                 </div>
@@ -511,10 +514,12 @@ export default function HowManyAmpHoursDoINeedPage() {
                 <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 flex items-start gap-3 text-xs sm:text-sm text-amber-900">
                   <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
                   <p>
-                    <strong>Engineering Clarification:</strong> Usable capacity limits
-                    are set by manufacturer specifications, temperature operating ranges,
-                    and warranty terms. Never assume universal chemical constants;
-                    always verify the exact datasheet for your selected battery model.
+                    <strong>Important Engineering Qualification:</strong> The 80% to 90% and
+                    50% values used in these sizing examples are illustrative planning
+                    assumptions, not universal limits. Actual usable capacity and the recommended
+                    discharge floor depend on the specific battery chemistry, model, manufacturer
+                    guidelines, warranty conditions, discharge rate, temperature, and operating profile.
+                    Always check the manufacturer datasheet and technical documentation for your specific battery.
                   </p>
                 </div>
               </section>
@@ -525,16 +530,24 @@ export default function HowManyAmpHoursDoINeedPage() {
                   Step 5: Account for Inverter & Wiring Conversion Losses
                 </h2>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  If your battery bank powers 120V or 240V AC household appliances,
-                  DC electricity stored in the batteries must pass through an inverter.
-                  No inverter operates at 100% efficiency. High-quality pure sine wave
-                  inverters typically operate between 85% and 92% efficiency under normal load.
+                  If your battery bank powers 120V or 240V AC appliances, DC electricity
+                  stored in the batteries is converted through an inverter. No inverter
+                  operates at 100% efficiency. Inverter efficiency varies based on equipment
+                  design, operating load percentage, and ambient temperatures. While pure
+                  sine wave inverters often operate in the 85% to 92% range under nominal load,
+                  this is an illustrative assumed efficiency for planning calculations. Sizing
+                  for physical installations should use the inverter manufacturer&apos;s specified
+                  efficiency rating for your operating load or measured system values when available.
                 </p>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  In addition, DC cables, fuses, and terminal connections introduce
-                  resistive losses. To avoid under-sizing your bank, divide the required
-                  energy by the overall system efficiency factor (typically 0.85 to 0.90 for AC loads,
-                  or 0.95 to 0.98 for pure direct DC loads):
+                  In addition, DC conductors, overcurrent protection devices, and connections
+                  introduce resistive losses. DC overcurrent protection should be selected
+                  and installed according to the battery, inverter, conductor, protection-device,
+                  and applicable installation requirements. Follow the equipment manufacturer&apos;s
+                  instructions and applicable local electrical requirements. To account for
+                  conversion and delivery losses, calculations incorporate an overall system
+                  efficiency factor (such as an illustrative 0.85 to 0.90 for AC inverter circuits,
+                  or 0.95 to 0.98 for direct DC circuits):
                 </p>
                 <div className="p-4 bg-slate-100 rounded-lg text-slate-800 font-mono text-sm">
                   Final Required Nameplate Ah = (Daily Wh × Autonomy) ÷ (Voltage × Usable DoD × Inverter Efficiency)
@@ -558,7 +571,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                 </h2>
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
                   Here is how the master sizing formula applies across four common
-                  residential and mobile electrical setups using realistic engineering assumptions.
+                  residential and mobile electrical setups using illustrative engineering assumptions.
                 </p>
 
                 <div className="space-y-4">
@@ -575,15 +588,15 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <ul className="text-xs sm:text-sm text-slate-600 space-y-1">
                       <li>• Daily Demand: 650 Wh/day (LEDs, 12V fridge, USB chargers, ventilation fan)</li>
                       <li>• Autonomy: 1 day</li>
-                      <li>• Battery Type: LiFePO4 (assumed 85% usable DoD)</li>
-                      <li>• System Efficiency: 95% (direct DC system, no heavy inverter loss)</li>
+                      <li>• Battery Type: LiFePO4 (illustrative 85% usable DoD planning assumption)</li>
+                      <li>• System Efficiency: 95% (illustrative direct DC system efficiency, no inverter loss)</li>
                     </ul>
                     <div className="p-3 bg-slate-50 rounded font-mono text-xs text-slate-800">
                       Bank Ah = (650 Wh × 1) ÷ (12V × 0.85 × 0.95) = 650 ÷ 9.69 = <strong>67.1 Ah</strong>
                     </div>
                     <p className="text-xs text-slate-600">
-                      <strong>Selection:</strong> One standard 12V 100Ah LiFePO4 battery
-                      provides generous headroom and protects cycle longevity.
+                      <strong>Illustrative Configuration:</strong> One 12V 100Ah LiFePO4 battery
+                      provides generous headroom and supports cycle longevity under this load profile.
                     </p>
                   </div>
 
@@ -600,29 +613,29 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <ul className="text-xs sm:text-sm text-slate-600 space-y-1">
                       <li>• Daily Demand: 1,400 Wh/day (internet router, laptop, LED lamp, CPAP machine)</li>
                       <li>• Autonomy: 1.5 days (2,100 Wh total reserve)</li>
-                      <li>• Inverter Efficiency: 85%</li>
+                      <li>• Inverter Efficiency: 85% (illustrative assumed efficiency for this example)</li>
                     </ul>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                       <div className="p-3 bg-slate-50 rounded border border-slate-200">
                         <span className="font-semibold text-slate-800 text-xs block mb-1">
-                          With LiFePO4 (85% DoD):
+                          With LiFePO4 (illustrative 85% DoD):
                         </span>
                         <div className="font-mono text-xs text-slate-900">
                           2,100 ÷ (12 × 0.85 × 0.85) = <strong>242 Ah</strong>
                         </div>
                         <span className="text-[11px] text-slate-500 mt-1 block">
-                          Recommend: (2) 12V 100Ah or (1) 12V 250Ah battery
+                          Illustrative option: (2) 12V 100Ah or (1) 12V 250Ah battery
                         </span>
                       </div>
                       <div className="p-3 bg-slate-50 rounded border border-slate-200">
                         <span className="font-semibold text-slate-800 text-xs block mb-1">
-                          With AGM Lead-Acid (50% DoD):
+                          With AGM Lead-Acid (illustrative 50% DoD):
                         </span>
                         <div className="font-mono text-xs text-slate-900">
                           2,100 ÷ (12 × 0.50 × 0.85) = <strong>412 Ah</strong>
                         </div>
                         <span className="text-[11px] text-slate-500 mt-1 block">
-                          Recommend: (4) 12V 100Ah deep-cycle AGM batteries
+                          Illustrative option: (4) 12V 100Ah deep-cycle AGM batteries
                         </span>
                       </div>
                     </div>
@@ -641,15 +654,15 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <ul className="text-xs sm:text-sm text-slate-600 space-y-1">
                       <li>• Daily Demand: 3,200 Wh/day (efficient fridge, pressure water pump, TV, lighting)</li>
                       <li>• Autonomy: 2 days (6,400 Wh total reserve)</li>
-                      <li>• Battery Type: LiFePO4 (85% usable DoD)</li>
-                      <li>• Inverter Efficiency: 88%</li>
+                      <li>• Battery Type: LiFePO4 (illustrative 85% usable DoD planning assumption)</li>
+                      <li>• Inverter Efficiency: 88% (illustrative assumed efficiency for this example)</li>
                     </ul>
                     <div className="p-3 bg-slate-50 rounded font-mono text-xs text-slate-800">
                       Bank Ah = 6,400 Wh ÷ (24V × 0.85 × 0.88) = 6,400 ÷ 17.95 = <strong>356.5 Ah at 24V</strong>
                     </div>
                     <p className="text-xs text-slate-600">
-                      <strong>Selection:</strong> (4) 24V 100Ah LiFePO4 batteries in parallel,
-                      or (8) 12V 100Ah batteries in 4 parallel strings of 2 series batteries.
+                      <strong>Illustrative Configuration:</strong> (4) 24V 100Ah LiFePO4 batteries in parallel,
+                      or (8) 12V 100Ah batteries configured in 4 parallel strings of 2 series batteries.
                     </p>
                   </div>
 
@@ -666,14 +679,14 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <ul className="text-xs sm:text-sm text-slate-600 space-y-1">
                       <li>• Daily Demand: 12,000 Wh/day (12 kWh essential residential circuits)</li>
                       <li>• Autonomy: 1.5 days (18,000 Wh total reserve)</li>
-                      <li>• Battery Type: Modern 48V Server-Rack LiFePO4 (90% usable DoD)</li>
-                      <li>• Inverter Efficiency: 92% (high-voltage hybrid inverter)</li>
+                      <li>• Battery Type: Modern 48V Server-Rack LiFePO4 (illustrative 90% usable DoD planning assumption)</li>
+                      <li>• Inverter Efficiency: 92% (illustrative assumed efficiency for this example)</li>
                     </ul>
                     <div className="p-3 bg-slate-50 rounded font-mono text-xs text-slate-800">
                       Bank Ah = 18,000 Wh ÷ (48V × 0.90 × 0.92) = 18,000 ÷ 39.74 = <strong>452.9 Ah at 48V</strong>
                     </div>
                     <p className="text-xs text-slate-600">
-                      <strong>Selection:</strong> (5) 48V 100Ah (5.12 kWh each) server-rack batteries
+                      <strong>Illustrative Configuration:</strong> (5) 48V 100Ah (5.12 kWh each) server-rack batteries
                       in parallel, delivering 500 Ah (25.6 kWh total nominal energy).
                     </p>
                   </div>
@@ -688,7 +701,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                 <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
                   One of the most frequent misconceptions in power system design is
                   comparing Amp-hour ratings across different voltages. Stored
-                  energy always depends on nominal voltage:
+                  energy is directly related to nominal voltage and charge capacity (Wh = V × Ah):
                 </p>
 
                 <div className="overflow-x-auto">
@@ -728,12 +741,57 @@ export default function HowManyAmpHoursDoINeedPage() {
                   </table>
                 </div>
 
-                <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                  When sizing equipment for inverters exceeding 1,500 Watts, stepping
-                  up to 24V or 48V significantly decreases continuous DC current,
-                  allowing smaller copper conductor gauges, reducing voltage drop,
-                  and lowering operating temperatures.
-                </p>
+                <div className="pt-2 space-y-3">
+                  <h3 className="font-bold text-slate-900 text-base">
+                    Conceptual Comparison: How Voltage Governs Operating Current
+                  </h3>
+                  <p className="text-sm text-slate-700 leading-relaxed">
+                    Because electrical power equals voltage multiplied by current (P = V × I),
+                    increasing the system operating voltage proportionally decreases the circuit
+                    amperage for the exact same power demand. Lower current reduces resistive (I2R)
+                    heat losses and can allow smaller conductor sizes:
+                  </p>
+
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs sm:text-sm border border-slate-200 rounded-lg overflow-hidden">
+                      <thead className="bg-slate-100 text-slate-700 font-semibold">
+                        <tr>
+                          <th className="p-3 border-b border-slate-200">Nominal Voltage</th>
+                          <th className="p-3 border-b border-slate-200">Continuous Current (at 1,500W Load)</th>
+                          <th className="p-3 border-b border-slate-200">Thermal &amp; Conductor Impact</th>
+                          <th className="p-3 border-b border-slate-200">Common Application Profiles</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200">
+                        <tr>
+                          <td className="p-3 font-semibold text-slate-800">12V DC</td>
+                          <td className="p-3 font-mono text-slate-900">~125A to ~147A</td>
+                          <td className="p-3 text-slate-600">Higher current requires heavier conductors and shorter runs to control voltage drop.</td>
+                          <td className="p-3 text-slate-600">RVs, camper vans, marine DC systems, small off-grid cabins.</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-semibold text-slate-800">24V DC</td>
+                          <td className="p-3 font-mono text-indigo-700">~63A to ~74A</td>
+                          <td className="p-3 text-slate-600">Halving current reduces I2R losses by 75% for the same wire, allowing lighter cabling.</td>
+                          <td className="p-3 text-slate-600">Medium off-grid cabins, workshop backup, larger mobile builds.</td>
+                        </tr>
+                        <tr>
+                          <td className="p-3 font-semibold text-slate-800">48V DC</td>
+                          <td className="p-3 font-mono text-emerald-700">~31A to ~37A</td>
+                          <td className="p-3 text-slate-600">Minimal thermal losses allow efficient transmission over longer distances.</td>
+                          <td className="p-3 text-slate-600">Residential solar storage, whole-home backup, commercial UPS.</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <p className="text-xs text-slate-500 leading-relaxed pt-1">
+                    <strong>Conductor Sizing Note:</strong> Actual conductor selection requires evaluating continuous current,
+                    one-way and round-trip cable length, permissible voltage drop (commonly 2% to 3%), conductor material
+                    and temperature ratings, conduit or free-air installation method, and equipment manufacturer requirements.
+                    Do not rely on fixed gauge rules without calculating specific circuit parameters and consulting applicable electrical codes.
+                  </p>
+                </div>
               </section>
 
               {/* Section 10: Series vs Parallel */}
@@ -817,8 +875,8 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <li>Total batteries required: 2 × 3 = <strong>6 batteries</strong></li>
                   </ul>
                   <p className="text-xs text-slate-500 pt-1">
-                    Always confirm that your battery manufacturer supports the planned
-                    number of series and parallel connections in their technical manual.
+                    Verify that your battery manufacturer supports the planned
+                    number of series and parallel connections in their technical documentation.
                   </p>
                 </div>
               </section>
@@ -838,9 +896,11 @@ export default function HowManyAmpHoursDoINeedPage() {
                         Confusing Nameplate Ah with Usable Ah
                       </h3>
                       <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                        Buying a 100Ah lead-acid battery and expecting 100Ah of runtime.
-                        Lead-acid batteries deliver roughly 50Ah of usable capacity before
-                        risking plate degradation.
+                        Assuming a battery can deliver 100% of its nameplate rating on every cycle.
+                        Significant under-sizing can leave insufficient usable capacity and may cause
+                        the system to run out of stored energy sooner than expected. Deep-cycle lead-acid
+                        units commonly use an illustrative 50% depth of discharge planning assumption for
+                        regular cycling, while lithium units allow deeper utilization depending on manufacturer specifications.
                       </p>
                     </div>
                   </div>
@@ -888,7 +948,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                       <p className="text-xs sm:text-sm text-slate-600 mt-1">
                         Sizing capacity strictly for 24 hours assuming solar will recharge
                         the bank every morning. Two days of rain or snow will leave the system
-                        completely depleted.
+                        depleted without an auxiliary generator or grid source.
                       </p>
                     </div>
                   </div>
@@ -903,7 +963,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                       </h3>
                       <p className="text-xs sm:text-sm text-slate-600 mt-1">
                         Assuming a 24V 100Ah bank has the same capacity as a 12V 100Ah bank.
-                        Always convert to Watt-hours (Wh = V × Ah) before comparing costs or sizes.
+                        Convert to Watt-hours (Wh = V × Ah) to accurately compare stored energy and system size.
                       </p>
                     </div>
                   </div>
@@ -926,11 +986,12 @@ export default function HowManyAmpHoursDoINeedPage() {
                       1. Continuous Current & Maximum Discharge Rate (C-Rate)
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                      A battery with sufficient total Ah may still fail if your peak load
+                      A battery with sufficient total Ah may still trip if your load
                       exceeds its continuous discharge rating. For example, a single 12V
                       100Ah LiFePO4 battery with a 100A BMS limit cannot power a 2,000W
-                      inverter at full output (which requires approximately 196A DC). You
-                      must parallel additional batteries to meet the discharge current demand.
+                      inverter at full output (which requires approximately 196A DC). System
+                      designers often parallel additional batteries or select higher-discharge
+                      units to accommodate the continuous current demand.
                     </p>
                   </div>
 
@@ -939,10 +1000,15 @@ export default function HowManyAmpHoursDoINeedPage() {
                       2. Sub-Freezing Ambient Temperatures
                     </h3>
                     <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">
-                      Battery performance drops in freezing conditions. More importantly,
-                      standard LiFePO4 batteries must never be charged below 32°F (0°C)
-                      without internal heating pads, as lithium plating can cause permanent
-                      internal short circuits.
+                      Battery usable capacity, discharge performance, and allowable charging
+                      temperatures vary significantly with operating temperature and are
+                      model-specific. Many lithium iron phosphate (LiFePO4) battery management
+                      systems (BMS) restrict or prevent charging at sub-freezing temperatures
+                      (typically below 32°F / 0°C) to prevent lithium plating and cell degradation,
+                      though low-temperature charging capabilities or integrated heating pads
+                      vary by manufacturer. Similarly, lead-acid capacity decreases as electrolyte
+                      temperatures drop. Always consult the manufacturer datasheet and BMS operational
+                      limits for exact allowable charging and operating temperature ranges.
                     </p>
                   </div>
 
@@ -1037,11 +1103,11 @@ export default function HowManyAmpHoursDoINeedPage() {
                   <h2>Authoritative Sources & Engineering Standards</h2>
                 </div>
                 <p>
-                  Calculations, formulas, and baseline assumptions in this guide are grounded in established US electrical and energy references:
+                  Sizing principles, mathematical formulas, and baseline assumptions in this guide reference established industry engineering standards and educational resources:
                 </p>
                 <ul className="list-disc list-inside space-y-1 pl-1">
                   <li>
-                    <strong>National Electrical Code (NEC / NFPA 70):</strong> Article 480 (Storage Batteries) and Article 706 (Energy Storage Systems).
+                    <strong>Electrical Installation Standards:</strong> Applicable electrical codes and installation requirements may apply to stationary battery systems (including NFPA 70 / NEC Article 480 and Article 706). Verify the requirements for the specific installation, equipment, jurisdiction, and applicable NEC edition with a qualified professional.
                   </li>
                   <li>
                     <strong>IEEE Standard 485:</strong> Recommended Practice for Sizing Lead-Acid Batteries for Stationary Applications.
@@ -1057,7 +1123,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                   </li>
                 </ul>
                 <p className="pt-2 text-slate-500 border-t border-slate-200">
-                  <strong>Disclaimer:</strong> Sizing formulas and calculations presented on this page are for preliminary planning and educational purposes only. Always consult licensed electricians, system engineers, and manufacturer technical manuals when designing and installing electrical battery storage systems.
+                  <strong>Disclaimer:</strong> Sizing formulas and calculations presented on this page are for preliminary planning and educational purposes only. Applicable electrical codes and installation requirements may apply to stationary battery systems. Verify the requirements for the specific installation, equipment, jurisdiction, and applicable NEC edition with a qualified professional. Consult licensed electricians, system engineers, and manufacturer technical manuals when designing and installing electrical battery storage systems.
                 </p>
               </section>
             </article>
