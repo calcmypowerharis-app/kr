@@ -222,7 +222,13 @@ export default function GeneratorFuelArticlePage() {
                 This brings the peak starting demand to 4,055 watts. To prevent tripping the breaker under heavy load, electrical engineers recommend a 25 percent safety margin, resulting in a recommended planning capacity of 5,069 watts.
               </p>
               <p>
-                By dividing the fuel tank capacity by the documented runtime in the manufacturer manual, users can determine the specific hourly burn rate. For 5,000 to 8,000 watt conventional generators, consumption typically ranges between 0.60 and 0.85 gallons per hour under load.
+                To estimate mid-sized generator consumption, consider official specifications for the Honda EM5000SX. Honda documents a 6.2 gallon fuel tank providing 10.5 hours of run time at half load and 7.1 hours at rated load.
+              </p>
+              <p>
+                Dividing tank capacity by published run time yields a calculated burn rate of approximately 0.59 gallons per hour at 50 percent load and 0.87 gallons per hour at 100 percent load.
+              </p>
+              <p>
+                Other generator models, larger 7000W to 8000W units, and varying appliance duty cycles will produce different burn rates. Always consult the specific owner manual for rated run times.
               </p>
 
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 my-8">
