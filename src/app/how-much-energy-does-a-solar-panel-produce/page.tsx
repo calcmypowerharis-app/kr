@@ -1218,7 +1218,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
 
           {/* Desktop Sticky Sidebar (4 cols on lg) */}
           <aside className="hidden lg:block lg:col-span-4">
-            <TableOfContents items={TOC_ITEMS} />
+            <TableOfContents items={TOC_ITEMS} cluster="solar" />
           </aside>
         </div>
       </div>

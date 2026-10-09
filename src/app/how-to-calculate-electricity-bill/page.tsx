@@ -18,12 +18,10 @@ import {
   ArrowRight,
   ShieldAlert,
   SlidersHorizontal,
-  ChevronDown,
   CheckCircle2,
   AlertTriangle,
   Layers,
   DollarSign,
-  FileText,
   Calculator,
   TrendingUp,
 } from "lucide-react";
@@ -700,19 +698,22 @@ export default function HowToCalculateElectricityBillPage() {
               <h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                 Frequently Asked Questions
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {FAQ_DATA.map((faq, idx) => (
-                  <div
+                  <details
                     key={idx}
-                    className="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-2"
+                    className="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-xs transition"
                   >
-                    <h3 className="text-base font-bold text-slate-900">
-                      {faq.question}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <summary className="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+                      <span>{faq.question}</span>
+                      <span className="text-slate-400 group-open:rotate-180 transition-transform text-lg shrink-0 ml-2">
+                        ▾
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
                       {faq.answer}
                     </p>
-                  </div>
+                  </details>
                 ))}
               </div>
             </section>
@@ -781,36 +782,9 @@ export default function HowToCalculateElectricityBillPage() {
             </section>
           </article>
 
-          {/* Right Sticky Sidebar (Desktop TOC) */}
-          <aside className="hidden lg:block lg:col-span-4 sticky top-24 space-y-6">
-            <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-4">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3">
-                <FileText className="w-4 h-4 text-blue-600" />
-                <span>Article Contents</span>
-              </div>
-              <TableOfContents items={TOC_ITEMS} />
-            </div>
-
-            {/* Sticky Tool Promotion Card */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white shadow-md space-y-4">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/20 text-white text-xs font-semibold">
-                <Calculator className="w-3.5 h-3.5" />
-                Interactive Calculator
-              </div>
-              <h3 className="text-lg font-bold">
-                Electricity Cost Calculator
-              </h3>
-              <p className="text-xs text-blue-100 leading-relaxed">
-                Plug in your monthly kWh usage, base energy rate, customer charge, and taxes to see your complete line-item bill breakdown and effective rate.
-              </p>
-              <Link
-                href="/electricity-cost-calculator"
-                className="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-white text-blue-700 hover:bg-blue-50 font-bold text-xs shadow-sm transition"
-              >
-                <span>Launch Calculator</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+          {/* Desktop Sticky Sidebar (4 cols on lg) */}
+          <aside className="hidden lg:block lg:col-span-4">
+            <TableOfContents items={TOC_ITEMS} cluster="electricity" />
           </aside>
         </div>
       </div>

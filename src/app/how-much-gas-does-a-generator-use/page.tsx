@@ -16,6 +16,9 @@ import {
   generateFaqSchema,
 } from "@/lib/seo/schema";
 import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
+import { TableOfContents } from "@/components/article/TableOfContents";
+import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
+import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
@@ -97,7 +100,7 @@ export default function GeneratorFuelArticlePage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
-    { name: "Articles", url: "https://calcmypower.com/articles" },
+    { name: "Calculators & Guides", url: "https://calcmypower.com/calculators" },
     {
       name: "Generator Fuel Consumption",
       url: "https://calcmypower.com/how-much-gas-does-a-generator-use",
@@ -122,8 +125,27 @@ export default function GeneratorFuelArticlePage() {
       />
 
       <ReadingProgressBar />
+      <MobileArticleNavigator items={TOC_ITEMS} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        {/* Breadcrumb Navigation */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6"
+        >
+          <Link href="/" className="hover:text-blue-600 transition">
+            Home
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/calculators" className="hover:text-blue-600 transition">
+            Calculators &amp; Guides
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-slate-800 font-semibold truncate">
+            Generator Fuel Consumption
+          </span>
+        </nav>
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Main Content Column */}
           <article id="article-content" className="lg:col-span-8 space-y-10 text-slate-700 leading-relaxed text-base md:text-lg">
@@ -150,16 +172,26 @@ export default function GeneratorFuelArticlePage() {
               </p>
             </header>
 
-            {/* Hero Image */}
-            <figure className="relative h-[300px] md:h-[450px] w-full rounded-2xl overflow-hidden bg-slate-100 shadow-md">
-              <Image
+            {/* Featured Technical Diagram with Click-to-Zoom */}
+            <div className="space-y-3">
+              <ZoomableArticleImage
                 src="/images/articles/generator-fuel-consumption.jpg"
                 alt="Technical diagram of a portable inverter generator showing gasoline and propane fuel consumption gauges"
-                fill
-                className="object-cover"
-                priority
-              />
-            </figure>
+                title="Generator Fuel Consumption by Load"
+                caption="Figure 1: Gasoline and propane fuel consumption rates across variable electrical loads and generator wattage ratings."
+                aspectRatio="square"
+                objectFit="contain"
+              >
+                <Image
+                  src="/images/articles/generator-fuel-consumption.jpg"
+                  alt="Technical diagram of a portable inverter generator showing gasoline and propane fuel consumption gauges"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-contain p-2"
+                />
+              </ZoomableArticleImage>
+            </div>
 
             {/* Content Body */}
             <div className="prose prose-lg prose-slate max-w-none">
@@ -418,88 +450,30 @@ export default function GeneratorFuelArticlePage() {
               <h2 id="faq" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 Frequently Asked Questions
               </h2>
-              <div className="space-y-6">
+              <div className="space-y-3">
                 {FAQ_DATA.map((faq, index) => (
-                  <div key={index} className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
-                    <h3 className="text-lg font-bold text-slate-900 flex items-start gap-3">
-                      <HelpCircle className="w-6 h-6 text-indigo-500 shrink-0 mt-0.5" />
-                      {faq.question}
-                    </h3>
-                    <p className="mt-3 text-slate-600 ml-9 leading-relaxed">
+                  <details
+                    key={index}
+                    className="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-xs transition"
+                  >
+                    <summary className="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+                      <span>{faq.question}</span>
+                      <span className="text-slate-400 group-open:rotate-180 transition-transform text-lg shrink-0 ml-2">
+                        ▾
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
                       {faq.answer}
                     </p>
-                  </div>
+                  </details>
                 ))}
               </div>
             </div>
           </article>
 
-          {/* Sidebar / Aside Column */}
-          <aside className="lg:col-span-4 space-y-8">
-            <div className="sticky top-8 space-y-8">
-              {/* Table of Contents Card */}
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
-                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">
-                  In This Article
-                </h3>
-                <nav className="flex flex-col gap-3">
-                  {TOC_ITEMS.map((item) => (
-                    <a
-                      key={item.id}
-                      href={`#${item.id}`}
-                      className="text-slate-600 hover:text-indigo-600 font-medium text-sm transition-colors"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </nav>
-              </div>
-
-              {/* Related Tools Card */}
-              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 flex items-center gap-2">
-                  <Calculator className="w-4 h-4 text-emerald-600" />
-                  Related Calculators
-                </h3>
-                <div className="space-y-4">
-                  <Link
-                    href="/generator-size-calculator"
-                    className="block group"
-                  >
-                    <div className="font-semibold text-slate-800 group-hover:text-emerald-600 transition-colors">
-                      Generator Size Calculator
-                    </div>
-                    <div className="text-sm text-slate-500 mt-1">
-                      Find the perfect wattage for your home or RV.
-                    </div>
-                  </Link>
-                  <div className="h-px bg-slate-100"></div>
-                  <Link
-                    href="/generator-fuel-consumption-calculator"
-                    className="block group"
-                  >
-                    <div className="font-semibold text-slate-800 group-hover:text-emerald-600 transition-colors">
-                      Fuel Consumption Calculator
-                    </div>
-                    <div className="text-sm text-slate-500 mt-1">
-                      Estimate runtime and daily operating costs.
-                    </div>
-                  </Link>
-                  <div className="h-px bg-slate-100"></div>
-                  <Link
-                    href="/watts-to-amps-calculator"
-                    className="block group"
-                  >
-                    <div className="font-semibold text-slate-800 group-hover:text-emerald-600 transition-colors">
-                      Watts to Amps Calculator
-                    </div>
-                    <div className="text-sm text-slate-500 mt-1">
-                      Convert generator watts to breaker amps.
-                    </div>
-                  </Link>
-                </div>
-              </div>
-            </div>
+          {/* Desktop Sticky Sidebar (4 cols on lg) */}
+          <aside className="hidden lg:block lg:col-span-4">
+            <TableOfContents items={TOC_ITEMS} cluster="generators" />
           </aside>
         </div>
       </div>

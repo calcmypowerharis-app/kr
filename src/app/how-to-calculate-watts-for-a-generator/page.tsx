@@ -820,15 +820,20 @@ export default function HowToCalculateWattsForAGeneratorPage() {
               </h2>
               <div className="space-y-3">
                 {FAQ_DATA.map((faq, idx) => (
-                  <div
+                  <details
                     key={idx}
-                    className="p-5 rounded-xl border border-slate-200 bg-white space-y-1.5 shadow-xs"
+                    className="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-xs transition"
                   >
-                    <h3 className="text-base font-bold text-slate-900">{faq.question}</h3>
-                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    <summary className="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+                      <span>{faq.question}</span>
+                      <span className="text-slate-400 group-open:rotate-180 transition-transform text-lg shrink-0 ml-2">
+                        ▾
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
                       {faq.answer}
                     </p>
-                  </div>
+                  </details>
                 ))}
               </div>
             </section>
@@ -898,8 +903,8 @@ export default function HowToCalculateWattsForAGeneratorPage() {
           </article>
 
           {/* Desktop Sticky Table of Contents Sidebar */}
-          <aside className="hidden lg:block lg:col-span-4 sticky top-24 space-y-6">
-            <TableOfContents items={TOC_ITEMS} />
+          <aside className="hidden lg:block lg:col-span-4">
+            <TableOfContents items={TOC_ITEMS} cluster="generators" />
           </aside>
         </div>
       </div>

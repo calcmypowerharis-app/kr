@@ -26,6 +26,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
+import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 
 export const metadata: Metadata = {
   title: "What Size Generator to Run a Refrigerator? Sizing Guide",
@@ -216,8 +217,13 @@ export default function RefrigeratorGeneratorSizingPage() {
             </header>
 
             {/* Hero Image */}
-            <figure className="space-y-2">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
+            <div className="space-y-3">
+              <ZoomableArticleImage
+                src="/images/articles/residential-refrigerator-kitchen.jpg"
+                alt="Modern residential kitchen with a stainless steel French door refrigerator and granite countertops"
+                title="Residential Refrigerator Power Sizing"
+                caption="Figure 1: Modern residential refrigerators draw relatively low running wattage, but their cooling compressors demand a brief burst of starting power when cycling on."
+              >
                 <Image
                   src="/images/articles/residential-refrigerator-kitchen.jpg"
                   alt="Modern residential kitchen with a stainless steel French door refrigerator and granite countertops"
@@ -226,11 +232,8 @@ export default function RefrigeratorGeneratorSizingPage() {
                   sizes="(max-width: 1024px) 100vw, 800px"
                   className="object-cover"
                 />
-              </div>
-              <figcaption className="text-xs text-slate-500 text-center">
-                Modern residential refrigerators draw relatively low running wattage, but their cooling compressors demand a brief burst of starting power when cycling on.
-              </figcaption>
-            </figure>
+              </ZoomableArticleImage>
+            </div>
 
             {/* Section 1: Direct Answer */}
             <section id="quick-answer" className="space-y-4 scroll-mt-24">
@@ -595,8 +598,13 @@ export default function RefrigeratorGeneratorSizingPage() {
                 <li>On the exterior back panel near the lower compressor access grille.</li>
               </ul>
 
-              <figure className="space-y-2 my-5">
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
+              <div className="space-y-3 my-5">
+                <ZoomableArticleImage
+                  src="/images/articles/refrigerator-electrical-rating-label.jpg"
+                  alt="Interior fresh food compartment of a residential refrigerator showing an electrical data rating plate label with 115V AC and 6.0 Amps specifications"
+                  title="Refrigerator Electrical Data Rating Label"
+                  caption="Figure 2: A typical residential refrigerator electrical data plate on the interior fresh food compartment wall, showing voltage (115V AC), frequency (60 Hz), and rated operating current (6.0 Amps)."
+                >
                   <Image
                     src="/images/articles/refrigerator-electrical-rating-label.jpg"
                     alt="Interior fresh food compartment of a residential refrigerator showing an electrical data rating plate label with 115V AC and 6.0 Amps specifications"
@@ -604,11 +612,8 @@ export default function RefrigeratorGeneratorSizingPage() {
                     sizes="(max-width: 1024px) 100vw, 800px"
                     className="object-cover"
                   />
-                </div>
-                <figcaption className="text-xs text-slate-500 text-center">
-                  A typical residential refrigerator electrical data plate on the interior fresh food compartment wall, showing voltage (115V AC), frequency (60 Hz), and rated operating current (6.0 Amps).
-                </figcaption>
-              </figure>
+                </ZoomableArticleImage>
+              </div>
 
               <h3 className="text-xl font-bold text-slate-900">
                 2. Reading Voltage, Amperage, and Locked Rotor Amps
@@ -1114,19 +1119,22 @@ export default function RefrigeratorGeneratorSizingPage() {
                 </h2>
               </div>
 
-              <div className="space-y-4 pt-2">
+              <div className="space-y-3 pt-2">
                 {FAQ_DATA.map((faq, index) => (
-                  <div
+                  <details
                     key={index}
-                    className="p-5 rounded-2xl bg-white border border-slate-200 space-y-2 shadow-xs"
+                    className="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-xs transition"
                   >
-                    <h3 className="text-base font-bold text-slate-900 leading-snug">
-                      {faq.question}
-                    </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">
+                    <summary className="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+                      <span>{faq.question}</span>
+                      <span className="text-slate-400 group-open:rotate-180 transition-transform text-lg shrink-0 ml-2">
+                        ▾
+                      </span>
+                    </summary>
+                    <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
                       {faq.answer}
                     </p>
-                  </div>
+                  </details>
                 ))}
               </div>
             </section>
@@ -1232,7 +1240,7 @@ export default function RefrigeratorGeneratorSizingPage() {
 
           {/* Desktop Sticky Sidebar (4 cols on lg) */}
           <aside className="hidden lg:block lg:col-span-4">
-            <TableOfContents items={REFRIGERATOR_TOC_ITEMS} />
+            <TableOfContents items={REFRIGERATOR_TOC_ITEMS} cluster="generators" />
           </aside>
         </div>
       </div>

@@ -1096,93 +1096,9 @@ export default function HowToCalculateElectricityUsagePage() {
             </section>
           </article>
 
-          {/* Sidebar Column (Desktop ASIDE DOM SECOND / RIGHT - 4 cols on lg) */}
-          <aside className="hidden lg:block lg:col-span-4 space-y-6">
-            <div className="sticky top-24 space-y-6">
-              {/* Table of Contents */}
-              <div className="p-5 bg-white border border-slate-200 rounded-2xl shadow-xs">
-                <div className="text-xs uppercase font-bold text-slate-500 tracking-wider mb-3">
-                  In This Article
-                </div>
-                <TableOfContents items={TOC_ITEMS} />
-              </div>
-
-              {/* Calculator Callout Box */}
-              <div className="p-5 bg-blue-50 border border-blue-200 rounded-2xl space-y-3">
-                <div className="flex items-center gap-2 text-blue-900 font-bold text-sm">
-                  <Calculator className="w-4 h-4 text-blue-600" />
-                  <span>Related Sizing Tools</span>
-                </div>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  Turn your calculated electricity consumption into practical equipment sizing with our interactive tools:
-                </p>
-                <div className="space-y-2 text-xs font-semibold">
-                  <Link
-                    href="/watts-to-amps-calculator"
-                    className="block p-2 rounded-lg bg-white border border-blue-200 hover:border-blue-400 text-blue-700 transition"
-                  >
-                    Watts to Amps Calculator →
-                  </Link>
-                  <Link
-                    href="/amps-to-watts-calculator"
-                    className="block p-2 rounded-lg bg-white border border-blue-200 hover:border-blue-400 text-blue-700 transition"
-                  >
-                    Amps to Watts Calculator →
-                  </Link>
-                  <Link
-                    href="/solar-system-size-calculator"
-                    className="block p-2 rounded-lg bg-white border border-blue-200 hover:border-blue-400 text-blue-700 transition"
-                  >
-                    Solar System Size Calculator →
-                  </Link>
-                  <Link
-                    href="/battery-capacity-calculator"
-                    className="block p-2 rounded-lg bg-white border border-blue-200 hover:border-blue-400 text-blue-700 transition"
-                  >
-                    Battery Capacity Sizing →
-                  </Link>
-                  <Link
-                    href="/three-phase-power-calculator"
-                    className="block p-2 rounded-lg bg-white border border-blue-200 hover:border-blue-400 text-blue-700 transition"
-                  >
-                    Three-Phase Power Calculator →
-                  </Link>
-                </div>
-              </div>
-
-              {/* Related Reading Guide Links */}
-              <div className="p-5 bg-white border border-slate-200 rounded-2xl space-y-3">
-                <div className="text-xs uppercase font-bold text-slate-500 tracking-wider">
-                  Related Reading
-                </div>
-                <div className="space-y-2 text-xs">
-                  <Link
-                    href="/what-is-a-watt-hour"
-                    className="block text-slate-700 hover:text-blue-600 font-medium transition"
-                  >
-                    What Is a Watt-Hour? Watts vs. Watt-Hours Explained
-                  </Link>
-                  <Link
-                    href="/how-much-energy-does-a-solar-panel-produce"
-                    className="block text-slate-700 hover:text-blue-600 font-medium transition"
-                  >
-                    How Much Energy Does a Solar Panel Produce?
-                  </Link>
-                  <Link
-                    href="/how-many-solar-panels-do-i-need"
-                    className="block text-slate-700 hover:text-blue-600 font-medium transition"
-                  >
-                    How Many Solar Panels Do I Need to Power My House?
-                  </Link>
-                  <Link
-                    href="/solar-panels-series-vs-parallel"
-                    className="block text-slate-700 hover:text-blue-600 font-medium transition"
-                  >
-                    Solar Panels in Series vs. Parallel
-                  </Link>
-                </div>
-              </div>
-            </div>
+          {/* Desktop Sticky Sidebar (4 cols on lg) */}
+          <aside className="hidden lg:block lg:col-span-4">
+            <TableOfContents items={TOC_ITEMS} cluster="electricity" />
           </aside>
         </div>
       </div>

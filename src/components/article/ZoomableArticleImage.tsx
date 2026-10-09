@@ -9,6 +9,9 @@ interface ZoomableArticleImageProps {
   alt: string;
   title?: string;
   caption?: string;
+  aspectRatio?: "video" | "square" | "auto";
+  objectFit?: "cover" | "contain";
+  className?: string;
   children: React.ReactNode;
 }
 
@@ -17,6 +20,9 @@ export default function ZoomableArticleImage({
   alt,
   title,
   caption,
+  aspectRatio = "video",
+  objectFit = "cover",
+  className = "",
   children,
 }: ZoomableArticleImageProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -261,6 +267,15 @@ export default function ZoomableArticleImage({
     }
   };
 
+  const aspectClass =
+    aspectRatio === "square"
+      ? "aspect-square"
+      : aspectRatio === "auto"
+      ? "aspect-auto"
+      : "aspect-video";
+
+  const bgClass = objectFit === "contain" ? "bg-slate-50" : "bg-slate-100";
+
   return (
     <>
       <figure className="space-y-2">
@@ -268,8 +283,8 @@ export default function ZoomableArticleImage({
           ref={triggerRef}
           type="button"
           onClick={handleOpen}
-          aria-label="Click to zoom image in full-screen viewer"
-          className="group relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-sm block text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-zoom-in"
+          aria-label={title ? `Click to zoom: ${title}` : "Click to zoom image in full-screen viewer"}
+          className={`group relative w-full ${aspectClass} rounded-2xl overflow-hidden ${bgClass} border border-slate-200 shadow-sm block text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-zoom-in ${className}`.trim()}
         >
           {children}
 
