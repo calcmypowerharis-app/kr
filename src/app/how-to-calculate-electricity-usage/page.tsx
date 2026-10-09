@@ -32,6 +32,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "How to Calculate Electricity Usage: kWh, Watts & Appliance Energy",
@@ -47,6 +48,8 @@ export const metadata: Metadata = {
       "Learn how to calculate electricity usage in kilowatt-hours (kWh) from appliance wattage and operating hours. See step-by-step formulas, worked examples, and cost estimates.",
     url: "https://calcmypower.com/how-to-calculate-electricity-usage",
     type: "article",
+    publishedTime: "2026-10-03T00:00:00Z",
+    modifiedTime: "2026-10-03T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/how-to-calculate-electricity-usage.webp",
@@ -124,8 +127,8 @@ export default function HowToCalculateElectricityUsagePage() {
     description:
       "Learn how to calculate electricity usage in kilowatt-hours (kWh) from appliance wattage and operating hours. See step-by-step formulas, worked examples, and cost estimates.",
     url: "https://calcmypower.com/how-to-calculate-electricity-usage",
-    datePublished: "2026-10-03",
-    dateModified: "2026-10-03",
+    datePublished: "2026-10-03T00:00:00Z",
+    dateModified: "2026-10-03T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/how-to-calculate-electricity-usage.webp",
     ],
@@ -198,7 +201,7 @@ export default function HowToCalculateElectricityUsagePage() {
                   <span>13 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-03" lastModified="2026-10-03" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -744,7 +747,10 @@ export default function HowToCalculateElectricityUsagePage() {
                 What If an Appliance Does Not Run at Full Power?
               </h2>
               <p>
-                The simple formula <code className="bg-slate-100 px-1.5 py-0.5 rounded text-sm font-semibold">Watts × Hours</code> works accurately for continuous, steady-state resistive loads like space heaters, incandescent incandescent lamps, and electric kettles. However, many of the largest energy consumers in a home are <strong>variable or cycling loads</strong>.
+                The simple formula <code className="bg-slate-100 px-1.5 py-0.5 rounded text-sm font-semibold">Watts × Hours</code> works accurately for steady resistive loads like space heaters and kettles.
+              </p>
+              <p>
+                However, many of the largest household energy consumers are variable or cycling loads that rarely operate at continuous full power.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">

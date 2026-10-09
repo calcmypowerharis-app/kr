@@ -11,6 +11,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import {
   Clock,
   Zap,
@@ -41,6 +42,8 @@ export const metadata: Metadata = {
       "Learn what continuous power generators are, how ISO 8528 ratings (COP vs PRP vs ESP) work, 1800 RPM engine mechanics, wet stacking hazards, and when you need one.",
     url: "https://calcmypower.com/continuous-power-generators",
     type: "article",
+    publishedTime: "2026-10-04T00:00:00Z",
+    modifiedTime: "2026-10-04T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/continuous-power-generators.webp",
@@ -109,8 +112,8 @@ export default function ContinuousPowerGeneratorsPage() {
     description:
       "Learn what continuous power generators are, how ISO 8528 ratings (COP vs PRP vs ESP) work, 1800 RPM engine mechanics, wet stacking hazards, and when you need one.",
     url: "https://calcmypower.com/continuous-power-generators",
-    datePublished: "2026-10-04",
-    dateModified: "2026-10-04",
+    datePublished: "2026-10-04T00:00:00Z",
+    dateModified: "2026-10-04T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/continuous-power-generators.webp",
     ],
@@ -167,7 +170,7 @@ export default function ContinuousPowerGeneratorsPage() {
         {/* Two-Column Grid: Left Content (DOM First), Right Sticky Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Main Article Content */}
-          <div className="lg:col-span-8 min-w-0 space-y-10">
+          <article id="article-content" className="lg:col-span-8 min-w-0 space-y-10">
             {/* Header */}
             <header className="space-y-4 border-b border-slate-200 pb-8">
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -180,7 +183,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-04" lastModified="2026-10-04" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -248,7 +251,10 @@ export default function ContinuousPowerGeneratorsPage() {
                 ISO 8528 Generator Rating Classifications (COP, PRP, ESP, LTP)
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                In electrical and mechanical power engineering, stationary generator sets are classified under <strong>ISO 8528-1:2018</strong> (Reciprocating Internal Combustion Engine Driven Alternating Current Generating Sets). Understanding these rating classes is critical to prevent premature engine failure, dangerous thermal overload, or voided commercial warranties:
+                Stationary generator sets are classified under <strong>ISO 8528-1:2018</strong> for reciprocating engine-driven generating sets.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                Understanding these four distinct rating classes prevents premature engine failure, thermal overload, and voided commercial warranties:
               </p>
 
               {/* Comparison Table */}
@@ -456,10 +462,13 @@ export default function ContinuousPowerGeneratorsPage() {
                 Residential Standby Reality: Can You Run 24/7 in an Emergency?
               </h2>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                During catastrophic utility failures (such as prolonged hurricanes, winter ice storms, or wildfire grid shutdowns), many homeowners ask: <em>&quot;Can my whole-house standby generator run 24 hours a day for two straight weeks?&quot;</em>
+                During extended outages, homeowners often ask whether a standby generator can run 24 hours a day for two straight weeks.
               </p>
               <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
-                The engineering answer is: <strong>Yes, but only with disciplined daily maintenance pauses</strong>. The vast majority of residential standby units (Generac Guardian, Kohler RCA, Cummins QuietConnect) are classified as <strong>ESP (Emergency Standby Power)</strong>, not continuous COP:
+                The short engineering answer is yes, but only with disciplined daily maintenance pauses.
+              </p>
+              <p className="text-slate-700 leading-relaxed text-sm sm:text-base">
+                Most residential standby generators are classified as <strong>ESP (Emergency Standby Power)</strong> rather than continuous COP units:
               </p>
 
               <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-3 text-xs sm:text-sm text-slate-700">
@@ -679,7 +688,7 @@ export default function ContinuousPowerGeneratorsPage() {
                 Always consult a licensed electrical engineer and master electrician, and ensure all installations adhere to NFPA 70 (National Electrical Code), NFPA 110, and local building codes.
               </p>
             </div>
-          </div>
+          </article>
 
           {/* Sticky Sidebar on Desktop */}
           <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">

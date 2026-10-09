@@ -30,6 +30,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 
 export const metadata: Metadata = {
@@ -46,6 +47,8 @@ export const metadata: Metadata = {
       "Learn how to calculate watts for a generator during power outages. Master running vs starting watts, locked rotor surge inrush, 25% safety margins, and worked examples.",
     url: "https://calcmypower.com/how-to-calculate-watts-for-a-generator",
     type: "article",
+    publishedTime: "2026-10-04T00:00:00Z",
+    modifiedTime: "2026-10-04T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/how-to-calculate-watts-for-a-generator.webp",
@@ -119,8 +122,8 @@ export default function HowToCalculateWattsForAGeneratorPage() {
     description:
       "Master running watts, starting surge demand, motor inrush math, and safety headroom to calculate the exact generator size needed for home backup.",
     url: "https://calcmypower.com/how-to-calculate-watts-for-a-generator",
-    datePublished: "2026-10-04T08:00:00+00:00",
-    dateModified: "2026-10-04T08:00:00+00:00",
+    datePublished: "2026-10-04T00:00:00Z",
+    dateModified: "2026-10-04T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/how-to-calculate-watts-for-a-generator.webp",
     ],
@@ -177,7 +180,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
         {/* Two-Column Grid: Left Content (DOM First), Right Sticky Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Main Article Content */}
-          <div className="lg:col-span-8 min-w-0 space-y-10">
+          <article id="article-content" className="lg:col-span-8 min-w-0 space-y-10">
             {/* Header */}
             <header className="space-y-4 border-b border-slate-200 pb-8">
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -190,7 +193,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-04" lastModified="2026-10-04" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -892,7 +895,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 </Link>
               </div>
             </section>
-          </div>
+          </article>
 
           {/* Desktop Sticky Table of Contents Sidebar */}
           <aside className="hidden lg:block lg:col-span-4 sticky top-24 space-y-6">

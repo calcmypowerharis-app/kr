@@ -34,6 +34,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "How Many Solar Panels Do I Need to Power My House?",
@@ -49,6 +50,8 @@ export const metadata: Metadata = {
       "Learn how to estimate how many solar panels your home needs using electricity usage, peak sun hours, system performance, and panel wattage. Includes examples and a free solar sizing calculator.",
     url: "https://calcmypower.com/how-many-solar-panels-do-i-need",
     type: "article",
+    publishedTime: "2026-10-01T00:00:00Z",
+    modifiedTime: "2026-10-01T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/how-many-solar-panels-do-i-need.webp",
@@ -210,7 +213,7 @@ export default function HowManySolarPanelsDoINeedPage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-01" lastModified="2026-10-01" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

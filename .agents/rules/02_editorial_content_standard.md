@@ -430,3 +430,18 @@ Do NOT add paragraphs simply to:
 
 Improve wording by editing, combining, removing, and clarifying.
 
+#### Mandatory Article Date Fields & Accuracy Standard
+
+Every editorial article MUST maintain strict date transparency:
+1. Canonical Registry Entry (`src/lib/seo/registry.ts`):
+   - `publishedAt: 'YYYY-MM-DD'` (original publication date).
+   - `updatedAt: 'YYYY-MM-DD'` (only when meaningful editorial or technical changes occur; identical to `publishedAt` on initial release).
+2. Visible Date Byline:
+   - Render `ArticleDateByline` directly below the article title and hero description before the main content.
+   - Shows "Published: [Date]" and optionally "Updated: [Date]".
+   - Displays real verified dates, never synthetic freshness dates.
+3. Schema Alignment:
+   - Structured data (`Article` / `TechArticle` / `BlogPosting` JSON-LD) `datePublished` and `dateModified` must strictly match registry `publishedAt` and `updatedAt`.
+4. Automated Verification:
+   - All dates must pass `src/lib/seo/__tests__/date-consistency.test.ts`.
+

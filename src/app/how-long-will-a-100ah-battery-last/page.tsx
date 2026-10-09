@@ -34,6 +34,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide",
@@ -49,6 +50,8 @@ export const metadata: Metadata = {
       "Find out how long a 12V 100Ah battery will run a refrigerator, TV, CPAP, or inverter. Realistic runtime formulas and appliance benchmarks for LiFePO4 and lead-acid deep-cycle batteries.",
     url: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
     type: "article",
+    publishedTime: "2026-09-29T00:00:00Z",
+    modifiedTime: "2026-09-29T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/12v-100ah-battery-runtime-comparison.jpg",
@@ -214,7 +217,7 @@ export default function BatteryRuntimeGuidePage() {
                   <span>12 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published September 2026</span>
+                <ArticleDateByline datePublished="2026-09-29" lastModified="2026-09-29" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

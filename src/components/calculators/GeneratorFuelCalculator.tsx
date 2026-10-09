@@ -249,6 +249,7 @@ export function GeneratorFuelCalculator() {
       title="Generator Fuel Consumption Calculator"
       category="Generators"
       description="Estimate fuel usage, run times, and operating costs for your portable or standby generator."
+      lastUpdated="October 2026"
       inputSection={inputSectionContent}
       resultSection={resultSectionContent}
     >

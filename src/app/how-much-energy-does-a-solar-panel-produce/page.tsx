@@ -32,6 +32,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "How Much Energy Does a Solar Panel Produce? 400W Panel Examples",
@@ -47,6 +48,8 @@ export const metadata: Metadata = {
       "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
     url: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
     type: "article",
+    publishedTime: "2026-10-01T00:00:00Z",
+    modifiedTime: "2026-10-01T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/how-much-energy-does-a-solar-panel-produce.webp",
@@ -208,7 +211,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-01" lastModified="2026-10-01" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

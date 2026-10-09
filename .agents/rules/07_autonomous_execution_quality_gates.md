@@ -292,3 +292,9 @@ Never rely solely on manual visual review to catch recurring editorial or asset 
   2. Explicitly forbids brand logos, manufacturer trademarks, and garbled text (`"unbranded, no brand logos, clean legible typography"`).
   3. Matches the target section's exact educational purpose so the asset succeeds on the first call without wasting quota on trial-and-error iterations.
 
+### 4. Mandatory Date Transparency & Paragraph Readability Gates (`src/lib/seo/__tests__/date-consistency.test.ts`)
+- **Mandatory Registry Dates:** Every editorial entry in `GUIDE_REGISTRY` must possess valid ISO 8601 `publishedAt` and `updatedAt` strings.
+- **Mandatory Visible Date Byline:** Every editorial article route must render `ArticleDateByline` displaying genuine publication and update dates matching the registry.
+- **Automated Rendered Readability Check:** Body paragraphs must meet the 2 to 3 visual lines standard (~740px to 820px reading width). Multi-sentence text blocks and dense walls of text are caught and blocked during pre-commit quality audits.
+
+

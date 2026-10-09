@@ -11,6 +11,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import {
   Clock,
   Zap,
@@ -43,6 +44,8 @@ export const metadata: Metadata = {
       "Calculate how many amp-hours (Ah) your battery bank needs. Step-by-step formula covering daily Watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     url: "https://calcmypower.com/how-many-amp-hours-do-i-need",
     type: "article",
+    publishedTime: "2026-10-08T00:00:00Z",
+    modifiedTime: "2026-10-08T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/how-many-amp-hours-battery-bank-sizing.webp",
@@ -122,8 +125,8 @@ export default function HowManyAmpHoursDoINeedPage() {
     description:
       "Calculate how many amp-hours (Ah) your battery bank needs. Step-by-step formula covering daily Watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     url: "https://calcmypower.com/how-many-amp-hours-do-i-need",
-    datePublished: "2026-10-08",
-    dateModified: "2026-10-08",
+    datePublished: "2026-10-08T00:00:00Z",
+    dateModified: "2026-10-08T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/how-many-amp-hours-battery-bank-sizing.webp",
     ],
@@ -194,14 +197,18 @@ export default function HowManyAmpHoursDoINeedPage() {
             </p>
 
             <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 border-t border-slate-800 pt-4">
-              <div className="flex items-center gap-1.5">
-                <Clock className="w-3.5 h-3.5 text-slate-400" />
-                <span>Published October 2026</span>
-              </div>
+              <ArticleDateByline
+                datePublished="2026-10-08"
+                lastModified="2026-10-08"
+                className="text-slate-400"
+              />
               <span>•</span>
               <div>CalcMyPower Technical Publishing</div>
               <span>•</span>
-              <div>13 min read</div>
+              <div className="inline-flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-slate-400" />
+                <span>13 min read</span>
+              </div>
             </div>
           </div>
         </header>
@@ -211,7 +218,7 @@ export default function HowManyAmpHoursDoINeedPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Main Content Area (Content FIRST in DOM) */}
-            <article className="lg:col-span-8 space-y-10">
+            <article id="article-content" className="lg:col-span-8 space-y-10">
               {/* Direct Answer Callout Box */}
               <section
                 id="quick-answer"

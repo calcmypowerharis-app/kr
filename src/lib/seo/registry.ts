@@ -610,7 +610,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/generator-fuel-consumption-calculator'
     ],
     scenarioLink: '/generator-fuel-consumption-calculator',
-    readingTime: '6 minutes',
+    readingTime: '6 min read',
     datePublished: '2026-10-09',
     lastModified: '2026-10-09'
   },
@@ -1035,3 +1035,37 @@ export function getAllIndexablePaths(): string[] {
     ...GUIDE_REGISTRY.map((g) => g.path),
   ];
 }
+
+const MONTH_NAMES = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+/**
+ * Formats a YYYY-MM-DD or ISO date string into human-readable US editorial date:
+ * e.g., "2026-10-09" -> "October 9, 2026".
+ * Deterministic string parsing prevents timezone drift across server and client.
+ */
+export function formatEditorialDate(dateStr: string): string {
+  const match = dateStr.match(/^(\d{4})-(\d{2})-(\d{2})/);
+  if (!match) return dateStr;
+  const [, year, month, day] = match;
+  const monthName = MONTH_NAMES[parseInt(month, 10) - 1];
+  const dayNum = parseInt(day, 10);
+  return `${monthName} ${dayNum}, ${year}`;
+}
+
+export function getGuideBySlug(slug: string): GuideRegistryEntry | undefined {
+  return GUIDE_REGISTRY.find((g) => g.slug === slug);
+}
+
