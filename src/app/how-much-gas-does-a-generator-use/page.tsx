@@ -196,29 +196,23 @@ export default function GeneratorFuelArticlePage() {
             {/* Content Body */}
             <div className="prose prose-lg prose-slate max-w-none">
               <p>
-                Knowing how much gas a generator uses is critical for emergency preparedness. Running out of fuel during an extended power outage leaves you without heating, cooling, or refrigeration.
+                Knowing how much gas a generator uses is critical for emergency preparedness. Running out of fuel during an extended power outage leaves you without heating, cooling, or refrigeration when you need them most.
               </p>
               <p>
-                Many homeowners buy a generator without calculating their actual fuel requirements. They are often surprised by how quickly a large portable unit can drain a five gallon gas can.
+                Many homeowners buy a backup generator without calculating their actual burn rate. They are often surprised by how quickly a mid-sized portable unit can drain a standard five-gallon fuel can.
               </p>
               <p>
-                Fuel consumption is not a universal constant. It depends entirely on the size of the generator engine and the electrical load you apply.
-              </p>
-              <p>
-                This guide explores real world fuel consumption figures based on official manufacturer data. You will learn how to estimate your hourly usage and calculate the operating cost of running your backup power system.
+                Fuel consumption depends directly on engine displacement and the electrical load you apply. This guide examines official manufacturer data to help you estimate hourly consumption, plan fuel storage, and calculate running costs.
               </p>
 
               <h2 id="quick-answer" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 Quick Answer: Average Fuel Use
               </h2>
               <p>
-                A standard 5000 watt portable generator running at a fifty percent load will typically consume about 0.6 gallons of gasoline per hour. This translates to roughly 14.4 gallons for a full 24 hour day of continuous operation.
+                A standard 5,000-watt portable generator running at 50 percent load typically consumes about 0.60 gallons of gasoline per hour. This amounts to roughly 14.4 gallons for 24 hours of continuous operation.
               </p>
               <p>
-                A smaller 2000 watt inverter generator is much more efficient. At a 25 percent load, a small inverter may consume as little as 0.12 gallons per hour.
-              </p>
-              <p>
-                Large standby generators consume significantly more fuel. A 22 kilowatt whole house generator can burn up to 3.6 gallons of liquid propane per hour at full load.
+                Inverter generators are substantially more efficient, with a 2,000-watt unit burning roughly 0.12 gallons per hour at light loads. Conversely, a large 22 kW whole-house standby generator can consume over 3.5 gallons of propane per hour under full demand.
               </p>
 
               <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 my-8">
@@ -227,7 +221,7 @@ export default function GeneratorFuelArticlePage() {
                   Key Takeaway
                 </h3>
                 <p className="text-blue-800 m-0">
-                  Generator fuel consumption scales with your electrical demand. Unplugging unnecessary appliances directly reduces the amount of gas your generator burns every hour.
+                  Generator fuel consumption scales directly with your electrical demand. Managing household appliance loads and unplugging non-essential devices directly reduces the gallons of fuel your generator burns each hour.
                 </p>
               </div>
 
@@ -235,64 +229,65 @@ export default function GeneratorFuelArticlePage() {
                 What Determines Fuel Consumption?
               </h2>
               <p>
-                Generator wattage ratings alone do not tell the whole story. Several mechanical and electrical factors influence how much gasoline or propane your unit will require.
+                Generator wattage ratings alone do not dictate fuel consumption. The primary factor is your active electrical load, as engines burn noticeably more fuel when driving heavy appliances near their continuous rated capacity.
               </p>
               <p>
-                The most important factor is the electrical load percentage. Manufacturers test fuel economy at specific load benchmarks, usually 25 percent, 50 percent, or 100 percent of the rated continuous wattage.
+                Engine displacement also establishes baseline fuel demand. Larger engine blocks burn more fuel simply to maintain internal combustion at idle, even before you connect refrigerators, pumps, or portable space heaters.
               </p>
               <p>
-                Engine displacement is the second major factor. A larger engine block naturally requires more fuel just to maintain its internal combustion cycle, even when idling with no appliances connected.
+                Generator technology also alters fuel economy significantly. Conventional open-frame units run at a constant 3,600 RPM to maintain 60 Hz current, whereas inverter models electronically adjust engine speed to match electrical demand.
               </p>
               <p>
-                Technology type also plays a massive role in fuel economy. Conventional open frame generators must run at a constant 3600 RPM to produce stable 60 Hertz alternating current.
+                Fuel energy density directly impacts hourly consumption rates across different generator engine designs. Unleaded gasoline provides approximately 120,000 BTU per gallon, whereas liquid propane delivers roughly 91,500 BTU per gallon and diesel delivers 138,500 BTU.
               </p>
               <p>
-                Inverter generators are fundamentally different. They generate DC power and digitally invert it to AC, allowing the engine to idle down when the electrical demand is low.
+                Because propane contains roughly 24 percent less thermal energy per gallon, dual-fuel units consume higher fuel volume to match output. Conversely, diesel engines achieve superior volumetric efficiency, burning fewer gallons over equivalent operating periods.
               </p>
 
               <h2 id="gasoline-consumption" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 Gasoline Usage by Generator Size
               </h2>
               <p>
-                Gasoline remains the most popular fuel choice for portable emergency backup. It is energy dense and widely available, though it requires safe storage and chemical stabilizers to prevent degradation.
-              </p>
-              <p>
-                Let us examine official fuel consumption rates for common gasoline generator categories. These figures represent verified manufacturer specifications rather than theoretical guesses.
+                Gasoline remains the most popular fuel for portable emergency generators because it is energy-dense and readily available. Below are verified manufacturer consumption rates across common generator categories under typical residential operating loads.
               </p>
 
               <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">
                 2000 Watt Inverter Generators
               </h3>
               <p>
-                The 2000 watt inverter class is extremely popular for camping, tailgating, and light emergency backup. The Honda EU2200i is the industry benchmark for this category.
+                The 2,000-watt inverter category is a popular benchmark for camping and essential home circuits. Official specifications for the Honda EU2200i show a 0.95-gallon fuel tank delivering up to 8.1 hours of runtime at 25 percent load.
               </p>
               <p>
-                According to official Honda specifications, the EU2200i features a 0.95 gallon fuel tank. At a 25 percent electrical load, it consumes roughly 0.12 gallons per hour.
+                At this quarter load, the generator consumes approximately 0.12 gallons per hour. When pushed to its continuous rated capacity, consumption increases to roughly 0.30 gallons per hour, dropping tank runtime to 3.2 hours.
+              </p>
+
+              <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">
+                3500 Watt to 4000 Watt Inverter Generators
+              </h3>
+              <p>
+                The 3,500-watt to 4,000-watt inverter category offers a versatile balance of portability and power for home backup. Units in this class typically feature 2.3-gallon to 3.0-gallon fuel tanks designed for extended emergency operation.
               </p>
               <p>
-                When pushed to its maximum rated load, fuel consumption increases significantly. At 100 percent load, the same Honda generator consumes approximately 0.30 gallons per hour.
+                At a typical 50 percent load, a 3,500-watt inverter consumes about 0.25 to 0.30 gallons of gasoline per hour. This burn rate allows a single tank of fuel to provide 8 to 11 hours of runtime, easily supporting a refrigerator and essential circuits overnight.
               </p>
 
               <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">
                 Managing a Winter Essentials Load
               </h3>
               <p>
-                Mid-sized conventional generators are commonly used to power essential household appliances during grid failures, like running a <Link href="/generator-size-calculator?scenario=winter-essentials" className="text-indigo-600 hover:underline">winter emergency essentials</Link> backup setup.
+                Mid-sized conventional generators commonly power critical circuits during severe winter outages, such as our <Link href="/generator-size-calculator?scenario=winter-essentials" className="text-indigo-600 hover:underline">winter emergency essentials</Link> scenario. That profile requires 2,955 running watts, with motor-driven appliances adding 1,100 starting watts when cycling on.
               </p>
               <p>
-                This typical winter scenario demands 2,955 total running watts to keep everything operating simultaneously. However, large motors like the furnace blower require an additional 1,100 starting watts when they cycle on.
+                This produces a peak starting demand of 4,055 watts. Applying a recommended 25 percent engineering margin yields a sizing target of 5,069 watts to prevent breaker tripping under combined motor start-up surges.
               </p>
               <p>
-                This brings the peak starting demand to 4,055 watts. To prevent tripping the breaker under heavy load, electrical engineers recommend a 25 percent safety margin, resulting in a recommended planning capacity of 5,069 watts.
+                Official specifications for the Honda EM5000SX cite a 6.2-gallon fuel tank providing 10.5 hours at half load and 7.1 hours at rated load. This translates to burn rates of approximately 0.59 and 0.87 gallons per hour, respectively.
               </p>
               <p>
-                To estimate mid-sized generator consumption, consider official specifications for the Honda EM5000SX. Honda documents a 6.2 gallon fuel tank providing 10.5 hours of run time at half load and 7.1 hours at rated load.
+                Appliance load characteristics also alter practical fuel consumption during winter storms. Pure resistive loads like space heaters draw continuous current and sustain elevated fuel burn, whereas cycling motor loads like furnace blowers allow inverter engines to idle down between cycles.
               </p>
               <p>
-                Dividing tank capacity by published run time yields a calculated burn rate of approximately 0.59 gallons per hour at 50 percent load and 0.87 gallons per hour at 100 percent load.
-              </p>
-              <p>
-                Other generator models, larger 7000W to 8000W units, and varying appliance duty cycles will produce different burn rates. Always consult the specific owner manual for rated run times.
+                Other generator models, larger 7,000W to 8,000W units, and varying appliance duty cycles will produce different burn rates. Always consult the specific manufacturer manual and load ratings for precise planning.
               </p>
 
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 my-8">
@@ -301,7 +296,7 @@ export default function GeneratorFuelArticlePage() {
                   Fuel Storage Warning
                 </h3>
                 <p className="text-amber-800 m-0">
-                  Running an 8000 watt generator continuously for three days requires over 50 gallons of gasoline. Storing this much fuel requires specialized safety cans and adherence to local fire codes.
+                  Running an 8,000-watt generator continuously for three days requires over 50 gallons of gasoline. Storing this volume of fuel requires certified safety cans, regular rotation, and strict compliance with local residential fire codes.
                 </p>
               </div>
 
@@ -309,42 +304,30 @@ export default function GeneratorFuelArticlePage() {
                 Propane Usage and Dual Fuel Models
               </h2>
               <p>
-                Many modern portable generators offer dual fuel capabilities. They can run on either standard gasoline or liquid propane out of the box.
+                Many modern portable generators offer dual-fuel capabilities, allowing operation on either unleaded gasoline or liquid propane. Propane offers superior shelf stability for emergency storage because it does not degrade or gum up carburetors.
               </p>
               <p>
-                Propane is incredibly convenient for long term emergency preparedness. It does not go bad over time and eliminates the risk of a clogged carburetor after months of storage.
-              </p>
-              <p>
-                However, propane contains less thermal energy per unit of volume than gasoline. Your generator will produce slightly less peak wattage and consume more physical fuel when running on propane.
+                However, propane contains less thermal energy per gallon than gasoline. As a result, dual-fuel generators typically deliver slightly lower peak wattage and consume a greater volume of fuel to generate equivalent electrical output.
               </p>
 
               <h3 className="text-xl font-bold text-slate-900 mt-8 mb-4">
                 Propane Consumption Example
               </h3>
               <p>
-                The Champion 3400 Watt Dual Fuel inverter is a common choice for RV owners. Official Champion specifications detail its runtime on a standard 20 pound BBQ propane tank.
+                The Champion 3,400-watt dual-fuel inverter illustrates typical propane consumption for portable emergency power. Official Champion specifications cite up to 14.5 hours of runtime on a standard 20-pound propane cylinder at 25 percent load.
               </p>
               <p>
-                At a 25 percent electrical load, the Champion 3400 provides up to 14.5 hours of runtime from one 20 pound cylinder.
-              </p>
-              <p>
-                This equates to a propane consumption rate of approximately 1.38 pounds per hour. If you run heavier loads like an air conditioner, that consumption rate will climb much higher.
+                This corresponds to a fuel consumption rate of approximately 1.38 pounds of propane per hour. Operating larger electrical loads, such as an RV air conditioner, will increase hourly propane consumption significantly.
               </p>
 
               <h2 id="calculating-runtime" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 How to Calculate Tank Runtime
               </h2>
               <p>
-                Calculating how long your generator will run on a full tank of fuel is straightforward once you know your hourly consumption rate.
+                Calculating generator runtime on a full tank requires basic division once you establish hourly fuel demand. Dividing total tank capacity by your hourly consumption rate yields estimated operating hours between refueling stops.
               </p>
               <p>
-                The formula requires only basic division. You simply divide the total fuel tank capacity by the hourly fuel consumption rate.
-              </p>
-              <p>
-                If your generator holds 5 gallons of gasoline and consumes 0.5 gallons per hour, your tank will last for 10 hours.
-              </p>
-              <p>
-                You must ensure that the units of measurement match. If your fuel tank is measured in pounds of propane, your consumption rate must also be calculated in pounds per hour.
+                For example, a generator with a 5-gallon tank consuming 0.50 gallons per hour will run for 10 hours. When using propane, ensure both tank capacity and hourly consumption are measured in pounds.
               </p>
 
               <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
@@ -368,83 +351,65 @@ export default function GeneratorFuelArticlePage() {
                 Estimating Daily Operating Costs
               </h2>
               <p>
-                Running a generator during a prolonged outage is remarkably expensive compared to buying grid electricity. It is important to budget for this expense in hurricane or blizzard prone areas.
+                Running a generator during an extended blackout is considerably more expensive than buying utility power. To calculate hourly operating costs, multiply your generator&apos;s hourly fuel consumption rate by the local price per gallon or pound.
               </p>
               <p>
-                To calculate your hourly operating cost, multiply your hourly fuel consumption rate by the local price of fuel.
+                For instance, burning 0.75 gallons per hour at $3.00 per gallon costs $2.25 every operating hour, or $54 per 24-hour day. Operating through a full week of storm recovery can easily exceed $350 in fuel alone.
               </p>
               <p>
-                If your generator burns 0.75 gallons per hour and gasoline costs three dollars per gallon, you are spending 2.25 dollars every hour.
+                Emergency planners recommend calculating total fuel reserves by multiplying projected outage duration by daily consumption. A household running a 5,000-watt generator for 12 hours daily burns roughly 7.2 gallons per day under standard residential loads.
               </p>
               <p>
-                Running that same generator continuously for 24 hours will cost 54 dollars. Operating a large portable generator for a full week can easily exceed 300 dollars in fuel costs alone.
+                Supporting a five-day winter grid outage under this operational schedule requires storing at least 36 gallons of stabilized fuel. Maintaining this volume requires multiple approved containers and a disciplined rotation schedule to safeguard fuel freshness.
               </p>
 
               <h2 id="efficiency-tips" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 Tips for Better Fuel Economy
               </h2>
               <p>
-                You can actively reduce your generator fuel consumption during an outage by managing your electrical loads efficiently.
+                You can actively reduce generator fuel consumption during an outage by managing electrical loads efficiently. First, turn on economy mode if your inverter generator includes one, allowing the engine to idle down when demand drops.
               </p>
               <p>
-                First, turn on the eco throttle or economy mode switch if your inverter generator has one. This allows the engine speed to drop dynamically when you are not drawing heavy power.
+                Second, stagger large appliance usage so high-draw devices like well pumps, microwaves, and coffee makers do not run simultaneously. Regular maintenance, including clean air filters and fresh spark plugs, also prevents wasted fuel.
               </p>
               <p>
-                Second, stagger your heavy appliance usage. Do not run the microwave, coffee maker, and well pump at the same exact time.
-              </p>
-              <p>
-                Third, keep up with scheduled engine maintenance. A clean air filter and fresh spark plug ensure the engine burns fuel completely without wasting energy.
-              </p>
-              <p>
-                Finally, consider turning the generator off entirely during the night if you do not strictly require medical equipment or intense heating. Refrigerators can typically stay cold for several hours without active power if the doors remain closed.
+                Finally, consider shutting the generator down overnight if you do not require medical equipment or continuous heating. Well-insulated refrigerators easily stay cold for several hours without power as long as the doors remain closed.
               </p>
 
               <h2 id="natural-gas-and-diesel" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 Natural Gas and Diesel Consumption
               </h2>
               <p>
-                Whole house standby generators frequently connect directly to municipal natural gas lines. This provides an effectively unlimited fuel supply during typical weather events.
+                Whole-house standby generators frequently connect directly to municipal natural gas lines, providing continuous fuel during extended outages. Natural gas is metered in hundreds of cubic feet (CCF), with a 14 kW unit consuming roughly 1.5 CCF per hour at half load.
               </p>
               <p>
-                Natural gas is metered in hundreds of cubic feet, commonly abbreviated as CCF. Alternatively, some utilities bill by the therm, which is a unit of heat energy.
+                At full capacity, natural gas consumption can exceed 2.5 CCF per hour. Utilities bill natural gas either by the CCF or in therms, making it important to check your local utility rate structure.
               </p>
               <p>
-                A standard 14 kilowatt standby generator might consume roughly 1.5 CCF per hour under a half load. At full capacity, that consumption can jump to over 2.5 CCF per hour.
-              </p>
-              <p>
-                Diesel generators are less common for residential use but dominate the industrial and agricultural sectors. Diesel fuel packs more energy per gallon than gasoline.
-              </p>
-              <p>
-                A heavy duty 10 kilowatt diesel generator might burn only 0.75 gallons per hour at a 100 percent load. This makes diesel highly cost effective for continuous, long term power generation.
+                Diesel generators dominate agricultural and commercial installations due to superior thermal efficiency. A heavy-duty 10 kW diesel generator typically burns only 0.75 gallons per hour at full load, providing excellent fuel economy for continuous generation.
               </p>
 
               <h2 id="fuel-stabilization" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 The Cost of Fuel Degradation
               </h2>
               <p>
-                Gasoline begins to degrade chemically after just a few months in a storage can. Ethanol blended fuels are especially prone to absorbing atmospheric moisture.
+                Gasoline begins to degrade chemically after three to six months in storage, with ethanol blends absorbing atmospheric moisture over time. Unstabilized fuel can varnish internal carburetor passages and prevent the generator from starting during an emergency.
               </p>
               <p>
-                When estimating your operating costs, you must factor in fuel rotation. You cannot safely store gasoline indefinitely without adding chemical stabilizers.
+                Adding quality fuel stabilizer extends storage life to 12 months or longer. A reliable rotation practice is pouring stored generator gasoline into your vehicle every six months and refilling storage cans with fresh treated fuel.
               </p>
               <p>
-                Many homeowners pour unused generator gasoline into their daily commuter vehicles every six months. This ensures the backup fuel supply remains fresh without wasting money.
-              </p>
-              <p>
-                If old gasoline gums up your generator carburetor, the repair bill will far exceed the cost of fresh fuel. Always drain the float bowl if you plan to store a conventional gasoline generator.
+                If old gasoline fouls the carburetor, repair costs far exceed the price of fresh fuel. Always run the carburetor dry or drain the float bowl before placing a gasoline generator into seasonal storage.
               </p>
 
               <h2 id="managing-surge-loads" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
                 Managing Surge Loads for Better Economy
               </h2>
               <p>
-                Every motor in your home requires a massive surge of power to start turning. This includes your refrigerator compressor, well pump, and furnace blower.
+                Motor-driven appliances require a significant momentary power surge to start, including refrigerator compressors, well pumps, and furnace blowers. When an inductive motor starts, the generator engine must throttle up abruptly, burning extra fuel during each surge.
               </p>
               <p>
-                When a large motor starts, the generator engine must immediately throttle up to handle the load spike. This sudden acceleration burns extra fuel.
-              </p>
-              <p>
-                By installing soft start devices on your large air conditioners, you can significantly reduce the initial power draw. This prevents the generator from revving wildly and keeps your overall fuel consumption lower.
+                Installing electronic soft-start kits on large central air conditioning units significantly reduces initial inrush current. This prevents abrupt engine revving and governor surges, preserving fuel and stabilizing operating voltage throughout the outage.
               </p>
 
               <h2 id="faq" className="text-2xl font-bold text-slate-900 mt-12 mb-6">
