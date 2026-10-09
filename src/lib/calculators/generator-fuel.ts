@@ -46,7 +46,7 @@ export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
     consumptionRate: 0.72,
     tankSize: 7.9,
     source: 'Generac GP8000E Spec Sheet (Calculated: 7.9 gal / 11 hrs)',
-    sourceUrl: 'https://www.generac.com/all-products/generators/portable-generators/gp-series'
+    sourceUrl: 'https://www.generac.com/all-products/generators/portable-generators/gp-series/gp8000e/'
   },
   {
     id: 'champion_3400_propane_25',
@@ -55,8 +55,8 @@ export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
     fuelUnit: 'lbs',
     consumptionRate: 1.38,
     tankSize: 20,
-    source: 'Champion 3400W Dual Fuel Specs (Calculated: 20 lbs / 14.5 hrs)',
-    sourceUrl: 'https://www.championpowerequipment.com/'
+    source: 'Champion Model 100396 Specs (Calculated: 20 lbs / 14.5 hrs)',
+    sourceUrl: 'https://www.championpowerequipment.com/product/100396-3400w-electric-start-dual-fuel-inverter/'
   }
 ];
 
@@ -118,6 +118,9 @@ export function calculateGeneratorFuel(inputs: GeneratorFuelInputs): GeneratorFu
     consumptionRate = inputs.customConsumptionRate;
     unit = inputs.customFuelUnit;
     type = inputs.customFuelType;
+    if (inputs.customTankSize !== undefined && inputs.customTankSize < 0) {
+      throw new Error("Tank capacity cannot be negative");
+    }
     if (inputs.customTankSize !== undefined && inputs.customTankSize > 0) {
       tank = inputs.customTankSize;
     }

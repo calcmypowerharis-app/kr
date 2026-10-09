@@ -74,17 +74,39 @@ export function GeneratorFuelCalculator() {
       />
 
       {calculationMode === "preset" ? (
-        <SelectField
-          id="presetId"
-          label="Generator Model & Load"
-          value={presetId}
-          onChange={setPresetId}
-          options={GENERATOR_FUEL_PRESETS.map((p) => ({
-            value: p.id,
-            label: p.name,
-          }))}
-          helpText="Fuel consumption varies heavily by applied load."
-        />
+        <div className="space-y-3">
+          <SelectField
+            id="presetId"
+            label="Generator Model & Load"
+            value={presetId}
+            onChange={setPresetId}
+            options={GENERATOR_FUEL_PRESETS.map((p) => ({
+              value: p.id,
+              label: p.name,
+            }))}
+            helpText="Fuel consumption varies heavily by applied load."
+          />
+          {(() => {
+            const selectedPreset = GENERATOR_FUEL_PRESETS.find((p) => p.id === presetId);
+            if (!selectedPreset) return null;
+            return (
+              <div className="text-xs text-slate-500 bg-slate-50 p-3 rounded-xl border border-slate-200 leading-relaxed">
+                <span className="font-semibold text-slate-700">Source: </span>
+                {selectedPreset.source}{" "}
+                {selectedPreset.sourceUrl && (
+                  <a
+                    href={selectedPreset.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-700 underline font-medium inline-flex items-center gap-1 ml-1"
+                  >
+                    View Official Documentation &rarr;
+                  </a>
+                )}
+              </div>
+            );
+          })()}
+        </div>
       ) : (
         <div className="space-y-4 pt-4 border-t border-slate-100">
           <SelectField

@@ -111,4 +111,35 @@ describe('calculateGeneratorFuel', () => {
 
     expect(() => calculateGeneratorFuel(inputs)).toThrow('positive');
   });
+
+  it('throws error for negative custom tank size', () => {
+    const inputs: GeneratorFuelInputs = {
+      calculationMode: 'custom',
+      customFuelType: 'gasoline',
+      customFuelUnit: 'gallons',
+      customConsumptionRate: 0.5,
+      customTankSize: -5,
+      fuelPricePerUnit: 3,
+    };
+
+    expect(() => calculateGeneratorFuel(inputs)).toThrow('Tank capacity cannot be negative');
+  });
+
+  it('calculates correctly for diesel fuel', () => {
+    const inputs: GeneratorFuelInputs = {
+      calculationMode: 'custom',
+      customFuelType: 'diesel',
+      customFuelUnit: 'gallons',
+      customConsumptionRate: 0.6,
+      customTankSize: 10,
+      fuelPricePerUnit: 4.00,
+    };
+
+    const result = calculateGeneratorFuel(inputs);
+    expect(result.fuelType).toBe('diesel');
+    expect(result.fuelUnit).toBe('gallons');
+    expect(result.costPerHour).toBeCloseTo(2.40);
+    expect(result.tankRuntimeHours).toBeCloseTo(10 / 0.6);
+  });
 });
+
