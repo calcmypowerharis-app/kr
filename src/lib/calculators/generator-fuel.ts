@@ -14,6 +14,7 @@ export interface GeneratorPreset {
   consumptionRate: number; // units per hour
   tankSize?: number; // capacity in fuelUnits
   source: string;
+  sourceUrl?: string;
 }
 
 export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
@@ -24,7 +25,8 @@ export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
     fuelUnit: 'gallons',
     consumptionRate: 0.12,
     tankSize: 0.95,
-    source: 'Honda Power Equipment'
+    source: 'Honda Power Equipment EU2200i Specs (Calculated: 0.95 gal / 8.1 hrs)',
+    sourceUrl: 'https://powerequipment.honda.com/generators/models/eu2200i'
   },
   {
     id: 'honda_eu2200i_gas_100',
@@ -33,7 +35,8 @@ export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
     fuelUnit: 'gallons',
     consumptionRate: 0.30,
     tankSize: 0.95,
-    source: 'Honda Power Equipment'
+    source: 'Honda Power Equipment EU2200i Specs (Calculated: 0.95 gal / 3.2 hrs)',
+    sourceUrl: 'https://powerequipment.honda.com/generators/models/eu2200i'
   },
   {
     id: 'generac_gp8000e_gas_50',
@@ -42,7 +45,8 @@ export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
     fuelUnit: 'gallons',
     consumptionRate: 0.72,
     tankSize: 7.9,
-    source: 'Generac Spec Sheet'
+    source: 'Generac GP8000E Spec Sheet (Calculated: 7.9 gal / 11 hrs)',
+    sourceUrl: 'https://www.generac.com/all-products/generators/portable-generators/gp-series'
   },
   {
     id: 'champion_3400_propane_25',
@@ -51,7 +55,8 @@ export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
     fuelUnit: 'lbs',
     consumptionRate: 1.38,
     tankSize: 20,
-    source: 'Champion Power Equipment'
+    source: 'Champion 3400W Dual Fuel Specs (Calculated: 20 lbs / 14.5 hrs)',
+    sourceUrl: 'https://www.championpowerequipment.com/'
   }
 ];
 

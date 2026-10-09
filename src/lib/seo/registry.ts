@@ -600,7 +600,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     cluster: 'generators',
     parentCalculatorPath: '/generator-fuel-consumption-calculator',
     primaryKeyword: 'how much gas does a generator use',
-    heroImage: '/images/guides/how-much-gas-generator-hero.jpg',
+    heroImage: '/images/articles/generator-fuel-consumption.jpg',
     relatedGuidePaths: [
       '/what-size-generator-do-i-need-for-my-house',
       '/what-size-generator-to-run-a-refrigerator',

@@ -110,11 +110,13 @@ export function GeneratorFuelCalculator() {
             label="Fuel Unit"
             value={customFuelUnit}
             onChange={(v) => setCustomFuelUnit(v as FuelUnit)}
-            options={[
-              { value: "gallons", label: "Gallons" },
-              { value: "lbs", label: "Pounds (lbs)" },
-              { value: "ccf", label: "CCF (100 Cubic Ft)" },
-            ]}
+            options={
+                customFuelType === "gasoline" || customFuelType === "diesel" 
+                  ? [{ value: "gallons", label: "Gallons" }]
+                  : customFuelType === "propane" 
+                  ? [{ value: "gallons", label: "Gallons" }, { value: "lbs", label: "Pounds (lbs)" }]
+                  : [{ value: "ccf", label: "CCF (100 Cubic Ft)" }]
+              }
           />
           <InputField
             id="customConsumptionRate"
@@ -232,7 +234,7 @@ export function GeneratorFuelCalculator() {
         <FormulaSection
           title="How Fuel Consumption is Calculated"
           description="Generator fuel consumption is almost entirely dictated by the engine size and the electrical load placed on the generator. An inverter generator running at 25% load will consume significantly less fuel per hour than the same generator running at 100% capacity."
-          formulaDisplay="Hourly Cost = Consumption Rate * Price per Unit"
+          formulaDisplay="Hourly Cost = Consumption Rate x Price per Unit"
           variables={[
             {
               name: "Consumption Rate",
@@ -255,6 +257,16 @@ export function GeneratorFuelCalculator() {
         <AssumptionsSection
           description="Real-world fuel consumption differs slightly from preset estimates. Here are the core assumptions used in this calculator:"
           assumptions={[
+            ...(calculationMode === "preset"
+              ? [
+                  {
+                    parameter: "Preset Data Source",
+                    defaultVal: "Manufacturer Specs",
+                    realisticRange: "Fixed per model",
+                    impact: "Data derived: " + (GENERATOR_FUEL_PRESETS.find(p => p.id === presetId)?.source || "Manufacturer Spec Sheet"),
+                  }
+                ]
+              : []),
             {
               parameter: "Pricing Model",
               defaultVal: "Linear",
