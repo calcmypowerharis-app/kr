@@ -1582,6 +1582,12 @@ export const GeneratorSizeCalculator: React.FC = () => {
         <RelatedCalculators
           calculators={[
             {
+              title: "Generator Fuel Consumption Calculator",
+              description: "Calculate how much gas, propane, or diesel your generator will consume per hour and per day.",
+              href: "/generator-fuel-consumption-calculator",
+              category: "Fuel & Runtime",
+            },
+            {
               title: "Generator Wattage Chart & Appliance Reference",
               description:
                 "Look up running and starting surge watts for 35+ appliances with real-time outage demand estimation.",

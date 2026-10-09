@@ -1041,7 +1041,7 @@ export default function GeneratorSizingGuidePage() {
         <section className="space-y-6 border-t border-slate-200 pt-8">
           <div>
             <h2
-              id="faq"
+              id="generator-fuel-calculator" className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24 mb-4">Calculate Your Generator Operating Costs</h2><p className="text-slate-600 mb-8">After determining your size requirements, you can calculate your ongoing operating costs using our <Link href="/generator-fuel-consumption-calculator" className="text-indigo-600 hover:underline">Generator Fuel Consumption Calculator</Link>.</p><h2 id="faq"
               className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
             >
               Frequently Asked Questions
@@ -1179,7 +1179,8 @@ export default function GeneratorSizingGuidePage() {
             <TableOfContents items={TOC_ITEMS} />
           </aside>
         </div>
-      </article>
+      <p className="mt-8 text-slate-600">For more information about ongoing fuel costs and calculations, check out our guide on <Link href="/how-much-gas-does-a-generator-use" className="text-indigo-600 hover:underline">How Much Gas Does a Generator Use Per Hour?</Link></p>
+</article>
     </>
   );
 }
