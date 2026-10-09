@@ -11,6 +11,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import {
   Clock,
   Zap,
@@ -41,6 +42,8 @@ export const metadata: Metadata = {
       "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM charge controller amperage, cold-weather Voc voltage limits, and battery voltage matching.",
     url: "https://calcmypower.com/how-to-size-a-solar-charge-controller",
     type: "article",
+    publishedTime: "2026-10-07T00:00:00Z",
+    modifiedTime: "2026-10-07T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/how-to-size-a-solar-charge-controller.webp",
@@ -114,8 +117,8 @@ export default function HowToSizeASolarChargeControllerPage() {
     description:
       "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM charge controller amperage, cold-weather Voc voltage limits, and battery voltage matching.",
     url: "https://calcmypower.com/how-to-size-a-solar-charge-controller",
-    datePublished: "2026-10-07",
-    dateModified: "2026-10-07",
+    datePublished: "2026-10-07T00:00:00Z",
+    dateModified: "2026-10-07T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/how-to-size-a-solar-charge-controller.webp",
     ],
@@ -185,7 +188,7 @@ export default function HowToSizeASolarChargeControllerPage() {
                   <span>12 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-07" lastModified="2026-10-07" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

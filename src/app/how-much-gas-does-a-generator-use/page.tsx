@@ -7,7 +7,6 @@ import {
   Clock,
   HelpCircle,
   Calculator,
-  Flame,
   CheckCircle2,
   AlertTriangle,
 } from "lucide-react";
@@ -17,6 +16,7 @@ import {
   generateFaqSchema,
 } from "@/lib/seo/schema";
 import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "How Much Gas Does a Generator Use Per Hour? Fuel Consumption by Wattage",
@@ -24,6 +24,32 @@ export const metadata: Metadata = {
     "Discover how much gas and propane generators use per hour based on running wattage and load. Includes fuel tank runtimes and hourly operating costs.",
   alternates: {
     canonical: "https://calcmypower.com/how-much-gas-does-a-generator-use",
+  },
+  openGraph: {
+    title: "How Much Gas Does a Generator Use Per Hour? | CalcMyPower",
+    description:
+      "Find out how much gas or propane a portable generator uses per hour. Examples for 2000W, 5000W, and 8000W generators.",
+    url: "https://calcmypower.com/how-much-gas-does-a-generator-use",
+    type: "article",
+    publishedTime: "2026-10-09T00:00:00Z",
+    modifiedTime: "2026-10-09T00:00:00Z",
+    images: [
+      {
+        url: "https://calcmypower.com/images/articles/generator-fuel-consumption.jpg",
+        width: 1200,
+        height: 675,
+        alt: "Technical diagram of a portable inverter generator showing gasoline and propane fuel consumption gauges",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "How Much Gas Does a Generator Use Per Hour? | CalcMyPower",
+    description:
+      "Find out how much gas or propane a portable generator uses per hour. Examples for 2000W, 5000W, and 8000W generators.",
+    images: [
+      "https://calcmypower.com/images/articles/generator-fuel-consumption.jpg",
+    ],
   },
 };
 
@@ -63,10 +89,10 @@ export default function GeneratorFuelArticlePage() {
     description:
       "Discover how much gas and propane generators use per hour based on running wattage and load. Includes fuel tank runtimes and hourly operating costs.",
     images: ["https://calcmypower.com/images/articles/generator-fuel-consumption.jpg"],
-    datePublished: "2026-10-09",
-    dateModified: "2026-10-09",
+    datePublished: "2026-10-09T00:00:00Z",
+    dateModified: "2026-10-09T00:00:00Z",
     url: "https://calcmypower.com/how-much-gas-does-a-generator-use",
-    authorName: "Electrical Engineering Team",
+    authorName: "CalcMyPower Technical Publishing",
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -106,14 +132,23 @@ export default function GeneratorFuelArticlePage() {
           >
             {/* Article Header */}
             <header className="space-y-4 border-b border-slate-200 pb-8">
-              <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 uppercase tracking-wider">
-                <Flame className="w-4 h-4" />
-                <span>Generators</span>
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 font-semibold">
+                  Generator Fuel &amp; Efficiency Guide
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>6 min read</span>
+                </span>
+                <span className="text-slate-400">•</span>
+                <ArticleDateByline datePublished="2026-10-09" lastModified="2026-10-09" />
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-tight">
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
                 How Much Gas Does a Generator Use Per Hour? Fuel Consumption by Wattage
               </h1>
-              <p className="text-lg md:text-xl text-slate-600">
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
                 Learn exactly how much fuel your generator consumes based on manufacturer specifications, electrical load, and tank size.
               </p>
             </header>

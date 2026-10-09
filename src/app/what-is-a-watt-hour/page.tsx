@@ -30,6 +30,7 @@ import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
@@ -44,6 +45,8 @@ export const metadata: Metadata = {
       "A foundational engineering guide explaining the difference between electrical power (Watts) and energy (Watt-hours), with practical battery runtime and utility billing calculations.",
     url: "https://calcmypower.com/what-is-a-watt-hour",
     type: "article",
+    publishedTime: "2026-09-28T00:00:00Z",
+    modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/watt-hour-energy-monitor.jpg",
@@ -203,7 +206,7 @@ export default function WattHoursExplainedPage() {
                   <span>9 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published September 2026</span>
+                <ArticleDateByline datePublished="2026-09-28" lastModified="2026-09-28" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

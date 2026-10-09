@@ -22,6 +22,7 @@ import {
   generateWebSiteSchema,
 } from "@/lib/seo/schema";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "CalcMyPower | Power, Energy & Electrical Calculators",
@@ -503,7 +504,7 @@ export default function HomePage() {
                 <span>12 min read</span>
               </span>
               <span className="text-slate-400">•</span>
-              <span className="text-slate-400">Published September 2026</span>
+              <ArticleDateByline datePublished="2026-09-27" lastModified="2026-09-28" className="text-slate-400" />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

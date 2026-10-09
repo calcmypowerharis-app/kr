@@ -32,6 +32,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "Solar Panels in Series vs Parallel: Wiring Diagrams & Sizing",
@@ -47,6 +48,8 @@ export const metadata: Metadata = {
       "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
     url: "https://calcmypower.com/solar-panels-series-vs-parallel",
     type: "article",
+    publishedTime: "2026-09-30T00:00:00Z",
+    modifiedTime: "2026-09-30T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
@@ -195,7 +198,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
                   <span>12 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published September 2026</span>
+                <ArticleDateByline datePublished="2026-09-30" lastModified="2026-09-30" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

@@ -280,6 +280,7 @@ export const SolarChargeControllerCalculator: React.FC = () => {
       title="Solar Charge Controller Sizing Calculator"
       description="Calculate the required charge controller amperage rating and verify cold-temperature open-circuit voltage headroom for off-grid and battery backup solar systems."
       category="Solar PV"
+      lastUpdated="October 2026"
       inputSection={
         <div className="space-y-6">
           {/* Quick Array Preset Selector */}

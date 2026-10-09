@@ -25,6 +25,7 @@ import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "What Size Generator to Run a Refrigerator? Sizing Guide",
@@ -39,6 +40,8 @@ export const metadata: Metadata = {
       "A practical engineering guide to sizing portable inverter and emergency generators for household refrigerators and freezers.",
     url: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
     type: "article",
+    publishedTime: "2026-09-27T12:00:00Z",
+    modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.jpg",
@@ -120,7 +123,7 @@ export default function RefrigeratorGeneratorSizingPage() {
       "Determine what size generator you need to run a refrigerator during a power outage based on running watts, compressor startup surge, and simultaneous household loads.",
     url: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
     datePublished: "2026-09-27T12:00:00Z",
-    dateModified: "2026-09-27T16:30:00Z",
+    dateModified: "2026-09-28T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.jpg",
       "https://calcmypower.com/images/articles/refrigerator-electrical-rating-label.jpg",
@@ -200,7 +203,7 @@ export default function RefrigeratorGeneratorSizingPage() {
                   <span>10 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published September 2026</span>
+                <ArticleDateByline datePublished="2026-09-27" lastModified="2026-09-28" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

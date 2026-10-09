@@ -11,6 +11,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import {
   Clock,
   Zap,
@@ -41,6 +42,8 @@ export const metadata: Metadata = {
       "Learn what continuous power generators are, how ISO 8528 ratings (COP vs PRP vs ESP) work, 1800 RPM engine mechanics, wet stacking hazards, and when you need one.",
     url: "https://calcmypower.com/continuous-power-generators",
     type: "article",
+    publishedTime: "2026-10-04T00:00:00Z",
+    modifiedTime: "2026-10-04T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/continuous-power-generators.webp",
@@ -109,8 +112,8 @@ export default function ContinuousPowerGeneratorsPage() {
     description:
       "Learn what continuous power generators are, how ISO 8528 ratings (COP vs PRP vs ESP) work, 1800 RPM engine mechanics, wet stacking hazards, and when you need one.",
     url: "https://calcmypower.com/continuous-power-generators",
-    datePublished: "2026-10-04",
-    dateModified: "2026-10-04",
+    datePublished: "2026-10-04T00:00:00Z",
+    dateModified: "2026-10-04T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/continuous-power-generators.webp",
     ],
@@ -180,7 +183,7 @@ export default function ContinuousPowerGeneratorsPage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-04" lastModified="2026-10-04" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

@@ -28,6 +28,7 @@ import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "What Does Ah Mean on a Battery? Amp-Hours Explained",
@@ -42,6 +43,8 @@ export const metadata: Metadata = {
       "A practical engineering guide explaining battery Amp-hour ratings, energy conversion to Watt-hours, depth of discharge, and real-world runtime factors.",
     url: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
     type: "article",
+    publishedTime: "2026-09-28T00:00:00Z",
+    modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.jpg",
@@ -197,7 +200,7 @@ export default function BatteryAmpHoursExplainedPage() {
                   <span>9 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published September 2026</span>
+                <ArticleDateByline datePublished="2026-09-28" lastModified="2026-09-28" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

@@ -11,6 +11,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import {
   Clock,
   Zap,
@@ -41,6 +42,8 @@ export const metadata: Metadata = {
       "Learn how to calculate your electric utility bill from meter reading to final balance. Understand supply vs delivery rates, fixed fees, riders, and effective kWh cost.",
     url: "https://calcmypower.com/how-to-calculate-electricity-bill",
     type: "article",
+    publishedTime: "2026-10-06T00:00:00Z",
+    modifiedTime: "2026-10-06T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/how-to-calculate-electricity-bill.webp",
@@ -114,8 +117,8 @@ export default function HowToCalculateElectricityBillPage() {
     description:
       "Learn how to calculate your electric utility bill from meter reading to final balance. Understand supply vs delivery rates, fixed fees, riders, and effective kWh cost.",
     url: "https://calcmypower.com/how-to-calculate-electricity-bill",
-    datePublished: "2026-10-06",
-    dateModified: "2026-10-06",
+    datePublished: "2026-10-06T00:00:00Z",
+    dateModified: "2026-10-06T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/how-to-calculate-electricity-bill.webp",
     ],
@@ -185,7 +188,7 @@ export default function HowToCalculateElectricityBillPage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <span className="text-slate-500">Published October 2026</span>
+                <ArticleDateByline datePublished="2026-10-06" lastModified="2026-10-06" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

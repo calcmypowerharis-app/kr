@@ -25,6 +25,7 @@ import {
   calculateGeneratorSize,
   GENERATOR_SCENARIO_PRESETS,
 } from "@/lib/calculators/generator-size";
+import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
   title: "What Size Generator Do I Need for My House? Sizing Guide",
@@ -39,6 +40,8 @@ export const metadata: Metadata = {
       "A load-based technical guide to sizing portable and whole-house standby generators for residential power outages.",
     url: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
     type: "article",
+    publishedTime: "2026-09-27T08:00:00Z",
+    modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/standby-generator-home-installation.jpg",
@@ -98,8 +101,8 @@ export default function GeneratorSizingGuidePage() {
     description:
       "A load-based technical guide to sizing portable and whole-house standby generators for residential power outages.",
     url: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
-    datePublished: "2026-09-27T08:00:00+00:00",
-    dateModified: "2026-09-27T08:00:00+00:00",
+    datePublished: "2026-09-27T08:00:00Z",
+    dateModified: "2026-09-28T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/standby-generator-home-installation.jpg",
       "https://calcmypower.com/images/articles/portable-generator-outdoor-safety.jpg",
@@ -172,7 +175,7 @@ export default function GeneratorSizingGuidePage() {
           </p>
 
           <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-slate-500">
-            <span>Published September 2026</span>
+            <ArticleDateByline datePublished="2026-09-27" lastModified="2026-09-28" />
             <span>•</span>
             <span>CalcMyPower Technical Publishing</span>
             <span>•</span>
