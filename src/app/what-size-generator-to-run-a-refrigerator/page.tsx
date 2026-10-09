@@ -1100,7 +1100,7 @@ export default function RefrigeratorGeneratorSizingPage() {
             </section>
 
             {/* Section 13: FAQ */}
-            <section id="faq" className="space-y-4 scroll-mt-24 border-t border-slate-200 pt-8">
+            <section id="generator-fuel-calculator" className="mb-12 border-t border-slate-200 pt-8"><h2 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24 mb-4">Calculate Your Generator Operating Costs</h2><p className="text-slate-600 mb-8">After determining your size requirements, you can calculate your ongoing operating costs using our <Link href="/generator-fuel-consumption-calculator" className="text-indigo-600 hover:underline">Generator Fuel Consumption Calculator</Link>.</p></section><section id="faq" className="space-y-4 scroll-mt-24 border-t border-slate-200 pt-8">
               <div className="flex items-center gap-2">
                 <HelpCircle className="w-6 h-6 text-blue-600" />
                 <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
@@ -1221,7 +1221,8 @@ export default function RefrigeratorGeneratorSizingPage() {
                 </li>
               </ul>
             </footer>
-          </article>
+          <p className="mt-8 text-slate-600">For more information about ongoing fuel costs and calculations, check out our guide on <Link href="/how-much-gas-does-a-generator-use" className="text-indigo-600 hover:underline">How Much Gas Does a Generator Use Per Hour?</Link></p>
+</article>
 
           {/* Desktop Sticky Sidebar (4 cols on lg) */}
           <aside className="hidden lg:block lg:col-span-4">

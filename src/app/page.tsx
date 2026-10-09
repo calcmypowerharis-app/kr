@@ -16,7 +16,7 @@ import {
   Clock,
   Sparkles,
   Activity,
-} from "lucide-react";
+Flame} from "lucide-react";
 import {
   generateOrganizationSchema,
   generateWebSiteSchema,
@@ -234,6 +234,22 @@ const LIVE_CALCULATORS: LiveTool[] = [
       "Estimated monthly electricity utility charge based on local rate",
     ],
     cta: "Open Electricity Use Calculator",
+  },
+  {
+    id: "generator-fuel-tool",
+    title: "Generator Fuel Consumption Calculator",
+    href: "/generator-fuel-consumption-calculator",
+    icon: Flame,
+    formula: "Gallons/hr = Max Fuel / Hours",
+    summary:
+      "Estimate how much gasoline, propane, or diesel your generator will consume based on its running wattage and fuel tank size.",
+    outputs: [
+      "Hourly fuel consumption rate",
+      "Cost per 24 hours of operation",
+      "Total fuel tank runtime",
+      "Gasoline, Propane, and Diesel presets",
+    ],
+    cta: "Open Fuel Consumption Calculator",
   },
 ];
 
@@ -630,8 +646,17 @@ export default function HomePage() {
                 className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-1"
               >
                 <span>Read Refrigerator Sizing Guide</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <div className="mt-4 pt-4 border-t border-slate-100">
+                  <Link
+                    href="/how-much-gas-does-a-generator-use"
+                    className="text-xs font-semibold text-slate-600 hover:text-indigo-600 inline-flex items-center gap-1"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>How Much Gas Does a Generator Use?</span>
+                  </Link>
+                </div>
             </div>
 
             {/* Guide 3: Battery Amp-Hours Explained */}
