@@ -82,37 +82,37 @@ const FAQ_DATA = [
   {
     question: "What size generator do I need to run a refrigerator?",
     answer:
-      "A portable generator rated for at least 1,500 to 2,000 starting watts and 1,000 running watts can easily start and run virtually any single modern residential refrigerator. If you plan to power household LED lights, an internet router, and phone chargers alongside the refrigerator, a 2,000 to 2,500-watt inverter generator provides comfortable headroom. If you need to back up a kitchen refrigerator and a standalone chest freezer simultaneously, choose a generator with at least 2,200 to 3,000 surge watts.",
+      "A generator rated for 1,500 to 2,000 starting watts and 1,000 running watts handles almost any modern residential refrigerator. To include household LED lights, phones, and a router, a 2,000-watt inverter generator provides comfortable headroom.",
   },
   {
     question: "Will a 2,000-watt generator run a refrigerator?",
     answer:
-      "Yes, in almost all residential situations. A standard 2,000-watt inverter generator provides roughly 1,600 to 1,800 continuous running watts and 2,000 to 2,200 peak surge watts. Modern refrigerators require only 100 to 200 continuous running watts and brief startup surges between 800 and 1,200 watts. However, running a high-wattage heating appliance such as a 1,000-watt microwave, coffee maker, or space heater at the exact moment the refrigerator compressor kicks on can exceed the generator surge capacity and trip its circuit breaker.",
+      "Yes. A 2,000-watt inverter generator easily provides the 1,000 to 1,200 surge watts needed to start the compressor. Avoid running high-draw heating appliances like microwaves or coffee makers simultaneously to prevent tripping the breaker.",
   },
   {
     question: "How many watts does a standard refrigerator use?",
     answer:
-      "A typical modern residential refrigerator uses between 100 and 200 running watts while the cooling compressor is active. Older models or large commercial merchandisers can draw 300 to 500 watts. Because refrigerator compressors cycle on and off based on interior temperature, a refrigerator only consumes power roughly 30% to 50% of the time, resulting in an average daily energy consumption of 1 to 2 kilowatt-hours (kWh).",
+      "A typical modern refrigerator uses between 100 and 200 running watts while the compressor is actively cooling. Because the compressor cycles periodically, average daily energy consumption totals roughly 1 to 2 kilowatt-hours.",
   },
   {
     question: "What size generator do I need for a refrigerator and freezer?",
     answer:
-      "To power a kitchen refrigerator and a standalone chest or upright freezer together, look for a generator delivering at least 2,000 to 2,500 continuous running watts and 2,500 to 3,500 starting surge watts. Combined, both units will draw only 200 to 350 steady running watts, but if both compressors ever happen to start within seconds of each other, the generator must have sufficient peak surge reserve to absorb both motor inrush spikes without stalling.",
+      "Look for a generator delivering at least 2,000 continuous running watts and 2,500 to 3,000 starting surge watts. This reserve comfortably absorbs overlapping motor inrush spikes if both cooling compressors cycle on simultaneously.",
   },
   {
     question: "Why do refrigerators need starting watts?",
     answer:
-      "Refrigerators use hermetic electric motors to drive their refrigerant compressors. When an electric motor is stationary, it lacks counter-electromotive force to limit initial current draw. Overcoming mechanical inertia and pumping dense refrigerant vapor against static head pressure creates a momentary startup inrush surge lasting 0.5 to 2 seconds before the motor reaches operational speed and settles to steady continuous running power. The surge magnitude depends on compressor design, refrigerant type, and head pressure.",
+      "Stationary electric compressor motors lack counter-electromotive force during startup, drawing brief inrush currents to overcome mechanical inertia. This initial surge lasts roughly one second before current drops to steady continuous running wattage.",
   },
   {
     question: "Can I use an extension cord from my generator to my refrigerator?",
     answer:
-      "Yes, provided the extension cord is selected based on both connected load amperage and run length in accordance with manufacturer and ESFI safety guidance. Cord gauge is never determined by distance alone. For a typical refrigerator continuous load drawing under 15 amps, a 14 AWG outdoor-rated cord is generally suitable for runs up to 50 feet. For longer distances up to 100 feet, or for heavier loads up to 20 amps, use a heavy-duty 12 AWG or 10 AWG cord. Using an appropriately rated cord with the correct gauge and length helps limit voltage drop at the refrigerator, protecting the compressor motor from overheating or failing to start.",
+      "Yes, using a properly rated outdoor cord. A 14 AWG heavy-duty cord works for runs up to 50 feet, while runs up to 100 feet require 12 AWG to prevent excessive voltage drop.",
   },
   {
     question: "Can I run my refrigerator on an inverter generator?",
     answer:
-      "Yes, an inverter generator is ideal for refrigerators. Inverter generators produce clean electricity with low total harmonic distortion (THD under 3%), which protects the sensitive digital control boards, variable-speed fan motors, and temperature display modules found in modern Energy Star appliances while consuming less gasoline than traditional open-frame contractor generators.",
+      "Yes, inverter generators are ideal for refrigerators. Their clean electrical output with low harmonic distortion protects sensitive digital control boards and inverter compressors while burning less fuel than open-frame units.",
   },
 ];
 
@@ -519,7 +519,10 @@ export default function RefrigeratorGeneratorSizingPage() {
                 </div>
 
                 <p className="text-xs text-slate-500">
-                  Conclusion: A 2,000-watt generator is excellent for dedicated refrigeration and communication devices. If you need to run high-draw heating appliances like coffee makers, toasters, or microwave ovens while keeping the refrigerator running, step up to a 3,500-watt generator.
+                  A 2,000-watt generator easily handles dedicated refrigeration and personal electronics during an outage.
+                </p>
+                <p className="text-xs text-slate-500">
+                  Step up to a 3,500-watt generator if you need to run high-draw heating appliances like microwaves or coffee makers simultaneously.
                 </p>
               </div>
             </section>

@@ -82,32 +82,32 @@ const FAQ_DATA = [
   {
     question: "Why is my electric bill higher than the rate per kWh multiplied by my usage?",
     answer:
-      "Electric utilities add fixed monthly customer charges, transmission and delivery tariffs, fuel cost adjustments, environmental compliance riders, and local taxes on top of your base energy rate. These mandatory line items ensure grid infrastructure reliability and can increase your total bill by 20% to 35% above the raw energy supply cost.",
+      "Electric utilities add fixed customer charges, transmission tariffs, riders, and local taxes on top of raw energy rates. These mandatory delivery items frequently increase your final statement by 20% to 35% above base volumetric supply costs.",
   },
   {
     question: "How do I calculate my billed kilowatt-hours (kWh) from my meter?",
     answer:
-      "Subtract your previous meter reading from your current meter reading. For example, if your previous reading was 42,150 kWh and your current reading is 43,050 kWh, your consumption for that billing cycle is 43,050 minus 42,150, which equals 900 kWh. If your meter has a billing multiplier (common on commercial three-phase services, but rare on residential single-phase homes), multiply the difference by that factor.",
+      "Subtract your previous meter reading from your current meter reading. For example, subtracting 42,150 kWh from 43,050 kWh yields 900 kWh of billed energy consumption for that billing cycle.",
   },
   {
     question: "What is the difference between supply charges and delivery charges?",
     answer:
-      "Supply charges (generation) reflect the wholesale cost of creating electrical power at power plants, wind farms, or solar installations. Delivery charges (transmission and distribution) cover the physical network of high-voltage transmission lines, neighborhood transformers, utility poles, substations, and emergency line crews required to deliver that power to your home.",
+      "Supply covers the wholesale generation cost of producing electrical energy at power plants. Delivery covers the utility transmission lines, neighborhood transformers, poles, and maintenance crews that transport power to your electric meter.",
   },
   {
     question: "What is an effective electricity rate, and how do I calculate it?",
     answer:
-      "Your effective electricity rate is the true all-in cost per kilowatt-hour. You calculate it by dividing your total bill amount by your total billed kWh. For example, if your total monthly bill is $185.00 for 900 kWh of usage, your effective rate is $185.00 divided by 900 kWh, which equals $0.2056 per kWh (20.56 cents per kWh), even if your nominal base rate was only 16 cents.",
+      "Your effective rate is your true all-in cost per kilowatt-hour, calculated by dividing total bill dollars by total billed kWh. A $185.00 bill for 900 kWh yields an effective rate of $0.2056 per kWh.",
   },
   {
     question: "Does net metering eliminate all utility charges if I produce 100% solar power?",
     answer:
-      "No. Even if your rooftop solar panels produce 100% of the kilowatt-hours you consume over a billing period, you remain connected to the electric utility grid for nighttime power and cloudy days. Most utilities charge a mandatory monthly fixed customer service fee (typically $10 to $25 per month) plus grid reliability fees that cannot be offset by solar energy credits.",
+      "No. Even with 100% solar offset, homes remain connected to the utility grid for night and cloudy periods. Utilities assess mandatory monthly customer service charges ($10 to $25) that solar credits cannot offset.",
   },
   {
     question: "How do tiered or inverted block rate tariffs affect bill calculations?",
     answer:
-      "In an inverted block tariff, kilowatt-hours are priced in blocks. For instance, Tier 1 baseline consumption (such as the first 400 kWh) might be billed at a lower rate (such as $0.14 per kWh), while all consumption exceeding 400 kWh enters Tier 2 and is billed at a higher rate (such as $0.21 per kWh) to incentivize energy conservation.",
+      "Tiered tariffs bill electricity in consumption blocks with escalating rates. Initial baseline kilowatt-hours might cost $0.14 per kWh, while usage exceeding that threshold enters a higher tier billed at $0.21 per kWh.",
   },
 ];
 
@@ -175,7 +175,7 @@ export default function HowToCalculateElectricityBillPage() {
         {/* Two-Column Grid: Left Content, Right Sticky Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Main Article Content */}
-          <div className="lg:col-span-8 min-w-0 space-y-10">
+          <article id="article-content" className="lg:col-span-8 min-w-0 space-y-10">
             {/* Header */}
             <header className="space-y-4 border-b border-slate-200 pb-8">
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -779,7 +779,7 @@ export default function HowToCalculateElectricityBillPage() {
                 </Link>
               </div>
             </section>
-          </div>
+          </article>
 
           {/* Right Sticky Sidebar (Desktop TOC) */}
           <aside className="hidden lg:block lg:col-span-4 sticky top-24 space-y-6">

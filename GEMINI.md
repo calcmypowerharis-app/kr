@@ -101,13 +101,14 @@ as the canonical visual reference for future editorial article design.
 
 #### 1. Canonical Article Shell
 Future editorial articles should follow the same overall publication shell:
-- clean site header
+- clean site header with breadcrumbs
 - strong article hero/title area
+- visible publication and update date byline near the heading
 - contextual article image near the top
-- main article content first/left
+- main article content first/left (<article id="article-content">)
 - supporting aside second/right on desktop
 - clear section hierarchy
-- readable content width
+- readable content width (~780px)
 - consistent card/callout treatment
 - consistent table styling
 - consistent CTA styling
@@ -140,21 +141,19 @@ Hero -> contextual image -> quick summary/direct answer -> H2 section -> short e
 
 Avoid giant uninterrupted content blocks.
 
-#### 4. Paragraph Readability
-Default editorial paragraph:
-- 1 to 2 short sentences
-- approximately 2 to 3 visual lines on a normal desktop reading width
-
-Avoid intentionally writing:
-- 4 to 6 line paragraphs
-- dense text walls
-- multi-sentence blocks with too many ideas
-- unnecessarily long introductions
-
-When an idea becomes too large:
-split it with a new paragraph, subheading, bullet list, example, table, or callout.
-
-IMPORTANT: "2 to 3 lines" is an editorial readability target, NOT a hard CSS line-count rule. Never manipulate font size or CSS just to force paragraph line counts.
+#### 4. Paragraph Readability and Visual Line Standard
+For ordinary article body paragraphs at the standard desktop reading width (~780px):
+- Aim for 2 to 3 rendered visual lines per paragraph.
+- Prefer 1 to 2 concise sentences when the subject can be explained without losing context.
+- Avoid ordinary body paragraphs that routinely extend to 4 to 6 lines.
+- Keep related ideas together; do not split every sentence into its own paragraph.
+- Avoid overly fragmented content, repetitive transitions, and filler.
+- Preserve technical explanations, useful detail, accurate qualifications, citations, and natural reading flow.
+- Short paragraphs of 1 visual line are acceptable when an answer or transition genuinely requires them.
+- Longer paragraphs may remain when technical context, quotation, definition, or explanation makes the additional length necessary.
+- Specialized components (tables, list items, callouts, cards, captions, disclaimers) are evaluated by their own design requirements rather than as ordinary prose paragraphs.
+- Rendered visual QA: Do not rely solely on character or word counts. Verify visual line rendering in the browser DOM at 1280px desktop viewport using element text range rects.
+- Never manipulate font size, line-height, or CSS solely to force paragraph line counts.
 
 #### 5. Article Length
 Standard article target:
@@ -265,6 +264,27 @@ Every future article must pass:
 - no unnecessary decorative components
 - no filler content
 - SEO structure intact
+- mandatory date fields and ArticleDateByline verified
+
+#### 18. Mandatory Article Date Fields and Accuracy Rules
+Every future editorial article must have:
+- A verified `datePublished` (ISO YYYY-MM-DD).
+- A `lastModified` date maintained according to GUIDE_REGISTRY conventions.
+- A visible `ArticleDateByline` near the article heading.
+- Consistent Open Graph `publishedTime` and `modifiedTime` timestamps.
+- Matching JSON-LD `datePublished` and `dateModified` values.
+- A sitemap `lastmod` value based on the actual meaningful modification date.
+
+Date accuracy rules:
+- Never invent an original publication date.
+- Never set every article to today's date merely because a shared template or date component changed.
+- Preserve the original publication date when content is updated.
+- Change the modification date only after a meaningful editorial or factual update.
+- Do not show "Last updated" when the modification date is the same as the publication date.
+- Do not use Git commit timestamps as automatic substitutes for historical publication dates.
+- Flag unknown dates rather than guessing.
+- Ensure the visible date and all related metadata remain consistent.
+- For calculators and other tools, use a date display only where meaningful and appropriate; never expose stale or hardcoded month labels that contradict the verified modification record.
 
 ---
 

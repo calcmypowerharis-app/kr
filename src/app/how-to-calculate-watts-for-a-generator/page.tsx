@@ -180,7 +180,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
         {/* Two-Column Grid: Left Content (DOM First), Right Sticky Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Main Article Content */}
-          <div className="lg:col-span-8 min-w-0 space-y-10">
+          <article id="article-content" className="lg:col-span-8 min-w-0 space-y-10">
             {/* Header */}
             <header className="space-y-4 border-b border-slate-200 pb-8">
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -895,7 +895,7 @@ export default function HowToCalculateWattsForAGeneratorPage() {
                 </Link>
               </div>
             </section>
-          </div>
+          </article>
 
           {/* Desktop Sticky Table of Contents Sidebar */}
           <aside className="hidden lg:block lg:col-span-4 sticky top-24 space-y-6">

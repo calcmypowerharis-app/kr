@@ -66,32 +66,32 @@ const FAQ_DATA = [
   {
     question: "What size generator do I need for a house?",
     answer:
-      "For basic survival circuits (refrigerator, natural gas furnace blower, internet router, lights, and phones), most homes require 3,500 to 5,000 running Watts. If your home depends on a 1/2 HP sump pump or deep-well pump, plan for 5,000 to 7,500 Watts to handle motor starting inrush. Powering a 3-ton to 4-ton central air conditioner or an all-electric home requires roughly 9,000 to 12,000 Watts on a large portable generator or 18,000 to 24,000 Watts (18 to 24 kW) on a permanent standby generator.",
+      "Basic emergency circuits require 3,500 to 5,000 running Watts. Adding a well pump, sump pump, or central air conditioner increases demand to 7,500 to 12,000 Watts for portable units, or 18 to 24 kW for whole-home standby systems.",
   },
   {
     question: "Is a 5,000-watt generator enough for a house?",
     answer:
-      "A generator rated for 5,000 continuous Watts can power critical essentials together: a modern refrigerator, a 1/2 HP sump pump, a gas furnace fan, LED lighting, and small electronics. However, 5,000 Watts is not enough to start central air conditioners (3 to 5 tons), an electric clothes dryer, an electric water heater, or an electric cooking range.",
+      "Yes, for essential circuits including refrigeration, a gas furnace fan, sump pump, and lighting. However, 5,000 Watts cannot run central air conditioners, electric water heaters, or electric clothes dryers.",
   },
   {
     question: "How many watts does a house need during a power outage?",
     answer:
-      "Electrical demand depends entirely on which circuits you choose to back up. An emergency circuit profile covering refrigeration, heating controls, and communication typically draws 2,500 to 4,000 running Watts. A broader comfort setup with sump pumps, water pumps, and kitchen outlets draws 5,000 to 7,500 Watts. Full whole-home coverage with central HVAC and electric utilities generally requires 14,000 to 22,000 Watts.",
+      "Demand depends on your connected circuits. Critical survival loads require 2,500 to 4,000 Watts, partial home backup uses 5,000 to 7,500 Watts, and full whole-home backup with central HVAC needs 14,000 to 22,000 Watts.",
   },
   {
     question: "Does square footage determine generator size?",
     answer:
-      "No. Floor space does not draw amperes. Generator capacity is governed strictly by the specific appliances connected, their steady running power, and the starting surge of their electric motors. Two 2,000-square-foot homes can have completely different power requirements: one with natural gas heating and city water may need only 4,000 Watts, while an identical home with a 240V well pump, electric heat pump, and electric water heater can easily require 20,000 Watts.",
+      "No. Square footage does not consume electricity. Generator capacity is governed solely by your connected appliance running watts and motor starting surges rather than living area.",
   },
   {
     question: "What is the difference between running watts and starting watts?",
     answer:
-      "Running watts (continuous watts) is the steady power an appliance consumes during normal operation. Starting watts (surge watts) is the momentary surge of power (often 2 to 3 times the running watts) required for 1 to 3 seconds by motor-driven equipment (refrigerators, pumps, air conditioners) to break mechanical inertia and spin up from a stop.",
+      "Running watts represent continuous power during normal operation. Starting watts represent the brief 1 to 3 second surge (often 2 to 3 times running power) required to spin up stationary electric motors.",
   },
   {
     question: "What size generator do I need for a 2,000 sq ft house?",
     answer:
-      "In an illustrative 2,000 sq ft home with natural gas heating and city water, a 5,500 to 7,500-watt portable generator wired through a manual transfer switch easily covers essential circuits, food preservation, and entertainment. If you need to back up a 3-ton central air conditioner, you will need at least 9,000 to 11,000 Watts (or roughly 7,500 Watts if equipped with an AC compressor soft-starter). For hands-off, automatic whole-home coverage on an all-electric 2,000 sq ft property, a 20 kW to 22 kW standby generator is typical.",
+      "A 5,500 to 7,500-watt portable unit easily covers critical circuits and gas heating in a 2,000 sq ft home. Powering central air conditioning or all-electric heating requires 9,000 to 12,000 portable watts or a 20 kW standby generator.",
   },
 ];
 
@@ -146,7 +146,7 @@ export default function GeneratorSizingGuidePage() {
 
       <ReadingProgressBar />
 
-      <article className="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-10">
+      <article id="article-content" className="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-10">
         {/* Header Section */}
         <header className="space-y-4 border-b border-slate-200 pb-8">
           <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500">

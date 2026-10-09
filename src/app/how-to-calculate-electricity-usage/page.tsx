@@ -747,7 +747,10 @@ export default function HowToCalculateElectricityUsagePage() {
                 What If an Appliance Does Not Run at Full Power?
               </h2>
               <p>
-                The simple formula <code className="bg-slate-100 px-1.5 py-0.5 rounded text-sm font-semibold">Watts × Hours</code> works accurately for continuous, steady-state resistive loads like space heaters, incandescent incandescent lamps, and electric kettles. However, many of the largest energy consumers in a home are <strong>variable or cycling loads</strong>.
+                The simple formula <code className="bg-slate-100 px-1.5 py-0.5 rounded text-sm font-semibold">Watts × Hours</code> works accurately for steady resistive loads like space heaters and kettles.
+              </p>
+              <p>
+                However, many of the largest household energy consumers are variable or cycling loads that rarely operate at continuous full power.
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">

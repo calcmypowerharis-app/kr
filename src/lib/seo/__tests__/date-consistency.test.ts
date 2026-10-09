@@ -138,6 +138,45 @@ describe("Sitewide Editorial & Calculator Date Consistency Quality Gate", () => 
         ).toBeNull();
       }
     });
+
+    it("ensures all editorial articles use canonical semantic <article id=\"article-content\"> shell", () => {
+      for (const guide of GUIDE_REGISTRY) {
+        const pagePath = path.join(APP_DIR, guide.slug, "page.tsx");
+        const pageContent = fs.readFileSync(pagePath, "utf-8");
+
+        expect(
+          /<article[^>]*\bid=["']article-content["']/.test(pageContent),
+          `Article ${guide.slug} must use canonical semantic <article id="article-content"> tag`
+        ).toBe(true);
+        expect(
+          pageContent.includes("</article>"),
+          `Article ${guide.slug} must close with </article>`
+        ).toBe(true);
+      }
+    });
+
+    it("ensures <ArticleDateByline> is placed above main content within article header", () => {
+      for (const guide of GUIDE_REGISTRY) {
+        const pagePath = path.join(APP_DIR, guide.slug, "page.tsx");
+        const pageContent = fs.readFileSync(pagePath, "utf-8");
+
+        const bylineIndex = pageContent.indexOf("<ArticleDateByline");
+
+        expect(
+          bylineIndex,
+          `Article ${guide.slug} must render <ArticleDateByline>`
+        ).toBeGreaterThan(-1);
+
+        // Byline should precede main content sections
+        const firstSectionIndex = pageContent.indexOf("<section", bylineIndex);
+        if (firstSectionIndex !== -1) {
+          expect(
+            bylineIndex,
+            `Article ${guide.slug} <ArticleDateByline> must precede the first <section>`
+          ).toBeLessThan(firstSectionIndex);
+        }
+      }
+    });
   });
 
   describe("3. Calculator Date Consistency", () => {

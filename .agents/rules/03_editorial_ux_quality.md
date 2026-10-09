@@ -43,7 +43,7 @@ H2
 Not every section should have the same structure.
 Use the format that best communicates the information.
 
-#### 4. Natural Paragraph Rhythm
+#### 4. Natural Paragraph Rhythm & Visual Line Standard
 Vary:
 - sentence length
 - paragraph length
@@ -52,6 +52,21 @@ Vary:
 
 Do not make every paragraph approximately the same length.
 Do not make every section equally sized.
+
+Default editorial body paragraph:
+- 1 to 2 short sentences
+- approximately 2 to 3 visual lines on a normal desktop reading width (~740px to 820px)
+
+Avoid intentionally writing:
+- 4 to 6 line paragraphs
+- dense text walls
+- multi-sentence blocks with too many ideas
+- unnecessarily long introductions
+
+When an idea becomes too large:
+split it with a new paragraph, subheading, bullet list, example, table, or callout.
+
+IMPORTANT: "2 to 3 lines" is an editorial readability target, NOT a hard CSS line-count rule. Never manipulate font size, line height, or CSS just to force paragraph line counts. Real visual line counts are verified via rendered text rects in the DOM, not raw word count heuristics.
 
 #### 5. Avoid Repetitive Phrases
 Avoid unnecessary repeated use of:

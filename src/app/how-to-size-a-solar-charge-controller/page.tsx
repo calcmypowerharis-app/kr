@@ -175,7 +175,7 @@ export default function HowToSizeASolarChargeControllerPage() {
         {/* Two-Column Grid: Left Content (DOM First), Right Sticky Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Main Article Content */}
-          <div className="lg:col-span-8 min-w-0 space-y-10">
+          <article id="article-content" className="lg:col-span-8 min-w-0 space-y-10">
             {/* Header */}
             <header className="space-y-4 border-b border-slate-200 pb-8">
               <div className="flex flex-wrap items-center gap-2 text-xs">
@@ -695,7 +695,7 @@ export default function HowToSizeASolarChargeControllerPage() {
                 This sizing guide is for educational planning. Always consult a licensed electrical engineer or NABCEP certified solar professional to verify compliance with NFPA 70 (NEC Articles 690 and 706) and local requirements.
               </p>
             </div>
-          </div>
+          </article>
 
           {/* Sticky Sidebar on Desktop */}
           <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
