@@ -22,6 +22,36 @@ describe('calculateGeneratorFuel', () => {
     expect(result.tankRuntimeHours).toBeCloseTo(0.95 / 0.12);
   });
 
+  it('calculates correctly for Honda EU2200i @ 100% load preset', () => {
+    const inputs: GeneratorFuelInputs = {
+      calculationMode: 'preset',
+      presetId: 'honda_eu2200i_gas_100',
+      fuelPricePerUnit: 3.50,
+    };
+
+    const result = calculateGeneratorFuel(inputs);
+    expect(result.fuelUnit).toBe('gallons');
+    expect(result.fuelType).toBe('gasoline');
+    expect(result.consumptionPerHour).toBe(0.30);
+    expect(result.tankSize).toBe(0.95);
+    expect(result.tankRuntimeHours).toBeCloseTo(0.95 / 0.30);
+  });
+
+  it('calculates correctly for Champion 3400W Propane @ 25% load preset', () => {
+    const inputs: GeneratorFuelInputs = {
+      calculationMode: 'preset',
+      presetId: 'champion_3400_propane_25',
+      fuelPricePerUnit: 1.50,
+    };
+
+    const result = calculateGeneratorFuel(inputs);
+    expect(result.fuelUnit).toBe('lbs');
+    expect(result.fuelType).toBe('propane');
+    expect(result.consumptionPerHour).toBe(1.38);
+    expect(result.tankSize).toBe(20);
+    expect(result.tankRuntimeHours).toBeCloseTo(20 / 1.38);
+  });
+
   it('calculates correctly for a custom input', () => {
     const inputs: GeneratorFuelInputs = {
       calculationMode: 'custom',

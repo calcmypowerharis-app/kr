@@ -222,7 +222,7 @@ export default function GeneratorFuelArticlePage() {
                 This brings the peak starting demand to 4,055 watts. To prevent tripping the breaker under heavy load, electrical engineers recommend a 25 percent safety margin, resulting in a recommended planning capacity of 5,069 watts.
               </p>
               <p>
-                By dividing the tank capacity by the runtime, we can determine the hourly consumption rate. The GP8000E consumes approximately 0.72 gallons of gasoline per hour when heavily loaded.
+                By dividing the fuel tank capacity by the documented runtime in the manufacturer manual, users can determine the specific hourly burn rate. For 5,000 to 8,000 watt conventional generators, consumption typically ranges between 0.60 and 0.85 gallons per hour under load.
               </p>
 
               <div className="bg-amber-50 border border-amber-200 rounded-xl p-6 my-8">

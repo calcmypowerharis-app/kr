@@ -39,16 +39,6 @@ export const GENERATOR_FUEL_PRESETS: GeneratorPreset[] = [
     sourceUrl: 'https://powerequipment.honda.com/generators/models/eu2200i'
   },
   {
-    id: 'generac_gp8000e_gas_50',
-    name: 'Generac GP8000E (8000W) - 50% Load',
-    fuelType: 'gasoline',
-    fuelUnit: 'gallons',
-    consumptionRate: 0.72,
-    tankSize: 7.9,
-    source: 'Generac GP8000E Spec Sheet (Calculated: 7.9 gal / 11 hrs)',
-    sourceUrl: 'https://www.generac.com/all-products/generators/portable-generators/gp-series/gp8000e/'
-  },
-  {
     id: 'champion_3400_propane_25',
     name: 'Champion 3400W Dual Fuel - 25% Load (Propane)',
     fuelType: 'propane',
