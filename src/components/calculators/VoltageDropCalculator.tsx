@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   calculateVoltageDrop,
   CircuitType,
@@ -615,6 +616,33 @@ export const VoltageDropCalculator: React.FC = () => {
               <span>
                 Voltage-drop analysis does NOT replace conductor ampacity verification, overcurrent protection sizing, insulation temperature ratings (60°C, 75°C, 90°C), ambient temperature derating, conduit fill adjustments, terminal lug compatibility, or local electrical code compliance. Always verify conductor ampacity under NEC Section 310.16 prior to physical installation.
               </span>
+            </div>
+          </div>
+
+          {/* Related Circuit Tools Callout */}
+          <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-3">
+            <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+            <div className="space-y-1.5">
+              <span className="font-bold">Need to determine circuit amperage or reduce voltage drop?</span>
+              <p className="text-blue-800 leading-relaxed">
+                Convert appliance wattage to circuit current with our{" "}
+                <Link
+                  href="/watts-to-amps-calculator"
+                  className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  Watts to Amps Calculator
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+                . For solar arrays, learn how series stringing increases voltage to minimize wire resistance losses in our{" "}
+                <Link
+                  href="/solar-panels-series-vs-parallel"
+                  className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  Solar Panels Series vs Parallel Guide
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>

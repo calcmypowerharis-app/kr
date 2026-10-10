@@ -1054,6 +1054,30 @@ export default function BatteryRuntimeGuidePage() {
               <p>
                 For daily off-grid or solar cycling, LiFePO4 lithium provides vastly lower total cost of ownership per kilowatt-hour delivered over its operating lifetime, despite higher initial purchase costs.
               </p>
+
+              <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-2 text-xs sm:text-sm text-blue-950 not-prose my-4">
+                <div className="flex items-center gap-2 font-semibold text-blue-900">
+                  <Battery className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>Planning a Larger Battery Bank?</span>
+                </div>
+                <p className="leading-relaxed text-slate-700">
+                  If 100Ah does not meet your total autonomy requirements, learn{" "}
+                  <Link
+                    href="/how-many-amp-hours-do-i-need"
+                    className="font-medium text-blue-700 underline underline-offset-2 hover:text-blue-900"
+                  >
+                    how many amp hours you need for a battery bank
+                  </Link>{" "}
+                  to size for days of backup reserve, or review{" "}
+                  <Link
+                    href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                    className="font-medium text-blue-700 underline underline-offset-2 hover:text-blue-900"
+                  >
+                    how to calculate amp-hours of a battery bank
+                  </Link>{" "}
+                  when combining multiple units in series and parallel.
+                </p>
+              </div>
             </section>
 
             {/* Section 11: Interactive Sizing Calculators Bridge */}

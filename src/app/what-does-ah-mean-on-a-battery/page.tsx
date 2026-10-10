@@ -952,7 +952,14 @@ export default function BatteryAmpHoursExplainedPage() {
                     Wiring two 12V 100Ah batteries in parallel doubles capacity to 200Ah at 12V (2,400Wh). Wiring them in series doubles voltage to 24V while capacity remains 100Ah (2,400Wh).
                   </p>
                   <p className="text-amber-800 leading-relaxed">
-                    Total stored energy is identical across both setups, but operating voltages and inverter requirements are completely different.
+                    Total stored energy is identical across both setups, but operating voltages and inverter requirements are completely different. Learn step-by-step connection formulas and busbar balancing rules in our complete guide to{" "}
+                    <Link
+                      href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                      className="font-medium text-amber-950 underline underline-offset-2 hover:text-amber-800"
+                    >
+                      how to calculate amp-hours of a battery bank
+                    </Link>
+                    .
                   </p>
                 </div>
               </div>

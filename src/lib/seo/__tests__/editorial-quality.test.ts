@@ -421,4 +421,88 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
       }
     });
   });
+
+  describe("8. Contextual Internal Linking Architecture & Reciprocal Verification", () => {
+    it("verifies calculator component contextual companion guide links", () => {
+      const solarCalc = fs.readFileSync(
+        path.resolve(process.cwd(), "src/components/calculators/SolarSystemSizeCalculator.tsx"),
+        "utf8"
+      );
+      expect(solarCalc).toContain('href="/how-many-solar-panels-do-i-need"');
+      expect(solarCalc).toContain('href="/how-much-energy-does-a-solar-panel-produce"');
+
+      const inverterCalc = fs.readFileSync(
+        path.resolve(process.cwd(), "src/components/calculators/InverterSizeCalculator.tsx"),
+        "utf8"
+      );
+      expect(inverterCalc).toContain('href="/battery-capacity-calculator"');
+      expect(inverterCalc).toContain('href="/how-many-amp-hours-do-i-need"');
+
+      const voltageDropCalc = fs.readFileSync(
+        path.resolve(process.cwd(), "src/components/calculators/VoltageDropCalculator.tsx"),
+        "utf8"
+      );
+      expect(voltageDropCalc).toContain('href="/watts-to-amps-calculator"');
+      expect(voltageDropCalc).toContain('href="/solar-panels-series-vs-parallel"');
+    });
+
+    it("verifies editorial guides have essential contextual and reciprocal internal links", () => {
+      const ahNeedGuide = fs.readFileSync(
+        path.join(APP_DIR, "how-many-amp-hours-do-i-need", "page.tsx"),
+        "utf8"
+      );
+      expect(ahNeedGuide).toContain('href="/how-to-calculate-amp-hours-of-a-battery-bank"');
+      expect(ahNeedGuide).toContain('href="/how-long-will-a-100ah-battery-last"');
+
+      const chargeControllerGuide = fs.readFileSync(
+        path.join(APP_DIR, "how-to-size-a-solar-charge-controller", "page.tsx"),
+        "utf8"
+      );
+      expect(chargeControllerGuide).toContain('href="/solar-panels-series-vs-parallel"');
+      expect(chargeControllerGuide).toContain('href="/solar-system-size-calculator"');
+
+      const contPowerGuide = fs.readFileSync(
+        path.join(APP_DIR, "continuous-power-generators", "page.tsx"),
+        "utf8"
+      );
+      expect(contPowerGuide).toContain('href="/generator-fuel-consumption-calculator"');
+      expect(contPowerGuide).toContain('href="/how-much-gas-does-a-generator-use"');
+
+      const whatIsAhGuide = fs.readFileSync(
+        path.join(APP_DIR, "what-does-ah-mean-on-a-battery", "page.tsx"),
+        "utf8"
+      );
+      expect(whatIsAhGuide).toContain('href="/how-to-calculate-amp-hours-of-a-battery-bank"');
+
+      const ah100Guide = fs.readFileSync(
+        path.join(APP_DIR, "how-long-will-a-100ah-battery-last", "page.tsx"),
+        "utf8"
+      );
+      expect(ah100Guide).toContain('href="/how-many-amp-hours-do-i-need"');
+      expect(ah100Guide).toContain('href="/how-to-calculate-amp-hours-of-a-battery-bank"');
+    });
+
+    it("verifies all registry related paths correspond to existing routes in src/app", () => {
+      const allEntries = [...CALCULATOR_REGISTRY, ...GUIDE_REGISTRY];
+      for (const entry of allEntries) {
+        for (const calcPath of entry.relatedCalculatorPaths) {
+          const slug = calcPath.replace(/^\//, "");
+          const pagePath = path.join(APP_DIR, slug, "page.tsx");
+          expect(
+            fs.existsSync(pagePath),
+            `Referenced related calculator path "${calcPath}" in ${entry.path} does not exist at ${pagePath}`
+          ).toBe(true);
+        }
+        for (const guidePath of entry.relatedGuidePaths) {
+          const slug = guidePath.replace(/^\//, "");
+          const pagePath = path.join(APP_DIR, slug, "page.tsx");
+          expect(
+            fs.existsSync(pagePath),
+            `Referenced related guide path "${guidePath}" in ${entry.path} does not exist at ${pagePath}`
+          ).toBe(true);
+        }
+      }
+    });
+  });
 });
+

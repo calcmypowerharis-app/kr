@@ -757,15 +757,22 @@ export const InverterSizeCalculator: React.FC = () => {
             <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
             <div className="space-y-1">
               <span className="font-bold">Next Step: Battery Bank & Solar Sizing</span>
-              <p className="text-blue-800">
-                An inverter only converts DC power to AC power. To size your batteries for duration, use our companion{" "}
+              <p className="text-blue-800 leading-relaxed">
+                An inverter only converts DC power to AC power. To size your battery bank capacity in Amp-hours and Watt-hours, use our{" "}
                 <Link
-                  href="/solar-battery-calculator"
+                  href="/battery-capacity-calculator"
                   className="font-bold underline text-blue-700 hover:text-blue-900"
                 >
-                  Solar Battery Sizing Calculator
+                  Battery Capacity Calculator
+                </Link>{" "}
+                or read our guide on{" "}
+                <Link
+                  href="/how-many-amp-hours-do-i-need"
+                  className="font-bold underline text-blue-700 hover:text-blue-900"
+                >
+                  how many amp hours you need for a battery bank
                 </Link>
-                . To recharge the battery bank from solar panels, use the{" "}
+                . For solar recharging, use our{" "}
                 <Link
                   href="/solar-charge-controller-calculator"
                   className="font-bold underline text-blue-700 hover:text-blue-900"

@@ -562,6 +562,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/voltage-drop-calculator",
     ],
     relatedGuidePaths: [
+      "/how-many-amp-hours-do-i-need",
       "/how-to-size-a-solar-charge-controller",
       "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
@@ -683,6 +684,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/amps-to-watts-calculator",
     ],
     relatedGuidePaths: [
+      "/how-to-calculate-amp-hours-of-a-battery-bank",
       "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
       "/what-size-generator-do-i-need-for-my-house",
@@ -741,6 +743,8 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/generator-size-calculator",
     ],
     relatedGuidePaths: [
+      "/how-many-amp-hours-do-i-need",
+      "/how-to-calculate-amp-hours-of-a-battery-bank",
       "/what-does-ah-mean-on-a-battery",
       "/what-is-a-watt-hour",
     ],
@@ -908,12 +912,14 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     lastModified: "2026-10-04",
     heroImage: "/images/articles/continuous-power-generators.webp",
     relatedCalculatorPaths: [
+      "/generator-fuel-consumption-calculator",
       "/generator-size-calculator",
       "/generator-wattage-chart",
       "/generator-amperage-chart-calculator",
       "/watts-to-amps-calculator",
     ],
     relatedGuidePaths: [
+      "/how-much-gas-does-a-generator-use",
       "/how-to-calculate-watts-for-a-generator",
       "/what-size-generator-do-i-need-for-my-house",
       "/what-size-generator-to-run-a-refrigerator",
