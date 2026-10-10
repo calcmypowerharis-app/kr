@@ -404,7 +404,14 @@ export default function HowToSizeASolarChargeControllerPage() {
                   </li>
                   <li>
                     <strong>Two Panels in Series on PWM: </strong>
-                    Series wiring doubles voltage (approx 36V Vmp). Connecting a 36V array to a 12V battery through a PWM controller causes severe power waste, as the controller forces the 36V array down to 13V. For series wiring strings, always choose an MPPT controller.
+                    Series wiring doubles voltage (approx 36V Vmp). Connecting a 36V array to a 12V battery through a PWM controller causes severe power waste, as the controller forces the 36V array down to 13V. For an in-depth breakdown of voltage versus current trade-offs, explore our guide to{" "}
+                    <Link
+                      href="/solar-panels-series-vs-parallel"
+                      className="text-blue-600 hover:text-blue-800 font-medium underline underline-offset-2"
+                    >
+                      solar panels in series vs parallel
+                    </Link>
+                    . For series wiring strings, always choose an MPPT controller.
                   </li>
                 </ul>
               </div>
@@ -643,6 +650,13 @@ export default function HowToSizeASolarChargeControllerPage() {
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs sm:text-sm text-white transition shadow-sm"
                   >
                     <span>Launch Solar Charge Controller Calculator</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href="/solar-system-size-calculator"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs sm:text-sm text-slate-200 transition border border-slate-700"
+                  >
+                    <span>Size Complete Solar Array</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link

@@ -679,6 +679,30 @@ export default function HowManyAmpHoursDoINeedPage() {
                     </p>
                   </div>
                 </div>
+
+                {/* Companion Callout Card: Battery Bank Calculations & Runtime */}
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-xl space-y-2 text-sm text-slate-700">
+                  <div className="flex items-center gap-2 font-semibold text-blue-900">
+                    <Battery className="w-4 h-4 text-blue-600 shrink-0" />
+                    <span>Connecting Individual Batteries into a Bank?</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                    If you are combining multiple 12V or 24V units, follow our guide on{" "}
+                    <Link
+                      href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                      className="text-blue-700 hover:text-blue-900 font-medium underline underline-offset-2"
+                    >
+                      how to calculate amp-hours of a battery bank
+                    </Link>{" "}
+                    for series and parallel wiring rules. For real-world runtime charts across popular appliances, see{" "}
+                    <Link
+                      href="/how-long-will-a-100ah-battery-last"
+                      className="text-blue-700 hover:text-blue-900 font-medium underline underline-offset-2"
+                    >
+                      how long a 100Ah battery lasts
+                    </Link>.
+                  </p>
+                </div>
               </section>
 
               {/* Section 9: 12V vs 24V vs 48V */}

@@ -629,6 +629,33 @@ export const SolarSystemSizeCalculator: React.FC = () => {
               This illustrative estimate does not model local fire setbacks, access pathways, roof obstructions, structural constraints, or jurisdiction-specific requirements.
             </p>
           </div>
+
+          {/* Contextual Companion Guide Callout */}
+          <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-3">
+            <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+            <div className="space-y-1.5">
+              <span className="font-bold">Planning physical roof layout or wondering how panel counts translate to daily generation?</span>
+              <p className="text-blue-800 leading-relaxed">
+                Review our comprehensive homeowner sizing guide on{" "}
+                <Link
+                  href="/how-many-solar-panels-do-i-need"
+                  className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  how many solar panels you need for your house
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+                , or see detailed daily production models in{" "}
+                <Link
+                  href="/how-much-energy-does-a-solar-panel-produce"
+                  className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  how much energy a solar panel produces
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
         </div>
       }
     >

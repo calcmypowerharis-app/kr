@@ -26,6 +26,7 @@ import {
   Fuel,
   Activity,
   Layers,
+  Calculator,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -528,6 +529,30 @@ export default function ContinuousPowerGeneratorsPage() {
                     Propane does not degrade over time in pressurized storage vessels. However, high vapor withdrawal rates in severe sub-zero winter temperatures can lower container vaporization capacity, requiring properly sized storage tanks or liquid-withdrawal external vaporizers on large engines.
                   </p>
                 </div>
+              </div>
+
+              <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl space-y-2 text-xs sm:text-sm text-amber-900 mt-4">
+                <div className="flex items-center gap-2 font-semibold">
+                  <Calculator className="w-4 h-4 text-amber-700 shrink-0" />
+                  <span>Planning Fuel Reserves for Prolonged Runtime?</span>
+                </div>
+                <p className="leading-relaxed text-amber-800">
+                  Estimate exact hourly burn rates, total tank runtimes, and multi-day storage needs using our{" "}
+                  <Link
+                    href="/generator-fuel-consumption-calculator"
+                    className="font-medium text-amber-950 underline underline-offset-2 hover:text-amber-800"
+                  >
+                    Generator Fuel Consumption Calculator
+                  </Link>
+                  . For baseline load-specific fuel burn numbers across gasoline, propane, and diesel models, read our reference guide on{" "}
+                  <Link
+                    href="/how-much-gas-does-a-generator-use"
+                    className="font-medium text-amber-950 underline underline-offset-2 hover:text-amber-800"
+                  >
+                    how much gas a generator uses
+                  </Link>
+                  .
+                </p>
               </div>
             </section>
 
