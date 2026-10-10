@@ -27,7 +27,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = buildPageMetadata({
   title: "CalcMyPower | Power, Energy & Electrical Calculators",
   description:
-    "Size backup battery banks, convert watts to amps across DC and AC circuits, and calculate portable or standby generator wattage with explicit equations and NEC-referenced assumptions.",
+    "Size backup battery banks, convert watts to amps, and calculate generator wattage using transparent engineering formulas and NEC continuous-load standards.",
   path: "/",
   isRoot: true,
 });

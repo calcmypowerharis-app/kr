@@ -10,6 +10,11 @@ import { GENERATOR_FUEL_FAQS } from "@/lib/calculators/generator-fuel";
 import { WATTS_TO_AMPS_FAQS } from "@/lib/calculators/watts-to-amps";
 import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
 import { GENERATOR_WATTAGE_CHART_FAQS } from "@/lib/calculators/generator-wattage-chart";
+import {
+  CORE_ROUTE_REGISTRY,
+  CALCULATOR_REGISTRY,
+  GUIDE_REGISTRY,
+} from "@/lib/seo/registry";
 
 const APP_DIR = path.resolve(process.cwd(), "src/app");
 const PUBLIC_DIR = path.resolve(process.cwd(), "public");
@@ -309,6 +314,111 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
       expect(compFile).toContain("GENERATOR_WATTAGE_CHART_FAQS");
       expect(compFile).toContain("GENERATOR_WATTAGE_CHART_FAQS.map");
       expect(GENERATOR_WATTAGE_CHART_FAQS.length).toBeGreaterThanOrEqual(5);
+    });
+  });
+
+  describe("7. Metadata Synchronization & Registry Completeness", () => {
+    it("verifies CORE_ROUTE_REGISTRY entries have non-empty metaTitle and metaDescription", () => {
+      expect(CORE_ROUTE_REGISTRY.length).toBeGreaterThanOrEqual(2);
+      for (const entry of CORE_ROUTE_REGISTRY) {
+        expect(entry.metaTitle.length).toBeGreaterThanOrEqual(10);
+        expect(entry.metaDescription.length).toBeGreaterThanOrEqual(50);
+        expect(entry.metaDescription.length).toBeLessThanOrEqual(165);
+      }
+    });
+
+    it("verifies homepage and calculators directory metadata matches CORE_ROUTE_REGISTRY", () => {
+      const homePage = fs.readFileSync(path.join(APP_DIR, "page.tsx"), "utf8");
+      const calcPage = fs.readFileSync(path.join(APP_DIR, "calculators", "page.tsx"), "utf8");
+
+      const homeEntry = CORE_ROUTE_REGISTRY.find((r) => r.path === "/");
+      const calcEntry = CORE_ROUTE_REGISTRY.find((r) => r.path === "/calculators");
+
+      expect(homeEntry).toBeDefined();
+      expect(calcEntry).toBeDefined();
+
+      expect(homePage).toContain(homeEntry!.metaDescription);
+      expect(calcPage).toContain(calcEntry!.metaDescription);
+    });
+
+    const BATCH_1_ROUTES = [
+      "/",
+      "/calculators",
+      "/generator-fuel-consumption-calculator",
+      "/battery-capacity-calculator",
+      "/amps-to-watts-calculator",
+      "/generator-amperage-chart-calculator",
+      "/voltage-drop-calculator",
+      "/how-much-gas-does-a-generator-use",
+      "/how-to-calculate-electricity-usage",
+      "/how-to-calculate-electricity-bill",
+      "/how-to-calculate-amp-hours-of-a-battery-bank",
+    ];
+
+    it("verifies all calculators in CALCULATOR_REGISTRY have synchronized titles and descriptions with page.tsx", () => {
+      for (const calc of CALCULATOR_REGISTRY) {
+        const pagePath = path.join(APP_DIR, calc.slug, "page.tsx");
+        expect(fs.existsSync(pagePath), `Page file does not exist: ${pagePath}`).toBe(true);
+        const pageContent = fs.readFileSync(pagePath, "utf8");
+
+        const cleanMetaTitle = calc.metaTitle.replace(/\s*\|\s*CalcMyPower$/i, "").trim();
+        expect(
+          pageContent,
+          `Calculator ${calc.path} page.tsx does not match registry metaTitle: ${cleanMetaTitle}`
+        ).toContain(cleanMetaTitle);
+
+        expect(
+          pageContent,
+          `Calculator ${calc.path} page.tsx does not match registry metaDescription`
+        ).toContain(calc.metaDescription);
+
+        if (BATCH_1_ROUTES.includes(calc.path)) {
+          expect(cleanMetaTitle.length).toBeLessThanOrEqual(65);
+          expect(calc.metaDescription.length).toBeLessThanOrEqual(165);
+        }
+      }
+    });
+
+    it("verifies all editorial guides in GUIDE_REGISTRY have synchronized titles and descriptions with page.tsx", () => {
+      for (const guide of GUIDE_REGISTRY) {
+        const pagePath = path.join(APP_DIR, guide.slug, "page.tsx");
+        expect(fs.existsSync(pagePath), `Page file does not exist: ${pagePath}`).toBe(true);
+        const pageContent = fs.readFileSync(pagePath, "utf8");
+
+        const cleanMetaTitle = guide.metaTitle.replace(/\s*\|\s*CalcMyPower$/i, "").trim();
+        expect(
+          pageContent,
+          `Guide ${guide.path} page.tsx does not match registry metaTitle: ${cleanMetaTitle}`
+        ).toContain(cleanMetaTitle);
+
+        expect(
+          pageContent,
+          `Guide ${guide.path} page.tsx does not match registry metaDescription`
+        ).toContain(guide.metaDescription);
+
+        if (BATCH_1_ROUTES.includes(guide.path)) {
+          expect(cleanMetaTitle.length).toBeLessThanOrEqual(65);
+          expect(guide.metaDescription.length).toBeLessThanOrEqual(165);
+        }
+      }
+    });
+
+    it("enforces zero em-dashes across all registry meta titles and meta descriptions", () => {
+      const allEntries = [
+        ...CORE_ROUTE_REGISTRY,
+        ...CALCULATOR_REGISTRY,
+        ...GUIDE_REGISTRY,
+      ];
+      for (const entry of allEntries) {
+        expect(
+          entry.metaTitle,
+          `Entry ${entry.path} metaTitle contains em-dash`
+        ).not.toContain("\u2014");
+        expect(
+          entry.metaDescription,
+          `Entry ${entry.path} metaDescription contains em-dash`
+        ).not.toContain("\u2014");
+      }
     });
   });
 });

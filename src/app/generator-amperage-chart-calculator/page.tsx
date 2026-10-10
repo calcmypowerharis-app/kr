@@ -8,12 +8,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Generator Amperage Chart & Calculator (120V & 240V Amps)",
+  title: "Generator Amperage Chart & Output Calculator",
   description:
-    "Calculate generator amperage output at 120V and 240V. Includes a complete generator amp chart from 1kW to 26kW, single and split-phase conversions, and 80% continuous operating limits.",
+    "Calculate generator amperage at 120V and 240V from 1kW to 26kW. Includes single and split-phase amp charts with 80% continuous load limits.",
   path: "/generator-amperage-chart-calculator",
   ogDescription:
-    "Calculate generator output amperage across 120V, 240V split-phase, and 3-phase systems with continuous safe operating thresholds and full amperage chart.",
+    "Calculate generator amperage at 120V and 240V from 1kW to 26kW. Includes single and split-phase amp charts with 80% continuous load limits.",
 });
 
 export default function GeneratorAmperagePage() {

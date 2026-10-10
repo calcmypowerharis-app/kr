@@ -35,6 +35,7 @@ import {
   RelatedTool,
 } from "@/components/calculators/RelatedCalculators";
 import { SolarChargeControllerFlowDiagram } from "@/components/calculators/SolarChargeControllerFlowDiagram";
+import Link from "next/link";
 import {
   Zap,
   Sliders,
@@ -46,6 +47,7 @@ import {
   ChevronDown,
   ChevronUp,
   Layers,
+  ArrowRight,
 } from "lucide-react";
 
 const RELATED_TOOLS: RelatedTool[] = [
@@ -730,6 +732,25 @@ export const SolarChargeControllerCalculator: React.FC = () => {
                 <span className="block text-slate-400 text-[10px]">48V Bus</span>
                 <span className="font-bold text-slate-800">{formatAmps(arrayWatts / 48)}</span>
               </div>
+            </div>
+          </div>
+
+          {/* Quick Cross-Link to Charge Controller Sizing Guide */}
+          <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-3">
+            <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+            <div className="space-y-1.5">
+              <span className="font-bold">Need help choosing between MPPT and PWM?</span>
+              <p className="text-blue-800 leading-relaxed">
+                Learn how series stringing, cold-weather voltage spikes, and overpaneling limits affect controller choice in our complete{" "}
+                <Link
+                  href="/how-to-size-a-solar-charge-controller"
+                  className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  Solar Charge Controller Sizing Guide
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+                .
+              </p>
             </div>
           </div>
         </div>

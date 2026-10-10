@@ -27,7 +27,7 @@ import {
 export const metadata: Metadata = buildPageMetadata({
   title: "Electrical & Power Calculators Directory",
   description:
-    "Browse CalcMyPower's interactive calculators and engineering sizing guides for UPS battery backup runtime, Watts to Amps circuit conversion, and backup generator sizing.",
+    "Browse interactive electrical calculators and engineering sizing tools for backup generators, battery storage, solar PV, and AC/DC circuit conversions.",
   path: "/calculators",
 });
 

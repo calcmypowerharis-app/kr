@@ -35,17 +35,17 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
-  title: "How to Calculate Electricity Usage: kWh, Watts & Appliance Energy",
+  title: "How to Calculate Electricity Usage (kWh & Watts)",
   description:
-    "Learn how to calculate electricity usage in kilowatt-hours (kWh) from appliance wattage and operating hours. See step-by-step formulas, worked examples, and cost estimates.",
+    "Learn how to calculate appliance electricity usage in kilowatt-hours (kWh) from wattage and run hours. Includes formulas, worked examples, and cost estimates.",
   alternates: {
     canonical: "https://calcmypower.com/how-to-calculate-electricity-usage",
   },
   openGraph: {
     title:
-      "How to Calculate Electricity Usage: kWh, Watts & Appliance Energy | CalcMyPower",
+      "How to Calculate Electricity Usage (kWh & Watts) | CalcMyPower",
     description:
-      "Learn how to calculate electricity usage in kilowatt-hours (kWh) from appliance wattage and operating hours. See step-by-step formulas, worked examples, and cost estimates.",
+      "Learn how to calculate appliance electricity usage in kilowatt-hours (kWh) from wattage and run hours. Includes formulas, worked examples, and cost estimates.",
     url: "https://calcmypower.com/how-to-calculate-electricity-usage",
     type: "article",
     publishedTime: "2026-10-03T00:00:00Z",
@@ -62,9 +62,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "How to Calculate Electricity Usage: kWh, Watts & Appliance Energy | CalcMyPower",
+      "How to Calculate Electricity Usage (kWh & Watts) | CalcMyPower",
     description:
-      "Learn how to calculate electricity usage in kilowatt-hours (kWh) from appliance wattage and operating hours. See step-by-step formulas, worked examples, and cost estimates.",
+      "Learn how to calculate appliance electricity usage in kilowatt-hours (kWh) from wattage and run hours. Includes formulas, worked examples, and cost estimates.",
     images: [
       "https://calcmypower.com/images/articles/how-to-calculate-electricity-usage.webp",
     ],

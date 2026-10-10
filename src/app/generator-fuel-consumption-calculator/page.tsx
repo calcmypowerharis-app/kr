@@ -10,10 +10,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Fuel Consumption Calculator",
   description:
-    "Estimate your portable or standby generator's fuel usage per hour. Calculate total fuel needed for 24-hour runtimes and operating cost for gas, propane, and diesel.",
+    "Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.",
   path: "/generator-fuel-consumption-calculator",
   ogDescription:
-    "Calculate portable and standby generator fuel consumption per hour, total runtime, and operating cost based on common manufacturer specs.",
+    "Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.",
 });
 
 import { GENERATOR_FUEL_FAQS } from "@/lib/calculators/generator-fuel";

@@ -115,8 +115,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: '/generator-fuel-consumption-calculator',
     title: 'Generator Fuel Consumption Calculator',
     shortTitle: 'Generator Fuel',
-    metaTitle: 'Generator Fuel Consumption Calculator (Gas, Propane, Diesel)',
-    metaDescription: 'Estimate your portable or standby generator\'s fuel usage per hour, total 24-hour runtime, and operating cost based on common manufacturer specs.',
+    metaTitle: 'Generator Fuel Consumption Calculator',
+    metaDescription: 'Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.',
     cluster: 'generators',
     primaryKeyword: 'generator fuel consumption calculator',
     formula: 'Cost = (Fuel Rate) * Price | Runtime = Capacity / (Fuel Rate)',
@@ -184,9 +184,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/battery-capacity-calculator",
     title: "Battery Capacity & Sizing Calculator",
     shortTitle: "Battery Capacity",
-    metaTitle: "Battery Capacity Calculator (Ah to Wh & Sizing)",
+    metaTitle: "Battery Capacity & Bank Sizing Calculator",
     metaDescription:
-      "Calculate battery capacity in Watt-hours (Wh) and Amp-hours (Ah). Estimate usable energy and size battery capacity for a load and runtime.",
+      "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh), configure series and parallel banks, and size usable storage by load and depth of discharge.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
     primaryKeyword: "battery capacity calculator",
@@ -242,9 +242,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/amps-to-watts-calculator",
     title: "Amps to Watts Electrical Calculator",
     shortTitle: "Amps to Watts",
-    metaTitle: "Amps to Watts Calculator (DC, 120V/240V AC & 3-Phase)",
+    metaTitle: "Amps to Watts Calculator (DC, Single & 3-Phase AC)",
     metaDescription:
-      "Convert Amps to Watts with our electrical calculator. Calculate real power (W) and apparent power (VA) across DC, 120V/240V single-phase, and 3-phase circuits.",
+      "Convert amps to watts across DC, single-phase 120V/240V, and three-phase AC circuits. Calculate real power (W), apparent power (VA), and power factor.",
     cluster: "electricity",
     secondaryClusters: ["generators", "ups-battery", "solar"],
     primaryKeyword: "amps to watts",
@@ -354,9 +354,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/voltage-drop-calculator",
     title: "Voltage Drop Calculator",
     shortTitle: "Voltage Drop",
-    metaTitle: "Voltage Drop Calculator (AC & DC Wire Size Sizing)",
+    metaTitle: "Voltage Drop Calculator (AC, DC & Wire Sizing)",
     metaDescription:
-      "Calculate voltage drop for DC, single-phase, and three-phase circuits. Determine voltage loss, percentage drop, and receiving voltage based on current, distance, conductor material, and wire size.",
+      "Calculate voltage drop, percentage loss, and receiving voltage for AC and DC circuits. Size conductor wire gauge by distance, current, and material.",
     cluster: "electricity",
     secondaryClusters: ["solar", "rv-power", "generators"],
     primaryKeyword: "voltage drop calculator",
@@ -463,9 +463,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/generator-amperage-chart-calculator",
     title: "Generator Amperage Chart & Electrical Calculator",
     shortTitle: "Generator Amperage Chart",
-    metaTitle: "Generator Amperage Chart & Calculator (120V & 240V Amps)",
+    metaTitle: "Generator Amperage Chart & Output Calculator",
     metaDescription:
-      "Calculate generator amperage output at 120V and 240V. Includes a complete generator amp chart from 1kW to 26kW, wire gauge recommendations, and 80% continuous load limits.",
+      "Calculate generator amperage at 120V and 240V from 1kW to 26kW. Includes single and split-phase amp charts with 80% continuous load limits.",
     cluster: "generators",
     secondaryClusters: ["electricity"],
     primaryKeyword: "generator amperage chart",
@@ -595,8 +595,8 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     path: '/how-much-gas-does-a-generator-use',
     title: 'How Much Gas Does a Generator Use Per Hour? Fuel Consumption by Wattage',
     shortTitle: 'Generator Fuel Use Guide',
-    metaTitle: 'How Much Gas Does a Generator Use Per Hour? | CalcMyPower',
-    metaDescription: 'Find out how much gas or propane a portable generator uses per hour. Examples for 2000W, 5000W, and 8000W generators.',
+    metaTitle: 'How Much Gas Does a Generator Use Per Hour?',
+    metaDescription: 'Find out how much gas or propane a portable generator uses per hour at 25%, 50%, and 100% load. Includes runtimes and hourly operating costs.',
     cluster: 'generators',
     parentCalculatorPath: '/generator-fuel-consumption-calculator',
     primaryKeyword: 'how much gas does a generator use',
@@ -835,9 +835,9 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     path: "/how-to-calculate-electricity-usage",
     title: "How to Calculate Electricity Usage: kWh, Appliance Audits & Costs",
     shortTitle: "Calculate Electricity Usage",
-    metaTitle: "How to Calculate Electricity Usage (kWh, Appliance Audits & Cost)",
+    metaTitle: "How to Calculate Electricity Usage (kWh & Watts)",
     metaDescription:
-      "Learn how to calculate electricity usage for appliances and your entire home. Master Watt-hours, kWh conversions, duty cycles, standby power, and electric bill cost calculations.",
+      "Learn how to calculate appliance electricity usage in kilowatt-hours (kWh) from wattage and run hours. Includes formulas, worked examples, and cost estimates.",
     cluster: "electricity",
     parentCalculatorPath: "/electricity-use-calculator",
     scenarioLink: "/electricity-use-calculator",
@@ -924,9 +924,9 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     path: "/how-to-calculate-electricity-bill",
     title: "How to Calculate Your Electricity Bill: kWh, Rates, and Monthly Charges",
     shortTitle: "Calculate Electricity Bill",
-    metaTitle: "How to Calculate Your Electricity Bill: kWh, Rates & Charges",
+    metaTitle: "How to Calculate Your Electric Bill (kWh & Rates)",
     metaDescription:
-      "Learn how to calculate your electric utility bill from meter reading to final balance. Understand supply vs delivery rates, fixed fees, riders, and effective kWh cost.",
+      "Learn how to calculate your electric bill from monthly kWh usage and utility rates. Understand tier rates, fixed base charges, and taxes with worked examples.",
     cluster: "electricity",
     parentCalculatorPath: "/electricity-cost-calculator",
     scenarioLink: "/electricity-cost-calculator",
@@ -1013,9 +1013,9 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     path: "/how-to-calculate-amp-hours-of-a-battery-bank",
     title: "How to Calculate Amp Hours of a Battery Bank: Series, Parallel & 2S2P Wiring",
     shortTitle: "Battery Bank Amp-Hours Guide",
-    metaTitle: "How to Calculate Amp Hours of a Battery Bank | CalcMyPower",
+    metaTitle: "How to Calculate Amp-Hours of a Battery Bank",
     metaDescription:
-      "Calculate battery bank amp-hours (Ah) and voltage across series, parallel, and series-parallel configurations. Complete formulas, worked examples, and sizing limits.",
+      "Calculate battery bank amp-hours (Ah), voltage, and Watt-hours across series, parallel, and 2S2P configurations with step-by-step wiring formulas.",
     cluster: "ups-battery",
     parentCalculatorPath: "/battery-capacity-calculator",
     scenarioLink: "/battery-capacity-calculator",
@@ -1044,6 +1044,8 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
 export interface CoreRouteRegistryEntry {
   path: "/" | "/calculators";
   title: string;
+  metaTitle: string;
+  metaDescription: string;
   lastModified: string;
 }
 
@@ -1051,11 +1053,17 @@ export const CORE_ROUTE_REGISTRY: CoreRouteRegistryEntry[] = [
   {
     path: "/",
     title: "CalcMyPower | Power, Energy & Electrical Calculators",
+    metaTitle: "CalcMyPower | Power, Energy & Electrical Calculators",
+    metaDescription:
+      "Size backup battery banks, convert watts to amps, and calculate generator wattage using transparent engineering formulas and NEC continuous-load standards.",
     lastModified: "2026-09-28",
   },
   {
     path: "/calculators",
     title: "Electrical & Power Calculators Directory",
+    metaTitle: "Electrical & Power Calculators Directory",
+    metaDescription:
+      "Browse interactive electrical calculators and engineering sizing tools for backup generators, battery storage, solar PV, and AC/DC circuit conversions.",
     lastModified: "2026-09-28",
   },
 ];

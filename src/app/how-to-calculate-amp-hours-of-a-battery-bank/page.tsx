@@ -35,17 +35,17 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
-  title: "How to Calculate Amp Hours of a Battery Bank (Series, Parallel & 2S2P)",
+  title: "How to Calculate Amp-Hours of a Battery Bank",
   description:
-    "Learn how to calculate battery bank amp-hours (Ah), voltage, and nominal Watt-hours across series, parallel, and series-parallel wiring. Includes formulas and worked examples.",
+    "Calculate battery bank amp-hours (Ah), voltage, and Watt-hours across series, parallel, and 2S2P configurations with step-by-step wiring formulas.",
   alternates: {
     canonical: "https://calcmypower.com/how-to-calculate-amp-hours-of-a-battery-bank",
   },
   openGraph: {
     title:
-      "How to Calculate Amp Hours of a Battery Bank | CalcMyPower",
+      "How to Calculate Amp-Hours of a Battery Bank | CalcMyPower",
     description:
-      "Learn how to calculate battery bank amp-hours (Ah), voltage, and nominal Watt-hours across series, parallel, and series-parallel wiring. Includes formulas and worked examples.",
+      "Calculate battery bank amp-hours (Ah), voltage, and Watt-hours across series, parallel, and 2S2P configurations with step-by-step wiring formulas.",
     url: "https://calcmypower.com/how-to-calculate-amp-hours-of-a-battery-bank",
     type: "article",
     publishedTime: "2026-10-10T00:00:00Z",
@@ -62,9 +62,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "How to Calculate Amp Hours of a Battery Bank | CalcMyPower",
+      "How to Calculate Amp-Hours of a Battery Bank | CalcMyPower",
     description:
-      "Learn how to calculate battery bank amp-hours (Ah), voltage, and nominal Watt-hours across series, parallel, and series-parallel wiring. Includes formulas and worked examples.",
+      "Calculate battery bank amp-hours (Ah), voltage, and Watt-hours across series, parallel, and 2S2P configurations with step-by-step wiring formulas.",
     images: [
       "https://calcmypower.com/images/articles/how-to-calculate-amp-hours-of-a-battery-bank.webp",
     ],
