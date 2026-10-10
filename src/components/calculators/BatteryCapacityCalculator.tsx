@@ -93,14 +93,15 @@ const RELATED_TOOLS: RelatedTool[] = [
 export const BatteryCapacityCalculator: React.FC = () => {
   const [mode, setMode] = useState<CalculatorMode>("evaluate");
 
-  // Mode 1: Evaluate Existing Battery State
+  // Mode 1: Evaluate Existing Battery / Bank State
   const [evalVoltage, setEvalVoltage] = useState<number>(12);
   const [evalCapacity, setEvalCapacity] = useState<number>(100);
   const [evalUnit, setEvalUnit] = useState<CapacityUnit>("ah");
   const [evalChemistry, setEvalChemistry] = useState<BatteryChemistry>("lifepo4");
   const [evalCustomDoD, setEvalCustomDoD] = useState<number>(85);
-  const [evalCount, setEvalCount] = useState<number>(1);
   const [evalWiring, setEvalWiring] = useState<WiringType>("single");
+  const [evalSeriesCount, setEvalSeriesCount] = useState<number>(2);
+  const [evalParallelStrings, setEvalParallelStrings] = useState<number>(2);
 
   // Mode 2: Size Battery for Load State
   const [sizeLoadWatts, setSizeLoadWatts] = useState<number>(300);
@@ -120,10 +121,30 @@ export const BatteryCapacityCalculator: React.FC = () => {
       capacityUnit: evalUnit,
       chemistry: evalChemistry,
       customDoD: evalChemistry === "custom" ? evalCustomDoD : undefined,
-      batteryCount: evalCount,
-      wiring: evalCount > 1 ? evalWiring : "single",
+      wiring: evalWiring,
+      seriesCount:
+        evalWiring === "single"
+          ? 1
+          : evalWiring === "parallel"
+          ? 1
+          : evalSeriesCount,
+      parallelStrings:
+        evalWiring === "single"
+          ? 1
+          : evalWiring === "series"
+          ? 1
+          : evalParallelStrings,
     });
-  }, [evalVoltage, evalCapacity, evalUnit, evalChemistry, evalCustomDoD, evalCount, evalWiring]);
+  }, [
+    evalVoltage,
+    evalCapacity,
+    evalUnit,
+    evalChemistry,
+    evalCustomDoD,
+    evalWiring,
+    evalSeriesCount,
+    evalParallelStrings,
+  ]);
 
   // Mode 2 calculation
   const sizeResults = useMemo(() => {
@@ -155,8 +176,9 @@ export const BatteryCapacityCalculator: React.FC = () => {
       setEvalUnit("ah");
       setEvalChemistry("lifepo4");
       setEvalCustomDoD(85);
-      setEvalCount(1);
       setEvalWiring("single");
+      setEvalSeriesCount(2);
+      setEvalParallelStrings(2);
     } else {
       setSizeLoadWatts(300);
       setSizeRuntimeHours(8);
@@ -177,8 +199,10 @@ export const BatteryCapacityCalculator: React.FC = () => {
   ];
 
   const wiringOptions = [
-    { value: "parallel", label: "Parallel (Increases Capacity Ah, Same Voltage)" },
-    { value: "series", label: "Series (Increases Voltage V, Same Capacity Ah)" },
+    { value: "single", label: "Single Battery (1S1P Standalone Unit)" },
+    { value: "series", label: "Series String (Higher Voltage, Same Ah)" },
+    { value: "parallel", label: "Parallel Strings (Higher Ah, Same Voltage)" },
+    { value: "series_parallel", label: "Series-Parallel (2S2P, etc. - Higher Voltage & Capacity)" },
   ];
 
   const loadTypeOptions = [
@@ -243,10 +267,11 @@ export const BatteryCapacityCalculator: React.FC = () => {
     },
     {
       stepNumber: 3,
-      title: "Evaluate Multi-Battery Bank Wiring (Example: 4 Batteries)",
-      calculation: "Series: 4 × 12V = 48V @ 100Ah (4,800 Wh) | Parallel: 12V @ 4 × 100Ah = 400Ah (4,800 Wh)",
+      title: "Evaluate Multi-Battery Bank Arrangements (Series, Parallel & 2S2P)",
+      calculation:
+        "Series: 4 × 12V = 48V @ 100Ah | Parallel: 12V @ 4 × 100Ah = 400Ah | 2S2P: (2 × 12V = 24V) @ (2 × 100Ah = 200Ah)",
       explanation:
-        "Series wiring multiplies voltage for higher-power inverters, while parallel wiring multiplies Amp-hours. Both configurations produce 4,800 Wh nominal and 4,080 Wh usable energy.",
+        "Series wiring multiplies voltage, parallel wiring multiplies Amp-hours, and a 2S2P series-parallel arrangement doubles both voltage (24V) and capacity (200Ah). In all three configurations, total stored nominal energy is identical: 4,800 Wh (4.8 kWh).",
     },
   ];
 
@@ -321,11 +346,11 @@ export const BatteryCapacityCalculator: React.FC = () => {
 
   return (
     <CalculatorShell
-      title="Battery Capacity & Sizing Calculator"
-      badge="UPS & Battery Storage"
+      title="Battery Bank Calculator (Capacity, Voltage & Ah)"
+      badge="Battery Bank Engineering"
       category="Battery & Storage"
-      lastUpdated="September 2026"
-      description="Calculate battery storage capacity in Watt-hours (Wh), Kilowatt-hours (kWh), and Amp-hours (Ah). Evaluate usable battery bank capacity across LiFePO4 and Lead-Acid chemistries, or size battery capacity and unit count for your specific electrical load and runtime."
+      lastUpdated="October 2026"
+      description="Calculate battery bank voltage, Amp-hours (Ah), nominal energy in Watt-hours (Wh) and kWh, and estimated usable capacity across single, series, parallel, and 2S2P series-parallel configurations. Evaluate an existing battery bank or size required capacity from appliance load wattage and backup runtime."
       onReset={handleReset}
       inputSection={
         <div className="space-y-6">
@@ -464,41 +489,96 @@ export const BatteryCapacityCalculator: React.FC = () => {
               )}
 
               {/* Multi-Battery Bank Options */}
-              <div className="pt-2 border-t border-slate-200">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 items-start">
-                  <InputField
-                    id="evalCount"
-                    label="Battery Count (Units in Bank)"
-                    value={evalCount}
-                    onChange={setEvalCount}
-                    unit="units"
-                    min={1}
-                    max={64}
-                    step={1}
-                    helpText="Set to 1 for a standalone battery, or 2+ for a connected bank."
-                    required
-                  />
+              <div className="pt-2 border-t border-slate-200 space-y-4">
+                <SelectField
+                  id="evalWiring"
+                  label="Battery Bank Configuration & Wiring"
+                  value={evalWiring}
+                  options={wiringOptions}
+                  onChange={(val) => setEvalWiring(val as WiringType)}
+                  helpText="Choose single battery, series string (higher voltage), parallel strings (higher capacity), or series-parallel (2S2P)."
+                />
 
-                  {evalCount > 1 ? (
-                    <SelectField
-                      id="evalWiring"
-                      label="Bank Wiring Configuration"
-                      value={evalWiring}
-                      options={wiringOptions}
-                      onChange={(val) => setEvalWiring(val as WiringType)}
-                      helpText={
-                        evalWiring === "series"
-                          ? "Multiplies voltage; Amp-hour capacity stays equal to one unit."
-                          : "Multiplies Amp-hour capacity; voltage stays equal to one unit."
-                      }
+                {evalWiring === "single" && (
+                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-center gap-2">
+                    <Info className="w-4 h-4 text-blue-500 shrink-0" />
+                    <span>Single standalone battery (1S1P). Bank voltage is {evalVoltage}V and capacity is {evalCapacity} Ah.</span>
+                  </div>
+                )}
+
+                {evalWiring === "series" && (
+                  <div className="space-y-3">
+                    <InputField
+                      id="evalSeriesCount"
+                      label="Batteries in Series (Ns)"
+                      value={evalSeriesCount}
+                      onChange={setEvalSeriesCount}
+                      unit="units in string"
+                      min={2}
+                      max={32}
+                      step={1}
+                      helpText="Number of identical batteries connected in series to step up bank voltage."
+                      required
                     />
-                  ) : (
-                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-center gap-2 mt-6">
-                      <Info className="w-4 h-4 text-blue-500 shrink-0" />
-                      <span>Single battery configuration (Standalone unit).</span>
+                    <div className="text-xs text-blue-800 bg-blue-50/80 p-3 rounded-xl border border-blue-200/70">
+                      <span className="font-bold">Series Rule:</span> Bank Voltage multiplies ({evalVoltage}V × {evalSeriesCount} = {evalVoltage * evalSeriesCount}V). Bank capacity remains {evalCapacity} Ah. Total batteries: {evalSeriesCount}.
                     </div>
-                  )}
-                </div>
+                  </div>
+                )}
+
+                {evalWiring === "parallel" && (
+                  <div className="space-y-3">
+                    <InputField
+                      id="evalParallelStrings"
+                      label="Number of Parallel Strings (Np)"
+                      value={evalParallelStrings}
+                      onChange={setEvalParallelStrings}
+                      unit="parallel strings"
+                      min={2}
+                      max={16}
+                      step={1}
+                      helpText="Number of identical strings wired in parallel to multiply Amp-hour capacity."
+                      required
+                    />
+                    <div className="text-xs text-blue-800 bg-blue-50/80 p-3 rounded-xl border border-blue-200/70">
+                      <span className="font-bold">Parallel Rule:</span> Bank Capacity multiplies ({evalCapacity} Ah × {evalParallelStrings} = {evalCapacity * evalParallelStrings} Ah). Bank voltage remains {evalVoltage}V. Total batteries: {evalParallelStrings}.
+                    </div>
+                  </div>
+                )}
+
+                {evalWiring === "series_parallel" && (
+                  <div className="space-y-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <InputField
+                        id="evalSeriesCount"
+                        label="Batteries in Series per String (Ns)"
+                        value={evalSeriesCount}
+                        onChange={setEvalSeriesCount}
+                        unit="batteries / string"
+                        min={2}
+                        max={16}
+                        step={1}
+                        helpText="Sets string voltage (e.g. 2 for 24V string, 4 for 48V string)."
+                        required
+                      />
+                      <InputField
+                        id="evalParallelStrings"
+                        label="Number of Parallel Strings (Np)"
+                        value={evalParallelStrings}
+                        onChange={setEvalParallelStrings}
+                        unit="parallel strings"
+                        min={2}
+                        max={8}
+                        step={1}
+                        helpText="Sets total capacity by joining parallel strings."
+                        required
+                      />
+                    </div>
+                    <div className="text-xs text-blue-800 bg-blue-50/80 p-3 rounded-xl border border-blue-200/70">
+                      <span className="font-bold">Series-Parallel Rule:</span> Total {evalSeriesCount * evalParallelStrings} batteries in a {evalSeriesCount}S{evalParallelStrings}P bank ({evalVoltage * evalSeriesCount}V @ {evalCapacity * evalParallelStrings} Ah). Nominal energy: {((evalVoltage * evalSeriesCount * evalCapacity * evalParallelStrings) / 1000).toFixed(2)} kWh.
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Validation Errors */}
@@ -733,12 +813,26 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   {
                     label: "Bank Capacity (Ah)",
                     value: evalResults.isValid ? evalResults.formattedBankAh : "--",
-                    subtext: "Nominal Amp-hours",
+                    subtext:
+                      evalResults.totalBatteries > 1
+                        ? `${evalResults.parallelStrings} parallel string(s)`
+                        : "Nominal Amp-hours",
                   },
                   {
                     label: "Bank Voltage",
                     value: evalResults.isValid ? `${evalResults.bankVoltage} V` : "--",
-                    subtext: evalCount > 1 ? `${evalCount} units in ${evalWiring}` : "Single battery",
+                    subtext:
+                      evalResults.totalBatteries > 1
+                        ? `${evalResults.seriesCount} in series per string`
+                        : "Nominal Voltage",
+                  },
+                  {
+                    label: "Total Batteries in Bank",
+                    value: evalResults.isValid ? `${evalResults.totalBatteries} Units` : "--",
+                    subtext:
+                      evalResults.totalBatteries > 1
+                        ? `${evalResults.seriesCount}S${evalResults.parallelStrings}P arrangement`
+                        : "1S1P Single Battery",
                   },
                   {
                     label: "Depth of Discharge",
@@ -750,7 +844,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
               />
 
               {/* Wiring Summary Detail Card */}
-              {evalResults.isValid && evalCount > 1 && (
+              {evalResults.isValid && evalResults.totalBatteries > 1 && (
                 <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-slate-200 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-blue-400 uppercase tracking-wider">
                     <Layers className="w-4 h-4 text-blue-400" />
@@ -824,21 +918,21 @@ export const BatteryCapacityCalculator: React.FC = () => {
             </>
           )}
 
-          {/* Quick Cross-Link to UPS Runtime & 100Ah Runtime Guide */}
+          {/* Quick Cross-Link to Battery Bank Amp Hours Guide & Related Tools */}
           <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-3">
             <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
             <div className="space-y-1.5">
-              <span className="font-bold">Need to calculate exact backup runtime for an existing battery?</span>
+              <span className="font-bold">Need help calculating or wiring a multi-battery bank?</span>
               <p className="text-blue-800 leading-relaxed">
-                If you already own a battery bank and want custom runtime hours across varying household loads, use our dedicated{" "}
+                Learn how series and parallel arrangements change bank voltage and capacity in our comprehensive{" "}
                 <Link
-                  href="/ups-battery-backup-calculator"
-                  className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                  href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                  className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  UPS &amp; Battery Backup Calculator
+                  Battery Bank Amp-Hours Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
-                . For realistic appliance benchmarks (refrigerators, CPAP, TVs, and inverters), read our{" "}
+                . For realistic runtime benchmarks across appliances, read our{" "}
                 <Link
                   href="/how-long-will-a-100ah-battery-last"
                   className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
@@ -846,20 +940,20 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   12V 100Ah Battery Runtime Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
-                , calculate total bank requirements from daily Watt-hour loads in our{" "}
+                , calculate total backup sizing from daily Watt-hours in our{" "}
                 <Link
                   href="/how-many-amp-hours-do-i-need"
                   className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  Battery Bank Amp Hour Sizing Guide
+                  Battery Bank Sizing Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
-                , or learn how to wire solar panels to charge your battery bank in our{" "}
+                , or test runtime for specific appliances using our{" "}
                 <Link
-                  href="/solar-panels-series-vs-parallel"
+                  href="/ups-battery-backup-calculator"
                   className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  Solar Panels Series vs Parallel Guide
+                  UPS Runtime Calculator
                   <ArrowRight className="w-3 h-3" />
                 </Link>
                 .
@@ -970,7 +1064,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
             </h2>
           </div>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
-            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. For a complete sizing walkthrough from daily Watt-hours to total bank Ah, read our guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-medium">how many amp hours you need for a battery bank</Link>:
+            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. To calculate bank Amp-hours, voltage, and string configurations step-by-step, read our technical guide on <Link href="/how-to-calculate-amp-hours-of-a-battery-bank" className="text-blue-600 hover:underline font-semibold">how to calculate amp hours of a battery bank</Link>, or see our companion guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-medium">how many amp hours you need for a daily load</Link>:
           </p>
 
           <div className="overflow-x-auto mb-6">
