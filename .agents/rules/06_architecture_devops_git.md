@@ -51,6 +51,12 @@ Before destructive changes:
 - confirm the replacement exists
 - keep the change reversible when practical
 
+Mandatory Git Author Identity:
+- All git commits must strictly use the official team account:
+  - user.name: calcmypowerharis-app
+  - user.email: calcmypowerharis@gmail.com
+- Never commit with personal or secondary accounts (such as patnerj95@gmail.com). Vercel team licensing restricts builds to team members and flags unauthorized authors.
+
 ## 23. Remote Development, Testing & Deployment Standard
 
 ### 1. REMOTE-FIRST DEVELOPMENT
