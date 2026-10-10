@@ -276,3 +276,17 @@ This log records major technical and product decisions, context, rationale, and 
     4. **Electric Motor Sizing Helper:** Explicitly clarifies that motor nameplate ratings specify mechanical output at the shaft ($P_{mech} = HP \times 0.7457\text{ kW}$), and that electrical line draw requires dividing mechanical power by motor efficiency ($P_{elect} = P_{mech} / \eta$), preventing undersized feeder planning.
     5. **Guardrail Compliance:** Assumes balanced symmetrical loads, documents unbalance limitations, excludes prohibited certification claims, and contains zero em-dashes across code, metadata, and editorial content.
 - **Rationale:** Captures high-intent commercial and industrial search traffic without cannibalizing existing tools, enforces transparent engineering assumptions, and delivers clear educational utility for engineers, technicians, and facility operators.
+
+---
+
+## Decision 027: Phase 2 Batch 1: Centralized Registry Metadata Synchronization & Contextual Companion Linking
+- **Date:** 2026-10-10
+- **Status:** Approved, Merged & Production Deployed (PR #7, Merge Commit `a59b681`)
+- **Context:** Forensic SEO audit identified metadata synchronization drift between `src/lib/seo/registry.ts` and `page.tsx` across eight routes, missing registry entries for `/` and `/calculators`, outdated SERP snippet meta descriptions, and missing contextual bridge links between high-volume calculators and their in-depth companion guides.
+- **Decision:**
+  1. Synchronized all route metadata titles, descriptions, and canonical URLs between `registry.ts` and individual route `page.tsx` exports across 11 target routes.
+  2. Integrated `/` and `/calculators` directly into `ROUTE_REGISTRY` in `src/lib/seo/registry.ts` to maintain single-source-of-truth integrity.
+  3. Replaced generic or truncated SERP snippets with high-clickthrough, intent-focused descriptions adhering to realistic pixel-width constraints and transparent engineering formulas.
+  4. Embedded contextual companion guide callouts within interactive calculator interfaces: `/generator-fuel-consumption-calculator` linking directly to `/how-much-gas-does-a-generator-use`, and `/solar-charge-controller-calculator` linking directly to `/how-to-size-a-solar-charge-controller`.
+  5. Established permanent automated regression test suite in `src/lib/seo/__tests__/editorial-quality.test.ts` to ensure 100% metadata parity and prevent future registry drift.
+- **Rationale:** Guarantees technical search parity across all crawlers, eliminates conflicting metadata signals, improves SERP snippet CTR, and strengthens internal topical authority clusters without intrusive ad-hoc linking.
