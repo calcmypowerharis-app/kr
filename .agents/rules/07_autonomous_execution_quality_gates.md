@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook — Domain 07: Autonomous Execution & Automated Quality Gates
+# CalcMyPower Rulebook - Domain 07: Autonomous Execution & Automated Quality Gates
 
 > Antigravity Modular Rule Specification: Category `07_autonomous_execution_quality_gates.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.
@@ -296,5 +296,18 @@ Never rely solely on manual visual review to catch recurring editorial or asset 
 - **Mandatory Registry Dates:** Every editorial entry in `GUIDE_REGISTRY` must possess valid ISO 8601 `publishedAt` and `updatedAt` strings.
 - **Mandatory Visible Date Byline:** Every editorial article route must render `ArticleDateByline` displaying genuine publication and update dates matching the registry.
 - **Automated Rendered Readability Check:** Body paragraphs must meet the 2 to 3 visual lines standard (~740px to 820px reading width). Multi-sentence text blocks and dense walls of text are caught and blocked during pre-commit quality audits.
+
+### 5. Contextual Linking & Registry Reciprocal Integrity Gate
+Automated tests in `src/lib/seo/__tests__/editorial-quality.test.ts` (Section 8) must verify that:
+- Calculator component companion links are physically present in component source files.
+- Editorial guides maintain reciprocal links to sibling cluster guides.
+- All `relatedCalculatorPaths` and `relatedGuidePaths` declared in `registry.ts` resolve to existing, active route files in `src/app/`.
+
+### 6. Live Production HTTP Route & Link Verification Gate
+Before closing any production release task:
+- Run a dedicated Python live verification script against `https://calcmypower.com`.
+- Assert HTTP 200 OK across all touched routes.
+- Assert that new internal links and meta tags are physically returned in the live HTML response.
+- Confirm CDN cache propagation before declaring deployment complete.
 
 

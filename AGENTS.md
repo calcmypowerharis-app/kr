@@ -19,7 +19,7 @@ The authoritative, full-text rules (Rules 1 through 29) are modularized across 8
 | **4** | Required Writing Style | `.agents/rules/00_core_identity_and_guardrails.md` | US technical publisher tone, banned phrases |
 | **5** | Calculator-First Product Principle | `.agents/rules/01_calculator_engineering.md` | Tools are the product; articles support calculators |
 | **6** | Current Topic Scope | `.agents/rules/01_calculator_engineering.md` | Permitted energy/electrical topics & boundary control |
-| **7** | SEO Rules | `.agents/rules/04_seo_keyword_strategy.md` | Search intent over keyword density, metadata, schemas |
+| **7** | SEO Rules | `.agents/rules/04_seo_keyword_strategy.md` | Single truth metadata, contextual linking, FAQ/schema parity |
 | **8** | Keyword Research Rules | `.agents/rules/04_seo_keyword_strategy.md` | US volume, SERP reality, commercial intent over raw KD |
 | **9** | Sources & Accuracy | `.agents/rules/04_seo_keyword_strategy.md` | Authoritative US sources (DOE, NREL, EIA, NEC) |
 | **10** | Safety & Code Compliance | `.agents/rules/04_seo_keyword_strategy.md` | Electrical safety, NEC references, licensed engineer disclaimers |
@@ -41,7 +41,7 @@ The authoritative, full-text rules (Rules 1 through 29) are modularized across 8
 | **26** | Permanent Technical Accuracy & Sizing Standards | `.agents/rules/01_calculator_engineering.md` | Peukert, DoD, surge margins, NEC 125% continuous-load rules |
 | **27** | Autonomous Execution & Final-Report-Only Standard | `.agents/rules/07_autonomous_execution_quality_gates.md` | End-to-end execution, no routine questions, stop only on blockers |
 | **28** | Article Image Context & Non-Repetition Standard | `.agents/rules/05_design_system_and_images.md` | Unique visual per article, descriptive alt text, context match |
-| **29** | Automated Quality Gates & Scenario Single Source of Truth | `.agents/rules/07_autonomous_execution_quality_gates.md` | Multi-gate CI automation, single scenario truth, image quotas |
+| **29** | Automated Quality Gates & Scenario Single Source of Truth | `.agents/rules/07_autonomous_execution_quality_gates.md` | Multi-gate CI automation, single scenario truth, live verification |
 
 ---
 
@@ -78,7 +78,7 @@ The authoritative, full-text rules (Rules 1 through 29) are modularized across 8
 - Deliver work via a concise, structured Final Report covering exact changes, test passes, build verification, and deployment status.
 
 ### 6. Definition of Done (Rule 19 & Rule 29)
-A task is DONE only when all seven quality gates pass:
+A task is DONE only when all eight quality gates pass:
 1. Feature implementation matches the approved specification.
 2. Responsive UX verified on both mobile (390px) and desktop layouts.
 3. Automated unit/regression test suite passes (`npm test`).
@@ -86,6 +86,7 @@ A task is DONE only when all seven quality gates pass:
 5. Linter passes with zero warnings or errors (`npm run lint`).
 6. Production build passes (`npm run build`).
 7. Git diff is clean, reviewed, and committed with descriptive message.
+8. Live production HTTP verification passes across touched routes and links after deployment.
 
 ### 7. Permanent Editorial Design Standard (Canonical Reference: /solar-panels-series-vs-parallel)
 
