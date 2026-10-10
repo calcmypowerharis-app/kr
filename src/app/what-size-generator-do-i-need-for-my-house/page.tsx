@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
-        url: "https://calcmypower.com/images/articles/standby-generator-home-installation.jpg",
+        url: "https://calcmypower.com/images/articles/standby-generator-home-installation.webp",
         width: 1280,
         height: 720,
         alt: "Suburban home exterior with an automatic whole-house standby generator installed on a concrete pad next to the electrical utility meter",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     description:
       "Calculate the right generator capacity for your home using real running and starting watts.",
     images: [
-      "https://calcmypower.com/images/articles/standby-generator-home-installation.jpg",
+      "https://calcmypower.com/images/articles/standby-generator-home-installation.webp",
     ],
   },
 };
@@ -106,8 +106,8 @@ export default function GeneratorSizingGuidePage() {
     datePublished: "2026-09-27T08:00:00Z",
     dateModified: "2026-09-28T00:00:00Z",
     images: [
-      "https://calcmypower.com/images/articles/standby-generator-home-installation.jpg",
-      "https://calcmypower.com/images/articles/portable-generator-outdoor-safety.jpg",
+      "https://calcmypower.com/images/articles/standby-generator-home-installation.webp",
+      "https://calcmypower.com/images/articles/portable-generator-outdoor-safety.webp",
     ],
   });
 
@@ -202,13 +202,13 @@ export default function GeneratorSizingGuidePage() {
             {/* Featured Visual Asset with Click-to-Zoom */}
             <div className="space-y-3">
               <ZoomableArticleImage
-                src="/images/articles/standby-generator-home-installation.jpg"
+                src="/images/articles/standby-generator-home-installation.webp"
                 alt="Suburban detached home exterior with an automatic whole-house standby generator installed on a concrete pad next to the electrical utility meter"
                 title="Whole-House Standby Generator Installation"
                 caption="Figure 1: Permanently installed standby generators connect to the main service panel through an automatic transfer switch, supplying selected subpanels or full-house loads."
               >
                 <Image
-                  src="/images/articles/standby-generator-home-installation.jpg"
+                  src="/images/articles/standby-generator-home-installation.webp"
                   alt="Suburban detached home exterior with an automatic whole-house standby generator installed on a concrete pad next to the electrical utility meter"
                   fill
                   priority
@@ -1000,13 +1000,13 @@ export default function GeneratorSizingGuidePage() {
           {/* Safety Image with Click-to-Zoom */}
           <div className="space-y-3 my-6">
             <ZoomableArticleImage
-              src="/images/articles/portable-generator-outdoor-safety.jpg"
+              src="/images/articles/portable-generator-outdoor-safety.webp"
               alt="Portable dual-fuel inverter generator operating safely outdoors on a gravel driveway well over twenty feet away from home windows and doors"
               title="Portable Generator Outdoor Placement Safety"
               caption="Figure 2: Portable generators must operate exclusively outdoors at least 20 feet away from windows, doors, and vents with the exhaust directed away from the building."
             >
               <Image
-                src="/images/articles/portable-generator-outdoor-safety.jpg"
+                src="/images/articles/portable-generator-outdoor-safety.webp"
                 alt="Portable dual-fuel inverter generator operating safely outdoors on a gravel driveway well over twenty feet away from home windows and doors"
                 fill
                 sizes="(max-width: 896px) 100vw, 896px"

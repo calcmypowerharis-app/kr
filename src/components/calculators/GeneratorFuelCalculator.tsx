@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import {
   calculateGeneratorFuel,
   GENERATOR_FUEL_PRESETS,
+  GENERATOR_FUEL_FAQS,
   FuelType,
   FuelUnit,
   GeneratorFuelInputs,
@@ -14,6 +15,7 @@ import { ResultCard } from "@/components/ui/ResultCard";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
 import { AssumptionsSection } from "@/components/calculators/AssumptionsSection";
+import { FaqSection } from "@/components/calculators/FaqSection";
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
 import { Fuel, DollarSign, Clock, Zap } from "lucide-react";
@@ -311,6 +313,8 @@ export function GeneratorFuelCalculator() {
           ]}
         />
         
+        <FaqSection faqs={GENERATOR_FUEL_FAQS} />
+
         <RelatedCalculators
           calculators={[
             {

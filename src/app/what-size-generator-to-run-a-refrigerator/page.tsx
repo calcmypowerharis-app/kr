@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
-        url: "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.jpg",
+        url: "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.webp",
         width: 1280,
         height: 720,
         alt: "Modern residential kitchen with a stainless steel French door refrigerator",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     description:
       "Calculate the right generator wattage for your refrigerator and freezer during a storm outage.",
     images: [
-      "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.jpg",
+      "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.webp",
     ],
   },
 };
@@ -126,8 +126,8 @@ export default function RefrigeratorGeneratorSizingPage() {
     datePublished: "2026-09-27T12:00:00Z",
     dateModified: "2026-09-28T00:00:00Z",
     images: [
-      "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.jpg",
-      "https://calcmypower.com/images/articles/refrigerator-electrical-rating-label.jpg",
+      "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.webp",
+      "https://calcmypower.com/images/articles/refrigerator-electrical-rating-label.webp",
     ],
   });
 
@@ -219,13 +219,13 @@ export default function RefrigeratorGeneratorSizingPage() {
             {/* Hero Image */}
             <div className="space-y-3">
               <ZoomableArticleImage
-                src="/images/articles/residential-refrigerator-kitchen.jpg"
+                src="/images/articles/residential-refrigerator-kitchen.webp"
                 alt="Modern residential kitchen with a stainless steel French door refrigerator and granite countertops"
                 title="Residential Refrigerator Power Sizing"
                 caption="Figure 1: Modern residential refrigerators draw relatively low running wattage, but their cooling compressors demand a brief burst of starting power when cycling on."
               >
                 <Image
-                  src="/images/articles/residential-refrigerator-kitchen.jpg"
+                  src="/images/articles/residential-refrigerator-kitchen.webp"
                   alt="Modern residential kitchen with a stainless steel French door refrigerator and granite countertops"
                   fill
                   priority
@@ -600,13 +600,13 @@ export default function RefrigeratorGeneratorSizingPage() {
 
               <div className="space-y-3 my-5">
                 <ZoomableArticleImage
-                  src="/images/articles/refrigerator-electrical-rating-label.jpg"
+                  src="/images/articles/refrigerator-electrical-rating-label.webp"
                   alt="Interior fresh food compartment of a residential refrigerator showing an electrical data rating plate label with 115V AC and 6.0 Amps specifications"
                   title="Refrigerator Electrical Data Rating Label"
                   caption="Figure 2: A typical residential refrigerator electrical data plate on the interior fresh food compartment wall, showing voltage (115V AC), frequency (60 Hz), and rated operating current (6.0 Amps)."
                 >
                   <Image
-                    src="/images/articles/refrigerator-electrical-rating-label.jpg"
+                    src="/images/articles/refrigerator-electrical-rating-label.webp"
                     alt="Interior fresh food compartment of a residential refrigerator showing an electrical data rating plate label with 115V AC and 6.0 Amps specifications"
                     fill
                     sizes="(max-width: 1024px) 100vw, 800px"

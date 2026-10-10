@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
-        url: "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.jpg",
+        url: "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.webp",
         width: 1280,
         height: 720,
         alt: "12V 100Ah deep cycle battery on a workshop bench with multimeter test leads",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     description:
       "Demystify battery Amp-hour ratings, convert Ah to Watt-hours, and calculate real usable backup runtime.",
     images: [
-      "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.jpg",
+      "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.webp",
     ],
   },
 };
@@ -124,7 +124,7 @@ export default function BatteryAmpHoursExplainedPage() {
     datePublished: "2026-09-28T00:00:00Z",
     dateModified: "2026-09-28T00:00:00Z",
     images: [
-      "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.jpg",
+      "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.webp",
     ],
   });
 
@@ -216,13 +216,13 @@ export default function BatteryAmpHoursExplainedPage() {
             {/* Hero Image */}
             <div className="space-y-3">
               <ZoomableArticleImage
-                src="/images/articles/deep-cycle-battery-amp-hours.jpg"
+                src="/images/articles/deep-cycle-battery-amp-hours.webp"
                 alt="12V 100Ah deep cycle battery on a workshop bench with multimeter test leads"
                 title="Deep-Cycle Battery Amp-Hour Rating"
                 caption="Figure 1: A standard 12V 100Ah deep-cycle battery stores 1,200 nominal Watt-hours of energy, but usable runtime depends on chemistry depth of discharge and discharge current."
               >
                 <Image
-                  src="/images/articles/deep-cycle-battery-amp-hours.jpg"
+                  src="/images/articles/deep-cycle-battery-amp-hours.webp"
                   alt="12V 100Ah deep cycle battery on a workshop bench with multimeter test leads"
                   fill
                   priority

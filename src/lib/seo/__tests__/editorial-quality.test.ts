@@ -6,6 +6,10 @@ import {
   getGeneratorScenario,
 } from "@/lib/calculators/generator-size";
 import { TOC_ITEMS as HOUSE_TOC_ITEMS } from "@/components/article/tocData";
+import { GENERATOR_FUEL_FAQS } from "@/lib/calculators/generator-fuel";
+import { WATTS_TO_AMPS_FAQS } from "@/lib/calculators/watts-to-amps";
+import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
+import { GENERATOR_WATTAGE_CHART_FAQS } from "@/lib/calculators/generator-wattage-chart";
 
 const APP_DIR = path.resolve(process.cwd(), "src/app");
 const PUBLIC_DIR = path.resolve(process.cwd(), "public");
@@ -206,6 +210,105 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
           ).toBe(true);
         }
       }
+    });
+  });
+
+  describe("5. Image Asset Format and Size Ceiling Guardrail (Phase 1 SEO Remediation)", () => {
+    it("enforces zero legacy JPEG assets in public/images/articles and public/images/calculators", () => {
+      const targetDirs = [
+        path.join(PUBLIC_DIR, "images", "articles"),
+        path.join(PUBLIC_DIR, "images", "calculators"),
+      ];
+
+      for (const dir of targetDirs) {
+        if (!fs.existsSync(dir)) continue;
+        const files = fs.readdirSync(dir);
+        for (const file of files) {
+          const ext = path.extname(file).toLowerCase();
+          expect(
+            [".webp", ".svg"],
+            `Legacy format detected in ${dir}: ${file}. All assets must be optimized WebP or SVG.`
+          ).toContain(ext);
+        }
+      }
+    });
+
+    it("enforces the 150 KB hard size ceiling for all production article and calculator image assets", () => {
+      const targetDirs = [
+        path.join(PUBLIC_DIR, "images", "articles"),
+        path.join(PUBLIC_DIR, "images", "calculators"),
+      ];
+
+      const MAX_BYTES = 150 * 1024; // 153,600 bytes
+
+      for (const dir of targetDirs) {
+        if (!fs.existsSync(dir)) continue;
+        const files = fs.readdirSync(dir);
+        for (const file of files) {
+          const fullPath = path.join(dir, file);
+          const stat = fs.statSync(fullPath);
+          expect(
+            stat.size,
+            `Asset ${file} in ${dir} exceeds 150 KB limit (${(stat.size / 1024).toFixed(1)} KB)`
+          ).toBeLessThanOrEqual(MAX_BYTES);
+        }
+      }
+    });
+
+    it("verifies zero editorial articles reference obsolete .jpg or .jpeg images", () => {
+      for (const article of articles) {
+        const jpgMatches = article.content.match(/\/images\/[a-zA-Z0-9_\-\/]+\.(jpg|jpeg)/gi) || [];
+        expect(
+          jpgMatches.length,
+          `Article ${article.route} references obsolete JPEG asset(s): ${jpgMatches.join(", ")}`
+        ).toBe(0);
+      }
+    });
+  });
+
+  describe("6. FAQ Schema and Rendered UI Parity (Single Source of Truth)", () => {
+    it("verifies /generator-fuel-consumption-calculator imports and renders GENERATOR_FUEL_FAQS", () => {
+      const pageFile = fs.readFileSync(path.join(APP_DIR, "generator-fuel-consumption-calculator", "page.tsx"), "utf8");
+      const compFile = fs.readFileSync(path.resolve(process.cwd(), "src/components/calculators/GeneratorFuelCalculator.tsx"), "utf8");
+
+      expect(pageFile).toContain("GENERATOR_FUEL_FAQS");
+      expect(pageFile).toContain("generateFaqSchema(GENERATOR_FUEL_FAQS)");
+      expect(compFile).toContain("GENERATOR_FUEL_FAQS");
+      expect(compFile).toContain("<FaqSection faqs={GENERATOR_FUEL_FAQS}");
+      expect(GENERATOR_FUEL_FAQS.length).toBeGreaterThanOrEqual(3);
+    });
+
+    it("verifies /watts-to-amps-calculator imports and renders WATTS_TO_AMPS_FAQS", () => {
+      const pageFile = fs.readFileSync(path.join(APP_DIR, "watts-to-amps-calculator", "page.tsx"), "utf8");
+      const compFile = fs.readFileSync(path.resolve(process.cwd(), "src/components/calculators/WattsToAmpsCalculator.tsx"), "utf8");
+
+      expect(pageFile).toContain("WATTS_TO_AMPS_FAQS");
+      expect(pageFile).toContain("generateFaqSchema(WATTS_TO_AMPS_FAQS)");
+      expect(compFile).toContain("WATTS_TO_AMPS_FAQS");
+      expect(compFile).toContain("<FaqSection faqs={WATTS_TO_AMPS_FAQS}");
+      expect(WATTS_TO_AMPS_FAQS.length).toBeGreaterThanOrEqual(6);
+    });
+
+    it("verifies /amps-to-watts-calculator imports and renders AMPS_TO_WATTS_FAQS", () => {
+      const pageFile = fs.readFileSync(path.join(APP_DIR, "amps-to-watts-calculator", "page.tsx"), "utf8");
+      const compFile = fs.readFileSync(path.resolve(process.cwd(), "src/components/calculators/AmpsToWattsCalculator.tsx"), "utf8");
+
+      expect(pageFile).toContain("AMPS_TO_WATTS_FAQS");
+      expect(pageFile).toContain("generateFaqSchema(AMPS_TO_WATTS_FAQS)");
+      expect(compFile).toContain("AMPS_TO_WATTS_FAQS");
+      expect(compFile).toContain("<FaqSection faqs={AMPS_TO_WATTS_FAQS}");
+      expect(AMPS_TO_WATTS_FAQS.length).toBeGreaterThanOrEqual(10);
+    });
+
+    it("verifies /generator-wattage-chart imports and renders GENERATOR_WATTAGE_CHART_FAQS", () => {
+      const pageFile = fs.readFileSync(path.join(APP_DIR, "generator-wattage-chart", "page.tsx"), "utf8");
+      const compFile = fs.readFileSync(path.resolve(process.cwd(), "src/components/calculators/GeneratorWattageChart.tsx"), "utf8");
+
+      expect(pageFile).toContain("GENERATOR_WATTAGE_CHART_FAQS");
+      expect(pageFile).toContain("generateFaqSchema(GENERATOR_WATTAGE_CHART_FAQS)");
+      expect(compFile).toContain("GENERATOR_WATTAGE_CHART_FAQS");
+      expect(compFile).toContain("GENERATOR_WATTAGE_CHART_FAQS.map");
+      expect(GENERATOR_WATTAGE_CHART_FAQS.length).toBeGreaterThanOrEqual(5);
     });
   });
 });

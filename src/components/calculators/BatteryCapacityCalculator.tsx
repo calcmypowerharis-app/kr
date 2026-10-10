@@ -966,12 +966,11 @@ export const BatteryCapacityCalculator: React.FC = () => {
       {/* Visual Diagram: Nominal vs Usable DoD */}
       <div className="my-8 rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm">
         <Image
-          src="/images/calculators/battery-capacity-nominal-vs-usable-dod.jpg"
+          src="/images/calculators/battery-capacity-nominal-vs-usable-dod.webp"
           alt="Educational diagram comparing nominal battery capacity in Watt-hours versus usable energy across LiFePO4 lithium at 85% depth of discharge and lead-acid AGM at 50% depth of discharge."
           width={1200}
           height={675}
           className="w-full h-auto object-cover"
-          priority
         />
         <div className="p-4 bg-slate-50 border-t border-slate-200 text-xs text-slate-600 leading-relaxed">
           <span className="font-bold text-slate-800">Nominal vs. Usable Capacity: </span>
