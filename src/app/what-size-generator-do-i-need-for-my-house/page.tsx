@@ -11,6 +11,7 @@ import {
   Sliders,
   BatteryCharging,
   Cpu,
+  Clock,
 } from "lucide-react";
 import {
   generateArticleSchema,
@@ -21,6 +22,7 @@ import { ReadingProgressBar } from "@/components/article/ReadingProgressBar";
 import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TOC_ITEMS } from "@/components/article/tocData";
+import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 import {
   calculateGeneratorSize,
   GENERATOR_SCENARIO_PRESETS,
@@ -145,68 +147,77 @@ export default function GeneratorSizingGuidePage() {
       />
 
       <ReadingProgressBar />
+      <MobileArticleNavigator items={TOC_ITEMS} />
 
-      <article id="article-content" className="max-w-[1160px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16 space-y-10">
-        {/* Header Section */}
-        <header className="space-y-4 border-b border-slate-200 pb-8">
-          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-2 text-xs font-semibold text-slate-500">
-            <Link href="/" className="text-blue-600 hover:underline">
-              Home
-            </Link>
-            <span aria-hidden="true">/</span>
-            <Link href="/generator-size-calculator" className="text-blue-600 hover:underline">
-              Generator Size Calculator
-            </Link>
-            <span aria-hidden="true">/</span>
-            <span className="text-slate-700 truncate">What Size Generator Do I Need for My House?</span>
-          </nav>
-
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold tracking-wide">
-            <Plug className="w-3.5 h-3.5 fill-current" />
-            <span>Residential Backup Sizing Guide</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        {/* Breadcrumb Navigation */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6"
+        >
+          <Link href="/" className="hover:text-blue-600 transition">
+            Home
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/calculators" className="hover:text-blue-600 transition">
+            Calculators &amp; Guides
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-slate-800 font-semibold truncate">
             What Size Generator Do I Need for My House?
-          </h1>
+          </span>
+        </nav>
 
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
-            A practical method for calculating generator wattage during utility outages, based on appliance running loads, motor startup surges, and electrical panel connections.
-          </p>
+        {/* Article Layout Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Main Content Column (8 cols on lg) */}
+          <article
+            id="article-content"
+            className="lg:col-span-8 space-y-10 text-slate-700 leading-relaxed text-base md:text-lg"
+          >
+            {/* Header Section */}
+            <header className="space-y-4 border-b border-slate-200 pb-8">
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 font-semibold">
+                  Residential Backup Sizing Guide
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>11 min read</span>
+                </span>
+                <span className="text-slate-400">•</span>
+                <ArticleDateByline datePublished="2026-09-27" lastModified="2026-09-28" />
+              </div>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-slate-500">
-            <ArticleDateByline datePublished="2026-09-27" lastModified="2026-09-28" />
-            <span>•</span>
-            <span>CalcMyPower Technical Publishing</span>
-            <span>•</span>
-            <span>11 min read</span>
-          </div>
-        </header>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                What Size Generator Do I Need for My House? Sizing Guide
+              </h1>
 
-        {/* Hero Image */}
-        <figure className="space-y-2">
-          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
-            <Image
-              src="/images/articles/standby-generator-home-installation.jpg"
-              alt="Suburban detached home exterior with an automatic whole-house standby generator installed on a concrete pad next to the electrical utility meter"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 1160px"
-              className="object-cover"
-            />
-          </div>
-          <figcaption className="text-xs text-slate-500 italic text-center">
-            Figure 1: Permanently installed standby generators connect to the main service panel through an automatic transfer switch, supplying selected subpanels or full-house loads.
-          </figcaption>
-        </figure>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
+                A practical method for calculating generator wattage during utility outages, based on appliance running loads, motor startup surges, and electrical panel connections.
+              </p>
+            </header>
 
-        {/* Floating Mobile Navigator */}
-        <MobileArticleNavigator items={TOC_ITEMS} />
+            {/* Featured Visual Asset with Click-to-Zoom */}
+            <div className="space-y-3">
+              <ZoomableArticleImage
+                src="/images/articles/standby-generator-home-installation.jpg"
+                alt="Suburban detached home exterior with an automatic whole-house standby generator installed on a concrete pad next to the electrical utility meter"
+                title="Whole-House Standby Generator Installation"
+                caption="Figure 1: Permanently installed standby generators connect to the main service panel through an automatic transfer switch, supplying selected subpanels or full-house loads."
+              >
+                <Image
+                  src="/images/articles/standby-generator-home-installation.jpg"
+                  alt="Suburban detached home exterior with an automatic whole-house standby generator installed on a concrete pad next to the electrical utility meter"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover"
+                />
+              </ZoomableArticleImage>
+            </div>
 
-        {/* Two-Column Editorial Layout */}
-        <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_280px] xl:grid-cols-[minmax(0,1fr)_300px] lg:gap-10">
-          {/* Main Article Content */}
-          <div id="article-content" className="min-w-0 space-y-12 text-slate-700 leading-relaxed text-base">
             {/* Direct Answer / Opening Section */}
             <section className="space-y-4">
               <p className="text-lg font-medium text-slate-900 leading-relaxed">
@@ -986,9 +997,14 @@ export default function GeneratorSizingGuidePage() {
             Emergency generators provide critical resilience during storms, but improper installation and operation introduce severe life-safety hazards.
           </p>
 
-          {/* Safety Image */}
-          <figure className="space-y-2 my-6">
-            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm">
+          {/* Safety Image with Click-to-Zoom */}
+          <div className="space-y-3 my-6">
+            <ZoomableArticleImage
+              src="/images/articles/portable-generator-outdoor-safety.jpg"
+              alt="Portable dual-fuel inverter generator operating safely outdoors on a gravel driveway well over twenty feet away from home windows and doors"
+              title="Portable Generator Outdoor Placement Safety"
+              caption="Figure 2: Portable generators must operate exclusively outdoors at least 20 feet away from windows, doors, and vents with the exhaust directed away from the building."
+            >
               <Image
                 src="/images/articles/portable-generator-outdoor-safety.jpg"
                 alt="Portable dual-fuel inverter generator operating safely outdoors on a gravel driveway well over twenty feet away from home windows and doors"
@@ -996,11 +1012,8 @@ export default function GeneratorSizingGuidePage() {
                 sizes="(max-width: 896px) 100vw, 896px"
                 className="object-cover"
               />
-            </div>
-            <figcaption className="text-xs text-slate-500 italic text-center">
-              Figure 2: Portable generators must operate exclusively outdoors at least 20 feet away from windows, doors, and vents with the exhaust directed away from the building.
-            </figcaption>
-          </figure>
+            </ZoomableArticleImage>
+          </div>
 
           <div className="space-y-4">
             <div className="bg-amber-50/80 border border-amber-200 rounded-2xl p-5 sm:p-6 space-y-2 text-amber-900">
@@ -1040,11 +1053,25 @@ export default function GeneratorSizingGuidePage() {
           </div>
         </section>
 
+        {/* Fuel Operating Costs Link */}
+        <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-2">
+          <h2 id="generator-fuel-calculator" className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+            Calculate Your Generator Operating Costs
+          </h2>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            After determining your size requirements, you can calculate your ongoing operating costs using our{" "}
+            <Link href="/generator-fuel-consumption-calculator" className="text-blue-600 font-semibold hover:underline">
+              Generator Fuel Consumption Calculator
+            </Link>
+            .
+          </p>
+        </div>
+
         {/* Section: FAQ */}
         <section className="space-y-6 border-t border-slate-200 pt-8">
           <div>
             <h2
-              id="generator-fuel-calculator" className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24 mb-4">Calculate Your Generator Operating Costs</h2><p className="text-slate-600 mb-8">After determining your size requirements, you can calculate your ongoing operating costs using our <Link href="/generator-fuel-consumption-calculator" className="text-indigo-600 hover:underline">Generator Fuel Consumption Calculator</Link>.</p><h2 id="faq"
+              id="faq"
               className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight scroll-mt-24"
             >
               Frequently Asked Questions
@@ -1056,17 +1083,20 @@ export default function GeneratorSizingGuidePage() {
 
           <div className="space-y-3">
             {FAQ_DATA.map((faq, idx) => (
-              <div
+              <details
                 key={idx}
-                className="bg-white border border-slate-200 rounded-2xl p-5 space-y-1.5 shadow-sm"
+                className="group bg-white rounded-2xl border border-slate-200 p-5 open:shadow-xs transition"
               >
-                <h3 className="font-bold text-slate-900 text-sm sm:text-base">
-                  {faq.question}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                <summary className="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+                  <span>{faq.question}</span>
+                  <span className="text-slate-400 group-open:rotate-180 transition-transform text-lg shrink-0 ml-2">
+                    ▾
+                  </span>
+                </summary>
+                <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
                   {faq.answer}
                 </p>
-              </div>
+              </details>
             ))}
           </div>
         </section>
@@ -1175,15 +1205,22 @@ export default function GeneratorSizingGuidePage() {
             </li>
           </ul>
         </footer>
-          </div>
 
-          {/* Desktop Sticky Table of Contents Sidebar */}
-          <aside className="hidden lg:block">
-            <TableOfContents items={TOC_ITEMS} />
-          </aside>
-        </div>
-      <p className="mt-8 text-slate-600">For more information about ongoing fuel costs and calculations, check out our guide on <Link href="/how-much-gas-does-a-generator-use" className="text-indigo-600 hover:underline">How Much Gas Does a Generator Use Per Hour?</Link></p>
-</article>
-    </>
+        {/* Guide Cross-Link */}
+        <p className="pt-4 border-t border-slate-200 text-slate-600 text-sm">
+          For more information about ongoing fuel costs and calculations, check out our guide on{" "}
+          <Link href="/how-much-gas-does-a-generator-use" className="text-blue-600 hover:underline font-semibold">
+            How Much Gas Does a Generator Use Per Hour?
+          </Link>
+        </p>
+      </article>
+
+      {/* Desktop Sticky Table of Contents Sidebar */}
+      <aside className="hidden lg:block lg:col-span-4">
+        <TableOfContents items={TOC_ITEMS} cluster="generators" />
+      </aside>
+    </div>
+  </div>
+</>
   );
 }

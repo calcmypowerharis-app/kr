@@ -697,82 +697,9 @@ export default function HowToSizeASolarChargeControllerPage() {
             </div>
           </article>
 
-          {/* Sticky Sidebar on Desktop */}
-          <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            {/* Quick Sizing Tool Box */}
-            <div className="p-6 bg-slate-900 text-white rounded-2xl space-y-4 shadow-lg">
-              <span className="text-xs font-bold text-blue-400 uppercase tracking-wider block">
-                Interactive Engineering Tools
-              </span>
-              <h3 className="text-lg font-bold">
-                Size Your Solar System Accurately
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Calculate your exact charge controller, battery bank, and pure sine wave inverter requirements using our dedicated engineering calculators.
-              </p>
-              <div className="space-y-2 pt-2">
-                <Link
-                  href="/solar-charge-controller-calculator"
-                  className="flex items-center justify-between p-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition shadow-xs"
-                >
-                  <span>Solar Charge Controller Calculator</span>
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </Link>
-                <Link
-                  href="/inverter-size-calculator"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold transition"
-                >
-                  <span>Inverter Size Calculator</span>
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
-                </Link>
-                <Link
-                  href="/solar-battery-calculator"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold transition"
-                >
-                  <span>Solar Battery Sizing Calculator</span>
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
-                </Link>
-                <Link
-                  href="/solar-system-size-calculator"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold transition"
-                >
-                  <span>Solar System Size Calculator</span>
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Table of Contents Desktop Component */}
-            <div className="hidden lg:block bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-              <TableOfContents items={TOC_ITEMS} />
-            </div>
-
-            {/* Related Articles Box */}
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider block">
-                Related Electrical Guides
-              </span>
-              <div className="space-y-2 text-xs">
-                <Link
-                  href="/solar-panels-series-vs-parallel"
-                  className="block font-medium text-blue-700 hover:underline"
-                >
-                  Solar Panels in Series vs. Parallel: Voltage, Current, and Power Guide
-                </Link>
-                <Link
-                  href="/how-many-solar-panels-do-i-need"
-                  className="block font-medium text-blue-700 hover:underline"
-                >
-                  How Many Solar Panels Do I Need for My Home?
-                </Link>
-                <Link
-                  href="/how-much-energy-does-a-solar-panel-produce"
-                  className="block font-medium text-blue-700 hover:underline"
-                >
-                  How Much Energy Does a Solar Panel Produce Daily and Monthly?
-                </Link>
-              </div>
-            </div>
+          {/* Desktop Sticky Sidebar (4 cols on lg) */}
+          <aside className="hidden lg:block lg:col-span-4">
+            <TableOfContents items={TOC_ITEMS} cluster="solar" />
           </aside>
         </div>
       </div>

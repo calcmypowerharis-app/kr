@@ -159,66 +159,75 @@ export default function HowManyAmpHoursDoINeedPage() {
       />
 
       <ReadingProgressBar />
+      <MobileArticleNavigator items={TOC_ITEMS} />
 
-      <div className="min-h-screen bg-slate-50 text-slate-800">
-        <header className="bg-gradient-to-b from-slate-900 to-slate-850 text-white pt-10 pb-12 border-b border-slate-800">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <nav
-              aria-label="Breadcrumb"
-              className="flex items-center space-x-2 text-xs text-slate-400 mb-6"
-            >
-              <Link href="/" className="hover:text-sky-400 transition">
-                Home
-              </Link>
-              <span>/</span>
-              <Link href="/calculators" className="hover:text-sky-400 transition">
-                Calculators & Guides
-              </Link>
-              <span>/</span>
-              <span className="text-slate-200 truncate">
-                How Many Amp Hours Do I Need?
-              </span>
-            </nav>
+      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        {/* Breadcrumb Navigation */}
+        <nav
+          aria-label="Breadcrumb"
+          className="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-6"
+        >
+          <Link href="/" className="hover:text-blue-600 transition">
+            Home
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link href="/calculators" className="hover:text-blue-600 transition">
+            Calculators &amp; Guides
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-slate-800 font-semibold truncate">
+            How Many Amp Hours Do I Need?
+          </span>
+        </nav>
 
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-950 border border-sky-800 text-sky-300 text-xs font-medium mb-4">
-              <Battery className="w-3.5 h-3.5" />
-              <span>Battery Storage Engineering Guide</span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight mb-4">
-              How Many Amp Hours Do I Need for a Battery Bank?
-            </h1>
-
-            <p className="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed mb-6">
-              A comprehensive engineering methodology to size battery bank capacity.
-              Learn how to calculate daily Watt-hours, select system voltage,
-              account for autonomy days, and factor in usable depth of discharge
-              and inverter losses.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 border-t border-slate-800 pt-4">
-              <ArticleDateByline
-                datePublished="2026-10-08"
-                lastModified="2026-10-08"
-                className="text-slate-400"
-              />
-              <span>•</span>
-              <div>CalcMyPower Technical Publishing</div>
-              <span>•</span>
-              <div className="inline-flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-slate-400" />
-                <span>13 min read</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Main Content Area (Content FIRST in DOM) */}
+          <article id="article-content" className="lg:col-span-8 space-y-10 text-slate-700 leading-relaxed text-base md:text-lg">
+            {/* Article Header */}
+            <header className="space-y-4 border-b border-slate-200 pb-8">
+              <div className="flex flex-wrap items-center gap-2 text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-800 font-semibold">
+                  Battery Storage Engineering Guide
+                </span>
+                <span className="text-slate-400">•</span>
+                <span className="inline-flex items-center gap-1 text-slate-500 font-medium">
+                  <Clock className="w-3.5 h-3.5 text-slate-400" />
+                  <span>13 min read</span>
+                </span>
+                <span className="text-slate-400">•</span>
+                <ArticleDateByline datePublished="2026-10-08" lastModified="2026-10-08" />
               </div>
+
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+                How Many Amp Hours Do I Need for a Battery Bank?
+              </h1>
+
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
+                A comprehensive engineering methodology to size battery bank capacity.
+                Learn how to calculate daily Watt-hours, select system voltage,
+                account for autonomy days, and factor in usable depth of discharge
+                and inverter losses.
+              </p>
+            </header>
+
+            {/* Featured Visual Asset with Click-to-Zoom */}
+            <div className="space-y-3">
+              <ZoomableArticleImage
+                src="/images/articles/how-many-amp-hours-battery-bank-sizing.webp"
+                alt="Battery bank sizing workflow diagram showing 5 engineering calculation steps from daily load watts to required amp-hours"
+                title="Battery Bank Sizing Workflow"
+                caption="Figure 1: Five-step engineering calculation workflow to convert total daily load Watt-hours into nominal battery bank Amp-hours."
+              >
+                <Image
+                  src="/images/articles/how-many-amp-hours-battery-bank-sizing.webp"
+                  alt="Battery bank sizing workflow diagram showing 5 engineering calculation steps from daily load watts to required amp-hours"
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="object-cover"
+                />
+              </ZoomableArticleImage>
             </div>
-          </div>
-        </header>
-
-        <MobileArticleNavigator items={TOC_ITEMS} />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Main Content Area (Content FIRST in DOM) */}
-            <article id="article-content" className="lg:col-span-8 space-y-10">
               {/* Direct Answer Callout Box */}
               <section
                 id="quick-answer"
@@ -264,25 +273,6 @@ export default function HowManyAmpHoursDoINeedPage() {
                 <p className="text-[11px] text-slate-500 pt-1">
                   Note: Inverter efficiencies and usable DoD figures above are illustrative planning assumptions. Sizing for real installations should use equipment manufacturer specifications.
                 </p>
-              </section>
-
-              {/* Unique Technical Diagram */}
-              <section className="space-y-3">
-                <ZoomableArticleImage
-                  src="/images/articles/how-many-amp-hours-battery-bank-sizing.webp"
-                  alt="Battery bank sizing workflow diagram showing 5 engineering calculation steps from daily load watts to required amp-hours"
-                  title="Battery Bank Sizing Workflow and Engineering Architecture"
-                  caption="Figure 1: The 5-step battery bank sizing workflow and a worked comparison across 12V, 24V, and 48V nominal architectures."
-                >
-                  <Image
-                    src="/images/articles/how-many-amp-hours-battery-bank-sizing.webp"
-                    alt="Battery bank sizing workflow diagram showing 5 engineering calculation steps from daily load watts to required amp-hours"
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 800px"
-                    className="object-cover"
-                  />
-                </ZoomableArticleImage>
               </section>
 
               {/* Section 2: What Ah Actually Represents */}
@@ -1135,90 +1125,12 @@ export default function HowManyAmpHoursDoINeedPage() {
               </section>
             </article>
 
-            {/* Aside / Sidebar Area (Sticky on Desktop) */}
-            <aside className="lg:col-span-4 space-y-6">
-              <div className="sticky top-20 space-y-6">
-                <TableOfContents items={TOC_ITEMS} />
-
-                {/* Companion Tool CTA Card */}
-                <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-xs space-y-3">
-                  <div className="flex items-center gap-2 text-sky-600 font-bold text-sm">
-                    <Calculator className="w-4 h-4" />
-                    <span>Companion Calculator</span>
-                  </div>
-                  <h3 className="font-bold text-slate-900 text-base leading-snug">
-                    Battery Capacity & Sizing Calculator
-                  </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    Convert Watt-hours to Amp-hours, select battery chemistry, and calculate exact runtime with our interactive tool.
-                  </p>
-                  <Link
-                    href="/battery-capacity-calculator"
-                    className="inline-flex items-center justify-between w-full px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs transition"
-                  >
-                    <span>Launch Calculator</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-
-                {/* Related Engineering Guides */}
-                <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-xs space-y-3">
-                  <h3 className="font-bold text-slate-900 text-sm">
-                    Related Power Guides
-                  </h3>
-                  <ul className="space-y-2 text-xs">
-                    <li>
-                      <Link
-                        href="/what-does-ah-mean-on-a-battery"
-                        className="text-slate-700 hover:text-sky-600 flex items-center justify-between group"
-                      >
-                        <span>What Does Ah Mean on a Battery?</span>
-                        <ArrowRight className="w-3 h-3 text-slate-400 group-hover:text-sky-600 transition" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/what-is-a-watt-hour"
-                        className="text-slate-700 hover:text-sky-600 flex items-center justify-between group"
-                      >
-                        <span>What Is a Watt-Hour (Wh)?</span>
-                        <ArrowRight className="w-3 h-3 text-slate-400 group-hover:text-sky-600 transition" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/how-long-will-a-100ah-battery-last"
-                        className="text-slate-700 hover:text-sky-600 flex items-center justify-between group"
-                      >
-                        <span>How Long Will a 100Ah Battery Last?</span>
-                        <ArrowRight className="w-3 h-3 text-slate-400 group-hover:text-sky-600 transition" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/solar-panels-series-vs-parallel"
-                        className="text-slate-700 hover:text-sky-600 flex items-center justify-between group"
-                      >
-                        <span>Series vs. Parallel Wiring Guide</span>
-                        <ArrowRight className="w-3 h-3 text-slate-400 group-hover:text-sky-600 transition" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="/inverter-size-calculator"
-                        className="text-slate-700 hover:text-sky-600 flex items-center justify-between group"
-                      >
-                        <span>Inverter Size & Cable Calculator</span>
-                        <ArrowRight className="w-3 h-3 text-slate-400 group-hover:text-sky-600 transition" />
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+            {/* Desktop Sticky Sidebar (4 cols on lg) */}
+            <aside className="hidden lg:block lg:col-span-4">
+              <TableOfContents items={TOC_ITEMS} cluster="ups-battery" />
             </aside>
           </div>
         </div>
-      </div>
     </>
   );
 }

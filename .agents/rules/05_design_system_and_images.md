@@ -16,6 +16,11 @@ Good uses:
 Never add decorative AI images just to make a page longer.
 Never use fake screenshots or invented data.
 
+### Technical Diagrams and Zero-Cropping Standard
+- All article hero images and technical diagrams must use the `ZoomableArticleImage` component to support full-resolution click-to-zoom modal inspections.
+- Never crop diagrams, meters, or infographics. When an asset is square (1:1 aspect ratio), configure `ZoomableArticleImage` with `aspectRatio="square"` and `objectFit="contain"` with `bg-slate-50`.
+- Do not force square graphics into fixed 16:9 (`aspect-video`) containers with `object-cover` that clips top/bottom gauge faces, chart data, or explanatory text.
+
 Important: do not assume Gemini 3.8 Flash itself can generate images through every interface. If the available Antigravity environment exposes a dedicated image-generation capability/model, use it when appropriate; otherwise do not fabricate image-generation functionality.
 
 ## 14. Design Principles
@@ -55,6 +60,12 @@ CalcMyPower operates two separate, strictly divided design systems. Each system 
   - **Right Column (Secondary):** `<aside className="hidden lg:block lg:col-span-4">` containing `<TableOfContents />` MUST ALWAYS be second in DOM and visually positioned on the RIGHT.
   - **Prohibition:** NEVER place the Table of Contents or `<aside>` on the left side or before the `<article>` tag.
 - **Navigation:** Desktop sticky TOC with reading percentage, active section tracking, and contextual tool links; mobile collapsible floating navigator (`MobileArticleNavigator` anchored at bottom-right).
+- **Standardized Sidebar Invariant:**
+  - The right column desktop sidebar must strictly use `<aside className="hidden lg:block lg:col-span-4"><TableOfContents items={items} cluster={cluster} /></aside>`.
+  - Do not wrap the Table of Contents in extra decorative outer cards, duplicate headers ("Article Contents"), or ad-hoc dark `bg-slate-900` promotional boxes.
+  - The 4 canonical clusters are: `generators`, `solar`, `ups-battery`, and `electricity`. Each cluster automatically supplies standardized companion calculator tools, contextual CTAs, and related guides.
+- **FAQ Accordion Invariant:**
+  - All article FAQ sections must use semantic HTML `<details>` and `<summary>` accordions with the rotate chevron indicator, matching `/solar-panels-series-vs-parallel`. Do not use static `div` cards for FAQs.
 - **Prose Focus:** Natural human editorial writing, varied paragraph rhythm, verified technical citations, and zero em-dash punctuation.
 - **Calculator Integration:** Direct, contextual links and scenario bridges (e.g. "Load This Scenario" with URL parameters) driving readers into the dedicated calculator tools.
 

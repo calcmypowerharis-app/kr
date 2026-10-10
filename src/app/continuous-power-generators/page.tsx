@@ -690,75 +690,9 @@ export default function ContinuousPowerGeneratorsPage() {
             </div>
           </article>
 
-          {/* Sticky Sidebar on Desktop */}
-          <aside className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            {/* Quick Sizing Card */}
-            <div className="p-6 bg-slate-900 text-white rounded-2xl space-y-4 shadow-lg">
-              <span className="text-xs font-bold text-blue-400 uppercase tracking-wider block">
-                Interactive Engineering Tools
-              </span>
-              <h3 className="text-lg font-bold">
-                Size Your Generator Load Accurately
-              </h3>
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Don&apos;t guess your continuous and surge requirements. Use our validated calculation tools to tally running watts, evaluate locked-rotor motor inrush, and prevent breaker trips.
-              </p>
-              <div className="space-y-2 pt-2">
-                <Link
-                  href="/generator-wattage-chart"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold transition"
-                >
-                  <span>Appliance Wattage Chart</span>
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
-                </Link>
-                <Link
-                  href="/generator-size-calculator"
-                  className="flex items-center justify-between p-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition shadow-xs"
-                >
-                  <span>Generator Size Calculator</span>
-                  <ArrowRight className="w-4 h-4 text-white" />
-                </Link>
-                <Link
-                  href="/generator-amperage-chart-calculator"
-                  className="flex items-center justify-between p-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold transition"
-                >
-                  <span>Generator Amperage Chart</span>
-                  <ArrowRight className="w-4 h-4 text-blue-400" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Table of Contents Desktop Component */}
-            <div className="hidden lg:block bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
-              <TableOfContents items={TOC_ITEMS} />
-            </div>
-
-            {/* Related Articles Box */}
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-              <span className="text-xs font-bold text-slate-900 uppercase tracking-wider block">
-                Recommended Sizing Guides
-              </span>
-              <div className="space-y-2 text-xs">
-                <Link
-                  href="/how-to-calculate-watts-for-a-generator"
-                  className="block font-medium text-blue-700 hover:underline"
-                >
-                  How to Calculate Watts for a Generator: Running vs Starting Surge
-                </Link>
-                <Link
-                  href="/what-size-generator-do-i-need-for-my-house"
-                  className="block font-medium text-blue-700 hover:underline"
-                >
-                  What Size Generator Do I Need for My House?
-                </Link>
-                <Link
-                  href="/what-size-generator-to-run-a-refrigerator"
-                  className="block font-medium text-blue-700 hover:underline"
-                >
-                  What Size Generator to Run a Refrigerator?
-                </Link>
-              </div>
-            </div>
+          {/* Desktop Sticky Sidebar (4 cols on lg) */}
+          <aside className="hidden lg:block lg:col-span-4">
+            <TableOfContents items={TOC_ITEMS} cluster="generators" />
           </aside>
         </div>
       </div>

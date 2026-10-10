@@ -31,6 +31,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
+import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 
 export const metadata: Metadata = {
   title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
@@ -222,8 +223,13 @@ export default function WattHoursExplainedPage() {
             </header>
 
             {/* Hero Image */}
-            <figure className="space-y-2">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
+            <div className="space-y-3">
+              <ZoomableArticleImage
+                src="/images/articles/watt-hour-energy-monitor.jpg"
+                alt="Plug-in digital watt-hour energy monitor displaying 120V and real-time wattage on an American household outlet"
+                title="Watt-Hour Electrical Energy Monitor"
+                caption="Figure 1: A digital electricity monitor measures instantaneous power draw in Watts and records cumulative energy consumption over time in Watt-hours and kilowatt-hours."
+              >
                 <Image
                   src="/images/articles/watt-hour-energy-monitor.jpg"
                   alt="Plug-in digital watt-hour energy monitor displaying 120V and real-time wattage on an American household outlet"
@@ -232,11 +238,8 @@ export default function WattHoursExplainedPage() {
                   sizes="(max-width: 1024px) 100vw, 800px"
                   className="object-cover"
                 />
-              </div>
-              <figcaption className="text-xs text-slate-500 text-center">
-                A digital electricity monitor measures instantaneous power draw in Watts and records cumulative energy consumption over time in Watt-hours and kilowatt-hours.
-              </figcaption>
-            </figure>
+              </ZoomableArticleImage>
+            </div>
 
             {/* Section 1: Direct Answer */}
             <section id="quick-answer" className="space-y-4 scroll-mt-24">
@@ -1023,7 +1026,7 @@ export default function WattHoursExplainedPage() {
 
           {/* Desktop Sticky Sidebar (4 cols on lg) */}
           <aside className="hidden lg:block lg:col-span-4">
-            <TableOfContents items={WATT_HOUR_TOC_ITEMS} />
+            <TableOfContents items={WATT_HOUR_TOC_ITEMS} cluster="electricity" />
           </aside>
         </div>
       </div>

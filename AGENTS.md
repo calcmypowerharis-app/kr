@@ -121,6 +121,7 @@ Desktop DOM order MUST remain:
 2. aside/supporting content
 
 Never place the sidebar before the main article content in DOM order.
+The desktop aside must strictly use `<aside className="hidden lg:block lg:col-span-4"><TableOfContents items={items} cluster={cluster} /></aside>` without redundant wrapping cards, without ad-hoc dark `bg-slate-900` promotional boxes, and without duplicate "Article Contents" headers. The 4 valid clusters are: `generators`, `solar`, `ups-battery`, and `electricity`.
 
 #### 2. Design Consistency = Same System, Not Identical Pages
 Do not independently redesign each article.
@@ -199,8 +200,10 @@ Article images must:
 - have descriptive filenames
 - have useful alt text
 - visually fit the established editorial style
+- use `ZoomableArticleImage` for all hero images and technical diagrams to support click-to-zoom modal view
 
 Technical diagrams are encouraged when they make engineering concepts easier to understand.
+Zero-cropping standard: When graphics are 1:1 square diagrams or technical schematics, configure `aspectRatio="square"` and `objectFit="contain"` with `bg-slate-50`. Never force square schematics into fixed 16:9 containers with `object-cover` that clips meters or labels.
 Do not add diagrams merely for decoration.
 
 #### 10. CTA / Internal Linking
@@ -213,6 +216,7 @@ The goal is: reader understands concept -> reader gets useful calculation tool.
 FAQ belongs near the end of the article.
 Use FAQ only when it adds genuine search/user value.
 Visible FAQ questions and FAQ JSON-LD MUST remain identical.
+FAQ accordions must use semantic `<details>` and `<summary>` elements with the rotate chevron indicator, matching the canonical reference.
 
 #### 12. Sources / Disclaimer
 Keep the established professional sources/disclaimer treatment near the end where relevant.

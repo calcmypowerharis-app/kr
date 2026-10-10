@@ -29,6 +29,7 @@ import { TableOfContents } from "@/components/article/TableOfContents";
 import { MobileArticleNavigator } from "@/components/article/MobileArticleNavigator";
 import { TocItem } from "@/components/article/tocData";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
+import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 
 export const metadata: Metadata = {
   title: "What Does Ah Mean on a Battery? Amp-Hours Explained",
@@ -213,8 +214,13 @@ export default function BatteryAmpHoursExplainedPage() {
             </header>
 
             {/* Hero Image */}
-            <figure className="space-y-2">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-sm">
+            <div className="space-y-3">
+              <ZoomableArticleImage
+                src="/images/articles/deep-cycle-battery-amp-hours.jpg"
+                alt="12V 100Ah deep cycle battery on a workshop bench with multimeter test leads"
+                title="Deep-Cycle Battery Amp-Hour Rating"
+                caption="Figure 1: A standard 12V 100Ah deep-cycle battery stores 1,200 nominal Watt-hours of energy, but usable runtime depends on chemistry depth of discharge and discharge current."
+              >
                 <Image
                   src="/images/articles/deep-cycle-battery-amp-hours.jpg"
                   alt="12V 100Ah deep cycle battery on a workshop bench with multimeter test leads"
@@ -223,11 +229,8 @@ export default function BatteryAmpHoursExplainedPage() {
                   sizes="(max-width: 1024px) 100vw, 800px"
                   className="object-cover"
                 />
-              </div>
-              <figcaption className="text-xs text-slate-500 text-center">
-                A standard 12V 100Ah deep-cycle battery stores 1,200 nominal Watt-hours of energy, but usable runtime depends on chemistry depth of discharge and discharge current.
-              </figcaption>
-            </figure>
+              </ZoomableArticleImage>
+            </div>
 
             {/* Section 1: Direct Answer */}
             <section id="quick-answer" className="space-y-4 scroll-mt-24">
@@ -1251,7 +1254,7 @@ export default function BatteryAmpHoursExplainedPage() {
 
           {/* Desktop Sticky Sidebar (4 cols on lg) */}
           <aside className="hidden lg:block lg:col-span-4">
-            <TableOfContents items={BATTERY_AH_TOC_ITEMS} />
+            <TableOfContents items={BATTERY_AH_TOC_ITEMS} cluster="ups-battery" />
           </aside>
         </div>
       </div>
