@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     modifiedTime: "2026-09-28T00:00:00Z",
     images: [
       {
-        url: "https://calcmypower.com/images/articles/watt-hour-energy-monitor.jpg",
+        url: "https://calcmypower.com/images/articles/watt-hour-energy-monitor.webp",
         width: 1280,
         height: 720,
         alt: "Plug-in digital watt-hour energy monitor displaying 120V and real-time wattage on an American household outlet",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     description:
       "Master the difference between power in Watts and energy in Watt-hours, with practical formulas for batteries, solar, and home appliances.",
     images: [
-      "https://calcmypower.com/images/articles/watt-hour-energy-monitor.jpg",
+      "https://calcmypower.com/images/articles/watt-hour-energy-monitor.webp",
     ],
   },
 };
@@ -130,7 +130,7 @@ export default function WattHoursExplainedPage() {
     datePublished: "2026-09-28T00:00:00Z",
     dateModified: "2026-09-28T00:00:00Z",
     images: [
-      "https://calcmypower.com/images/articles/watt-hour-energy-monitor.jpg",
+      "https://calcmypower.com/images/articles/watt-hour-energy-monitor.webp",
     ],
   });
 
@@ -225,13 +225,13 @@ export default function WattHoursExplainedPage() {
             {/* Hero Image */}
             <div className="space-y-3">
               <ZoomableArticleImage
-                src="/images/articles/watt-hour-energy-monitor.jpg"
+                src="/images/articles/watt-hour-energy-monitor.webp"
                 alt="Plug-in digital watt-hour energy monitor displaying 120V and real-time wattage on an American household outlet"
                 title="Watt-Hour Electrical Energy Monitor"
                 caption="Figure 1: A digital electricity monitor measures instantaneous power draw in Watts and records cumulative energy consumption over time in Watt-hours and kilowatt-hours."
               >
                 <Image
-                  src="/images/articles/watt-hour-energy-monitor.jpg"
+                  src="/images/articles/watt-hour-energy-monitor.webp"
                   alt="Plug-in digital watt-hour energy monitor displaying 120V and real-time wattage on an American household outlet"
                   fill
                   priority

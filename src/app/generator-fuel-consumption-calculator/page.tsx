@@ -16,6 +16,8 @@ export const metadata: Metadata = buildPageMetadata({
     "Calculate portable and standby generator fuel consumption per hour, total runtime, and operating cost based on common manufacturer specs.",
 });
 
+import { GENERATOR_FUEL_FAQS } from "@/lib/calculators/generator-fuel";
+
 export default function GeneratorFuelCalculatorPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Generator Fuel Consumption Calculator",
@@ -33,23 +35,7 @@ export default function GeneratorFuelCalculatorPage() {
     },
   ]);
 
-  const faqSchema = generateFaqSchema([
-    {
-      question: "How much gas does a 5000 watt generator use?",
-      answer:
-        "A typical 5000W generator running at 50% load consumes about 0.5 to 0.75 gallons of gasoline per hour. Over a 24-hour period, it will use roughly 12 to 18 gallons, depending on the exact load and generator model efficiency.",
-    },
-    {
-      question: "Does a generator use more fuel if I plug more things into it?",
-      answer:
-        "Yes. Generator fuel consumption is directly tied to the electrical load. An inverter generator will automatically idle down and use significantly less fuel when running a light load (like a TV and lights) compared to running a heavy load (like an air conditioner or space heater).",
-    },
-    {
-      question: "Is propane or gasoline cheaper to run in a dual-fuel generator?",
-      answer:
-        "Propane is generally less energy-dense than gasoline, so a generator will consume more gallons (or pounds) of propane per hour to produce the same wattage. However, propane rarely goes bad and won't gum up the carburetor during storage. To determine which is cheaper to run, you must compare local propane prices per pound against local gasoline prices per gallon.",
-    }
-  ]);
+  const faqSchema = generateFaqSchema(GENERATOR_FUEL_FAQS);
 
   return (
     <>

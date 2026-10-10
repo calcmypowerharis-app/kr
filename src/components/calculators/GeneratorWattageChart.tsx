@@ -8,6 +8,7 @@ import {
   CATEGORY_OPTIONS,
   filterWattageChartData,
   calculateSelectedWattageSummary,
+  GENERATOR_WATTAGE_CHART_FAQS,
   WattageChartItem,
 } from "@/lib/calculators/generator-wattage-chart";
 import {
@@ -736,55 +737,17 @@ export const GeneratorWattageChart: React.FC = () => {
             Frequently Asked Questions
           </h2>
           <div className="space-y-3">
-            <details className="group bg-slate-50 border border-slate-200 rounded-xl p-4 transition-all">
-              <summary className="font-semibold text-slate-900 text-sm cursor-pointer list-none flex justify-between items-center">
-                <span>Can I run a refrigerator and a window air conditioner on a 3,500-watt generator?</span>
-                <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 mt-3">
-                Yes, under proper load management. A standard refrigerator draws 700W running (1,500W surge) and a 5,000 to 8,000 BTU window AC draws 500W to 800W running (1,200W to 1,800W surge). Combined running wattage is roughly 1,200W to 1,500W. Their peak starting surge will be approximately 2,800W, which fits comfortably within a 3,500W running / 4,000W surge generator.
-              </div>
-            </details>
-
-            <details className="group bg-slate-50 border border-slate-200 rounded-xl p-4 transition-all">
-              <summary className="font-semibold text-slate-900 text-sm cursor-pointer list-none flex justify-between items-center">
-                <span>Why does my generator trip when a motor starts even though total running watts are below the rating?</span>
-                <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 mt-3">
-                When an induction motor (like a deep well pump or air compressor) begins spinning from rest, it draws locked-rotor inrush current for 200 to 1,000 milliseconds. If the motor surge demand exceeds the generator peak surge rating, the alternator output voltage drops sharply, causing the generator circuit breaker or inverter protection circuit to trip.
-              </div>
-            </details>
-
-            <details className="group bg-slate-50 border border-slate-200 rounded-xl p-4 transition-all">
-              <summary className="font-semibold text-slate-900 text-sm cursor-pointer list-none flex justify-between items-center">
-                <span>What is the difference between surge watts and starting watts on generator spec sheets?</span>
-                <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 mt-3">
-                In generator specifications, &quot;starting watts&quot; and &quot;surge watts&quot; are identical terms. They denote the maximum electrical power the alternator and engine can sustain for a brief period (typically 2 to 6 seconds) to accelerate electric motors before settling back to rated continuous running watts.
-              </div>
-            </details>
-
-            <details className="group bg-slate-50 border border-slate-200 rounded-xl p-4 transition-all">
-              <summary className="font-semibold text-slate-900 text-sm cursor-pointer list-none flex justify-between items-center">
-                <span>Why is a 25% safety reserve factor recommended when sizing generators?</span>
-                <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 mt-3">
-                Running an internal combustion generator at 100% capacity continuously causes extreme engine heat, increased harmonic distortion, rapid oil breakdown, and high fuel consumption. Sizing with a 25% buffer keeps steady operation around 70% to 80% load, which maximizes engine lifespan and prevents stalls during unexpected secondary motor starts.
-              </div>
-            </details>
-
-            <details className="group bg-slate-50 border border-slate-200 rounded-xl p-4 transition-all">
-              <summary className="font-semibold text-slate-900 text-sm cursor-pointer list-none flex justify-between items-center">
-                <span>Does an inverter generator provide the same starting surge as an open-frame generator?</span>
-                <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" />
-              </summary>
-              <div className="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 mt-3">
-                Conventional open-frame generators have heavy copper rotor windings with mechanical rotational momentum that can absorb momentary inrush overload. Inverter generators convert AC to DC and back to digital AC; their surge capacity is electronically governed. While top inverter models offer excellent transient response, their surge margins are strictly limited to manufacturer specifications to protect solid-state components.
-              </div>
-            </details>
+            {GENERATOR_WATTAGE_CHART_FAQS.map((faq, idx) => (
+              <details key={idx} className="group bg-slate-50 border border-slate-200 rounded-xl p-4 transition-all">
+                <summary className="font-semibold text-slate-900 text-sm cursor-pointer list-none flex justify-between items-center">
+                  <span>{faq.question}</span>
+                  <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform" />
+                </summary>
+                <div className="pt-3 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200 mt-3">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
           </div>
         </section>
 

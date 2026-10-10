@@ -600,7 +600,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     cluster: 'generators',
     parentCalculatorPath: '/generator-fuel-consumption-calculator',
     primaryKeyword: 'how much gas does a generator use',
-    heroImage: '/images/articles/generator-fuel-consumption.jpg',
+    heroImage: '/images/articles/generator-fuel-consumption.webp',
     relatedGuidePaths: [
       '/what-size-generator-do-i-need-for-my-house',
       '/what-size-generator-to-run-a-refrigerator',
@@ -629,7 +629,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     readingTime: "11 min read",
     datePublished: "2026-09-27",
     lastModified: "2026-09-28",
-    heroImage: "/images/articles/standby-generator-home-installation.jpg",
+    heroImage: "/images/articles/standby-generator-home-installation.webp",
     relatedCalculatorPaths: [
       "/generator-size-calculator",
       "/watts-to-amps-calculator",
@@ -652,7 +652,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     readingTime: "10 min read",
     datePublished: "2026-09-27",
     lastModified: "2026-09-28",
-    heroImage: "/images/articles/residential-refrigerator-kitchen.jpg",
+    heroImage: "/images/articles/residential-refrigerator-kitchen.webp",
     relatedCalculatorPaths: [
       "/generator-size-calculator",
       "/watts-to-amps-calculator",
@@ -675,7 +675,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     readingTime: "9 min read",
     datePublished: "2026-09-28",
     lastModified: "2026-09-28",
-    heroImage: "/images/articles/deep-cycle-battery-amp-hours.jpg",
+    heroImage: "/images/articles/deep-cycle-battery-amp-hours.webp",
     relatedCalculatorPaths: [
       "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
@@ -704,7 +704,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     readingTime: "9 min read",
     datePublished: "2026-09-28",
     lastModified: "2026-09-28",
-    heroImage: "/images/articles/watt-hour-energy-monitor.jpg",
+    heroImage: "/images/articles/watt-hour-energy-monitor.webp",
     relatedCalculatorPaths: [
       "/battery-capacity-calculator",
       "/ups-battery-backup-calculator",
@@ -733,7 +733,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     readingTime: "12 min read",
     datePublished: "2026-09-29",
     lastModified: "2026-09-29",
-    heroImage: "/images/articles/12v-100ah-battery-runtime-comparison.jpg",
+    heroImage: "/images/articles/12v-100ah-battery-runtime-comparison.webp",
     relatedCalculatorPaths: [
       "/ups-battery-backup-calculator",
       "/battery-capacity-calculator",

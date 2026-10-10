@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     modifiedTime: "2026-10-09T00:00:00Z",
     images: [
       {
-        url: "https://calcmypower.com/images/articles/generator-fuel-consumption.jpg",
+        url: "https://calcmypower.com/images/articles/generator-fuel-consumption.webp",
         width: 1200,
         height: 675,
         alt: "Technical diagram of a portable inverter generator showing gasoline and propane fuel consumption gauges",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description:
       "Find out how much gas or propane a portable generator uses per hour. Examples for 2000W, 5000W, and 8000W generators.",
     images: [
-      "https://calcmypower.com/images/articles/generator-fuel-consumption.jpg",
+      "https://calcmypower.com/images/articles/generator-fuel-consumption.webp",
     ],
   },
 };
@@ -91,7 +91,7 @@ export default function GeneratorFuelArticlePage() {
     headline: "How Much Gas Does a Generator Use Per Hour? Fuel Consumption by Wattage",
     description:
       "Discover how much gas and propane generators use per hour based on running wattage and load. Includes fuel tank runtimes and hourly operating costs.",
-    images: ["https://calcmypower.com/images/articles/generator-fuel-consumption.jpg"],
+    images: ["https://calcmypower.com/images/articles/generator-fuel-consumption.webp"],
     datePublished: "2026-10-09T00:00:00Z",
     dateModified: "2026-10-09T00:00:00Z",
     url: "https://calcmypower.com/how-much-gas-does-a-generator-use",
@@ -175,7 +175,7 @@ export default function GeneratorFuelArticlePage() {
             {/* Featured Technical Diagram with Click-to-Zoom */}
             <div className="space-y-3">
               <ZoomableArticleImage
-                src="/images/articles/generator-fuel-consumption.jpg"
+                src="/images/articles/generator-fuel-consumption.webp"
                 alt="Technical diagram of a portable inverter generator showing gasoline and propane fuel consumption gauges"
                 title="Generator Fuel Consumption by Load"
                 caption="Figure 1: Gasoline and propane fuel consumption rates across variable electrical loads and generator wattage ratings."
@@ -183,7 +183,7 @@ export default function GeneratorFuelArticlePage() {
                 objectFit="contain"
               >
                 <Image
-                  src="/images/articles/generator-fuel-consumption.jpg"
+                  src="/images/articles/generator-fuel-consumption.webp"
                   alt="Technical diagram of a portable inverter generator showing gasoline and propane fuel consumption gauges"
                   fill
                   priority
