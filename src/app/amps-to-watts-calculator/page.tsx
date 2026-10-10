@@ -8,12 +8,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Amps to Watts Calculator (DC, Single-Phase & 3-Phase AC)",
+  title: "Amps to Watts Calculator (DC, Single & 3-Phase AC)",
   description:
-    "Convert Amps to Watts with our electrical calculator. Calculate real power (Watts), kW, and VA across DC, 120V/240V single-phase, and balanced three-phase AC circuits.",
+    "Convert amps to watts across DC, single-phase 120V/240V, and three-phase AC circuits. Calculate real power (W), apparent power (VA), and power factor.",
   path: "/amps-to-watts-calculator",
   ogDescription:
-    "Convert electrical current in Amperes to power in Watts and kW across DC, AC single-phase, and balanced three-phase systems.",
+    "Convert amps to watts across DC, single-phase 120V/240V, and three-phase AC circuits. Calculate real power (W), apparent power (VA), and power factor.",
 });
 
 import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";

@@ -22,16 +22,16 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
-  title: "How Much Gas Does a Generator Use Per Hour? Fuel Consumption by Wattage",
+  title: "How Much Gas Does a Generator Use Per Hour?",
   description:
-    "Discover how much gas and propane generators use per hour based on running wattage and load. Includes fuel tank runtimes and hourly operating costs.",
+    "Find out how much gas or propane a portable generator uses per hour at 25%, 50%, and 100% load. Includes runtimes and hourly operating costs.",
   alternates: {
     canonical: "https://calcmypower.com/how-much-gas-does-a-generator-use",
   },
   openGraph: {
     title: "How Much Gas Does a Generator Use Per Hour? | CalcMyPower",
     description:
-      "Find out how much gas or propane a portable generator uses per hour. Examples for 2000W, 5000W, and 8000W generators.",
+      "Find out how much gas or propane a portable generator uses per hour at 25%, 50%, and 100% load. Includes runtimes and hourly operating costs.",
     url: "https://calcmypower.com/how-much-gas-does-a-generator-use",
     type: "article",
     publishedTime: "2026-10-09T00:00:00Z",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "How Much Gas Does a Generator Use Per Hour? | CalcMyPower",
     description:
-      "Find out how much gas or propane a portable generator uses per hour. Examples for 2000W, 5000W, and 8000W generators.",
+      "Find out how much gas or propane a portable generator uses per hour at 25%, 50%, and 100% load. Includes runtimes and hourly operating costs.",
     images: [
       "https://calcmypower.com/images/articles/generator-fuel-consumption.webp",
     ],

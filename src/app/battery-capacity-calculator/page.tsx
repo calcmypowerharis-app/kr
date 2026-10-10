@@ -9,12 +9,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Battery Bank Calculator (Capacity, Voltage & Ah)",
+  title: "Battery Capacity & Bank Sizing Calculator",
   description:
-    "Calculate battery bank capacity, voltage, Amp-hours (Ah), and Watt-hours (Wh) in series, parallel, or series-parallel configurations. Free engineering sizing tool.",
+    "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh), configure series and parallel banks, and size usable storage by load and depth of discharge.",
   path: "/battery-capacity-calculator",
   ogDescription:
-    "Free battery bank calculator: compute total bank voltage, Amp-hours, nominal energy (Wh/kWh), and usable capacity across series, parallel, and series-parallel banks.",
+    "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh), configure series and parallel banks, and size usable storage by load and depth of discharge.",
 });
 
 export default function BatteryCapacityPage() {

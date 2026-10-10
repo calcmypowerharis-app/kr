@@ -18,7 +18,8 @@ import { AssumptionsSection } from "@/components/calculators/AssumptionsSection"
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
-import { Fuel, DollarSign, Clock, Zap } from "lucide-react";
+import Link from "next/link";
+import { Fuel, DollarSign, Clock, Zap, Info, ArrowRight } from "lucide-react";
 
 export function GeneratorFuelCalculator() {
   const [calculationMode, setCalculationMode] = useState<"preset" | "custom">("preset");
@@ -241,6 +242,25 @@ export function GeneratorFuelCalculator() {
               </div>
             </div>
           </div>
+
+          {/* Quick Cross-Link to Generator Fuel Consumption Guide */}
+          <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-3">
+            <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
+            <div className="space-y-1.5">
+              <span className="font-bold">Planning fuel storage for an extended power outage?</span>
+              <p className="text-blue-800 leading-relaxed">
+                Review hourly consumption rates and fuel storage rules for 2000W to 12000W generators in our companion guide on{" "}
+                <Link
+                  href="/how-much-gas-does-a-generator-use"
+                  className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
+                >
+                  how much gas a generator uses per hour
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
         </div>
       ) : null}
     </div>
@@ -322,6 +342,12 @@ export function GeneratorFuelCalculator() {
               href: "/generator-size-calculator",
               description: "Calculate exactly what size generator you need to run your appliances.",
               category: "Generators"
+            },
+            {
+              title: "How Much Gas Does a Generator Use Per Hour?",
+              href: "/how-much-gas-does-a-generator-use",
+              description: "Detailed fuel burn rates, tank runtimes, and operating costs across 2kW to 10kW generators.",
+              category: "Fuel Guide"
             },
             {
               title: "Electricity Cost Calculator",

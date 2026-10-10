@@ -27,17 +27,17 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "How to Calculate Your Electricity Bill: kWh, Rates, and Charges",
+  title: "How to Calculate Your Electric Bill (kWh & Rates)",
   description:
-    "Learn how to calculate your electric utility bill from meter reading to final balance. Understand supply vs delivery rates, fixed fees, riders, and effective kWh cost.",
+    "Learn how to calculate your electric bill from monthly kWh usage and utility rates. Understand tier rates, fixed base charges, and taxes with worked examples.",
   alternates: {
     canonical: "https://calcmypower.com/how-to-calculate-electricity-bill",
   },
   openGraph: {
     title:
-      "How to Calculate Your Electricity Bill: kWh, Rates, and Charges | CalcMyPower",
+      "How to Calculate Your Electric Bill (kWh & Rates) | CalcMyPower",
     description:
-      "Learn how to calculate your electric utility bill from meter reading to final balance. Understand supply vs delivery rates, fixed fees, riders, and effective kWh cost.",
+      "Learn how to calculate your electric bill from monthly kWh usage and utility rates. Understand tier rates, fixed base charges, and taxes with worked examples.",
     url: "https://calcmypower.com/how-to-calculate-electricity-bill",
     type: "article",
     publishedTime: "2026-10-06T00:00:00Z",
@@ -54,9 +54,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "How to Calculate Your Electricity Bill: kWh, Rates, and Charges | CalcMyPower",
+      "How to Calculate Your Electric Bill (kWh & Rates) | CalcMyPower",
     description:
-      "Learn how to calculate your electric utility bill from meter reading to final balance. Understand supply vs delivery rates, fixed fees, riders, and effective kWh cost.",
+      "Learn how to calculate your electric bill from monthly kWh usage and utility rates. Understand tier rates, fixed base charges, and taxes with worked examples.",
     images: [
       "https://calcmypower.com/images/articles/how-to-calculate-electricity-bill.webp",
     ],
