@@ -290,3 +290,29 @@ This log records major technical and product decisions, context, rationale, and 
   4. Embedded contextual companion guide callouts within interactive calculator interfaces: `/generator-fuel-consumption-calculator` linking directly to `/how-much-gas-does-a-generator-use`, and `/solar-charge-controller-calculator` linking directly to `/how-to-size-a-solar-charge-controller`.
   5. Established permanent automated regression test suite in `src/lib/seo/__tests__/editorial-quality.test.ts` to ensure 100% metadata parity and prevent future registry drift.
 - **Rationale:** Guarantees technical search parity across all crawlers, eliminates conflicting metadata signals, improves SERP snippet CTR, and strengthens internal topical authority clusters without intrusive ad-hoc linking.
+
+---
+
+## Decision 028: Phase 2 Batch 2: Contextual Internal Linking Architecture & Topical Cluster Connectivity
+- **Date:** 2026-10-10
+- **Status:** Approved, Merged & Production Deployed (PR #8, Merge Commit `91cf019`)
+- **Context:** An audit of internal link topology revealed gaps between newly deployed calculators and existing topical guides, missing reciprocal paths in the battery cluster (e.g. `/how-to-calculate-amp-hours-of-a-battery-bank` linked to `/how-many-amp-hours-do-i-need`, but the reverse path was absent), and missing cross-tool bridges between complementary circuit sizing tools (such as voltage drop to series/parallel solar wiring and watts-to-amps conversion).
+- **Decision:**
+  1. **Calculator Results to Companion Guides:**
+     - `SolarSystemSizeCalculator.tsx`: Embedded contextual callout below panel comparison table linking to `/how-many-solar-panels-do-i-need` and `/how-much-energy-does-a-solar-panel-produce`.
+     - `InverterSizeCalculator.tsx`: Added companion callout linking directly to `/battery-capacity-calculator` and `/how-many-amp-hours-do-i-need`.
+     - `VoltageDropCalculator.tsx`: Added companion callout card linking to `/watts-to-amps-calculator` and `/solar-panels-series-vs-parallel`.
+  2. **In-Cluster Sibling Guide Connections (Reciprocal Paths):**
+     - `/how-many-amp-hours-do-i-need`: Embedded companion callout card after Scenario 4 linking to `/how-to-calculate-amp-hours-of-a-battery-bank` and `/how-long-will-a-100ah-battery-last`.
+     - `/how-to-size-a-solar-charge-controller`: Added contextual link to `/solar-panels-series-vs-parallel` in Section 4 and added `/solar-system-size-calculator` in Section 9 CTA.
+     - `/continuous-power-generators`: Added contextual fuel callout card in Section 7 linking to `/generator-fuel-consumption-calculator` and `/how-much-gas-does-a-generator-use`.
+     - `/what-does-ah-mean-on-a-battery`: Linked `/how-to-calculate-amp-hours-of-a-battery-bank` in Mistake 4.
+     - `/how-long-will-a-100ah-battery-last`: Added companion callout in Section 10 linking to `/how-many-amp-hours-do-i-need` and `/how-to-calculate-amp-hours-of-a-battery-bank`.
+  3. **Registry Synchronization:**
+     - Synchronized `relatedGuidePaths` and `relatedCalculatorPaths` in `src/lib/seo/registry.ts` to reflect all newly established paths.
+  4. **Automated Quality Gate:**
+     - Created automated regression suite in `src/lib/seo/__tests__/editorial-quality.test.ts` Section 8 asserting physical presence of all new links and verifying that all registry related paths resolve to existing routes in `src/app/`.
+     - Verified zero em-dashes across all modified files.
+     - Verified 100% live production HTTP status and link presence via `scripts/verify_phase2_batch2_live.py`.
+- **Rationale:** Completes the topical graph across all 4 core clusters, eliminates orphan/dead-end paths, provides natural user continuation from calculation tools to deep-dive guides, and boosts organic crawl discovery without artificial link stuffing.
+

@@ -1,4 +1,4 @@
-# CalcMyPower.com — Systematic Internal Linking Plan (`INTERNAL_LINKING_PLAN.md`)
+# CalcMyPower.com - Systematic Internal Linking Plan (`INTERNAL_LINKING_PLAN.md`)
 
 **Document Owner:** Lead SEO Foundation Specialist  
 **Status:** Production Standard  
@@ -78,10 +78,37 @@ Every editorial guide must include five distinct internal link zones:
 
 ---
 
-## 4. Automated Enforcement Rule for Future Developers / AI Agents
+## 4. Phase 2 Contextual & Companion Linking Matrix (Verified Post-Implementation)
+
+The following high-value contextual links were implemented and verified across Phase 2 Batches 1 & 2:
+
+| Source Route | Route Type | Destination Route | Destination Type | Link Location & Context |
+|---|---|---|---|---|
+| `/generator-fuel-consumption-calculator` | Calculator | `/how-much-gas-does-a-generator-use` | Guide | Contextual companion banner above fuel results |
+| `/solar-charge-controller-calculator` | Calculator | `/how-to-size-a-solar-charge-controller` | Guide | Contextual sizing guide banner above results |
+| `/solar-system-size-calculator` | Calculator | `/how-many-solar-panels-do-i-need` | Guide | Companion card below comparison table |
+| `/solar-system-size-calculator` | Calculator | `/how-much-energy-does-a-solar-panel-produce` | Guide | Companion card below comparison table |
+| `/inverter-size-calculator` | Calculator | `/battery-capacity-calculator` | Calculator | Companion note below inverter results |
+| `/inverter-size-calculator` | Calculator | `/how-many-amp-hours-do-i-need` | Guide | Companion note below inverter results |
+| `/voltage-drop-calculator` | Calculator | `/watts-to-amps-calculator` | Calculator | Related circuit tools card |
+| `/voltage-drop-calculator` | Calculator | `/solar-panels-series-vs-parallel` | Guide | Related circuit tools card |
+| `/how-many-amp-hours-do-i-need` | Guide | `/how-to-calculate-amp-hours-of-a-battery-bank` | Guide | Section 8 companion callout card |
+| `/how-many-amp-hours-do-i-need` | Guide | `/how-long-will-a-100ah-battery-last` | Guide | Section 8 companion callout card |
+| `/how-to-size-a-solar-charge-controller` | Guide | `/solar-panels-series-vs-parallel` | Guide | Section 4 series wiring note |
+| `/how-to-size-a-solar-charge-controller` | Guide | `/solar-system-size-calculator` | Calculator | Section 9 interactive tool CTA |
+| `/continuous-power-generators` | Guide | `/generator-fuel-consumption-calculator` | Calculator | Section 7 fuel logistics callout card |
+| `/continuous-power-generators` | Guide | `/how-much-gas-does-a-generator-use` | Guide | Section 7 fuel logistics callout card |
+| `/what-does-ah-mean-on-a-battery` | Guide | `/how-to-calculate-amp-hours-of-a-battery-bank` | Guide | Section 10 Mistake 4 wiring note |
+| `/how-long-will-a-100ah-battery-last` | Guide | `/how-many-amp-hours-do-i-need` | Guide | Section 10 bank sizing callout card |
+| `/how-long-will-a-100ah-battery-last` | Guide | `/how-to-calculate-amp-hours-of-a-battery-bank` | Guide | Section 10 bank sizing callout card |
+
+---
+
+## 5. Automated Enforcement Rule for Future Developers / AI Agents
 
 Whenever a new calculator or editorial guide is added:
 1. Register it in `src/lib/seo/registry.ts` with its `slug`, `cluster`, `relatedCalculatorSlugs`, and `relatedGuideSlugs`.
 2. Add it to `src/app/calculators/page.tsx` (or let the directory render directly from `src/lib/seo/registry.ts`).
 3. Add reciprocal links from at least 2 existing calculators/guides in the same or adjacent cluster.
-4. Run `npm test` (`src/lib/seo/__tests__/seo-foundation.test.ts`), which fails the build if any route in `src/app` is missing from `registry.ts`, missing from `sitemap.ts`, or has fewer than 2 incoming internal links across the codebase.
+4. Run `npm test` (`src/lib/seo/__tests__/seo-foundation.test.ts` and `src/lib/seo/__tests__/editorial-quality.test.ts`), which fails the build if any route in `src/app` is missing from `registry.ts`, missing from `sitemap.ts`, or has fewer than 2 incoming internal links across the codebase.
+
