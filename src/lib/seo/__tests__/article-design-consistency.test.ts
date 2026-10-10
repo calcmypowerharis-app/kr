@@ -7,8 +7,8 @@ const APP_DIR = path.resolve(process.cwd(), "src/app");
 const VALID_CLUSTERS = ["generators", "solar", "ups-battery", "electricity"];
 
 describe("Sitewide Editorial Article Design Consistency Quality Gate", () => {
-  it("verifies all 15 editorial articles exist in the app directory", () => {
-    expect(GUIDE_REGISTRY).toHaveLength(15);
+  it("verifies all editorial articles exist in the app directory", () => {
+    expect(GUIDE_REGISTRY).toHaveLength(16);
     for (const guide of GUIDE_REGISTRY) {
       const pagePath = path.join(APP_DIR, guide.slug, "page.tsx");
       expect(fs.existsSync(pagePath), `Missing page.tsx for ${guide.slug}`).toBe(true);

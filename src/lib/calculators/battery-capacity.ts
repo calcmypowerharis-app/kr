@@ -27,7 +27,7 @@
  */
 
 export type BatteryChemistry = "lifepo4" | "lead_acid" | "lithium_ion" | "custom";
-export type WiringType = "single" | "series" | "parallel";
+export type WiringType = "single" | "series" | "parallel" | "series_parallel";
 export type CapacityUnit = "ah" | "mah";
 export type LoadType = "ac" | "dc";
 
@@ -79,11 +79,13 @@ export const COMMON_BATTERY_VOLTAGES = [
 export interface EvaluateCapacityInputs {
   voltage: number;
   capacityValue: number;
-  capacityUnit: CapacityUnit;
-  chemistry: BatteryChemistry;
+  capacityUnit?: CapacityUnit;
+  chemistry?: BatteryChemistry;
   customDoD?: number;
-  batteryCount: number;
-  wiring: WiringType;
+  batteryCount?: number;
+  wiring?: WiringType;
+  seriesCount?: number; // N_s: Number of batteries in series per string
+  parallelStrings?: number; // N_p: Number of parallel strings
 }
 
 export interface EvaluateCapacityOutputs {
@@ -93,6 +95,9 @@ export interface EvaluateCapacityOutputs {
   usableKwh: number;
   bankVoltage: number;
   bankCapacityAh: number;
+  seriesCount: number;
+  parallelStrings: number;
+  totalBatteries: number;
   dodPercentUsed: number;
   formattedNominalWh: string;
   formattedNominalKwh: string;
@@ -166,67 +171,105 @@ export function calculateBatteryCapacity(inputs: EvaluateCapacityInputs): Evalua
 
   const rawVoltage = Number(inputs.voltage);
   const rawCapacity = Number(inputs.capacityValue);
-  const rawCount = Number(inputs.batteryCount);
   const capacityUnit = inputs.capacityUnit || "ah";
   const wiring = inputs.wiring || "single";
   const chemistry = inputs.chemistry || "lifepo4";
 
-  if (isNaN(rawVoltage) || rawVoltage <= 0) {
+  if (isNaN(rawVoltage) || !Number.isFinite(rawVoltage) || rawVoltage <= 0) {
     errors.push({
       field: "voltage",
-      message: "Battery voltage must be greater than 0 Volts.",
+      message: "Battery voltage must be a positive finite number greater than 0 Volts.",
     });
   }
 
-  if (isNaN(rawCapacity) || rawCapacity <= 0) {
+  if (isNaN(rawCapacity) || !Number.isFinite(rawCapacity) || rawCapacity <= 0) {
     errors.push({
       field: "capacityValue",
-      message: "Battery capacity must be greater than 0.",
+      message: "Battery capacity must be a positive finite number greater than 0.",
     });
   }
 
-  if (isNaN(rawCount) || rawCount < 1) {
-    errors.push({
-      field: "batteryCount",
-      message: "Battery count must be at least 1.",
-    });
+  // Resolve series count (N_s) and parallel strings (N_p)
+  let seriesCount = 1;
+  let parallelStrings = 1;
+
+  if (inputs.seriesCount !== undefined || inputs.parallelStrings !== undefined) {
+    const rawNs = inputs.seriesCount !== undefined ? Number(inputs.seriesCount) : 1;
+    const rawNp = inputs.parallelStrings !== undefined ? Number(inputs.parallelStrings) : 1;
+
+    if (isNaN(rawNs) || !Number.isFinite(rawNs) || rawNs < 1 || !Number.isInteger(rawNs)) {
+      errors.push({
+        field: "seriesCount",
+        message: "Batteries in series (Ns) must be a positive whole integer (at least 1).",
+      });
+    }
+    if (isNaN(rawNp) || !Number.isFinite(rawNp) || rawNp < 1 || !Number.isInteger(rawNp)) {
+      errors.push({
+        field: "parallelStrings",
+        message: "Parallel strings (Np) must be a positive whole integer (at least 1).",
+      });
+    }
+
+    seriesCount = Math.max(1, Math.floor(isNaN(rawNs) || rawNs < 1 ? 1 : rawNs));
+    parallelStrings = Math.max(1, Math.floor(isNaN(rawNp) || rawNp < 1 ? 1 : rawNp));
+  } else {
+    // Legacy count & wiring mode
+    const rawCount = inputs.batteryCount !== undefined ? Number(inputs.batteryCount) : 1;
+    if (isNaN(rawCount) || !Number.isFinite(rawCount) || rawCount < 1 || !Number.isInteger(rawCount)) {
+      errors.push({
+        field: "batteryCount",
+        message: "Battery count must be a positive whole integer (at least 1).",
+      });
+    }
+    const count = Math.max(1, Math.floor(isNaN(rawCount) || rawCount < 1 ? 1 : rawCount));
+
+    if (wiring === "series") {
+      seriesCount = count;
+      parallelStrings = 1;
+    } else if (wiring === "parallel") {
+      seriesCount = 1;
+      parallelStrings = count;
+    } else if (wiring === "series_parallel") {
+      seriesCount = 2;
+      parallelStrings = 2;
+    } else {
+      seriesCount = 1;
+      parallelStrings = 1;
+    }
   }
 
+  const totalBatteries = seriesCount * parallelStrings;
   const isValid = errors.length === 0;
 
-  const unitVoltage = Math.max(0.1, isNaN(rawVoltage) ? 12 : rawVoltage);
-  const unitAhRaw = Math.max(0, isNaN(rawCapacity) ? 100 : rawCapacity);
+  const unitVoltage = Math.max(0.1, isNaN(rawVoltage) || !Number.isFinite(rawVoltage) ? 12 : rawVoltage);
+  const unitAhRaw = Math.max(0, isNaN(rawCapacity) || !Number.isFinite(rawCapacity) ? 100 : rawCapacity);
   const unitAh = capacityUnit === "mah" ? unitAhRaw / 1000 : unitAhRaw;
-  const count = Math.max(1, Math.floor(isNaN(rawCount) ? 1 : rawCount));
 
   const { dodFraction, dodPercent } = parseDoD(chemistry, inputs.customDoD);
 
-  let bankVoltage = unitVoltage;
-  let bankCapacityAh = unitAh;
-  let wiringSummary = "";
+  let bankVoltage = unitVoltage * seriesCount;
+  let bankCapacityAh = unitAh * parallelStrings;
 
-  if (count <= 1 || wiring === "single") {
-    bankVoltage = unitVoltage;
-    bankCapacityAh = unitAh;
-    wiringSummary = "Single battery configuration";
-  } else if (wiring === "series") {
-    bankVoltage = unitVoltage * count;
-    bankCapacityAh = unitAh;
-    wiringSummary = `${count} batteries wired in series (Voltage multiplies: ${unitVoltage}V × ${count} = ${bankVoltage}V; Capacity remains ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah)`;
-  } else if (wiring === "parallel") {
-    bankVoltage = unitVoltage;
-    bankCapacityAh = unitAh * count;
-    wiringSummary = `${count} batteries wired in parallel (Voltage remains ${bankVoltage}V; Capacity multiplies: ${unitAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah × ${count} = ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah)`;
+  let wiringSummary = "";
+  if (totalBatteries <= 1) {
+    wiringSummary = "Single battery configuration (1S1P)";
+  } else if (seriesCount > 1 && parallelStrings === 1) {
+    wiringSummary = `${totalBatteries} batteries wired in series (${seriesCount}S1P string). Voltage multiplies: ${unitVoltage}V × ${seriesCount} = ${bankVoltage}V; Capacity remains ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah.`;
+  } else if (seriesCount === 1 && parallelStrings > 1) {
+    wiringSummary = `${totalBatteries} batteries wired in parallel (1S${parallelStrings}P). Voltage remains ${bankVoltage}V; Capacity multiplies: ${unitAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah × ${parallelStrings} = ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah.`;
+  } else {
+    wiringSummary = `${totalBatteries} batteries in a ${seriesCount}S${parallelStrings}P series-parallel bank (${seriesCount} in series per string × ${parallelStrings} parallel strings). Bank voltage: ${unitVoltage}V × ${seriesCount} = ${bankVoltage}V; Bank capacity: ${unitAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah × ${parallelStrings} = ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })} Ah.`;
   }
 
-  const nominalWh = bankVoltage * bankCapacityAh;
-  const nominalKwh = nominalWh / 1000;
-  const usableWh = nominalWh * dodFraction;
-  const usableKwh = usableWh / 1000;
-
-  if (count > 1) {
+  if (totalBatteries > 1) {
     warnings.push(
       "Multi-battery banks must use identical batteries of the same chemistry, age, voltage, capacity, and manufacturer. Never mix old and new batteries or different chemistries."
+    );
+  }
+
+  if (parallelStrings > 4) {
+    warnings.push(
+      "Industry standards (e.g. Victron Energy Wiring Unlimited) advise paralleling no more than 3 to 4 strings to prevent severe current imbalances and premature cell aging."
     );
   }
 
@@ -234,6 +277,20 @@ export function calculateBatteryCapacity(inputs: EvaluateCapacityInputs): Evalua
     warnings.push(
       `Discharging lead-acid batteries beyond 50% DoD (selected: ${dodPercent}%) will accelerate plate sulfation and substantially shorten battery lifespan.`
     );
+  }
+
+  let nominalWh = bankVoltage * bankCapacityAh;
+  let nominalKwh = nominalWh / 1000;
+  let usableWh = nominalWh * dodFraction;
+  let usableKwh = usableWh / 1000;
+
+  if (!isValid) {
+    nominalWh = 0;
+    nominalKwh = 0;
+    usableWh = 0;
+    usableKwh = 0;
+    bankVoltage = 0;
+    bankCapacityAh = 0;
   }
 
   const roundedNominalWh = Math.round((nominalWh + Number.EPSILON) * 10) / 10;
@@ -246,21 +303,23 @@ export function calculateBatteryCapacity(inputs: EvaluateCapacityInputs): Evalua
     maximumFractionDigits: 1,
   })} Wh`;
   const formattedNominalKwh = `${roundedNominalKwh.toLocaleString("en-US", {
-    minimumFractionDigits: roundedNominalKwh < 10 ? 2 : 1,
+    minimumFractionDigits: roundedNominalKwh < 10 && roundedNominalKwh > 0 ? 2 : 1,
     maximumFractionDigits: 3,
   })} kWh`;
   const formattedUsableWh = `${roundedUsableWh.toLocaleString("en-US", {
     maximumFractionDigits: 1,
   })} Wh`;
   const formattedUsableKwh = `${roundedUsableKwh.toLocaleString("en-US", {
-    minimumFractionDigits: roundedUsableKwh < 10 ? 2 : 1,
+    minimumFractionDigits: roundedUsableKwh < 10 && roundedUsableKwh > 0 ? 2 : 1,
     maximumFractionDigits: 3,
   })} kWh`;
   const formattedBankAh = `${roundedBankAh.toLocaleString("en-US", {
     maximumFractionDigits: 2,
   })} Ah`;
 
-  const formulaExplanation = `Nominal Energy = ${bankVoltage}V × ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })}Ah = ${formattedNominalWh} (${formattedNominalKwh}) | Estimated Usable Energy (${dodPercent}% DoD) = ${formattedNominalWh} × ${dodFraction.toFixed(2)} = ${formattedUsableWh} (${formattedUsableKwh})`;
+  const formulaExplanation = isValid
+    ? `Bank Voltage = ${unitVoltage}V × ${seriesCount} = ${bankVoltage}V | Bank Capacity = ${unitAh.toLocaleString("en-US", { maximumFractionDigits: 1 })}Ah × ${parallelStrings} = ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })}Ah | Nominal Energy = ${bankVoltage}V × ${bankCapacityAh.toLocaleString("en-US", { maximumFractionDigits: 1 })}Ah = ${formattedNominalWh} (${formattedNominalKwh}) | Estimated Usable Energy (${dodPercent}% DoD) = ${formattedNominalWh} × ${dodFraction.toFixed(2)} = ${formattedUsableWh} (${formattedUsableKwh})`
+    : "Calculation paused due to invalid input values.";
 
   return {
     nominalWh: roundedNominalWh,
@@ -269,6 +328,9 @@ export function calculateBatteryCapacity(inputs: EvaluateCapacityInputs): Evalua
     usableKwh: roundedUsableKwh,
     bankVoltage,
     bankCapacityAh: roundedBankAh,
+    seriesCount,
+    parallelStrings,
+    totalBatteries,
     dodPercentUsed: dodPercent,
     formattedNominalWh,
     formattedNominalKwh,
@@ -446,5 +508,15 @@ export const BATTERY_CAPACITY_FAQS: BatteryFaqItem[] = [
     question: "What is Peukert's Law and how does it affect battery runtime?",
     answer:
       "Peukert's Law describes how the usable capacity of a lead-acid battery decreases as the rate of discharge increases. Lead-acid batteries are typically rated at a slow 20-hour discharge rate (C/20). If discharged rapidly in 1 to 2 hours (such as running a high-wattage microwave or space heater through an inverter), internal resistance causes heat and chemical bottlenecks, reducing actual delivered capacity by 20% to 40%. LiFePO4 lithium batteries experience negligible Peukert losses and maintain rated capacity under heavy loads.",
+  },
+  {
+    question: "How do you calculate amp hours and voltage in a series-parallel (2S2P) battery bank?",
+    answer:
+      "In a series-parallel configuration (such as 2S2P), total bank voltage equals the single battery voltage multiplied by the number of batteries in series per string (V_bank = V_b × N_s). Total bank capacity equals the single battery capacity multiplied by the number of parallel strings (Ah_bank = Ah_b × N_p). For example, four 12V 100Ah batteries in a 2S2P arrangement create a 24V 200Ah battery bank storing 4,800 Watt-hours (4.8 kWh) of nominal energy.",
+  },
+  {
+    question: "Why do manufacturers recommend limiting parallel battery strings to 3 or 4?",
+    answer:
+      "Technical guidance from manufacturers like Victron Energy (Wiring Unlimited) recommends paralleling no more than 3 to 4 battery strings. Slight variations in cable resistance, terminal torque, and internal cell chemistry cause current to distribute unevenly among parallel strings. This imbalance leads to premature degradation of the closest string and reduces overall bank longevity unless busbars and diagonal cross-charging wiring are implemented.",
   },
 ];

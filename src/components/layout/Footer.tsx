@@ -280,6 +280,14 @@ export const Footer: React.FC = () => {
                   How Many Amp Hours Do I Need?
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                  className="hover:text-white transition"
+                >
+                  How to Calculate Battery Bank Amp Hours
+                </Link>
+              </li>
             </ul>
           </div>
 

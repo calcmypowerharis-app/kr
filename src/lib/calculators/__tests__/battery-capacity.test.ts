@@ -160,6 +160,109 @@ describe("Battery Capacity & Sizing Calculator Logic", () => {
       expect(result.errors.some((e) => e.field === "capacityValue")).toBe(true);
       expect(result.errors.some((e) => e.field === "batteryCount")).toBe(true);
     });
+
+    it("Required Case A: four 12V 100Ah batteries in a 2S2P arrangement", () => {
+      const result = calculateBatteryCapacity({
+        voltage: 12,
+        capacityValue: 100,
+        capacityUnit: "ah",
+        chemistry: "lifepo4",
+        seriesCount: 2,
+        parallelStrings: 2,
+        wiring: "series_parallel",
+      });
+
+      expect(result.isValid).toBe(true);
+      expect(result.bankVoltage).toBe(24);
+      expect(result.bankCapacityAh).toBe(200);
+      expect(result.nominalWh).toBe(4800);
+      expect(result.nominalKwh).toBe(4.8);
+      expect(result.totalBatteries).toBe(4);
+      expect(result.seriesCount).toBe(2);
+      expect(result.parallelStrings).toBe(2);
+      expect(result.wiringSummary).toContain("2S2P series-parallel bank");
+    });
+
+    it("Required Case B: four 12V 100Ah batteries in series (4S1P)", () => {
+      const result = calculateBatteryCapacity({
+        voltage: 12,
+        capacityValue: 100,
+        capacityUnit: "ah",
+        chemistry: "lifepo4",
+        seriesCount: 4,
+        parallelStrings: 1,
+        wiring: "series",
+      });
+
+      expect(result.isValid).toBe(true);
+      expect(result.bankVoltage).toBe(48);
+      expect(result.bankCapacityAh).toBe(100);
+      expect(result.nominalWh).toBe(4800);
+      expect(result.nominalKwh).toBe(4.8);
+      expect(result.totalBatteries).toBe(4);
+      expect(result.seriesCount).toBe(4);
+      expect(result.parallelStrings).toBe(1);
+    });
+
+    it("Required Case C: four 12V 100Ah batteries in parallel (1S4P)", () => {
+      const result = calculateBatteryCapacity({
+        voltage: 12,
+        capacityValue: 100,
+        capacityUnit: "ah",
+        chemistry: "lifepo4",
+        seriesCount: 1,
+        parallelStrings: 4,
+        wiring: "parallel",
+      });
+
+      expect(result.isValid).toBe(true);
+      expect(result.bankVoltage).toBe(12);
+      expect(result.bankCapacityAh).toBe(400);
+      expect(result.nominalWh).toBe(4800);
+      expect(result.nominalKwh).toBe(4.8);
+      expect(result.totalBatteries).toBe(4);
+      expect(result.seriesCount).toBe(1);
+      expect(result.parallelStrings).toBe(4);
+    });
+
+    it("Validates and rejects zero, negative, fractional, and non-finite series and parallel counts", () => {
+      const zeroNs = calculateBatteryCapacity({
+        voltage: 12,
+        capacityValue: 100,
+        seriesCount: 0,
+        parallelStrings: 2,
+      });
+      expect(zeroNs.isValid).toBe(false);
+      expect(zeroNs.errors.some((e) => e.field === "seriesCount")).toBe(true);
+
+      const negativeNp = calculateBatteryCapacity({
+        voltage: 12,
+        capacityValue: 100,
+        seriesCount: 2,
+        parallelStrings: -1,
+      });
+      expect(negativeNp.isValid).toBe(false);
+      expect(negativeNp.errors.some((e) => e.field === "parallelStrings")).toBe(true);
+
+      const fractionalNs = calculateBatteryCapacity({
+        voltage: 12,
+        capacityValue: 100,
+        seriesCount: 2.5,
+        parallelStrings: 2,
+      });
+      expect(fractionalNs.isValid).toBe(false);
+      expect(fractionalNs.errors.some((e) => e.field === "seriesCount")).toBe(true);
+
+      const nonFinite = calculateBatteryCapacity({
+        voltage: NaN,
+        capacityValue: Infinity,
+        seriesCount: 2,
+        parallelStrings: 2,
+      });
+      expect(nonFinite.isValid).toBe(false);
+      expect(nonFinite.errors.some((e) => e.field === "voltage")).toBe(true);
+      expect(nonFinite.errors.some((e) => e.field === "capacityValue")).toBe(true);
+    });
   });
 
   // 2. Size Battery for Load & Runtime Mode

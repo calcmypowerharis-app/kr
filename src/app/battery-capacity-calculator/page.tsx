@@ -9,19 +9,19 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Battery Capacity Calculator (Ah to Wh & Sizing)",
+  title: "Battery Bank Calculator (Capacity, Voltage & Ah)",
   description:
-    "Calculate battery capacity in Watt-hours (Wh) and Amp-hours (Ah). Estimate usable energy and size battery capacity for a load and runtime.",
+    "Calculate battery bank capacity, voltage, Amp-hours (Ah), and Watt-hours (Wh) in series, parallel, or series-parallel configurations. Free engineering sizing tool.",
   path: "/battery-capacity-calculator",
   ogDescription:
-    "Free online calculator to evaluate battery capacity in Watt-hours (Wh) and Amp-hours (Ah), calculate usable energy by chemistry, and size battery banks for loads.",
+    "Free battery bank calculator: compute total bank voltage, Amp-hours, nominal energy (Wh/kWh), and usable capacity across series, parallel, and series-parallel banks.",
 });
 
 export default function BatteryCapacityPage() {
   const webAppSchema = generateWebApplicationSchema({
-    name: "Battery Capacity & Sizing Calculator",
+    name: "Battery Bank & Capacity Calculator",
     description:
-      "Free online electrical calculator to evaluate battery capacity in Watt-hours (Wh) and Amp-hours (Ah), calculate usable energy across chemistries, and size battery banks for specific electrical loads and runtime hours.",
+      "Free online electrical calculator to evaluate battery bank capacity in Amp-hours (Ah) and Watt-hours (Wh), calculate series-parallel configurations, and size battery systems for loads.",
     url: "https://calcmypower.com/battery-capacity-calculator",
   });
 
@@ -29,7 +29,7 @@ export default function BatteryCapacityPage() {
     { name: "Home", url: "https://calcmypower.com" },
     { name: "Calculators", url: "https://calcmypower.com/calculators" },
     {
-      name: "Battery Capacity Calculator",
+      name: "Battery Bank Calculator",
       url: "https://calcmypower.com/battery-capacity-calculator",
     },
   ]);
