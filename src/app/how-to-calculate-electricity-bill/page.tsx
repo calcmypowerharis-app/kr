@@ -171,7 +171,7 @@ export default function HowToCalculateElectricityBillPage() {
         </nav>
 
         {/* Two-Column Grid: Left Content, Right Sticky Sidebar */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Main Article Content */}
           <article id="article-content" className="lg:col-span-8 min-w-0 space-y-10">
             {/* Header */}

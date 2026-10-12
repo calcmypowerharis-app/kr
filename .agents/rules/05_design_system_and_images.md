@@ -54,7 +54,7 @@ CalcMyPower operates two separate, strictly divided design systems. Each system 
 
 ### B. Editorial Articles & Guides (Long-Form Reading)
 - **Primary Intent:** In-depth educational reading, concept explanation, code compliance, decision guidance, and outage planning.
-- **Desktop Layout:** Editorial layout (`max-w-[1320px]` container with `grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12`).
+- **Desktop Layout:** Editorial layout (`max-w-[1320px]` container with `grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12`). NEVER apply `items-start` to this container, as `items-start` collapses the `<aside>` grid column to intrinsic height and breaks the sticky sidebar and reading progress counter.
 - **Strict Sidebar Placement Invariant (NEVER INVERT):**
   - **Left Column (Primary):** `<article id="article-content" className="lg:col-span-8 ...">` MUST ALWAYS be first in DOM and visually positioned on the LEFT.
   - **Right Column (Secondary):** `<aside className="hidden lg:block lg:col-span-4">` containing `<TableOfContents />` MUST ALWAYS be second in DOM and visually positioned on the RIGHT.

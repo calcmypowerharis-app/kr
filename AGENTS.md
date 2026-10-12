@@ -122,6 +122,7 @@ Desktop DOM order MUST remain:
 2. aside/supporting content
 
 Never place the sidebar before the main article content in DOM order.
+The outer 12-column grid container must strictly use `<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">` without `items-start` so that `<aside>` stretches to full article height, preserving sticky sidebar positioning and the reading progress counter.
 The desktop aside must strictly use `<aside className="hidden lg:block lg:col-span-4"><TableOfContents items={items} cluster={cluster} /></aside>` without redundant wrapping cards, without ad-hoc dark `bg-slate-900` promotional boxes, and without duplicate "Article Contents" headers. The 4 valid clusters are: `generators`, `solar`, `ups-battery`, and `electricity`.
 
 #### 2. Design Consistency = Same System, Not Identical Pages

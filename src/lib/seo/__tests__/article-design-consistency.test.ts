@@ -59,6 +59,35 @@ describe("Sitewide Editorial Article Design Consistency Quality Gate", () => {
     }
   });
 
+  it("ensures outer 12-column grid does not include items-start so aside stretches to full height", () => {
+    for (const guide of GUIDE_REGISTRY) {
+      const pagePath = path.join(APP_DIR, guide.slug, "page.tsx");
+      const content = fs.readFileSync(pagePath, "utf-8");
+
+      const gridMatches = Array.from(
+        content.matchAll(
+          /<div[^>]*className=(?:["']|\{`)([^"'`}]*lg:grid-cols-12[^"'`}]*)(?:["']|`\})/g
+        )
+      );
+      expect(
+        gridMatches.length,
+        `Article ${guide.slug} must contain at least one lg:grid-cols-12 container`
+      ).toBeGreaterThanOrEqual(1);
+
+      for (const match of gridMatches) {
+        const classNames = match[1];
+        expect(
+          classNames.includes("items-start"),
+          `Article ${guide.slug} outer 12-column grid container must not use items-start (which prevents aside from stretching and breaks sticky sidebar)`
+        ).toBe(false);
+        expect(
+          /\bitems-(start|center|end|baseline)\b/.test(classNames),
+          `Article ${guide.slug} outer 12-column grid container must not use items-* alignment (which prevents aside from stretching and breaks sticky sidebar)`
+        ).toBe(false);
+      }
+    }
+  });
+
   it("ensures content-first DOM order: article precedes aside", () => {
     for (const guide of GUIDE_REGISTRY) {
       const pagePath = path.join(APP_DIR, guide.slug, "page.tsx");
@@ -104,6 +133,10 @@ describe("Sitewide Editorial Article Design Consistency Quality Gate", () => {
         /<aside[^>]*className=["'][^"']*hidden\s+lg:block\s+lg:col-span-4[^"']*["']/.test(content),
         `Article ${guide.slug} <aside> must use className="hidden lg:block lg:col-span-4"`
       ).toBe(true);
+      expect(
+        /<aside[^>]*className=["'][^"']*self-(start|center|end|baseline)[^"']*["']/.test(content),
+        `Article ${guide.slug} <aside> must not use self-* alignment (which collapses column height and breaks sticky sidebar)`
+      ).toBe(false);
     }
   });
 

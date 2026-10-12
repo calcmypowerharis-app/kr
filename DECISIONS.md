@@ -316,3 +316,17 @@ This log records major technical and product decisions, context, rationale, and 
      - Verified 100% live production HTTP status and link presence via `scripts/verify_phase2_batch2_live.py`.
 - **Rationale:** Completes the topical graph across all 4 core clusters, eliminates orphan/dead-end paths, provides natural user continuation from calculation tools to deep-dive guides, and boosts organic crawl discovery without artificial link stuffing.
 
+---
+
+## Decision 029: Eliminate `items-start` on Editorial Guide 12-Column Grids to Preserve Sticky Sidebar & Reading Counter
+- **Date:** 2026-10-12
+- **Status:** Approved, Implemented & Verified
+- **Context:** An inspection of editorial guides revealed that the right-hand sidebar (`TableOfContents`) was not remaining sticky and the reading progress counter (`{progress}% read`) disappeared off-screen during scrolling on four articles (`/how-to-calculate-electricity-bill`, `/how-to-calculate-watts-for-a-generator`, `/how-to-size-a-solar-charge-controller`, and `/continuous-power-generators`). In CSS Grid, setting `items-start` on the 12-column container collapsed the `<aside>` grid column to intrinsic height (~597px) rather than stretching to full article height (~7,000px+), causing `<nav className="sticky top-20">` to run out of scrollable track and exit the viewport.
+- **Decision:**
+  1. Removed `items-start` from the outer 12-column grid in all four affected editorial guides so that they match the canonical reference layout: `<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">`.
+  2. Verified that `<aside>` stretches to full article height, allowing the Table of Contents to remain sticky at `top: 80px` and the reading progress hook (`useReadingProgress`) to continuously update `{progress}% read` throughout the entire article.
+  3. Added permanent automated quality gate assertions in `src/lib/seo/__tests__/article-design-consistency.test.ts` ensuring that none of the 16 editorial guides use `items-start` or other track-collapsing alignment classes on the grid, and no `self-*` alignment overrides on `<aside>`.
+  4. Codified Lesson 018 in `LESSONS.md` and synchronized Rule 25 in `.agents/rules/05_design_system_and_images.md`, `AGENTS.md`, and `GEMINI.md`.
+- **Rationale:** Restores reading UX and Table of Contents accessibility across all long-form guides, preserves design system consistency against the canonical `/solar-panels-series-vs-parallel` benchmark, and prevents future regressions via automated CI assertions.
+
+

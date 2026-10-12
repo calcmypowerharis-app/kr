@@ -126,7 +126,7 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 ## Lesson 018: Never Place `items-start` on Parent Grid Containers Wrapping Sticky `<aside>`
 - **Context:** Setting `items-start` (`align-items: start`) on a CSS Grid container (`<div className="lg:grid ... items-start">`) collapses the `<aside>` grid column height to the height of its immediate content (~650px) rather than stretching to the full height of the adjacent article content (~12,000px). Because a `position: sticky` child can only stick within the bounds of its direct parent, `<nav className="sticky top-20">` runs out of vertical track immediately and scrolls off-screen.
 - **Rule:** Never apply `items-start` to grid wrappers containing a sticky sidebar. Allow the grid column to stretch to the full height of the article row. Additionally, keep the sidebar component compact (under ~650px total height) so the reading percentage, active section label, all section links, useful tools, and CTA button remain visible inside 800px–900px viewports without vertical clipping.
-- **Prevention:** Test desktop scrolling at both mid-article and end-of-article scroll offsets using Chrome DevTools screenshots to confirm the sidebar remains pinned throughout the entire page.
+- **Prevention:** Automated test suite `src/lib/seo/__tests__/article-design-consistency.test.ts` scans all 16 editorial guides and asserts that the outer 12-column grid container (`lg:grid-cols-12`) does not contain `items-start`. Desktop scrolling is also verified at both mid-article and end-of-article scroll offsets using browser QA to confirm the sidebar remains pinned throughout the entire page.
 
 ---
 
