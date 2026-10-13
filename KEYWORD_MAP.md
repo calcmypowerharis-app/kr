@@ -72,11 +72,18 @@ Before creating any new route on CalcMyPower, classify the dominant search inten
 
 ## 5. Cluster 4: Solar PV & Off-Grid (`solar`)
 
-### Planned Expansion
-| Proposed URL | Page Type | Primary Query Target | Supporting Queries & Scope | Parent / Companion Tool |
+### Live Assets
+| URL | Page Type | Primary Query Target | Secondary Supporting Cluster | Status |
 |---|---|---|---|---|
-| `/solar-panel-calculator` | Calculator | `solar panel calculator` | `how many solar panels do i need`, `off grid solar array and battery sizing`, `peak sun hours solar output calculator` | `/ups-battery-backup-calculator` |
-| `/solar-charge-controller-size-calculator` | Calculator | `solar charge controller calculator` | `mppt vs pwm charge controller sizing`, `solar array voc and isc to controller amps` | `/watts-to-amps-calculator` |
+| `/solar-system-size-calculator` | Calculator | `solar system size calculator` | `how many solar panels do i need`, `solar panel roof space calculator` | **LIVE** |
+| `/solar-battery-calculator` | Calculator | `solar battery calculator` | `off grid solar battery sizing`, `solar storage kwh calculator` | **LIVE** |
+| `/solar-charge-controller-calculator` | Calculator | `solar charge controller calculator` | `mppt vs pwm calculator`, `charge controller amp calculator` | **LIVE** |
+| `/solar-panel-tilt-calculator` | Calculator | `solar panel angle calculator` | `solar tilt angle calculator`, `optimal solar panel angle` | **LIVE** |
+| `/solar-panels-series-vs-parallel` | Guide | `solar panels serial or parallel` | `solar panel series vs parallel wiring`, `solar string voltage` | **LIVE** |
+| `/how-many-solar-panels-do-i-need` | Guide | `how many solar panels do i need to power my house` | `solar panel count for home`, `kwh to panel count` | **LIVE** |
+| `/how-much-energy-does-a-solar-panel-produce` | Guide | `how much energy does a solar panel produce` | `400w solar panel daily output`, `kwh per solar panel` | **LIVE** |
+| `/how-to-size-a-solar-charge-controller` | Guide | `how to size a solar charge controller` | `sizing mppt controller`, `cold weather voc calculation` | **LIVE** |
+| `/how-long-does-it-take-to-charge-a-battery-with-solar-panels` | Hybrid Guide & Calculator | `solar panel charge time calculator` | `solar charge time calculator`, `how long does it take to charge a battery with solar panels`, `solar battery charging time` | **LIVE** |
 
 ---
 

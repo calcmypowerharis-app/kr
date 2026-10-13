@@ -91,6 +91,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
+    title: "Solar Battery Charging Time Guide",
+    description:
+      "Calculate how long it takes to charge a battery with solar panels. Covers peak sun hours, MPPT vs PWM efficiency, and chemistry absorption stages.",
+    href: "/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
+    category: "Solar Engineering Guide",
+  },
+  {
     title: "Solar Panels in Series vs Parallel Guide",
     description:
       "Understand how series and parallel wiring configurations affect array operating voltage, current, and charge controller compatibility.",

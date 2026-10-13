@@ -101,6 +101,11 @@ The following high-value contextual links were implemented and verified across P
 | `/what-does-ah-mean-on-a-battery` | Guide | `/how-to-calculate-amp-hours-of-a-battery-bank` | Guide | Section 10 Mistake 4 wiring note |
 | `/how-long-will-a-100ah-battery-last` | Guide | `/how-many-amp-hours-do-i-need` | Guide | Section 10 bank sizing callout card |
 | `/how-long-will-a-100ah-battery-last` | Guide | `/how-to-calculate-amp-hours-of-a-battery-bank` | Guide | Section 10 bank sizing callout card |
+| `/solar-battery-calculator` | Calculator | `/how-long-does-it-take-to-charge-a-battery-with-solar-panels` | Guide | Related tools grid |
+| `/solar-charge-controller-calculator` | Calculator | `/how-long-does-it-take-to-charge-a-battery-with-solar-panels` | Guide | Related tools grid |
+| `/solar-panels-series-vs-parallel` | Guide | `/how-long-does-it-take-to-charge-a-battery-with-solar-panels` | Guide | Related tools cross-link grid |
+| `/how-long-does-it-take-to-charge-a-battery-with-solar-panels` | Guide / Tool | `/solar-battery-calculator` | Calculator | Related tools cross-link grid |
+| `/how-long-does-it-take-to-charge-a-battery-with-solar-panels` | Guide / Tool | `/solar-charge-controller-calculator` | Calculator | Related tools cross-link grid |
 
 ---
 

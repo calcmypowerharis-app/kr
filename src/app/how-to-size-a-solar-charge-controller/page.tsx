@@ -653,6 +653,13 @@ export default function HowToSizeASolarChargeControllerPage() {
                     <ArrowRight className="w-4 h-4" />
                   </Link>
                   <Link
+                    href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs sm:text-sm text-slate-200 transition border border-slate-700"
+                  >
+                    <span>Calculate Solar Charge Time</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
                     href="/solar-system-size-calculator"
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-semibold text-xs sm:text-sm text-slate-200 transition border border-slate-700"
                   >
