@@ -318,6 +318,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/solar-panels-series-vs-parallel",
       "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
+      "/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
     ],
   },
   {
@@ -347,6 +348,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
       "/what-does-ah-mean-on-a-battery",
+      "/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
     ],
   },
   {
@@ -775,6 +777,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     relatedGuidePaths: [
       "/how-long-will-a-100ah-battery-last",
       "/what-is-a-watt-hour",
+      "/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
     ],
   },
   {
@@ -1043,6 +1046,36 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/how-long-will-a-100ah-battery-last",
       "/solar-panels-series-vs-parallel",
       "/what-is-a-watt-hour",
+    ],
+  },
+  {
+    slug: "how-long-does-it-take-to-charge-a-battery-with-solar-panels",
+    path: "/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
+    title: "How Long Does It Take to Charge a Battery With Solar Panels?",
+    shortTitle: "Solar Battery Charge Time Guide",
+    metaTitle: "How Long Does It Take to Charge a Battery With Solar Panels?",
+    metaDescription:
+      "Calculate how long it takes to charge a battery with solar panels. Use our solar charge time calculator and engineering guide covering peak sun hours, MPPT vs PWM, and battery chemistry.",
+    cluster: "solar",
+    parentCalculatorPath: "/solar-battery-calculator",
+    scenarioLink: "/how-long-does-it-take-to-charge-a-battery-with-solar-panels#solar-charge-calculator",
+    primaryKeyword: "solar panel charge time calculator",
+    readingTime: "15 min read",
+    datePublished: "2026-10-13",
+    lastModified: "2026-10-13",
+    heroImage: "/images/articles/how-long-does-it-take-to-charge-a-battery-with-solar-panels.webp",
+    relatedCalculatorPaths: [
+      "/solar-battery-calculator",
+      "/solar-charge-controller-calculator",
+      "/battery-capacity-calculator",
+      "/solar-panel-tilt-calculator",
+      "/voltage-drop-calculator",
+    ],
+    relatedGuidePaths: [
+      "/solar-panels-series-vs-parallel",
+      "/how-to-size-a-solar-charge-controller",
+      "/how-long-will-a-100ah-battery-last",
+      "/how-much-energy-does-a-solar-panel-produce",
     ],
   },
 ];

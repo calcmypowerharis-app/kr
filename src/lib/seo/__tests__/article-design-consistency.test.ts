@@ -8,7 +8,7 @@ const VALID_CLUSTERS = ["generators", "solar", "ups-battery", "electricity"];
 
 describe("Sitewide Editorial Article Design Consistency Quality Gate", () => {
   it("verifies all editorial articles exist in the app directory", () => {
-    expect(GUIDE_REGISTRY).toHaveLength(16);
+    expect(GUIDE_REGISTRY).toHaveLength(17);
     for (const guide of GUIDE_REGISTRY) {
       const pagePath = path.join(APP_DIR, guide.slug, "page.tsx");
       expect(fs.existsSync(pagePath), `Missing page.tsx for ${guide.slug}`).toBe(true);

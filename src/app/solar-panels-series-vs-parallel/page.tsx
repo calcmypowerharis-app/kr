@@ -1324,6 +1324,19 @@ export default function SolarPanelsSeriesVsParallelPage() {
                       Calculate MPPT vs PWM charge controller sizing, sub-freezing Voc voltage limits per NEC 690.7, and battery bank matching.
                     </p>
                   </Link>
+
+                  <Link
+                    href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+                    className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
+                  >
+                    <div className="flex items-center gap-2 text-amber-600 font-bold text-sm">
+                      <Sun className="w-4 h-4" />
+                      <span>Solar Battery Charging Time Guide</span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Calculate solar recharge hours and days based on panel wattage, battery capacity, MPPT efficiency, and daily peak sun hours.
+                    </p>
+                  </Link>
                 </div>
               </section>
 

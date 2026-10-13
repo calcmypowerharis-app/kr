@@ -1150,6 +1150,24 @@ export default function BatteryRuntimeGuidePage() {
                 </Link>
 
                 <Link
+                  href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+                  className="group block p-5 rounded-2xl bg-white border border-slate-200 hover:border-amber-500 hover:shadow-md transition space-y-2"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200">
+                      Engineering Guide • Solar Charging
+                    </span>
+                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 group-hover:translate-x-0.5 transition" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 group-hover:text-amber-600 transition">
+                    How Long to Charge a Battery with Solar Panels?
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Calculate exact recharge time for 100Ah lithium and AGM batteries based on solar panel wattage, MPPT charge controllers, and peak sun hours.
+                  </p>
+                </Link>
+
+                <Link
                   href="/watts-to-amps-calculator"
                   className="group block p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                 >

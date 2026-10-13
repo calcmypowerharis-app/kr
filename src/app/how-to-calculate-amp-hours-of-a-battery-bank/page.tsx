@@ -21,6 +21,7 @@ import {
   Sliders,
   Scale,
   Cpu,
+  Sun,
 } from "lucide-react";
 import {
   generateArticleSchema,
@@ -864,6 +865,19 @@ export default function BatteryBankAmpHoursGuidePage() {
                   </div>
                   <p className="text-xs text-slate-600">
                     Practical run times for refrigerators, televisions, inverters, and household backup loads.
+                  </p>
+                </Link>
+
+                <Link
+                  href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+                  className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-amber-500 hover:shadow-md transition space-y-2 block"
+                >
+                  <div className="flex items-center gap-2 font-bold text-slate-900">
+                    <Sun className="w-5 h-5 text-amber-500" />
+                    <span>Solar Battery Charge Time Guide</span>
+                  </div>
+                  <p className="text-xs text-slate-600">
+                    Calculate charging hours and days for battery banks using solar panel wattage and MPPT controllers.
                   </p>
                 </Link>
               </div>
