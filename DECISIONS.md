@@ -329,4 +329,19 @@ This log records major technical and product decisions, context, rationale, and 
   4. Codified Lesson 018 in `LESSONS.md` and synchronized Rule 25 in `.agents/rules/05_design_system_and_images.md`, `AGENTS.md`, and `GEMINI.md`.
 - **Rationale:** Restores reading UX and Table of Contents accessibility across all long-form guides, preserves design system consistency against the canonical `/solar-panels-series-vs-parallel` benchmark, and prevents future regressions via automated CI assertions.
 
+---
+
+## Decision 030: Release of Solar Battery Charging Time Calculator & Comprehensive Guide (`/how-long-does-it-take-to-charge-a-battery-with-solar-panels`)
+- **Date:** 2026-10-13
+- **Status:** Approved, Merged & Production Deployed (PR #8, Merge Commit `7da262e`, Vercel Deployment `7028468524`)
+- **Context:** To capture high-intent search volume around solar battery recharge timelines (`solar panel charge time calculator` US Vol 210, `battery charge calculator` US Vol 390) without cannibalizing general solar sizing tools, a hybrid asset was designed combining an interactive, responsive calculator with an in-depth educational sizing guide.
+- **Decision:**
+  1. Built standalone mathematical calculation engine (`src/lib/calculators/solar-charge-time.ts`) incorporating one-way charging energy efficiency (eta_batt: LiFePO4 95%, AGM 85%, Flooded 80%), transparent MPPT (82%) and PWM (65%) baseline deratings, C-rate continuous current advisories, and zero-deficit edge case handling.
+  2. Implemented client-side interactive tool (`SolarChargeTimeCalculator.tsx`) with 4 common scenario presets (RV/Van, Weekend Camper, Off-Grid Cabin, Marine Trolling), live reactive calculation cards, and responsive form controls.
+  3. Authored full-length canonical editorial guide (`/how-long-does-it-take-to-charge-a-battery-with-solar-panels`) following `/solar-panels-series-vs-parallel` layout standards: 1,600+ words, 2 to 3 visual lines per paragraph, content-left/aside-right grid, semantic `<details>` FAQ accordions, and complete JSON-LD schemas (`Article`, `BreadcrumbList`, `FAQPage`, `WebApplication`).
+  4. Grounded calculations in authoritative US standards (DOE / NREL PVWatts, IEEE 2030.5, NEC 690, NEC 706, NEC 210.19).
+  5. Established bidirectional companion links across 5 external routes (`/calculators`, `/solar-panels-series-vs-parallel`, `/how-to-size-a-solar-charge-controller`, `/how-long-will-a-100ah-battery-last`, `/how-to-calculate-amp-hours-of-a-battery-bank`).
+  6. Verified all 8 Definition of Done quality gates: 355/355 Vitest unit tests, 0 TypeScript errors, 0 ESLint warnings, 29/29 rules integrity, 42/42 static build prerenders, PR #8 creation, merge into `main`, and live HTTP 200 verification on `https://calcmypower.com`.
+- **Rationale:** Delivers maximum technical utility for searchers with an interactive sizing tool while explaining the physical principles of absorption taper, irradiance, and temperature derating.
+
 
