@@ -3,27 +3,39 @@
  * Pure TypeScript - Decoupled from React, DOM, and UI
  * CalcMyPower.com
  *
- * Mathematical Logic & Physics Derivations:
+ * Mathematical Logic & Engineering Standards:
  *
  * 1. Battery Deficit Energy:
- *    E_nominal = V_battery * Ah_battery
- *    Delta_SoC = (target_SoC - initial_SoC) / 100
- *    E_deficit = E_nominal * Delta_SoC
+ *    E_nominal = V_battery * Ah_battery (Watt-hours)
+ *    Delta_SoC = max(0, target_SoC - initial_SoC) / 100
+ *    E_deficit = E_nominal * Delta_SoC (Watt-hours)
  *
- * 2. Energy Required to Recharge (Accounting for Battery Inefficiencies):
- *    E_needed = E_deficit / coulombic_efficiency
- *    - LiFePO4: ~98% coulombic efficiency, linear bulk absorption up to 95%+ SoC.
- *    - Lead-Acid (AGM/Gel): ~85% coulombic efficiency due to internal resistance and absorption soak.
- *    - Flooded Lead-Acid: ~80% coulombic efficiency due to gassing and electrolyte heat.
+ * 2. Energy Required to Recharge (One-Way Charging Energy Efficiency):
+ *    E_needed = E_deficit / charge_energy_efficiency
  *
- * 3. Effective Solar Array Output (Derated for Real-World Losses):
- *    P_effective = P_rated * net_system_efficiency
- *    - Environmental derate: ~85% (thermal cell losses above 25°C STC, dust/soiling, cable resistance).
- *    - MPPT Controller: ~96.5% DC-DC conversion efficiency -> Net system efficiency ≈ 82%.
- *    - PWM Controller: ~77% voltage mismatch (clamps ~18V Vmp to ~13.5V-14V) -> Net system efficiency ≈ 65%.
+ *    Engineering Distinction:
+ *    - Coulombic (Amp-hour) efficiency (eta_C) measures electron retention:
+ *      >99% for LiFePO4, ~90-95% for lead-acid in bulk phase.
+ *    - One-way charging energy efficiency (eta_charge) measures Watt-hour replenishment
+ *      accounting for electrochemical overpotential (V_charge > V_nominal) and internal resistance.
+ *      Typical one-way cycle values: LiFePO4 ~98%, AGM ~85%, Flooded ~80% (IEEE Std 1013).
+ *    - Round-trip efficiency (eta_RTE ≈ eta_charge * eta_discharge) is lower:
+ *      LiFePO4 ~92-95%, AGM ~80-85%, Flooded ~70-75%.
+ *
+ * 3. Effective Solar Array Output (Derated for Real-World Field Conditions):
+ *    P_effective = P_rated * net_system_yield_factor
+ *    - MPPT Controller: ~82% net yield illustrative baseline
+ *      (accounts for ~10-15% cell thermal losses above 25°C STC per NREL PVWatts benchmarks,
+ *       ~2-3% dust/soiling, ~1.5-2% DC wiring resistance, and 96-98% MPPT conversion efficiency).
+ *    - PWM Controller: ~65% net yield illustrative baseline
+ *      (accounts for ~15% thermal/environmental derate plus ~23% operating voltage mismatch
+ *       when clamping ~18V Vmp panel output to ~13.6V-14.2V battery voltage).
+ *    Note: Array yield factors are illustrative engineering baselines; cold winter days can
+ *    produce higher array outputs, whereas hot desert rooftops or suboptimal tilt angles will
+ *    reduce output further.
  *
  * 4. Charging Time in Peak Sun Hours (PSH):
- *    T_psh = E_needed / P_effective
+ *    T_psh = E_needed / P_effective (hours of 1,000 W/m² equivalent irradiance)
  *
  * 5. Estimated Calendar Days:
  *    Days = T_psh / daily_peak_sun_hours
@@ -36,12 +48,12 @@ export type SystemVoltage = 12 | 24 | 48;
 export interface SolarChargeTimeInput {
   batteryVoltage: SystemVoltage;
   batteryCapacityAh: number;
-  initialSocPercent: number; // 0 to 99
-  targetSocPercent: number; // 1 to 100
+  initialSocPercent: number; // 0 to 100
+  targetSocPercent: number; // 0 to 100
   chemistry: BatteryChemistry;
   solarWatts: number; // Rated STC Watts
   controllerType: ControllerTechnology;
-  peakSunHoursPerDay: number; // e.g. 2.0 to 7.0, default 4.5
+  peakSunHoursPerDay: number; // e.g. 1.0 to 7.0, default 4.5
 }
 
 export interface SolarChargeTimeResult {
@@ -71,7 +83,8 @@ export const CHEMISTRY_PROFILES: Record<
   BatteryChemistry,
   {
     name: string;
-    efficiency: number;
+    efficiency: number; // One-way charging energy efficiency (Wh basis)
+    chargeEnergyEfficiency: number;
     bulkVoltageMultiplier: number;
     maxRecommendedCRate: number;
     description: string;
@@ -81,25 +94,28 @@ export const CHEMISTRY_PROFILES: Record<
   lifepo4: {
     name: "LiFePO4 (Lithium Iron Phosphate)",
     efficiency: 0.98,
-    bulkVoltageMultiplier: 1.183, // 14.2V on 12V nominal
+    chargeEnergyEfficiency: 0.98,
+    bulkVoltageMultiplier: 1.183, // ~14.2V on 12V, 28.4V on 24V, 56.8V on 48V
     maxRecommendedCRate: 0.5,
-    description: "High charge acceptance with 98% coulombic efficiency and negligible absorption taper.",
+    description: "High charge acceptance with 98% one-way energy efficiency and minimal absorption taper.",
     absorptionNote: "LiFePO4 batteries accept full charging current until 95% to 98% state of charge, followed by a brief cell-balancing absorption cycle.",
   },
   lead_acid_agm: {
     name: "Lead-Acid (AGM / Sealed Deep-Cycle)",
     efficiency: 0.85,
-    bulkVoltageMultiplier: 1.20, // 14.4V on 12V nominal
+    chargeEnergyEfficiency: 0.85,
+    bulkVoltageMultiplier: 1.20, // ~14.4V on 12V, 28.8V on 24V, 57.6V on 48V
     maxRecommendedCRate: 0.25,
-    description: "Standard sealed deep-cycle battery with ~85% average charge efficiency over a full cycle.",
-    absorptionNote: "AGM batteries switch from bulk to absorption mode at roughly 80% SoC. Current tapers down continuously for the remaining 20%, requiring 2 to 4 hours of steady sunlight to reach true 100% saturation.",
+    description: "Sealed deep-cycle battery with ~85% one-way charge energy efficiency across a full replenishment cycle.",
+    absorptionNote: "AGM batteries switch from bulk to constant-voltage absorption at roughly 80% SoC. Current tapers down continuously for the remaining 20%, requiring 2 to 4 hours of steady sunlight to achieve full chemical saturation.",
   },
   lead_acid_flooded: {
     name: "Lead-Acid (Flooded Deep-Cycle)",
     efficiency: 0.80,
-    bulkVoltageMultiplier: 1.217, // 14.6V on 12V nominal
+    chargeEnergyEfficiency: 0.80,
+    bulkVoltageMultiplier: 1.217, // ~14.6V on 12V, 29.2V on 24V, 58.4V on 48V
     maxRecommendedCRate: 0.20,
-    description: "Traditional vented lead-acid with ~80% efficiency due to electrolyte heating and gassing.",
+    description: "Traditional vented lead-acid with ~80% one-way charge energy efficiency due to internal resistance and gassing losses.",
     absorptionNote: "Flooded batteries require an extended absorption soak and periodic equalizing charges. Recharging from 80% to 100% takes substantially longer than the initial bulk phase.",
   },
 };
@@ -115,12 +131,12 @@ export const CONTROLLER_PROFILES: Record<
   mppt: {
     name: "MPPT (Maximum Power Point Tracking)",
     systemEfficiency: 0.82,
-    description: "Converts excess panel voltage into charging current with 82% net outdoor system yield after thermal and wiring losses.",
+    description: "Illustrative baseline: converts excess panel voltage into charging current with 82% net outdoor system yield after thermal derating, wiring resistance, and conversion efficiency.",
   },
   pwm: {
     name: "PWM (Pulse Width Modulation)",
     systemEfficiency: 0.65,
-    description: "Clamps solar panel voltage directly to battery level, sacrificing 20% to 30% of potential panel wattage alongside thermal derating.",
+    description: "Illustrative baseline: clamps panel voltage directly to battery terminal voltage, yielding ~65% net outdoor system power after voltage mismatch and thermal derating.",
   },
 };
 
@@ -189,43 +205,60 @@ export const COMMON_SOLAR_CHARGE_PRESETS: SolarPreset[] = [
 
 export function calculateSolarChargeTime(input: SolarChargeTimeInput): SolarChargeTimeResult {
   // 1. Sanitize and validate inputs
-  const voltage = input.batteryVoltage;
-  const capacityAh = Math.max(1, input.batteryCapacityAh);
-  const initialSoc = Math.min(99, Math.max(0, input.initialSocPercent));
-  const targetSoc = Math.min(100, Math.max(initialSoc + 1, input.targetSocPercent));
-  const solarWatts = Math.max(10, input.solarWatts);
-  const psh = Math.max(0.5, input.peakSunHoursPerDay);
+  const voltage: SystemVoltage =
+    input.batteryVoltage === 24 ? 24 : input.batteryVoltage === 48 ? 48 : 12;
+  const capacityAh = Math.max(0, Number(input.batteryCapacityAh) || 0);
+  const initialSoc = Math.min(100, Math.max(0, Number(input.initialSocPercent) || 0));
+  const targetSoc = Math.min(100, Math.max(0, Number(input.targetSocPercent) || 0));
+  const solarWatts = Math.max(0, Number(input.solarWatts) || 0);
+  const psh = Math.max(0.1, Number(input.peakSunHoursPerDay) || 4.5);
 
   const chemProfile = CHEMISTRY_PROFILES[input.chemistry] || CHEMISTRY_PROFILES.lifepo4;
   const ctrlProfile = CONTROLLER_PROFILES[input.controllerType] || CONTROLLER_PROFILES.mppt;
 
   // 2. Battery energy math
   const nominalBatteryEnergyWh = voltage * capacityAh;
-  const deficitPercent = (targetSoc - initialSoc) / 100;
+  const deficitPercent = Math.max(0, targetSoc - initialSoc) / 100;
   const deficitEnergyWh = nominalBatteryEnergyWh * deficitPercent;
-  const energyNeededWh = deficitEnergyWh / chemProfile.efficiency;
+  const energyNeededWh =
+    chemProfile.efficiency > 0 && deficitEnergyWh > 0
+      ? deficitEnergyWh / chemProfile.efficiency
+      : 0;
 
   // 3. Solar generation math
   const effectiveSolarWatts = solarWatts * ctrlProfile.systemEfficiency;
   const bulkChargingVoltage = voltage * chemProfile.bulkVoltageMultiplier;
-  const effectiveChargingAmps = effectiveSolarWatts / bulkChargingVoltage;
-  const cRate = effectiveChargingAmps / capacityAh;
+  const effectiveChargingAmps =
+    bulkChargingVoltage > 0 && effectiveSolarWatts > 0
+      ? effectiveSolarWatts / bulkChargingVoltage
+      : 0;
+  const cRate = capacityAh > 0 ? effectiveChargingAmps / capacityAh : 0;
 
-  // 4. Charging time math
-  const chargeTimePeakSunHours = effectiveSolarWatts > 0 ? energyNeededWh / effectiveSolarWatts : 0;
+  // 4. Charging time math (PSH and days)
+  const chargeTimePeakSunHours =
+    effectiveSolarWatts > 0 && energyNeededWh > 0
+      ? energyNeededWh / effectiveSolarWatts
+      : 0;
   const chargeTimeDays = psh > 0 ? chargeTimePeakSunHours / psh : 0;
 
   // 5. Advisories & safety warnings
   let cRateWarning: string | undefined;
-  if (cRate > chemProfile.maxRecommendedCRate) {
-    cRateWarning = `Effective charge current (${effectiveChargingAmps.toFixed(1)}A) equals ${cRate.toFixed(2)}C, which exceeds the typical ${chemProfile.maxRecommendedCRate}C recommended limit for this chemistry. Verify manufacturer charge current specifications to prevent overheating.`;
+  if (cRate > chemProfile.maxRecommendedCRate && capacityAh > 0 && effectiveChargingAmps > 0) {
+    cRateWarning = `Advisory: Calculated charge current (${effectiveChargingAmps.toFixed(1)}A / ${cRate.toFixed(2)}C) exceeds the typical ${chemProfile.maxRecommendedCRate}C industry guideline for standard ${chemProfile.name} batteries. Actual maximum safe charge current depends on the manufacturer's specific cell chemistry and BMS limits; verify your battery datasheet.`;
   }
 
+  const roundTripEstimate =
+    input.chemistry === "lifepo4"
+      ? "92-95%"
+      : input.chemistry === "lead_acid_agm"
+      ? "80-85%"
+      : "70-75%";
+
   const assumptions = [
-    `Solar array derate factor: ${(ctrlProfile.systemEfficiency * 100).toFixed(0)}% net yield (accounting for panel temperature above 25°C STC, soiling, wiring, and ${ctrlProfile.name}).`,
-    `Battery coulombic efficiency: ${(chemProfile.efficiency * 100).toFixed(0)}% (${chemProfile.name}).`,
-    `Daily solar window: ${psh.toFixed(1)} peak sun hours per day at 1,000 W/m² equivalent irradiance.`,
-    `Zero simultaneous DC or AC load draws while recharging. Active loads will extend charging duration proportionally.`,
+    `Solar array yield factor: ${(ctrlProfile.systemEfficiency * 100).toFixed(0)}% (illustrative baseline accounting for cell heat above 25°C STC, soiling, DC wiring, and ${ctrlProfile.name} efficiency). Actual field yield varies with climate and installation geometry.`,
+    `Battery one-way charging energy efficiency: ${(chemProfile.efficiency * 100).toFixed(0)}% (${chemProfile.name}). Note that one-way charging energy efficiency (Wh basis) differs from round-trip cycle efficiency (~${roundTripEstimate}) and Coulombic amp-hour efficiency.`,
+    `Local solar window: ${psh.toFixed(1)} peak sun hours per day at 1,000 W/m² equivalent direct irradiance.`,
+    `Zero simultaneous DC or AC load draws while recharging. Active electrical loads (such as a 12V refrigerator or inverter idle draw) divert solar current and extend charging time proportionally.`,
   ];
 
   return {

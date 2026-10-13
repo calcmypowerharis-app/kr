@@ -348,14 +348,17 @@ export default function SolarBatteryChargeTimePage() {
                   <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-2xs space-y-2">
                     <div className="flex items-center gap-2 text-amber-700 font-bold text-sm">
                       <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-800 flex items-center justify-center text-xs font-black">2</span>
-                      <span>Account for Battery Chemistry Inefficiencies</span>
+                      <span>Account for Battery Charging Energy Inefficiencies</span>
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      No electrochemical cell absorbs 100% of incoming energy. Some power is lost as heat and internal chemical resistance. Divide the energy deficit by the chemistry coulombic efficiency factor:
+                      No electrochemical cell absorbs 100% of incoming energy. Some power is lost to internal resistance and chemical conversion heat. Divide the energy deficit by the one-way charging energy efficiency factor:
                     </p>
                     <div className="bg-slate-900 text-amber-300 font-mono text-xs sm:text-sm p-3 rounded-lg overflow-x-auto">
-                      Net Energy Needed (Wh) = Deficit Energy (Wh) ÷ Battery Coulombic Efficiency (0.80 to 0.98)
+                      Net Energy Needed (Wh) = Deficit Energy (Wh) ÷ One-Way Charging Energy Efficiency (0.80 to 0.98)
                     </div>
+                    <p className="text-[11px] text-slate-500 italic">
+                      Note: One-way charging energy efficiency (Watt-hours stored per Watt-hour input) is distinct from round-trip cycle efficiency (~80% for AGM, ~92% to 95% for LiFePO4) and Coulombic Amp-hour retention.
+                    </p>
                   </div>
 
                   <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-2xs space-y-2">
@@ -364,11 +367,14 @@ export default function SolarBatteryChargeTimePage() {
                       <span>Determine Effective Solar Array Charging Power</span>
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      Apply real-world outdoor derating and charge controller conversion factors to your solar array nameplate wattage:
+                      Apply real-world outdoor derating and charge controller conversion factors to your solar array nameplate wattage. The 82% (MPPT) and 65% (PWM) factors represent illustrative baseline engineering assumptions:
                     </p>
                     <div className="bg-slate-900 text-amber-300 font-mono text-xs sm:text-sm p-3 rounded-lg overflow-x-auto">
-                      Effective Solar Power (W) = Rated Solar Watts × Net System Yield Factor (0.65 for PWM, 0.82 for MPPT)
+                      Effective Solar Power (W) = Rated Solar Watts × Net System Yield Factor (0.65 for PWM, 0.82 for MPPT baseline)
                     </div>
+                    <p className="text-[11px] text-slate-500 italic">
+                      Actual yield varies with rooftop ambient temperature, seasonal solar elevation, dust accumulation, and DC wire length.
+                    </p>
                   </div>
 
                   <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-2xs space-y-2">
@@ -459,7 +465,7 @@ export default function SolarBatteryChargeTimePage() {
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
-                  LiFePO4 lithium batteries feature exceptionally high coulombic efficiency (typically 97% to 99%). They maintain a virtually flat voltage curve and accept maximum bulk charging current continuously until reaching roughly 95% to 98% state of charge.
+                  LiFePO4 lithium batteries feature exceptionally high Coulombic efficiency (typically 99%+) and approximately 98% one-way charging energy efficiency. They maintain a virtually flat voltage curve and accept maximum bulk charging current continuously until reaching roughly 95% to 98% state of charge.
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
@@ -608,7 +614,7 @@ export default function SolarBatteryChargeTimePage() {
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-xs text-slate-500 italic">
-                  Assumptions: LiFePO4 chemistry with 80% discharge deficit (98% coulombic efficiency); MPPT charge controller (82% net outdoor yield factor); average regional sunlight of 4.5 peak sun hours per day; zero concurrent electrical loads.
+                  Assumptions: LiFePO4 chemistry with 80% discharge deficit (98% one-way charge energy efficiency); MPPT charge controller (82% net outdoor yield illustrative baseline); average regional sunlight of 4.5 peak sun hours per day; zero concurrent electrical loads.
                 </p>
 
                 <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-2xs">
@@ -744,6 +750,10 @@ export default function SolarBatteryChargeTimePage() {
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
+                  <strong>Battery Energy Storage Systems (NEC 706):</strong> Energy storage installations must incorporate accessible DC disconnects, properly rated overcurrent protective devices (Class T, MRBF, or ANL fuses placed near the positive terminal), and suitable physical protection.
+                </p>
+
+                <p className="text-slate-700 leading-relaxed text-base">
                   <strong>Wire Gauge and Voltage Drop (NEC 210.19):</strong> Low-voltage DC circuits are highly vulnerable to voltage drop. Running heavy current through undersized conductor cables causes resistive heat and prevents the charge controller from maintaining target absorption voltage. Keep total DC circuit voltage drop strictly below 3% using properly sized AWG copper conductors.
                 </p>
 
@@ -754,7 +764,7 @@ export default function SolarBatteryChargeTimePage() {
                     <span>Battery C-Rate and Thermal Safety Warning</span>
                   </div>
                   <p className="leading-relaxed">
-                    Never exceed manufacturer maximum charge current ratings. Flooded and sealed lead-acid batteries should generally not be charged at rates exceeding 0.20C to 0.25C (20A to 25A for a 100Ah battery) to prevent violent electrolyte boiling and thermal runaway. While lithium LiFePO4 batteries accept up to 0.50C (50A for a 100Ah battery), always verify your specific battery BMS specifications before connecting high-wattage solar arrays.
+                    Never exceed your battery manufacturer maximum continuous charge current rating. Industry guidelines suggest general screening limits of 0.20C for flooded lead-acid, 0.25C for AGM, and 0.50C for standard LiFePO4 batteries (for instance, 20A, 25A, and 50A respectively on a 100Ah bank). However, these thresholds are general benchmarks rather than universal guarantees: some entry-level lithium batteries feature BMS current limits as low as 0.2C (20A for 100Ah), while heavy-duty commercial cells allow 1.0C. Always verify the manufacturer technical datasheet for your exact battery model before sizing high-wattage solar arrays.
                   </p>
                 </div>
               </section>
@@ -856,16 +866,16 @@ export default function SolarBatteryChargeTimePage() {
                 </div>
                 <ul className="list-disc pl-5 space-y-1 text-slate-600">
                   <li>
-                    National Fire Protection Association (NFPA). <em>NFPA 70: National Electrical Code (NEC)</em>, Article 690 (Solar Photovoltaic Systems) and Article 705 (Interconnected Electric Power Production Sources).
+                    National Fire Protection Association (NFPA). <em>NFPA 70: National Electrical Code (NEC)</em>, Article 690 (Solar Photovoltaic Systems) and Article 706 (Energy Storage Systems).
                   </li>
                   <li>
                     National Renewable Energy Laboratory (NREL). <em>PVWatts Calculator and Photovoltaic System Performance Models</em>. U.S. Department of Energy.
                   </li>
                   <li>
-                    Institute of Electrical and Electronics Engineers (IEEE). <em>IEEE Std 1013: Recommended Practice for Sizing Lead-Acid Batteries for Stand-Alone Photovoltaic (PV) Systems</em>.
+                    Institute of Electrical and Electronics Engineers (IEEE). <em>IEEE Std 1013: Recommended Practice for Sizing Lead-Acid Batteries for Stand-Alone Photovoltaic (PV) Systems</em>, and <em>IEEE Std 1561: Guide for Optimizing Performance of Lead-Acid Batteries in Hybrid Systems</em>.
                   </li>
                   <li>
-                    Sandia National Laboratories. <em>Photovoltaic System Performance and Reliability Benchmarks</em>.
+                    Sandia National Laboratories. <em>Photovoltaic System Performance and Reliability Benchmarks</em>; Photovoltaic Performance Modeling Collaborative (PVPMC).
                   </li>
                 </ul>
 

@@ -190,9 +190,9 @@ export function SolarChargeTimeCalculator() {
                 }}
                 className="w-full text-xs sm:text-sm rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 font-medium focus:border-amber-500 focus:outline-hidden"
               >
-                <option value="lifepo4">LiFePO4 Lithium (98% efficient, fast absorption)</option>
-                <option value="lead_acid_agm">Lead-Acid AGM / Sealed (85% efficient, 2-4h absorption soak)</option>
-                <option value="lead_acid_flooded">Lead-Acid Flooded (80% efficient, high gassing/heat)</option>
+                <option value="lifepo4">LiFePO4 Lithium (98% one-way energy efficiency, fast absorption)</option>
+                <option value="lead_acid_agm">Lead-Acid AGM / Sealed (85% one-way energy efficiency, 2-4h absorption soak)</option>
+                <option value="lead_acid_flooded">Lead-Acid Flooded (80% one-way energy efficiency, high gassing/heat)</option>
               </select>
             </div>
 
@@ -204,12 +204,12 @@ export function SolarChargeTimeCalculator() {
                 <input
                   type="number"
                   min={0}
-                  max={99}
+                  max={100}
                   value={initialSoc}
                   onChange={(e) => {
-                    const val = Math.min(99, Math.max(0, Number(e.target.value)));
+                    const val = Math.min(100, Math.max(0, Number(e.target.value)));
                     setInitialSoc(val);
-                    if (val >= targetSoc) setTargetSoc(Math.min(100, val + 1));
+                    if (val > targetSoc) setTargetSoc(val);
                     setActivePreset("");
                   }}
                   className="w-full text-xs sm:text-sm rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 font-medium focus:border-amber-500 focus:outline-hidden"
@@ -222,11 +222,11 @@ export function SolarChargeTimeCalculator() {
                 </label>
                 <input
                   type="number"
-                  min={1}
+                  min={0}
                   max={100}
                   value={targetSoc}
                   onChange={(e) => {
-                    const val = Math.min(100, Math.max(initialSoc + 1, Number(e.target.value)));
+                    const val = Math.min(100, Math.max(0, Number(e.target.value)));
                     setTargetSoc(val);
                     setActivePreset("");
                   }}
@@ -332,7 +332,9 @@ export function SolarChargeTimeCalculator() {
                 <span className="text-sm font-semibold text-slate-300">Peak Sun Hours</span>
               </div>
               <p className="text-[11px] text-slate-400 mt-1">
-                Hours of 1,000 W/m² equivalent direct sunlight needed to replenish {result.deficitEnergyWh} Wh.
+                {result.deficitEnergyWh === 0
+                  ? "Battery is already at or above target state of charge (0 Wh deficit)."
+                  : `Hours of 1,000 W/m² equivalent direct sunlight needed to replenish ${result.deficitEnergyWh} Wh.`}
               </p>
             </div>
 
@@ -345,7 +347,11 @@ export function SolarChargeTimeCalculator() {
               <div className="text-2xl sm:text-3xl font-black text-white mt-0.5 tracking-tight flex items-baseline gap-2">
                 <span>{result.chargeTimeDays}</span>
                 <span className="text-xs font-semibold text-slate-300">
-                  {result.chargeTimeDays <= 1.0 ? "Day (Full Sun)" : "Days (Weather Dependent)"}
+                  {result.chargeTimeDays === 0
+                    ? "Days (Battery Full)"
+                    : result.chargeTimeDays <= 1.0
+                    ? "Day (Full Sun)"
+                    : "Days (Weather Dependent)"}
                 </span>
               </div>
               <p className="text-[11px] text-slate-400 mt-1">
