@@ -765,7 +765,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     primaryKeyword: "solar panels serial or parallel",
     readingTime: "12 min read",
     datePublished: "2026-09-30",
-    lastModified: "2026-09-30",
+    lastModified: "2026-10-14",
     heroImage: "/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     relatedCalculatorPaths: [
       "/solar-charge-controller-calculator",

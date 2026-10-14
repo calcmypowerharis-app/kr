@@ -21,6 +21,8 @@ import {
   GitBranch,
   Split,
   Maximize2,
+  Download,
+  FileText,
 } from "lucide-react";
 import {
   generateArticleSchema,
@@ -49,7 +51,7 @@ export const metadata: Metadata = {
     url: "https://calcmypower.com/solar-panels-series-vs-parallel",
     type: "article",
     publishedTime: "2026-09-30T00:00:00Z",
-    modifiedTime: "2026-09-30T00:00:00Z",
+    modifiedTime: "2026-10-14T00:00:00Z",
     images: [
       {
         url: "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
@@ -125,7 +127,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
       "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
     url: "https://calcmypower.com/solar-panels-series-vs-parallel",
     datePublished: "2026-09-30T00:00:00Z",
-    dateModified: "2026-09-30T00:00:00Z",
+    dateModified: "2026-10-14T00:00:00Z",
     images: [
       "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     ],
@@ -198,7 +200,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
                   <span>12 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <ArticleDateByline datePublished="2026-09-30" lastModified="2026-09-30" />
+                <ArticleDateByline datePublished="2026-09-30" lastModified="2026-10-14" />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -917,6 +919,41 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     Figure 4: A 2S2P arrangement combines two series strings in parallel. Total wattage quadruples (800W), operating voltage doubles to 40.8V V<sub>mp</sub>, and operating current doubles to 19.60A I<sub>mp</sub>.
                   </figcaption>
                 </figure>
+
+                {/* Downloadable Printable PDF Quick-Reference Callout */}
+                <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-800 text-white border border-slate-700 shadow-sm space-y-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-2 text-xs font-bold text-sky-400 uppercase tracking-wider">
+                        <FileText className="w-4 h-4" />
+                        <span>Free Printable Engineering Reference</span>
+                      </div>
+                      <h3 className="text-lg sm:text-xl font-black text-white tracking-tight">
+                        Download Free Printable Solar Wiring Diagram (PDF)
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-xl">
+                        Save our high-resolution 2-page US Letter reference sheet. Features clear vector schematics for 2S, 2P, and 2S2P, copper conductor voltage drop tables, off-grid system topology, and NEC safety commissioning checklists.
+                      </p>
+                      <div className="flex items-center gap-3 text-[11px] text-slate-400 font-mono pt-1">
+                        <span>Format: Vector PDF</span>
+                        <span>•</span>
+                        <span>Pages: 2</span>
+                        <span>•</span>
+                        <span>Size: 289 KB</span>
+                      </div>
+                    </div>
+                    <div className="shrink-0">
+                      <a
+                        href="/downloads/solar-panel-wiring-diagrams-quick-reference.pdf"
+                        download="solar-panel-wiring-diagrams-quick-reference.pdf"
+                        className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-sm transition shadow-sm"
+                      >
+                        <Download className="w-4 h-4" />
+                        <span>Download PDF</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </section>
 
               {/* SECTION 9: Controller Compatibility */}
@@ -1211,6 +1248,36 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     how long will a 100Ah battery last
                   </Link>.
                 </p>
+
+                <div className="p-5 rounded-2xl bg-sky-50 border border-sky-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="flex items-start gap-3">
+                    <FileText className="w-5 h-5 text-sky-600 shrink-0 mt-0.5" />
+                    <div className="space-y-1">
+                      <div className="text-sm font-bold text-slate-900">
+                        Need an offline job-site reference sheet?
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                        Download the printable{" "}
+                        <a
+                          href="/downloads/solar-panel-wiring-diagrams-quick-reference.pdf"
+                          download="solar-panel-wiring-diagrams-quick-reference.pdf"
+                          className="text-sky-700 hover:text-sky-900 font-bold underline underline-offset-2"
+                        >
+                          Solar Wiring Diagrams Quick Reference Sheet (2-Page PDF, 289 KB)
+                        </a>{" "}
+                        for print-ready schematics and conductor tables.
+                      </p>
+                    </div>
+                  </div>
+                  <a
+                    href="/downloads/solar-panel-wiring-diagrams-quick-reference.pdf"
+                    download="solar-panel-wiring-diagrams-quick-reference.pdf"
+                    className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-xs shrink-0 transition"
+                  >
+                    <Download className="w-3.5 h-3.5" />
+                    <span>Download PDF</span>
+                  </a>
+                </div>
               </section>
 
               {/* SECTION 14: Related Calculators */}

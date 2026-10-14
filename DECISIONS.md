@@ -344,4 +344,30 @@ This log records major technical and product decisions, context, rationale, and 
   6. Verified all 8 Definition of Done quality gates: 355/355 Vitest unit tests, 0 TypeScript errors, 0 ESLint warnings, 29/29 rules integrity, 42/42 static build prerenders, PR #8 creation, merge into `main`, and live HTTP 200 verification on `https://calcmypower.com`.
 - **Rationale:** Delivers maximum technical utility for searchers with an interactive sizing tool while explaining the physical principles of absorption taper, irradiance, and temperature derating.
 
+---
+
+## Decision 031: Printable Solar Panel Wiring Diagrams Quick-Reference PDF & Guide Integration (`/solar-panels-series-vs-parallel`)
+- **Date:** 2026-10-14
+- **Status:** Approved & Implemented
+- **Context:** A sitewide forensic audit confirmed that zero downloadable PDFs existed anywhere in the repository. Searchers querying `solar panel wiring diagram PDF` have explicit document-download intent to take schematics onto roofs, camper vans, cabins, and field job sites where mobile connectivity is poor. Creating a separate article was evaluated and rejected to prevent severe keyword cannibalization against CalcMyPower's flagship guide at `/solar-panels-series-vs-parallel`.
+- **Decision:**
+  1. **Generated Print-Ready 2-Page US Letter PDF:**
+     - Created `scripts/generate_solar_wiring_pdf.py` utilizing Chrome headless rendering to produce `public/downloads/solar-panel-wiring-diagrams-quick-reference.pdf` (289 KB, exact 8.5 x 11.0 inch US Letter dimensions, verified with `pypdfium2`).
+     - **Page 1 (Array Connections & Wire Sizing):** High-contrast labeled vector schematics for Series (2S), Parallel (2P), and Series-Parallel (2S2P), electrical matrix table with 200W STC benchmark ratings, and stranded copper conductor voltage-drop benchmark table (12 AWG to 6 AWG at 75°C per NEC Ch. 9, Table 8) with explicit NEC 690.8 ampacity and temperature derating caveats.
+     - **Page 2 (System Topology & Safety):** Conceptual off-grid system schematic (PV array, NEC 690.13 DC disconnect, MPPT controller, battery bank with Class-T 20,000A AIC fusing, pure sine wave inverter, AC subpanel, and NEC 250/690.43 Equipment Grounding Conductor bus), overcurrent protection rules (NEC 690.9, NEC 690.7 cold Voc formula, NEC 706), 5-point commissioning checklist, and authoritative citations (NFPA 70, IEEE 1547, UL 1741, NREL).
+  2. **Integrated Direct Download Access into Canonical Guide:**
+     - Updated `src/app/solar-panels-series-vs-parallel/page.tsx` with a primary responsive dark download card after Section 8 labeled "Download Free Printable Solar Wiring Diagram (PDF)", displaying verified file size (289 KB) and page count (2), linking directly to `/downloads/solar-panel-wiring-diagrams-quick-reference.pdf` with the HTML `download` attribute.
+     - Added a secondary contextual job-site reference card at the end of Section 13 (Decision Guide).
+     - Preserved canonical URL; preserved `datePublished` (2026-09-30) and updated `lastModified` to 2026-10-14 across OpenGraph, `articleSchema`, `ArticleDateByline`, and `src/lib/seo/registry.ts`.
+  3. **Quality Gates & Invariants:**
+     - Verified zero em-dashes (`\u2014`) across all source code, script, documentation, and PDF text.
+     - Verified zero dense paragraphs (all body paragraphs <= 55 words).
+     - All 24 test suites and 360 unit tests passed (`npm test`).
+     - TypeScript typecheck passed with zero errors (`npx tsc --noEmit`).
+     - ESLint passed with zero warnings or errors (`npm run lint`).
+     - Rulebook integrity verified 100% (29/29 rules, 8 category files < 22KB).
+     - Next.js production build succeeded with 46 prerendered static routes.
+- **Rationale:** Fulfills document-format search intent directly on the canonical asset, enriches E-E-A-T and user dwell time, avoids topical cannibalization, and delivers durable practical utility for installers and DIY homeowners.
+
+
 
