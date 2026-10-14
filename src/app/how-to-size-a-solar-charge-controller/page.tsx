@@ -31,7 +31,7 @@ import {
 export const metadata: Metadata = {
   title: "How to Size a Solar Charge Controller: MPPT vs PWM Sizing Guide",
   description:
-    "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM charge controller amperage, cold-weather Voc voltage limits, and battery voltage matching.",
+    "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM controller amperage, cold-weather Voc voltage limits, and battery bank matching.",
   alternates: {
     canonical: "https://calcmypower.com/how-to-size-a-solar-charge-controller",
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title:
       "How to Size a Solar Charge Controller: MPPT vs PWM Sizing Guide | CalcMyPower",
     description:
-      "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM charge controller amperage, cold-weather Voc voltage limits, and battery voltage matching.",
+      "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM controller amperage, cold-weather Voc voltage limits, and battery bank matching.",
     url: "https://calcmypower.com/how-to-size-a-solar-charge-controller",
     type: "article",
     publishedTime: "2026-10-07T00:00:00Z",

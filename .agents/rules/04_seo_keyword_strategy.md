@@ -33,7 +33,7 @@ Do not create multiple pages that target the same intent merely to capture varia
 - Automated regression test `src/lib/seo/__tests__/editorial-quality.test.ts` enforces this synchronization on every build.
 
 ### 7.2 SERP Snippet Optimization Standard
-- Treat title (<= 65 chars) and description (<= 165 chars) character limits as editorial heuristics, not mechanical rules.
+- Titles must be <= 65 characters and descriptions strictly between 130 and 160 characters (hard maximum ceiling: 165 characters). Exceeding 165 characters causes Google SERP snippets to truncate with ellipses, degrading search CTR.
 - Optimize for primary search intent, unique click-through value, and transparent engineering formula promises.
 - Never use generic keyword stuffing or template-based repetitive phrasing.
 - Never assert unsupported claims (e.g. universal NEC limits or codes) unless the exact page content verifies it.
@@ -57,6 +57,12 @@ Do not create multiple pages that target the same intent merely to capture varia
 - Never report a release or change as live based solely on Git commit, push, or merge status.
 - Execute automated HTTP verification scripts (e.g., `scripts/verify_phase2_batch2_live.py`) against `https://calcmypower.com`, confirming HTTP 200 status, correct `<title>`, `<meta name="description">`, canonical links, and the physical presence of target links in the live DOM.
 - Write all verification tooling as Python scripts in `scripts/` to avoid fragile Windows PowerShell inline CLI quote/regex escaping bugs.
+
+### 7.7 1-Hop Apex Crawl Discovery Standard
+- Every newly created indexable route must be linked directly within 1 hop from the root homepage (`src/app/page.tsx`) in its topical cluster directory card.
+- Calculators must additionally be linked from `src/app/calculators/page.tsx`.
+- All routes must be linked in `src/components/layout/Footer.tsx`.
+- Never publish a page relying solely on sitemap.xml or deep 2-hop/3-hop internal links. Googlebot crawl efficiency requires 1-hop apex visibility.
 
 ## 8. Keyword Research Rules
 Never choose a keyword from SEMrush based only on green KD.

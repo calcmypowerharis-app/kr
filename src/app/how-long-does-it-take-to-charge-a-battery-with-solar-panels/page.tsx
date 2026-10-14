@@ -40,7 +40,7 @@ import { SolarChargeTimeCalculator } from "@/components/article/SolarChargeTimeC
 export const metadata: Metadata = {
   title: "How Long Does It Take to Charge a Battery With Solar Panels? (Solar Charge Time Calculator)",
   description:
-    "Calculate how long it takes to charge a battery with solar panels. Use our solar charge time calculator and engineering guide covering peak sun hours, MPPT vs PWM, and battery chemistry.",
+    "Calculate solar battery charging time with our engineering calculator and guide covering peak sun hours, MPPT vs PWM efficiency, and battery chemistry.",
   alternates: {
     canonical:
       "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
@@ -312,7 +312,11 @@ export default function SolarBatteryChargeTimePage() {
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
-                  In practical outdoor installations, dark silicon solar panels exposed to midday sunshine routinely reach operating temperatures between 45°C and 65°C (113°F to 149°F). Because monocrystalline silicon exhibits a negative temperature coefficient of maximum power (typically -0.35% to -0.40% per degree Celsius above 25°C), thermal derating reduces actual electrical output by 8% to 15%.
+                  In practical outdoor conditions, dark silicon solar panels routinely reach operating temperatures between 45°C and 65°C (113°F to 149°F).
+                </p>
+
+                <p className="text-slate-700 leading-relaxed text-base">
+                  Because monocrystalline silicon has a negative temperature coefficient (-0.35% to -0.40% per °C above 25°C), thermal derating reduces actual output by 8% to 15%.
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
@@ -351,7 +355,10 @@ export default function SolarBatteryChargeTimePage() {
                       <span>Account for Battery Charging Energy Inefficiencies</span>
                     </div>
                     <p className="text-slate-600 text-sm leading-relaxed">
-                      No electrochemical cell absorbs 100% of incoming energy. Some power is lost to internal resistance and chemical conversion heat. Divide the energy deficit by the one-way charging energy efficiency factor:
+                      No electrochemical cell absorbs 100% of incoming energy. Some power is lost to internal resistance and chemical conversion heat.
+                    </p>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Divide the calculated energy deficit by your battery chemistry one-way charging efficiency factor:
                     </p>
                     <div className="bg-slate-900 text-amber-300 font-mono text-xs sm:text-sm p-3 rounded-lg overflow-x-auto">
                       Net Energy Needed (Wh) = Deficit Energy (Wh) ÷ One-Way Charging Energy Efficiency (0.80 to 0.98)
@@ -407,11 +414,19 @@ export default function SolarBatteryChargeTimePage() {
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
-                  A PWM charge controller operates like an electronic switch. It clamps the solar panel operating voltage directly down to the battery voltage, which is typically 13.5V to 14.2V during charging. Because electrical power equals voltage multiplied by current, forcing the panel from 18V down to 13.5V immediately discards roughly 25% of the panel&apos;s potential wattage.
+                  A PWM charge controller operates like an electronic switch. It clamps solar panel operating voltage directly down to battery voltage (13.5V to 14.2V).
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
-                  An MPPT controller functions as a high-efficiency DC-to-DC converter. It tracks the optimal electrical operating point of the solar panel, accepts power at high voltage (18V to 100V+), and steps the voltage down while boosting charging current into the battery bank. With typical conversion efficiencies between 95% and 98%, an MPPT controller captures almost all available array power.
+                  Because power equals voltage multiplied by current, forcing an 18V panel down to 13.5V immediately discards roughly 25% of available wattage.
+                </p>
+
+                <p className="text-slate-700 leading-relaxed text-base">
+                  An MPPT controller functions as a high-efficiency DC-to-DC converter. It accepts power at high array voltage and steps it down while boosting charging current.
+                </p>
+
+                <p className="text-slate-700 leading-relaxed text-base">
+                  With typical conversion efficiencies between 95% and 98%, an MPPT controller captures almost all available solar power.
                 </p>
 
                 {/* Comparison Card */}
@@ -719,7 +734,11 @@ export default function SolarBatteryChargeTimePage() {
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
-                  <strong>1. Changing Sun Angles and Cosine Losses:</strong> Peak sun hours represent a mathematical abstraction. In reality, the sun traverses an arc across the sky. Fixed rooftop solar panels experience oblique sun angles during the early morning and late afternoon, capturing substantially less photons than midday sun.
+                  <strong>1. Changing Sun Angles and Cosine Losses:</strong> Peak sun hours represent a daily mathematical average rather than continuous peak output.
+                </p>
+
+                <p className="text-slate-700 leading-relaxed text-base">
+                  Fixed panels experience oblique morning and late-afternoon sun angles, capturing substantially fewer photons than under direct midday rays.
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
@@ -754,7 +773,11 @@ export default function SolarBatteryChargeTimePage() {
                 </p>
 
                 <p className="text-slate-700 leading-relaxed text-base">
-                  <strong>Wire Gauge and Voltage Drop (NEC 210.19):</strong> Low-voltage DC circuits are highly vulnerable to voltage drop. Running heavy current through undersized conductor cables causes resistive heat and prevents the charge controller from maintaining target absorption voltage. Keep total DC circuit voltage drop strictly below 3% using properly sized AWG copper conductors.
+                  <strong>Wire Gauge and Voltage Drop (NEC 210.19):</strong> Low-voltage DC circuits are highly sensitive to voltage drop along conductor runs.
+                </p>
+
+                <p className="text-slate-700 leading-relaxed text-base">
+                  Undersized cables cause resistive heating and prevent target absorption voltage. Keep total DC circuit voltage drop strictly below 3% using properly sized copper conductors.
                 </p>
 
                 {/* Safety Warning Card */}
@@ -764,7 +787,13 @@ export default function SolarBatteryChargeTimePage() {
                     <span>Battery C-Rate and Thermal Safety Warning</span>
                   </div>
                   <p className="leading-relaxed">
-                    Never exceed your battery manufacturer maximum continuous charge current rating. Industry guidelines suggest general screening limits of 0.20C for flooded lead-acid, 0.25C for AGM, and 0.50C for standard LiFePO4 batteries (for instance, 20A, 25A, and 50A respectively on a 100Ah bank). However, these thresholds are general benchmarks rather than universal guarantees: some entry-level lithium batteries feature BMS current limits as low as 0.2C (20A for 100Ah), while heavy-duty commercial cells allow 1.0C. Always verify the manufacturer technical datasheet for your exact battery model before sizing high-wattage solar arrays.
+                    Never exceed your battery manufacturer maximum continuous charge current rating. Common screening limits are 0.20C for flooded lead-acid, 0.25C for AGM, and 0.50C for standard LiFePO4 banks.
+                  </p>
+                  <p className="leading-relaxed">
+                    For a 100Ah bank, these benchmarks correspond to 20A, 25A, and 50A. However, entry-level lithium units may cap input at 20A, while heavy-duty commercial cells allow up to 100A (1.0C).
+                  </p>
+                  <p className="leading-relaxed">
+                    Always verify the manufacturer technical datasheet for your exact battery model before connecting a high-wattage solar array.
                   </p>
                 </div>
               </section>
@@ -880,7 +909,10 @@ export default function SolarBatteryChargeTimePage() {
                 </ul>
 
                 <p className="pt-2 italic text-[11px] leading-relaxed text-slate-500">
-                  Preliminary Planning Disclaimer: This solar battery charging calculator and sizing guide provides engineering estimates for preliminary planning purposes. Actual charging times depend on real-time solar irradiance, ambient temperature, cloud cover, wire resistance, and battery health. Always verify manufacturer specifications for battery maximum charge current and consult a licensed electrician for physical photovoltaic installations.
+                  Preliminary Planning Disclaimer: This solar battery charging calculator and sizing guide provides engineering estimates for preliminary planning purposes. Actual charging times depend on real-time solar irradiance, ambient temperature, cloud cover, wire resistance, and battery health.
+                </p>
+                <p className="italic text-[11px] leading-relaxed text-slate-500">
+                  Always verify manufacturer specifications for battery maximum charge current and consult a licensed electrician or engineer for physical photovoltaic installations.
                 </p>
               </section>
             </article>

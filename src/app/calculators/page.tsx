@@ -12,6 +12,7 @@ import {
   Zap,
   Sun,
   Activity,
+  Flame,
 } from "lucide-react";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
@@ -100,6 +101,31 @@ export default function CalculatorsDirectoryPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Active: Generator Fuel Consumption Calculator */}
+            <Link
+              id="generator-fuel"
+              href="/generator-fuel-consumption-calculator"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
+            >
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                  <Flame className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Live Tool • Generators
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+                Generator Fuel Consumption Calculator
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.
+              </p>
+              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
+                <span>Open Fuel Calculator</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
             {/* Active: Generator Size Calculator */}
             <Link
               id="generators"
@@ -360,6 +386,32 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
+            {/* Active: Solar Battery Charging Time Calculator */}
+            <Link
+              id="solar-charge-time"
+              href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
+            >
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
+                  <BatteryCharging className="w-5 h-5" />
+                </div>
+                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  Live Tool • Solar &amp; Battery
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
+                Solar Battery Charging Time Calculator &amp; Guide
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Calculate recharge duration in peak sun hours and calendar days based on solar panel array wattage, battery Ah capacity, MPPT/PWM efficiency, and chemistry.
+              </p>
+              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
+                <span>Open Solar Charge Tool</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+
             {/* Active: Three Phase Power Calculator */}
             <Link
               id="three-phase-power"
@@ -579,6 +631,31 @@ export default function CalculatorsDirectoryPage() {
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Refrigerator Sizing Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
+
+            <Link
+              href="/how-much-gas-does-a-generator-use"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Generator Fuel Guide
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-500">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>11 min read</span>
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                How Much Gas Does a Generator Use? Gallons Per Hour Reference
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Explore fuel consumption rates across 2kW to 10kW inverter and portable generators at 25%, 50%, and 100% electrical load with storm runtime estimates.
+              </p>
+              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
+                <span>Read Generator Gas Guide</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>

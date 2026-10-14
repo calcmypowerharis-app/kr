@@ -66,7 +66,9 @@ Avoid intentionally writing:
 When an idea becomes too large:
 split it with a new paragraph, subheading, bullet list, example, table, or callout.
 
-IMPORTANT: "2 to 3 lines" is an editorial readability target, NOT a hard CSS line-count rule. Never manipulate font size, line height, or CSS just to force paragraph line counts. Real visual line counts are verified via rendered text rects in the DOM, not raw word count heuristics.
+Programmatic Ceiling:
+Every body `<p>` element in an editorial article must strictly contain <= 55 words and 1 to 2 concise sentences (averaging 25 to 45 words), guaranteeing it renders in 2 to 3 visual lines at standard reading width (~740px to 820px). Any paragraph exceeding 55 words is considered a dense text block and will fail automated CI tests.
+IMPORTANT: "2 to 3 lines" is an editorial readability target, NOT a hard CSS line-count rule. Never manipulate font size, line height, or CSS just to force paragraph line counts. Real visual line counts are verified via rendered text rects in the DOM, not raw word count heuristics alone.
 
 #### 5. Avoid Repetitive Phrases
 Avoid unnecessary repeated use of:

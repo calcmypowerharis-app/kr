@@ -31,7 +31,7 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 export const metadata: Metadata = {
   title: "What Size Generator to Run a Refrigerator? Sizing Guide",
   description:
-    "Determine what size generator you need to run a refrigerator during a power outage based on running watts, compressor startup surge, and simultaneous household loads.",
+    "Determine the generator size you need to run a refrigerator during an outage based on running watts, compressor startup surge, and simultaneous household loads.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
   },

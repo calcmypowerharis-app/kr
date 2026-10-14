@@ -11,17 +11,17 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Three Phase Power Calculator (kW, Amps & Power Factor)",
   description:
-    "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports line-to-line (208V, 240V, 480V) and line-to-neutral voltages with power factor.",
+    "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
   path: "/three-phase-power-calculator",
   ogDescription:
-    "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports line-to-line (208V, 240V, 480V) and line-to-neutral voltages with power factor.",
+    "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
 });
 
 export default function ThreePhasePowerCalculatorPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Three Phase Power Calculator",
     description:
-      "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports line-to-line (208V, 240V, 480V) and line-to-neutral voltages with power factor.",
+      "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
     url: "https://calcmypower.com/three-phase-power-calculator",
   });
 

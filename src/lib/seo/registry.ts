@@ -385,7 +385,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar System Size",
     metaTitle: "Solar System Size Calculator (How Many Solar Panels Do I Need?)",
     metaDescription:
-      "Calculate the solar system size and number of solar panels needed for your home. Estimate required array kW, panel count, and roof space based on electricity usage and peak sun hours.",
+      "Calculate solar system size and panel count for your home. Estimate array kW, module count, and roof space from daily kWh use and peak sun hours.",
     cluster: "solar",
     secondaryClusters: ["home-energy", "rv-power"],
     primaryKeyword: "solar system size calculator",
@@ -413,7 +413,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Three Phase Power",
     metaTitle: "Three Phase Power Calculator (kW, Amps & Power Factor)",
     metaDescription:
-      "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports line-to-line (208V, 240V, 480V) and line-to-neutral voltages with power factor.",
+      "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
     cluster: "electricity",
     secondaryClusters: ["generators", "solar"],
     primaryKeyword: "3 phase electrical power calculator",
@@ -496,7 +496,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Generator Wattage Chart",
     metaTitle: "Generator Wattage Chart (Running & Starting Watts by Appliance)",
     metaDescription:
-      "Comprehensive generator wattage chart with typical running and starting surge watts for 35+ appliances, workshop tools, and HVAC equipment. Reference and compare power demands.",
+      "Comprehensive generator wattage chart with running and starting surge watts for 35+ appliances, power tools, and HVAC equipment. Plan backup power.",
     cluster: "generators",
     secondaryClusters: ["electricity", "home-energy"],
     primaryKeyword: "wattage generator chart",
@@ -549,7 +549,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Inverter Size",
     metaTitle: "Inverter Size Calculator (Watts, Surge, Cable & Fuse Sizing)",
     metaDescription:
-      "Calculate the inverter size you need in running and surge watts. Includes DC battery current draw, cable gauge (AWG), and fuse sizing across 12V, 24V, and 48V systems.",
+      "Calculate the inverter size you need in running and surge watts. Includes DC battery current draw, cable gauge (AWG), and fuse sizing for 12V, 24V, and 48V banks.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
     primaryKeyword: "inverter size calculator",
@@ -624,7 +624,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "House Generator Sizing Guide",
     metaTitle: "What Size Generator Do I Need for My House? Sizing Guide",
     metaDescription:
-      "Calculate the generator size you need for your house based on running watts, motor startup surges, and essential circuits rather than misleading square-footage rules.",
+      "Calculate the generator size you need for your house using running watts, motor startup surges, and essential circuits instead of misleading square-footage rules.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator?scenario=winter-essentials",
@@ -647,7 +647,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Refrigerator Generator Sizing Guide",
     metaTitle: "What Size Generator to Run a Refrigerator? Sizing Guide",
     metaDescription:
-      "Determine what size generator you need to run a refrigerator during a power outage based on running watts, compressor startup surge, and simultaneous household loads.",
+      "Determine the generator size you need to run a refrigerator during an outage based on running watts, compressor startup surge, and simultaneous household loads.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator?scenario=refrigerator-outage",
@@ -787,7 +787,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Panel Sizing Guide",
     metaTitle: "How Many Solar Panels Do I Need to Power My House?",
     metaDescription:
-      "Learn how to estimate how many solar panels your home needs using electricity usage, peak sun hours, system performance, and panel wattage. Includes examples and a free solar sizing calculator.",
+      "Estimate how many solar panels your home needs using electricity use, peak sun hours, system derates, and panel wattage. Includes our solar sizing calculator.",
     cluster: "solar",
     parentCalculatorPath: "/solar-system-size-calculator",
     scenarioLink: "/solar-system-size-calculator",
@@ -815,7 +815,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Panel Energy Production Guide",
     metaTitle: "How Much Energy Does a Solar Panel Produce? 400W Panel Examples",
     metaDescription:
-      "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
+      "Learn how much electricity a solar panel produces daily and monthly. See 400W panel examples, peak sun hours, system losses, and factors affecting solar output.",
     cluster: "solar",
     parentCalculatorPath: "/solar-system-size-calculator",
     scenarioLink: "/solar-system-size-calculator",
@@ -874,7 +874,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Calculate Watts for Generator",
     metaTitle: "How to Calculate Watts for a Generator: Running & Starting Watts",
     metaDescription:
-      "Learn how to calculate watts for a generator during power outages. Master running vs starting watts, locked rotor surge inrush, 25% safety margins, and worked examples.",
+      "Learn how to calculate watts for a generator during power outages. Master running vs starting watts, motor surge inrush, 25% safety margins, and worked examples.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator?scenario=winter-essentials",
@@ -964,7 +964,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Size Solar Charge Controller",
     metaTitle: "How to Size a Solar Charge Controller: MPPT vs PWM Sizing Guide",
     metaDescription:
-      "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM charge controller amperage, cold-weather Voc voltage limits, and battery voltage matching.",
+      "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM controller amperage, cold-weather Voc voltage limits, and battery bank matching.",
     cluster: "solar",
     parentCalculatorPath: "/solar-charge-controller-calculator",
     scenarioLink: "/solar-charge-controller-calculator",
@@ -993,7 +993,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Battery Bank Sizing Guide",
     metaTitle: "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide",
     metaDescription:
-      "Learn how to calculate how many amp-hours (Ah) you need for a battery bank. Calculate daily watt-hours, battery voltage, autonomy days, depth of discharge, and inverter losses.",
+      "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     cluster: "ups-battery",
     parentCalculatorPath: "/battery-capacity-calculator",
     scenarioLink: "/battery-capacity-calculator",
@@ -1055,7 +1055,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Battery Charge Time Guide",
     metaTitle: "How Long Does It Take to Charge a Battery With Solar Panels?",
     metaDescription:
-      "Calculate how long it takes to charge a battery with solar panels. Use our solar charge time calculator and engineering guide covering peak sun hours, MPPT vs PWM, and battery chemistry.",
+      "Calculate solar battery charging time with our engineering calculator and guide covering peak sun hours, MPPT vs PWM efficiency, and battery chemistry.",
     cluster: "solar",
     parentCalculatorPath: "/solar-battery-calculator",
     scenarioLink: "/how-long-does-it-take-to-charge-a-battery-with-solar-panels#solar-charge-calculator",
@@ -1081,7 +1081,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
 ];
 
 export interface CoreRouteRegistryEntry {
-  path: "/" | "/calculators";
+  path: "/" | "/calculators" | "/privacy" | "/terms" | "/about" | "/contact";
   title: string;
   metaTitle: string;
   metaDescription: string;
@@ -1104,6 +1104,38 @@ export const CORE_ROUTE_REGISTRY: CoreRouteRegistryEntry[] = [
     metaDescription:
       "Browse interactive electrical calculators and engineering sizing tools for backup generators, battery storage, solar PV, and AC/DC circuit conversions.",
     lastModified: "2026-09-28",
+  },
+  {
+    path: "/privacy",
+    title: "Privacy Policy",
+    metaTitle: "Privacy Policy",
+    metaDescription:
+      "CalcMyPower privacy policy. Learn how we handle cookies, analytics, and advertising data in accordance with GDPR, CCPA, and Google AdSense guidelines.",
+    lastModified: "2026-10-14",
+  },
+  {
+    path: "/terms",
+    title: "Terms of Service",
+    metaTitle: "Terms of Service",
+    metaDescription:
+      "CalcMyPower terms of service. Review preliminary planning disclaimers, calculation limitations, intellectual property, and acceptable use guidelines.",
+    lastModified: "2026-10-14",
+  },
+  {
+    path: "/about",
+    title: "About CalcMyPower",
+    metaTitle: "About CalcMyPower | Engineering Calculators & Methodology",
+    metaDescription:
+      "Learn about CalcMyPower's mission, engineering calculation methodology, transparent formula baselines, and authoritative US standards (NEC, IEEE, NREL, DOE).",
+    lastModified: "2026-10-14",
+  },
+  {
+    path: "/contact",
+    title: "Contact Us",
+    metaTitle: "Contact Us | CalcMyPower Technical Support & Inquiries",
+    metaDescription:
+      "Contact the CalcMyPower engineering and publishing team for technical feedback, formula suggestions, errata corrections, or editorial inquiries.",
+    lastModified: "2026-10-14",
   },
 ];
 

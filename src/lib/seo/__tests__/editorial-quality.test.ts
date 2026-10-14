@@ -121,12 +121,12 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
   });
 
   describe("2. Zero Em-Dash Editorial Punctuation Standard (Section 4 & 22)", () => {
-    it("ensures no editorial article contains em-dash characters (—)", () => {
+    it("ensures no editorial article contains em-dash characters (\\u2014)", () => {
       for (const article of articles) {
         const emDashCount = (article.content.match(/\u2014/g) || []).length;
         expect(
           emDashCount,
-          `Article ${article.route} contains ${emDashCount} forbidden em-dash (—) character(s)`
+          `Article ${article.route} contains ${emDashCount} forbidden em-dash (\\u2014) character(s)`
         ).toBe(0);
       }
     });
@@ -500,6 +500,24 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
             fs.existsSync(pagePath),
             `Referenced related guide path "${guidePath}" in ${entry.path} does not exist at ${pagePath}`
           ).toBe(true);
+        }
+      }
+    });
+  });
+
+  describe("9. Visual Line & Paragraph Word Count Sentinel (Rule 22)", () => {
+    it("guarantees every editorial article body paragraph contains <= 55 words (2-3 visual lines standard)", () => {
+      for (const article of articles) {
+        const pMatches = Array.from(
+          article.content.matchAll(/<p(?:\s+[^>]*)?>([\s\S]*?)<\/p>/g)
+        );
+        for (const match of pMatches) {
+          const cleanText = match[1].replace(/<[^>]+>/g, " ").trim();
+          const words = cleanText.split(/\s+/).filter(Boolean);
+          expect(
+            words.length,
+            `Paragraph in ${article.route} exceeds 55 words (${words.length} words): "${cleanText.slice(0, 60)}..."`
+          ).toBeLessThanOrEqual(55);
         }
       }
     });

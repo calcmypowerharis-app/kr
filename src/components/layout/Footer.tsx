@@ -28,6 +28,14 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2 text-xs">
               <li>
                 <Link
+                  href="/generator-fuel-consumption-calculator"
+                  className="hover:text-white transition"
+                >
+                  Generator Fuel Calculator
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/generator-size-calculator"
                   className="hover:text-white transition"
                 >
@@ -288,15 +296,54 @@ export const Footer: React.FC = () => {
                   How to Calculate Battery Bank Amp Hours
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-much-gas-does-a-generator-use"
+                  className="hover:text-white transition"
+                >
+                  How Much Gas Does a Generator Use?
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+                  className="hover:text-white transition"
+                >
+                  Solar Battery Charge Time Guide
+                </Link>
+              </li>
             </ul>
           </div>
 
           {/* Legal & Standards */}
           <div>
             <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
-              Standards &amp; Code
+              Trust &amp; Standards
             </h3>
             <ul className="space-y-2 text-xs text-slate-400">
+              <li>
+                <Link href="/about" className="hover:text-white transition">
+                  About CalcMyPower
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition">
+                  Contact &amp; Support
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-white transition">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-white transition">
+                  Terms of Service
+                </Link>
+              </li>
+              <li className="pt-2 text-[11px] text-slate-500 font-semibold uppercase tracking-wider">
+                Engineering Baselines
+              </li>
               <li>National Electrical Code (NEC)</li>
               <li>IEEE Battery Standard 485</li>
               <li>UL 1741 Inverter Standard</li>
@@ -315,12 +362,24 @@ export const Footer: React.FC = () => {
             <span className="font-semibold text-slate-300">Disclaimer: </span>
             Calculations provided on this website are for preliminary estimation and educational purposes only. Always verify critical power designs with a licensed electrician or professional electrical engineer in accordance with local building codes.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-between pt-4 text-slate-400 text-[11px] border-t border-slate-850">
+          <div className="flex flex-col sm:flex-row items-center justify-between pt-4 text-slate-400 text-[11px] border-t border-slate-800">
             <span>© {new Date().getFullYear()} CalcMyPower. All rights reserved.</span>
-            <div className="flex gap-4 mt-2 sm:mt-0">
-              <span>US-Focused Energy Tools</span>
+            <div className="flex flex-wrap gap-3 mt-2 sm:mt-0">
+              <Link href="/about" className="hover:text-white transition">
+                About
+              </Link>
               <span>•</span>
-              <span>Privacy &amp; Terms</span>
+              <Link href="/contact" className="hover:text-white transition">
+                Contact
+              </Link>
+              <span>•</span>
+              <Link href="/privacy" className="hover:text-white transition">
+                Privacy Policy
+              </Link>
+              <span>•</span>
+              <Link href="/terms" className="hover:text-white transition">
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>

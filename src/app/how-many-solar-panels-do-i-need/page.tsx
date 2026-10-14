@@ -39,7 +39,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Many Solar Panels Do I Need to Power My House?",
   description:
-    "Learn how to estimate how many solar panels your home needs using electricity usage, peak sun hours, system performance, and panel wattage. Includes examples and a free solar sizing calculator.",
+    "Estimate how many solar panels your home needs using electricity use, peak sun hours, system derates, and panel wattage. Includes our solar sizing calculator.",
   alternates: {
     canonical: "https://calcmypower.com/how-many-solar-panels-do-i-need",
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title:
       "How Many Solar Panels Do I Need to Power My House? | CalcMyPower",
     description:
-      "Learn how to estimate how many solar panels your home needs using electricity usage, peak sun hours, system performance, and panel wattage. Includes examples and a free solar sizing calculator.",
+      "Estimate how many solar panels your home needs using electricity use, peak sun hours, system derates, and panel wattage. Includes our solar sizing calculator.",
     url: "https://calcmypower.com/how-many-solar-panels-do-i-need",
     type: "article",
     publishedTime: "2026-10-01T00:00:00Z",

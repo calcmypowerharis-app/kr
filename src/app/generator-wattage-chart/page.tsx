@@ -11,7 +11,7 @@ import { GENERATOR_WATTAGE_CHART_FAQS } from "@/lib/calculators/generator-wattag
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Wattage Chart (Running & Starting Watts by Appliance)",
   description:
-    "Comprehensive generator wattage chart with typical running and starting surge watts for 35+ appliances, workshop tools, and HVAC equipment. Reference and compare power demands.",
+    "Comprehensive generator wattage chart with running and starting surge watts for 35+ appliances, power tools, and HVAC equipment. Plan backup power.",
   path: "/generator-wattage-chart",
   ogDescription:
     "Look up typical running and starting surge watts for 35+ home appliances and tools. Compare baseline continuous power and motor inrush requirements.",

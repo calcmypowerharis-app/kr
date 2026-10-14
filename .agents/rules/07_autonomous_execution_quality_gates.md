@@ -277,7 +277,7 @@ REPORT ONCE AT THE END.
 Never rely solely on manual visual review to catch recurring editorial or asset defects. Every `npm test` run automatically enforces the following checks across all editorial articles in `src/app/`:
 - **Cross-Article Image Asset Non-Repetition:** Scans all editorial article files and fails the test suite if any `/images/articles/...` path is shared between two different articles.
 - **Physical Asset Existence & Alt Text:** Verifies that every referenced image file physically exists on disk in `public/` (with non-zero size) and that every `<Image>` component includes a descriptive static `alt` attribute ($\ge 20$ characters).
-- **Zero Em-Dash Enforcement:** Scans all editorial article source files and fails if any forbidden em-dash character (`\u2014`) is present.
+- **Sitewide Zero Em-Dash Enforcement:** Scans all `.ts` and `.tsx` source files in `src/` (including calculator logic, dropdown presets, affiliate lists, and tests) and all markdown docs to guarantee zero forbidden `\u2014` occurrences sitewide.
 - **TOC Anchor Link Integrity:** Extracts all Table of Contents (`TocItem[]`) IDs for each article and verifies that a corresponding `id="<id>"` attribute exists in the rendered JSX.
 
 ### 2. Scenario Data Single Source of Truth (DRY Verification)
@@ -295,7 +295,7 @@ Never rely solely on manual visual review to catch recurring editorial or asset 
 ### 4. Mandatory Date Transparency & Paragraph Readability Gates (`src/lib/seo/__tests__/date-consistency.test.ts`)
 - **Mandatory Registry Dates:** Every editorial entry in `GUIDE_REGISTRY` must possess valid ISO 8601 `publishedAt` and `updatedAt` strings.
 - **Mandatory Visible Date Byline:** Every editorial article route must render `ArticleDateByline` displaying genuine publication and update dates matching the registry.
-- **Automated Rendered Readability Check:** Body paragraphs must meet the 2 to 3 visual lines standard (~740px to 820px reading width). Multi-sentence text blocks and dense walls of text are caught and blocked during pre-commit quality audits.
+- **Automated Rendered Readability Check:** Body paragraphs must meet the 2 to 3 visual lines standard (~740px to 820px reading width). Automated tests scan all `<p>` tags in every editorial guide and fail the build if any paragraph exceeds 55 words.
 
 ### 5. Contextual Linking & Registry Reciprocal Integrity Gate
 Automated tests in `src/lib/seo/__tests__/editorial-quality.test.ts` (Section 8) must verify that:
@@ -309,5 +309,10 @@ Before closing any production release task:
 - Assert HTTP 200 OK across all touched routes.
 - Assert that new internal links and meta tags are physically returned in the live HTML response.
 - Confirm CDN cache propagation before declaring deployment complete.
+
+### 7. Meta Description & 1-Hop Crawl Gate (`src/lib/seo/__tests__/seo-foundation.test.ts`)
+- Automated tests verify all meta descriptions in `registry.ts` are strictly <= 165 characters to prevent Google SERP snippet truncation.
+- Automated tests verify that every registered calculator and editorial guide is linked within 1 hop from the root homepage (`src/app/page.tsx`) or calculators hub (`src/app/calculators/page.tsx`), preventing orphan crawl discovery delays.
+- Permanent publisher trust routes (`/privacy`, `/terms`, `/about`, `/contact`) and `public/ads.txt` are verified active and linked in `Footer.tsx`.
 
 

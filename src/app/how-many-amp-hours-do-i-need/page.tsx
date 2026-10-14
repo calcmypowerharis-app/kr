@@ -33,7 +33,7 @@ import {
 export const metadata: Metadata = {
   title: "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide",
   description:
-    "Learn how to calculate how many amp-hours (Ah) you need for a battery bank. Calculate daily watt-hours, battery voltage, autonomy days, depth of discharge, and inverter losses.",
+    "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
   alternates: {
     canonical: "https://calcmypower.com/how-many-amp-hours-do-i-need",
   },

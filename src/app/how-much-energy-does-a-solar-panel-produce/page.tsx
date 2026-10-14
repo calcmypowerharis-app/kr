@@ -37,7 +37,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Much Energy Does a Solar Panel Produce? 400W Panel Examples",
   description:
-    "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
+    "Learn how much electricity a solar panel produces daily and monthly. See 400W panel examples, peak sun hours, system losses, and factors affecting solar output.",
   alternates: {
     canonical: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
   },

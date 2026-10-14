@@ -173,3 +173,15 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   3. Clearly separate geometric angle differences from structural engineering, wind uplift analysis, and racking certification.
   4. Defer location-specific kilowatt-hour (kWh) solar generation modeling to authoritative meteorological simulators (NREL PVWatts) rather than attempting ungrounded energy production forecasts.
 - **Prevention:** Verify all explanatory copy, warning notes, and FAQ answers in `src/lib/calculators/solar-panel-tilt.ts` adhere to non-dogmatic engineering definitions.
+
+---
+
+## Lesson 025: Pre-Publication Quality Sentinel for New Editorial Articles and Interactive Assets
+- **Context:** During the publication of `/how-long-does-it-take-to-charge-a-battery-with-solar-panels` and the subsequent sitewide audit, five defects recurred: leaked em-dashes in TypeScript dropdowns and presets, dense 60 to 88 word paragraphs violating visual line rhythm, meta descriptions exceeding 175 characters, missing 1-hop homepage directory links leading to crawl discovery lag, and missing trust/policy infrastructure.
+- **Rule:** Before publishing any new editorial guide or calculator, verify the 5-point Pre-Publication Sentinel:
+  1. Sitewide Zero Em-Dashes: Zero `\u2014` tolerance across all code, dropdown presets, comments, configs, and prose.
+  2. Paragraph Word Count Ceiling: Every body `<p>` element must strictly contain <= 55 words (2 to 3 visual lines at ~780px width) and 1 to 2 concise sentences.
+  3. Meta Description Length: All route descriptions must be between 130 and 160 characters (hard maximum: 165 characters).
+  4. 1-Hop Apex Crawl Discovery: Every new route must be linked directly within 1 hop from the root homepage (`src/app/page.tsx`) and the calculators hub (`src/app/calculators/page.tsx`), and included in `Footer.tsx`.
+  5. Trust & Policy Infrastructure: Maintain permanent, visible links to `/privacy`, `/terms`, `/about`, and `/contact` across all pages.
+- **Prevention:** Enforced by automated test suites in `src/lib/seo/__tests__/` (`editorial-quality.test.ts` and `seo-foundation.test.ts`) that run on every `npm test` and CI pipeline.

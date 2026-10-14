@@ -36,7 +36,7 @@ import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 export const metadata: Metadata = {
   title: "How to Calculate Watts for a Generator: Running & Starting Watts",
   description:
-    "Learn how to calculate watts for a generator during power outages. Master running vs starting watts, locked rotor surge inrush, 25% safety margins, and worked examples.",
+    "Learn how to calculate watts for a generator during power outages. Master running vs starting watts, motor surge inrush, 25% safety margins, and worked examples.",
   alternates: {
     canonical: "https://calcmypower.com/how-to-calculate-watts-for-a-generator",
   },

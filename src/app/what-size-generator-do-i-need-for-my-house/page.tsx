@@ -32,7 +32,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "What Size Generator Do I Need for My House? Sizing Guide",
   description:
-    "Calculate the generator size you need for your house based on running watts, motor startup surges, and essential circuits rather than misleading square-footage rules.",
+    "Calculate the generator size you need for your house using running watts, motor startup surges, and essential circuits instead of misleading square-footage rules.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
   },

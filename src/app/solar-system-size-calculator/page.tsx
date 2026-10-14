@@ -11,17 +11,17 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar System Size Calculator (How Many Solar Panels Do I Need?)",
   description:
-    "Calculate the solar system size and number of solar panels needed for your home. Estimate required array kW, panel count, and roof space based on electricity usage and peak sun hours.",
+    "Calculate solar system size and panel count for your home. Estimate array kW, module count, and roof space from daily kWh use and peak sun hours.",
   path: "/solar-system-size-calculator",
   ogDescription:
-    "Calculate the solar system size and number of solar panels needed for your home. Estimate required array kW, panel count, and roof space based on electricity usage and peak sun hours.",
+    "Calculate solar system size and panel count for your home. Estimate array kW, module count, and roof space from daily kWh use and peak sun hours.",
 });
 
 export default function SolarSystemSizeCalculatorPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Solar System Size Calculator",
     description:
-      "Calculate the solar system size and number of solar panels needed for your home. Estimate required array kW, panel count, and roof space based on electricity usage and peak sun hours.",
+      "Calculate solar system size and panel count for your home. Estimate array kW, module count, and roof space from daily kWh use and peak sun hours.",
     url: "https://calcmypower.com/solar-system-size-calculator",
   });
 

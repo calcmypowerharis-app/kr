@@ -1,6 +1,6 @@
 /**
  * Generator Size Calculator Logic
- * Pure TypeScript — Decoupled from React and DOM
+ * Pure TypeScript - Decoupled from React and DOM
  * CalcMyPower.com
  *
  * Four-Step Documented Planning Methodology:

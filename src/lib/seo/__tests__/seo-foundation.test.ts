@@ -294,7 +294,83 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       expect(CORE_ROUTE_REGISTRY.map((r) => r.path)).toEqual([
         "/",
         "/calculators",
+        "/privacy",
+        "/terms",
+        "/about",
+        "/contact",
       ]);
+    });
+  });
+
+  describe("6. Pre-Publication Quality Sentinel & Crawl Discovery Guardrails (Lesson 025)", () => {
+    it("guarantees all registered route meta descriptions are strictly <= 165 characters to prevent SERP truncation", () => {
+      const allRoutes = [
+        ...CORE_ROUTE_REGISTRY,
+        ...CALCULATOR_REGISTRY,
+        ...GUIDE_REGISTRY,
+      ];
+      const outOfBoundsRoutes: { path: string; length: number; desc: string }[] = [];
+      for (const route of allRoutes) {
+        if (route.metaDescription.length > 165 || route.metaDescription.length < 100) {
+          outOfBoundsRoutes.push({
+            path: route.path,
+            length: route.metaDescription.length,
+            desc: route.metaDescription,
+          });
+        }
+      }
+      expect(
+        outOfBoundsRoutes,
+        `Routes with out-of-bounds meta descriptions:\n${JSON.stringify(outOfBoundsRoutes, null, 2)}`
+      ).toEqual([]);
+    });
+
+    it("guarantees every indexable calculator and guide is linked within 1 hop from the homepage or calculators directory", () => {
+      const homeContent = fs.readFileSync(path.join(APP_DIR, "page.tsx"), "utf8");
+      const calcHubContent = fs.readFileSync(path.join(APP_DIR, "calculators", "page.tsx"), "utf8");
+      const contentRoutes = [
+        ...CALCULATOR_REGISTRY.map((c) => c.path),
+        ...GUIDE_REGISTRY.map((g) => g.path),
+      ];
+
+      for (const targetRoute of contentRoutes) {
+        const isLinkedFromHome =
+          homeContent.includes(`href="${targetRoute}"`) ||
+          homeContent.includes(`href="${targetRoute}?`);
+        const isLinkedFromCalcHub =
+          calcHubContent.includes(`href="${targetRoute}"`) ||
+          calcHubContent.includes(`href="${targetRoute}?`);
+
+        expect(
+          isLinkedFromHome || isLinkedFromCalcHub,
+          `Route "${targetRoute}" is not linked from either Homepage (src/app/page.tsx) or Calculators Hub (src/app/calculators/page.tsx), creating deep crawl distance`
+        ).toBe(true);
+      }
+    });
+
+    it("enforces sitewide zero em-dash characters (\\u2014) across all source files in src/", () => {
+      const allSrcFiles = getAllSourceFiles(SRC_DIR);
+      for (const file of allSrcFiles) {
+        const content = fs.readFileSync(file, "utf8");
+        const emDashMatches = content.match(/\u2014/g);
+        expect(
+          emDashMatches,
+          `File ${path.relative(process.cwd(), file)} contains forbidden em-dash (\\u2014) character(s)`
+        ).toBeNull();
+      }
+    });
+
+    it("guarantees all trust policy pages exist and are linked in Footer.tsx", () => {
+      const footerPath = path.join(SRC_DIR, "components/layout/Footer.tsx");
+      const footerContent = fs.readFileSync(footerPath, "utf8");
+      const trustRoutes = ["/privacy", "/terms", "/about", "/contact"];
+
+      for (const route of trustRoutes) {
+        expect(
+          footerContent.includes(`href="${route}"`),
+          `Footer.tsx is missing mandatory link to trust route "${route}"`
+        ).toBe(true);
+      }
     });
   });
 });

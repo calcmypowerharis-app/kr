@@ -1,6 +1,6 @@
 /**
  * UPS & Battery Backup Run-Time Calculator Logic
- * Pure TypeScript — No UI or DOM dependencies
+ * Pure TypeScript - No UI or DOM dependencies
  * 
  * Formula:
  * Usable Energy (Wh) = Voltage (V) × Capacity (Ah) × Depth of Discharge (DoD) × Inverter Efficiency (η)
@@ -63,17 +63,17 @@ export const CHEMISTRY_DEFAULTS: Record<
   { name: string; defaultDoD: number; description: string }
 > = {
   lead_acid: {
-    name: "Lead-Acid — AGM / Gel",
+    name: "Lead-Acid - AGM / Gel",
     defaultDoD: 0.50, // 50% max to preserve cycle life
     description: "Recommended maximum 50% discharge depth to prevent premature degradation.",
   },
   lifepo4: {
-    name: "LiFePO4 — Lithium",
+    name: "LiFePO4 - Lithium",
     defaultDoD: 0.90, // 90% usable safely
-    description: "Modern deep-cycle lithium standard; safe down to 80–90% discharge.",
+    description: "Modern deep-cycle lithium standard; safe down to 80-90% discharge.",
   },
   lithium_ion: {
-    name: "Lithium-Ion — NMC",
+    name: "Lithium-Ion - NMC",
     defaultDoD: 0.80, // 80% usable safely
     description: "Typical consumer portable power stations; safe down to 80% discharge.",
   },

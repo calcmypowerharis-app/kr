@@ -1,6 +1,6 @@
 /**
  * Battery Capacity & Sizing Calculator Logic
- * Pure TypeScript — Decoupled from React and DOM
+ * Pure TypeScript - Decoupled from React and DOM
  * CalcMyPower.com
  *
  * Formulas:

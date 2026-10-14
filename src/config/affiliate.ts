@@ -1,5 +1,5 @@
 /**
- * CalcMyPower — Amazon Associates Affiliate Configuration
+ * CalcMyPower - Amazon Associates Affiliate Configuration
  *
  * Complies with Rule 11 (Amazon Affiliate Rules):
  * - Central single source of truth for the Amazon Associates tracking ID.

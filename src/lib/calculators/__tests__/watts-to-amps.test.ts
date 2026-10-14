@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { calculateWattsToAmps } from "../watts-to-amps";
 
-describe("calculateWattsToAmps — Unit Test Suite", () => {
+describe("calculateWattsToAmps - Unit Test Suite", () => {
   // TC-01: DC Standard
   it("TC-01: converts 120W at 12V DC to exactly 10.00 Amps", () => {
     const res = calculateWattsToAmps({

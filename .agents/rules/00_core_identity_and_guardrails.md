@@ -70,7 +70,18 @@ Avoid repeated AI phrases such as:
 - "This comprehensive guide"
 - "Look no further"
 
-Do not deliberately make prose sloppy to "look human". Human quality means useful, specific, edited writing — not fake imperfections.
+Do not deliberately make prose sloppy to "look human". Human quality means useful, specific, edited writing - not fake imperfections.
+
+### Universal Em-Dash Ban
+Never use em-dashes (\u2014), en-dashes, "--", or "---" anywhere in the repository.
+This prohibition applies strictly to:
+- Editorial article prose, headings, and callout cards
+- Calculator UI labels, helper text, and error notifications
+- TypeScript data constants, dropdown presets, and option values
+- Affiliate product catalogs and descriptions
+- Source code comments and docstrings
+- Unit test descriptions and assertions
+Use standard commas, parentheses, colons, or periods for sentence breaks. Use the word "to" for numerical and unit ranges.
 
 ## 11. Amazon Affiliate Rules
 Amazon content must be genuinely useful before affiliate monetization.

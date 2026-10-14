@@ -445,3 +445,14 @@ Every editorial article MUST maintain strict date transparency:
 4. Automated Verification:
    - All dates must pass `src/lib/seo/__tests__/date-consistency.test.ts`.
 
+#### 24. Mandatory Pre-Publication Quality Checklist for New Articles
+
+Before any new editorial article is released:
+1. Word Count Range: 1,500 to 1,800 words total.
+2. Paragraph Length: Every `<p>` element must strictly contain <= 55 words and 1 to 2 concise sentences (2 to 3 visual lines at ~780px width). Never leave 4 to 6 line dense paragraphs.
+3. Zero Em-Dashes: 0 instances of `\u2014`, en-dashes, `--`, or `---` anywhere in the file.
+4. Meta Description: Strictly between 130 and 160 characters (max 165) in `src/lib/seo/registry.ts`.
+5. 1-Hop Discovery: The article must be linked directly within 1 hop from `src/app/page.tsx` in its topical cluster directory card and in `Footer.tsx`.
+6. Unique Visual Asset: Must use a unique WebP or SVG image under 150 KB with descriptive alt text (>= 20 characters) and `ZoomableArticleImage`.
+7. Schema and Accordion Parity: Rendered FAQ items must use semantic `<details>` and `<summary>` and match `FAQPage` schema exactly.
+

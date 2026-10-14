@@ -16,7 +16,9 @@ import {
   Clock,
   Sparkles,
   Activity,
-Flame} from "lucide-react";
+  Flame,
+  Layers,
+} from "lucide-react";
 import {
   generateOrganizationSchema,
   generateWebSiteSchema,
@@ -736,7 +738,402 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 4. Actionable Roadmap & In Development Section */}
+        {/* 4. Complete Engineering Directory by Topical Cluster (1-Hop Crawl Discovery) */}
+        <section id="directory" className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-4">
+            <div>
+              <div className="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-wider mb-1">
+                <Layers className="w-4 h-4" />
+                <span>Sitewide Engineering Directory</span>
+              </div>
+              <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                Browse Calculators &amp; Sizing Guides by Power Cluster
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                Immediate 1-hop access to all 34 interactive calculators, appliance references, and NEC engineering sizing guides.
+              </p>
+            </div>
+            <Link
+              href="/calculators"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 self-start sm:self-auto shrink-0"
+            >
+              <span>View Full Directory Hub</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Cluster 1: Solar PV & Off-Grid */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between space-y-5 hover:border-amber-400 hover:shadow-md transition">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                    <Sun className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-base leading-snug">
+                      Solar PV &amp; Storage
+                    </h3>
+                    <p className="text-[11px] text-slate-500">Array sizing, tilt &amp; charge time</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Calculators &amp; Tools
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/solar-panel-tilt-calculator" className="text-slate-700 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                        <span>Solar Panel Tilt Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/solar-battery-calculator" className="text-slate-700 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                        <span>Solar Battery Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/solar-charge-controller-calculator" className="text-slate-700 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                        <span>Solar Charge Controller</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/solar-system-size-calculator" className="text-slate-700 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                        <span>Solar System Size Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels" className="text-slate-700 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                        <span>Solar Battery Charge Time</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Sizing Guides
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/solar-panels-series-vs-parallel" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Series vs Parallel Wiring</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-many-solar-panels-do-i-need" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>How Many Panels Do I Need?</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-much-energy-does-a-solar-panel-produce" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Panel Energy Production (Wh)</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-to-size-a-solar-charge-controller" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Sizing Charge Controllers</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <Link
+                href="/calculators#solar"
+                className="text-xs font-semibold text-amber-600 hover:text-amber-800 flex items-center gap-1 pt-2 border-t border-slate-100"
+              >
+                <span>Explore Solar Tools</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Cluster 2: Generators & Outage Power */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between space-y-5 hover:border-blue-400 hover:shadow-md transition">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+                    <Plug className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-base leading-snug">
+                      Generators &amp; Outage
+                    </h3>
+                    <p className="text-[11px] text-slate-500">Wattage, fuel rate &amp; home backup</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Calculators &amp; Charts
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/generator-size-calculator" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+                        <span>Generator Size Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/generator-fuel-consumption-calculator" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+                        <span>Generator Fuel Consumption</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/generator-amperage-chart-calculator" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+                        <span>Generator Amperage Chart</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/generator-wattage-chart" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
+                        <span>Generator Wattage Chart</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Sizing Guides
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/what-size-generator-do-i-need-for-my-house" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Whole House Generator Sizing</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/what-size-generator-to-run-a-refrigerator" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Refrigerator Outage Sizing</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-much-gas-does-a-generator-use" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Gas Usage (Gal/Hr) Guide</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-to-calculate-watts-for-a-generator" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Running vs Starting Watts</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/continuous-power-generators" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Continuous Power Generators</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <Link
+                href="/calculators#generators"
+                className="text-xs font-semibold text-blue-600 hover:text-blue-800 flex items-center gap-1 pt-2 border-t border-slate-100"
+              >
+                <span>Explore Generator Tools</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Cluster 3: Battery Storage & UPS Backup */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between space-y-5 hover:border-emerald-400 hover:shadow-md transition">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <BatteryCharging className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-base leading-snug">
+                      Battery &amp; UPS Storage
+                    </h3>
+                    <p className="text-[11px] text-slate-500">Capacity, runtime &amp; inverter size</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Calculators &amp; Tools
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/ups-battery-backup-calculator" className="text-slate-700 hover:text-emerald-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                        <span>UPS Runtime Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/battery-capacity-calculator" className="text-slate-700 hover:text-emerald-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                        <span>Battery Capacity &amp; Sizing</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/inverter-size-calculator" className="text-slate-700 hover:text-emerald-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0"></span>
+                        <span>Inverter Size Calculator</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Sizing Guides
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/what-does-ah-mean-on-a-battery" className="text-slate-600 hover:text-emerald-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Amp-Hours (Ah) Explained</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-long-will-a-100ah-battery-last" className="text-slate-600 hover:text-emerald-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>100Ah Battery Runtime</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-many-amp-hours-do-i-need" className="text-slate-600 hover:text-emerald-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>How Many Ah Do I Need?</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-to-calculate-amp-hours-of-a-battery-bank" className="text-slate-600 hover:text-emerald-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Bank Amp-Hours (Series/Parallel)</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <Link
+                href="/calculators#ups-battery"
+                className="text-xs font-semibold text-emerald-600 hover:text-emerald-800 flex items-center gap-1 pt-2 border-t border-slate-100"
+              >
+                <span>Explore Battery Tools</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Cluster 4: Electrical Circuits & Power */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-6 flex flex-col justify-between space-y-5 hover:border-indigo-400 hover:shadow-md transition">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                    <Zap className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-base leading-snug">
+                      Circuits &amp; Electricity
+                    </h3>
+                    <p className="text-[11px] text-slate-500">Amps, watts, voltage drop &amp; cost</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Calculators &amp; Tools
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/watts-to-amps-calculator" className="text-slate-700 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                        <span>Watts to Amps Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/amps-to-watts-calculator" className="text-slate-700 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                        <span>Amps to Watts Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/voltage-drop-calculator" className="text-slate-700 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                        <span>Voltage Drop Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/three-phase-power-calculator" className="text-slate-700 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                        <span>Three Phase Power</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/electricity-use-calculator" className="text-slate-700 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                        <span>Electricity Use Calculator</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/electricity-cost-calculator" className="text-slate-700 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
+                        <span>Electricity Cost Calculator</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-2 border-t border-slate-100 pt-3">
+                  <div className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    Sizing Guides
+                  </div>
+                  <ul className="space-y-1.5 text-xs">
+                    <li>
+                      <Link href="/what-is-a-watt-hour" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Watt-Hour (Wh) Explained</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-to-calculate-electricity-usage" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Calculate Electricity Usage</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/how-to-calculate-electricity-bill" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>Calculate Electric Utility Bill</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <Link
+                href="/calculators#electricity"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 pt-2 border-t border-slate-100"
+              >
+                <span>Explore Circuit Tools</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 5. Actionable Roadmap & In Development Section */}
         <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-4">
             <div>
@@ -836,7 +1233,7 @@ export default function HomePage() {
                 <h2>How CalcMyPower Models Electrical &amp; Power Loads</h2>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Every CalcMyPower calculator displays its governing mathematical formula, transparent baseline parameters (such as inverter conversion efficiency, battery depth of discharge, and equipment power factor), and clearly identifies where <code className="font-mono text-slate-800 bg-white px-1.5 py-0.5 rounded border border-slate-200">1.25x</code> planning margins reflect National Electrical Code (NEC Article 210/430) continuous-load rules versus practical equipment surge headroom. All calculations run client-side in your web browser for planning and educational use.
+                Every CalcMyPower calculator displays its governing mathematical formula, transparent baseline parameters (such as inverter conversion efficiency, battery depth of discharge, and equipment power factor), and clearly identifies where <code className="font-mono text-slate-800 bg-white px-1.5 py-0.5 rounded border border-slate-200">1.25x</code> planning margins reflect National Electrical Code (NEC Article 210/430) continuous-load rules versus practical equipment surge headroom. Read more on our <Link href="/about" className="text-blue-600 font-semibold hover:underline">About page</Link>, submit technical feedback via our <Link href="/contact" className="text-blue-600 font-semibold hover:underline">Contact desk</Link>, or review our <Link href="/terms" className="text-blue-600 font-semibold hover:underline">Terms of Service</Link> and <Link href="/privacy" className="text-blue-600 font-semibold hover:underline">Privacy Policy</Link>. All calculations run client-side in your web browser for planning and educational use.
               </p>
             </div>
             <Link

@@ -261,7 +261,7 @@ Do not rewrite all existing articles just to conform to this rule unless a separ
 #### 17. Quality Gate
 Every future article must pass:
 - 1,500 to 1,800 word target unless justified otherwise
-- no intentionally dense 4 to 6 line paragraphs
+- no intentionally dense 4 to 6 line paragraphs (every body <p> <= 55 words)
 - visual consistency with /solar-panels-series-vs-parallel
 - content-left / aside-right DOM order
 - 390px mobile readability
@@ -269,7 +269,9 @@ Every future article must pass:
 - unique article image
 - no unnecessary decorative components
 - no filler content
-- SEO structure intact
+- SEO structure intact with meta description <= 165 chars
+- 1-hop apex crawl discovery from homepage or /calculators
+- sitewide zero em-dashes in code, presets, comments, and prose
 - mandatory date fields and ArticleDateByline verified
 
 #### 18. Mandatory Article Date Fields and Accuracy Rules
