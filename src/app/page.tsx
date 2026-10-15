@@ -224,7 +224,7 @@ const LIVE_CALCULATORS: LiveTool[] = [
   },
   {
     id: "electricity-use-tool",
-    title: "Electricity Use Calculator",
+    title: "Electricity Usage Calculator",
     href: "/electricity-use-calculator",
     icon: Zap,
     formula: "E_daily = P × t × DF × Q | E_monthly = (E_daily × 30) ÷ 1,000 | Cost = E_monthly × Rate",
@@ -236,7 +236,7 @@ const LIVE_CALCULATORS: LiveTool[] = [
       "Compressor and thermostatic duty cycle scaling (10% to 100%)",
       "Estimated monthly electricity utility charge based on local rate",
     ],
-    cta: "Open Electricity Use Calculator",
+    cta: "Open Electricity Usage Calculator",
   },
   {
     id: "generator-fuel-tool",
@@ -1083,7 +1083,7 @@ export default function HomePage() {
                     <li>
                       <Link href="/electricity-use-calculator" className="text-slate-700 hover:text-indigo-600 transition flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 shrink-0"></span>
-                        <span>Electricity Use Calculator</span>
+                        <span>Electricity Usage Calculator</span>
                       </Link>
                     </li>
                     <li>

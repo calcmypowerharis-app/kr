@@ -233,6 +233,29 @@ export const ElectricityUseCalculator: React.FC = () => {
   // -------------------------------------------------------------
   const inputSection = (
     <div className="space-y-6">
+      {/* Contextual Continuation & Sibling Tool Navigation */}
+      <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/90 text-xs text-slate-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+        <div className="flex items-center gap-2">
+          <Zap className="w-4 h-4 text-amber-500 shrink-0" />
+          <span>Looking for utility bill rates or manual formulas?</span>
+        </div>
+        <div className="flex items-center gap-2 shrink-0 font-medium">
+          <Link
+            href="/electricity-cost-calculator"
+            className="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1"
+          >
+            <span>Bill Cost Tool &rarr;</span>
+          </Link>
+          <span className="text-slate-300">•</span>
+          <Link
+            href="/how-to-calculate-electricity-usage"
+            className="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1"
+          >
+            <span>Formula Guide &rarr;</span>
+          </Link>
+        </div>
+      </div>
+
       {/* 1. Starter Scenarios / Presets */}
       <div className="space-y-2">
         <label className="text-xs font-semibold uppercase tracking-wider text-slate-500 flex items-center justify-between">
@@ -847,9 +870,9 @@ export const ElectricityUseCalculator: React.FC = () => {
 
   return (
     <CalculatorShell
-      title="Electricity Use Calculator"
-      badge="Multi-Appliance Energy Audit"
-      description="Calculate electrical energy use in Watt-hours (Wh) and kilowatt-hours (kWh) from appliance wattage, daily operating time, duty cycles, and quantities. Estimate daily, monthly, and custom period consumption."
+      title="Electricity Usage Calculator"
+      badge="Appliance Energy & kWh Audit"
+      description="Calculate appliance electricity usage in Watt-hours (Wh) and kilowatt-hours (kWh) from running wattage, daily hours, quantities, and duty cycles. Select starter scenarios or customize individual appliances to audit daily and monthly energy consumption and optional power costs."
       category="Electrical Circuits"
       lastUpdated="October 2026"
       onReset={handleReset}
@@ -1058,10 +1081,10 @@ export const ElectricityUseCalculator: React.FC = () => {
             category: "Solar PV",
           },
           {
-            title: "Generator Size Calculator",
-            description: "Size whole-house standby and portable inverter generators using running watts and motor starting surge deltas.",
-            href: "/generator-size-calculator",
-            category: "Generators",
+            title: "Electricity Cost & Utility Bill Calculator",
+            description: "Calculate total electric bill charges from monthly kilowatt-hour consumption with fixed service charges and tiered rates.",
+            href: "/electricity-cost-calculator",
+            category: "Electrical Circuits",
           },
           {
             title: "How to Calculate Electricity Usage (Guide)",

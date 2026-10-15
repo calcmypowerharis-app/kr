@@ -453,7 +453,7 @@ export default function CalculatorsDirectoryPage() {
                 </span>
               </div>
               <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
-                Electricity Use Calculator
+                Electricity Usage Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
                 Calculate daily and monthly electricity usage in Watt-hours (Wh) and kilowatt-hours (kWh) across household appliances with duty cycles and utility cost estimates.

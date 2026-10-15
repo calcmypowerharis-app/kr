@@ -745,7 +745,7 @@ export default function HowToCalculateElectricityBillPage() {
                   className="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-1 block"
                 >
                   <div className="font-bold text-slate-900 text-sm text-blue-600 flex items-center justify-between">
-                    <span>Electricity Use Calculator</span>
+                    <span>Electricity Usage Calculator</span>
                     <ArrowRight className="w-4 h-4" />
                   </div>
                   <div className="text-xs text-slate-500">

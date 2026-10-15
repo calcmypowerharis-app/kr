@@ -865,7 +865,7 @@ export default function WattHoursExplainedPage() {
                     <Zap className="w-4 h-4" />
                   </div>
                   <h3 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition">
-                    Electricity Use Calculator
+                    Electricity Usage Calculator
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
                     Calculate daily and monthly energy consumption in Watt-hours (Wh) and kilowatt-hours (kWh) across multiple appliances with duty cycles and utility cost estimates.

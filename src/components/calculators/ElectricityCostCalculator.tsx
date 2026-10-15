@@ -506,7 +506,7 @@ export const ElectricityCostCalculator: React.FC = () => {
               Need to calculate how many kWh your home uses?
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
-              If you do not know your monthly kilowatt-hour figure, use our interactive Electricity Use Calculator to tally individual appliances, operating schedules, and duty cycles.
+              If you do not know your monthly kilowatt-hour figure, use our interactive Electricity Usage Calculator to tally individual appliances, operating schedules, and duty cycles.
             </p>
           </div>
           <div>
@@ -514,7 +514,7 @@ export const ElectricityCostCalculator: React.FC = () => {
               href="/electricity-use-calculator"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs shadow-sm transition"
             >
-              <span>Open Electricity Use Calculator</span>
+              <span>Open Electricity Usage Calculator</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
@@ -717,7 +717,7 @@ export const ElectricityCostCalculator: React.FC = () => {
       <RelatedCalculators
         calculators={[
           {
-            title: "Electricity Use Calculator",
+            title: "Electricity Usage Calculator",
             description: "Calculate daily and monthly kWh consumption across household appliances with duty cycles.",
             href: "/electricity-use-calculator",
             category: "Electricity",

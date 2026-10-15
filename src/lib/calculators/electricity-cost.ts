@@ -301,6 +301,6 @@ export const ELECTRICITY_COST_FAQS = [
   {
     question: "How can I find out how many kWh specific appliances in my house use?",
     answer:
-      "You can audit your appliances using our Electricity Use Calculator, which calculates daily and monthly Watt-hours and kilowatt-hours based on appliance nameplate wattage, hours of operation, and compressor duty cycles.",
+      "You can audit your appliances using our Electricity Usage Calculator, which calculates daily and monthly Watt-hours and kilowatt-hours based on appliance nameplate wattage, hours of operation, and compressor duty cycles.",
   },
 ];

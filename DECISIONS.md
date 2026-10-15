@@ -368,6 +368,26 @@ This log records major technical and product decisions, context, rationale, and 
      - Rulebook integrity verified 100% (29/29 rules, 8 category files < 22KB).
      - Next.js production build succeeded with 46 prerendered static routes.
 - **Rationale:** Fulfills document-format search intent directly on the canonical asset, enriches E-E-A-T and user dwell time, avoids topical cannibalization, and delivers durable practical utility for installers and DIY homeowners.
+---
 
-
-
+## Decision 032: GSC-Driven Title, Metadata & First-Screen UX Optimization for Electricity Usage Calculator (`/electricity-use-calculator`)
+- **Date:** 2026-10-15
+- **Status:** Approved & Implemented
+- **Context:** Google Search Console performance data over a 3-month window indicated that `/electricity-use-calculator` earned 839 impressions, 0 clicks, 0% CTR, and an average ranking position of 16.3. The top impression-driving queries were `electricity usage calculator` (25 imp), `electricity consumption calculator` (9), `kilowatt hour calculator` (7), `kwh calculator` (6), `energy usage calculator` (5), and `energy consumption calculator` (4). The original page title (`Electricity Use Calculator (Calculate kWh & Energy Consumption)`) and H1 led with "Electricity Use", creating a semantic mismatch with user query phrasing. Additionally, first-screen copy lacked prominent continuation paths to sibling assets for users whose intent was calculating utility bill dollar totals or learning manual formulas and phantom standby loads.
+- **Decision:**
+  1. **Primary Title & Metadata Optimization:**
+     - Updated `<title>` tag to `Electricity Usage Calculator (Calculate kWh & Appliance Energy)` (63 characters), placing the dominant search query at the front while targeting `kWh` and `Appliance Energy`.
+     - Refined meta description to `Calculate appliance electricity usage in kWh and Watt-hours from running watts and operating hours. Estimate daily consumption, monthly energy use, and power costs.` (160 characters, strictly <= 165 chars, zero em-dashes).
+     - Synchronized `webAppSchema.name`, `breadcrumbSchema`, Open Graph `ogDescription`, and `src/lib/seo/registry.ts` with updated `lastModified: "2026-10-15"`.
+  2. **On-Page Heading & First-Screen Copy Refinement:**
+     - Updated `CalculatorShell` H1 to `Electricity Usage Calculator` and header badge to `Appliance Energy & kWh Audit`.
+     - Enhanced first-screen description to clearly articulate the multi-appliance audit workflow, starter scenarios, custom duty cycles, and output metrics.
+  3. **High-Utility Contextual Continuation & Sibling Tool Linking:**
+     - Added a clean, responsive quick-navigation banner at the top of the input card providing 1-click access to the bill rate tool (`/electricity-cost-calculator`) and the formula guide (`/how-to-calculate-electricity-usage`).
+     - Added `Electricity Cost & Utility Bill Calculator` into `RelatedCalculators` on the tool page.
+     - Synchronized incoming anchor text and labels across `Header.tsx`, `Footer.tsx`, homepage (`/`), calculators directory (`/calculators`), and sibling guides (`/how-to-calculate-electricity-usage`, `/how-to-calculate-electricity-bill`, `/what-is-a-watt-hour`, `/electricity-cost-calculator`, and `GeneratorWattageChart.tsx`).
+  4. **Preserved Canonical Routing & Zero Regressions:**
+     - Preserved canonical URL `/electricity-use-calculator` to prevent broken links or unnecessary redirects.
+     - Verified zero em-dashes across all touched files.
+     - Verified all automated quality gates: 24/24 Vitest suites passed (360 tests), TypeScript typecheck passed with 0 errors, ESLint passed with 0 warnings/errors, rules integrity passed (29/29 rules), and Next.js production build succeeded with 46/46 static pages prerendered.
+- **Rationale:** Aligns search snippet copy with proven searcher vocabulary from GSC, improves user intent fulfillment, and strengthens topical clustering across CalcMyPower's electricity calculation assets.
