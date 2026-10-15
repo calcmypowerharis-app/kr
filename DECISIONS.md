@@ -391,3 +391,31 @@ This log records major technical and product decisions, context, rationale, and 
      - Verified zero em-dashes across all touched files.
      - Verified all automated quality gates: 24/24 Vitest suites passed (360 tests), TypeScript typecheck passed with 0 errors, ESLint passed with 0 warnings/errors, rules integrity passed (29/29 rules), and Next.js production build succeeded with 46/46 static pages prerendered.
 - **Rationale:** Aligns search snippet copy with proven searcher vocabulary from GSC, improves user intent fulfillment, and strengthens topical clustering across CalcMyPower's electricity calculation assets.
+
+---
+
+## Decision 033: PWM Solar Charge Controller Optimization & Harmonized Sizing Framework
+- **Date:** 2026-10-15
+- **Status:** Approved & Implemented
+- **Context:** SEMrush US keyword research revealed substantial high-intent organic search volume around PWM charging technology and low-voltage controller selection: `pwm solar charge controller` (vol 1,000, KD 9), `solar battery charge controller` (vol 320, KD 8), `12v solar charge controller mppt` (vol 110, KD 5), `solar power charge controller inverter` (vol 110, KD 0), `solar panel charge regulator controller 12v` (vol 50, KD 3), `solar power controller pwm` (vol 40, KD 8), and `solar panel 12v charge controller` (vol 40, KD 5). Creating a separate standalone article (Option C) was evaluated and firmly rejected: separating PWM into an isolated page would cause severe keyword cannibalization and split domain authority against CalcMyPower's canonical guide at `/how-to-size-a-solar-charge-controller`. In off-grid solar engineering, technology selection (MPPT vs PWM) and controller sizing are inextricably linked within the same sizing workflow.
+- **Decision:**
+  1. **Calculator Engine & UI Enhancement (`/solar-charge-controller-calculator`):**
+     - Updated `src/lib/calculators/solar-charge-controller.ts`: added `defaultIsc?: number` to `ArrayPreset` interface and introduced a dedicated `100W 12V PWM Portable Kit` preset (100W, 12V, 5.8A Isc) alongside the 4 standard MPPT presets.
+     - Updated `src/components/calculators/SolarChargeControllerCalculator.tsx`: enhanced `handlePresetSelect` to prefill `arrayIsc: 5.8` when selecting the PWM preset, and expanded the preset buttons into a responsive 5-column layout with explicit technology tags (`MPPT` vs `PWM`).
+     - Aligned page metadata description, Open Graph description, and `webAppSchema` in `src/app/solar-charge-controller-calculator/page.tsx` and `src/lib/seo/registry.ts` to `Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Sizes MPPT and PWM controllers using array wattage, short-circuit current, and cold Voc.` (165 characters, <= 165, zero em-dashes, `lastModified: "2026-10-15"`).
+  2. **Editorial Sizing Guide Optimization (`/how-to-size-a-solar-charge-controller`):**
+     - Refined meta description, Open Graph description, and `articleSchema` to `Learn how to size a solar battery charge controller for 12V, 24V, and 48V systems. Compare MPPT vs PWM amperage formulas, 3-stage charging, and cold Voc limits.` (160 characters, <= 165, zero em-dashes).
+     - Updated `ArticleDateByline` and JSON-LD `dateModified` to `2026-10-15` while strictly preserving original `datePublished: "2026-10-07"`.
+     - **Section 2 (`#mppt-vs-pwm`):** Added technical explanation of PWM rapid electronic switching mechanics, detailed 3-stage charging profile (Bulk: 100% current; Absorption: constant voltage pulsing; Float: maintenance trickle), golden installation rule for connection sequence (battery first to detect system voltage; solar second; reverse order on disconnect), and 12V panel voltage matching rules (36-cell ~18V Vmp vs 60/72-cell 30V+ modules).
+     - **Section 4 (`#pwm-sizing-formula`):** Added practical guidance on when to choose a 12V MPPT vs PWM controller.
+     - **Section 6 (`#worked-examples`):** Enhanced Scenario 1 with an explicit MPPT vs PWM amperage and wattage output comparison (33.3A vs 23.6A).
+     - **Section 8 (`#wire-and-fuse-sizing`):** Added a dedicated safety callout on solar power charge controller inverter integration, emphasizing that heavy inverters must connect directly to battery busbars and never to controller DC load terminals.
+  3. **Quality Gates & Invariants Verified:**
+     - Verified zero em-dashes sitewide across all modified files.
+     - Audited all 69 paragraphs in the guide: 100% conform to <= 55 words and <= 2 sentences (0 dense paragraphs).
+     - All 24 Vitest test suites passed (361 tests).
+     - TypeScript typecheck passed with 0 errors (`npx tsc --noEmit`).
+     - ESLint passed with 0 warnings/errors (`npm run lint`).
+     - Rules integrity passed (29/29 rules).
+     - Production build succeeded with all 46 static pages prerendered.
+- **Rationale:** Captures high-intent PWM search demand without page bloat or cannibalization, improves practical utility for 12V RV/camper users, reinforces technical accuracy, and maintains strict publication quality standards.

@@ -39,9 +39,19 @@ export interface ArrayPreset {
   voltage: SystemVoltage;
   tech: ControllerTechnology;
   description: string;
+  defaultIsc?: number;
 }
 
 export const SOLAR_ARRAY_PRESETS: ArrayPreset[] = [
+  {
+    id: "pwm-portable-100w",
+    label: "100W 12V PWM Portable Kit",
+    watts: 100,
+    voltage: 12,
+    tech: "pwm",
+    defaultIsc: 5.8,
+    description: "Standard 100W 12V panel (5.8A Isc) charging a 12V battery with a budget PWM regulator.",
+  },
   {
     id: "portable-100w",
     label: "100W Portable / Van Setup",

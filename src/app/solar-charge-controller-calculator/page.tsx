@@ -11,17 +11,17 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar Charge Controller Calculator (MPPT & PWM Sizing)",
   description:
-    "Calculate the charge controller size needed for your solar panels. Sizing calculator for MPPT and PWM controllers based on array wattage, battery voltage, and Voc.",
+    "Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Size MPPT and PWM units using array wattage, short-circuit current, and cold Voc.",
   path: "/solar-charge-controller-calculator",
   ogDescription:
-    "Calculate the charge controller size needed for your solar panels. Sizing calculator for MPPT and PWM controllers based on array wattage, battery voltage, and Voc.",
+    "Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Size MPPT and PWM units using array wattage, short-circuit current, and cold Voc.",
 });
 
 export default function SolarChargeControllerPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Solar Charge Controller Calculator",
     description:
-      "Calculate the charge controller size needed for your solar panels. Sizing calculator for MPPT and PWM controllers based on array wattage, battery voltage, and Voc.",
+      "Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Size MPPT and PWM units using array wattage, short-circuit current, and cold Voc.",
     url: "https://calcmypower.com/solar-charge-controller-calculator",
   });
 

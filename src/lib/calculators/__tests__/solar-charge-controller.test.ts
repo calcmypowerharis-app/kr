@@ -313,12 +313,39 @@ describe("Solar Charge Controller Calculator Engine", () => {
       expect(STANDARD_CONTROLLER_SIZES).toEqual([10, 15, 20, 30, 40, 50, 60, 80, 100, 120]);
     });
 
-    it("contains valid solar array presets", () => {
-      expect(SOLAR_ARRAY_PRESETS.length).toBeGreaterThanOrEqual(4);
+    it("contains valid solar array presets including PWM portable kit", () => {
+      expect(SOLAR_ARRAY_PRESETS.length).toBeGreaterThanOrEqual(5);
+      const pwmPreset = SOLAR_ARRAY_PRESETS.find((p) => p.id === "pwm-portable-100w");
+      expect(pwmPreset).toBeDefined();
+      expect(pwmPreset?.tech).toBe("pwm");
+      expect(pwmPreset?.watts).toBe(100);
+      expect(pwmPreset?.voltage).toBe(12);
+      expect(pwmPreset?.defaultIsc).toBe(5.8);
+
       for (const preset of SOLAR_ARRAY_PRESETS) {
         expect(preset.watts).toBeGreaterThan(0);
         expect([12, 24, 48]).toContain(preset.voltage);
       }
+    });
+
+    it("correctly sizes 100W 12V PWM Portable Kit preset with 20% planning buffer", () => {
+      const pwmPreset = SOLAR_ARRAY_PRESETS.find((p) => p.id === "pwm-portable-100w")!;
+      const result = calculateSolarChargeController({
+        arrayWatts: pwmPreset.watts,
+        systemVoltage: pwmPreset.voltage,
+        controllerType: pwmPreset.tech,
+        arrayIsc: pwmPreset.defaultIsc,
+        enableBuffer: true,
+        bufferPercent: 20,
+        enableVoltageCheck: false,
+      });
+
+      expect(result.isValid).toBe(true);
+      expect(result.nominalCurrentAmps).toBe(5.8);
+      expect(result.formattedNominalCurrent).toBe("5.8 A");
+      expect(result.planningCurrentAmps).toBeCloseTo(6.96, 2);
+      expect(result.formattedPlanningCurrent).toBe("7.0 A");
+      expect(result.recommendedControllerRatingAmps).toBe(10);
     });
 
     it("formats units cleanly", () => {

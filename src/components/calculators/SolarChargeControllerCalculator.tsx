@@ -196,6 +196,9 @@ export const SolarChargeControllerCalculator: React.FC = () => {
     setArrayWatts(preset.watts);
     setSystemVoltage(preset.voltage);
     setControllerType(preset.tech);
+    if (preset.defaultIsc !== undefined) {
+      setArrayIsc(preset.defaultIsc);
+    }
   };
 
   const handleTempUnitToggle = (newUnit: TemperatureUnit) => {
@@ -307,19 +310,26 @@ export const SolarChargeControllerCalculator: React.FC = () => {
                 Reset to Defaults
               </button>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
               {SOLAR_ARRAY_PRESETS.map((preset) => (
                 <button
                   key={preset.id}
                   type="button"
                   onClick={() => handlePresetSelect(preset.id)}
-                  className={`px-2.5 py-2 text-xs font-medium rounded-lg border transition-all text-center ${
-                    arrayWatts === preset.watts && systemVoltage === preset.voltage
+                  className={`px-2 py-2 text-xs font-medium rounded-lg border transition-all text-center ${
+                    arrayWatts === preset.watts &&
+                    systemVoltage === preset.voltage &&
+                    controllerType === preset.tech
                       ? "bg-blue-600 text-white border-blue-600 shadow-sm font-semibold"
                       : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
                   }`}
                 >
-                  <div className="font-bold">{preset.watts}W</div>
+                  <div className="font-bold">
+                    {preset.watts}W{" "}
+                    <span className="text-[10px] uppercase font-normal opacity-90">
+                      ({preset.tech})
+                    </span>
+                  </div>
                   <div className="text-[10px] opacity-80">{preset.voltage}V DC</div>
                 </button>
               ))}
