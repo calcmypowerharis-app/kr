@@ -328,12 +328,12 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Charge Controller",
     metaTitle: "Solar Charge Controller Calculator (MPPT & PWM Sizing)",
     metaDescription:
-      "Calculate the charge controller size needed for your solar panels. Sizing calculator for MPPT and PWM controllers based on array wattage, battery voltage, and Voc.",
+      "Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Size MPPT and PWM units using array wattage, short-circuit current, and cold Voc.",
     cluster: "solar",
     secondaryClusters: ["ups-battery", "rv-power"],
     primaryKeyword: "solar charge controller calculator",
     formula: "I_nom = P_arr ÷ V_bat | I_plan = I_nom × 1.20 | Voc_cold = Voc_STC × [1 + α × (T_min - 25°C)]",
-    lastModified: "2026-10-01",
+    lastModified: "2026-10-15",
     relatedCalculatorPaths: [
       "/inverter-size-calculator",
       "/solar-battery-calculator",
@@ -964,14 +964,14 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Size Solar Charge Controller",
     metaTitle: "How to Size a Solar Charge Controller: MPPT vs PWM Sizing Guide",
     metaDescription:
-      "Learn how to size a solar charge controller step by step. Calculate MPPT and PWM controller amperage, cold-weather Voc voltage limits, and battery bank matching.",
+      "Learn how to size a solar battery charge controller for 12V, 24V, and 48V systems. Compare MPPT vs PWM amperage formulas, 3-stage charging, and cold Voc limits.",
     cluster: "solar",
     parentCalculatorPath: "/solar-charge-controller-calculator",
     scenarioLink: "/solar-charge-controller-calculator",
     primaryKeyword: "how to size a solar charge controller",
     readingTime: "12 min read",
     datePublished: "2026-10-07",
-    lastModified: "2026-10-07",
+    lastModified: "2026-10-15",
     heroImage: "/images/articles/how-to-size-a-solar-charge-controller.webp",
     relatedCalculatorPaths: [
       "/solar-charge-controller-calculator",
