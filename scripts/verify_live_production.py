@@ -74,9 +74,16 @@ routes = [
     {
         "path": "/solar-charge-controller-calculator",
         "expected_title": "Solar Charge Controller Calculator (MPPT & PWM Sizing) | CalcMyPower",
-        "expected_desc_fragment": "Calculate the charge controller size needed for your solar panels",
+        "expected_desc_fragment": "Calculate solar battery charge controller size for 12V, 24V, and 48V systems",
         "expected_canonical": "https://calcmypower.com/solar-charge-controller-calculator",
         "companion_link": "/how-to-size-a-solar-charge-controller",
+    },
+    {
+        "path": "/how-to-size-a-solar-charge-controller",
+        "expected_title": "How to Size a Solar Charge Controller: MPPT vs PWM Sizing Guide | CalcMyPower",
+        "expected_desc_fragment": "Learn how to size a solar battery charge controller for 12V, 24V, and 48V systems",
+        "expected_canonical": "https://calcmypower.com/how-to-size-a-solar-charge-controller",
+        "companion_link": "/solar-charge-controller-calculator",
     },
 ]
 
