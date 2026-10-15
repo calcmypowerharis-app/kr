@@ -840,7 +840,7 @@ export const GeneratorWattageChart: React.FC = () => {
                 Energy Consumption Tool
               </span>
               <span className="font-bold text-slate-900 group-hover:text-blue-600 text-sm block mt-1">
-                Electricity Use Calculator
+                Electricity Usage Calculator
               </span>
               <span className="text-xs text-slate-500 mt-1 block">
                 Calculate daily and monthly appliance electricity usage in kWh and utility bill costs.

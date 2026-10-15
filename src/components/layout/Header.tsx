@@ -131,7 +131,7 @@ export const Header: React.FC = () => {
               href="/electricity-use-calculator"
               className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 transition text-xs sm:text-sm font-semibold text-slate-800"
             >
-              <span>Electricity Use Calculator</span>
+              <span>Electricity Usage Calculator</span>
               <ChevronRight className="w-4 h-4 text-slate-400" />
             </Link>
             <Link

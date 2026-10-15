@@ -435,16 +435,16 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
   {
     slug: "electricity-use-calculator",
     path: "/electricity-use-calculator",
-    title: "Electricity Use Calculator",
-    shortTitle: "Electricity Use",
-    metaTitle: "Electricity Use Calculator (Calculate kWh & Energy Consumption)",
+    title: "Electricity Usage Calculator",
+    shortTitle: "Electricity Usage",
+    metaTitle: "Electricity Usage Calculator (Calculate kWh & Appliance Energy)",
     metaDescription:
-      "Calculate appliance electricity use in Wh and kWh from watts, hours, and usage frequency. Estimate daily and monthly energy consumption and optional utility costs.",
+      "Calculate appliance electricity usage in kWh and Watt-hours from running watts and operating hours. Estimate daily consumption, monthly energy use, and power costs.",
     cluster: "electricity",
     secondaryClusters: ["home-energy", "solar", "ups-battery"],
-    primaryKeyword: "electricity use calculator",
+    primaryKeyword: "electricity usage calculator",
     formula: "Daily Wh = W × Hours × Qty | Daily kWh = Wh ÷ 1,000 | Monthly kWh = (Daily kWh) × Days",
-    lastModified: "2026-10-03",
+    lastModified: "2026-10-15",
     relatedCalculatorPaths: [
       "/electricity-cost-calculator",
       "/watts-to-amps-calculator",

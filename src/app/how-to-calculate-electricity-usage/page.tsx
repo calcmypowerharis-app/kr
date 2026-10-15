@@ -263,7 +263,7 @@ export default function HowToCalculateElectricityUsagePage() {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium text-xs sm:text-sm shadow-xs transition"
                   >
                     <Calculator className="w-4 h-4" />
-                    <span>Calculate Your Appliances with the Electricity Use Calculator</span>
+                    <span>Calculate Your Appliances with the Electricity Usage Calculator</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
@@ -959,7 +959,7 @@ export default function HowToCalculateElectricityUsagePage() {
                       <span>Interactive Appliance Calculator</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition" />
                     </div>
-                    <div className="font-bold text-white text-base">Electricity Use Calculator</div>
+                    <div className="font-bold text-white text-base">Electricity Usage Calculator</div>
                     <p className="text-xs text-slate-300 mt-1">
                       Calculate daily and monthly energy consumption in Wh and kWh across multiple household appliances with duty cycles and utility cost estimates.
                     </p>

@@ -127,7 +127,7 @@ export const Footer: React.FC = () => {
                   href="/electricity-use-calculator"
                   className="hover:text-white transition"
                 >
-                  Electricity Use Calculator
+                  Electricity Usage Calculator
                 </Link>
               </li>
               <li>

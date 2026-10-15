@@ -9,12 +9,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Electricity Use Calculator (Calculate kWh & Energy Consumption)",
+  title: "Electricity Usage Calculator (Calculate kWh & Appliance Energy)",
   description:
-    "Calculate appliance electricity use in Wh and kWh from watts, hours, and usage frequency. Estimate daily and monthly energy consumption and optional utility costs.",
+    "Calculate appliance electricity usage in kWh and Watt-hours from running watts and operating hours. Estimate daily consumption, monthly energy use, and power costs.",
   path: "/electricity-use-calculator",
   ogDescription:
-    "Free interactive electricity use calculator to estimate daily and monthly energy consumption in kilowatt-hours (kWh) across multiple household appliances.",
+    "Free interactive electricity usage calculator to estimate daily and monthly energy consumption in kilowatt-hours (kWh) across multiple household appliances.",
   images: [
     {
       url: "https://calcmypower.com/images/calculators/electricity-use-calculator.webp",
@@ -27,9 +27,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function ElectricityUseCalculatorPage() {
   const webAppSchema = generateWebApplicationSchema({
-    name: "Electricity Use Calculator",
+    name: "Electricity Usage Calculator",
     description:
-      "Calculate appliance electricity use in Watt-hours (Wh) and kilowatt-hours (kWh) from rated power, daily operating time, duty cycle, and quantity. Estimate daily and monthly energy consumption.",
+      "Calculate appliance electricity usage in Watt-hours (Wh) and kilowatt-hours (kWh) from rated power, daily operating time, duty cycle, and quantity. Estimate daily and monthly energy consumption.",
     url: "https://calcmypower.com/electricity-use-calculator",
   });
 
@@ -37,7 +37,7 @@ export default function ElectricityUseCalculatorPage() {
     { name: "Home", url: "https://calcmypower.com" },
     { name: "Calculators", url: "https://calcmypower.com/calculators" },
     {
-      name: "Electricity Use Calculator",
+      name: "Electricity Usage Calculator",
       url: "https://calcmypower.com/electricity-use-calculator",
     },
   ]);
