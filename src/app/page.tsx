@@ -9,15 +9,14 @@ import {
   Sliders,
   Sun,
   Plug,
-  Car,
   BookOpen,
   CheckCircle2,
   FileText,
   Clock,
-  Sparkles,
   Activity,
   Flame,
   Layers,
+  Download,
 } from "lucide-react";
 import {
   generateOrganizationSchema,
@@ -46,6 +45,38 @@ interface LiveTool {
 }
 
 const LIVE_CALCULATORS: LiveTool[] = [
+  {
+    id: "electricity-use-tool",
+    title: "Electricity Usage Calculator",
+    href: "/electricity-use-calculator",
+    icon: Zap,
+    formula: "E_daily = P × t × DF × Q | E_monthly = (E_daily × 30) ÷ 1,000 | Cost = E_monthly × Rate",
+    summary:
+      "Calculate daily and monthly electricity usage in Watt-hours and kilowatt-hours across household appliances with duty cycles and utility cost estimates.",
+    outputs: [
+      "Appliance energy consumption in daily/monthly Wh and kWh",
+      "Multi-appliance inventory total with visual consumption share",
+      "Compressor and thermostatic duty cycle scaling (10% to 100%)",
+      "Estimated monthly electricity utility charge based on local rate",
+    ],
+    cta: "Open Electricity Usage Calculator",
+  },
+  {
+    id: "battery-capacity-tool",
+    title: "Battery Capacity & Sizing Calculator",
+    href: "/battery-capacity-calculator",
+    icon: Battery,
+    formula: "Wh = V × Ah | Wh_usable = Wh × DoD | Ah_req = (P × t) ÷ (V × η × DoD)",
+    summary:
+      "Calculate battery storage in Watt-hours (Wh) and Amp-hours (Ah). Evaluate usable capacity across LiFePO4 and lead-acid chemistries, or size battery banks and unit counts for target loads.",
+    outputs: [
+      "Nominal and usable energy in Wh and kWh",
+      "Depth of discharge (DoD) benchmarks for LiFePO4, AGM, and NMC",
+      "Series vs. parallel bank voltage and capacity calculations",
+      "Appliance load sizing with inverter efficiency derating",
+    ],
+    cta: "Open Battery Capacity Calculator",
+  },
   {
     id: "generator-tool",
     title: "Generator Size Calculator",
@@ -79,20 +110,20 @@ const LIVE_CALCULATORS: LiveTool[] = [
     cta: "Open UPS Runtime Calculator",
   },
   {
-    id: "battery-capacity-tool",
-    title: "Battery Capacity & Sizing Calculator",
-    href: "/battery-capacity-calculator",
-    icon: Battery,
-    formula: "Wh = V × Ah | Wh_usable = Wh × DoD | Ah_req = (P × t) ÷ (V × η × DoD)",
+    id: "electricity-cost-tool",
+    title: "Electricity Cost & Bill Calculator",
+    href: "/electricity-cost-calculator",
+    icon: Zap,
+    formula: "Total Bill = (kWh × Rate) + Fixed + Riders + Tax | Effective = Bill ÷ kWh",
     summary:
-      "Calculate battery storage in Watt-hours (Wh) and Amp-hours (Ah). Evaluate usable capacity across LiFePO4 and lead-acid chemistries, or size battery banks and unit counts for target loads.",
+      "Calculate monthly electric utility charges from volumetric kWh usage, tiered electric rates, fixed customer fees, and taxes to reveal true effective cost per kWh.",
     outputs: [
-      "Nominal and usable energy in Wh and kWh",
-      "Depth of discharge (DoD) benchmarks for LiFePO4, AGM, and NMC",
-      "Series vs. parallel bank voltage and capacity calculations",
-      "Appliance load sizing with inverter efficiency derating",
+      "Monthly and annual electric utility bill estimate",
+      "Effective cost per kWh across all charges",
+      "Volumetric energy supply vs fixed delivery breakdown",
+      "Tiered rate schedules and seasonal rate comparison",
     ],
-    cta: "Open Battery Capacity Calculator",
+    cta: "Open Electricity Cost Calculator",
   },
   {
     id: "amps-tool",
@@ -127,20 +158,20 @@ const LIVE_CALCULATORS: LiveTool[] = [
     cta: "Open Amps to Watts Calculator",
   },
   {
-    id: "solar-tilt-tool",
-    title: "Solar Panel Tilt Angle Calculator",
-    href: "/solar-panel-tilt-calculator",
-    icon: Sun,
-    formula: "θ_roof = atan(pitch/12) × (180/π) | Tilt_winter = lat + 15°",
+    id: "charge-controller-tool",
+    title: "Solar Charge Controller Calculator",
+    href: "/solar-charge-controller-calculator",
+    icon: Zap,
+    formula: "I_nominal = P_array ÷ V_battery | Voc_cold = Voc_STC × [1 + α × (T_min - 25°C)]",
     summary:
-      "Calculate optimal solar panel tilt angles, compass orientation, and roof pitch differences for your latitude across year-round, winter, and summer optimization targets.",
+      "Calculate the required charge controller amperage rating and verify cold-temperature open-circuit voltage headroom across MPPT and PWM technologies.",
     outputs: [
-      "Optimal tilt angle and empirical Landau estimate (25° to 50° N)",
-      "Roof pitch slope conversion (0/12 to 12/12) and geometric delta",
-      "True South (180°) and True North (0°) compass azimuth guidance",
-      "Low-tilt rainwater drainage and cold-climate snow shedding advisories",
+      "Nominal and planning charging current (Amps)",
+      "Standard controller current rating class recommendation",
+      "Cold-weather Voc expansion check (NEC 690.7)",
+      "12V, 24V, and 48V DC battery system voltage support",
     ],
-    cta: "Open Solar Panel Tilt Calculator",
+    cta: "Open Charge Controller Calculator",
   },
   {
     id: "solar-battery-tool",
@@ -159,20 +190,20 @@ const LIVE_CALCULATORS: LiveTool[] = [
     cta: "Open Solar Battery Calculator",
   },
   {
-    id: "charge-controller-tool",
-    title: "Solar Charge Controller Calculator",
-    href: "/solar-charge-controller-calculator",
-    icon: Zap,
-    formula: "I_nominal = P_array ÷ V_battery | Voc_cold = Voc_STC × [1 + α × (T_min - 25°C)]",
+    id: "solar-system-size-tool",
+    title: "Solar System Size Calculator",
+    href: "/solar-system-size-calculator",
+    icon: Sun,
+    formula: "P_array_kW = (E_daily × Offset%) ÷ (PSH × PR) | Panels = Math.ceil(P_array_W ÷ W_panel)",
     summary:
-      "Calculate the required charge controller amperage rating and verify cold-temperature open-circuit voltage headroom across MPPT and PWM technologies.",
+      "Calculate the residential solar system size in kW and approximate panel count required to offset monthly electricity usage based on local peak sun hours.",
     outputs: [
-      "Nominal and planning charging current (Amps)",
-      "Standard controller current rating class recommendation",
-      "Cold-weather Voc expansion check (NEC 690.7)",
-      "12V, 24V, and 48V DC battery system voltage support",
+      "Estimated system size (kW DC) and panel count",
+      "Daily and annual solar energy generation targets",
+      "Net module area and gross roof space with fire setbacks",
+      "Module wattage comparison across 330W to 450W panels",
     ],
-    cta: "Open Charge Controller Calculator",
+    cta: "Open Solar System Size Calculator",
   },
   {
     id: "voltage-drop-tool",
@@ -191,20 +222,20 @@ const LIVE_CALCULATORS: LiveTool[] = [
     cta: "Open Voltage Drop Calculator",
   },
   {
-    id: "solar-system-size-tool",
-    title: "Solar System Size Calculator",
-    href: "/solar-system-size-calculator",
-    icon: Sun,
-    formula: "P_array_kW = (E_daily × Offset%) ÷ (PSH × PR) | Panels = Math.ceil(P_array_W ÷ W_panel)",
+    id: "generator-fuel-tool",
+    title: "Generator Fuel Consumption Calculator",
+    href: "/generator-fuel-consumption-calculator",
+    icon: Flame,
+    formula: "Gallons/hr = Max Fuel / Hours",
     summary:
-      "Calculate the residential solar system size in kW and approximate panel count required to offset monthly electricity usage based on local peak sun hours.",
+      "Estimate how much gasoline, propane, or diesel your generator will consume based on its running wattage and fuel tank size.",
     outputs: [
-      "Estimated system size (kW DC) and panel count",
-      "Daily and annual solar energy generation targets",
-      "Net module area and gross roof space with fire setbacks",
-      "Module wattage comparison across 330W to 450W panels",
+      "Hourly fuel consumption rate",
+      "Cost per 24 hours of operation",
+      "Total fuel tank runtime",
+      "Gasoline, Propane, and Diesel presets",
     ],
-    cta: "Open Solar System Size Calculator",
+    cta: "Open Fuel Consumption Calculator",
   },
   {
     id: "three-phase-power-tool",
@@ -223,64 +254,20 @@ const LIVE_CALCULATORS: LiveTool[] = [
     cta: "Open Three Phase Power Calculator",
   },
   {
-    id: "electricity-use-tool",
-    title: "Electricity Usage Calculator",
-    href: "/electricity-use-calculator",
-    icon: Zap,
-    formula: "E_daily = P × t × DF × Q | E_monthly = (E_daily × 30) ÷ 1,000 | Cost = E_monthly × Rate",
+    id: "solar-tilt-tool",
+    title: "Solar Panel Tilt Angle Calculator",
+    href: "/solar-panel-tilt-calculator",
+    icon: Sun,
+    formula: "θ_roof = atan(pitch/12) × (180/π) | Tilt_winter = lat + 15°",
     summary:
-      "Calculate daily and monthly electricity usage in Watt-hours and kilowatt-hours across household appliances with duty cycles and utility cost estimates.",
+      "Calculate optimal solar panel tilt angles, compass orientation, and roof pitch differences for your latitude across year-round, winter, and summer optimization targets.",
     outputs: [
-      "Appliance energy consumption in daily/monthly Wh and kWh",
-      "Multi-appliance inventory total with visual consumption share",
-      "Compressor and thermostatic duty cycle scaling (10% to 100%)",
-      "Estimated monthly electricity utility charge based on local rate",
+      "Optimal tilt angle and empirical Landau estimate (25° to 50° N)",
+      "Roof pitch slope conversion (0/12 to 12/12) and geometric delta",
+      "True South (180°) and True North (0°) compass azimuth guidance",
+      "Low-tilt rainwater drainage and cold-climate snow shedding advisories",
     ],
-    cta: "Open Electricity Usage Calculator",
-  },
-  {
-    id: "generator-fuel-tool",
-    title: "Generator Fuel Consumption Calculator",
-    href: "/generator-fuel-consumption-calculator",
-    icon: Flame,
-    formula: "Gallons/hr = Max Fuel / Hours",
-    summary:
-      "Estimate how much gasoline, propane, or diesel your generator will consume based on its running wattage and fuel tank size.",
-    outputs: [
-      "Hourly fuel consumption rate",
-      "Cost per 24 hours of operation",
-      "Total fuel tank runtime",
-      "Gasoline, Propane, and Diesel presets",
-    ],
-    cta: "Open Fuel Consumption Calculator",
-  },
-];
-
-interface PlannedTool {
-  category: string;
-  title: string;
-  scope: string;
-  icon: React.ElementType;
-}
-
-const PLANNED_TOOLS: PlannedTool[] = [
-  {
-    category: "Off-Grid Solar",
-    title: "Off-Grid Inverter Continuous & Surge Load Budget",
-    scope: "Continuous running wattage, motor startup surge multipliers, and inverter capacity headroom.",
-    icon: Zap,
-  },
-  {
-    category: "RV & Mobile Power",
-    title: "RV 12V / 24V House Battery Energy Budget",
-    scope: "Boondocking daily amp-hour draw, inverter losses, and alternator/solar recharge time.",
-    icon: Sliders,
-  },
-  {
-    category: "EV Charging",
-    title: "Level 1 & Level 2 EV Circuit & Charge Time",
-    scope: "240V circuit breaker sizing (80% continuous load rule) and kWh replenishment hours.",
-    icon: Car,
+    cta: "Open Solar Panel Tilt Calculator",
   },
 ];
 
@@ -322,6 +309,20 @@ export default function HomePage() {
               Quick Jump:
             </span>
             <a
+              href="#electricity-use-tool"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
+            >
+              <Zap className="w-3.5 h-3.5 text-blue-600" />
+              <span>Electricity Usage</span>
+            </a>
+            <a
+              href="#battery-capacity-tool"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
+            >
+              <Battery className="w-3.5 h-3.5 text-blue-600" />
+              <span>Battery Capacity</span>
+            </a>
+            <a
               href="#generator-tool"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
             >
@@ -333,14 +334,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
             >
               <BatteryCharging className="w-3.5 h-3.5 text-blue-600" />
-              <span>UPS &amp; Battery Runtime</span>
-            </a>
-            <a
-              href="#battery-capacity-tool"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
-            >
-              <Battery className="w-3.5 h-3.5 text-blue-600" />
-              <span>Battery Capacity</span>
+              <span>UPS Runtime</span>
             </a>
             <a
               href="#amps-tool"
@@ -357,26 +351,19 @@ export default function HomePage() {
               <span>Amps to Watts</span>
             </a>
             <a
-              href="#solar-tilt-tool"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
-            >
-              <Sun className="w-3.5 h-3.5 text-blue-600" />
-              <span>Solar Panel Tilt</span>
-            </a>
-            <a
-              href="#solar-system-size-tool"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-xs font-semibold text-slate-700 hover:text-blue-700 transition shadow-xs"
-            >
-              <Sun className="w-3.5 h-3.5 text-blue-600" />
-              <span>Solar System Size</span>
-            </a>
-            <a
               href="#featured-guides"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-indigo-500 hover:bg-indigo-50/50 text-xs font-semibold text-slate-700 hover:text-indigo-700 transition shadow-xs"
             >
               <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
               <span>Sizing Guides</span>
             </a>
+            <Link
+              href="/calculators"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-200 hover:border-blue-400 hover:bg-blue-100 text-xs font-bold text-blue-700 transition shadow-xs"
+            >
+              <span>View All Calculators</span>
+              <ArrowRight className="w-3.5 h-3.5 text-blue-600" />
+            </Link>
           </div>
 
           {/* Quality & Standards Strip */}
@@ -1133,98 +1120,197 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* 5. Actionable Roadmap & In Development Section */}
-        <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        {/* 5. Essential Sizing Guides & Reference Schematics */}
+        <section
+          id="reference-schematics"
+          className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6 scroll-mt-6"
+        >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-4">
             <div>
+              <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-1">
+                <BookOpen className="w-4 h-4" />
+                <span>Engineering Reference &amp; Schematics</span>
+              </div>
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                Calculators in Development &amp; Technical Roadmap
+                Essential Sizing Guides &amp; Reference Schematics
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                Upcoming tools on the CalcMyPower engineering roadmap. We deploy calculators individually after verifying equations and benchmark test cases.
+                Worked engineering sizing methodologies, calculation benchmarks, and downloadable quick-reference diagrams.
               </p>
             </div>
             <Link
-              href="/calculators"
-              className="text-xs font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 self-start sm:self-auto"
+              href="/calculators#sizing-guides"
+              className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 self-start sm:self-auto shrink-0"
             >
-              <span>View Calculator Directory</span>
+              <span>Explore All Sizing Guides</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          {/* Active Next Up Highlight Card */}
-          <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-50/80 via-white to-slate-50 border border-emerald-300 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-5">
+          {/* Highlight Card: Solar Wiring Reference & Printable PDF */}
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-50/80 via-white to-indigo-50/40 border border-blue-200 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
-                <Sliders className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-1">
+                <Sun className="w-6 h-6" />
               </div>
-              <div className="space-y-1.5 max-w-2xl">
+              <div className="space-y-2 max-w-3xl">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-emerald-600 text-white tracking-wide">
-                    Next Release
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-blue-600 text-white tracking-wide">
+                    Printable Reference
                   </span>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
-                    Electrical Wiring
+                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">
+                    Solar PV Wiring
                   </span>
-                  <span className="text-xs text-slate-400">• In Active Development</span>
+                  <span className="text-xs text-slate-400">• Includes 2-Page Quick-Reference PDF</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900">
-                  Wire Gauge (AWG) &amp; Voltage Drop Calculator
+                  <Link
+                    href="/solar-panels-series-vs-parallel"
+                    className="hover:text-blue-600 transition"
+                  >
+                    Solar Panels Series vs Parallel: Complete Wiring Guide &amp; Printable Schematics
+                  </Link>
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Calculates minimum American Wire Gauge (AWG / kcmil) conductor sizes to limit circuit voltage drop to 3% for branch circuits and 5% total system drop over specified one-way run distances per NEC 210.19(A) informational notes.
+                  Understand how series, parallel, and series-parallel strings determine array voltage, operating current, and charge controller compatibility. Download our verified two-page US Letter engineering reference schematic for your workbench or jobsite binder.
                 </p>
               </div>
             </div>
-            <Link
-              href="/calculators"
-              className="px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-800 hover:border-emerald-600 hover:text-emerald-700 text-xs font-bold transition shrink-0 self-start md:self-center inline-flex items-center gap-1.5 shadow-xs"
-            >
-              <span>View Directory Status</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5 shrink-0">
+              <a
+                href="/downloads/solar-panel-wiring-diagrams-quick-reference.pdf"
+                download="solar-panel-wiring-diagrams-quick-reference.pdf"
+                className="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition inline-flex items-center justify-center gap-2 shadow-xs"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download PDF (289 KB)</span>
+              </a>
+              <Link
+                href="/solar-panels-series-vs-parallel"
+                className="px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 hover:border-blue-500 hover:text-blue-600 text-xs font-bold transition inline-flex items-center justify-center gap-1.5 shadow-xs"
+              >
+                <span>Read Full Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
 
-          {/* Other Planned Tools Grid (4 Columns) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {PLANNED_TOOLS.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.title}
-                  className="p-5 rounded-2xl bg-white border border-slate-200 flex flex-col justify-between space-y-3"
-                >
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="w-9 h-9 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center shrink-0">
-                        <Icon className="w-4 h-4" />
-                      </div>
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-600">
-                        {item.category}
-                      </span>
-                    </div>
-
-                    <h4 className="text-sm font-bold text-slate-800 leading-snug">
-                      {item.title}
-                    </h4>
-
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      {item.scope}
-                    </p>
+          {/* Supporting Engineering Guides Grid (3 Columns) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Guide 1: Solar Charge Controller Sizing */}
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 hover:shadow-md transition flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                    <Zap className="w-5 h-5" />
                   </div>
-
-                  <div className="text-[11px] font-semibold text-slate-400 flex items-center gap-1 pt-1">
-                    <Sparkles className="w-3 h-3 text-slate-400" />
-                    <span>Planned Roadmap Item</span>
-                  </div>
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    Sizing Guide
+                  </span>
                 </div>
-              );
-            })}
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Solar Charge Controllers
+                  </span>
+                  <h3 className="text-base font-bold text-slate-900 leading-snug">
+                    <Link
+                      href="/how-to-size-a-solar-charge-controller"
+                      className="hover:text-indigo-600 transition"
+                    >
+                      How to Size a Solar Charge Controller (MPPT vs PWM)
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Calculate required charge controller amperage and verify cold-weather open-circuit voltage expansion margins per NEC 690.7. Compare MPPT and PWM efficiency differences across battery voltages.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/how-to-size-a-solar-charge-controller"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-2 border-t border-slate-100"
+              >
+                <span>Read Controller Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Guide 2: Solar Battery Charge Time */}
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 hover:shadow-md transition flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                    <BatteryCharging className="w-5 h-5" />
+                  </div>
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    Charging Guide
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    Solar &amp; Battery Storage
+                  </span>
+                  <h3 className="text-base font-bold text-slate-900 leading-snug">
+                    <Link
+                      href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+                      className="hover:text-indigo-600 transition"
+                    >
+                      How Long Does It Take to Charge a Battery with Solar Panels?
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Calculate realistic battery recharge hours across 12V, 24V, and 48V banks. Model solar panel wattage, controller efficiency, effective solar irradiance, and chemistry-specific charging factors.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-2 border-t border-slate-100"
+              >
+                <span>Read Charge Time Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
+            {/* Guide 3: 100Ah Battery Runtime */}
+            <div className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-400 hover:shadow-md transition flex flex-col justify-between space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <Battery className="w-5 h-5" />
+                  </div>
+                  <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    Runtime Guide
+                  </span>
+                </div>
+                <div className="space-y-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                    UPS &amp; Battery Backup
+                  </span>
+                  <h3 className="text-base font-bold text-slate-900 leading-snug">
+                    <Link
+                      href="/how-long-will-a-100ah-battery-last"
+                      className="hover:text-indigo-600 transition"
+                    >
+                      How Long Will a 100Ah Battery Last? Appliance Runtime Guide
+                    </Link>
+                  </h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Evaluate realistic runtime hours for refrigerators, CPAP machines, laptops, TVs, and inverters. Compare usable capacity across LiFePO4 and lead-acid deep-cycle batteries with inverter deratings.
+                  </p>
+                </div>
+              </div>
+              <Link
+                href="/how-long-will-a-100ah-battery-last"
+                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-2 border-t border-slate-100"
+              >
+                <span>Read 100Ah Guide</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* 5. Methodology & Technical Authority Note */}
+        {/* 6. Methodology & Technical Authority Note */}
         <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-slate-100/90 rounded-2xl p-6 sm:p-8 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="space-y-2 max-w-4xl">
@@ -1233,7 +1319,10 @@ export default function HomePage() {
                 <h2>How CalcMyPower Models Electrical &amp; Power Loads</h2>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Every CalcMyPower calculator displays its governing mathematical formula, transparent baseline parameters (such as inverter conversion efficiency, battery depth of discharge, and equipment power factor), and clearly identifies where <code className="font-mono text-slate-800 bg-white px-1.5 py-0.5 rounded border border-slate-200">1.25x</code> planning margins reflect National Electrical Code (NEC Article 210/430) continuous-load rules versus practical equipment surge headroom. Read more on our <Link href="/about" className="text-blue-600 font-semibold hover:underline">About page</Link>, submit technical feedback via our <Link href="/contact" className="text-blue-600 font-semibold hover:underline">Contact desk</Link>, or review our <Link href="/terms" className="text-blue-600 font-semibold hover:underline">Terms of Service</Link> and <Link href="/privacy" className="text-blue-600 font-semibold hover:underline">Privacy Policy</Link>. All calculations run client-side in your web browser for planning and educational use.
+                Every CalcMyPower calculator displays its governing mathematical formula and transparent baseline parameters. We clearly identify where <code className="font-mono text-slate-800 bg-white px-1.5 py-0.5 rounded border border-slate-200">1.25x</code> planning margins reflect National Electrical Code (NEC Article 210/430) continuous-load rules versus practical equipment surge headroom.
+              </p>
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                Read more on our <Link href="/about" className="text-blue-600 font-semibold hover:underline">About page</Link>, submit technical feedback via our <Link href="/contact" className="text-blue-600 font-semibold hover:underline">Contact desk</Link>, or review our <Link href="/terms" className="text-blue-600 font-semibold hover:underline">Terms of Service</Link> and <Link href="/privacy" className="text-blue-600 font-semibold hover:underline">Privacy Policy</Link>. All calculations run client-side in your web browser for planning and educational use.
               </p>
             </div>
             <Link
