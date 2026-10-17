@@ -1078,6 +1078,36 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       "/how-much-energy-does-a-solar-panel-produce",
     ],
   },
+  {
+    slug: "how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
+    path: "/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
+    title: "How Many Watts on a 15-Amp or 20-Amp Circuit? Continuous Limits & Sizing",
+    shortTitle: "15A vs 20A Circuit Wattage",
+    metaTitle: "How Many Watts on a 15-Amp or 20-Amp Circuit?",
+    metaDescription:
+      "Calculate 15-amp and 20-amp circuit wattage at 120V. Understand the NEC 80% continuous load rule, wire gauge requirements, and space heater load planning.",
+    cluster: "electricity",
+    parentCalculatorPath: "/amps-to-watts-calculator",
+    scenarioLink: "/amps-to-watts-calculator",
+    primaryKeyword: "how many watts on a 15 amp circuit",
+    readingTime: "13 min read",
+    datePublished: "2026-10-17",
+    lastModified: "2026-10-17",
+    heroImage: "/images/articles/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle.webp",
+    relatedCalculatorPaths: [
+      "/amps-to-watts-calculator",
+      "/watts-to-amps-calculator",
+      "/voltage-drop-calculator",
+      "/electricity-cost-calculator",
+      "/generator-size-calculator",
+    ],
+    relatedGuidePaths: [
+      "/how-to-calculate-electricity-usage",
+      "/how-to-calculate-electricity-bill",
+      "/what-is-a-watt-hour",
+      "/how-to-calculate-watts-for-a-generator",
+    ],
+  },
 ];
 
 export interface CoreRouteRegistryEntry {

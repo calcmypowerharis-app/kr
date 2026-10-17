@@ -24,6 +24,7 @@ URLS = [
   "https://calcmypower.com/how-long-will-a-100ah-battery-last",
   "https://calcmypower.com/how-many-amp-hours-do-i-need",
   "https://calcmypower.com/how-many-solar-panels-do-i-need",
+  "https://calcmypower.com/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
   "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
   "https://calcmypower.com/how-much-gas-does-a-generator-use",
   "https://calcmypower.com/how-to-calculate-amp-hours-of-a-battery-bank",
