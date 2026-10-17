@@ -217,6 +217,34 @@ export const AMPS_TO_WATTS_PRESETS: PresetCircuit[] = [
   },
 ];
 
+export interface AmpsToWattsReferenceRow {
+  amps: number;
+  dc12vWatts: number;
+  ac120vWatts: number;
+  ac120vContinuousWatts: number;
+  ac240vWatts: number;
+  ac240vContinuousWatts: number;
+}
+
+export const AMPS_TO_WATTS_REFERENCE_AMPS: readonly number[] = [
+  1, 1.3, 1.5, 2.4, 2.5, 3, 4, 4.2, 6, 6.5, 8, 8.5, 10, 12.5, 13, 15, 20, 30, 40, 50, 80, 100, 200,
+] as const;
+
+export function buildAmpsToWattsReferenceRow(amps: number): AmpsToWattsReferenceRow {
+  const round = (val: number) => Math.round((val + Number.EPSILON) * 100) / 100;
+  return {
+    amps,
+    dc12vWatts: round(12 * amps),
+    ac120vWatts: round(120 * amps),
+    ac120vContinuousWatts: round(120 * amps * 0.8),
+    ac240vWatts: round(240 * amps),
+    ac240vContinuousWatts: round(240 * amps * 0.8),
+  };
+}
+
+export const AMPS_TO_WATTS_REFERENCE_DATA: AmpsToWattsReferenceRow[] =
+  AMPS_TO_WATTS_REFERENCE_AMPS.map(buildAmpsToWattsReferenceRow);
+
 export function calculateAmpsToWatts(inputs: AmpsToWattsInputs): AmpsToWattsOutputs {
   const errors: ValidationError[] = [];
   const warnings: string[] = [];
