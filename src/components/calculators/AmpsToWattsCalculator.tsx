@@ -9,6 +9,7 @@ import {
   COMMON_CIRCUIT_VOLTAGES,
   AMPS_TO_WATTS_PRESETS,
   AMPS_TO_WATTS_FAQS,
+  AMPS_TO_WATTS_REFERENCE_DATA,
   PresetCircuit,
 } from "@/lib/calculators/amps-to-watts";
 import { InputField } from "@/components/ui/InputField";
@@ -421,7 +422,10 @@ export const AmpsToWattsCalculator: React.FC = () => {
             Can You Convert Volts to Watts Directly?
           </h3>
           <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
-            No. Volts alone cannot be directly converted into Watts. Voltage measures electrical potential difference (the electrical pressure driving charge), whereas Watts measures the rate of energy consumption (physical work or heat). To calculate Watts, you must know at least one additional electrical property: either circuit current in Amperes (using P = V × I) or circuit resistance in Ohms (using P = V² / R). A 120-volt outlet delivers zero watts until a device drawing current is connected.
+            No. Volts cannot convert directly into Watts without knowing current or resistance. Voltage measures electrical potential difference, while Watts measures the rate of energy consumption.
+          </p>
+          <p className="text-xs sm:text-sm text-amber-900 leading-relaxed">
+            To calculate wattage, you need circuit current (P = V × I) or resistance (P = V² ÷ R). A 120V wall outlet delivers zero watts until a device draws current.
           </p>
         </div>
 
@@ -437,6 +441,20 @@ export const AmpsToWattsCalculator: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* 10 Amps & True Power (GSC Target) */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 className="font-bold text-slate-900 text-sm flex items-center justify-between">
+                <span>What Is the True Power of 10A at 120V?</span>
+                <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">1,200W Real Power</span>
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                The true power of a 120V circuit operating at 10A with unity power factor (PF = 1.0) is exactly 1,200 Watts (1.20 kW). The calculation follows P = V × I × PF = 120V × 10A × 1.0 = 1,200W.
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
+                Because power factor equals 1.0, real power in Watts equals apparent power in Volt-Amperes (1,200 VA). With inductive motor loads at PF 0.85, true power drops to 1,020 Watts while apparent power remains 1,200 VA.
+              </p>
+            </div>
+
             {/* 15 Amps */}
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
               <h4 className="font-bold text-slate-900 text-sm flex items-center justify-between">
@@ -444,24 +462,38 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">1,800W @ 120V</span>
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                At <strong>120 Volts</strong> with unity power factor (PF = 1.0), 15 Amps equals exactly <strong>1,800 Watts</strong> (15A × 120V = 1,800W). For continuous loads operating 3 hours or more on standard non-100%-rated breakers, standard branch-circuit planning guidelines benchmark continuous duty to 80%, which equals <strong>1,440 Watts</strong> (12A). Applicable continuous-load requirements depend on equipment listing, duty duration, and local code context.
+                At 120 Volts with unity power factor (PF = 1.0), 15 Amps equals 1,800 Watts (15A × 120V = 1,800W). Standard continuous-duty planning benchmarks continuous loads (3+ hours) to 80%, which equals 1,440 Watts.
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                At <strong>240 Volts</strong> (such as a 240V workshop circuit or water heater), 15 Amps delivers <strong>3,600 Watts</strong> (15A × 240V = 3,600W), with an 80% continuous planning reference of 2,880 Watts for sustained loads.
+                At 240 Volts, 15 Amps delivers 3,600 Watts (15A × 240V = 3,600W). Sizing guidelines benchmark continuous duty at 240V to 2,880 Watts.
               </p>
             </div>
 
-            {/* 10 Amps & True Power (Position 9 Target) */}
+            {/* 20 Amps */}
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
               <h4 className="font-bold text-slate-900 text-sm flex items-center justify-between">
-                <span>What Is the True Power of 10A at 120V?</span>
-                <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">1,200W Real Power</span>
+                <span>How Many Watts Is 20 Amps?</span>
+                <span className="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">2,400W @ 120V</span>
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                The <strong>true power</strong> of a 120V circuit operating at 10A with unity power factor (PF = 1.0) is exactly <strong>1,200 Watts</strong> (1.20 kW). Formula: P = V × I × PF = 120V × 10A × 1.0 = 1,200W.
+                At 120 Volts with unity power factor, 20 Amps provides 2,400 Watts (20A × 120V = 2,400W). Sizing guidelines benchmark continuous duty for 3 or more hours to 1,920 Watts (80%).
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                <strong>Real vs. Apparent Power:</strong> Because power factor is 1.0, real active power (1,200 Watts) exactly equals apparent power (1,200 VA). If powering an inductive motor operating at PF = 0.85, true power drops to 1,020 Watts while apparent circuit draw remains 1,200 VA. At 240V and PF 1.0, 10 Amps delivers 2,400 Watts.
+                At 240 Volts, a 20-Amp circuit delivers 4,800 Watts (20A × 240V = 4,800W). The 80% continuous planning reference at 240V is 3,840 Watts.
+              </p>
+            </div>
+
+            {/* 200 Amps */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h4 className="font-bold text-slate-900 text-sm flex items-center justify-between">
+                <span>How Many Watts in 200 Amps (240V)?</span>
+                <span className="text-xs font-mono font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded">48,000W Theoretical</span>
+              </h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                At 240 Volts single-phase with unity power factor, 200 Amps equals 48,000 Watts (200A × 240V = 48 kW). Standard 80% continuous planning yields a 38,400 Watt benchmark.
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
+                This 48 kW figure represents total theoretical capacity. Actual residential 200-Amp service sizing requires standard NEC load calculations (NEC Article 220) with demand diversity factors rather than simple arithmetic summation.
               </p>
             </div>
 
@@ -472,10 +504,10 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 <span className="text-xs font-mono font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded">3,600W / 7,200W</span>
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                At <strong>120 Volts</strong> (such as a 30-Amp RV park connection or TT-30 receptacle), 30 Amps provides <strong>3,600 Watts</strong> (30A × 120V = 3,600W), with an 80% continuous planning reference of 2,880 Watts for loads sustained over 3 hours.
+                At 120 Volts, 30 Amps provides 3,600 Watts (30A × 120V = 3,600W), with an 80% continuous planning reference of 2,880 Watts. This rating is common for 30A RV connections.
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                At <strong>240 Volts</strong> (such as an electric clothes dryer or residential water heater), 30 Amps provides <strong>7,200 Watts</strong> (30A × 240V = 7,200W), with an 80% continuous planning reference of 5,760 Watts for sustained duty.
+                At 240 Volts, 30 Amps delivers 7,200 Watts (30A × 240V = 7,200W) with an 80% continuous benchmark of 5,760 Watts. This configuration powers electric dryers and water heaters.
               </p>
             </div>
 
@@ -486,155 +518,115 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 <span className="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">9,600W @ 240V</span>
               </h4>
               <p className="text-xs text-slate-600 leading-relaxed">
-                At <strong>240 Volts</strong> (standard for electric cooking ranges and subpanel feeders), 40 Amps delivers <strong>9,600 Watts</strong> (40A × 240V = 9,600W). Where continuous duty of 3 hours or more applies on standard non-100%-rated equipment, continuous load is conventionally planned at 80% (7,680 Watts or 32A). Non-continuous equipment or 100%-rated assemblies operate under different criteria based on installation listing.
+                At 240 Volts, 40 Amps provides 9,600 Watts (40A × 240V = 9,600W). Standard guidelines benchmark continuous duty of 3 or more hours to 7,680 Watts (80%).
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                At <strong>120 Volts</strong>, 40 Amps produces <strong>4,800 Watts</strong> (40A × 120V = 4,800W), with an 80% continuous planning benchmark of 3,840 Watts.
+                At 120 Volts, 40 Amps yields 4,800 Watts with an 80% continuous benchmark of 3,840 Watts. This capacity typically feeds electric cooktops and workshop subpanels.
               </p>
             </div>
           </div>
 
-          {/* Fractional and Lower Amperages (3A, 8.5A) Callout */}
+          {/* Fractional and Lower Amperages Callout */}
           <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1.5">
             <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider">
               Converting Smaller &amp; Fractional Currents (3 Amps, 8.5 Amps)
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 font-mono text-slate-700">
-              <div>• <strong>3.0 Amps @ 120V (PF 1.0):</strong> 3A × 120V = 360 Watts (e.g., desktop PC, TV)</div>
-              <div>• <strong>8.5 Amps @ 120V (PF 1.0):</strong> 8.5A × 120V = 1,020 Watts (e.g., refrigerator compressor)</div>
-            </div>
+            <p className="leading-relaxed">
+              Fractional currents also convert linearly using standard formulas. For example, a 3A load at 120V draws 360W, while an 8.5A compressor draws 1,020W at unity power factor.
+            </p>
           </div>
         </div>
 
-        {/* Quick Reference Table */}
-        <div className="space-y-3 pt-2">
-          <div className="flex items-center gap-2">
-            <Table className="w-4 h-4 text-blue-600" />
-            <h3 className="text-base font-bold text-slate-900">
-              Quick Reference: Common US Voltage &amp; Amperage Capacities (At Power Factor 1.0)
-            </h3>
+        {/* Amps to Watts Quick-Reference Chart */}
+        <div className="space-y-4 pt-2">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <Table className="w-5 h-5 text-blue-600" />
+              <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                Amps to Watts Quick-Reference Chart (12V DC, 120V &amp; 240V AC)
+              </h3>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              This reference table compares electrical power output across common residential, commercial, and DC currents. Values are calculated using standard formulas for direct current (DC) and single-phase alternating current (AC).
+            </p>
+            <p className="text-xs text-slate-600 leading-relaxed pt-0.5">
+              Need to convert power back to current? Use the{" "}
+              <Link
+                href="/watts-to-amps-calculator"
+                className="text-blue-600 hover:text-blue-800 underline font-medium"
+              >
+                Watts to Amps Electrical Calculator
+              </Link>{" "}
+              to determine circuit amperage from equipment wattage.
+            </p>
           </div>
-          <p className="text-xs text-slate-600">
-            The table below compares nominal mathematical power with the standard 80% continuous-duty planning reference (for loads sustained 3+ hours on standard non-100%-rated equipment) for common US branch circuits at unity power factor (PF = 1.0):
-          </p>
 
-          <div className="overflow-x-auto rounded-xl border border-slate-200">
-            <table className="w-full text-left text-xs">
+          <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+            <table className="w-full text-left text-xs sm:text-sm border-collapse">
+              <caption className="sr-only">
+                Amps to Watts conversion table for 12V DC, 120V AC, and 240V AC with 80% continuous planning values
+              </caption>
               <thead className="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
                 <tr>
-                  <th className="py-2.5 px-3">Circuit Specification</th>
-                  <th className="py-2.5 px-3">System Type</th>
-                  <th className="py-2.5 px-3">Nominal Max Power</th>
-                  <th className="py-2.5 px-3">80% Continuous Planning Ref</th>
-                  <th className="py-2.5 px-3">Typical Application</th>
+                  <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                    Current (A)
+                  </th>
+                  <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                    12V DC Power (W)
+                  </th>
+                  <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                    120V Single-Phase AC (PF = 1) (W)
+                  </th>
+                  <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                    120V 80% Continuous Planning (W)
+                  </th>
+                  <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                    240V Single-Phase AC (PF = 1) (W)
+                  </th>
+                  <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                    240V 80% Continuous Planning (W)
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-200 text-slate-600">
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">3.0 Amps @ 120 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">360 W (0.36 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">288 W</td>
-                  <td className="py-2 px-3">Small electronics, desktop workstation, audio amplifier</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">8.5 Amps @ 120 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">1,020 W (1.02 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">816 W</td>
-                  <td className="py-2 px-3">Refrigerator defrost cycle, circular saw, commercial blender</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">10 Amps @ 120 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">1,200 W (1.20 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">960 W</td>
-                  <td className="py-2 px-3">True power benchmark: laser printer, vacuum, air fryer</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">10 Amps @ 12 Volts</td>
-                  <td className="py-2 px-3">Direct Current (DC)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">120 W (0.12 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">96 W</td>
-                  <td className="py-2 px-3">Automotive auxiliary socket or 12V LED string</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">15 Amps @ 120 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">1,800 W (1.80 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">1,440 W</td>
-                  <td className="py-2 px-3">Standard bedroom / living room receptacle (NEMA 5-15R)</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">15 Amps @ 240 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">3,600 W (3.60 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">2,880 W</td>
-                  <td className="py-2 px-3">Workshop power tools, mini-split AC, electric baseboard</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">20 Amps @ 120 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">2,400 W (2.40 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">1,920 W</td>
-                  <td className="py-2 px-3">Kitchen small appliance &amp; bathroom branch circuits</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">20 Amps @ 240 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">4,800 W (4.80 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">3,840 W</td>
-                  <td className="py-2 px-3">Large air compressor or baseboard heater zone</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">30 Amps @ 120 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">3,600 W (3.60 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">2,880 W</td>
-                  <td className="py-2 px-3">30-Amp RV park service hookup (NEMA TT-30)</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">30 Amps @ 240 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">7,200 W (7.20 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">5,760 W</td>
-                  <td className="py-2 px-3">Electric clothes dryer, water heater, 30A RV</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">40 Amps @ 240 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">9,600 W (9.60 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">7,680 W</td>
-                  <td className="py-2 px-3">Electric cooktop, garage subpanel feed, welder circuit</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">50 Amps @ 240 Volts</td>
-                  <td className="py-2 px-3">AC Single-Phase (PF 1.0)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">12,000 W (12.0 kW)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">9,600 W</td>
-                  <td className="py-2 px-3">Level 2 EV charger, electric range, 50A RV</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">20 Amps @ 208V 3-Phase</td>
-                  <td className="py-2 px-3">AC 3-Phase (PF 0.90)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">6,485 W (7,205 VA)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">5,188 W</td>
-                  <td className="py-2 px-3">Commercial 3-phase kitchen &amp; HVAC equipment</td>
-                </tr>
-                <tr className="hover:bg-slate-50/50">
-                  <td className="py-2 px-3 font-semibold text-slate-900">30 Amps @ 480V 3-Phase</td>
-                  <td className="py-2 px-3">AC 3-Phase (PF 0.85)</td>
-                  <td className="py-2 px-3 font-mono font-medium text-slate-800">21,200 W (24,942 VA)</td>
-                  <td className="py-2 px-3 font-mono text-blue-700">16,960 W</td>
-                  <td className="py-2 px-3">Industrial motor machinery &amp; chiller pumps</td>
-                </tr>
+                {AMPS_TO_WATTS_REFERENCE_DATA.map((row) => (
+                  <tr key={row.amps} className="hover:bg-slate-50/70 transition-colors">
+                    <th scope="row" className="py-2.5 px-3 sm:px-4 font-semibold text-slate-900 whitespace-nowrap font-mono">
+                      {row.amps} A
+                    </th>
+                    <td className="py-2.5 px-3 sm:px-4 font-mono text-slate-700 whitespace-nowrap">
+                      {row.dc12vWatts.toLocaleString("en-US", { maximumFractionDigits: 1 })} W
+                    </td>
+                    <td className="py-2.5 px-3 sm:px-4 font-mono font-medium text-slate-900 whitespace-nowrap">
+                      {row.ac120vWatts.toLocaleString("en-US", { maximumFractionDigits: 1 })} W
+                    </td>
+                    <td className="py-2.5 px-3 sm:px-4 font-mono text-blue-700 whitespace-nowrap">
+                      {row.ac120vContinuousWatts.toLocaleString("en-US", { maximumFractionDigits: 1 })} W
+                    </td>
+                    <td className="py-2.5 px-3 sm:px-4 font-mono font-medium text-slate-900 whitespace-nowrap">
+                      {row.ac240vWatts.toLocaleString("en-US", { maximumFractionDigits: 1 })} W
+                    </td>
+                    <td className="py-2.5 px-3 sm:px-4 font-mono text-blue-700 whitespace-nowrap">
+                      {row.ac240vContinuousWatts.toLocaleString("en-US", { maximumFractionDigits: 1 })} W
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
 
-          <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-1">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-2">
             <p>
-              <strong>Educational Planning Note:</strong> Nominal Max Power represents pure mathematical conversion (P = V × I × PF). The 80% Continuous Planning Reference illustrates conventional sizing practice where continuous loads (operating for 3 hours or longer) are connected to standard, non-100%-rated overcurrent protective devices (referencing NEC Article 100). Whether an 80% threshold applies depends on equipment listing, continuous duty duration, and applicable local codes. Intermittent non-continuous loads and 100%-rated equipment operate under different sizing criteria. This calculator provides preliminary planning estimates only and does not certify code compliance or installation safety. Always verify physical installations with a licensed electrician.
+              <strong>Formulas used:</strong> Direct Current: P = V × I. Single-Phase Alternating Current: P = V × I × PF (calculated at unity power factor, PF = 1.0). Continuous 80% planning value: P × 0.80.
+            </p>
+            <p>
+              <strong>Power Factor assumption:</strong> AC values assume a unity power factor of 1.0 for purely resistive loads. Real active power is lower when operating inductive equipment such as motors, air compressors, or pumps.
+            </p>
+            <p>
+              <strong>Continuous Duty planning:</strong> The 80% continuous planning values represent standard sizing benchmarks for loads operating continuously for 3 hours or longer on standard non-100%-rated overcurrent devices. These figures are illustrative planning guides rather than universal safe-load guarantees or full NEC determinations.
+            </p>
+            <p>
+              <strong>Wire gauge &amp; breakers:</strong> This reference table does not specify circuit breaker ratings or wire gauges. Conductor sizing depends on insulation temperature ratings, ambient temperatures, raceway fill, and applicable local electrical codes.
             </p>
           </div>
         </div>
