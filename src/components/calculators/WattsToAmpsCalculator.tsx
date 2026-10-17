@@ -9,6 +9,7 @@ import {
   COMMON_CIRCUIT_VOLTAGES,
   WATTS_TO_AMPS_PRESETS,
   WATTS_TO_AMPS_FAQS,
+  WATTS_TO_AMPS_REFERENCE_DATA,
   PresetAppliance,
 } from "@/lib/calculators/watts-to-amps";
 import { InputField } from "@/components/ui/InputField";
@@ -29,6 +30,7 @@ import {
   ShoppingBag,
   ArrowRight,
   ShieldAlert,
+  Table,
 } from "lucide-react";
 
 export const WattsToAmpsCalculator: React.FC = () => {
@@ -497,6 +499,174 @@ export const WattsToAmpsCalculator: React.FC = () => {
         <p className="text-[11px] text-slate-500 leading-normal">
           Note: This is an engineering estimate for battery fuse and cable sizing. Actual draw will vary based on battery state-of-charge (terminal voltage dropping under heavy load) and inverter standby consumption (typically 10W to 30W with zero AC load).
         </p>
+      </section>
+
+      {/* Watts to Amps Quick-Reference Chart Section */}
+      <section className="bg-white rounded-2xl border border-slate-200/80 p-6 md:p-8 space-y-6">
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <Table className="w-5 h-5 text-blue-600" />
+            <h3 className="text-base sm:text-lg font-bold text-slate-900">
+              Watts to Amps Quick-Reference Chart
+            </h3>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            This reference table compares electrical current draw across common residential, DC, and heavy appliance loads. Values are calculated for 12V DC, 120V AC, and 240V AC systems.
+          </p>
+          <p className="text-xs text-slate-600 leading-relaxed pt-0.5">
+            Need to convert known current back into total wattage? Use the{" "}
+            <Link
+              href="/amps-to-watts-calculator"
+              className="text-blue-600 hover:text-blue-800 underline font-medium"
+            >
+              Amps to Watts Electrical Calculator
+            </Link>{" "}
+            for reciprocal calculations.
+          </p>
+        </div>
+
+        {/* Direct-Answer Conversion Examples */}
+        <div className="space-y-3 pt-1">
+          <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+            Common Conversion Examples
+          </h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* 37 Watts */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h5 className="font-bold text-slate-900 text-sm flex items-center justify-between">
+                <span>37 Watts to Amps</span>
+                <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">
+                  3.08A @ 12V | 0.31A @ 120V
+                </span>
+              </h5>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                At 12V DC (such as automotive accessories or small solar panels), 37 Watts draws 3.08 Amps (37W ÷ 12V = 3.08A).
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
+                On a standard 120V AC household circuit with unity power factor (PF = 1.0), 37 Watts draws only 0.31 Amps (37W ÷ 120V = 0.31A).
+              </p>
+            </div>
+
+            {/* 120 Watts */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h5 className="font-bold text-slate-900 text-sm flex items-center justify-between">
+                <span>120 Watts Is How Many Amps?</span>
+                <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+                  1.00A @ 120V | 10.00A @ 12V
+                </span>
+              </h5>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                On a 120V AC circuit at unity power factor, 120 Watts draws exactly 1.00 Amp (120W ÷ 120V = 1.00A).
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
+                On a 12V DC circuit, that same 120 Watts requires 10.00 Amps (120W ÷ 12V = 10.00A), illustrating how lower voltage requires higher current.
+              </p>
+            </div>
+
+            {/* 1,500 Watts */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h5 className="font-bold text-slate-900 text-sm flex items-center justify-between">
+                <span>1,500 Watts at 120V AC</span>
+                <span className="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded">
+                  12.50A (15.63A Design Ref)
+                </span>
+              </h5>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                At 120 Volts with unity power factor (typical for space heaters), 1,500 Watts draws 12.50 Amps of operating current (1,500W ÷ 120V = 12.50A).
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
+                For continuous duty (3+ hours), standard 125% sizing benchmarks design current to 15.63 Amps, which requires a 20A branch circuit rather than 15A.
+              </p>
+            </div>
+
+            {/* 2,400 Watts */}
+            <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <h5 className="font-bold text-slate-900 text-sm flex items-center justify-between">
+                <span>2,400 Watts to Amps (120V &amp; 240V)</span>
+                <span className="text-xs font-mono font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded">
+                  10.00A @ 240V | 20.00A @ 120V
+                </span>
+              </h5>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                At 240 Volts with unity power factor, 2,400 Watts draws exactly 10.00 Amps (2,400W ÷ 240V = 10.00A), with a 125% continuous reference of 12.50 Amps.
+              </p>
+              <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
+                At 120 Volts, 2,400 Watts draws 20.00 Amps (25.00 Amps design reference), requiring a dedicated 20A or larger circuit for non-continuous use.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Semantic HTML Reference Table */}
+        <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+          <table className="w-full text-left text-xs sm:text-sm border-collapse">
+            <caption className="sr-only">
+              Watts to Amps quick reference table comparing 12V DC, 120V AC, and 240V AC currents with 125% continuous load design references
+            </caption>
+            <thead className="bg-slate-100 text-slate-700 font-semibold border-b border-slate-200">
+              <tr>
+                <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                  Power (W)
+                </th>
+                <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                  12V DC Current (A)
+                </th>
+                <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                  120V AC (PF = 1) (A)
+                </th>
+                <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                  240V AC (PF = 1) (A)
+                </th>
+                <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                  120V Continuous Design Ref (125%) (A)
+                </th>
+                <th scope="col" className="py-3 px-3 sm:px-4 whitespace-nowrap">
+                  240V Continuous Design Ref (125%) (A)
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 text-slate-600">
+              {WATTS_TO_AMPS_REFERENCE_DATA.map((row) => (
+                <tr key={row.watts} className="hover:bg-slate-50/70 transition-colors">
+                  <th scope="row" className="py-2.5 px-3 sm:px-4 font-semibold text-slate-900 whitespace-nowrap font-mono">
+                    {row.watts.toLocaleString("en-US")} W
+                  </th>
+                  <td className="py-2.5 px-3 sm:px-4 font-mono text-slate-700 whitespace-nowrap">
+                    {row.dc12vAmps.toFixed(2)} A
+                  </td>
+                  <td className="py-2.5 px-3 sm:px-4 font-mono font-medium text-slate-900 whitespace-nowrap">
+                    {row.ac120vAmps.toFixed(2)} A
+                  </td>
+                  <td className="py-2.5 px-3 sm:px-4 font-mono font-medium text-slate-900 whitespace-nowrap">
+                    {row.ac240vAmps.toFixed(2)} A
+                  </td>
+                  <td className="py-2.5 px-3 sm:px-4 font-mono text-blue-700 whitespace-nowrap">
+                    {row.ac120vContinuousAmps.toFixed(2)} A
+                  </td>
+                  <td className="py-2.5 px-3 sm:px-4 font-mono text-blue-700 whitespace-nowrap">
+                    {row.ac240vContinuousAmps.toFixed(2)} A
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Assumptions & Disclaimers */}
+        <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 space-y-2">
+          <p>
+            <strong>Calculation formulas:</strong> DC Current: I = P ÷ V. Single-Phase AC Current: I = P ÷ (V × PF), calculated assuming unity power factor (PF = 1.0). Continuous Design Current: I × 1.25.
+          </p>
+          <p>
+            <strong>Power factor assumption:</strong> Listed AC current values assume purely resistive loads with a power factor of 1.0. Inductive loads such as air conditioners, refrigerators, and power tools operate with lower power factors (0.75 to 0.90) and draw higher current.
+          </p>
+          <p>
+            <strong>Continuous-load design reference:</strong> The 125% continuous-duty columns reflect standard NEC guidelines (Article 100 &amp; 210) where branch circuits serving continuous loads (running 3+ hours) are sized for 125% of the operating current. This is an engineering design reference, not a universal safe-load guarantee.
+          </p>
+          <p>
+            <strong>No fixed conductor sizing from wattage:</strong> This table does not specify wire gauges or circuit breaker ratings. Final conductor sizing requires evaluating termination temperature ratings (60°C/75°C/90°C), raceway bundling, ambient temperature derating, voltage drop, and applicable local electrical codes.
+          </p>
+        </div>
       </section>
 
       {/* Assumptions Section */}

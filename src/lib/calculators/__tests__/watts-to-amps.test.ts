@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { calculateWattsToAmps } from "../watts-to-amps";
+import {
+  calculateWattsToAmps,
+  WATTS_TO_AMPS_REFERENCE_WATTS,
+  WATTS_TO_AMPS_REFERENCE_DATA,
+  buildWattsToAmpsReferenceRow,
+} from "../watts-to-amps";
 
 describe("calculateWattsToAmps - Unit Test Suite", () => {
   // TC-01: DC Standard
@@ -200,5 +205,88 @@ describe("calculateWattsToAmps - Unit Test Suite", () => {
     expect(res.currentAmps).toBe(10.0);
     expect(res.formattedCurrent).toBe("10.00 A");
     expect(res.continuousLoadRefAmps).toBe(12.5);
+  });
+
+  // TC-15: Watts to Amps Static Reference Table & Representative Examples
+  describe("Watts to Amps Static Reference Table & SEO Benchmarks", () => {
+    it("contains exactly the 18 target wattages requested for reference chart", () => {
+      const expectedWatts = [
+        37, 60, 100, 120, 300, 500, 750, 1000, 1200, 1500, 1800, 2000, 2400, 3000, 3600, 5000, 7200, 10000,
+      ];
+      expect(WATTS_TO_AMPS_REFERENCE_WATTS).toEqual(expectedWatts);
+      expect(WATTS_TO_AMPS_REFERENCE_DATA).toHaveLength(18);
+    });
+
+    it("verifies mathematical precision of all 18 rows across DC, 120V AC, and 240V AC with 125% continuous reference", () => {
+      for (const row of WATTS_TO_AMPS_REFERENCE_DATA) {
+        const expectedDc = Math.round((row.watts / 12 + Number.EPSILON) * 100) / 100;
+        const expected120v = Math.round((row.watts / 120 + Number.EPSILON) * 100) / 100;
+        const expected240v = Math.round((row.watts / 240 + Number.EPSILON) * 100) / 100;
+        const expected120vCont = Math.round(((row.watts / 120) * 1.25 + Number.EPSILON) * 100) / 100;
+        const expected240vCont = Math.round(((row.watts / 240) * 1.25 + Number.EPSILON) * 100) / 100;
+
+        expect(row.dc12vAmps).toBe(expectedDc);
+        expect(row.ac120vAmps).toBe(expected120v);
+        expect(row.ac240vAmps).toBe(expected240v);
+        expect(row.ac120vContinuousAmps).toBe(expected120vCont);
+        expect(row.ac240vContinuousAmps).toBe(expected240vCont);
+      }
+    });
+
+    it("verifies GSC benchmark and representative examples (37W, 120W, 1500W, 2400W, 10000W)", () => {
+      // 37W query benchmark (37 watts to amps)
+      const row37W = WATTS_TO_AMPS_REFERENCE_DATA.find((r) => r.watts === 37);
+      expect(row37W).toBeDefined();
+      expect(row37W?.dc12vAmps).toBe(3.08); // 37 / 12 = 3.0833... -> 3.08
+      expect(row37W?.ac120vAmps).toBe(0.31); // 37 / 120 = 0.3083... -> 0.31
+      expect(row37W?.ac240vAmps).toBe(0.15); // 37 / 240 = 0.1541... -> 0.15
+      expect(row37W?.ac120vContinuousAmps).toBe(0.39); // 37 / 96 = 0.3854... -> 0.39
+      expect(row37W?.ac240vContinuousAmps).toBe(0.19); // 37 / 192 = 0.1927... -> 0.19
+
+      // 120W query benchmark (120 watts is how many amps)
+      const row120W = WATTS_TO_AMPS_REFERENCE_DATA.find((r) => r.watts === 120);
+      expect(row120W).toBeDefined();
+      expect(row120W?.dc12vAmps).toBe(10.0);
+      expect(row120W?.ac120vAmps).toBe(1.0);
+      expect(row120W?.ac240vAmps).toBe(0.5);
+      expect(row120W?.ac120vContinuousAmps).toBe(1.25);
+      expect(row120W?.ac240vContinuousAmps).toBe(0.63);
+
+      // 1,500W benchmark
+      const row1500W = WATTS_TO_AMPS_REFERENCE_DATA.find((r) => r.watts === 1500);
+      expect(row1500W).toBeDefined();
+      expect(row1500W?.dc12vAmps).toBe(125.0);
+      expect(row1500W?.ac120vAmps).toBe(12.5);
+      expect(row1500W?.ac240vAmps).toBe(6.25);
+      expect(row1500W?.ac120vContinuousAmps).toBe(15.63);
+      expect(row1500W?.ac240vContinuousAmps).toBe(7.81);
+
+      // 2,400W query benchmark (2400 watts to amps)
+      const row2400W = WATTS_TO_AMPS_REFERENCE_DATA.find((r) => r.watts === 2400);
+      expect(row2400W).toBeDefined();
+      expect(row2400W?.dc12vAmps).toBe(200.0);
+      expect(row2400W?.ac120vAmps).toBe(20.0);
+      expect(row2400W?.ac240vAmps).toBe(10.0);
+      expect(row2400W?.ac120vContinuousAmps).toBe(25.0);
+      expect(row2400W?.ac240vContinuousAmps).toBe(12.5);
+
+      // 10,000W heavy load benchmark
+      const row10000W = WATTS_TO_AMPS_REFERENCE_DATA.find((r) => r.watts === 10000);
+      expect(row10000W).toBeDefined();
+      expect(row10000W?.dc12vAmps).toBe(833.33);
+      expect(row10000W?.ac120vAmps).toBe(83.33);
+      expect(row10000W?.ac240vAmps).toBe(41.67);
+      expect(row10000W?.ac120vContinuousAmps).toBe(104.17);
+      expect(row10000W?.ac240vContinuousAmps).toBe(52.08);
+    });
+
+    it("verifies buildWattsToAmpsReferenceRow standalone builder with custom watts", () => {
+      const customRow = buildWattsToAmpsReferenceRow(480);
+      expect(customRow.dc12vAmps).toBe(40.0); // 480 / 12
+      expect(customRow.ac120vAmps).toBe(4.0); // 480 / 120
+      expect(customRow.ac240vAmps).toBe(2.0); // 480 / 240
+      expect(customRow.ac120vContinuousAmps).toBe(5.0); // 4 * 1.25
+      expect(customRow.ac240vContinuousAmps).toBe(2.5); // 2 * 1.25
+    });
   });
 });
