@@ -1105,6 +1105,12 @@ export default function HomePage() {
                         <span>Calculate Electric Utility Bill</span>
                       </Link>
                     </li>
+                    <li>
+                      <Link href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
+                        <span className="text-slate-400">•</span>
+                        <span>15A vs 20A Circuit Wattage</span>
+                      </Link>
+                    </li>
                   </ul>
                 </div>
               </div>

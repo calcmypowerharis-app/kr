@@ -312,6 +312,14 @@ export const Footer: React.FC = () => {
                   Solar Battery Charge Time Guide
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"
+                  className="hover:text-white transition"
+                >
+                  15-Amp vs 20-Amp Circuit Wattage Guide
+                </Link>
+              </li>
             </ul>
           </div>
 

@@ -1009,6 +1009,31 @@ export default function CalculatorsDirectoryPage() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
+
+            <Link
+              href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"
+              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
+            >
+              <div className="flex items-center justify-between text-xs">
+                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
+                  Electrical Circuit Guide
+                </span>
+                <span className="inline-flex items-center gap-1 text-slate-500">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>13 min read</span>
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
+                How Many Watts on a 15-Amp or 20-Amp Circuit?
+              </h3>
+              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+                Determine real-world wattage capacity for 120V household branch circuits. Compare nominal limits against the NEC 80% continuous safety rule and review 14 AWG vs 12 AWG wire requirements.
+              </p>
+              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
+                <span>Read Circuit Wattage Guide</span>
+                <ArrowRight className="w-4 h-4" />
+              </div>
+            </Link>
           </div>
         </section>
       </div>
