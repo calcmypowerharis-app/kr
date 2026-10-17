@@ -419,3 +419,18 @@ This log records major technical and product decisions, context, rationale, and 
      - Rules integrity passed (29/29 rules).
      - Production build succeeded with all 46 static pages prerendered.
 - **Rationale:** Captures high-intent PWM search demand without page bloat or cannibalization, improves practical utility for 12V RV/camper users, reinforces technical accuracy, and maintains strict publication quality standards.
+
+---
+
+## Decision 034: Official GitHub CLI (gh) Exclusivity & Credential Hardening Standard
+- **Date:** 2026-10-17
+- **Status:** Approved & Implemented
+- **Context:** A security audit of GitHub credential handling revealed two risks: historical exposure of a classic GitHub Personal Access Token (PAT) pasted in chat turn 1135 (which persisted in task logs and conversation transcripts), and an ad-hoc pattern of extracting credentials from Windows Git Credential Manager (`git credential fill`) into in-memory Python automation scripts for PR operations.
+- **Decision:**
+  1. **Deprecate and Remove Ad-Hoc Token Extraction Scripts:** Permanently prohibited extracting tokens via `git credential fill` or parsing credentials in scratch scripts. Removed all scratch scripts referencing token extraction.
+  2. **Standardize on Official GitHub CLI (`gh`):** Mandated using the official, authenticated GitHub CLI (`gh`) for all PR creation, PR merges (`gh pr merge --squash`), and repository inspections. Verified that `gh` uses secure OS keyring storage and already has authenticated access to `calcmypowerharis-app/kr`.
+  3. **Codify Executive Core Guardrail 8:** Codified Guardrail 8 across `GEMINI.md` and `AGENTS.md`, and updated Rule 18 and Rule 23.11 in `.agents/rules/06_architecture_devops_git.md`.
+  4. **Document Lesson 026:** Codified Lesson 026 in `LESSONS.md`.
+  5. **Owner Token Revocation Advisory:** Formally advised the repository owner to revoke the classic PAT via GitHub Account Settings -> Developer settings -> Personal access tokens (classic), as any token historically present in transcript logs must be treated as compromised.
+- **Rationale:** Protects repository integrity and deployment secrets, eliminates insecure credential extraction patterns, and leverages native, secure GitHub CLI authentication without disrupting existing builds or live production.
+

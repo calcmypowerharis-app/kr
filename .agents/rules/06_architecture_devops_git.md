@@ -57,6 +57,9 @@ Mandatory Git Author Identity:
   - user.email: calcmypowerharis@gmail.com
 - Never commit with personal or secondary accounts (such as patnerj95@gmail.com). Vercel team licensing restricts builds to team members and flags unauthorized authors.
 
+Credential Security Invariant:
+- Follow Section 23.11 exclusively. Use official GitHub CLI (`gh`) for remote GitHub operations. Never extract, stage, or commit GitHub tokens or secrets.
+
 ## 23. Remote Development, Testing & Deployment Standard
 
 ### 1. REMOTE-FIRST DEVELOPMENT
@@ -195,31 +198,29 @@ when the designated remote RDP environment can perform the task.
 
 The Lead may use their browser to review screenshots/results and provide approval.
 
-### 11. REMOTE CREDENTIAL SECURITY & LOCAL-ONLY ISOLATION
+### 11. GITHUB CREDENTIAL SECURITY & OFFICIAL CLI (gh) PROTOCOL
 
 Never expose:
-- GitHub PATs
+- GitHub Personal Access Tokens (PATs)
+- OAuth tokens or session secrets
 - API tokens
-- passwords
-- private keys
+- Passwords or private keys
 - Vercel tokens
-- environment secrets
+- Environment secrets
 
-in chat output, screenshots, commit messages, logs, or reports.
+in chat output, screenshots, commit messages, command lines, logs, or reports.
 
-Do not recover credentials from previous terminal history or transcript logs.
+Never recover, parse, or reuse credentials from previous terminal history or transcript logs.
 
-Use the configured authentication mechanism of the remote environment.
-
-If a credential becomes exposed, stop credential reuse and report that it
-must be rotated/revoked.
-
-#### 11.1 STRICT LOCAL-ONLY STORAGE (ZERO-LEAKAGE INVARIANT)
-- **Local Machine Only:** GitHub Personal Access Tokens (PATs), API keys, and deployment secrets must live strictly on the local remote machine disk (inside `.git/config` which is local metadata and never tracked by Git).
-- **Never on GitHub:** Never commit, stage, or push credentials to any repository file, markdown doc, code file, or version control.
-- **Never in Visible Output:** Never print or echo raw PAT strings in chat messages, reports, or PR descriptions.
-- **Pre-Commit Secret Scan:** Before every commit, verify via `git diff --staged` that no credentials or private token patterns are being added to version control.
-- **Ephemeral Usage:** If credentials must be referenced in automation scripts, use in-memory ephemeral variables that do not persist in script files or commit history.
+#### 11.1 STRICT CREDENTIAL NON-EXTRACTION & OFFICIAL GITHUB CLI FLOW
+- **Official GitHub CLI Exclusivity:** All remote GitHub workflows (creating pull requests, merging, inspecting checks, releases, and repository queries) must exclusively use the authenticated GitHub CLI (`gh`).
+- **Prohibited Token Extraction:** Never extract credentials from Windows Git Credential Manager via `git credential fill` or ad-hoc scripts. Never pipe or parse credentials in memory scripts.
+- **Verification via `gh auth status`:** Check authentication using `gh auth status` without revealing token values or headers.
+- **Interactive Owner Login:** If GitHub authentication is missing or expired, stop immediately and instruct the repository owner to run `gh auth login` interactively. Never ask the owner to paste a token into ChatGPT, Antigravity prompts, repository files, or logs.
+- **Zero Embedding in Source or Config:** Never embed tokens or secrets in `.git/config`, URLs, source code, test files, markdown documentation, or environment debug outputs.
+- **No Verbose or Traced Logging:** Never enable shell tracing (`set -x` or `Set-PSDebug -Trace`) or verbose HTTP header logging that prints Authorization headers.
+- **Pre-Commit Secret Scan:** Before every commit, verify via `git diff --staged` that no credentials, tokens, or private patterns are being committed.
+- **Mandatory Compromise Protocol:** If any token is exposed in logs, transcript, or files, treat it as compromised. Stop credential reuse immediately and request owner-authorized revocation and replacement via GitHub account settings. Never assume deleting a log makes an exposed credential safe.
 
 ### 12. FINAL REPORT
 

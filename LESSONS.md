@@ -185,3 +185,16 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   4. 1-Hop Apex Crawl Discovery: Every new route must be linked directly within 1 hop from the root homepage (`src/app/page.tsx`) and the calculators hub (`src/app/calculators/page.tsx`), and included in `Footer.tsx`.
   5. Trust & Policy Infrastructure: Maintain permanent, visible links to `/privacy`, `/terms`, `/about`, and `/contact` across all pages.
 - **Prevention:** Enforced by automated test suites in `src/lib/seo/__tests__/` (`editorial-quality.test.ts` and `seo-foundation.test.ts`) that run on every `npm test` and CI pipeline.
+
+---
+
+## Lesson 026: Official GitHub CLI (gh) Exclusivity & Credential Non-Exposure Protocol
+- **Context:** An audit of past conversations revealed that a classic GitHub Personal Access Token (PAT) was pasted directly in prompt text in historical turn 1135, resulting in exposures across transcript logs and task execution logs. Furthermore, an ad-hoc pattern emerged where scripts extracted tokens from Windows Git Credential Manager (`git credential fill`) into memory for PR operations.
+- **Rule:**
+  1. Never extract credentials from Git Credential Manager or `.git/config` into memory, ad-hoc Python scripts, or environment variables.
+  2. Use the official GitHub CLI (`gh`) for all remote PR creation, review, merging, and repo administration. The CLI is already securely authenticated via the OS keyring.
+  3. Verify authentication status using `gh auth status` without logging or printing token values.
+  4. Never request or instruct the owner to paste tokens into chat prompts or repository files. If unauthenticated, direct the owner to run `gh auth login` interactively.
+  5. Treat any credential exposed in logs or history as compromised and notify the owner to revoke it immediately in GitHub account settings.
+- **Prevention:** Codified in Executive Core Guardrail 8, Rule 18, and Rule 23.11 in `.agents/rules/06_architecture_devops_git.md`.
+
