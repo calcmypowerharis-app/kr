@@ -294,6 +294,13 @@ Date accuracy rules:
 - Ensure the visible date and all related metadata remain consistent.
 - For calculators and other tools, use a date display only where meaningful and appropriate; never expose stale or hardcoded month labels that contradict the verified modification record.
 
+### 8. GitHub Credential Security & Official CLI Protocol
+- Never extract credentials from Git Credential Manager (`git credential fill`) into ad-hoc scripts.
+- Never paste tokens into chat prompts, commit messages, code files, or logs.
+- Use official GitHub CLI (`gh`) for all remote GitHub workflows (PRs, releases, merges). Verify auth via `gh auth status` without revealing token data.
+- If unauthenticated, prompt the owner to run `gh auth login` interactively. Never request tokens via chat.
+- Immediately revoke and rotate any token accidentally exposed in logs or history.
+
 ---
 
 ## Modular Rulebook Directory Reference
