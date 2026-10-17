@@ -2,11 +2,10 @@ import urllib.request
 import ssl
 import re
 
+# Strict SSL verification using system trusted root certificates
 ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
 
-URLS = [
+PAGE_URLS = [
   "https://calcmypower.com",
   "https://calcmypower.com/about",
   "https://calcmypower.com/amps-to-watts-calculator",
@@ -50,37 +49,41 @@ URLS = [
   "https://calcmypower.com/what-size-generator-to-run-a-refrigerator"
 ]
 
-print(f"Auditing all {len(URLS)} live URLs...")
+TECHNICAL_ENDPOINTS = [
+  "https://calcmypower.com/robots.txt",
+  "https://calcmypower.com/sitemap.xml"
+]
+
+ALL_ENDPOINTS = PAGE_URLS + TECHNICAL_ENDPOINTS
+
+print(f"Auditing all {len(ALL_ENDPOINTS)} production endpoints ({len(PAGE_URLS)} HTML pages + {len(TECHNICAL_ENDPOINTS)} crawl files) with strict SSL verification...\n", flush=True)
+
 issues = []
 
-for u in URLS:
+# 1. Audit HTML Pages
+for u in PAGE_URLS:
     req = urllib.request.Request(
         u,
         headers={"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"}
     )
     try:
-        with urllib.request.urlopen(req, context=ctx, timeout=10) as resp:
+        with urllib.request.urlopen(req, context=ctx, timeout=12) as resp:
             status = resp.status
             headers = dict(resp.headers)
             html = resp.read().decode("utf-8")
             
-            # Check X-Robots-Tag
             x_robots = headers.get("x-robots-tag", "")
             
-            # Canonical check
             canonical_match = re.search(r'<link[^>]+rel=["\']canonical["\'][^>]+href=["\']([^"\']+)["\']', html, re.I)
             if not canonical_match:
                 canonical_match = re.search(r'<link[^>]+href=["\']([^"\']+)["\'][^>]+rel=["\']canonical["\']', html, re.I)
             canonical = canonical_match.group(1) if canonical_match else "MISSING"
             
-            # Meta robots check
             meta_robots = re.findall(r'<meta[^>]+name=["\']robots["\'][^>]+content=["\']([^"\']+)["\']', html, re.I)
             
-            # Title
             title_m = re.search(r'<title>([^<]+)</title>', html)
             title = title_m.group(1) if title_m else "MISSING"
             
-            # Content size
             html_size_kb = len(html) / 1024
             
             is_ok = True
@@ -106,14 +109,55 @@ for u in URLS:
                 
             if not is_ok:
                 issues.append((u, problem_reasons))
-                print(f"FAIL: {u} -> {problem_reasons}")
+                print(f"FAIL: {u} -> {problem_reasons}", flush=True)
             else:
-                print(f"PASS: {u} | {html_size_kb:.1f} KB | Canonical OK | Title: {title[:40]}...")
+                print(f"PASS: {u} | {html_size_kb:.1f} KB | Canonical OK | Title: {title[:40]}...", flush=True)
                 
     except Exception as e:
         issues.append((u, [str(e)]))
-        print(f"ERROR: {u} -> {e}")
+        print(f"ERROR: {u} -> {e}", flush=True)
 
-print("\n--- AUDIT SUMMARY ---")
-print(f"Total checked: {len(URLS)}")
-print(f"Total with technical blockers: {len(issues)}")
+# 2. Audit Technical Endpoints
+print("\nAuditing technical crawl endpoints...", flush=True)
+for u in TECHNICAL_ENDPOINTS:
+    req = urllib.request.Request(
+        u,
+        headers={"User-Agent": "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"}
+    )
+    try:
+        with urllib.request.urlopen(req, context=ctx, timeout=12) as resp:
+            status = resp.status
+            content = resp.read().decode("utf-8")
+            size_kb = len(content) / 1024
+            
+            is_ok = True
+            problem_reasons = []
+            if status != 200:
+                is_ok = False
+                problem_reasons.append(f"HTTP {status}")
+                
+            if "sitemap.xml" in u:
+                if "<urlset" not in content:
+                    is_ok = False
+                    problem_reasons.append("Invalid sitemap XML schema (missing <urlset)")
+                loc_count = len(re.findall(r'<loc>', content))
+                if loc_count < 40:
+                    is_ok = False
+                    problem_reasons.append(f"Sitemap has only {loc_count} URLs (< 40)")
+            elif "robots.txt" in u:
+                if "Sitemap:" not in content or "User-Agent:" not in content:
+                    is_ok = False
+                    problem_reasons.append("robots.txt missing Sitemap directive or User-Agent")
+                    
+            if not is_ok:
+                issues.append((u, problem_reasons))
+                print(f"FAIL: {u} -> {problem_reasons}", flush=True)
+            else:
+                print(f"PASS: {u} | {size_kb:.1f} KB | Status {status} OK", flush=True)
+    except Exception as e:
+        issues.append((u, [str(e)]))
+        print(f"ERROR: {u} -> {e}", flush=True)
+
+print("\n--- AUDIT SUMMARY ---", flush=True)
+print(f"Total checked: {len(ALL_ENDPOINTS)} ({len(PAGE_URLS)} HTML pages + {len(TECHNICAL_ENDPOINTS)} crawl files)", flush=True)
+print(f"Total with technical blockers: {len(issues)}", flush=True)
