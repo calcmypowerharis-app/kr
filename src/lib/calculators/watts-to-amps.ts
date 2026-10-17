@@ -122,6 +122,37 @@ export const WATTS_TO_AMPS_PRESETS: PresetAppliance[] = [
   { label: "Solar Panel (100W @ 12V DC)", watts: 100, voltage: 12, system: "dc", pf: 1.0 },
 ];
 
+export interface WattsToAmpsReferenceRow {
+  watts: number;
+  dc12vAmps: number;
+  ac120vAmps: number;
+  ac240vAmps: number;
+  ac120vContinuousAmps: number;
+  ac240vContinuousAmps: number;
+}
+
+export const WATTS_TO_AMPS_REFERENCE_WATTS: readonly number[] = [
+  37, 60, 100, 120, 300, 500, 750, 1000, 1200, 1500, 1800, 2000, 2400, 3000, 3600, 5000, 7200, 10000,
+] as const;
+
+export function buildWattsToAmpsReferenceRow(watts: number): WattsToAmpsReferenceRow {
+  const round = (val: number) => Math.round((val + Number.EPSILON) * 100) / 100;
+  const dc12v = watts / 12;
+  const ac120v = watts / 120;
+  const ac240v = watts / 240;
+  return {
+    watts,
+    dc12vAmps: round(dc12v),
+    ac120vAmps: round(ac120v),
+    ac240vAmps: round(ac240v),
+    ac120vContinuousAmps: round(ac120v * 1.25),
+    ac240vContinuousAmps: round(ac240v * 1.25),
+  };
+}
+
+export const WATTS_TO_AMPS_REFERENCE_DATA: WattsToAmpsReferenceRow[] =
+  WATTS_TO_AMPS_REFERENCE_WATTS.map(buildWattsToAmpsReferenceRow);
+
 export function calculateWattsToAmps(inputs: WattsToAmpsInputs): WattsToAmpsOutputs {
   const errors: ValidationError[] = [];
   const warnings: string[] = [];
