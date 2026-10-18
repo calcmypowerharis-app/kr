@@ -220,5 +220,14 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   5. Maintain strict metric discipline: crawl requests, impressions, clicks, indexed URLs, and AI citations are distinct signals. Never describe crawl requests as organic traffic, and never claim guaranteed indexing or AI citations.
 - **Prevention:** Enforced by automated semantic crawler evaluation tests in `seo-foundation.test.ts`.
 
+---
 
-
+## Lesson 029: Search Engine Crawl Latency & Post-Release Infrastructure Freeze Protocol
+- **Context:** Following the October 18, 2026 fix for the edge `www` SSL certificate mismatch and RFC 9309 robots standardization, Google Search Console and Bing Webmaster Tools require 7 to 14 days to re-crawl, update host health status, and index URLs. Making reactive or frequent changes to URLs, redirects, or robots directives during this window resets the search engine crawl queue and damages indexing progress.
+- **Rule:**
+  1. Record an immutable timestamp anchor whenever a major infrastructure or technical SEO release is deployed.
+  2. Enforce a mandatory 14-day architectural freeze on URLs, canonical tags, 308/301 redirects, and robots directives.
+  3. Actively refuse requests to modify stable routing or crawler directives merely because Search Console reporting has not updated yet.
+  4. Educate stakeholders that search engine indexing progresses in 4 distinct phases: Discovery -> Indexation -> Impressions -> Clicks.
+  5. Preserve all core invariants: zero em-dashes, paragraph length ceiling (<= 55 words), 1-hop apex crawl discovery, strict TLS verification, and credential non-exposure.
+- **Prevention:** Codified in Executive Core Guardrail 9, Rule 7.8 in `.agents/rules/04_seo_keyword_strategy.md`, and automated rules integrity checks.

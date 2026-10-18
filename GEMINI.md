@@ -89,210 +89,28 @@ A task is DONE only when all eight quality gates pass:
 8. Live production HTTP verification passes across touched routes and links after deployment.
 
 ### 7. Permanent Editorial Design Standard (Canonical Reference: /solar-panels-series-vs-parallel)
-
-**Reference Design:**
-Use the existing CalcMyPower editorial page:
-`/solar-panels-series-vs-parallel`
-as the canonical visual reference for future editorial article design.
-
-**Important Implementation Principles:**
-- Do not copy its exact content.
-- Do not force every article to use every component.
-- Use its design system, visual hierarchy, spacing, structure, and readability as the standard.
-
-#### 1. Canonical Article Shell
-Future editorial articles should follow the same overall publication shell:
-- clean site header with breadcrumbs
-- strong article hero/title area
-- visible publication and update date byline near the heading
-- contextual article image near the top
-- main article content first/left (<article id="article-content">)
-- supporting aside second/right on desktop
-- clear section hierarchy
-- readable content width (~780px)
-- consistent card/callout treatment
-- consistent table styling
-- consistent CTA styling
-- consistent FAQ treatment
-- consistent sources/disclaimer treatment
-- consistent footer
-
-Desktop DOM order MUST remain:
-1. article/content
-2. aside/supporting content
-
-Never place the sidebar before the main article content in DOM order.
-The outer 12-column grid container must strictly use `<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">` without `items-start` so that `<aside>` stretches to full article height, preserving sticky sidebar positioning and the reading progress counter.
-The desktop aside must strictly use `<aside className="hidden lg:block lg:col-span-4"><TableOfContents items={items} cluster={cluster} /></aside>` without redundant wrapping cards, without ad-hoc dark `bg-slate-900` promotional boxes, and without duplicate "Article Contents" headers. The 4 valid clusters are: `generators`, `solar`, `ups-battery`, and `electricity`.
-
-#### 2. Design Consistency = Same System, Not Identical Pages
-Do not independently redesign each article.
-Reuse the established CalcMyPower editorial components and visual language whenever applicable.
-
-However:
-- do not force tables where a table is unnecessary
-- do not force diagrams where a diagram adds no value
-- do not force cards merely for decoration
-- do not force FAQs just to increase word count
-- do not duplicate components only to make pages look fuller
-
-A new article should feel like it belongs to the same CalcMyPower publication family.
-
-#### 3. Article Visual Rhythm
-Use a natural rhythm similar to the reference article:
-Hero -> contextual image -> quick summary/direct answer -> H2 section -> short explanatory paragraphs -> table/card/diagram when useful -> next H2 -> practical examples -> relevant calculator CTA -> FAQ -> sources/disclaimer
-
-Avoid giant uninterrupted content blocks.
-
-#### 4. Paragraph Readability and Visual Line Standard
-For ordinary article body paragraphs at the standard desktop reading width (~780px):
-- Aim for 2 to 3 rendered visual lines per paragraph.
-- Prefer 1 to 2 concise sentences when the subject can be explained without losing context.
-- Avoid ordinary body paragraphs that routinely extend to 4 to 6 lines.
-- Keep related ideas together; do not split every sentence into its own paragraph.
-- Avoid overly fragmented content, repetitive transitions, and filler.
-- Preserve technical explanations, useful detail, accurate qualifications, citations, and natural reading flow.
-- Short paragraphs of 1 visual line are acceptable when an answer or transition genuinely requires them.
-- Longer paragraphs may remain when technical context, quotation, definition, or explanation makes the additional length necessary.
-- Specialized components (tables, list items, callouts, cards, captions, disclaimers) are evaluated by their own design requirements rather than as ordinary prose paragraphs.
-- Rendered visual QA: Do not rely solely on character or word counts. Verify visual line rendering in the browser DOM at 1280px desktop viewport using element text range rects.
-- Never manipulate font size, line-height, or CSS solely to force paragraph line counts.
-
-#### 5. Article Length
-Standard article target:
-- minimum around 1,500 words
-- maximum around 1,800 words
-- preferred range around 1,600 to 1,700 words
-
-Do not inflate content to reach 1,800 words.
-Do not add filler, repetitive explanations, unnecessary FAQs, or keyword-stuffed sections.
-A complete 1,500-word article is better than a padded 1,800-word article.
-
-#### 6. Heading Discipline
-Use meaningful H2/H3 sections.
-Do not create a heading every few sentences just for SEO.
-Each heading must represent a real topic change or useful content grouping.
-
-#### 7. Tables
-Use the established CalcMyPower table style.
-Use tables when:
-- comparing values
-- showing scenarios
-- showing calculations
-- showing practical reference data
-
-Do not convert ordinary prose into tables unnecessarily.
-
-#### 8. Callouts and Cards
-Use the established CalcMyPower informational cards for:
-- key takeaways
-- warnings
-- important assumptions
-- practical tips
-- calculator CTAs
-
-Cards must communicate useful information.
-Avoid decorative card spam.
-
-#### 9. Images and Diagrams
-Use contextual visuals that directly support the article subject.
-Article images must:
-- be unique to the article
-- never be reused across different editorial articles
-- have descriptive filenames
-- have useful alt text
-- visually fit the established editorial style
-- use `ZoomableArticleImage` for all hero images and technical diagrams to support click-to-zoom modal view
-
-Technical diagrams are encouraged when they make engineering concepts easier to understand.
-Zero-cropping standard: When graphics are 1:1 square diagrams or technical schematics, configure `aspectRatio="square"` and `objectFit="contain"` with `bg-slate-50`. Never force square schematics into fixed 16:9 containers with `object-cover` that clips meters or labels.
-Do not add diagrams merely for decoration.
-
-#### 10. CTA / Internal Linking
-Calculator CTAs should feel like a natural continuation of the article.
-Use descriptive contextual anchors.
-Do not overload articles with internal links.
-The goal is: reader understands concept -> reader gets useful calculation tool.
-
-#### 11. FAQ
-FAQ belongs near the end of the article.
-Use FAQ only when it adds genuine search/user value.
-Visible FAQ questions and FAQ JSON-LD MUST remain identical.
-FAQ accordions must use semantic `<details>` and `<summary>` elements with the rotate chevron indicator, matching the canonical reference.
-
-#### 12. Sources / Disclaimer
-Keep the established professional sources/disclaimer treatment near the end where relevant.
-Never make:
-- NEC compliant
-- code compliant
-- certified
-- approved
-- IEEE compliant
-claims for CalcMyPower unless explicitly and legitimately supported by the task and rules.
-
-#### 13. Mobile Readability
-Reference design must remain comfortable on approximately 390 CSS px width.
-Verify:
-- zero horizontal overflow
-- short readable paragraphs
-- readable headings
-- cards do not become excessively dense
-- tables remain usable
-- images remain responsive
-- content remains the primary focus
-
-#### 14. Article vs Calculator Design
-Do not merge the editorial and calculator design systems.
-Editorial article: content-first, reading/scanning experience.
-Calculator: interaction-first, calculation experience.
-
-#### 15. Future Article Pre-Check
-Before implementing a new article:
-- inspect /solar-panels-series-vs-parallel
-- inspect the latest approved article
-- reuse existing editorial components
-- preserve the same shell and visual language
-- choose modules based on actual content needs
-
-#### 16. No Automatic Mass Rewrite
-These rules apply primarily to FUTURE articles.
-Do not rewrite all existing articles just to conform to this rule unless a separate optimization task is explicitly approved.
-
-#### 17. Quality Gate
-Every future article must pass:
-- 1,500 to 1,800 word target unless justified otherwise
-- no intentionally dense 4 to 6 line paragraphs (every body <p> <= 55 words)
-- visual consistency with /solar-panels-series-vs-parallel
-- content-left / aside-right DOM order
-- 390px mobile readability
-- no horizontal overflow
-- unique article image
-- no unnecessary decorative components
-- no filler content
-- SEO structure intact with meta description <= 165 chars
-- 1-hop apex crawl discovery from homepage or /calculators
-- sitewide zero em-dashes in code, presets, comments, and prose
-- mandatory date fields and ArticleDateByline verified
-
-#### 18. Mandatory Article Date Fields and Accuracy Rules
-Every future editorial article must have:
-- A verified `datePublished` (ISO YYYY-MM-DD).
-- A `lastModified` date maintained according to GUIDE_REGISTRY conventions.
-- A visible `ArticleDateByline` near the article heading.
-- Consistent Open Graph `publishedTime` and `modifiedTime` timestamps.
-- Matching JSON-LD `datePublished` and `dateModified` values.
-- A sitemap `lastmod` value based on the actual meaningful modification date.
-
-Date accuracy rules:
-- Never invent an original publication date.
-- Never set every article to today's date merely because a shared template or date component changed.
-- Preserve the original publication date when content is updated.
-- Change the modification date only after a meaningful editorial or factual update.
-- Do not show "Last updated" when the modification date is the same as the publication date.
-- Do not use Git commit timestamps as automatic substitutes for historical publication dates.
-- Flag unknown dates rather than guessing.
-- Ensure the visible date and all related metadata remain consistent.
-- For calculators and other tools, use a date display only where meaningful and appropriate; never expose stale or hardcoded month labels that contradict the verified modification record.
+- **Canonical Model:** `/solar-panels-series-vs-parallel` defines the visual hierarchy, spacing, shell structure, and readability standard for future guides. Do not copy content; reuse the established editorial system without forcing components.
+- **Canonical Article Shell:**
+  - Header with breadcrumbs, hero title, contextual image, and visible `ArticleDateByline`.
+  - Content-first desktop DOM order strictly: 1. `<article id="article-content">` first/left, 2. `<aside>` supporting content second/right. Never invert DOM order.
+  - Outer 12-column grid container strictly: `<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">` without `items-start`, allowing `<aside>` to stretch full height and preserving sticky sidebar and reading progress counter.
+  - Desktop aside strictly: `<aside className="hidden lg:block lg:col-span-4"><TableOfContents items={items} cluster={cluster} /></aside>` without redundant wrapping cards, dark `bg-slate-900` boxes, or duplicate headers. Valid clusters: `generators`, `solar`, `ups-battery`, `electricity`.
+  - Readable body width (~780px), consistent tables, cards, CTAs, FAQ accordions, sources, disclaimers, and footer.
+- **Visual Rhythm:** Hero -> contextual image -> quick summary/direct answer -> H2 -> concise paragraphs -> table/card/diagram when useful -> next H2 -> practical examples -> calculator CTA -> FAQ -> sources/disclaimers. Avoid giant uninterrupted text blocks.
+- **Paragraph Readability:** Ordinary body paragraphs at ~780px desktop width must aim for 2 to 3 rendered visual lines (<= 55 words, 1 to 2 concise sentences). Avoid dense 4 to 6 line blocks. Keep related ideas together; do not over-fragment into 1-sentence paragraphs. Rendered visual QA: verify via browser DOM text range rects at 1280px viewport. Never manipulate CSS solely for line counts.
+- **Article Target Length:** 1,500 to 1,800 words (preferred: 1,600 to 1,700). Zero filler or keyword padding. A complete 1,500-word article is better than a padded 1,800-word article.
+- **Headings & Structure:** Meaningful H2/H3 sections marking real topic shifts. No artificial SEO headings every few sentences.
+- **Tables, Cards & Callouts:** Use CalcMyPower table style for comparisons, scenarios, or calculations; informative cards for takeaways, warnings, and CTAs. Zero decorative card spam.
+- **Images & Zero-Cropping Standard:** Unique visual per article (never reused), descriptive filenames and alt text. All hero images and diagrams must use `ZoomableArticleImage` for modal click-to-zoom. For 1:1 square diagrams or technical schematics, configure `aspectRatio="square"` and `objectFit="contain"` with `bg-slate-50`. Never force 1:1 schematics into 16:9 containers with `object-cover`.
+- **CTAs & Internal Linking:** Natural calculator CTAs with descriptive contextual anchors. Ensure 1-hop apex crawl discovery from homepage or `/calculators`.
+- **Semantic FAQ:** Visible FAQ questions and FAQ JSON-LD must remain 100% identical. FAQ accordions must use semantic `<details>` and `<summary>` elements with rotating chevron indicator.
+- **Sources & Safety Disclaimers:** Ground technical sizing in authoritative US standards. Never claim NEC/IEEE compliance or certified/approved status for CalcMyPower.
+- **Mobile Readability:** Full responsiveness at ~390px CSS width with zero horizontal overflow, comfortable typography, and readable tables/cards.
+- **System Separation:** Maintain strict separation between editorial guides (reading/scannable layout) and calculators (interactive engineering tools).
+- **Mandatory Article Dates & Accuracy:**
+  - Every guide must provide verified `datePublished` (ISO YYYY-MM-DD), `lastModified` maintained via GUIDE_REGISTRY, visible `ArticleDateByline`, matching Open Graph timestamps, matching JSON-LD `datePublished`/`dateModified`, and accurate sitemap `lastmod`.
+  - Date rules: Never invent dates, never mass-stamp today's date, preserve original publication dates on updates, show "Last updated" only when modification differs from publication, and never expose stale month labels on calculators.
+- **Pre-Check & Quality Gate:** Before publishing, inspect `/solar-panels-series-vs-parallel`, ensure <= 55 words per body paragraph, meta description <= 165 characters, zero em-dashes sitewide, and verify all 8 quality gates.
 
 ### 8. GitHub Credential Security & Official CLI Protocol
 - Never extract credentials from Git Credential Manager (`git credential fill`) into ad-hoc scripts.
@@ -300,6 +118,20 @@ Date accuracy rules:
 - Use official GitHub CLI (`gh`) for all remote GitHub workflows (PRs, releases, merges). Verify auth via `gh auth status` without revealing token data.
 - If unauthenticated, prompt the owner to run `gh auth login` interactively. Never request tokens via chat.
 - Immediately revoke and rotate any token accidentally exposed in logs or history.
+
+### 9. Post-Release Search Engine Crawl & Stability Freeze Protocol (October 18, 2026 Baseline)
+- **Baseline Event:** On October 18, 2026 (21:30 PKT / 16:30 UTC), the complete CalcMyPower infrastructure was finalized (edge SSL on `www`, 308 apex canonical redirects, RFC 9309 robots directives, 1-hop apex crawl discovery for all 47 static routes, sitemap.xml, and verified GSC and Bing Webmaster imports).
+- **Mandatory Stability Freeze:** For at least 14 days following any major infrastructure release (specifically through November 1, 2026 for the October 18 baseline), the agent must strictly refuse any request to alter existing URLs, canonical tags, redirects, or robots directives.
+- **Search Engine Latency Discipline:** Search engines require 7 to 14 days to process edge DNS/TLS and sitemap queues. Fluctuations in "Discovered - currently not indexed" or crawl volume are normal telemetry lag. Never attempt to "fix" indexing latency by renaming URLs or altering redirects.
+- **Permanent Prohibitions ("What Never To Do"):**
+  - Never publish mass-produced or generic AI SEO filler content.
+  - Never perform unapproved mass rewrites of existing articles.
+  - Never invent or hallucinate testing, field installations, laboratory measurements, customer reviews, or professional engineering credentials.
+  - Never use em-dashes, en-dashes, "--", or "---" anywhere in code, comments, presets, or prose.
+  - Never exceed 55 words per ordinary body paragraph (must maintain 2 to 3 visual lines at ~780px).
+  - Never disable TLS verification (`-k`, `CERT_NONE`) in tests, scripts, or production probes.
+  - Never treat `robots.txt` as authentication, authorization, or an access-control mechanism.
+  - Never paste or extract GitHub credentials or tokens into prompts, scripts, or repository files.
 
 ---
 
