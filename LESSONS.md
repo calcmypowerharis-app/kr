@@ -198,3 +198,13 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   5. Treat any credential exposed in logs or history as compromised and notify the owner to revoke it immediately in GitHub account settings.
 - **Prevention:** Codified in Executive Core Guardrail 8, Rule 18, and Rule 23.11 in `.agents/rules/06_architecture_devops_git.md`.
 
+---
+
+## Lesson 027: Multi-Domain Edge SSL Parity and Subdomain Certificate Verification in GSC
+- **Context:** A CNAME pointing a subdomain (`www`) to an apex host or edge proxy (Vercel) routes network traffic, but does NOT automatically authorize or provision an SSL/TLS certificate for that subdomain unless the edge host is explicitly configured with that domain. Without adding the subdomain in Vercel's domain manager, SNI requests for `www` receive the apex certificate, triggering fatal `Hostname mismatch` errors on strict HTTPS clients like Googlebot. Furthermore, GSC properties separated by subdomain (`www.calcmypower.com` vs `calcmypower.com`) independently track host errors; fixing the edge certificate clears GSC host warnings over the subsequent 7 to 14 day crawl cycle.
+- **Rule:**
+  1. Any domain or subdomain configured in public DNS must have an explicitly provisioned TLS certificate covering its exact FQDN in its SAN list.
+  2. Enforce canonical 308/301 redirects to the apex domain at both the edge host level (Vercel) and the application layer (`next.config.ts`).
+  3. Never use `-k` or disable SSL certificate verification in automated test scripts or production probes.
+- **Prevention:** Enforced via `scripts/diagnose_network_dns_tls.py` and strict certificate validation checks.
+
