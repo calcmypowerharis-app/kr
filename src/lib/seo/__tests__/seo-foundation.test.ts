@@ -87,7 +87,7 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       }
     });
 
-    it("generates a valid robots.txt configuration pointing to https://calcmypower.com/sitemap.xml and permitting verified search crawlers", () => {
+    it("generates a valid robots.txt configuration pointing to https://calcmypower.com/sitemap.xml and permitting verified search crawlers while disallowing model-training scrapers", () => {
       const robotsConfig = robots();
       expect(robotsConfig.sitemap).toBe(`${SITE_URL}/sitemap.xml`);
 
@@ -100,11 +100,25 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       expect(userAgents).toContain("Googlebot");
       expect(userAgents).toContain("Bingbot");
       expect(userAgents).toContain("OAI-SearchBot");
+      expect(userAgents).toContain("GPTBot");
 
-      for (const rule of rules) {
+      const searchRules = rules.filter((r) => r.userAgent !== "GPTBot");
+      for (const rule of searchRules) {
         expect(rule.allow).toBe("/");
         expect(rule.disallow).toContain("/api/");
       }
+
+      // Explicit regression test: verify GPTBot is disallowed from crawling root
+      const gptBotRule = rules.find((r) => r.userAgent === "GPTBot");
+      expect(gptBotRule).toBeDefined();
+      expect(gptBotRule?.disallow).toContain("/");
+      expect(gptBotRule?.allow).toBeUndefined();
+
+      // Explicit regression test: verify OAI-SearchBot is allowed for ChatGPT Search
+      const oaiSearchRule = rules.find((r) => r.userAgent === "OAI-SearchBot");
+      expect(oaiSearchRule).toBeDefined();
+      expect(oaiSearchRule?.allow).toBe("/");
+      expect(oaiSearchRule?.disallow).toContain("/api/");
     });
   });
 

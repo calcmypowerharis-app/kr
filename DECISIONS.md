@@ -448,15 +448,17 @@ This log records major technical and product decisions, context, rationale, and 
 
 ---
 
-## Decision 036: AI Search Crawler Directives (OAI-SearchBot, Bingbot, Googlebot) & Discoverability Architecture
+## Decision 036: AI Search Crawler Directives (OAI-SearchBot, GPTBot, Bingbot, Googlebot) & Discoverability Architecture
 - **Date:** 2026-10-18
 - **Status:** Approved & Implemented
-- **Context:** AI search platforms (ChatGPT Search via OAI-SearchBot, Microsoft Copilot via Bingbot, and Google AI Overviews via Googlebot) require clear, unambiguous crawler directives to index public technical assets while protecting private endpoints (/api/). Distinguishing search retrieval crawlers (OAI-SearchBot) from automated model training crawlers (GPTBot) aligns with OpenAI standards and technical publisher best practices.
+- **Context:** AI search platforms (ChatGPT Search via OAI-SearchBot, Microsoft Copilot via Bingbot, and Google AI Overviews via Googlebot) require clear, unambiguous crawler directives to discover public technical assets while protecting private endpoints (/api/). OpenAI independently operates two crawlers: OAI-SearchBot for search indexing/linking, and GPTBot for generative model training. Under RFC 9309, omitting GPTBot leaves it governed by the wildcard rule, so an explicit Disallow rule is required to opt out of model training without impairing search discoverability.
 - **Decision:**
   1. **Explicit Search Crawler Permissions in robots.ts:** Configured dedicated user-agent blocks in `src/app/robots.ts` for `*`, `Googlebot`, `Bingbot`, and `OAI-SearchBot`, explicitly allowing `/` while strictly maintaining `Disallow: /api/` across all crawlers.
-  2. **Preserve Training Crawler Policy:** Preserved the default fallback policy for `GPTBot` without granting unnecessary automated model training crawl rights.
-  3. **Bing Webmaster Tools & IndexNow Architecture:** Evaluated IndexNow and Bing Webmaster Tools onboarding. Formulated the recommended path: importing verified Google Search Console properties directly into Bing Webmaster Tools to index CalcMyPower across Bing and Microsoft Copilot without fragile API token exposures.
-  4. **Automated Crawler Testing Invariant:** Updated `src/lib/seo/__tests__/seo-foundation.test.ts` to assert that all verified search bots receive explicit allow directives pointing to the canonical sitemap.
-- **Rationale:** Maximizes technical discoverability across conversational AI search systems and search engines without compromising API security or data integrity.
+  2. **Explicit GPTBot Disallow Policy:** Configured a dedicated user-agent block for `GPTBot` with `Disallow: /` to explicitly opt out of automated AI model training crawling while preserving `OAI-SearchBot` for ChatGPT Search discovery.
+  3. **Bing Webmaster Tools & IndexNow Assessment:** Evaluated IndexNow and Bing Webmaster Tools onboarding. Documented the standard path: importing verified Google Search Console properties directly into Bing Webmaster Tools without exposing fragile API tokens.
+  4. **Automated Crawler Testing Invariant:** Updated `src/lib/seo/__tests__/seo-foundation.test.ts` to assert that all verified search bots receive explicit allow directives and that GPTBot is explicitly disallowed from `/`.
+  5. **Discoverability & Telemetry Metric Discipline:** Clarified that robots permissions permit crawling but do not guarantee indexing, citations, or traffic. HTTP 200 responses and sitemap entries demonstrate availability rather than search indexing. Crawl requests, search impressions, user clicks, indexed URLs, and AI citations represent distinct metrics across Search Console, Bing, and external AI platforms.
+- **Rationale:** Ensures strict crawler boundary control, opts out of AI model training scraping while enabling search retrieval, and prevents inaccurate assumptions regarding guaranteed indexing or traffic.
+
 
 
