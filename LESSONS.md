@@ -208,3 +208,14 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   3. Never use `-k` or disable SSL certificate verification in automated test scripts or production probes.
 - **Prevention:** Enforced via `scripts/diagnose_network_dns_tls.py` and strict certificate validation checks.
 
+---
+
+## Lesson 028: Explicit AI Search Crawler Permissions vs. Model Training Differentiation
+- **Context:** Conversational AI engines and search aggregators use specialized user agents for real-time web retrieval (such as `OAI-SearchBot` for ChatGPT Search) that are distinct from background model-training crawlers (such as `GPTBot`). Relying solely on `User-Agent: *` can lead to ambiguous interpretation or crawler-specific throttling in automated search indexing audits.
+- **Rule:**
+  1. Explicitly declare allow rules for verified search bots (`Googlebot`, `Bingbot`, `OAI-SearchBot`) in `robots.ts` with transparent access to indexable routes and strict protection for `/api/`.
+  2. Maintain a separate policy for model-training crawlers (`GPTBot`) without granting unauthorized training access.
+  3. Ensure all structured data (JSON-LD) and server-rendered HTML can be fully parsed without requiring client-side JavaScript execution.
+- **Prevention:** Enforced by automated test assertions in `seo-foundation.test.ts`.
+
+

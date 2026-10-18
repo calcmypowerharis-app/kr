@@ -446,3 +446,17 @@ This log records major technical and product decisions, context, rationale, and 
   3. **Forensic Network Diagnostics Suite:** Added `scripts/diagnose_network_dns_tls.py` and `scripts/detailed_url_audit.py` to permanently verify DNS resolution, strict TLS certificate SAN coverage, and redirect hops without disabling SSL verification.
 - **Rationale:** Guarantees that both the edge hosting layer and the application layer enforce single-source-of-truth canonical apex routing, eliminating TLS verification failures and crawler availability warnings once Vercel provisions the certificate.
 
+---
+
+## Decision 036: AI Search Crawler Directives (OAI-SearchBot, Bingbot, Googlebot) & Discoverability Architecture
+- **Date:** 2026-10-18
+- **Status:** Approved & Implemented
+- **Context:** AI search platforms (ChatGPT Search via OAI-SearchBot, Microsoft Copilot via Bingbot, and Google AI Overviews via Googlebot) require clear, unambiguous crawler directives to index public technical assets while protecting private endpoints (/api/). Distinguishing search retrieval crawlers (OAI-SearchBot) from automated model training crawlers (GPTBot) aligns with OpenAI standards and technical publisher best practices.
+- **Decision:**
+  1. **Explicit Search Crawler Permissions in robots.ts:** Configured dedicated user-agent blocks in `src/app/robots.ts` for `*`, `Googlebot`, `Bingbot`, and `OAI-SearchBot`, explicitly allowing `/` while strictly maintaining `Disallow: /api/` across all crawlers.
+  2. **Preserve Training Crawler Policy:** Preserved the default fallback policy for `GPTBot` without granting unnecessary automated model training crawl rights.
+  3. **Bing Webmaster Tools & IndexNow Architecture:** Evaluated IndexNow and Bing Webmaster Tools onboarding. Formulated the recommended path: importing verified Google Search Console properties directly into Bing Webmaster Tools to index CalcMyPower across Bing and Microsoft Copilot without fragile API token exposures.
+  4. **Automated Crawler Testing Invariant:** Updated `src/lib/seo/__tests__/seo-foundation.test.ts` to assert that all verified search bots receive explicit allow directives pointing to the canonical sitemap.
+- **Rationale:** Maximizes technical discoverability across conversational AI search systems and search engines without compromising API security or data integrity.
+
+

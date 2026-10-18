@@ -87,9 +87,24 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       }
     });
 
-    it("generates a valid robots.txt configuration pointing to https://calcmypower.com/sitemap.xml", () => {
+    it("generates a valid robots.txt configuration pointing to https://calcmypower.com/sitemap.xml and permitting verified search crawlers", () => {
       const robotsConfig = robots();
       expect(robotsConfig.sitemap).toBe(`${SITE_URL}/sitemap.xml`);
+
+      const rules = Array.isArray(robotsConfig.rules)
+        ? robotsConfig.rules
+        : [robotsConfig.rules];
+
+      const userAgents = rules.map((r) => r.userAgent);
+      expect(userAgents).toContain("*");
+      expect(userAgents).toContain("Googlebot");
+      expect(userAgents).toContain("Bingbot");
+      expect(userAgents).toContain("OAI-SearchBot");
+
+      for (const rule of rules) {
+        expect(rule.allow).toBe("/");
+        expect(rule.disallow).toContain("/api/");
+      }
     });
   });
 
