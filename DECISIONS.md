@@ -434,3 +434,15 @@ This log records major technical and product decisions, context, rationale, and 
   5. **Owner Token Revocation Advisory:** Formally advised the repository owner to revoke the classic PAT via GitHub Account Settings -> Developer settings -> Personal access tokens (classic), as any token historically present in transcript logs must be treated as compromised.
 - **Rationale:** Protects repository integrity and deployment secrets, eliminates insecure credential extraction patterns, and leverages native, secure GitHub CLI authentication without disrupting existing builds or live production.
 
+---
+
+## Decision 035: Canonical Apex Routing, Subdomain SSL Handshake Forensics & Defense-in-Depth Redirects
+- **Date:** 2026-10-18
+- **Status:** Approved & Implemented
+- **Context:** GSC Crawl Stats reported "Host had problems last week" and 50% "Page could not be reached" on the `www.calcmypower.com` property. Network forensics proved that Hostinger DNS points `www` to Vercel via CNAME, but `www.calcmypower.com` was not registered in the Vercel project dashboard. As a result, Vercel edge proxy served an SSL certificate valid only for `calcmypower.com` without `www.calcmypower.com` in SAN, causing strict HTTPS clients (such as Googlebot) to abort the TLS handshake.
+- **Decision:**
+  1. **Application-Level Defense-in-Depth Canonical Redirect:** Configured `async redirects()` in `next.config.ts` to permanently redirect (HTTP 308) all incoming requests with host `www.calcmypower.com` to `https://calcmypower.com/:path*`.
+  2. **Mandatory Infrastructure Resolution:** Documented the required dashboard action for the owner: add `www.calcmypower.com` in Vercel Project Dashboard (Settings -> Domains) configured to "Redirect to calcmypower.com" so Vercel can automatically issue a valid Let's Encrypt TLS certificate for `www`.
+  3. **Forensic Network Diagnostics Suite:** Added `scripts/diagnose_network_dns_tls.py` and `scripts/detailed_url_audit.py` to permanently verify DNS resolution, strict TLS certificate SAN coverage, and redirect hops without disabling SSL verification.
+- **Rationale:** Guarantees that both the edge hosting layer and the application layer enforce single-source-of-truth canonical apex routing, eliminating TLS verification failures and crawler availability warnings once Vercel provisions the certificate.
+
