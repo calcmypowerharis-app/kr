@@ -368,11 +368,11 @@ export default function CircuitWattageGuidePage() {
               </p>
 
               <p>
-                Under NEC 210.23(A)(1) and Table 210.21(B)(2), any single portable cord-and-plug appliance on a multi-outlet branch circuit is also restricted to 80% of circuit rating (12 amps or 1,440 watts on 15-amp circuits).
+                Under NEC 210.23(A)(1) and Table 210.21(B)(2), any single cord-and-plug appliance not fastened in place on a multi-outlet branch circuit cannot exceed 80% of circuit ampacity (12 amps on a 15-amp circuit, or 16 amps on a 20-amp circuit).
               </p>
 
               <p>
-                Non-continuous loads, such as a microwave running for two minutes or a toaster running for three minutes, can safely draw up to 100% of breaker capacity without violating code.
+                Non-continuous loads, such as a microwave or toaster running for several minutes, can utilize the remaining circuit headroom. However, combined loads approaching 100% breaker capacity risk nuisance tripping from thermal accumulation and line voltage drop.
               </p>
             </section>
 
@@ -459,7 +459,7 @@ export default function CircuitWattageGuidePage() {
               </div>
 
               <p>
-                Nearly all consumer portable electric heaters sold in the United States are rated at 1,500 watts on high heat. This rating aligns with Underwriters Laboratories standard UL 1278 to operate safely within 15-amp branch limits.
+                Nearly all consumer portable electric heaters sold in the United States are rated at 1,500 watts on high heat. Manufacturers design 120-volt portable heaters around this limit to ensure compatibility with standard 15-amp residential receptacles (NEMA 5-15R) under safety testing standards such as UL 1278.
               </p>
 
               <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4">
@@ -903,7 +903,7 @@ export default function CircuitWattageGuidePage() {
                   National Fire Protection Association (NFPA). <em>NFPA 70: National Electrical Code (NEC)</em>. Article 100 (Definitions), Article 210.19(A)(1) &amp; 210.20(A) (Continuous Sizing), Article 210.21(B) &amp; Table 210.21(B)(2)/(B)(3) (Receptacle Ratings), Article 210.23(A)(1) (Cord-and-Plug Load Limits), Article 240.4(D) (Small Conductors), and Article 334.80 (NM-B Ampacity).
                 </li>
                 <li>
-                  Underwriters Laboratories (UL). <em>UL 489: Molded-Case Circuit Breakers, Molded-Case Switches, and Circuit-Breaker Enclosures</em> (Inverse-Time Trip Curves), and <em>UL 1278: Standard for Movable and Wall- or Ceiling-Hung Electric Room Heaters</em> (1,500W Residential Limit).
+                  Underwriters Laboratories (UL). <em>UL 489: Molded-Case Circuit Breakers, Molded-Case Switches, and Circuit-Breaker Enclosures</em> (Inverse-Time Trip Curves), and <em>UL 1278: Standard for Movable and Wall- or Ceiling-Hung Electric Room Heaters</em> (Safety and Construction Testing).
                 </li>
                 <li>
                   National Electrical Manufacturers Association (NEMA). <em>NEMA WD 6: Wiring Devices - Dimensional Specifications</em> (NEMA 5-15 and 5-20 Configuration Standards).
