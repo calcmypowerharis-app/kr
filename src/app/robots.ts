@@ -1,5 +1,11 @@
 import { MetadataRoute } from "next";
 
+/**
+ * Robots.txt configuration for CalcMyPower.
+ * Note: Under RFC 9309, robots.txt directives provide advisory guidance requesting
+ * that compliant crawlers not fetch matching paths. It is not an authentication,
+ * authorization, or security access-control mechanism.
+ */
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
