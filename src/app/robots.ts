@@ -23,6 +23,10 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
+      {
+        userAgent: "GPTBot",
+        disallow: ["/"],
+      },
     ],
     sitemap: "https://calcmypower.com/sitemap.xml",
   };

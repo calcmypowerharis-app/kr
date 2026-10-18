@@ -211,11 +211,13 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 ---
 
 ## Lesson 028: Explicit AI Search Crawler Permissions vs. Model Training Differentiation
-- **Context:** Conversational AI engines and search aggregators use specialized user agents for real-time web retrieval (such as `OAI-SearchBot` for ChatGPT Search) that are distinct from background model-training crawlers (such as `GPTBot`). Relying solely on `User-Agent: *` can lead to ambiguous interpretation or crawler-specific throttling in automated search indexing audits.
+- **Context:** Conversational AI engines and search aggregators use specialized user agents for real-time web retrieval (such as `OAI-SearchBot` for ChatGPT Search) that are distinct from background model-training crawlers (such as `GPTBot`). Under RFC 9309, relying on wildcard `User-Agent: *` with `Allow: /` leaves model-training crawlers permitted to scrape content unless explicitly disallowed. Furthermore, robots permissions make crawling permitted, not guaranteed.
 - **Rule:**
   1. Explicitly declare allow rules for verified search bots (`Googlebot`, `Bingbot`, `OAI-SearchBot`) in `robots.ts` with transparent access to indexable routes and strict protection for `/api/`.
-  2. Maintain a separate policy for model-training crawlers (`GPTBot`) without granting unauthorized training access.
+  2. Explicitly disallow model-training crawlers (`User-Agent: GPTBot` with `Disallow: /`) when separating search discoverability from automated model training.
   3. Ensure all structured data (JSON-LD) and server-rendered HTML can be fully parsed without requiring client-side JavaScript execution.
+  4. Maintain strict metric discipline: crawl requests, impressions, clicks, indexed URLs, and AI citations are distinct signals. Never describe crawl requests as organic traffic, and never claim guaranteed indexing or AI citations.
 - **Prevention:** Enforced by automated test assertions in `seo-foundation.test.ts`.
+
 
 
