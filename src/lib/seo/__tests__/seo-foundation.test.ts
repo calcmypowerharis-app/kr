@@ -244,17 +244,19 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       expect(oaiApiAccess.allowed).toBe(false);
       expect(oaiApiAccess.matchedDirective).toBe("disallow: /api/");
 
-      // 3. Semantic Test: Googlebot and Bingbot can crawl public pages, but /api/ remains disallowed
+      // 3. Semantic Test: Googlebot and Bingbot can crawl public pages, while /api/ remains disallowed
+      // Note: Under RFC 9309, Disallow: /api/ requests that compliant crawlers not fetch API paths;
+      // it is an advisory directive for cooperative bots rather than an access-control mechanism.
       const googlebotPublic = evaluateRobotsAccess(rules, "Googlebot", "/");
       expect(googlebotPublic.allowed).toBe(true);
       expect(googlebotPublic.matchedGroup).toBe("Googlebot");
-      const googlebotApi = evaluateRobotsAccess(rules, "Googlebot", "/api/private");
+      const googlebotApi = evaluateRobotsAccess(rules, "Googlebot", "/api/endpoint");
       expect(googlebotApi.allowed).toBe(false);
 
       const bingbotPublic = evaluateRobotsAccess(rules, "Bingbot", "/");
       expect(bingbotPublic.allowed).toBe(true);
       expect(bingbotPublic.matchedGroup).toBe("Bingbot");
-      const bingbotApi = evaluateRobotsAccess(rules, "Bingbot", "/api/private");
+      const bingbotApi = evaluateRobotsAccess(rules, "Bingbot", "/api/endpoint");
       expect(bingbotApi.allowed).toBe(false);
 
       // 4. Semantic Test: The wildcard policy does NOT override the more specific GPTBot policy
