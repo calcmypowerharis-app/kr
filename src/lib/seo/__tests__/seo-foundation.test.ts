@@ -120,9 +120,154 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       expect(oaiSearchRule?.allow).toBe("/");
       expect(oaiSearchRule?.disallow).toContain("/api/");
 
-      // Explicit precedence test: verify specific bots precede wildcard catch-all
-      expect(rules[0].userAgent).toBe("GPTBot");
-      expect(rules[rules.length - 1].userAgent).toBe("*");
+      /**
+       * Semantic Robots.txt Evaluator adhering to RFC 9309 and Google Robots.txt Specification:
+       * 1. Group Selection (RFC 9309 Section 2.2.1): Crawler selects the group matching its most specific product token.
+       *    If no specific match exists, falls back to the wildcard '*' group. Group order in the file is irrelevant.
+       * 2. Directive Evaluation (RFC 9309 Section 2.2.2): The most specific matching path prefix (longest path) wins.
+       *    If allow and disallow have identical path lengths, allow takes precedence.
+       */
+      type RobotsRuleItem = (typeof rules)[number];
+      function evaluateRobotsAccess(
+        candidateRules: RobotsRuleItem[],
+        crawlerBot: string,
+        urlPath: string
+      ): { allowed: boolean; matchedGroup: string; matchedDirective?: string } {
+        const records: Array<{
+          userAgent: string;
+          allows: string[];
+          disallows: string[];
+        }> = [];
+
+        for (const r of candidateRules) {
+          if (!r) continue;
+          const rawAgents = r.userAgent
+            ? Array.isArray(r.userAgent)
+              ? r.userAgent
+              : [r.userAgent]
+            : ["*"];
+          const allows = r.allow
+            ? Array.isArray(r.allow)
+              ? r.allow
+              : [r.allow]
+            : [];
+          const disallows = r.disallow
+            ? Array.isArray(r.disallow)
+              ? r.disallow
+              : [r.disallow]
+            : [];
+          for (const agent of rawAgents) {
+            if (agent) {
+              records.push({ userAgent: agent, allows, disallows });
+            }
+          }
+        }
+
+        const lowerBot = crawlerBot.toLowerCase();
+        let selectedRecord: (typeof records)[0] | null = null;
+        let maxMatchLen = -1;
+
+        // Find the group with the most specific matching user-agent token
+        for (const rec of records) {
+          const lowerAgent = rec.userAgent.toLowerCase();
+          if (lowerAgent !== "*" && lowerBot.includes(lowerAgent)) {
+            if (lowerAgent.length > maxMatchLen) {
+              maxMatchLen = lowerAgent.length;
+              selectedRecord = rec;
+            }
+          }
+        }
+
+        // If no specific match, fallback to wildcard '*'
+        if (!selectedRecord) {
+          selectedRecord = records.find((rec) => rec.userAgent === "*") || null;
+        }
+
+        if (!selectedRecord) {
+          return { allowed: true, matchedGroup: "none" };
+        }
+
+        // Evaluate directives: longest matching path prefix wins
+        let winningDirective: { type: "allow" | "disallow"; path: string } | null = null;
+
+        for (const aPath of selectedRecord.allows) {
+          if (urlPath.startsWith(aPath)) {
+            if (
+              !winningDirective ||
+              aPath.length > winningDirective.path.length ||
+              (aPath.length === winningDirective.path.length && winningDirective.type === "disallow")
+            ) {
+              winningDirective = { type: "allow", path: aPath };
+            }
+          }
+        }
+
+        for (const dPath of selectedRecord.disallows) {
+          if (urlPath.startsWith(dPath)) {
+            if (!winningDirective || dPath.length > winningDirective.path.length) {
+              winningDirective = { type: "disallow", path: dPath };
+            }
+          }
+        }
+
+        if (!winningDirective) {
+          return { allowed: true, matchedGroup: selectedRecord.userAgent };
+        }
+
+        return {
+          allowed: winningDirective.type === "allow",
+          matchedGroup: selectedRecord.userAgent,
+          matchedDirective: `${winningDirective.type}: ${winningDirective.path}`,
+        };
+      }
+
+      // 1. Semantic Test: GPTBot is disallowed from root and all public pages
+      const gptRootAccess = evaluateRobotsAccess(rules, "GPTBot", "/");
+      expect(gptRootAccess.allowed).toBe(false);
+      expect(gptRootAccess.matchedGroup).toBe("GPTBot");
+      expect(gptRootAccess.matchedDirective).toBe("disallow: /");
+
+      const gptCalcAccess = evaluateRobotsAccess(rules, "GPTBot", "/generator-size-calculator");
+      expect(gptCalcAccess.allowed).toBe(false);
+      expect(gptCalcAccess.matchedGroup).toBe("GPTBot");
+
+      // 2. Semantic Test: OAI-SearchBot can crawl public pages, but /api/ remains disallowed
+      const oaiRootAccess = evaluateRobotsAccess(rules, "OAI-SearchBot", "/");
+      expect(oaiRootAccess.allowed).toBe(true);
+      expect(oaiRootAccess.matchedGroup).toBe("OAI-SearchBot");
+
+      const oaiCalcAccess = evaluateRobotsAccess(rules, "OAI-SearchBot", "/solar-battery-calculator");
+      expect(oaiCalcAccess.allowed).toBe(true);
+      expect(oaiCalcAccess.matchedGroup).toBe("OAI-SearchBot");
+
+      const oaiApiAccess = evaluateRobotsAccess(rules, "OAI-SearchBot", "/api/calculator");
+      expect(oaiApiAccess.allowed).toBe(false);
+      expect(oaiApiAccess.matchedDirective).toBe("disallow: /api/");
+
+      // 3. Semantic Test: Googlebot and Bingbot can crawl public pages, but /api/ remains disallowed
+      const googlebotPublic = evaluateRobotsAccess(rules, "Googlebot", "/");
+      expect(googlebotPublic.allowed).toBe(true);
+      expect(googlebotPublic.matchedGroup).toBe("Googlebot");
+      const googlebotApi = evaluateRobotsAccess(rules, "Googlebot", "/api/private");
+      expect(googlebotApi.allowed).toBe(false);
+
+      const bingbotPublic = evaluateRobotsAccess(rules, "Bingbot", "/");
+      expect(bingbotPublic.allowed).toBe(true);
+      expect(bingbotPublic.matchedGroup).toBe("Bingbot");
+      const bingbotApi = evaluateRobotsAccess(rules, "Bingbot", "/api/private");
+      expect(bingbotApi.allowed).toBe(false);
+
+      // 4. Semantic Test: The wildcard policy does NOT override the more specific GPTBot policy
+      const genericBotPublic = evaluateRobotsAccess(rules, "GenericWebCrawler/1.0", "/");
+      expect(genericBotPublic.allowed).toBe(true);
+      expect(genericBotPublic.matchedGroup).toBe("*");
+
+      // Even if wildcard rule group is placed first, GPTBot selects its specific group (order independence)
+      const reversedRules = [...rules].reverse();
+      const gptReversedAccess = evaluateRobotsAccess(reversedRules, "GPTBot", "/");
+      expect(gptReversedAccess.allowed).toBe(false);
+      expect(gptReversedAccess.matchedGroup).toBe("GPTBot");
+      expect(gptReversedAccess.matchedDirective).toBe("disallow: /");
     });
   });
 
