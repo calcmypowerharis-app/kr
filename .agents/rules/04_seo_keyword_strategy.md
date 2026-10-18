@@ -123,3 +123,23 @@ When a calculation or recommendation could affect installation safety:
 - do NOT present the site or its content as an accredited certification body or officially approved compliance methodology
 - do NOT introduce out-of-scope standards (such as IEEE 1547 for DC wiring guides) unless explicitly specified in the approved SEO handoff
 
+### 7.9 2026 Google Search, AI Overviews & E-E-A-T Standards (Post-Freeze Roadmap)
+
+### Rule 30: YMYL Verifiable Engineering E-E-A-T Standard
+- Every editorial guide byline must feature a verified named author and licensed reviewer: `By [Editorial Team] · Technically Reviewed by [Name, PE / Master Electrician]`.
+- Schema.org JSON-LD must declare a `Person` entity containing `hasCredential` and `sameAs` authority links (e.g. professional engineering licensing registry, LinkedIn).
+- The `/about` page must present a transparent technical verification methodology and review board structure.
+
+### Rule 31: Next.js Zero-Bailout URL State Synchronization & MathSolver Standard
+- Interactive calculators must support shareable input states without breaking Next.js App Router static prerender (mount state via client hydration hooks).
+- Retire deprecated `HowTo` rich results on calculators and replace with Schema.org `MathSolver` (`SolveMathAction`), declaring mathematical equations, input constraints, and step-by-step logic.
+
+### Rule 32: Automated Single-Truth Calculator Date Standard
+- Remove hardcoded month strings (`"September 2026"`, `"October 2026"`) across calculator UI shells.
+- All visible calculator last-updated labels must bind directly to `CALCULATOR_REGISTRY[i].lastModified`, ensuring 1:1 byte-parity between DOM display, JSON-LD schema `dateModified`, and XML sitemap `<lastmod>`.
+
+### Rule 33: FTC & Google Sponsored Link Qualification Standard
+- In `src/config/affiliate.ts`, maintain `AMAZON_LINK_REL = "sponsored nofollow noopener noreferrer"` across all affiliate product search links, preventing algorithmic thin-affiliate penalties under Google Search Essentials.
+
+### Rule 34: GEO "Atomic Answer" Standard (AI Overviews Optimization)
+- The opening paragraph immediately following the primary H2 on calculator pages must provide a 40–50 word declarative, atomic answer block without conversational filler, formatted for direct snippet extraction by Google AI Overviews and AI search engines.

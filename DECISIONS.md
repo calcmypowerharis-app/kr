@@ -460,5 +460,19 @@ This log records major technical and product decisions, context, rationale, and 
   5. **Discoverability & Telemetry Metric Discipline:** Clarified that robots permissions permit crawling but do not guarantee indexing, citations, or traffic. HTTP 200 responses and sitemap entries demonstrate availability rather than search indexing. Crawl requests, search impressions, user clicks, indexed URLs, and AI citations represent distinct metrics across Search Console, Bing, and external AI platforms.
 - **Rationale:** Ensures strict crawler boundary control, opts out of AI model training scraping while enabling search retrieval, and prevents inaccurate assumptions regarding guaranteed indexing or traffic.
 
+---
+
+## Decision 037: 2026 Google Search, Information Gain & E-E-A-T Architecture Strategy
+- **Date:** 2026-10-19
+- **Status:** Approved (Pre-Deploy Preparation during Active Freeze through November 1, 2026)
+- **Context:** Following the 2026 Google Search & AI Algorithms audit, four structural gaps were identified across the codebase to maximize Information Gain (Patent 10,776,433), comply with YMYL E-E-A-T standards for high-voltage and battery systems, and align with Google Search Essentials for affiliate monetization. The project is currently governed by a mandatory 14-day stability freeze following the October 18 release baseline, during which URL paths, canonical tags, redirects, and robots directives remain strictly unchanged through November 1, 2026.
+- **Decision:**
+  1. **E-E-A-T & Authorship Modernization (Rule 30):** In `src/lib/seo/schema.ts`, replace generic `"CalcMyPower Technical Publishing"` organization author with a verified `Person` schema containing real engineering/master electrician credentials, `jobTitle`, `hasCredential`, and authoritative `sameAs` references.
+  2. **Schema Modernization to MathSolver (Rule 31):** Retire deprecated `HowTo` structured data across all 17+ interactive calculation tools and implement Schema.org `MathSolver` (`SolveMathAction`), declaring mathematical equations, input constraints, and step-by-step calculation logic.
+  3. **Affiliate Link Qualification (Rule 33):** In `src/config/affiliate.ts`, update `AMAZON_LINK_REL` from `"nofollow noopener noreferrer"` strictly to `"sponsored nofollow noopener noreferrer"` in full compliance with Google Search Essentials.
+  4. **Single-Source-of-Truth Calculator Date Synchronization (Rule 32):** In `src/components/calculators/CalculatorShell.tsx`, replace the hardcoded `"September 2026"` fallback by directly binding to `CALCULATOR_REGISTRY[i].lastModified`, ensuring 1:1 byte-parity between on-page display, JSON-LD schema `dateModified`, and sitemap `<lastmod>`.
+  5. **GEO Atomic Answer Blocks (Rule 34):** Standardize a 40–50 word declarative answer directly under the primary H2 across all calculator pages for extraction by Google AI Overviews and AI search engines.
+- **Rationale:** Protects the site against algorithmic thin-affiliate demotions and deceptive freshness penalties, cements high YMYL trust for electrical calculations, and prepares zero-risk code enhancements ready for merge and deployment immediately upon freeze expiration on November 1, 2026.
+
 
 
