@@ -1092,7 +1092,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     primaryKeyword: "how many watts on a 15 amp circuit",
     readingTime: "13 min read",
     datePublished: "2026-10-17",
-    lastModified: "2026-10-17",
+    lastModified: "2026-10-18",
     heroImage: "/images/articles/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle.webp",
     relatedCalculatorPaths: [
       "/amps-to-watts-calculator",
