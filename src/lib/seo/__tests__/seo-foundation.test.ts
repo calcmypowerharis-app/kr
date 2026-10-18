@@ -119,6 +119,10 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       expect(oaiSearchRule).toBeDefined();
       expect(oaiSearchRule?.allow).toBe("/");
       expect(oaiSearchRule?.disallow).toContain("/api/");
+
+      // Explicit precedence test: verify specific bots precede wildcard catch-all
+      expect(rules[0].userAgent).toBe("GPTBot");
+      expect(rules[rules.length - 1].userAgent).toBe("*");
     });
   });
 

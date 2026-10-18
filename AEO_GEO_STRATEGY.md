@@ -1,4 +1,4 @@
-# CalcMyPower.com — Answer Engine (AEO) & Generative Engine Optimization (GEO) Strategy (`AEO_GEO_STRATEGY.md`)
+# CalcMyPower.com - Answer Engine (AEO) & Generative Engine Optimization (GEO) Strategy (`AEO_GEO_STRATEGY.md`)
 
 **Document Owner:** Lead SEO Foundation Specialist  
 **Status:** Production Standard  
@@ -15,7 +15,7 @@ Generative search crawlers (such as `OAI-SearchBot`, `ChatGPT-User`, `Perplexity
 ### Non-Negotiable Technical Rules for AEO/GEO on CalcMyPower
 1. **Zero Full-Page SSR Bailouts:** Never wrap `<CalculatorShell>` or article content inside `<Suspense fallback={null}>` due to `useSearchParams()`. Every calculator page must pre-render its complete `<h1>`, introductory summary, default calculation state, governing formula, worked example, assumptions table, and FAQ answers in the initial static HTML payload.
 2. **Zero Unmounted Accordion Answers:** Never hide FAQ or methodology text behind `{isOpen && <div>...</div>}` where `isOpen` is `false` on SSR. Always use semantic HTML `<details>` and `<summary>` (or visible cards) so 100% of answer text exists in the initial HTML DOM.
-3. **Clean `robots.txt` Access:** `src/app/robots.ts` allows all standard search and answer engine user agents to crawl public pages (`Allow: /`, `Disallow: /api/`) and declares `max-snippet: -1` and `max-image-preview: "large"` in `layout.tsx` metadata.
+3. **Explicit `robots.txt` Search Access & Training Opt-Out:** `src/app/robots.ts` explicitly permits search discovery crawlers (`Googlebot`, `Bingbot`, `OAI-SearchBot` with `Allow: /`) while explicitly disallowing model-training scraping (`GPTBot` with `Disallow: /`) and protecting private endpoints (`Disallow: /api/`). It declares `max-snippet: -1` and `max-image-preview: "large"` in `layout.tsx` metadata.
 
 ---
 
