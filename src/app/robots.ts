@@ -4,7 +4,11 @@ export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
-        userAgent: "*",
+        userAgent: "GPTBot",
+        disallow: ["/"],
+      },
+      {
+        userAgent: "OAI-SearchBot",
         allow: "/",
         disallow: ["/api/"],
       },
@@ -19,13 +23,9 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/"],
       },
       {
-        userAgent: "OAI-SearchBot",
+        userAgent: "*",
         allow: "/",
         disallow: ["/api/"],
-      },
-      {
-        userAgent: "GPTBot",
-        disallow: ["/"],
       },
     ],
     sitemap: "https://calcmypower.com/sitemap.xml",
