@@ -123,3 +123,25 @@ When a calculation or recommendation could affect installation safety:
 - do NOT present the site or its content as an accredited certification body or officially approved compliance methodology
 - do NOT introduce out-of-scope standards (such as IEEE 1547 for DC wiring guides) unless explicitly specified in the approved SEO handoff
 
+### 7.9 Evidence-Based 2026 Search & AI Strategy Standards
+
+### Rule 30: Truthful Authorship & E-E-A-T Standard
+- Maintain transparent institutional authorship ("CalcMyPower Technical Publishing") and clear methodology standards.
+- Never manufacture fictitious licensed engineers (PE), master electricians, or reviewer credentials.
+- If verified licensed electrical professionals review content in the future with verifiable identities, credentials may be added to bylines and Person schemas.
+
+### Rule 31: Calculator Structured Data Standard
+- Interactive calculators maintain valid Schema.org `WebApplication`, `BreadcrumbList`, and `FAQPage` structured data.
+- Do NOT implement `MathSolver` (`SolveMathAction`) structured data unless the site provides a dedicated mathematical expression input parser and step-by-step equation solver. Domain electrical calculators with fixed parameters and presets do not qualify for MathSolver rich results.
+
+### Rule 32: Automated Single-Truth Calculator Date Standard
+- Bind visible calculator last-updated labels directly to `CALCULATOR_REGISTRY[i].lastModified` via `calculatorSlug` in `CalculatorShell.tsx`.
+- Guarantee 1:1 byte-parity between on-page display, JSON-LD schema `dateModified`, and XML sitemap `<lastmod>`.
+- Gracefully handle missing dates by omitting the updated badge cleanly rather than displaying stale hardcoded month strings.
+
+### Rule 33: FTC & Google Sponsored Link Qualification Standard
+- In `src/config/affiliate.ts`, maintain `AMAZON_LINK_REL = "sponsored nofollow noopener noreferrer"` across all affiliate product search links, complying with Google Search Essentials for paid outbound links and FTC disclosure rules while preserving security attributes.
+
+### Rule 34: Direct Answer Passage Structure Standard
+- The opening passage following an H2 should provide a direct, declarative answer to the reader's query before elaborating on context, aiding user scanning and search engine passage extraction.
+- Prioritize reader utility and context-appropriate conciseness over rigid, arbitrary word-count quotas.

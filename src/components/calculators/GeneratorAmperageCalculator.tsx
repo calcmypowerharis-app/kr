@@ -96,7 +96,7 @@ export const GeneratorAmperageCalculator: React.FC = () => {
       title="Generator Amperage Chart & Electrical Calculator"
       badge="Electrical Current Conversion"
       category="Generators & Outage Backup"
-      lastUpdated="October 2026"
+      calculatorSlug="generator-amperage-chart-calculator"
       description="Calculate full-load output current (Amps), 80% continuous operating capacity, and apparent power in kVA for portable and standby generators across 120V, 240V split-phase, and 3-phase circuits. Includes a comprehensive generator amperage reference chart."
       onReset={handleReset}
       inputSection={

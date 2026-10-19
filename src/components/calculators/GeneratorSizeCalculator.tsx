@@ -1240,7 +1240,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
       description="Calculate what size generator you need for home emergency backup, RV camping, or jobsite tools. Accounts for continuous running load, motor startup surges, and planning headroom."
       badge="Electrical Sizing Tool"
       category="Generator Sizing"
-      lastUpdated="September 2026"
+      calculatorSlug="generator-size-calculator"
       onReset={handleResetDefaults}
       inputSection={inputSectionContent}
       resultSection={resultSectionContent}

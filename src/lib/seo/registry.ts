@@ -1210,3 +1210,8 @@ export function getGuideBySlug(slug: string): GuideRegistryEntry | undefined {
   return GUIDE_REGISTRY.find((g) => g.slug === slug);
 }
 
+export function getCalculatorBySlug(slugOrPath: string): CalculatorRegistryEntry | undefined {
+  const normalized = slugOrPath.startsWith("/") ? slugOrPath.slice(1) : slugOrPath;
+  return CALCULATOR_REGISTRY.find((c) => c.slug === normalized || c.path === slugOrPath);
+}
+

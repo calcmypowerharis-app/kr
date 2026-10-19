@@ -874,7 +874,7 @@ export const ElectricityUseCalculator: React.FC = () => {
       badge="Appliance Energy & kWh Audit"
       description="Calculate appliance electricity usage in Watt-hours (Wh) and kilowatt-hours (kWh) from running wattage, daily hours, quantities, and duty cycles. Select starter scenarios or customize individual appliances to audit daily and monthly energy consumption and optional power costs."
       category="Electrical Circuits"
-      lastUpdated="October 2026"
+      calculatorSlug="electricity-use-calculator"
       onReset={handleReset}
       inputSection={inputSection}
       resultSection={resultSection}

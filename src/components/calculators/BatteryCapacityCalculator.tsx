@@ -349,7 +349,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
       title="Battery Bank Calculator (Capacity, Voltage & Ah)"
       badge="Battery Bank Engineering"
       category="Battery & Storage"
-      lastUpdated="October 2026"
+      calculatorSlug="battery-capacity-calculator"
       description="Calculate battery bank voltage, Amp-hours (Ah), nominal energy in Watt-hours (Wh) and kWh, and estimated usable capacity across single, series, parallel, and 2S2P series-parallel configurations. Evaluate an existing battery bank or size required capacity from appliance load wattage and backup runtime."
       onReset={handleReset}
       inputSection={

@@ -101,7 +101,7 @@ export const UpsCalculator: React.FC = () => {
       title="UPS & Battery Backup Run-Time Calculator"
       badge="Uninterruptible Power Supply Hours"
       category="UPS & Battery"
-      lastUpdated="September 2026"
+      calculatorSlug="ups-battery-backup-calculator"
       description="Estimate backup run-time hours for an uninterruptible power supply (UPS), inverter battery bank, or portable power station from appliance wattage, battery voltage, and Amp-hour capacity."
       onReset={handleReset}
       inputSection={

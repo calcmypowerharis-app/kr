@@ -104,7 +104,7 @@ This log records major technical and product decisions, context, rationale, and 
 - **Date:** 2026-09-26
 - **Status:** Approved & Implemented
 - **Context:** Operating internal combustion generators continuously at 100% of rated capacity creates thermal stress, excessive fuel burn, voltage/frequency sag, and risk of nuisance tripping. However, continuous duty factors vary across applications and must not be misrepresented as a universal NEC requirement.
-- **Decision:** Explicitly label the 25% continuous buffer as the **"CalcMyPower planning headroom factor"**. Note that generator manufacturers and alternative sizing methodologies may use different operating margins (e.g. 10%–30%).
+- **Decision:** Explicitly label the 25% continuous buffer as the **"CalcMyPower planning headroom factor"**. Note that generator manufacturers and alternative sizing methodologies may use different operating margins (e.g. 10%-30%).
 - **Rationale:** Transparently explains the engineering intent (targeting ~80% of generator capacity) without improperly claiming an NEC code mandate.
 
 ---
@@ -126,7 +126,7 @@ This log records major technical and product decisions, context, rationale, and 
 ## Decision 012: Calculated Electrical Thresholds Over Arbitrary Retail Bucketing
 - **Date:** 2026-09-26
 - **Status:** Approved & Implemented
-- **Context:** Forcing calculated generator loads into arbitrary commercial retail buckets (e.g. "4,000W–5,500W class") lacks empirical grounding and restricts user evaluation across varied generator models.
+- **Context:** Forcing calculated generator loads into arbitrary commercial retail buckets (e.g. "4,000W-5,500W class") lacks empirical grounding and restricts user evaluation across varied generator models.
 - **Decision:** Output exact calculated engineering thresholds:
   1. Total Running Watts ($W_{\text{running}}$)
   2. Peak Starting Demand ($W_{\text{peak}}$)
@@ -161,7 +161,7 @@ This log records major technical and product decisions, context, rationale, and 
 ## Decision 015: Generator Technology Comparison and Appliance Interaction UX
 - **Date:** 2026-09-26
 - **Status:** Approved & Implemented
-- **Context:** Hard wattage cutoffs for generator types (e.g. "<4500W = inverter") are technically inaccurate, as high-output inverters (7kW–10kW) and small conventional portables exist. Furthermore, user loads must allow frictionless editing and avoid arbitrary multipliers.
+- **Context:** Hard wattage cutoffs for generator types (e.g. "<4500W = inverter") are technically inaccurate, as high-output inverters (7kW-10kW) and small conventional portables exist. Furthermore, user loads must allow frictionless editing and avoid arbitrary multipliers.
 - **Decision:**
   1. Educational Technology Comparison: Compare portable inverter, conventional open-frame, dual-fuel, and standby units based on technical attributes (THD, noise, portability, fuel storage, automatic transfer) rather than arbitrary wattage tiers.
   2. Category-First Appliance Organization: Organize into HVAC, Kitchen, Water & Pumps, Electronics, RV, Tools, Other, prioritizing high-impact appliances.
@@ -459,6 +459,20 @@ This log records major technical and product decisions, context, rationale, and 
   4. **Semantic Crawler Testing Invariant:** Updated `src/lib/seo/__tests__/seo-foundation.test.ts` to use semantic rule evaluation rather than group order comparisons, confirming that `GPTBot` is disallowed from `/`, search crawlers (`Googlebot`, `Bingbot`, `OAI-SearchBot`) can crawl public pages while `/api/` remains disallowed for compliant crawlers, and the wildcard policy never overrides more specific user-agent directives.
   5. **Discoverability & Telemetry Metric Discipline:** Clarified that robots permissions permit crawling but do not guarantee indexing, citations, or traffic. HTTP 200 responses and sitemap entries demonstrate availability rather than search indexing. Crawl requests, search impressions, user clicks, indexed URLs, and AI citations represent distinct metrics across Search Console, Bing, and external AI platforms.
 - **Rationale:** Ensures strict crawler boundary control, opts out of AI model training scraping while enabling search retrieval, and prevents inaccurate assumptions regarding guaranteed indexing or traffic.
+
+---
+
+## Decision 037: 2026 Google Search, Information Gain & E-E-A-T Architecture Strategy
+- **Date:** 2026-10-19
+- **Status:** Approved with Evidence-Based Scope Corrections & Implemented
+- **Context:** Following the 2026 Google Search & AI Algorithms audit, recommendations were evaluated against official Google Search Central guidelines, Schema.org specifications, FTC disclosure rules, and independent empirical studies. The project is governed by a mandatory 14-day stability freeze following the October 18 release baseline, during which URL paths, canonical tags, redirects, and robots directives remain strictly unchanged through November 1, 2026.
+- **Decision:**
+  1. **Truthful Authorship & E-E-A-T (Rejecting Credential Fabrication):** Maintained truthful institutional authorship ("CalcMyPower Technical Publishing") in `src/lib/seo/schema.ts` and transparent editorial review standards. Rejected proposals to manufacture unverified licensed engineer (PE) or master electrician credentials, which would violate Google spam policies on misleading representations and project authenticity rules (Rule 3). Documented owner-level requirement: if verified licensed professionals review content in the future, their verified credentials can be added then.
+  2. **Structured Data Accuracy (Rejecting MathSolver Mismatch):** Evaluated Google's MathSolver structured data requirements. MathSolver requires dedicated mathematical expression input parsers and step-by-step equation solvers, which does not match CalcMyPower's domain electrical calculators with fixed input parameters and sliders. Rejected MathSolver implementation to prevent structured data mismatch penalties. Confirmed that no deprecated HowTo schemas exist on calculator pages; existing tools correctly deploy WebApplication, BreadcrumbList, and FAQPage schemas.
+  3. **Affiliate Link Qualification (Implemented):** In `src/config/affiliate.ts`, updated `AMAZON_LINK_REL` from `"nofollow noopener noreferrer"` to `"sponsored nofollow noopener noreferrer"` in full compliance with Google Search Essentials for paid outbound links and FTC disclosure rules, while maintaining security attributes.
+  4. **Single-Source-of-Truth Calculator Date Synchronization (Implemented):** In `src/components/calculators/CalculatorShell.tsx`, replaced hardcoded "September 2026" and "October 2026" month strings across 16 calculator components with dynamic binding to `CALCULATOR_REGISTRY[i].lastModified` via `calculatorSlug`, formatted via `formatEditorialDate`. Implemented missing-date handling to omit update badges cleanly when dates are absent, preventing deceptive freshness claims.
+  5. **Passage Structure & Direct Answers (Refined):** Maintained the engineering standard of placing concise, declarative answers directly beneath H2 headings to enhance readability and passage extraction, while rejecting artificial 40-50 word quotas.
+- **Rationale:** Protects the site against affiliate qualification penalties and deceptive freshness discrepancies, prevents structured data manual actions, upholds absolute factual authenticity in authorship, and preserves 100% stability freeze compliance.
 
 
 

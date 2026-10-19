@@ -23,6 +23,7 @@ export function getAmazonSearchUrl(query: string): string {
 }
 
 /**
- * Standard rel attribute for Amazon affiliate links per FTC and search engine guidelines.
+ * Standard rel attribute for Amazon affiliate links per Google Search Essentials and FTC guidelines.
+ * Marks compensated commercial links as sponsored while preserving security attributes.
  */
-export const AMAZON_LINK_REL = "nofollow noopener noreferrer";
+export const AMAZON_LINK_REL = "sponsored nofollow noopener noreferrer";
