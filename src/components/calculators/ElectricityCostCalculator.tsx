@@ -471,7 +471,7 @@ export const ElectricityCostCalculator: React.FC = () => {
       title="Electricity Cost Calculator"
       badge="Utility Bill Estimator"
       category="Electrical Circuits"
-      lastUpdated="October 2026"
+      calculatorSlug="electricity-cost-calculator"
       description="Estimate your monthly electric utility bill and true effective cost per kilowatt-hour (kWh). Breakdown volumetric energy supply charges, fixed monthly customer fees, distribution delivery riders, and local taxes."
       onReset={handleReset}
       inputSection={inputSection}

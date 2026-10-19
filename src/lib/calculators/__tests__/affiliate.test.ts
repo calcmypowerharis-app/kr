@@ -27,7 +27,9 @@ describe("Amazon Associates Affiliate Configuration", () => {
     expect(url.startsWith("https://www.amazon.com/s?k=")).toBe(true);
   });
 
-  it("enforces safe rel attribute with nofollow, noopener, and noreferrer", () => {
+  it("enforces safe rel attribute with sponsored, nofollow, noopener, and noreferrer", () => {
+    expect(AMAZON_LINK_REL).toBe("sponsored nofollow noopener noreferrer");
+    expect(AMAZON_LINK_REL).toContain("sponsored");
     expect(AMAZON_LINK_REL).toContain("nofollow");
     expect(AMAZON_LINK_REL).toContain("noopener");
     expect(AMAZON_LINK_REL).toContain("noreferrer");

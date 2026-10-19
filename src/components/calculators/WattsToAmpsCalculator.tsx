@@ -83,7 +83,7 @@ export const WattsToAmpsCalculator: React.FC = () => {
       title="Watts to Amps Electrical Calculator"
       badge="Electrical & Current Sizing"
       category="Electrical"
-      lastUpdated="September 2026"
+      calculatorSlug="watts-to-amps-calculator"
       description="Convert real electrical power in Watts to current in Amperes (Amps) for Direct Current (DC), Single-Phase AC, and balanced Three-Phase systems with power factor adjustment."
       onReset={handleReset}
       inputSection={

@@ -6,6 +6,7 @@ import {
   GUIDE_REGISTRY,
   formatEditorialDate,
   getGuideBySlug,
+  getCalculatorBySlug,
 } from "../registry";
 import sitemap from "@/app/sitemap";
 
@@ -179,7 +180,7 @@ describe("Sitewide Editorial & Calculator Date Consistency Quality Gate", () => 
     });
   });
 
-  describe("3. Calculator Date Consistency", () => {
+  describe("3. Calculator Date Consistency and Single Source of Truth", () => {
     it("ensures all calculators have valid lastModified dates in CALCULATOR_REGISTRY", () => {
       const isoDateRegex = /^\d{4}-\d{2}-\d{2}$/;
       for (const calc of CALCULATOR_REGISTRY) {
@@ -188,6 +189,84 @@ describe("Sitewide Editorial & Calculator Date Consistency Quality Gate", () => 
           `Calculator ${calc.slug} lastModified "${calc.lastModified}" must be YYYY-MM-DD`
         ).toBe(true);
       }
+    });
+
+    it("verifies getCalculatorBySlug retrieves calculators by slug and path", () => {
+      const entryBySlug = getCalculatorBySlug("watts-to-amps-calculator");
+      expect(entryBySlug).toBeDefined();
+      expect(entryBySlug?.path).toBe("/watts-to-amps-calculator");
+      expect(entryBySlug?.lastModified).toBe("2026-09-28");
+
+      const entryByPath = getCalculatorBySlug("/watts-to-amps-calculator");
+      expect(entryByPath).toBeDefined();
+      expect(entryByPath?.slug).toBe("watts-to-amps-calculator");
+
+      const unknown = getCalculatorBySlug("non-existent-calculator");
+      expect(unknown).toBeUndefined();
+    });
+
+    it("ensures all calculator components that render CalculatorShell pass a valid calculatorSlug", () => {
+      const calcDir = path.resolve(process.cwd(), "src/components/calculators");
+      const files = fs.readdirSync(calcDir).filter((f) => f.endsWith(".tsx") && f !== "CalculatorShell.tsx");
+      const validSlugs = new Set(CALCULATOR_REGISTRY.map((c) => c.slug));
+
+      let matchedCalculatorsCount = 0;
+      for (const file of files) {
+        const filePath = path.join(calcDir, file);
+        const content = fs.readFileSync(filePath, "utf-8");
+
+        if (content.includes("<CalculatorShell")) {
+          const match = content.match(/calculatorSlug=["']([^"']+)["']/);
+          expect(
+            match,
+            `Component ${file} renders <CalculatorShell> but does not pass calculatorSlug`
+          ).not.toBeNull();
+
+          const slug = match![1];
+          expect(
+            validSlugs.has(slug),
+            `Component ${file} passes calculatorSlug "${slug}" which does not exist in CALCULATOR_REGISTRY`
+          ).toBe(true);
+
+          matchedCalculatorsCount++;
+        }
+      }
+
+      // 16 interactive calculator components use CalculatorShell
+      expect(matchedCalculatorsCount).toBe(16);
+    });
+
+    it("verifies zero hardcoded stale 'September 2026' or 'October 2026' month strings remain in calculator files", () => {
+      const calcDir = path.resolve(process.cwd(), "src/components/calculators");
+      const files = fs.readdirSync(calcDir).filter((f) => f.endsWith(".tsx"));
+
+      for (const file of files) {
+        const filePath = path.join(calcDir, file);
+        const content = fs.readFileSync(filePath, "utf-8");
+
+        const staleMonthMatch = content.match(/lastUpdated\s*=\s*["'](September|October)\s+2026["']/);
+        expect(
+          staleMonthMatch,
+          `File ${file} contains obsolete hardcoded month string: ${staleMonthMatch?.[0]}`
+        ).toBeNull();
+      }
+    });
+
+    it("verifies missing-date and fallback behavior for calculator date resolution", () => {
+      // 1. Valid slug resolves to formatted date
+      const validEntry = getCalculatorBySlug("generator-size-calculator");
+      expect(validEntry).toBeDefined();
+      expect(formatEditorialDate(validEntry!.lastModified)).toBe("September 28, 2026");
+
+      // 2. Unknown slug returns undefined without throwing
+      const unknownEntry = getCalculatorBySlug("unknown-tool");
+      expect(unknownEntry).toBeUndefined();
+
+      // 3. Explicit lastUpdated overrides or acts as standalone input
+      expect(formatEditorialDate("2026-10-15")).toBe("October 15, 2026");
+
+      // 4. Missing date handling returns raw value safely
+      expect(formatEditorialDate("")).toBe("");
     });
   });
 

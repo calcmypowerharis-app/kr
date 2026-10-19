@@ -232,7 +232,7 @@ export const VoltageDropCalculator: React.FC = () => {
       badge="AC & DC Conductor Sizing"
       description="Calculate voltage drop for DC, single-phase, and balanced three-phase circuits. Determine voltage loss, percentage drop, receiving voltage, and evaluate adjacent wire sizes."
       category="Electrical Circuits"
-      lastUpdated="October 2026"
+      calculatorSlug="voltage-drop-calculator"
       onReset={handleReset}
       inputSection={
         <div className="space-y-6">

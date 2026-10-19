@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { Zap, RotateCcw } from "lucide-react";
+import { formatEditorialDate, getCalculatorBySlug } from "@/lib/seo/registry";
 
 interface CalculatorShellProps {
   title: string;
@@ -10,6 +11,7 @@ interface CalculatorShellProps {
   description: string;
   category: string;
   lastUpdated?: string;
+  calculatorSlug?: string;
   onReset?: () => void;
   inputSection: React.ReactNode;
   resultSection: React.ReactNode;
@@ -21,12 +23,17 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
   badge = "Interactive Tool",
   description,
   category,
-  lastUpdated = "September 2026",
+  lastUpdated,
+  calculatorSlug,
   onReset,
   inputSection,
   resultSection,
   children,
 }) => {
+  const registryEntry = calculatorSlug ? getCalculatorBySlug(calculatorSlug) : undefined;
+  const rawDate = lastUpdated ?? registryEntry?.lastModified;
+  const displayDate = rawDate ? formatEditorialDate(rawDate) : null;
+
   return (
     <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 space-y-10">
       {/* Top Header & Visible Breadcrumb Navigation */}
@@ -52,8 +59,12 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
           </span>
           <span className="text-slate-500">•</span>
           <span className="text-slate-600 font-medium">{badge}</span>
-          <span className="text-slate-500">•</span>
-          <span className="text-slate-600">Updated {lastUpdated}</span>
+          {displayDate && (
+            <>
+              <span className="text-slate-500">•</span>
+              <span className="text-slate-600">Updated {displayDate}</span>
+            </>
+          )}
         </div>
 
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">

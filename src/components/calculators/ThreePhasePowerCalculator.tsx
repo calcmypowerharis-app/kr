@@ -249,7 +249,7 @@ export const ThreePhasePowerCalculator: React.FC = () => {
       title="Three Phase Power Calculator"
       badge="Electrical Engineering Tool"
       category="Electrical"
-      lastUpdated="October 2026"
+      calculatorSlug="three-phase-power-calculator"
       description="Calculate real power (kW), apparent power (kVA), reactive power (kVAR), and line current (Amps) for balanced three-phase electrical circuits. Supports line-to-line and line-to-neutral measurements."
       onReset={handleReset}
       inputSection={

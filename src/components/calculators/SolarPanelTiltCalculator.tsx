@@ -232,7 +232,7 @@ export const SolarPanelTiltCalculator: React.FC = () => {
       badge="Optimal Angle & Roof Pitch"
       description="Calculate the optimal solar panel tilt angle and compass orientation for your latitude. Compare roof pitch angles, seasonal adjustments, and mounting options."
       category="Solar PV"
-      lastUpdated="September 2026"
+      calculatorSlug="solar-panel-tilt-calculator"
       onReset={handleReset}
       inputSection={
         <div className="space-y-6">

@@ -292,7 +292,7 @@ export const SolarBatteryCalculator: React.FC = () => {
       badge="Solar PV & Storage Sizing"
       description="Calculate the battery bank capacity needed for your off-grid or backup solar system. Size storage in kWh and Amp-hours based on daily usage and autonomy."
       category="Solar PV"
-      lastUpdated="September 2026"
+      calculatorSlug="solar-battery-calculator"
       onReset={handleReset}
       inputSection={
         <div className="space-y-6">

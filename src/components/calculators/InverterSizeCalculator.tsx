@@ -312,7 +312,7 @@ export const InverterSizeCalculator: React.FC = () => {
       badge="Engineering Sizing Tool"
       category="Power Inverters & DC Sizing"
       description="Calculate continuous and peak surge inverter wattage, DC battery current draw, cable gauge (AWG), and fuse sizing across 12V, 24V, and 48V battery systems."
-      lastUpdated="October 2026"
+      calculatorSlug="inverter-size-calculator"
       onReset={handleReset}
       inputSection={
         <div className="space-y-6">

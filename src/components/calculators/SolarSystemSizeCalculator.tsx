@@ -231,7 +231,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
       badge="Residential Solar PV Planning"
       description="Calculate the solar system size and number of solar panels needed for your home. Estimate required array kW, panel count, and roof space based on electricity usage and peak sun hours."
       category="Solar PV"
-      lastUpdated="October 2026"
+      calculatorSlug="solar-system-size-calculator"
       onReset={handleReset}
       inputSection={
         <div className="space-y-6">
