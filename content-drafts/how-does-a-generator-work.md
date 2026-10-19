@@ -161,19 +161,23 @@ Many homeowners wonder how a generator creates electricity when the regional pow
 
 In many synchronous brushless alternators, the rotor steel laminations retain a faint magnetic field after the unit shuts down. Electrical engineers refer to this property as residual magnetism or magnetic remanence.
 
+The following sequence illustrates the initial voltage build-up in one common self-excited brushless alternator design. Other generator categories rely on permanent magnets or capacitor excitation instead of an electronic AVR.
+
 ```mermaid
 flowchart TD
-    A["Engine Cranked<br>(Recoil Pull or 12V Starter Battery)"] --> B["Rotor Spins with Residual Magnetism"]
-    B --> C["Stator Coils Induce Low Starting Voltage"]
-    C --> D["Automatic Voltage Regulator Senses Voltage"]
-    D --> E["AVR Feeds DC Power to Exciter Field Windings"]
-    E --> F["Main Rotor Electromagnet Strengthens Rapidly"]
-    F --> G["Stator Reaches Rated 120V / 240V Operating Voltage"]
+    subgraph BuildUp["Self-Excited Brushless Alternator Build-Up"]
+        A["Engine Cranked<br>(Recoil Pull or 12V Starter Battery)"] --> B["Rotor Spins with Residual Magnetism"]
+        B --> C["Stator Coils Induce Low Starting Voltage"]
+        C --> D["Automatic Voltage Regulator Senses Voltage"]
+        D --> E["AVR Feeds DC Power to Exciter Windings"]
+        E --> F["Main Rotor Magnetic Field Strengthens"]
+        F --> G["Stator Reaches Rated Operating Voltage Setpoint"]
+    end
 ```
 
-When the engine spins the shaft, this residual magnetic field sweeps past the stator coils, inducing a small initial voltage. The automatic voltage regulator (AVR) senses this initial voltage and feeds direct current (DC) into the exciter field windings.
+When the engine spins the shaft, residual magnetism sweeps past the stator coils, inducing a low initial voltage. An automatic voltage regulator senses this terminal voltage and feeds direct current into the exciter field windings.
 
-This excitation current strengthens the rotor electromagnet, which in turn induces higher voltage in the stator windings. Within seconds, this positive feedback loop stabilizes at the generator rated operating voltage.
+This excitation current strengthens the rotor magnetic field during the initial voltage build-up process. Once operating voltage is reached, the regulator senses terminal voltage continuously and adjusts excitation up or down to maintain its steady setpoint under changing loads.
 
 Excitation systems vary significantly by manufacturer and generator category:
 
@@ -229,10 +233,10 @@ Because output frequency is synthesized electronically, the engine does not need
 ### Power Quality and Sensitive Equipment
 Power quality, noise, and fuel economy vary substantially by individual model, load level, and manufacturer engineering:
 
-- **Harmonic Distortion:** Total harmonic distortion (THD) measures AC waveform distortion. Honda publishes that its inverter technology converts raw multi-phase AC to DC and inverts it into clean AC power, producing a smoother, more consistent waveform with lower harmonic distortion than conventional designs.
+- **Harmonic Distortion:** Total harmonic distortion (THD) measures AC waveform distortion. Honda publishes that its inverter technology converts raw multi-phase AC to DC and inverts it back into clean AC power, producing a cleaner, more consistent waveform with lower harmonic distortion than traditional generators.
 
   Conventional open-frame portable generators exhibit higher harmonic distortion that varies widely by load and alternator design. Always consult manufacturer technical specifications for model-specific power quality ratings under load.
-- **Fuel Efficiency:** Variable-speed inverter generators adjust fuel consumption to match demand. Honda published technical documentation stating that its Eco-Throttle system can achieve up to 40% better fuel economy under specific light-load test conditions by allowing the engine to idle down when electrical demand is low, compared to conventional units running at constant high speed.
+- **Fuel Efficiency:** Variable-speed inverter generators adjust fuel consumption to match electrical demand. Honda publishes that its Eco-Throttle system can reduce fuel consumption by up to 40% by automatically adjusting engine speed to match the connected load, though actual fuel savings vary based on real-world operating conditions and equipment demand.
 - **Operating Noise:** Sound levels depend on engine displacement, acoustic dampening enclosures, and operating load. Enclosed inverter generators typically operate at lower sound levels during partial-load conditions than open-frame conventional generators.
 - **Sensitive Equipment:** Microprocessor-controlled furnaces, variable-speed power tools, and high-end audio gear often operate more reliably on low-THD power. For medical devices such as CPAP units or concentrators, always follow the medical equipment manufacturer power specifications rather than assuming any generator category is universally compatible.
 
@@ -372,7 +376,7 @@ Operating a generator in rain, snow, or standing water creates severe electrical
 
 Follow the generator manufacturer instructions for weather protection. When operating during storms, use purpose-built, model-compatible running covers or outdoor enclosures designed specifically to maintain proper engine cooling airflow and exhaust ventilation. Never use ordinary tarps or unventilated enclosures that trap heat or combustion gases.
 
-Fuel handling requires distinct safety practices by fuel type. For gasoline generators, never add fuel while the engine runs or remains hot. Gasoline vapors ignite instantly on contact with hot engine surfaces. Shut down the engine and allow thorough cooldown before opening the fuel cap to refuel.
+Fuel handling requires distinct safety practices by fuel type. For gasoline generators, never add fuel while the engine runs or remains hot. Gasoline vapors can ignite when exposed to hot engine components. Shut down the engine and allow thorough cooldown before opening the fuel cap to refuel.
 
 For propane and dual-fuel generators, follow the manufacturer instructions for inspecting high-pressure hoses, securing cylinder valves, and verifying leak-free connections. Always close propane cylinder service valves before connecting or disconnecting supply lines, and keep fuel storage cylinders outdoors in well-ventilated areas away from engine exhaust.
 
@@ -427,9 +431,10 @@ All technical explanations, safety guidelines, and operating principles in this 
    URL: `https://www.eia.gov/energyexplained/electricity/how-electricity-is-generated.php`  
    *Supported Claims:* Energy transformation principle (mechanical to electrical), role of prime movers, electromagnetic induction discovery by Michael Faraday (1831), and rotor-stator relative motion.
 
-2. **U.S. Department of Energy (DOE):** *Fundamentals Handbook: Electrical Science, Volume 3 of 4, Module 10: AC Generators*  
+2. **U.S. Department of Energy (DOE):** *Fundamentals Handbook: Electrical Science, Volume 3 of 4 (Module 10: AC Generators & Module 11: Voltage Regulators)*  
    URL: `https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1011-92_VOL3.pdf`  
-   *Supported Claims:* Derivation of synchronous speed equation ($N = \frac{120 \times f}{P}$), pole-count relationship (2-pole at 3,600 RPM vs 4-pole at 1,800 RPM for 60-Hz power), alternator construction fundamentals, and rotor field excitation.
+
+   *Supported Claims:* Module 10 covers synchronous speed ($N = \frac{120 \times f}{P}$), 2-pole vs 4-pole 60-Hz operation, alternator construction, and rotor field excitation. Module 11 covers voltage regulation principles, terminal voltage sensing, and feedback-controlled excitation adjustments to maintain target voltage setpoints under changing loads.
 
 3. **U.S. Department of Energy (DOE) Advanced Manufacturing Office:** *Improving Motor and Drive System Performance: A Sourcebook for Industry*  
    URL: `https://www.energy.gov/eere/amo/articles/improving-motor-and-drive-system-performance-sourcebook-industry`  
@@ -447,6 +452,10 @@ All technical explanations, safety guidelines, and operating principles in this 
    URL: `https://www.nfpa.org/codes-and-standards/nfpa-70-standard-roster`  
    *Supported Claims:* Technical requirement for transfer equipment that provides positive mechanical isolation between normal utility power and standby generator circuits, subject to adoption by the local authority having jurisdiction.
 
-7. **Honda Power Equipment Technical Engineering:** *Honda Inverter Generator Technology & Eco-Throttle Systems*  
-   URL: `https://powerequipment.honda.com/generators/inverter-generator-technology`  
-   *Supported Claims:* Multi-pole alternator flywheel integration, raw AC-to-DC rectification, microprocessor pure sine wave inversion, and Honda-specific claim of up to 40% fuel economy improvement under light-load operating conditions via Eco-Throttle.
+7. **Honda Power Equipment:** *What is an Inverter Generator?*  
+   URL: `https://powerequipment.honda.com/generators/resources-hub/what-is-an-inverter-generator`  
+   *Supported Claims:* Multi-step AC-to-DC-to-AC power conversion, multi-pole alternator flywheel integration, cleaner and more consistent electrical output, and lower total harmonic distortion compared to traditional generators.
+
+8. **Honda Power Equipment:** *Eco-Throttle System*  
+   URL: `https://powerequipment.honda.com/generators/eco-throttle`  
+   *Supported Claims:* Automatic engine speed regulation matching electrical load demand, and manufacturer claim of up to 40% fuel consumption reduction, with actual savings varying by operating conditions.
