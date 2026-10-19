@@ -30,13 +30,23 @@ Claims and recommendations have been classified into four verifiable categories:
    - *Status:* Officially Unsupported / Agency Heuristic.
    - *Evidence:* Google Search Essentials and the SEO Starter Guide recommend clear organization and prominent key points, but define zero word-count thresholds or penalties for placing answers after 100 words. (Reference: Google SEO Starter Guide; https://developers.google.com/search/docs/fundamentals/seo-starter-guide).
 
-4. **62% of AI Citations Originate Outside Organic Top 10:**
-   - *Status:* Supported by Independent Study (BrightEdge / Authoritas 2024).
-   - *Evidence:* Independent research analyzing Google Search Generative Experience (SGE) and AI Overviews found that approximately 60% to 62% of cited domain URLs did not appear in the top 10 classical organic results for the tested query sets. This is an empirical observation from external datasets, not an algorithmic guarantee.
+4. **AI Citations Outside Organic Top 10 (Ahrefs Study, March 2, 2026):**
+   - *Status:* Supported by Independent Empirical Study (Ahrefs).
+   - *Primary Source:* https://ahrefs.com/blog/ai-overview-citations-top-10/
+   - *Methodology & Dataset:* Analyzed 863K keyword SERPs and approximately 4 million Google AI Overview URLs via Ahrefs Brand Radar. In the standard blue-link evaluation:
+     - 37.1% (37.10%) of cited URLs appeared in the Top 10 conventional blue-link organic results.
+     - 26.2% (26.20%) appeared in positions 11-100.
+     - 36.7% (36.70%) did not appear in the Top 100 for that keyword query.
+   - *Interpretation:* The remaining approximately 62.9% (26.2% + 36.7%) is an empirical observation specific to this Google AI Overviews dataset, illustrating that Google frequently draws citations through sub-query fan-out across related SERPs. It is an observational finding about Google AI Overviews, not a universal AI-search statistic or an official Google ranking rule.
 
-5. **44% of Citations Come from the First Third of a Page:**
-   - *Status:* Supported by Independent Study (SurferSEO / EngineScout 2024).
-   - *Evidence:* Independent passage extraction studies observed that roughly 44% of cited text fragments in generative engine answer snippets were extracted from the upper third of page HTML. This represents an empirical trend in passage retrieval rather than an official search policy.
+5. **Citation Extraction by Page Position (Kevin Indig Study, Search Engine Land):**
+   - *Status:* Supported by Independent Empirical Study (Kevin Indig).
+   - *Primary Source:* https://searchengineland.com/chatgpt-citations-content-study-469483
+   - *Scope & Dataset:* Analyzed 1.2 million ChatGPT answers and 18,012 verified citations. In this sample:
+     - 44.2% of citations originated from the first 30% of page content.
+     - 31.1% originated from the middle 30% to 70%.
+     - 24.7% originated from the final third (70% to 100%).
+   - *Interpretation:* Replaces the previous unverified "SurferSEO / EngineScout 2024" attribution. This is an independent observational finding about the analyzed ChatGPT citation dataset showing that front-loading direct answers aids retrieval. It is NOT an official OpenAI rule, nor a universal percentage across all AI engines. Placing content near the top does not guarantee citations.
 
 6. **Information Gain Score Assigned to Every URL (Repeated Info = Zero):**
    - *Status:* Patent Speculation / Unverified Interpretation.

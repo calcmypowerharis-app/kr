@@ -231,3 +231,15 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   4. Educate stakeholders that search engine indexing progresses in 4 distinct phases: Discovery -> Indexation -> Impressions -> Clicks.
   5. Preserve all core invariants: zero em-dashes, paragraph length ceiling (<= 55 words), 1-hop apex crawl discovery, strict TLS verification, and credential non-exposure.
 - **Prevention:** Codified in Executive Core Guardrail 9, Rule 7.8 in `.agents/rules/04_seo_keyword_strategy.md`, and automated rules integrity checks.
+
+---
+
+## Lesson 030: Empirical AI Search Study Attribution Hygiene
+- **Context:** Third-party research studies on AI Overviews and LLM citations (e.g. Ahrefs 2026 study showing ~62.9% of AI Overview citations outside the Top 10 via query fan-out, and Kevin Indig's ChatGPT study showing 44.2% of citations from the first 30% of content) are frequently misattributed in SEO discussions as official Google or OpenAI ranking rules, or generalized into universal quotas.
+- **Rule:**
+  1. Clearly distinguish third-party empirical studies from official search engine documentation and guidelines.
+  2. Always record the exact source URL, publication date, platform evaluated (e.g. Google AIO vs ChatGPT), sample size, and dataset parameters.
+  3. Never describe an empirical observation (e.g. front-loading content often aids passage extraction) as an algorithmic requirement or a citation guarantee.
+  4. Avoid inventing arbitrary word-count quotas (such as exactly 40-50 words after H2s) based on observational averages.
+- **Prevention:** Codified in `SEO_DIRECTIVE_2026.md`, Section 3.6 of `AEO_GEO_STRATEGY.md`, and Decision 037.
+
