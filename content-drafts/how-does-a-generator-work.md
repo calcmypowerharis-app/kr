@@ -165,19 +165,20 @@ The following sequence illustrates the initial voltage build-up in one common se
 
 ```mermaid
 flowchart TD
-    subgraph BuildUp["Self-Excited Brushless Alternator Build-Up"]
-        A["Engine Cranked<br>(Recoil Pull or 12V Starter Battery)"] --> B["Rotor Spins with Residual Magnetism"]
-        B --> C["Stator Coils Induce Low Starting Voltage"]
-        C --> D["Automatic Voltage Regulator Senses Voltage"]
-        D --> E["AVR Feeds DC Power to Exciter Windings"]
-        E --> F["Main Rotor Magnetic Field Strengthens"]
-        F --> G["Stator Reaches Rated Operating Voltage Setpoint"]
+    subgraph BuildUp["Self-Excited Brushless Alternator Voltage Build-Up Sequence"]
+        A["1. Residual Magnetism Induces Small Initial Voltage in Main Stator"] --> B["2. AVR Senses Voltage & Supplies Controlled DC to Stationary Exciter Field"]
+        B --> C["3. Rotating Exciter Armature Generates AC on Shaft"]
+        C --> D["4. Shaft-Mounted Rotating Diodes Rectify AC to DC"]
+        D --> E["5. Main Rotor Field Strengthens & Output Reaches Rated Level"]
+        E --> F["AVR Regulates Exciter Field Closed-Loop to Maintain Setpoint"]
     end
 ```
 
-When the engine spins the shaft, residual magnetism sweeps past the stator coils, inducing a low initial voltage. An automatic voltage regulator senses this terminal voltage and feeds direct current into the exciter field windings.
+When the engine spins the shaft, rotor residual magnetism sweeps past the main stator coils, inducing a low initial voltage. An automatic voltage regulator senses this terminal voltage and supplies controlled direct current to the stationary exciter field winding.
 
-This excitation current strengthens the rotor magnetic field during the initial voltage build-up process. Once operating voltage is reached, the regulator senses terminal voltage continuously and adjusts excitation up or down to maintain its steady setpoint under changing loads.
+As the shaft turns, the rotating exciter armature spins within this stationary magnetic field, generating alternating current. A set of shaft-mounted rotating diodes rectifies this AC into DC, feeding direct current into the main rotor field winding without slip rings or brushes.
+
+This DC current strengthens the main rotor magnetic field, driving main stator output voltage up to its rated operating level. Once normal voltage is reached, the AVR continuously modulates exciter field current to maintain the target voltage setpoint as electrical loads change.
 
 Excitation systems vary significantly by manufacturer and generator category:
 
@@ -459,3 +460,8 @@ All technical explanations, safety guidelines, and operating principles in this 
 8. **Honda Power Equipment:** *Eco-Throttle System*  
    URL: `https://powerequipment.honda.com/generators/eco-throttle`  
    *Supported Claims:* Automatic engine speed regulation matching electrical load demand, and manufacturer claim of up to 40% fuel consumption reduction, with actual savings varying by operating conditions.
+
+9. **Cummins Generator Technologies (STAMFORD | AvK):** *Application Guidance Note AGN 093: Alternator Excitation Systems*  
+   URL: `https://www.stamford-avk.com/stamford-avk/sites/stamfordavk/files/AGNs/AGN093_D.pdf`  
+
+   *Supported Claims:* Brushless alternator excitation architecture, stationary exciter field winding powered by the AVR, rotating exciter armature generating AC, shaft-mounted rotating diode rectification to DC, main rotor field excitation, and AVR closed-loop voltage control.
