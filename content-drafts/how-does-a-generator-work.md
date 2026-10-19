@@ -229,8 +229,10 @@ Because output frequency is synthesized electronically, the engine does not need
 ### Power Quality and Sensitive Equipment
 Power quality, noise, and fuel economy vary substantially by individual model, load level, and manufacturer engineering:
 
-- **Harmonic Distortion:** Total harmonic distortion (THD) measures how closely an AC waveform resembles a pure mathematical sine wave. Output waveform quality depends on the specific generator architecture, inverter filtering, and connected load. Inverter generators use electronic power filtering to produce a smoother waveform. For example, Honda specifies that its EU-series inverter generators produce pure sine wave power suitable for sensitive electronic equipment, maintaining low total harmonic distortion across designed operating ranges. Conventional open-frame portable generators typically exhibit higher harmonic distortion that varies widely based on load type and alternator design. Always review manufacturer technical specifications for model-specific THD ratings under rated and partial loads.
-- **Fuel Efficiency:** Variable-speed inverter generators adjust fuel consumption to match demand. For example, Honda published technical documentation stating that its Eco-Throttle system can achieve up to 40% better fuel economy under specific light-load test conditions by allowing the engine to idle down when electrical demand is low, compared to conventional units running at constant high speed.
+- **Harmonic Distortion:** Total harmonic distortion (THD) measures AC waveform distortion. Honda publishes that its inverter technology converts raw multi-phase AC to DC and inverts it into clean AC power, producing a smoother, more consistent waveform with lower harmonic distortion than conventional designs.
+
+  Conventional open-frame portable generators exhibit higher harmonic distortion that varies widely by load and alternator design. Always consult manufacturer technical specifications for model-specific power quality ratings under load.
+- **Fuel Efficiency:** Variable-speed inverter generators adjust fuel consumption to match demand. Honda published technical documentation stating that its Eco-Throttle system can achieve up to 40% better fuel economy under specific light-load test conditions by allowing the engine to idle down when electrical demand is low, compared to conventional units running at constant high speed.
 - **Operating Noise:** Sound levels depend on engine displacement, acoustic dampening enclosures, and operating load. Enclosed inverter generators typically operate at lower sound levels during partial-load conditions than open-frame conventional generators.
 - **Sensitive Equipment:** Microprocessor-controlled furnaces, variable-speed power tools, and high-end audio gear often operate more reliably on low-THD power. For medical devices such as CPAP units or concentrators, always follow the medical equipment manufacturer power specifications rather than assuming any generator category is universally compatible.
 
@@ -305,9 +307,9 @@ Combustion produces more horsepower, restoring target operating speed. This mech
 Different appliances draw power in distinctly different ways:
 
 - **Resistive Loads:** Light bulbs, electric space heaters, toasters, and water heaters convert electricity into heat or light. Current and voltage remain in phase. These devices draw steady power with no elevated startup surge.
-- **Inductive Motor Loads:** Refrigerators, air conditioners, well pumps, and compressors rely on electric induction motors. When a motor is energized from a dead stop, its stationary rotor develops zero back-electromotive force (back EMF).
+- **Inductive Motor Loads:** Refrigerators, air conditioners, well pumps, and compressors rely on electric induction motors. When an electric motor starts from a standstill, the stationary rotor presents high locked-rotor electrical demand before the motor reaches normal operating speed.
 
-Until the rotor accelerates toward normal operating speed, the motor draws elevated locked-rotor inrush current. This starting current depends on motor design, NEMA code letter, and mechanical starting resistance, frequently reaching several times the motor continuous running current.
+  During this initial startup acceleration, the motor draws elevated locked-rotor inrush current. This starting current depends on motor design, NEMA code letter, and mechanical starting resistance, frequently reaching several times the motor continuous running current.
 
 For step-by-step guidance on tallying running and motor surge watts across different household appliances, review our companion [Generator Wattage Calculation Guide](https://calcmypower.com/how-to-calculate-watts-for-a-generator).
 
@@ -370,7 +372,9 @@ Operating a generator in rain, snow, or standing water creates severe electrical
 
 Follow the generator manufacturer instructions for weather protection. When operating during storms, use purpose-built, model-compatible running covers or outdoor enclosures designed specifically to maintain proper engine cooling airflow and exhaust ventilation. Never use ordinary tarps or unventilated enclosures that trap heat or combustion gases.
 
-Never add fuel while the engine is running or hot. Gasoline or liquid propane vapors can ignite instantly on contact with a hot engine block or exhaust muffler. Shut down the generator and allow the engine to cool down thoroughly in accordance with the manufacturer user manual before opening the fuel cap.
+Fuel handling requires distinct safety practices by fuel type. For gasoline generators, never add fuel while the engine runs or remains hot. Gasoline vapors ignite instantly on contact with hot engine surfaces. Shut down the engine and allow thorough cooldown before opening the fuel cap to refuel.
+
+For propane and dual-fuel generators, follow the manufacturer instructions for inspecting high-pressure hoses, securing cylinder valves, and verifying leak-free connections. Always close propane cylinder service valves before connecting or disconnecting supply lines, and keep fuel storage cylinders outdoors in well-ventilated areas away from engine exhaust.
 
 ---
 
@@ -423,13 +427,13 @@ All technical explanations, safety guidelines, and operating principles in this 
    URL: `https://www.eia.gov/energyexplained/electricity/how-electricity-is-generated.php`  
    *Supported Claims:* Energy transformation principle (mechanical to electrical), role of prime movers, electromagnetic induction discovery by Michael Faraday (1831), and rotor-stator relative motion.
 
-2. **U.S. Department of Energy (DOE):** *DOE Fundamentals Handbook: Electrical Science, Volume 3 (Module 11: AC Generators)*  
-   URL: `https://www.standards.doe.gov/standards-documents/1000/1011-bhdbk-1992-v3`  
-   *Supported Claims:* Derivation of synchronous speed equation ($N = \frac{120 \times f}{P}$), pole-count relationship (2-pole at 3,600 RPM vs 4-pole at 1,800 RPM for 60-Hz power), field excitation fundamentals, and voltage regulation principles.
+2. **U.S. Department of Energy (DOE):** *Fundamentals Handbook: Electrical Science, Volume 3 of 4, Module 10: AC Generators*  
+   URL: `https://www.energy.gov/sites/default/files/2026-04/DOE-HDBK-1011-92_VOL3.pdf`  
+   *Supported Claims:* Derivation of synchronous speed equation ($N = \frac{120 \times f}{P}$), pole-count relationship (2-pole at 3,600 RPM vs 4-pole at 1,800 RPM for 60-Hz power), alternator construction fundamentals, and rotor field excitation.
 
 3. **U.S. Department of Energy (DOE) Advanced Manufacturing Office:** *Improving Motor and Drive System Performance: A Sourcebook for Industry*  
    URL: `https://www.energy.gov/eere/amo/articles/improving-motor-and-drive-system-performance-sourcebook-industry`  
-   *Supported Claims:* Induction motor locked-rotor inrush current physics, zero back-electromotive force ($E_{back} = 0$) at initial startup, and motor starting demand characteristics.
+   *Supported Claims:* Induction motor locked-rotor startup behavior, locked-rotor inrush current, and motor starting demand characteristics across varying motor designs and operating conditions.
 
 4. **U.S. Consumer Product Safety Commission (CPSC):** *Carbon Monoxide Information Center & Generator Safety*  
    URL: `https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Carbon-Monoxide-Information-Center/Generators`  
