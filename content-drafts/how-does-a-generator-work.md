@@ -21,7 +21,7 @@
 - **Suggested Article Title (H1):** How Does a Generator Work? Engine, Alternator, and Electricity Explained
 - **Proposed Meta Title:** How Does a Generator Work? Engine, Alternator & Power Explained
 - **Proposed Meta Description:** Learn how generators convert mechanical motion into electricity through electromagnetic induction. Explore engines, alternators, inverters, and safe operation.
-- **Reading Time:** Approximately 10 minutes (1,900 words)
+- **Reading Time:** Approximately 10 minutes (1,950 words)
 - **Target Audience:** US homeowners preparing for storm outages, RV owners, campers, jobsite operators, and curious readers seeking an engineering explanation without academic jargon.
 
 ---
@@ -182,6 +182,8 @@ Excitation systems vary significantly by manufacturer and generator category:
 - **Capacitor-Regulated Alternators:** Many economy portable generators use an auxiliary stator winding and a power capacitor to regulate voltage through magnetic saturation, using no electronic AVR.
 - **Permanent Magnet Alternators (PMA):** Many compact inverter generators use high-strength permanent magnets embedded directly into the engine flywheel, requiring no field excitation current to start generating power.
 
+Unlike an electrochemical battery bank that stores direct current for an inverter to draw upon, an engine generator creates alternating current on demand from liquid fuel. To compare fuel generation with battery storage runtime hours, consult our [UPS Battery Backup Calculator](https://calcmypower.com/ups-battery-backup-calculator).
+
 Starting mechanisms also differ. Manual recoil-start generators require no battery because an engine magneto generates ignition spark mechanically as you pull the cord. Electric-start and automatic standby models require an onboard 12-volt battery to turn the starter motor and power electronic control modules.
 
 Operating without grid power does not mean every generator model can run without a battery. Always verify if a specific unit requires a charged starting battery to operate.
@@ -227,8 +229,8 @@ Because output frequency is synthesized electronically, the engine does not need
 ### Power Quality and Sensitive Equipment
 Power quality, noise, and fuel economy vary substantially by individual model, load level, and manufacturer engineering:
 
-- **Harmonic Distortion:** Total harmonic distortion (THD) measures how closely an AC waveform resembles a pure mathematical sine wave. Inverter generators are engineered to maintain low THD, often specified below 3% to 5% at rated load. Conventional portable generators exhibit higher distortion that varies with load type.
-- **Fuel Efficiency:** Variable-speed inverter generators adjust fuel consumption to match demand. For example, Honda publishes that its Eco-Throttle system can achieve up to 40% greater fuel efficiency under specific light-load test conditions compared to conventional fixed-speed models.
+- **Harmonic Distortion:** Total harmonic distortion (THD) measures how closely an AC waveform resembles a pure mathematical sine wave. Output waveform quality depends on the specific generator architecture, inverter filtering, and connected load. Inverter generators use electronic power filtering to produce a smoother waveform. For example, Honda specifies that its EU-series inverter generators produce pure sine wave power suitable for sensitive electronic equipment, maintaining low total harmonic distortion across designed operating ranges. Conventional open-frame portable generators typically exhibit higher harmonic distortion that varies widely based on load type and alternator design. Always review manufacturer technical specifications for model-specific THD ratings under rated and partial loads.
+- **Fuel Efficiency:** Variable-speed inverter generators adjust fuel consumption to match demand. For example, Honda published technical documentation stating that its Eco-Throttle system can achieve up to 40% better fuel economy under specific light-load test conditions by allowing the engine to idle down when electrical demand is low, compared to conventional units running at constant high speed.
 - **Operating Noise:** Sound levels depend on engine displacement, acoustic dampening enclosures, and operating load. Enclosed inverter generators typically operate at lower sound levels during partial-load conditions than open-frame conventional generators.
 - **Sensitive Equipment:** Microprocessor-controlled furnaces, variable-speed power tools, and high-end audio gear often operate more reliably on low-THD power. For medical devices such as CPAP units or concentrators, always follow the medical equipment manufacturer power specifications rather than assuming any generator category is universally compatible.
 
@@ -261,7 +263,7 @@ Portable generators feature wheels and handles for manual transport. They store 
 
 Operators deploy portable units outdoors during power outages. They connect appliances using heavy-duty outdoor extension cords or plug into an exterior power inlet box wired to a manual transfer switch.
 
-To calculate how much gasoline a portable generator uses under load, review our [Generator Fuel Consumption Guide](https://calcmypower.com/how-much-gas-does-a-generator-use) or estimate operating hours with our [Generator Fuel Consumption Calculator](https://calcmypower.com/generator-fuel-consumption-calculator).
+To calculate the total continuous and surge wattage needed for your household essentials, use our interactive [Generator Size Calculator](https://calcmypower.com/generator-size-calculator). To estimate how much gasoline a unit uses under load, review our [Generator Fuel Consumption Guide](https://calcmypower.com/how-much-gas-does-a-generator-use) or calculate operating hours with our [Generator Fuel Consumption Calculator](https://calcmypower.com/generator-fuel-consumption-calculator).
 
 ### Standby Home Generators
 Standby generators sit permanently on an outdoor concrete or composite pad. They connect directly to the home electrical service through an Automatic Transfer Switch (ATS).
@@ -307,6 +309,8 @@ Different appliances draw power in distinctly different ways:
 
 Until the rotor accelerates toward normal operating speed, the motor draws elevated locked-rotor inrush current. This starting current depends on motor design, NEMA code letter, and mechanical starting resistance, frequently reaching several times the motor continuous running current.
 
+For step-by-step guidance on tallying running and motor surge watts across different household appliances, review our companion [Generator Wattage Calculation Guide](https://calcmypower.com/how-to-calculate-watts-for-a-generator).
+
 ### Worked Example: Loading a 3,500-Watt Generator
 Consider an illustrative scenario with a generator rated for 3,500 continuous running watts and 4,000 maximum surge watts:
 
@@ -318,7 +322,7 @@ Consider an illustrative scenario with a generator rated for 3,500 continuous ru
 
 Actual appliance wattage varies widely. Always verify equipment nameplate ratings rather than assuming all refrigerators draw 700 watts.
 
-To convert between appliance operating current and wattage, use our [Watts to Amps Electrical Calculator](https://calcmypower.com/watts-to-amps-calculator). For comprehensive refrigerator startup calculations, read our guide on [What Size Generator to Run a Refrigerator](https://calcmypower.com/what-size-generator-to-run-a-refrigerator).
+To convert between appliance operating current and wattage, use our [Watts to Amps Electrical Calculator](https://calcmypower.com/watts-to-amps-calculator). For comprehensive refrigerator startup calculations, read our guide on [What Size Generator to Run a Refrigerator](https://calcmypower.com/what-size-generator-to-run-a-refrigerator). To explore our full suite of electrical, solar, battery, and generator sizing tools, visit our [Power and Energy Calculators Directory](https://calcmypower.com/calculators).
 
 ---
 
@@ -329,9 +333,9 @@ Combustion generators produce electrical energy alongside hazardous exhaust bypr
 ### 1. Carbon Monoxide and Outdoor Placement
 Internal combustion engines produce exhaust containing carbon monoxide (CO). Carbon monoxide is a colorless, odorless, and tasteless gas that can cause severe injury or death within minutes.
 
-The U.S. Consumer Product Safety Commission (CPSC) recommends operating portable generators outdoors only, positioned at least 20 feet away from homes, doors, windows, and fresh-air intake vents.
+The U.S. Consumer Product Safety Commission (CPSC) recommends operating portable generators outdoors only, at least 20 feet away from any home or building. Operators should always direct the engine exhaust muffler away from doors, windows, vents, and any other openings into occupied spaces.
 
-Always direct the engine exhaust muffler away from occupied buildings. Never run a generator inside a home, basement, crawlspace, shed, or garage, even if doors and windows are left wide open.
+Never run a generator inside a home, basement, crawlspace, shed, or garage, even if doors and windows are left wide open. Install battery-operated carbon monoxide alarms outside sleeping areas on every level of the home.
 
 ```mermaid
 flowchart TD
@@ -343,8 +347,8 @@ flowchart TD
 
     subgraph SAFE["CPSC SAFETY RECOMMENDATIONS"]
         S1["Operate OUTDOORS ONLY on a dry, level surface"]
-        S2["Maintain at least 20 FEET clearance from any structure"]
-        S3["Direct exhaust MUFFLER AWAY from all doors, windows, and vents"]
+        S2["Maintain at least 20 FEET distance from any home or building"]
+        S3["Direct exhaust MUFFLER AWAY from doors, windows, and vents"]
         S4["Install battery-operated CO alarms on every living level of the home"]
     end
 ```
@@ -357,16 +361,16 @@ Backfeeding bypasses your home circuit protection and sends electricity backward
 Safe connection to household wiring requires approved transfer equipment installed by a qualified electrician in accordance with local electrical codes and NFPA 70 / National Electrical Code (NEC) standards:
 
 - **Manual Transfer Switch:** A dedicated subpanel that mechanically breaks the utility connection before connecting generator power to selected household circuits.
-- **Mechanical Panel Interlock:** A listed sliding bracket installed on the main service panel that physically prevents the utility main breaker and the generator backfeed breaker from being turned on simultaneously.
+- **Mechanical Panel Interlock:** A listed sliding bracket installed on the main service panel that physically prevents the utility main breaker and the generator backfeed breaker from turning on simultaneously.
 
 For details on continuous duty ratings and safe backup capacity, consult our reference on [Continuous Power Generators](https://calcmypower.com/continuous-power-generators).
 
 ### 3. Weather Protection and Safe Refueling
-Operating a generator in rain or standing water introduces severe electrical shock and electrocution hazards. Do not use makeshift tarps or boxes that trap heat or restrict cooling airflow.
+Operating a generator in rain, snow, or standing water creates severe electrical shock and electrocution risks. Water entering electrical outlets or the alternator housing can short-circuit components and shock operators.
 
-Use purpose-built, listed running covers or weather shelters designed specifically for portable generator airflow and moisture protection, following manufacturer instructions.
+Follow the generator manufacturer instructions for weather protection. When operating during storms, use purpose-built, model-compatible running covers or outdoor enclosures designed specifically to maintain proper engine cooling airflow and exhaust ventilation. Never use ordinary tarps or unventilated enclosures that trap heat or combustion gases.
 
-Never add fuel while the engine is running or hot. Gasoline spilled on hot engine surfaces can ignite instantly. Turn off the generator and allow the engine to cool down in accordance with the manufacturer user manual before opening the fuel cap.
+Never add fuel while the engine is running or hot. Gasoline or liquid propane vapors can ignite instantly on contact with a hot engine block or exhaust muffler. Shut down the generator and allow the engine to cool down thoroughly in accordance with the manufacturer user manual before opening the fuel cap.
 
 ---
 
@@ -394,47 +398,51 @@ A generator supplies power to a house safely through a code-compliant transfer s
 
 ## Internal Linking & Context Plan
 
-The following table documents verified internal links to live CalcMyPower tools and guides. Every destination URL has been confirmed active via direct HTTPS testing.
+The following table distinguishes contextual links implemented in the Markdown article body from metadata header references. Every target URL has been tested and confirmed live with an HTTP 200 OK response via direct strict-HTTPS request.
 
-| Target Route | Route Type | Proposed Anchor Text | Context & Location in Article | Live HTTP Status |
-| :--- | :--- | :--- | :--- | :---: |
-| `/generator-size-calculator` | Calculator | `Generator Size Calculator` | Header metadata and Section 6 link for planning generator capacity | `200 OK` |
-| `/generator-fuel-consumption-calculator` | Calculator | `Generator Fuel Consumption Calculator` | Section 6 link for estimating fuel logistics and tank runtimes | `200 OK` |
-| `/how-much-gas-does-a-generator-use` | Guide | `Generator Fuel Consumption Guide` | Section 6 contextual reference for fuel consumption rates by wattage | `200 OK` |
-| `/what-size-generator-do-i-need-for-my-house` | Guide | `What Size Generator Do I Need for My House?` | Section 6 reference for standby home generator sizing methodology | `200 OK` |
-| `/what-size-generator-to-run-a-refrigerator` | Guide | `What Size Generator to Run a Refrigerator` | Section 7 reference for motor surge and refrigerator startup loads | `200 OK` |
-| `/how-to-calculate-watts-for-a-generator` | Guide | `Generator Wattage Calculation Guide` | Section 7 companion link for tallying running and surge watts | `200 OK` |
-| `/continuous-power-generators` | Guide | `Continuous Power Generators` | Section 8 reference for continuous duty ratings and code guidelines | `200 OK` |
-| `/watts-to-amps-calculator` | Calculator | `Watts to Amps Electrical Calculator` | Section 7 reference for converting electrical current and wattage | `200 OK` |
-| `/ups-battery-backup-calculator` | Calculator | `UPS Battery Backup Calculator` | Section 5 comparison note on battery storage vs engine generators | `200 OK` |
-| `/calculators` | Hub Directory | `Power and Energy Calculators Directory` | Concluding navigation for exploring companion electrical calculators | `200 OK` |
+| Target Route | Route Type | Verified Anchor Text | Location in Draft | Link Type | Live HTTP Status |
+| :--- | :--- | :--- | :--- | :---: | :---: |
+| `/generator-size-calculator` | Calculator | `Generator Size Calculator` | Section 6 (Portable Generators) | Body Contextual Link | `200 OK` |
+| `/generator-fuel-consumption-calculator` | Calculator | `Generator Fuel Consumption Calculator` | Section 6 (Portable Generators) | Body Contextual Link | `200 OK` |
+| `/how-much-gas-does-a-generator-use` | Guide | `Generator Fuel Consumption Guide` | Section 6 (Portable Generators) | Body Contextual Link | `200 OK` |
+| `/what-size-generator-do-i-need-for-my-house` | Guide | `What Size Generator Do I Need for My House?` | Section 6 (Standby Generators) | Body Contextual Link | `200 OK` |
+| `/what-size-generator-to-run-a-refrigerator` | Guide | `What Size Generator to Run a Refrigerator` | Section 7 (Loading & Worked Example) | Body Contextual Link | `200 OK` |
+| `/how-to-calculate-watts-for-a-generator` | Guide | `Generator Wattage Calculation Guide` | Section 7 (Motor Inrush Surge) | Body Contextual Link | `200 OK` |
+| `/continuous-power-generators` | Guide | `Continuous Power Generators` | Section 8 (Electrical Safety & Transfer) | Body Contextual Link | `200 OK` |
+| `/watts-to-amps-calculator` | Calculator | `Watts to Amps Electrical Calculator` | Section 7 (Loading & Worked Example) | Body Contextual Link | `200 OK` |
+| `/ups-battery-backup-calculator` | Calculator | `UPS Battery Backup Calculator` | Section 5 (Self-Excitation & Storage) | Body Contextual Link | `200 OK` |
+| `/calculators` | Hub Directory | `Power and Energy Calculators Directory` | Section 7 (Closing Navigation) | Body Contextual Link | `200 OK` |
 
 ---
 
 ## Verified Technical Sources & Bibliography
 
-All technical explanations, safety guidelines, and operating principles in this draft are grounded in official documentation:
+All technical explanations, safety guidelines, and operating principles in this draft are grounded in accessible, authoritative primary documentation:
 
 1. **U.S. Energy Information Administration (EIA):** *Electricity explained: How electricity is generated*  
    URL: `https://www.eia.gov/energyexplained/electricity/how-electricity-is-generated.php`  
-   *Supported Claims:* Mechanical-to-electrical energy conversion principle, role of prime movers, electromagnetic induction discovery by Michael Faraday (1831), and rotor-stator geometry.
+   *Supported Claims:* Energy transformation principle (mechanical to electrical), role of prime movers, electromagnetic induction discovery by Michael Faraday (1831), and rotor-stator relative motion.
 
-2. **U.S. Consumer Product Safety Commission (CPSC):** *Carbon Monoxide Information Center & Generator Safety*  
+2. **U.S. Department of Energy (DOE):** *DOE Fundamentals Handbook: Electrical Science, Volume 3 (Module 11: AC Generators)*  
+   URL: `https://www.standards.doe.gov/standards-documents/1000/1011-bhdbk-1992-v3`  
+   *Supported Claims:* Derivation of synchronous speed equation ($N = \frac{120 \times f}{P}$), pole-count relationship (2-pole at 3,600 RPM vs 4-pole at 1,800 RPM for 60-Hz power), field excitation fundamentals, and voltage regulation principles.
+
+3. **U.S. Department of Energy (DOE) Advanced Manufacturing Office:** *Improving Motor and Drive System Performance: A Sourcebook for Industry*  
+   URL: `https://www.energy.gov/eere/amo/articles/improving-motor-and-drive-system-performance-sourcebook-industry`  
+   *Supported Claims:* Induction motor locked-rotor inrush current physics, zero back-electromotive force ($E_{back} = 0$) at initial startup, and motor starting demand characteristics.
+
+4. **U.S. Consumer Product Safety Commission (CPSC):** *Carbon Monoxide Information Center & Generator Safety*  
    URL: `https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Carbon-Monoxide-Information-Center/Generators`  
-   *Supported Claims:* Authoritative recommendation for 20-foot outdoor placement distance, directing exhaust away from doors/windows/vents, and risks of carbon monoxide poisoning in enclosed or partially enclosed spaces.
+   *Supported Claims:* Authoritative recommendation to operate portable generators outdoors at least 20 feet from any home or building, direct exhaust muffler away from doors, windows, and vents, and carbon monoxide hazards of indoor operation.
 
-3. **Occupational Safety and Health Administration (OSHA):** *Grounding Requirements for Portable Generators FactSheet*  
+5. **Occupational Safety and Health Administration (OSHA):** *Grounding Requirements for Portable Generators FactSheet*  
    URL: `https://www.osha.gov/publications/generator-safety-factsheet`  
    *Supported Claims:* Prohibition of backfeeding into building electrical wiring, electrocution risks to utility lineworkers, and isolation via approved transfer switches.
 
-4. **National Fire Protection Association (NFPA):** *NFPA 70: National Electrical Code (NEC), Article 702 (Optional Standby Systems)*  
+6. **National Fire Protection Association (NFPA):** *NFPA 70: National Electrical Code (NEC), Article 702 (Optional Standby Systems)*  
    URL: `https://www.nfpa.org/codes-and-standards/nfpa-70-standard-roster`  
-   *Supported Claims:* Technical requirement for transfer equipment that prevents inadvertent interconnection of normal utility and alternate generator sources.
+   *Supported Claims:* Technical requirement for transfer equipment that provides positive mechanical isolation between normal utility power and standby generator circuits, subject to adoption by the local authority having jurisdiction.
 
-5. **Honda Power Equipment Technical Documentation:** *Honda Inverter Generator Technology & Eco-Throttle Systems*  
+7. **Honda Power Equipment Technical Engineering:** *Honda Inverter Generator Technology & Eco-Throttle Systems*  
    URL: `https://powerequipment.honda.com/generators/inverter-generator-technology`  
-   *Supported Claims:* Multi-pole alternator design, AC-to-DC rectification, microprocessor pure sine wave inversion, and Honda-specific claim of up to 40% fuel efficiency improvement under light-load operating conditions.
-
-6. **Institute of Electrical and Electronics Engineers (IEEE):** *IEEE Guide for AC Generator Protection (IEEE Std C37.102)*  
-   URL: `https://standards.ieee.org/ieee/C37.102/4799/`  
-   *Supported Claims:* Synchronous speed equation ($N = \frac{120 \times f}{P}$), residual magnetic remanence field buildup, and counter-electromotive torque (Lenz's law) during electrical loading.
+   *Supported Claims:* Multi-pole alternator flywheel integration, raw AC-to-DC rectification, microprocessor pure sine wave inversion, and Honda-specific claim of up to 40% fuel economy improvement under light-load operating conditions via Eco-Throttle.
