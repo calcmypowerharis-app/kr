@@ -5,7 +5,7 @@
  * - Central single source of truth for the Amazon Associates tracking ID.
  * - Supports environment variable override via NEXT_PUBLIC_AMAZON_AFFILIATE_TAG.
  * - Defaults to the approved Associates Store ID ('thedeskriser2-20').
- * - Generates clean, robust Amazon search URLs with rel="nofollow noopener noreferrer".
+ * - Generates clean, robust Amazon search URLs with rel="sponsored nofollow noopener noreferrer".
  */
 
 export const AMAZON_ASSOCIATE_TAG =
