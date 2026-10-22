@@ -66,6 +66,16 @@ const nextConfig: NextConfig = {
         destination: "/what-size-generator-do-i-need-for-my-house",
         permanent: true,
       },
+      {
+        source: "/privacy-policy",
+        destination: "/privacy",
+        permanent: true,
+      },
+      {
+        source: "/terms-of-service",
+        destination: "/terms",
+        permanent: true,
+      },
     ];
   },
 };

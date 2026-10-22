@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { Zap, RotateCcw } from "lucide-react";
 import { formatEditorialDate, getCalculatorBySlug } from "@/lib/seo/registry";
+import { RecommendedHardwareBox } from "@/components/monetization/RecommendedHardwareBox";
 
 interface CalculatorShellProps {
   title: string;
@@ -106,6 +107,9 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
           {resultSection}
         </div>
       </div>
+
+      {/* Recommended Equipment & Hardware Box */}
+      <RecommendedHardwareBox calculatorSlug={calculatorSlug} />
 
       {/* Supporting Sections (Methodology, Worked Example, Assumptions, FAQ, Disclaimer, Related Tools) */}
       {children && <div className="space-y-8 pt-4">{children}</div>}

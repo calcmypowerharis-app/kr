@@ -71,7 +71,7 @@ describe("Solar Panel Tilt & Angle Calculator Library", () => {
   });
 
   describe("2. Documented Rules of Thumb & Heuristics (Tier B)", () => {
-    it("computes Landau empirical formula correctly within valid 25°–50° range", () => {
+    it("computes Landau empirical formula correctly within valid 25°-50° range", () => {
       // tilt = (lat * 0.76) + 3.1
       expect(calculateLandauTilt(25)).toBe(22.1); // 25 * 0.76 + 3.1 = 22.1
       expect(calculateLandauTilt(38)).toBe(32.0); // 38 * 0.76 + 3.1 = 31.98 -> 32.0
@@ -97,7 +97,7 @@ describe("Solar Panel Tilt & Angle Calculator Library", () => {
       expect(seasonal10.equinoxTilt).toBe(10);
     });
 
-    it("uses latitude rule of thumb outside 25°–50° range for year-round optimization", () => {
+    it("uses latitude rule of thumb outside 25°-50° range for year-round optimization", () => {
       // Below 25 deg (e.g. 15 deg)
       const resLow = calculateSolarPanelTilt({
         latitude: 15,

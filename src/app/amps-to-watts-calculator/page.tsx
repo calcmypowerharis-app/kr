@@ -1,22 +1,22 @@
 import { Metadata } from "next";
 import { AmpsToWattsCalculator } from "@/components/calculators/AmpsToWattsCalculator";
+import { AmpsToWattsGuideSection } from "@/components/content/AmpsToWattsGuideSection";
 import {
   generateWebApplicationSchema,
   generateBreadcrumbSchema,
   generateFaqSchema,
 } from "@/lib/seo/schema";
 import { buildPageMetadata } from "@/lib/seo/metadata";
+import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Amps to Watts Calculator (DC, Single & 3-Phase AC)",
+  title: "Amps to Watts Calculator - 120V/240V/DC Table",
   description:
-    "Convert amps to watts across DC, single-phase 120V/240V, and three-phase AC circuits. Calculate real power (W), apparent power (VA), and power factor.",
+    "Convert amps to watts across 12V DC, 120V, and 240V AC circuits. Features comprehensive conversion chart with NEC continuous-load limits from 1A to 200A.",
   path: "/amps-to-watts-calculator",
   ogDescription:
-    "Convert amps to watts across DC, single-phase 120V/240V, and three-phase AC circuits. Calculate real power (W), apparent power (VA), and power factor.",
+    "Convert amps to watts across 12V DC, 120V, and 240V AC circuits. Features comprehensive conversion chart with NEC continuous-load limits from 1A to 200A.",
 });
-
-import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
 
 export default function AmpsToWattsPage() {
   const webAppSchema = generateWebApplicationSchema({
@@ -53,6 +53,9 @@ export default function AmpsToWattsPage() {
       />
 
       <AmpsToWattsCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <AmpsToWattsGuideSection />
+      </div>
     </>
   );
 }

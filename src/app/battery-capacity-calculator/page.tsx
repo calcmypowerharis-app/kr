@@ -10,12 +10,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Battery Capacity & Bank Sizing Calculator",
+  title: "Battery Capacity Calculator - Ah & Wh Chart",
   description:
-    "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh), configure series and parallel banks, and size usable storage by load and depth of discharge.",
+    "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
   path: "/battery-capacity-calculator",
   ogDescription:
-    "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh), configure series and parallel banks, and size usable storage by load and depth of discharge.",
+    "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
 });
 
 export default function BatteryCapacityPage() {

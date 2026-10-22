@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { WattsToAmpsCalculator } from "@/components/calculators/WattsToAmpsCalculator";
+import { WattsToAmpsGuideSection } from "@/components/content/WattsToAmpsGuideSection";
 import {
   generateWebApplicationSchema,
   generateBreadcrumbSchema,
@@ -9,12 +10,12 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { WATTS_TO_AMPS_FAQS } from "@/lib/calculators/watts-to-amps";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC)",
+  title: "Watts to Amps Calculator - 120V/240V/DC Table",
   description:
-    "Convert Watts to Amps with our electrical calculator. Supports DC circuits, 120V/240V single-phase AC, and balanced 208V/480V three-phase systems with power factor.",
+    "Convert watts to amps for DC, 120V, and 240V circuits. Features complete conversion table from 37W to 10,000W with NEC breaker and copper wire gauge sizing.",
   path: "/watts-to-amps-calculator",
   ogDescription:
-    "Convert electrical power in Watts to current in Amperes across DC, AC single-phase, and balanced three-phase systems.",
+    "Convert watts to amps for DC, 120V, and 240V circuits. Features complete conversion table from 37W to 10,000W with NEC breaker and copper wire gauge sizing.",
 });
 
 export default function WattsToAmpsPage() {
@@ -52,6 +53,9 @@ export default function WattsToAmpsPage() {
       />
 
       <WattsToAmpsCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <WattsToAmpsGuideSection />
+      </div>
     </>
   );
 }
