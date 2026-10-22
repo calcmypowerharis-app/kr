@@ -31,6 +31,8 @@ import { FaqSection } from "@/components/calculators/FaqSection";
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
+import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import {
   ApplianceInput,
   calculateTotalElectricityUse,
@@ -270,14 +272,14 @@ export const ElectricityUseCalculator: React.FC = () => {
                 key={preset.id}
                 type="button"
                 onClick={() => handleApplyPreset(preset.id)}
-                className={`py-2 px-3 rounded-xl text-xs font-semibold transition text-left border ${
+                className={`py-2 px-3 rounded-xl text-xs font-semibold transition-all duration-150 text-left border ${
                   isActive
-                    ? "bg-blue-50 border-blue-500 text-blue-800 shadow-xs"
-                    : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300"
+                    ? "bg-blue-600 border-blue-600 text-white shadow-xs ring-2 ring-blue-600/20 scale-[1.01]"
+                    : "bg-slate-50 border-slate-200 text-slate-700 hover:bg-white hover:border-blue-400 hover:shadow-xs"
                 }`}
               >
                 <div className="font-bold truncate">{preset.name}</div>
-                <div className="text-[10px] text-slate-500 truncate mt-0.5">
+                <div className={`text-[10px] truncate mt-0.5 ${isActive ? "text-blue-100" : "text-slate-500"}`}>
                   {preset.appliances.length} items
                 </div>
               </button>
@@ -717,6 +719,13 @@ export const ElectricityUseCalculator: React.FC = () => {
             </>
           )}
         </button>
+
+        {/* Dynamic Matched Hardware Bar */}
+        <ResultHardwareMatchBar
+          calculatorSlug="electricity-use-calculator"
+          calculatedValue={calculation.totalMonthlyKwh}
+          className="-mx-6 -mb-6 md:-mx-7 md:-mb-7 mt-4"
+        />
       </div>
 
       {/* Energy Consumption Breakdown Card */}
@@ -812,59 +821,24 @@ export const ElectricityUseCalculator: React.FC = () => {
       </div>
 
       {/* Contextual Amazon Hardware Reference Card (Secondary) */}
-      <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3 text-xs">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
-            <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
-            <span>Energy Audit Tools</span>
-          </div>
-          <span className="text-[10px] text-slate-400">Amazon Associate</span>
-        </div>
-
-        <p className="text-slate-500 leading-normal">
-          Diagnostic instruments for measuring individual plug-load wattages and whole-house consumption:
-        </p>
-
-        <div className="space-y-2.5">
-          <a
-            href={getAmazonSearchUrl("plug in power meter electricity usage monitor")}
-            target="_blank"
-            rel={AMAZON_LINK_REL}
-            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-          >
-            <div>
-              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                Plug-In Electricity Usage Monitors
-              </div>
-              <div className="text-[11px] text-slate-500">
-                Measure real running watts, phantom vampire loads, and cumulative kWh per appliance
-              </div>
-            </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-          </a>
-
-          <a
-            href={getAmazonSearchUrl("smart home energy monitor panel")}
-            target="_blank"
-            rel={AMAZON_LINK_REL}
-            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-          >
-            <div>
-              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                Whole-Home Smart Energy Monitors
-              </div>
-              <div className="text-[11px] text-slate-500">
-                Real-time circuit-level panel monitoring for 120V/240V appliances and HVAC
-              </div>
-            </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-          </a>
-        </div>
-
-        <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
-          As an Amazon Associate, CalcMyPower earns from qualifying purchases.
-        </p>
-      </div>
+      <SidebarHardwareReference
+        title="Energy Monitoring Reference"
+        subtitle="Standard equipment categories for tracking appliance power draw and home circuits:"
+        items={[
+          {
+            title: "Plug-In Digital Watt & Power Meters",
+            brands: "P3 Kill A Watt / Baldr",
+            subtitle: "Measure real-time watts, cumulative kWh, and vampire phantom draw",
+            searchQuery: "plug in electricity usage monitor kill a watt power meter",
+          },
+          {
+            title: "Smart Electrical Panel Monitors (16 Clamps)",
+            brands: "Emporia Vue 3 / Sense",
+            subtitle: "CT sensor clamps tracking whole-home circuits and solar generation",
+            searchQuery: "smart home energy monitor electrical panel CT clamp sensors 16 circuit",
+          },
+        ]}
+      />
     </div>
   );
 

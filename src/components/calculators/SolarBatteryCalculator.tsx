@@ -22,6 +22,7 @@ import {
 import { InputField } from "@/components/ui/InputField";
 import { SelectField } from "@/components/ui/SelectField";
 import { ResultCard } from "@/components/ui/ResultCard";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
 import {
@@ -631,6 +632,12 @@ export const SolarBatteryCalculator: React.FC = () => {
                 subtext: chemistry === "lifepo4" ? "LiFePO4 Baseline" : chemistry === "lead_acid_agm" ? "Lead-Acid Baseline" : "Custom DoD",
               },
             ]}
+            hardwareMatchBar={
+              <ResultHardwareMatchBar
+                calculatorSlug="solar-battery-calculator"
+                calculatedValue={result.batteryBankAh}
+              />
+            }
           />
 
           {/* PV Replenishment Card (Clearly labeled as simplified planning estimate) */}

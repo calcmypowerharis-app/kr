@@ -18,6 +18,7 @@ import {
 import { InputField } from "@/components/ui/InputField";
 import { SelectField } from "@/components/ui/SelectField";
 import { ResultCard } from "@/components/ui/ResultCard";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
 import {
@@ -700,6 +701,12 @@ export const SolarChargeControllerCalculator: React.FC = () => {
                   ]
                 : []),
             ]}
+            hardwareMatchBar={
+              <ResultHardwareMatchBar
+                calculatorSlug="solar-charge-controller-calculator"
+                calculatedValue={result.isValid ? result.recommendedControllerRatingAmps : 0}
+              />
+            }
           />
 
           {/* Voltage Status Banner (If Tier 2 is active) */}

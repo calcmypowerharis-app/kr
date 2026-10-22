@@ -23,6 +23,8 @@ import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
+import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import {
   AlertCircle,
   ExternalLink,
@@ -277,6 +279,12 @@ export const WattsToAmpsCalculator: React.FC = () => {
               },
             ]}
             warnings={results.warnings}
+            hardwareMatchBar={
+              <ResultHardwareMatchBar
+                calculatorSlug="watts-to-amps-calculator"
+                calculatedValue={results.isValid ? results.currentAmps : 0}
+              />
+            }
           />
 
           {/* Sister Tool Callout */}
@@ -320,59 +328,24 @@ export const WattsToAmpsCalculator: React.FC = () => {
           </div>
 
           {/* Contextual Amazon Hardware Reference Card (Secondary) */}
-          <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
-                <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
-                <span>Diagnostic Gear Reference</span>
-              </div>
-              <span className="text-[10px] text-slate-600 font-medium">Amazon Associate</span>
-            </div>
-
-            <p className="text-xs text-slate-600 leading-normal">
-              Tools for measuring live circuit current and verifying branch-circuit loads:
-            </p>
-
-            <div className="space-y-2.5">
-              <a
-                href={getAmazonSearchUrl("digital clamp meter auto ranging")}
-                target="_blank"
-                rel={AMAZON_LINK_REL}
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-              >
-                <div>
-                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    Digital AC/DC Clamp Meters
-                  </div>
-                  <div className="text-[11px] text-slate-600">
-                    Non-invasive live amperage measurement without breaking circuits
-                  </div>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-blue-600 shrink-0 ml-2" />
-              </a>
-
-              <a
-                href={getAmazonSearchUrl("circuit breaker finder tool")}
-                target="_blank"
-                rel={AMAZON_LINK_REL}
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-              >
-                <div>
-                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    Digital Circuit Breaker Finders
-                  </div>
-                  <div className="text-[11px] text-slate-600">
-                    Trace branch circuits directly to panel overcurrent devices
-                  </div>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-blue-600 shrink-0 ml-2" />
-              </a>
-            </div>
-
-            <p className="text-[10px] text-slate-600 font-medium pt-1 border-t border-slate-200/70">
-              As an Amazon Associate, CalcMyPower earns from qualifying purchases.
-            </p>
-          </div>
+          <SidebarHardwareReference
+            title="Electrical Testing Tools"
+            subtitle="Equipment for measuring current draw and verifying branch-circuit loads:"
+            items={[
+              {
+                title: "Digital AC/DC Clamp Meters",
+                brands: "Klein Tools CL390 / Fluke",
+                subtitle: "Non-invasive live amperage measurement without breaking circuits",
+                searchQuery: "true rms digital clamp meter AC DC current inrush",
+              },
+              {
+                title: "Digital Circuit Breaker Finders",
+                brands: "Klein Tools ET310 / Sperry",
+                subtitle: "Trace branch circuits directly to panel overcurrent devices",
+                searchQuery: "circuit breaker finder tool digital receiver transmitter",
+              },
+            ]}
+          />
         </div>
       }
     >

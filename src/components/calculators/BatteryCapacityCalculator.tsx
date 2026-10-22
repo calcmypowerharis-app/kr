@@ -17,6 +17,7 @@ import {
 import { InputField } from "@/components/ui/InputField";
 import { SelectField } from "@/components/ui/SelectField";
 import { ResultCard } from "@/components/ui/ResultCard";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
 import { WorkedExampleSection, WorkedStep } from "@/components/calculators/WorkedExampleSection";
@@ -630,10 +631,10 @@ export const BatteryCapacityCalculator: React.FC = () => {
                         key={p.label}
                         type="button"
                         onClick={() => setSizeLoadWatts(p.w)}
-                        className={`text-[11px] px-2 py-1 rounded border transition ${
+                        className={`text-[11px] px-2.5 py-1 rounded-lg border transition-all duration-150 ${
                           sizeLoadWatts === p.w
-                            ? "bg-slate-900 text-white border-slate-900 font-semibold"
-                            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                            ? "bg-blue-600 text-white border-blue-600 font-bold shadow-xs ring-2 ring-blue-600/20 scale-[1.02]"
+                            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-blue-400"
                         }`}
                       >
                         {p.w}W
@@ -841,6 +842,12 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   },
                 ]}
                 warnings={evalResults.warnings}
+                hardwareMatchBar={
+                  <ResultHardwareMatchBar
+                    calculatorSlug="battery-capacity-calculator"
+                    calculatedValue={evalResults.isValid ? evalResults.bankCapacityAh : 0}
+                  />
+                }
               />
 
               {/* Wiring Summary Detail Card */}
@@ -904,6 +911,12 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   },
                 ]}
                 warnings={sizeResults.warnings}
+                hardwareMatchBar={
+                  <ResultHardwareMatchBar
+                    calculatorSlug="battery-capacity-calculator"
+                    calculatedValue={sizeResults.isValid ? sizeResults.requiredBankAh : 0}
+                  />
+                }
               />
 
               {/* Sizing Step Breakdown Card */}

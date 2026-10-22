@@ -18,6 +18,8 @@ import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
+import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import { ShoppingBag, ExternalLink, Zap, Info } from "lucide-react";
 
 interface PresetAppliance {
@@ -252,62 +254,33 @@ export const UpsCalculator: React.FC = () => {
             ]}
             warnings={results.warnings}
             batteryNote={`Calculated using ${results.usedEfficiencyPercent}% inverter efficiency.`}
+            hardwareMatchBar={
+              <ResultHardwareMatchBar
+                calculatorSlug="ups-battery-backup-calculator"
+                calculatedValue={loadWatts}
+              />
+            }
           />
 
-          {/* Contextual Amazon Hardware Recommendation Card (Secondary) */}
-          <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
-                <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
-                <span>Compatible Hardware Reference</span>
-              </div>
-              <span className="text-[10px] text-slate-400">Amazon Associate</span>
-            </div>
-
-            <p className="text-xs text-slate-500 leading-normal">
-              Search hardware categories matching your {batteryVoltage}V setup and {loadWatts}W continuous draw:
-            </p>
-
-            <div className="space-y-2.5">
-              <a
-                href={getAmazonSearchUrl(batterySearchRaw)}
-                target="_blank"
-                rel={AMAZON_LINK_REL}
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-              >
-                <div>
-                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    {batterySearchLabel}
-                  </div>
-                  <div className="text-[11px] text-slate-500">
-                    Compare deep-cycle replacement and backup batteries on Amazon
-                  </div>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-              </a>
-
-              <a
-                href={getAmazonSearchUrl(inverterSearchRaw)}
-                target="_blank"
-                rel={AMAZON_LINK_REL}
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-              >
-                <div>
-                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    {batteryVoltage}V Pure Sine Wave Inverters ({results.recommendedInverterWatts}W+)
-                  </div>
-                  <div className="text-[11px] text-slate-500">
-                    Low-THD DC-to-AC inverters sized with a 25% continuous planning margin
-                  </div>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-              </a>
-            </div>
-
-            <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
-              As an Amazon Associate, CalcMyPower earns from qualifying purchases.
-            </p>
-          </div>
+          {/* Compatible Hardware Reference (Amazon Associate) */}
+          <SidebarHardwareReference
+            title="Compatible Hardware Reference"
+            subtitle={`Search hardware categories matching your ${batteryVoltage}V setup and ${loadWatts}W continuous draw:`}
+            items={[
+              {
+                title: batterySearchLabel,
+                brands: "LiTime / Renogy / Redodo",
+                subtitle: "Compare deep-cycle replacement and backup batteries on Amazon",
+                searchQuery: batterySearchRaw,
+              },
+              {
+                title: `${batteryVoltage}V Pure Sine Wave Inverters (${results.recommendedInverterWatts}W+)`,
+                brands: "Victron Energy / Renogy",
+                subtitle: "Low-THD DC-to-AC inverters sized with a 25% continuous planning margin",
+                searchQuery: inverterSearchRaw,
+              },
+            ]}
+          />
         </div>
       }
     >
