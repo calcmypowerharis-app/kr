@@ -336,13 +336,13 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 title: "Digital AC/DC Clamp Meters",
                 brands: "Klein Tools CL390 / Fluke",
                 subtitle: "Non-invasive live amperage measurement without breaking circuits",
-                searchQuery: "true rms digital clamp meter AC DC current inrush",
+                searchQuery: "digital clamp meter True RMS",
               },
               {
                 title: "Digital Circuit Breaker Finders",
                 brands: "Klein Tools ET310 / Sperry",
                 subtitle: "Trace branch circuits directly to panel overcurrent devices",
-                searchQuery: "circuit breaker finder tool digital receiver transmitter",
+                searchQuery: "digital circuit breaker finder",
               },
             ]}
           />

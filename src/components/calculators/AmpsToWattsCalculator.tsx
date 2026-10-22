@@ -346,13 +346,13 @@ export const AmpsToWattsCalculator: React.FC = () => {
                 title: "True RMS AC/DC Clamp Meters",
                 brands: "Klein Tools CL390 / Fluke",
                 subtitle: "Accurately measure running current without disconnecting wiring",
-                searchQuery: "digital clamp meter true rms AC DC current",
+                searchQuery: "digital clamp meter True RMS",
               },
               {
                 title: "Plug-In Digital Power & Watt Meters",
                 brands: "P3 Kill A Watt / Baldr",
                 subtitle: "Monitor household plug loads in real-time Watts, Amps, and kWh",
-                searchQuery: "plug in power meter wattmeter kill a watt",
+                searchQuery: "kill a watt electricity monitor",
               },
             ]}
           />

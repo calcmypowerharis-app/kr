@@ -1160,25 +1160,25 @@ export const GeneratorSizeCalculator: React.FC = () => {
             title: "Dual-Fuel Inverter Generators (3,500W to 4,500W)",
             brands: "Westinghouse iGen4500DF / Champion",
             subtitle: "Clean power (<3% THD) for electronics; operates on gasoline or propane",
-            searchQuery: "dual fuel inverter generator 3500w 4500w westinghouse champion",
+            searchQuery: "dual fuel inverter generator 4500 watt",
           },
           {
             title: "Outdoor Power Inlet Boxes (30A / 50A)",
             brands: "Reliance Controls / Generac NEMA 3R",
             subtitle: "NEMA 3R weatherproof exterior connection for transfer cords",
-            searchQuery: "30 amp 50 amp generator power inlet box nema 3r reliance",
+            searchQuery: "generator power inlet box 30 amp nema 3r",
           },
           {
             title: "Manual Transfer Switch Kits",
             brands: "Reliance Controls / Square D",
             subtitle: "Break-before-make subpanels to isolate generator power from utility lines",
-            searchQuery: "manual generator transfer switch kit 30 amp reliance controls",
+            searchQuery: "manual generator transfer switch 30 amp",
           },
           {
             title: "4-Prong Generator Cords (L14-30P, 10 AWG)",
             brands: "Southwire / Iron Forge Pure Copper",
             subtitle: "Heavy-duty copper extension cords for 120V/240V 30-Amp generator outlets",
-            searchQuery: "10 awg l14-30p generator cord 4 prong pure copper",
+            searchQuery: "10 awg l14-30p generator cord",
           },
         ]}
       />
