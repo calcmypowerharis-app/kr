@@ -344,10 +344,10 @@ export function GeneratorFuelCalculator() {
               category: "Generators"
             },
             {
-              title: "How Much Gas Does a Generator Use Per Hour?",
+              title: "What Size Generator Do I Need for My House?",
               href: "/what-size-generator-do-i-need-for-my-house",
-              description: "Detailed fuel burn rates, tank runtimes, and operating costs across 2kW to 10kW generators.",
-              category: "Fuel Guide"
+              description: "Size whole-house and portable generators using running watts and motor surge ratings.",
+              category: "Sizing Guide"
             },
             {
               title: "Electricity Cost Calculator",
