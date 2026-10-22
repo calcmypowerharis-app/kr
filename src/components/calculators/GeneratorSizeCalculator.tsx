@@ -29,6 +29,8 @@ import { AssumptionsSection } from "./AssumptionsSection";
 import { DisclaimerSection } from "./DisclaimerSection";
 import { FaqSection } from "./FaqSection";
 import { RelatedCalculators } from "./RelatedCalculators";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
+import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   calculateGeneratorSize,
@@ -372,8 +374,8 @@ export const GeneratorSizeCalculator: React.FC = () => {
                 onClick={() => handleApplyPreset(p.id)}
                 className={`text-left p-3 rounded-xl border transition flex flex-col justify-between ${
                   isActive
-                    ? "border-blue-600 bg-blue-50/80 text-blue-950 ring-2 ring-blue-500/20 shadow-xs"
-                    : "border-slate-200 hover:border-slate-300 bg-slate-50/50 hover:bg-white text-slate-800"
+                    ? "border-blue-600 bg-blue-50/90 text-blue-950 ring-2 ring-blue-600/25 shadow-sm scale-[1.01]"
+                    : "border-slate-200 hover:border-blue-400 bg-slate-50/50 hover:bg-white text-slate-800 hover:shadow-xs"
                 }`}
               >
                 <div>
@@ -1016,6 +1018,12 @@ export const GeneratorSizeCalculator: React.FC = () => {
           Sized to support a <strong>{calculation.totalRunningWatts.toLocaleString()}W</strong> running load and absorb a{" "}
           <strong>{calculation.largestAdditionalStartingWatts.toLocaleString()}W</strong> motor surge with 25% planning headroom.
         </div>
+
+        {/* Dynamic Matched Hardware Bar */}
+        <ResultHardwareMatchBar
+          calculatorSlug="generator-size-calculator"
+          calculatedValue={calculation.planningCapacityWatts}
+        />
       </div>
 
       {/* Secondary Electrical Metrics Grid */}
@@ -1144,93 +1152,36 @@ export const GeneratorSizeCalculator: React.FC = () => {
       </div>
 
       {/* Contextual Amazon Hardware Section (Secondary) */}
-      <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3 text-xs">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
-            <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
-            <span>Generator Hardware Reference</span>
-          </div>
-          <span className="text-[10px] text-slate-400">Amazon Associate</span>
-        </div>
-
-        <p className="text-slate-500 leading-normal">
-          Standard equipment categories for portable backup power and safe transfer connection:
-        </p>
-
-        <div className="space-y-2.5">
-          <a
-            href={getAmazonSearchUrl("dual fuel inverter generator 3500w 4500w")}
-            target="_blank"
-            rel={AMAZON_LINK_REL}
-            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-          >
-            <div>
-              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                Dual-Fuel Inverter Generators (3,500W to 4,500W)
-              </div>
-              <div className="text-[11px] text-slate-500">
-                Clean power (&lt;3% THD) for electronics; operates on gasoline or propane
-              </div>
-            </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-          </a>
-
-          <a
-            href={getAmazonSearchUrl("30 amp 50 amp generator power inlet box nema 3r")}
-            target="_blank"
-            rel={AMAZON_LINK_REL}
-            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-          >
-            <div>
-              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                Outdoor Power Inlet Boxes (30A / 50A)
-              </div>
-              <div className="text-[11px] text-slate-500">
-                NEMA 3R weatherproof exterior connection for transfer cords
-              </div>
-            </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-          </a>
-
-          <a
-            href={getAmazonSearchUrl("manual generator transfer switch kit 30 amp")}
-            target="_blank"
-            rel={AMAZON_LINK_REL}
-            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-          >
-            <div>
-              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                Manual Transfer Switch Kits
-              </div>
-              <div className="text-[11px] text-slate-500">
-                Break-before-make subpanels to isolate generator power from utility lines
-              </div>
-            </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-          </a>
-
-          <a
-            href={getAmazonSearchUrl("10 awg l14-30p generator cord 4 prong")}
-            target="_blank"
-            rel={AMAZON_LINK_REL}
-            className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-          >
-            <div>
-              <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                4-Prong Generator Cords (L14-30P, 10 AWG)
-              </div>
-              <div className="text-[11px] text-slate-500">
-                Heavy-duty copper extension cords for 120V/240V 30-Amp generator outlets
-              </div>
-            </div>
-            <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-blue-600 shrink-0 ml-2" />
-          </a>
-        </div>
-
-        <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-200/70">
-          As an Amazon Associate, CalcMyPower earns from qualifying purchases.
-        </p>
-      </div>
+      <SidebarHardwareReference
+        title="Generator Hardware Reference"
+        subtitle="Standard equipment categories for portable backup power and safe transfer connection:"
+        items={[
+          {
+            title: "Dual-Fuel Inverter Generators (3,500W to 4,500W)",
+            brands: "Westinghouse iGen4500DF / Champion",
+            subtitle: "Clean power (<3% THD) for electronics; operates on gasoline or propane",
+            searchQuery: "dual fuel inverter generator 3500w 4500w westinghouse champion",
+          },
+          {
+            title: "Outdoor Power Inlet Boxes (30A / 50A)",
+            brands: "Reliance Controls / Generac NEMA 3R",
+            subtitle: "NEMA 3R weatherproof exterior connection for transfer cords",
+            searchQuery: "30 amp 50 amp generator power inlet box nema 3r reliance",
+          },
+          {
+            title: "Manual Transfer Switch Kits",
+            brands: "Reliance Controls / Square D",
+            subtitle: "Break-before-make subpanels to isolate generator power from utility lines",
+            searchQuery: "manual generator transfer switch kit 30 amp reliance controls",
+          },
+          {
+            title: "4-Prong Generator Cords (L14-30P, 10 AWG)",
+            brands: "Southwire / Iron Forge Pure Copper",
+            subtitle: "Heavy-duty copper extension cords for 120V/240V 30-Amp generator outlets",
+            searchQuery: "10 awg l14-30p generator cord 4 prong pure copper",
+          },
+        ]}
+      />
     </div>
   );
 

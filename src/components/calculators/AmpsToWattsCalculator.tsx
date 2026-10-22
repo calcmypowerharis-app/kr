@@ -23,6 +23,8 @@ import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
+import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import {
   AlertCircle,
   ExternalLink,
@@ -282,6 +284,12 @@ export const AmpsToWattsCalculator: React.FC = () => {
               },
             ]}
             warnings={results.warnings}
+            hardwareMatchBar={
+              <ResultHardwareMatchBar
+                calculatorSlug="amps-to-watts-calculator"
+                calculatedValue={typeof currentAmps === "number" ? currentAmps : Number(currentAmps) || 0}
+              />
+            }
           />
 
           {/* Sister Tool Callout */}
@@ -330,59 +338,24 @@ export const AmpsToWattsCalculator: React.FC = () => {
           </div>
 
           {/* Diagnostic Gear Reference (Amazon Associate) */}
-          <div className="bg-slate-50/60 rounded-2xl border border-slate-200/80 p-4 sm:p-5 space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600 uppercase tracking-wider">
-                <ShoppingBag className="w-3.5 h-3.5 text-slate-500" />
-                <span>Electrical Diagnostic Tools</span>
-              </div>
-              <span className="text-[10px] text-slate-600 font-medium">Amazon Associate</span>
-            </div>
-
-            <p className="text-xs text-slate-600 leading-normal">
-              Equipment for safely measuring live electrical current and line voltage:
-            </p>
-
-            <div className="space-y-2.5">
-              <a
-                href={getAmazonSearchUrl("digital clamp meter true rms")}
-                target="_blank"
-                rel={AMAZON_LINK_REL}
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-              >
-                <div>
-                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    True RMS AC/DC Clamp Meters
-                  </div>
-                  <div className="text-[11px] text-slate-600">
-                    Accurately measure running current without disconnecting wiring
-                  </div>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-blue-600 shrink-0 ml-2" />
-              </a>
-
-              <a
-                href={getAmazonSearchUrl("plug in power meter wattmeter")}
-                target="_blank"
-                rel={AMAZON_LINK_REL}
-                className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
-              >
-                <div>
-                  <div className="font-semibold text-slate-900 group-hover:text-blue-600 transition">
-                    Plug-In Digital Power &amp; Watt Meters
-                  </div>
-                  <div className="text-[11px] text-slate-600">
-                    Monitor household plug loads in real-time Watts, Amps, and kWh
-                  </div>
-                </div>
-                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-blue-600 shrink-0 ml-2" />
-              </a>
-            </div>
-
-            <p className="text-[10px] text-slate-600 font-medium pt-1 border-t border-slate-200/70">
-              As an Amazon Associate, CalcMyPower earns from qualifying purchases.
-            </p>
-          </div>
+          <SidebarHardwareReference
+            title="Electrical Diagnostic Tools"
+            subtitle="Equipment for safely measuring live electrical current and line voltage:"
+            items={[
+              {
+                title: "True RMS AC/DC Clamp Meters",
+                brands: "Klein Tools CL390 / Fluke",
+                subtitle: "Accurately measure running current without disconnecting wiring",
+                searchQuery: "digital clamp meter true rms AC DC current",
+              },
+              {
+                title: "Plug-In Digital Power & Watt Meters",
+                brands: "P3 Kill A Watt / Baldr",
+                subtitle: "Monitor household plug loads in real-time Watts, Amps, and kWh",
+                searchQuery: "plug in power meter wattmeter kill a watt",
+              },
+            ]}
+          />
         </div>
       }
     >

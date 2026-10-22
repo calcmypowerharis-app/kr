@@ -100,10 +100,21 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
           </div>
 
           {inputSection}
+
+          {/* Mobile Jump Button: Fast navigation to result & matched gear */}
+          <div className="lg:hidden pt-3 border-t border-slate-100">
+            <a
+              href="#calculator-result"
+              className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-xs transition"
+            >
+              <span>View Calculated Result &amp; Matched Gear</span>
+              <span className="text-amber-400 font-bold">&darr;</span>
+            </a>
+          </div>
         </div>
 
         {/* Right Column: Output / Result Card (5 cols on lg) */}
-        <div className="lg:col-span-5 sticky top-6 space-y-6">
+        <div id="calculator-result" className="lg:col-span-5 sticky top-6 space-y-6 scroll-mt-20">
           {resultSection}
         </div>
       </div>

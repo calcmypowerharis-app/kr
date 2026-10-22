@@ -19,6 +19,7 @@ import {
 import { InputField } from "@/components/ui/InputField";
 import { SelectField } from "@/components/ui/SelectField";
 import { ResultCard } from "@/components/ui/ResultCard";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
 import {
@@ -466,6 +467,12 @@ export const VoltageDropCalculator: React.FC = () => {
                 subtext: "Per 1,000 ft @ 75°C stranded",
               },
             ]}
+            hardwareMatchBar={
+              <ResultHardwareMatchBar
+                calculatorSlug="voltage-drop-calculator"
+                calculatedValue={currentAmps}
+              />
+            }
           />
 
           {/* Threshold Comparison Status Badge */}

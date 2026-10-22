@@ -10,6 +10,7 @@ import {
 } from "@/lib/calculators/electricity-cost";
 import { InputField } from "@/components/ui/InputField";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
+import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
 import { WorkedExampleSection } from "@/components/calculators/WorkedExampleSection";
 import { AssumptionsSection } from "@/components/calculators/AssumptionsSection";
@@ -343,6 +344,13 @@ export const ElectricityCostCalculator: React.FC = () => {
             ${results.annualEstimatedCost.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / yr
           </span>
         </div>
+
+        {/* Dynamic Matched Hardware Bar */}
+        <ResultHardwareMatchBar
+          calculatorSlug="electricity-cost-calculator"
+          calculatedValue={results.totalEstimatedBill}
+          className="-mx-6 -mb-6 md:-mx-7 md:-mb-7 mt-4"
+        />
       </div>
 
       {/* Visual Breakdown Stacked Bar */}

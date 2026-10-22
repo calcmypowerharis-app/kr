@@ -16,6 +16,7 @@ interface ResultCardProps {
   warnings?: string[];
   batteryNote?: string;
   icon?: "clock" | "zap" | "plug";
+  hardwareMatchBar?: React.ReactNode;
 }
 
 export const ResultCard: React.FC<ResultCardProps> = ({
@@ -26,6 +27,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
   warnings = [],
   batteryNote,
   icon = "clock",
+  hardwareMatchBar,
 }) => {
   const IconComponent = icon === "zap" ? Zap : icon === "plug" ? Plug : Clock;
 
@@ -90,6 +92,8 @@ export const ResultCard: React.FC<ResultCardProps> = ({
           <span>{batteryNote}</span>
         </div>
       )}
+
+      {hardwareMatchBar}
     </div>
   );
 };
