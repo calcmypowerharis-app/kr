@@ -557,7 +557,14 @@ export const AmpsToWattsCalculator: React.FC = () => {
               >
                 Watts to Amps Electrical Calculator
               </Link>{" "}
-              to determine circuit amperage from equipment wattage.
+              to determine circuit amperage from equipment wattage, or check our guide on{" "}
+              <Link
+                href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"
+                className="text-blue-600 hover:text-blue-800 underline font-medium"
+              >
+                how many watts a 15-amp or 20-amp circuit can handle
+              </Link>
+              .
             </p>
           </div>
 
@@ -777,6 +784,12 @@ export const AmpsToWattsCalculator: React.FC = () => {
             description: "Calculate circuit voltage drop, percentage loss, and receiving terminal voltage across DC and AC wire runs.",
             href: "/voltage-drop-calculator",
             category: "Electrical",
+          },
+          {
+            title: "15-Amp vs 20-Amp Circuit Wattage Guide",
+            description: "Learn safe breaker capacity, the NEC 80% continuous load rule, and 14 AWG vs 12 AWG wiring.",
+            href: "/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
+            category: "Circuit Sizing",
           },
           {
             title: "Generator Size Calculator",

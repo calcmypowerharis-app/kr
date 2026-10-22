@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { ElectricityCostCalculator } from "@/components/calculators/ElectricityCostCalculator";
+import { ElectricityBillGuideSection } from "@/components/content/ElectricityBillGuideSection";
 import { ELECTRICITY_COST_FAQS } from "@/lib/calculators/electricity-cost";
 import {
   generateWebApplicationSchema,
@@ -60,6 +61,9 @@ export default function ElectricityCostCalculatorPage() {
       />
 
       <ElectricityCostCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <ElectricityBillGuideSection />
+      </div>
     </>
   );
 }

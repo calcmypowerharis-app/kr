@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { GeneratorFuelCalculator } from "@/components/calculators/GeneratorFuelCalculator";
+import { GeneratorFuelGuideSection } from "@/components/content/GeneratorFuelGuideSection";
 import {
   generateWebApplicationSchema,
   generateBreadcrumbSchema,
@@ -53,6 +54,9 @@ export default function GeneratorFuelCalculatorPage() {
       />
 
       <GeneratorFuelCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <GeneratorFuelGuideSection />
+      </div>
     </>
   );
 }

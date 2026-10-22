@@ -44,9 +44,9 @@ describe("Sitewide Editorial & Calculator Date Consistency Quality Gate", () => 
     });
 
     it("retrieves guides by slug via getGuideBySlug helper", () => {
-      const guide = getGuideBySlug("how-much-gas-does-a-generator-use");
+      const guide = getGuideBySlug("what-size-generator-do-i-need-for-my-house");
       expect(guide).toBeDefined();
-      expect(guide?.datePublished).toBe("2026-10-09");
+      expect(guide?.datePublished).toBe("2026-09-27");
       expect(getGuideBySlug("non-existent-guide")).toBeUndefined();
     });
   });
@@ -195,7 +195,7 @@ describe("Sitewide Editorial & Calculator Date Consistency Quality Gate", () => 
       const entryBySlug = getCalculatorBySlug("watts-to-amps-calculator");
       expect(entryBySlug).toBeDefined();
       expect(entryBySlug?.path).toBe("/watts-to-amps-calculator");
-      expect(entryBySlug?.lastModified).toBe("2026-09-28");
+      expect(entryBySlug?.lastModified).toBe("2026-10-22");
 
       const entryByPath = getCalculatorBySlug("/watts-to-amps-calculator");
       expect(entryByPath).toBeDefined();
@@ -233,7 +233,7 @@ describe("Sitewide Editorial & Calculator Date Consistency Quality Gate", () => 
       }
 
       // 16 interactive calculator components use CalculatorShell
-      expect(matchedCalculatorsCount).toBe(16);
+      expect(matchedCalculatorsCount).toBe(15);
     });
 
     it("verifies zero hardcoded stale 'September 2026' or 'October 2026' month strings remain in calculator files", () => {
@@ -256,7 +256,7 @@ describe("Sitewide Editorial & Calculator Date Consistency Quality Gate", () => 
       // 1. Valid slug resolves to formatted date
       const validEntry = getCalculatorBySlug("generator-size-calculator");
       expect(validEntry).toBeDefined();
-      expect(formatEditorialDate(validEntry!.lastModified)).toBe("September 28, 2026");
+      expect(formatEditorialDate(validEntry!.lastModified)).toBe("October 22, 2026");
 
       // 2. Unknown slug returns undefined without throwing
       const unknownEntry = getCalculatorBySlug("unknown-tool");

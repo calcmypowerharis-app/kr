@@ -1591,14 +1591,14 @@ export const GeneratorSizeCalculator: React.FC = () => {
               title: "Generator Wattage Chart & Appliance Reference",
               description:
                 "Look up running and starting surge watts for 35+ appliances with real-time outage demand estimation.",
-              href: "/generator-wattage-chart",
+              href: "/generator-fuel-consumption-calculator",
               category: "Appliance Reference",
             },
             {
               title: "Generator Amperage Chart & Electrical Calculator",
               description:
                 "Convert generator Watts to Amps at 120V and 240V split-phase with 80% continuous operating limits.",
-              href: "/generator-amperage-chart-calculator",
+              href: "/watts-to-amps-calculator",
               category: "Electrical Sizing",
             },
             {
@@ -1609,10 +1609,10 @@ export const GeneratorSizeCalculator: React.FC = () => {
               category: "Sizing Guide",
             },
             {
-              title: "Continuous Power Generators Explained",
+              title: "Refrigerator Generator Sizing Guide",
               description:
                 "Understand ISO 8528 continuous ratings (COP vs PRP vs ESP), 1800 RPM engines, and wet stacking prevention.",
-              href: "/continuous-power-generators",
+              href: "/what-size-generator-to-run-a-refrigerator",
               category: "Industrial Power",
             },
             {

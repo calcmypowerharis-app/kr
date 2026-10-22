@@ -114,10 +114,10 @@ export const Header: React.FC = () => {
               <ChevronRight className="w-4 h-4 text-slate-400" />
             </Link>
             <Link
-              href="/generator-amperage-chart-calculator"
+              href="/battery-capacity-calculator"
               className="flex items-center justify-between p-2.5 rounded-xl hover:bg-slate-50 transition text-xs sm:text-sm font-semibold text-slate-800"
             >
-              <span>Generator Amperage Chart</span>
+              <span>Battery Capacity Calculator</span>
               <ChevronRight className="w-4 h-4 text-slate-400" />
             </Link>
             <Link

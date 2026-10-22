@@ -954,7 +954,7 @@ export default function BatteryAmpHoursExplainedPage() {
                   <p className="text-amber-800 leading-relaxed">
                     Total stored energy is identical across both setups, but operating voltages and inverter requirements are completely different. Learn step-by-step connection formulas and busbar balancing rules in our complete guide to{" "}
                     <Link
-                      href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                      href="/battery-capacity-calculator"
                       className="font-medium text-amber-950 underline underline-offset-2 hover:text-amber-800"
                     >
                       how to calculate amp-hours of a battery bank

@@ -6,120 +6,32 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-slate-900 text-slate-400 border-t border-slate-800 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Info */}
-          <div className="md:col-span-2 space-y-4">
+          <div className="space-y-4">
             <div className="flex items-center gap-2 text-white font-black text-lg">
               <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white">
                 <Zap className="w-4 h-4 fill-current" />
               </div>
               <span>CalcMyPower.com</span>
             </div>
-            <p className="text-xs md:text-sm text-slate-400 leading-relaxed max-w-md">
-              Practical power, battery backup, generator, and electrical calculators for US residential, RV, and off-grid systems.
+            <p className="text-xs md:text-sm text-slate-400 leading-relaxed">
+              High-utility electrical, battery backup, solar PV, and generator sizing calculators for US residential, RV, and off-grid power systems.
             </p>
           </div>
 
-          {/* Core Calculators */}
+          {/* Top Core Calculators */}
           <div>
             <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
-              Calculators
+              Top Calculators
             </h3>
             <ul className="space-y-2 text-xs">
-              <li>
-                <Link
-                  href="/generator-fuel-consumption-calculator"
-                  className="hover:text-white transition"
-                >
-                  Generator Fuel Calculator
-                </Link>
-              </li>
               <li>
                 <Link
                   href="/generator-size-calculator"
                   className="hover:text-white transition"
                 >
                   Generator Size Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/ups-battery-backup-calculator"
-                  className="hover:text-white transition"
-                >
-                  UPS Backup Run-Time
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/battery-capacity-calculator"
-                  className="hover:text-white transition"
-                >
-                  Battery Capacity Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/watts-to-amps-calculator"
-                  className="hover:text-white transition"
-                >
-                  Watts to Amps Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/amps-to-watts-calculator"
-                  className="hover:text-white transition"
-                >
-                  Amps to Watts Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solar-panel-tilt-calculator"
-                  className="hover:text-white transition"
-                >
-                  Solar Panel Tilt Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solar-battery-calculator"
-                  className="hover:text-white transition"
-                >
-                  Solar Battery Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solar-charge-controller-calculator"
-                  className="hover:text-white transition"
-                >
-                  Solar Charge Controller Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/voltage-drop-calculator"
-                  className="hover:text-white transition"
-                >
-                  Voltage Drop Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/solar-system-size-calculator"
-                  className="hover:text-white transition"
-                >
-                  Solar System Size Calculator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/three-phase-power-calculator"
-                  className="hover:text-white transition"
-                >
-                  Three Phase Power Calculator
                 </Link>
               </li>
               <li>
@@ -132,22 +44,6 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/generator-amperage-chart-calculator"
-                  className="hover:text-white transition"
-                >
-                  Generator Amperage Chart
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/generator-wattage-chart"
-                  className="hover:text-white transition"
-                >
-                  Generator Wattage Chart
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/electricity-cost-calculator"
                   className="hover:text-white transition"
                 >
@@ -156,26 +52,80 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/inverter-size-calculator"
+                  href="/battery-capacity-calculator"
                   className="hover:text-white transition"
                 >
-                  Inverter Size Calculator
+                  Battery Capacity Calculator
                 </Link>
               </li>
               <li>
-                <Link href="/calculators" className="hover:text-white transition">
-                  All Calculators Directory
+                <Link
+                  href="/ups-battery-backup-calculator"
+                  className="hover:text-white transition"
+                >
+                  UPS Backup Runtime
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/solar-system-size-calculator"
+                  className="hover:text-white transition"
+                >
+                  Solar System Size Calculator
+                </Link>
+              </li>
+              <li className="pt-1">
+                <Link
+                  href="/calculators"
+                  className="text-blue-400 font-semibold hover:text-blue-300 transition"
+                >
+                  View All 16 Calculators &rarr;
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Sizing Guides */}
+          {/* Core Power Clusters */}
           <div>
             <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
-              Sizing Guides
+              Power Clusters
             </h3>
             <ul className="space-y-2 text-xs">
+              <li>
+                <Link
+                  href="/calculators#generators"
+                  className="hover:text-white transition"
+                >
+                  Generator Sizing &amp; Outages
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/calculators#solar"
+                  className="hover:text-white transition"
+                >
+                  Solar PV &amp; Array Sizing
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/calculators#ups-battery"
+                  className="hover:text-white transition"
+                >
+                  UPS &amp; Battery Bank Storage
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/calculators#electricity"
+                  className="hover:text-white transition"
+                >
+                  Electrical Circuits &amp; Costs
+                </Link>
+              </li>
+              <li className="pt-2 text-[11px] text-slate-500 font-semibold uppercase tracking-wider">
+                Featured Guides
+              </li>
               <li>
                 <Link
                   href="/what-size-generator-do-i-need-for-my-house"
@@ -186,144 +136,16 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <Link
-                  href="/what-size-generator-to-run-a-refrigerator"
-                  className="hover:text-white transition"
-                >
-                  Generator Size for a Refrigerator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/what-does-ah-mean-on-a-battery"
-                  className="hover:text-white transition"
-                >
-                  Battery Amp-Hours (Ah) Explained
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/what-is-a-watt-hour"
-                  className="hover:text-white transition"
-                >
-                  Watt-Hours (Wh) Explained
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-long-will-a-100ah-battery-last"
-                  className="hover:text-white transition"
-                >
-                  100Ah Battery Runtime Guide
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/solar-panels-series-vs-parallel"
                   className="hover:text-white transition"
                 >
-                  Solar Panels Series vs Parallel Guide
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-many-solar-panels-do-i-need"
-                  className="hover:text-white transition"
-                >
-                  How Many Solar Panels Do I Need?
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-much-energy-does-a-solar-panel-produce"
-                  className="hover:text-white transition"
-                >
-                  How Much Energy Does a Solar Panel Produce?
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-to-calculate-electricity-usage"
-                  className="hover:text-white transition"
-                >
-                  How to Calculate Electricity Usage
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-to-calculate-watts-for-a-generator"
-                  className="hover:text-white transition"
-                >
-                  How to Calculate Watts for a Generator
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/continuous-power-generators"
-                  className="hover:text-white transition"
-                >
-                  Continuous Power Generators Guide
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-to-calculate-electricity-bill"
-                  className="hover:text-white transition"
-                >
-                  How to Calculate Electricity Bill
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-to-size-a-solar-charge-controller"
-                  className="hover:text-white transition"
-                >
-                  How to Size a Solar Charge Controller
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-many-amp-hours-do-i-need"
-                  className="hover:text-white transition"
-                >
-                  How Many Amp Hours Do I Need?
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-to-calculate-amp-hours-of-a-battery-bank"
-                  className="hover:text-white transition"
-                >
-                  How to Calculate Battery Bank Amp Hours
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-much-gas-does-a-generator-use"
-                  className="hover:text-white transition"
-                >
-                  How Much Gas Does a Generator Use?
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
-                  className="hover:text-white transition"
-                >
-                  Solar Battery Charge Time Guide
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"
-                  className="hover:text-white transition"
-                >
-                  15-Amp vs 20-Amp Circuit Wattage Guide
+                  Solar Series vs Parallel Guide
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Legal & Standards */}
+          {/* Trust & Standards */}
           <div>
             <h3 className="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
               Trust &amp; Standards
@@ -352,10 +174,10 @@ export const Footer: React.FC = () => {
               <li className="pt-2 text-[11px] text-slate-500 font-semibold uppercase tracking-wider">
                 Engineering Baselines
               </li>
-              <li>National Electrical Code (NEC)</li>
+              <li>National Electrical Code (NEC NFPA 70)</li>
               <li>IEEE Battery Standard 485</li>
               <li>UL 1741 Inverter Standard</li>
-              <li>NREL PVWatts Guidelines</li>
+              <li>NREL PVWatts Sizing Models</li>
             </ul>
           </div>
         </div>
@@ -371,20 +193,20 @@ export const Footer: React.FC = () => {
             Calculations provided on this website are for preliminary estimation and educational purposes only. Always verify critical power designs with a licensed electrician or professional electrical engineer in accordance with local building codes.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-between pt-4 text-slate-400 text-[11px] border-t border-slate-800">
-            <span>© {new Date().getFullYear()} CalcMyPower. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} CalcMyPower. All rights reserved.</span>
             <div className="flex flex-wrap gap-3 mt-2 sm:mt-0">
               <Link href="/about" className="hover:text-white transition">
                 About
               </Link>
-              <span>•</span>
+              <span>&bull;</span>
               <Link href="/contact" className="hover:text-white transition">
                 Contact
               </Link>
-              <span>•</span>
+              <span>&bull;</span>
               <Link href="/privacy" className="hover:text-white transition">
                 Privacy Policy
               </Link>
-              <span>•</span>
+              <span>&bull;</span>
               <Link href="/terms" className="hover:text-white transition">
                 Terms of Service
               </Link>

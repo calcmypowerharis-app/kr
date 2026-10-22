@@ -251,7 +251,7 @@ export function GeneratorFuelCalculator() {
               <p className="text-blue-800 leading-relaxed">
                 Review hourly consumption rates and fuel storage rules for 2000W to 12000W generators in our companion guide on{" "}
                 <Link
-                  href="/how-much-gas-does-a-generator-use"
+                  href="/what-size-generator-do-i-need-for-my-house"
                   className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
                   how much gas a generator uses per hour
@@ -345,7 +345,7 @@ export function GeneratorFuelCalculator() {
             },
             {
               title: "How Much Gas Does a Generator Use Per Hour?",
-              href: "/how-much-gas-does-a-generator-use",
+              href: "/what-size-generator-do-i-need-for-my-house",
               description: "Detailed fuel burn rates, tank runtimes, and operating costs across 2kW to 10kW generators.",
               category: "Fuel Guide"
             },

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { SolarChargeControllerCalculator } from "@/components/calculators/SolarChargeControllerCalculator";
+import { SolarChargeControllerGuideSection } from "@/components/content/SolarChargeControllerGuideSection";
 import { SOLAR_CHARGE_CONTROLLER_FAQS } from "@/lib/calculators/solar-charge-controller";
 import {
   generateWebApplicationSchema,
@@ -52,6 +53,9 @@ export default function SolarChargeControllerPage() {
       />
 
       <SolarChargeControllerCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <SolarChargeControllerGuideSection />
+      </div>
     </>
   );
 }

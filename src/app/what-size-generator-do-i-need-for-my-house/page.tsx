@@ -28,6 +28,7 @@ import {
   GENERATOR_SCENARIO_PRESETS,
 } from "@/lib/calculators/generator-size";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
+import { ContinuousPowerGuideSection } from "@/components/content/ContinuousPowerGuideSection";
 
 export const metadata: Metadata = {
   title: "What Size Generator Do I Need for My House? Sizing Guide",
@@ -1067,6 +1068,9 @@ export default function GeneratorSizingGuidePage() {
           </p>
         </div>
 
+        {/* Section: Continuous Power Rating Comparison */}
+        <ContinuousPowerGuideSection />
+
         {/* Section: FAQ */}
         <section className="space-y-6 border-t border-slate-200 pt-8">
           <div>
@@ -1209,7 +1213,7 @@ export default function GeneratorSizingGuidePage() {
         {/* Guide Cross-Link */}
         <p className="pt-4 border-t border-slate-200 text-slate-600 text-sm">
           For more information about ongoing fuel costs and calculations, check out our guide on{" "}
-          <Link href="/how-much-gas-does-a-generator-use" className="text-blue-600 hover:underline font-semibold">
+          <Link href="/generator-fuel-consumption-calculator" className="text-blue-600 hover:underline font-semibold">
             How Much Gas Does a Generator Use Per Hour?
           </Link>
         </p>

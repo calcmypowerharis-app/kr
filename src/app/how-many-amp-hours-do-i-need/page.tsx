@@ -689,7 +689,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     If you are combining multiple 12V or 24V units, follow our guide on{" "}
                     <Link
-                      href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                      href="/battery-capacity-calculator"
                       className="text-blue-700 hover:text-blue-900 font-medium underline underline-offset-2"
                     >
                       how to calculate amp-hours of a battery bank

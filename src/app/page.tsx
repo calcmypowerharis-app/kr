@@ -640,11 +640,11 @@ export default function HomePage() {
                 </Link>
                 <div className="mt-4 pt-4 border-t border-slate-100">
                   <Link
-                    href="/how-much-gas-does-a-generator-use"
+                    href="/generator-fuel-consumption-calculator"
                     className="text-xs font-semibold text-slate-600 hover:text-indigo-600 inline-flex items-center gap-1"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
-                    <span>How Much Gas Does a Generator Use?</span>
+                    <span>Generator Fuel Consumption Guide</span>
                   </Link>
                 </div>
             </div>
@@ -815,9 +815,9 @@ export default function HomePage() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/how-many-solar-panels-do-i-need" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
+                      <Link href="/solar-system-size-calculator" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
-                        <span>How Many Panels Do I Need?</span>
+                        <span>Solar System Sizing & Panels</span>
                       </Link>
                     </li>
                     <li>
@@ -827,9 +827,9 @@ export default function HomePage() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/how-to-size-a-solar-charge-controller" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
+                      <Link href="/solar-charge-controller-calculator" className="text-slate-600 hover:text-amber-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
-                        <span>Sizing Charge Controllers</span>
+                        <span>Charge Controller Sizing</span>
                       </Link>
                     </li>
                   </ul>
@@ -878,13 +878,13 @@ export default function HomePage() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/generator-amperage-chart-calculator" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
+                      <Link href="/generator-size-calculator" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
                         <span>Generator Amperage Chart</span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/generator-wattage-chart" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
+                      <Link href="/generator-size-calculator" className="text-slate-700 hover:text-blue-600 transition flex items-center gap-1.5">
                         <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0"></span>
                         <span>Generator Wattage Chart</span>
                       </Link>
@@ -910,19 +910,19 @@ export default function HomePage() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/how-much-gas-does-a-generator-use" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                      <Link href="/generator-fuel-consumption-calculator" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
                         <span>Gas Usage (Gal/Hr) Guide</span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/how-to-calculate-watts-for-a-generator" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                      <Link href="/generator-size-calculator" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
                         <span>Running vs Starting Watts</span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/continuous-power-generators" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
+                      <Link href="/what-size-generator-do-i-need-for-my-house" className="text-slate-600 hover:text-blue-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
                         <span>Continuous Power Generators</span>
                       </Link>
@@ -1005,7 +1005,7 @@ export default function HomePage() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/how-to-calculate-amp-hours-of-a-battery-bank" className="text-slate-600 hover:text-emerald-600 transition flex items-center gap-1.5">
+                      <Link href="/battery-capacity-calculator" className="text-slate-600 hover:text-emerald-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
                         <span>Bank Amp-Hours (Series/Parallel)</span>
                       </Link>
@@ -1094,13 +1094,13 @@ export default function HomePage() {
                       </Link>
                     </li>
                     <li>
-                      <Link href="/how-to-calculate-electricity-usage" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
+                      <Link href="/electricity-use-calculator" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
                         <span>Calculate Electricity Usage</span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/how-to-calculate-electricity-bill" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
+                      <Link href="/electricity-cost-calculator" className="text-slate-600 hover:text-indigo-600 transition flex items-center gap-1.5">
                         <span className="text-slate-400">•</span>
                         <span>Calculate Electric Utility Bill</span>
                       </Link>
@@ -1220,7 +1220,7 @@ export default function HomePage() {
                   </span>
                   <h3 className="text-base font-bold text-slate-900 leading-snug">
                     <Link
-                      href="/how-to-size-a-solar-charge-controller"
+                      href="/solar-charge-controller-calculator"
                       className="hover:text-indigo-600 transition"
                     >
                       How to Size a Solar Charge Controller (MPPT vs PWM)
@@ -1232,7 +1232,7 @@ export default function HomePage() {
                 </div>
               </div>
               <Link
-                href="/how-to-size-a-solar-charge-controller"
+                href="/solar-charge-controller-calculator"
                 className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 pt-2 border-t border-slate-100"
               >
                 <span>Read Controller Guide</span>

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { GeneratorSizeCalculator } from "@/components/calculators/GeneratorSizeCalculator";
+import { GeneratorSizingGuideAndChartsSection } from "@/components/content/GeneratorSizingGuideAndChartsSection";
 import {
   generateWebApplicationSchema,
   generateBreadcrumbSchema,
@@ -77,6 +78,9 @@ export default function GeneratorSizePage() {
       />
 
       <GeneratorSizeCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <GeneratorSizingGuideAndChartsSection />
+      </div>
     </>
   );
 }

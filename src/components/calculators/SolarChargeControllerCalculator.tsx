@@ -59,10 +59,10 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
-    title: "How to Size a Solar Charge Controller",
+    title: "Solar Panels Series vs Parallel Guide",
     description:
       "Complete MPPT vs PWM sizing guide covering cold-weather Voc calculations, battery voltage matching, and overpaneling.",
-    href: "/how-to-size-a-solar-charge-controller",
+    href: "/solar-panels-series-vs-parallel",
     category: "Solar Engineering Guide",
   },
   {
@@ -760,7 +760,7 @@ export const SolarChargeControllerCalculator: React.FC = () => {
               <p className="text-blue-800 leading-relaxed">
                 Learn how series stringing, cold-weather voltage spikes, and overpaneling limits affect controller choice in our complete{" "}
                 <Link
-                  href="/how-to-size-a-solar-charge-controller"
+                  href="/solar-panels-series-vs-parallel"
                   className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
                   Solar Charge Controller Sizing Guide

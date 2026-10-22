@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { BatteryCapacityCalculator } from "@/components/calculators/BatteryCapacityCalculator";
+import { BatteryBankWiringGuideSection } from "@/components/content/BatteryBankWiringGuideSection";
 import { BATTERY_CAPACITY_FAQS } from "@/lib/calculators/battery-capacity";
 import {
   generateWebApplicationSchema,
@@ -52,6 +53,9 @@ export default function BatteryCapacityPage() {
       />
 
       <BatteryCapacityCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <BatteryBankWiringGuideSection />
+      </div>
     </>
   );
 }
