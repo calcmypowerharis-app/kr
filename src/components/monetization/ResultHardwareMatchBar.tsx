@@ -26,27 +26,27 @@ export function getMatchRecommendation(
         return {
           label: "Matched for your load: 2,200W-2,500W Quiet Inverter Generators (Westinghouse / Champion)",
           buttonText: "View Matched Generators on Amazon",
-          searchQuery: "quiet inverter generator 2200 watt 2500 watt westinghouse champion",
+          searchQuery: "2500 watt inverter generator dual fuel",
         };
       }
       if (val <= 5500) {
         return {
           label: "Matched for your load: 3,500W-5,500W Dual-Fuel Inverter Generators + 30A Cord",
           buttonText: "View 3.5kW-5.5kW Generators",
-          searchQuery: "dual fuel inverter generator 3500 watt 5500 watt 30A",
+          searchQuery: "dual fuel inverter generator 4500 watt",
         };
       }
       if (val <= 9500) {
         return {
           label: "Matched for your load: 7,500W-9,500W Home Backup Dual-Fuel Generators + 50A Inlet",
           buttonText: "View Home Backup Generators",
-          searchQuery: "dual fuel generator 7500 watt 9500 watt electric start 50A",
+          searchQuery: "dual fuel generator 7500 watt 50A",
         };
       }
       return {
         label: "Matched for your load: 12kW-24kW Whole-House Standby Systems & Soft-Start Kits",
         buttonText: "View Standby Systems",
-        searchQuery: "whole house standby generator 12kw 20kw soft start kit",
+        searchQuery: "whole house standby generator 20kw",
       };
     }
 
@@ -56,20 +56,20 @@ export function getMatchRecommendation(
         return {
           label: "Matched for your bank: LiTime / Renogy 12V 100Ah LiFePO4 Deep-Cycle Battery (Built-in BMS)",
           buttonText: "View 12V 100Ah Batteries",
-          searchQuery: "12V 100Ah LiFePO4 battery built in BMS deep cycle lithium LiTime Renogy",
+          searchQuery: "12V 100Ah LiFePO4 battery",
         };
       }
       if (val <= 300) {
         return {
           label: "Matched for your bank: LiTime / Redodo 12V 200Ah Plus LiFePO4 Lithium Battery",
           buttonText: "View 200Ah LiFePO4 Batteries",
-          searchQuery: "12V 200Ah LiFePO4 battery deep cycle lithium built in BMS",
+          searchQuery: "12V 200Ah LiFePO4 battery",
         };
       }
       return {
         label: "Matched for your bank: 48V 100Ah Server Rack LiFePO4 Battery Systems (EG4 / SOK)",
         buttonText: "View 48V Server Rack Batteries",
-        searchQuery: "48V 100Ah server rack battery LiFePO4 lithium bank",
+        searchQuery: "48V 100Ah server rack battery LiFePO4",
       };
     }
 
@@ -77,7 +77,7 @@ export function getMatchRecommendation(
       return {
         label: "Matched backup hardware: CyberPower CP1500PFCLCD / APC 1500VA Pure Sine Wave UPS",
         buttonText: "View 1500VA UPS on Amazon",
-        searchQuery: "1500VA pure sine wave UPS battery backup AVR surge protector CyberPower APC",
+        searchQuery: "1500VA pure sine wave UPS",
       };
 
     case "electricity-use-calculator":
@@ -85,7 +85,7 @@ export function getMatchRecommendation(
       return {
         label: "Want exact kWh readings? Test any appliance with a P3 Kill A Watt Meter or Emporia Smart Panel Monitor",
         buttonText: "Check Energy Monitors on Amazon",
-        searchQuery: "plug in electricity usage monitor kill a watt emporia vue",
+        searchQuery: "kill a watt electricity monitor",
       };
 
     case "amps-to-watts-calculator":
@@ -96,27 +96,27 @@ export function getMatchRecommendation(
         return {
           label: "Matched for 15A circuits: Klein Tools CL390 Clamp Meter + 14 AWG Copper Cords",
           buttonText: "View 15A Test Gear",
-          searchQuery: "Klein Tools CL390 digital clamp meter True RMS 14 AWG cord",
+          searchQuery: "digital clamp meter True RMS",
         };
       }
       if (val <= 20) {
         return {
           label: "Matched for 20A circuits: Klein Tools Digital Clamp Meter + 12 AWG Heavy-Duty Cord",
           buttonText: "View 20A Tools on Amazon",
-          searchQuery: "Klein Tools digital clamp meter 12 AWG heavy duty outdoor cord",
+          searchQuery: "digital clamp meter 12 AWG cord",
         };
       }
       if (val <= 30) {
         return {
           label: "Matched for 30A circuits: True-RMS Clamp Meter + 10 AWG Copper Generator Cord",
           buttonText: "View 30A Gear on Amazon",
-          searchQuery: "True RMS digital clamp meter 10 AWG generator cord L14-30P",
+          searchQuery: "10 AWG generator cord L14-30P",
         };
       }
       return {
         label: "Matched for 50A+ heavy service: Pro True-RMS Inrush Clamp Multimeter + 6 AWG Wire",
         buttonText: "View 50A+ Pro Gear",
-        searchQuery: "True RMS inrush clamp multimeter 50 amp generator cord 6 AWG",
+        searchQuery: "true rms inrush clamp multimeter",
       };
     }
 
@@ -126,20 +126,20 @@ export function getMatchRecommendation(
         return {
           label: "Matched for your array: 20A-30A Victron SmartSolar / Renogy Rover MPPT Controller",
           buttonText: "View 30A MPPT Controllers",
-          searchQuery: "Victron SmartSolar MPPT 100 30 Renogy Rover 30A",
+          searchQuery: "30A MPPT solar charge controller",
         };
       }
       if (val <= 45) {
         return {
           label: "Matched for your array: 40A Victron SmartSolar / Renogy Rover MPPT Controller",
           buttonText: "View 40A MPPT Controllers",
-          searchQuery: "40A MPPT solar charge controller Victron Renogy Rover",
+          searchQuery: "mppt solar charge controller 40A",
         };
       }
       return {
         label: "Matched for your array: 60A-100A Commercial MPPT Solar Charge Controllers",
         buttonText: "View 60A-100A MPPT Controllers",
-        searchQuery: "60A 80A 100A MPPT solar charge controller Victron Outback",
+        searchQuery: "60A MPPT solar charge controller",
       };
     }
 
@@ -147,7 +147,7 @@ export function getMatchRecommendation(
       return {
         label: "Compare tested US electrical test gear and code-compliant accessories on Amazon",
         buttonText: "View Tested Gear on Amazon",
-        searchQuery: "digital clamp meter true rms multimeter electrical tools",
+        searchQuery: "digital clamp meter true rms",
       };
   }
 }

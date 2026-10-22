@@ -76,9 +76,9 @@ export const RecommendedHardwareBox: React.FC<RecommendedHardwareBoxProps> = ({
                 </span>
               </div>
 
-              {/* Product Visual Showcase Header */}
-              <div className="my-3 mx-4 p-4 rounded-xl bg-gradient-to-b from-slate-50 to-blue-50/40 border border-slate-100 flex items-center justify-center min-h-[100px] group-hover:scale-[1.02] transition-transform">
-                <HardwareIcon name={item.iconName} className="w-20 h-20" />
+              {/* Product Visual Showcase Header with Polish */}
+              <div className="my-3 mx-4 p-2 rounded-2xl bg-gradient-to-b from-slate-50/90 via-white to-slate-50/60 border border-slate-200/70 flex items-center justify-center relative overflow-hidden group-hover:border-amber-400/60 transition-colors">
+                <HardwareIcon name={item.iconName} className="w-full h-28 max-w-[200px] transition-transform duration-200 group-hover:scale-105" />
               </div>
 
               {/* Product Info & Specs */}

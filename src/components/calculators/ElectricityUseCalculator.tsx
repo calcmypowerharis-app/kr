@@ -829,13 +829,13 @@ export const ElectricityUseCalculator: React.FC = () => {
             title: "Plug-In Digital Watt & Power Meters",
             brands: "P3 Kill A Watt / Baldr",
             subtitle: "Measure real-time watts, cumulative kWh, and vampire phantom draw",
-            searchQuery: "plug in electricity usage monitor kill a watt power meter",
+            searchQuery: "kill a watt electricity monitor",
           },
           {
             title: "Smart Electrical Panel Monitors (16 Clamps)",
             brands: "Emporia Vue 3 / Sense",
             subtitle: "CT sensor clamps tracking whole-home circuits and solar generation",
-            searchQuery: "smart home energy monitor electrical panel CT clamp sensors 16 circuit",
+            searchQuery: "emporia vue 3 energy monitor",
           },
         ]}
       />

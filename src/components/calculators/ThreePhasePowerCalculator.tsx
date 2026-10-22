@@ -824,7 +824,7 @@ export const ThreePhasePowerCalculator: React.FC = () => {
 
             <div className="space-y-2.5">
               <a
-                href={getAmazonSearchUrl("three phase power quality analyzer clamp meter")}
+                href={getAmazonSearchUrl("three phase power quality analyzer")}
                 target="_blank"
                 rel={AMAZON_LINK_REL}
                 className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"
@@ -841,7 +841,7 @@ export const ThreePhasePowerCalculator: React.FC = () => {
               </a>
 
               <a
-                href={getAmazonSearchUrl("three phase motor rotation indicator tester")}
+                href={getAmazonSearchUrl("three phase motor rotation tester")}
                 target="_blank"
                 rel={AMAZON_LINK_REL}
                 className="group flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-white hover:border-blue-500 hover:bg-blue-50/30 transition text-xs font-medium text-slate-800"

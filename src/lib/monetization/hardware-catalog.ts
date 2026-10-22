@@ -49,7 +49,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Quiet, fuel-efficient portable power engineered for refrigerators, home medical equipment, and sensitive electronics.",
-        searchQuery: "quiet inverter generator 2200 watt 2500 watt dual fuel westinghouse champion",
+        searchQuery: "2500 watt inverter generator dual fuel",
         iconName: "inverter-generator",
       },
       {
@@ -67,7 +67,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Heavy-duty dual-fuel generator with 120V/240V split-phase power to energize entire home subpanels during storm blackouts.",
-        searchQuery: "dual fuel portable generator 7500 watt 9500 watt electric start 120 240v",
+        searchQuery: "dual fuel portable generator 9500 watt",
         iconName: "standby-generator",
       },
       {
@@ -85,7 +85,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Code-compliant manual transfer subpanel allowing safe generator connection directly to critical household circuit breakers.",
-        searchQuery: "manual generator transfer switch kit 30 amp 50 amp reliance controls",
+        searchQuery: "generator transfer switch kit 30 amp",
         iconName: "standby-generator",
       },
     ],
@@ -110,7 +110,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Automotive-grade LiFePO4 cells delivering full rated capacity at one-third the weight of traditional AGM or lead-acid batteries.",
-        searchQuery: "12V 100Ah LiFePO4 battery built in BMS deep cycle lithium LiTime Renogy",
+        searchQuery: "12V 100Ah LiFePO4 battery",
         iconName: "lifepo4-battery",
       },
       {
@@ -128,7 +128,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Enterprise-grade battery backup and surge suppression protecting NAS drives, gaming PCs, Wi-Fi routers, and network gear.",
-        searchQuery: "1500VA pure sine wave UPS battery backup AVR surge protector CyberPower APC",
+        searchQuery: "1500VA pure sine wave UPS",
         iconName: "ups-tower",
       },
       {
@@ -146,7 +146,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Converts battery DC power to clean 120V AC household electricity with multi-stage smart lithium charging capability.",
-        searchQuery: "pure sine wave power inverter 12V 2000W with smart lithium charger Renogy Victron",
+        searchQuery: "2000W pure sine wave inverter charger",
         iconName: "inverter-generator",
       },
     ],
@@ -171,7 +171,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "The gold-standard plug-in power meter used by energy auditors to measure exact appliance wattage and standby power consumption.",
-        searchQuery: "P3 Kill A Watt electricity monitor plug in digital power meter",
+        searchQuery: "kill a watt electricity monitor",
         iconName: "kill-a-watt",
       },
       {
@@ -189,7 +189,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Installs directly inside main breaker panel to measure real-time branch circuit power, HVAC consumption, and solar net feed-in.",
-        searchQuery: "Emporia Vue 3 smart home energy monitor 16 sensors electrical panel",
+        searchQuery: "emporia vue 3 energy monitor",
         iconName: "panel-monitor",
       },
       {
@@ -207,7 +207,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "UL-listed 15-Amp smart plugs that track real-time power draw and automate phantom-load shutoff during expensive peak utility hours.",
-        searchQuery: "Kasa smart plug energy monitoring 15A UL listed WiFi power meter",
+        searchQuery: "kasa smart plug energy monitoring",
         iconName: "kill-a-watt",
       },
     ],
@@ -232,7 +232,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Pro-grade clamp multimeter engineered to measure live operating current and starting motor inrush without breaking circuit conductors.",
-        searchQuery: "Klein Tools CL390 digital clamp meter True RMS AC DC inrush current",
+        searchQuery: "klein tools digital clamp meter",
         iconName: "clamp-meter",
       },
       {
@@ -250,7 +250,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Extra-thick 10-gauge pure copper conductors engineered to prevent voltage drop and overheating on continuous high-amperage equipment.",
-        searchQuery: "10 AWG 50 ft outdoor extension cord pure copper heavy duty UL listed",
+        searchQuery: "10 AWG generator extension cord",
         iconName: "clamp-meter",
       },
       {
@@ -268,7 +268,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Essential safety tester to verify correct hot, neutral, and ground wiring polarity before connecting expensive electronic equipment.",
-        searchQuery: "Klein Tools GFCI outlet tester RT210 receptacle wiring tool",
+        searchQuery: "klein tools outlet tester",
         iconName: "clamp-meter",
       },
     ],
@@ -293,7 +293,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Premium MPPT charge controller that maximizes solar energy harvest even during partial shade, with comprehensive smartphone telemetry.",
-        searchQuery: "Victron SmartSolar MPPT charge controller 100 30 bluetooth Renogy Rover",
+        searchQuery: "mppt solar charge controller 40A",
         iconName: "mppt-controller",
       },
       {
@@ -311,7 +311,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "High-efficiency monocrystalline solar panels built with tempered glass to withstand heavy snow and wind loads for decades.",
-        searchQuery: "Renogy 200W 400W monocrystalline solar panels kit high efficiency 12V 24V",
+        searchQuery: "monocrystalline solar panels 200W",
         iconName: "solar-panel",
       },
       {
@@ -329,7 +329,7 @@ export const HARDWARE_CATALOG: Record<string, HardwareCluster> = {
         ],
         description:
           "Optimizes seasonal solar panel tilt angle and connects PV arrays with weather-resistant tinned copper cabling.",
-        searchQuery: "10 AWG solar extension cable MC4 connectors adjustable tilt mount brackets",
+        searchQuery: "solar extension cable 10 AWG MC4",
         iconName: "solar-panel",
       },
     ],
