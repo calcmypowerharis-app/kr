@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Fuel, Calculator, Clock, HelpCircle, Activity, DollarSign, AlertTriangle, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Fuel, Calculator, Clock, HelpCircle, Activity, DollarSign, AlertTriangle, ShieldCheck, CheckCircle2, Wrench, Flame, Droplet } from "lucide-react";
 
 export const GeneratorFuelGuideSection: React.FC = () => {
   return (
@@ -116,7 +116,7 @@ export const GeneratorFuelGuideSection: React.FC = () => {
           <div className="text-xs font-bold uppercase tracking-wider text-blue-600">Propane (LPG)</div>
           <h4 className="text-base font-bold text-slate-900">91,500 BTU / Gal</h4>
           <p className="text-xs text-slate-600 leading-relaxed">
-            Burns cleaner with infinite shelf life. Because propane has ~20% lower energy density than gasoline, engine wattage output is derated by roughly 10% to 15%.
+            Burns cleaner with infinite shelf life. Because propane has roughly 20% lower energy density than gasoline, engine wattage output is derated by 10% to 15%.
           </p>
         </div>
 
@@ -125,6 +125,78 @@ export const GeneratorFuelGuideSection: React.FC = () => {
           <h4 className="text-base font-bold text-slate-900">138,500 BTU / Gal</h4>
           <p className="text-xs text-slate-600 leading-relaxed">
             Highest thermal efficiency and lowest burn rate. Commercial 1,800 RPM diesel units last tens of thousands of hours and provide superior fuel economy.
+          </p>
+        </div>
+      </div>
+
+      {/* 72-Hour Storm Fuel Planning Scenario */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
+        <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
+          <Clock className="w-3.5 h-3.5" />
+          <span>Real-World Outage Planning</span>
+        </div>
+        <h3 className="text-xl font-bold text-slate-900">
+          Worked Scenario: Sizing Fuel Storage for a 72-Hour Winter Storm
+        </h3>
+        <p className="text-sm text-slate-600 leading-relaxed">
+          Planning an emergency fuel reserve requires calculating daily generator duty cycles instead of assuming 24-hour continuous full-throttle operation.
+        </p>
+        <p className="text-sm text-slate-600 leading-relaxed">
+          Consider a typical 7,500-Watt portable generator powering a refrigerator, gas furnace blower, well pump, and lighting. Operating at an average 50% load (3,750 Watts), the engine burns 0.70 gallons per hour.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+            <h4 className="text-sm font-bold text-slate-900">Continuous 24-Hour Operation</h4>
+            <div className="text-xs text-slate-600 space-y-1 font-mono">
+              <div>Daily Fuel: 24 hrs × 0.70 GPH = 16.8 Gallons</div>
+              <div>72-Hour Total: 50.4 Gallons (~10 standard 5-gal cans)</div>
+              <div>Oil Service: Requires oil change every 50 to 100 hours</div>
+            </div>
+            <p className="text-xs text-slate-500 pt-1">
+              High fuel consumption and severe mechanical wear. Often impractical due to local residential fuel storage limits.
+            </p>
+          </div>
+
+          <div className="p-4 rounded-xl bg-blue-50/60 border border-blue-200 space-y-2">
+            <h4 className="text-sm font-bold text-blue-950">Intermittent Cycling (12 Hours / Day)</h4>
+            <div className="text-xs text-blue-900 space-y-1 font-mono">
+              <div>Daily Fuel: 12 hrs × 0.70 GPH = 8.4 Gallons</div>
+              <div>72-Hour Total: 25.2 Gallons (~5 standard 5-gal cans)</div>
+              <div>Cycle Strategy: Run 3 hrs morning, 2 hrs mid-day, 7 hrs evening</div>
+            </div>
+            <p className="text-xs text-blue-800 pt-1">
+              Recommended disaster strategy. Keeps refrigerators cold, pumps water, and cuts fuel consumption in half.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Critical Engine Maintenance and Eco-Throttle Rules */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="p-6 rounded-2xl border border-slate-200 bg-white shadow-sm space-y-3">
+          <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <Wrench className="w-5 h-5 text-blue-600" />
+            <span>Engine Oil Service During Extended Runs</span>
+          </h4>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Most small 4-stroke generator engines hold less than one quart (roughly 0.6 to 1.1 liters) of motor oil and lack pressurized oil filters. Check engine oil every 24 operating hours during multi-day grid failures.
+          </p>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Shut down the engine, allow it to cool for 10 minutes, and top off with 10W-30 or 5W-30 synthetic oil to prevent catastrophic low-oil engine seizure.
+          </p>
+        </div>
+
+        <div className="p-6 rounded-2xl border border-slate-200 bg-white shadow-sm space-y-3">
+          <h4 className="text-base font-bold text-slate-900 flex items-center gap-2">
+            <ShieldCheck className="w-5 h-5 text-emerald-600" />
+            <span>Eco-Mode Throttling and Inverter Efficiency</span>
+          </h4>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Traditional open-frame synchronous generators run at a constant 3,600 RPM to maintain 60 Hz utility frequency. This burns significant fuel even with zero load.
+          </p>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Digital inverter generators decouple engine speed from electrical frequency, allowing the microprocessor to idle down engine RPM when loads drop. Activating Eco-Throttle at partial loads can reduce fuel consumption by up to 25% to 40%.
           </p>
         </div>
       </div>
