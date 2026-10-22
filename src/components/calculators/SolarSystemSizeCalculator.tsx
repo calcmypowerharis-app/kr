@@ -81,7 +81,7 @@ const RELATED_TOOLS: RelatedTool[] = [
     title: "How Many Solar Panels Do I Need to Power My House?",
     description:
       "Step-by-step homeowner guide to estimating residential solar panel counts, electricity usage baselines, and roof space requirements.",
-    href: "/how-many-solar-panels-do-i-need",
+    href: "/how-much-energy-does-a-solar-panel-produce",
     category: "Solar Planning Guide",
   },
   {
@@ -638,10 +638,10 @@ export const SolarSystemSizeCalculator: React.FC = () => {
               <p className="text-blue-800 leading-relaxed">
                 Review our comprehensive homeowner sizing guide on{" "}
                 <Link
-                  href="/how-many-solar-panels-do-i-need"
+                  href="/solar-panels-series-vs-parallel"
                   className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  how many solar panels you need for your house
+                  solar panels in series vs parallel wiring
                   <ArrowRight className="w-3 h-3" />
                 </Link>
                 , or see detailed daily production models in{" "}

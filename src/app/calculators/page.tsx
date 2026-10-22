@@ -465,56 +465,10 @@ export default function CalculatorsDirectoryPage() {
             </Link>
 
             {/* Active: Generator Amperage Chart & Calculator */}
-            <Link
-              id="generator-amperage"
-              href="/generator-amperage-chart-calculator"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
-            >
-              <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
-                  <Plug className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  Live Tool • Generators
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
-                Generator Amperage Chart &amp; Calculator
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate generator output current in Amps across 120V, 240V split-phase, and 3-phase circuits. Look up standard outlet ratings, breaker sizing, and wire gauges from 1kW to 26kW.
-              </p>
-              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
-                <span>Open Calculator</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
             {/* Active: Generator Wattage Chart */}
-            <Link
-              id="generator-wattage-chart"
-              href="/generator-wattage-chart"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
-            >
-              <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
-                  <Zap className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  Live Tool • Generators
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
-                Generator Wattage Chart &amp; Appliance Reference
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Reference running watts and motor starting surge requirements for 35+ appliances. Select items to calculate simultaneous outage load with 25% continuous reserve.
-              </p>
-              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
-                <span>Open Wattage Chart</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
             {/* Active: Electricity Cost Calculator */}
             <Link
@@ -635,30 +589,7 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            <Link
-              href="/how-much-gas-does-a-generator-use"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Generator Fuel Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>11 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                How Much Gas Does a Generator Use? Gallons Per Hour Reference
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Explore fuel consumption rates across 2kW to 10kW inverter and portable generators at 25%, 50%, and 100% electrical load with storm runtime estimates.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Generator Gas Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
             <Link
               href="/what-does-ah-mean-on-a-battery"
@@ -760,30 +691,7 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            <Link
-              href="/how-many-solar-panels-do-i-need"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Solar PV Planning Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>14 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                How Many Solar Panels Do I Need to Power My House?
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Determine required solar panels from your electric bill. Step-by-step sizing using monthly kWh, peak sun hours, system performance factor, and panel wattage.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Solar Sizing Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
             <Link
               href="/how-much-energy-does-a-solar-panel-produce"
@@ -835,130 +743,15 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            <Link
-              href="/how-to-calculate-electricity-usage"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Energy Auditing Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>15 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                How to Calculate Electricity Usage: kWh, Appliance Audits &amp; Costs
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Step-by-step methodology for converting Watts to kWh, calculating single appliance and household consumption, factoring duty cycles and standby phantom power, and estimating monthly utility costs.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Electricity Usage Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
-            <Link
-              href="/how-to-calculate-watts-for-a-generator"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Generator Sizing Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>14 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                How to Calculate Watts for a Generator: Running &amp; Starting Watts Explained
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Master running watts, starting surge demand, motor inrush math, and 25% safety margins to calculate the exact generator capacity needed during utility outages.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Generator Watts Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
-            <Link
-              href="/continuous-power-generators"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Industrial Power Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>14 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                What Is a Continuous Power Generator? How It Works and When You Need One
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Understand ISO 8528 continuous ratings (COP vs PRP vs ESP), 1800 RPM industrial powertrains, wet stacking hazards, and residential standby realities.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Continuous Power Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
-            <Link
-              href="/how-to-calculate-electricity-bill"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Utility Billing Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>14 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                How to Calculate Your Electricity Bill: kWh, Rates, and Monthly Charges
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Deconstruct electric utility statements line by line. Understand generation supply vs delivery tariffs, fixed customer meter fees, regulatory riders, and effective kWh rates.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Electricity Bill Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
-            <Link
-              href="/how-to-size-a-solar-charge-controller"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Solar Engineering Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>12 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                How to Size a Solar Charge Controller: MPPT vs PWM Sizing Guide
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate MPPT and PWM charge controller amperage, cold-weather Voc voltage limits per NEC 690.7, battery voltage matching, and overpaneling.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Sizing Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
             <Link
               href="/how-many-amp-hours-do-i-need"
@@ -985,30 +778,7 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            <Link
-              href="/how-to-calculate-amp-hours-of-a-battery-bank"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
-            >
-              <div className="flex items-center justify-between text-xs">
-                <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 font-semibold border border-indigo-200">
-                  Battery Wiring Guide
-                </span>
-                <span className="inline-flex items-center gap-1 text-slate-500">
-                  <Clock className="w-3.5 h-3.5" />
-                  <span>13 min read</span>
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">
-                How to Calculate Amp Hours of a Battery Bank: Series, Parallel &amp; 2S2P Wiring
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Step-by-step engineering formulas to calculate total battery bank Amp-hours and voltage across series strings, parallel connections, and 2S2P banks with worked examples.
-              </p>
-              <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
-                <span>Read Battery Bank Amp-Hours Guide</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
+            
 
             <Link
               href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"

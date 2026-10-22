@@ -248,7 +248,7 @@ export const ElectricityUseCalculator: React.FC = () => {
           </Link>
           <span className="text-slate-300">•</span>
           <Link
-            href="/how-to-calculate-electricity-usage"
+            href="/electricity-cost-calculator"
             className="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1"
           >
             <span>Formula Guide &rarr;</span>
@@ -804,7 +804,7 @@ export const ElectricityUseCalculator: React.FC = () => {
           Learn how to read yellow EnergyGuide appliance labels, identify phantom standby loads, and conduct a thorough whole-house electrical audit:
         </p>
         <Link
-          href="/how-to-calculate-electricity-usage"
+          href="/electricity-cost-calculator"
           className="inline-flex items-center gap-1 text-blue-700 font-bold hover:underline pt-1"
         >
           <span>Read Comprehensive Electricity Usage Guide &rarr;</span>
@@ -1087,9 +1087,9 @@ export const ElectricityUseCalculator: React.FC = () => {
             category: "Electrical Circuits",
           },
           {
-            title: "How to Calculate Electricity Usage (Guide)",
+            title: "Electricity Cost Calculator (Guide)",
             description: "Read our comprehensive tutorial on appliance audits, phantom standby loads, and utility bill breakdown.",
-            href: "/how-to-calculate-electricity-usage",
+            href: "/electricity-cost-calculator",
             category: "Sizing Guide",
           },
         ]}

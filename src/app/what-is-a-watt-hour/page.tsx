@@ -525,7 +525,7 @@ export default function WattHoursExplainedPage() {
                 <p className="text-xs sm:text-sm text-slate-600 bg-slate-100/70 p-3.5 rounded-xl border border-slate-200 leading-relaxed mt-3">
                   For a complete walkthrough of calculating appliance energy consumption, duty cycles, standby phantom power, and electric bill cost calculations, read our in-depth guide on{" "}
                   <Link
-                    href="/how-to-calculate-electricity-usage"
+                    href="/electricity-use-calculator"
                     className="text-blue-700 font-semibold hover:underline"
                   >
                     How to Calculate Electricity Usage: kWh, Appliance Audits &amp; Costs
@@ -978,7 +978,7 @@ export default function WattHoursExplainedPage() {
                 </Link>
 
                 <Link
-                  href="/how-to-calculate-electricity-usage"
+                  href="/electricity-use-calculator"
                   className="group p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                 >
                   <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">

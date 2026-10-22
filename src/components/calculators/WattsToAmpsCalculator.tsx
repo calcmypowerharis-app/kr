@@ -575,7 +575,11 @@ export const WattsToAmpsCalculator: React.FC = () => {
                 At 120 Volts with unity power factor (typical for space heaters), 1,500 Watts draws 12.50 Amps of operating current (1,500W ÷ 120V = 12.50A).
               </p>
               <p className="text-xs text-slate-600 leading-relaxed border-t border-slate-200/80 pt-1.5">
-                For continuous duty (3+ hours), standard 125% sizing benchmarks design current to 15.63 Amps, which requires a 20A branch circuit rather than 15A.
+                For continuous duty (3+ hours), standard 125% sizing benchmarks design current to 15.63 Amps, which requires a 20A branch circuit rather than 15A. Review our complete guide on{" "}
+                <Link href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle" className="text-blue-600 font-semibold hover:underline">
+                  how many watts a 15-amp or 20-amp circuit can handle
+                </Link>
+                .
               </p>
             </div>
 
@@ -756,9 +760,9 @@ export const WattsToAmpsCalculator: React.FC = () => {
             category: "Sizing Guide",
           },
           {
-            title: "How to Calculate Electricity Usage",
-            description: "Learn how to calculate appliance consumption, Watt-hours, kWh, and electric bill costs.",
-            href: "/how-to-calculate-electricity-usage",
+            title: "15-Amp vs 20-Amp Circuit Wattage Guide",
+            description: "Learn safe breaker capacity, the NEC 80% continuous load rule, and 14 AWG vs 12 AWG wiring.",
+            href: "/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
             category: "Energy Guide",
           },
           {

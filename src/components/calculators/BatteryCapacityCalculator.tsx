@@ -926,7 +926,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
               <p className="text-blue-800 leading-relaxed">
                 Learn how series and parallel arrangements change bank voltage and capacity in our comprehensive{" "}
                 <Link
-                  href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                  href="/how-many-amp-hours-do-i-need"
                   className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
                   Battery Bank Amp-Hours Guide
@@ -1063,7 +1063,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
             </h2>
           </div>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
-            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. To calculate bank Amp-hours, voltage, and string configurations step-by-step, read our technical guide on <Link href="/how-to-calculate-amp-hours-of-a-battery-bank" className="text-blue-600 hover:underline font-semibold">how to calculate amp hours of a battery bank</Link>, or see our companion guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-medium">how many amp hours you need for a daily load</Link>:
+            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. To calculate bank Amp-hours, voltage, and string configurations step-by-step, read our technical guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-semibold">how many amp hours you need for a daily load</Link>, or see our companion guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-medium">how many amp hours you need for a daily load</Link>:
           </p>
 
           <div className="overflow-x-auto mb-6">

@@ -1070,7 +1070,7 @@ export default function BatteryRuntimeGuidePage() {
                   </Link>{" "}
                   to size for days of backup reserve, or review{" "}
                   <Link
-                    href="/how-to-calculate-amp-hours-of-a-battery-bank"
+                    href="/battery-capacity-calculator"
                     className="font-medium text-blue-700 underline underline-offset-2 hover:text-blue-900"
                   >
                     how to calculate amp-hours of a battery bank

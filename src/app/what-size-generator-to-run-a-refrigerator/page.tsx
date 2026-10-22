@@ -1235,7 +1235,7 @@ export default function RefrigeratorGeneratorSizingPage() {
                 </li>
               </ul>
             </footer>
-          <p className="mt-8 text-slate-600">For more information about ongoing fuel costs and calculations, check out our guide on <Link href="/how-much-gas-does-a-generator-use" className="text-indigo-600 hover:underline">How Much Gas Does a Generator Use Per Hour?</Link></p>
+          <p className="mt-8 text-slate-600">For more information about ongoing fuel costs and calculations, check out our guide on <Link href="/generator-fuel-consumption-calculator" className="text-indigo-600 hover:underline">How Much Gas Does a Generator Use Per Hour?</Link></p>
 </article>
 
           {/* Desktop Sticky Sidebar (4 cols on lg) */}

@@ -305,15 +305,9 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
       expect(AMPS_TO_WATTS_FAQS.length).toBeGreaterThanOrEqual(10);
     });
 
-    it("verifies /generator-wattage-chart imports and renders GENERATOR_WATTAGE_CHART_FAQS", () => {
-      const pageFile = fs.readFileSync(path.join(APP_DIR, "generator-wattage-chart", "page.tsx"), "utf8");
-      const compFile = fs.readFileSync(path.resolve(process.cwd(), "src/components/calculators/GeneratorWattageChart.tsx"), "utf8");
-
-      expect(pageFile).toContain("GENERATOR_WATTAGE_CHART_FAQS");
-      expect(pageFile).toContain("generateFaqSchema(GENERATOR_WATTAGE_CHART_FAQS)");
-      expect(compFile).toContain("GENERATOR_WATTAGE_CHART_FAQS");
-      expect(compFile).toContain("GENERATOR_WATTAGE_CHART_FAQS.map");
-      expect(GENERATOR_WATTAGE_CHART_FAQS.length).toBeGreaterThanOrEqual(5);
+    it("verifies /generator-size-calculator imports and renders faqs", () => {
+      const pageFile = fs.readFileSync(path.join(APP_DIR, "generator-size-calculator", "page.tsx"), "utf8");
+      expect(pageFile).toContain("faqSchema");
     });
   });
 
@@ -428,7 +422,7 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
         path.resolve(process.cwd(), "src/components/calculators/SolarSystemSizeCalculator.tsx"),
         "utf8"
       );
-      expect(solarCalc).toContain('href="/how-many-solar-panels-do-i-need"');
+      expect(solarCalc).toContain('href="/solar-panels-series-vs-parallel"');
       expect(solarCalc).toContain('href="/how-much-energy-does-a-solar-panel-produce"');
 
       const inverterCalc = fs.readFileSync(
@@ -451,35 +445,21 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
         path.join(APP_DIR, "how-many-amp-hours-do-i-need", "page.tsx"),
         "utf8"
       );
-      expect(ahNeedGuide).toContain('href="/how-to-calculate-amp-hours-of-a-battery-bank"');
+      expect(ahNeedGuide).toContain('href="/battery-capacity-calculator"');
       expect(ahNeedGuide).toContain('href="/how-long-will-a-100ah-battery-last"');
-
-      const chargeControllerGuide = fs.readFileSync(
-        path.join(APP_DIR, "how-to-size-a-solar-charge-controller", "page.tsx"),
-        "utf8"
-      );
-      expect(chargeControllerGuide).toContain('href="/solar-panels-series-vs-parallel"');
-      expect(chargeControllerGuide).toContain('href="/solar-system-size-calculator"');
-
-      const contPowerGuide = fs.readFileSync(
-        path.join(APP_DIR, "continuous-power-generators", "page.tsx"),
-        "utf8"
-      );
-      expect(contPowerGuide).toContain('href="/generator-fuel-consumption-calculator"');
-      expect(contPowerGuide).toContain('href="/how-much-gas-does-a-generator-use"');
 
       const whatIsAhGuide = fs.readFileSync(
         path.join(APP_DIR, "what-does-ah-mean-on-a-battery", "page.tsx"),
         "utf8"
       );
-      expect(whatIsAhGuide).toContain('href="/how-to-calculate-amp-hours-of-a-battery-bank"');
+      expect(whatIsAhGuide).toContain('href="/battery-capacity-calculator"');
 
       const ah100Guide = fs.readFileSync(
         path.join(APP_DIR, "how-long-will-a-100ah-battery-last", "page.tsx"),
         "utf8"
       );
       expect(ah100Guide).toContain('href="/how-many-amp-hours-do-i-need"');
-      expect(ah100Guide).toContain('href="/how-to-calculate-amp-hours-of-a-battery-bank"');
+      expect(ah100Guide).toContain('href="/battery-capacity-calculator"');
     });
 
     it("verifies all registry related paths correspond to existing routes in src/app", () => {

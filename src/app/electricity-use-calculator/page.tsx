@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { ElectricityUseCalculator } from "@/components/calculators/ElectricityUseCalculator";
+import { ElectricityUsageGuideSection } from "@/components/content/ElectricityUsageGuideSection";
 import { ELECTRICITY_USE_FAQS } from "@/lib/calculators/electricity-use";
 import {
   generateWebApplicationSchema,
@@ -60,6 +61,9 @@ export default function ElectricityUseCalculatorPage() {
       />
 
       <ElectricityUseCalculator />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <ElectricityUsageGuideSection />
+      </div>
     </>
   );
 }

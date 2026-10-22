@@ -1355,7 +1355,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
                   </Link>
 
                   <Link
-                    href="/how-many-solar-panels-do-i-need"
+                    href="/solar-system-size-calculator"
                     className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                   >
                     <div className="flex items-center gap-2 text-amber-600 font-bold text-sm">
@@ -1380,7 +1380,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
                     </p>
                   </Link>
                   <Link
-                    href="/how-to-size-a-solar-charge-controller"
+                    href="/solar-charge-controller-calculator"
                     className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                   >
                     <div className="flex items-center gap-2 text-blue-600 font-bold text-sm">

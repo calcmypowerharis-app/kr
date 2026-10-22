@@ -1031,7 +1031,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                     Want the full breakdown of electric bills, square footage myths, and panel requirements?
                   </span>
                   <Link
-                    href="/how-many-solar-panels-do-i-need"
+                    href="/solar-system-size-calculator"
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-800 transition"
                   >
                     <span>Read Full Home Solar Sizing Guide</span>

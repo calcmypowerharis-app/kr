@@ -535,10 +535,10 @@ export const ElectricityCostCalculator: React.FC = () => {
           </div>
           <div>
             <Link
-              href="/how-to-calculate-electricity-bill"
+              href="/electricity-use-calculator"
               className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs shadow-sm transition"
             >
-              <span>Read Electricity Bill Guide</span>
+              <span>Calculate Appliance Usage</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
