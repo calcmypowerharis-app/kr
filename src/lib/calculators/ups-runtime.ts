@@ -146,7 +146,7 @@ export function calculateUpsRuntime(inputs: UpsRuntimeInputs): UpsRuntimeOutputs
     const cRate = dcCurrentAmps / capacityAh;
     if (cRate > 0.2) {
       warnings.push(
-        `Discharge rate (${cRate.toFixed(2)}C) is high for Lead-Acid batteries. Due to Peukert's effect, actual runtime may be 15–30% shorter than this ideal estimate.`
+        `Discharge rate (${cRate.toFixed(2)}C) is high for Lead-Acid batteries. Due to Peukert's effect, actual runtime may be 15-30% shorter than this ideal estimate.`
       );
     }
   }

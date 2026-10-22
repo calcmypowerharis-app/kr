@@ -337,13 +337,13 @@ export const UpsCalculator: React.FC = () => {
           {
             symbol: "DoD",
             name: "Depth of Discharge",
-            unit: "Decimal (0.50–0.90)",
+            unit: "Decimal (0.50-0.90)",
             description: "Safe discharge limit. 50% for standard Lead-Acid/AGM, up to 90% for Lithium Iron Phosphate (LiFePO4).",
           },
           {
             symbol: "η",
             name: "Inverter Efficiency",
-            unit: "Decimal (0.80–0.95)",
+            unit: "Decimal (0.80-0.95)",
             description: "Conversion losses when transforming DC battery current into 120V/240V AC power. 85% is typical.",
           },
           {
@@ -397,26 +397,26 @@ export const UpsCalculator: React.FC = () => {
           {
             parameter: "Lead-Acid Safe DoD",
             defaultVal: "50%",
-            realisticRange: "40% – 50%",
+            realisticRange: "40% - 50%",
             impact: "Discharging lead-acid past 50% causes plate sulfation and permanently shortens lifespan.",
           },
           {
             parameter: "LiFePO4 Safe DoD",
             defaultVal: "90%",
-            realisticRange: "80% – 95%",
+            realisticRange: "80% - 95%",
             impact: "Modern lithium chemistry sustains deep discharges without rapid cycle degradation.",
           },
           {
             parameter: "Inverter Conversion Efficiency",
             defaultVal: "85%",
-            realisticRange: "80% – 92%",
+            realisticRange: "80% - 92%",
             impact: "Lower efficiency inverters lose energy as heat, reducing available operational minutes.",
           },
           {
             parameter: "Ambient Temperature",
             defaultVal: "77°F (25°C)",
-            realisticRange: "32°F – 104°F",
-            impact: "Freezing temperatures reduce effective chemical capacity of lead-acid by 20–40%.",
+            realisticRange: "32°F - 104°F",
+            impact: "Freezing temperatures reduce effective chemical capacity of lead-acid by 20-40%.",
           },
         ]}
       />

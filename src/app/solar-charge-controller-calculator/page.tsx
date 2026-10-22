@@ -10,12 +10,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Solar Charge Controller Calculator (MPPT & PWM Sizing)",
+  title: "Solar Charge Controller Calculator - MPPT vs PWM",
   description:
-    "Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Size MPPT and PWM units using array wattage, short-circuit current, and cold Voc.",
+    "Calculate solar charge controller amp rating for 12V, 24V, and 48V systems. Includes MPPT vs PWM sizing guide, NEC 125% safety margins, and cold Voc formulas.",
   path: "/solar-charge-controller-calculator",
   ogDescription:
-    "Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Size MPPT and PWM units using array wattage, short-circuit current, and cold Voc.",
+    "Calculate solar charge controller amp rating for 12V, 24V, and 48V systems. Includes MPPT vs PWM sizing guide, NEC 125% safety margins, and cold Voc formulas.",
 });
 
 export default function SolarChargeControllerPage() {

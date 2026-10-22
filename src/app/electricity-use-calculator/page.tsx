@@ -10,12 +10,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Electricity Usage Calculator (Calculate kWh & Appliance Energy)",
+  title: "Electricity Usage Calculator - kWh & Cost Chart",
   description:
-    "Calculate appliance electricity usage in kWh and Watt-hours from running watts and operating hours. Estimate daily consumption, monthly energy use, and power costs.",
+    "Calculate electricity usage in kWh and power costs from appliance watts. Includes master 25+ residential appliance runtime and power consumption reference chart.",
   path: "/electricity-use-calculator",
   ogDescription:
-    "Free interactive electricity usage calculator to estimate daily and monthly energy consumption in kilowatt-hours (kWh) across multiple household appliances.",
+    "Calculate electricity usage in kWh and power costs from appliance watts. Includes master 25+ residential appliance runtime and power consumption reference chart.",
   images: [
     {
       url: "https://calcmypower.com/images/calculators/electricity-use-calculator.webp",

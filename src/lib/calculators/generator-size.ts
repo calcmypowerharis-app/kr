@@ -214,13 +214,13 @@ export const DEFAULT_APPLIANCES: ApplianceDefinition[] = [
     defaultRunningWatts: 180,
     defaultStartingWatts: 1200,
     hasMotorSurge: true,
-    notes: "Compressor inrush lasts 1–3 seconds",
+    notes: "Compressor inrush lasts 1-3 seconds",
   },
 
   // Water & Pumps
   {
     id: "water_heater_electric",
-    name: "Electric Water Heater (40–50 Gallon)",
+    name: "Electric Water Heater (40-50 Gallon)",
     category: "water_pumps",
     defaultRunningWatts: 4500,
     defaultStartingWatts: 4500,
@@ -285,7 +285,7 @@ export const DEFAULT_APPLIANCES: ApplianceDefinition[] = [
   },
   {
     id: "television_led_65",
-    name: '55"–65" LED Television',
+    name: '55"-65" LED Television',
     category: "electronics",
     defaultRunningWatts: 120,
     defaultStartingWatts: 120,

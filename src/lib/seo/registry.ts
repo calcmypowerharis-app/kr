@@ -133,9 +133,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/generator-size-calculator",
     title: "Generator Size Calculator",
     shortTitle: "Generator Size",
-    metaTitle: "Generator Size Calculator (Home Backup, RV & Portable)",
+    metaTitle: "Generator Size Calculator - Running + Surge Watts",
     metaDescription:
-      "Calculate what size generator you need for home emergency backup, RV camping, or jobsite tools based on running watts, motor startup surges, and planning headroom.",
+      
+      "Calculate generator size needed for home backup or RVs using running watts and motor surge ratings. Includes master appliance wattage chart and amperage tables.",
     cluster: "generators",
     secondaryClusters: ["rv-power", "home-energy"],
     primaryKeyword: "generator size calculator",
@@ -155,9 +156,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/ups-battery-backup-calculator",
     title: "UPS Battery Backup Run-Time Hours Calculator",
     shortTitle: "UPS Runtime",
-    metaTitle: "UPS Battery Backup Run-Time Hours Calculator",
+    metaTitle: "UPS Battery Backup Calculator - Runtime Hours Table",
     metaDescription:
-      "Estimate uninterruptible power supply (UPS) backup hours and battery run-time from appliance wattage, battery voltage, and Amp-hour capacity.",
+      
+      "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Includes static runtime table for WiFi routers, CPAP, and office PCs.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar"],
     primaryKeyword: "uninterruptible power supply hours",
@@ -180,9 +182,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/battery-capacity-calculator",
     title: "Battery Capacity & Sizing Calculator",
     shortTitle: "Battery Capacity",
-    metaTitle: "Battery Capacity & Bank Sizing Calculator",
+    metaTitle: "Battery Capacity Calculator - Ah & Wh Chart",
     metaDescription:
-      "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh), configure series and parallel banks, and size usable storage by load and depth of discharge.",
+      
+      "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
     primaryKeyword: "battery capacity calculator",
@@ -208,9 +211,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/watts-to-amps-calculator",
     title: "Watts to Amps Electrical Calculator",
     shortTitle: "Watts to Amps",
-    metaTitle: "Watts to Amps Calculator (DC, Single-Phase & 3-Phase AC)",
+    metaTitle: "Watts to Amps Calculator - 120V/240V/DC Table",
     metaDescription:
-      "Convert Watts to Amps with our electrical calculator. Supports DC circuits, 120V/240V single-phase AC, and balanced 208V/480V three-phase systems with power factor.",
+      
+      "Convert watts to amps for DC, 120V, and 240V circuits. Features complete conversion table from 37W to 10,000W with NEC breaker and copper wire gauge sizing.",
     cluster: "electricity",
     secondaryClusters: ["generators", "ups-battery", "solar"],
     primaryKeyword: "watts to amps calculator",
@@ -238,9 +242,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/amps-to-watts-calculator",
     title: "Amps to Watts Electrical Calculator",
     shortTitle: "Amps to Watts",
-    metaTitle: "Amps to Watts Calculator (DC, Single & 3-Phase AC)",
+    metaTitle: "Amps to Watts Calculator - 120V/240V/DC Table",
     metaDescription:
-      "Convert amps to watts across DC, single-phase 120V/240V, and three-phase AC circuits. Calculate real power (W), apparent power (VA), and power factor.",
+      
+      "Convert amps to watts across 12V DC, 120V, and 240V AC circuits. Features comprehensive conversion chart with NEC continuous-load limits from 1A to 200A.",
     cluster: "electricity",
     secondaryClusters: ["generators", "ups-battery", "solar"],
     primaryKeyword: "amps to watts",
@@ -322,9 +327,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/solar-charge-controller-calculator",
     title: "Solar Charge Controller Calculator",
     shortTitle: "Charge Controller",
-    metaTitle: "Solar Charge Controller Calculator (MPPT & PWM Sizing)",
+    metaTitle: "Solar Charge Controller Calculator - MPPT vs PWM",
     metaDescription:
-      "Calculate solar battery charge controller size for 12V, 24V, and 48V systems. Size MPPT and PWM units using array wattage, short-circuit current, and cold Voc.",
+      
+      "Calculate solar charge controller amp rating for 12V, 24V, and 48V systems. Includes MPPT vs PWM sizing guide, NEC 125% safety margins, and cold Voc formulas.",
     cluster: "solar",
     secondaryClusters: ["ups-battery", "rv-power"],
     primaryKeyword: "solar charge controller calculator",
@@ -431,9 +437,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/electricity-use-calculator",
     title: "Electricity Usage Calculator",
     shortTitle: "Electricity Usage",
-    metaTitle: "Electricity Usage Calculator (Calculate kWh & Appliance Energy)",
+    metaTitle: "Electricity Usage Calculator - kWh & Cost Chart",
     metaDescription:
-      "Calculate appliance electricity usage in kWh and Watt-hours from running watts and operating hours. Estimate daily consumption, monthly energy use, and power costs.",
+      
+      "Calculate electricity usage in kWh and power costs from appliance watts. Includes master 25+ residential appliance runtime and power consumption reference chart.",
     cluster: "electricity",
     secondaryClusters: ["home-energy", "solar", "ups-battery"],
     primaryKeyword: "electricity usage calculator",
@@ -458,9 +465,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/electricity-cost-calculator",
     title: "Electricity Cost Calculator",
     shortTitle: "Electricity Cost",
-    metaTitle: "Electricity Cost Calculator (Monthly kWh & Electric Bill Breakdown)",
+    metaTitle: "Electricity Cost Calculator - Electric Bill Chart",
     metaDescription:
-      "Calculate your estimated monthly electricity cost from kWh usage, energy rates ($/kWh), fixed customer charges, and taxes. Compare effective rates.",
+      
+      "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
     cluster: "electricity",
     secondaryClusters: ["home-energy"],
     primaryKeyword: "electricity cost calculator",

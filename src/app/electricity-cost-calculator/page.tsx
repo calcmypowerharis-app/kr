@@ -10,12 +10,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Electricity Cost Calculator (Monthly kWh & Electric Bill Breakdown)",
+  title: "Electricity Cost Calculator - Electric Bill Chart",
   description:
-    "Calculate your estimated monthly electricity cost from kWh usage, energy rates ($/kWh), fixed customer charges, and taxes. Compare effective rates.",
+    "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
   path: "/electricity-cost-calculator",
   ogDescription:
-    "Free interactive electricity cost calculator to estimate monthly electric utility bills, breakdown volumetric supply vs fixed grid fees, and calculate true effective cost per kWh.",
+    "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
   images: [
     {
       url: "https://calcmypower.com/images/calculators/electricity-cost-calculator.webp",
