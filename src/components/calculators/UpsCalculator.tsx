@@ -19,7 +19,6 @@ import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
-import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import { ShoppingBag, ExternalLink, Zap, Info } from "lucide-react";
 
 interface PresetAppliance {
@@ -260,26 +259,6 @@ export const UpsCalculator: React.FC = () => {
                 calculatedValue={loadWatts}
               />
             }
-          />
-
-          {/* Compatible Hardware Reference (Amazon Associate) */}
-          <SidebarHardwareReference
-            title="Compatible Hardware Reference"
-            subtitle={`Search hardware categories matching your ${batteryVoltage}V setup and ${loadWatts}W continuous draw:`}
-            items={[
-              {
-                title: batterySearchLabel,
-                brands: "LiTime / Renogy / Redodo",
-                subtitle: "Compare deep-cycle replacement and backup batteries on Amazon",
-                searchQuery: batterySearchRaw,
-              },
-              {
-                title: `${batteryVoltage}V Pure Sine Wave Inverters (${results.recommendedInverterWatts}W+)`,
-                brands: "Victron Energy / Renogy",
-                subtitle: "Low-THD DC-to-AC inverters sized with a 25% continuous planning margin",
-                searchQuery: inverterSearchRaw,
-              },
-            ]}
           />
         </div>
       }

@@ -115,7 +115,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: '/generator-fuel-consumption-calculator',
     title: 'Generator Fuel Consumption Calculator',
     shortTitle: 'Generator Fuel',
-    metaTitle: 'Generator Fuel Consumption Calculator',
+    metaTitle: "Generator Fuel Consumption Calculator - Gallons Per Hour Chart",
     metaDescription: 'Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.',
     cluster: 'generators',
     primaryKeyword: 'generator fuel consumption calculator',
@@ -133,7 +133,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/generator-size-calculator",
     title: "Generator Size Calculator",
     shortTitle: "Generator Size",
-    metaTitle: "Generator Size Calculator - Running + Surge Watts",
+    metaTitle: "Generator Size Calculator - Running & Surge Wattage Chart",
     metaDescription:
       
       "Calculate generator size needed for home backup or RVs using running watts and motor surge ratings. Includes master appliance wattage chart and amperage tables.",
@@ -437,7 +437,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/electricity-use-calculator",
     title: "Electricity Usage Calculator",
     shortTitle: "Electricity Usage",
-    metaTitle: "Electricity Usage Calculator - kWh & Cost Chart",
+    metaTitle: "Electricity Usage Calculator - Appliance kWh & Cost Estimator",
     metaDescription:
       
       "Calculate electricity usage in kWh and power costs from appliance watts. Includes master 25+ residential appliance runtime and power consumption reference chart.",

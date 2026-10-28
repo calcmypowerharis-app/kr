@@ -8,10 +8,10 @@ export const BatteryBankWiringGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold uppercase tracking-wider">
           <BatteryCharging className="w-3.5 h-3.5" />
-          <span>Battery Bank Wiring &amp; Capacity Engineering Guide</span>
+          <span>DC Bus Architecture &amp; Series-Parallel Capacity</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How to Calculate Battery Bank Amp-Hours: Series, Parallel &amp; 2S2P Wiring
+          Battery Bank Sizing &amp; Wiring: Series vs Parallel Amp-Hour &amp; Voltage Math
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Calculating total battery bank capacity requires understanding how connecting cells in series steps up voltage while parallel configurations multiply Amp-hours, keeping total stored Watt-hours equal.

@@ -30,9 +30,7 @@ import { AssumptionsSection } from "@/components/calculators/AssumptionsSection"
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
-import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
-import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import {
   ApplianceInput,
   calculateTotalElectricityUse,
@@ -820,25 +818,7 @@ export const ElectricityUseCalculator: React.FC = () => {
         </Link>
       </div>
 
-      {/* Contextual Amazon Hardware Reference Card (Secondary) */}
-      <SidebarHardwareReference
-        title="Energy Monitoring Reference"
-        subtitle="Standard equipment categories for tracking appliance power draw and home circuits:"
-        items={[
-          {
-            title: "Plug-In Digital Watt & Power Meters",
-            brands: "P3 Kill A Watt / Baldr",
-            subtitle: "Measure real-time watts, cumulative kWh, and vampire phantom draw",
-            searchQuery: "kill a watt electricity monitor",
-          },
-          {
-            title: "Smart Electrical Panel Monitors (16 Clamps)",
-            brands: "Emporia Vue 3 / Sense",
-            subtitle: "CT sensor clamps tracking whole-home circuits and solar generation",
-            searchQuery: "emporia vue 3 energy monitor",
-          },
-        ]}
-      />
+
     </div>
   );
 

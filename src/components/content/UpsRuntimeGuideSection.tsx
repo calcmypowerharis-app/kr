@@ -28,10 +28,10 @@ export const UpsRuntimeGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
           <Battery className="w-3.5 h-3.5" />
-          <span>UPS Backup Sizing Guide &amp; Battery Runtime Benchmarks</span>
+          <span>Battery Autonomy &amp; Inverter Inrush Headroom</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How Long Will a UPS Battery Backup Last? Runtime Lookup Charts
+          UPS Battery Runtime Calculation: Discharge Curves &amp; Inverter Efficiency
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Uninterruptible power supply runtime depends on connected equipment wattage, internal battery chemistry, DC bus voltage, and inverter conversion efficiency during grid outages.

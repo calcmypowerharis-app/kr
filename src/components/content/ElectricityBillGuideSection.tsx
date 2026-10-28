@@ -8,10 +8,10 @@ export const ElectricityBillGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
           <Receipt className="w-3.5 h-3.5" />
-          <span>Electric Bill Architecture &amp; Tariff Reference</span>
+          <span>Utility Tariff Architecture &amp; Cost Component Breakdown</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How to Calculate Your Electric Bill: Supply, Delivery &amp; Tariff Breakdown
+          Electric Utility Bill Calculation: Generation, Delivery &amp; Tariff Riders
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           An electric utility statement includes generation supply rates, distribution delivery charges, fixed monthly customer connection fees, and municipal tax riders.

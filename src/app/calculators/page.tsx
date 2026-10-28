@@ -386,31 +386,6 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            {/* Active: Solar Battery Charging Time Calculator */}
-            <Link
-              id="solar-charge-time"
-              href="/how-long-does-it-take-to-charge-a-battery-with-solar-panels"
-              className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-lg transition space-y-3 scroll-mt-24"
-            >
-              <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition">
-                  <BatteryCharging className="w-5 h-5" />
-                </div>
-                <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
-                  Live Tool • Solar &amp; Battery
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition">
-                Solar Battery Charging Time Calculator &amp; Guide
-              </h3>
-              <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate recharge duration in peak sun hours and calendar days based on solar panel array wattage, battery Ah capacity, MPPT/PWM efficiency, and chemistry.
-              </p>
-              <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
-                <span>Open Solar Charge Tool</span>
-                <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
 
             {/* Active: Three Phase Power Calculator */}
             <Link
@@ -463,12 +438,6 @@ export default function CalculatorsDirectoryPage() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
-
-            {/* Active: Generator Amperage Chart & Calculator */}
-            
-
-            {/* Active: Generator Wattage Chart */}
-            
 
             {/* Active: Electricity Cost Calculator */}
             <Link
@@ -589,8 +558,6 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            
-
             <Link
               href="/what-does-ah-mean-on-a-battery"
               className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
@@ -691,8 +658,6 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            
-
             <Link
               href="/how-much-energy-does-a-solar-panel-produce"
               className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
@@ -743,16 +708,6 @@ export default function CalculatorsDirectoryPage() {
               </div>
             </Link>
 
-            
-
-            
-
-            
-
-            
-
-            
-
             <Link
               href="/how-many-amp-hours-do-i-need"
               className="group block p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-lg transition space-y-3"
@@ -777,8 +732,6 @@ export default function CalculatorsDirectoryPage() {
                 <ArrowRight className="w-4 h-4" />
               </div>
             </Link>
-
-            
 
             <Link
               href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"

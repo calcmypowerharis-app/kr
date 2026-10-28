@@ -8,10 +8,10 @@ export const ElectricityUsageGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
           <Zap className="w-3.5 h-3.5" />
-          <span>Complete Engineering Guide &amp; Audit Reference</span>
+          <span>Appliance Energy Audit &amp; Wh/kWh Methodology</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How to Calculate Appliance Electricity Usage (kWh &amp; Watts)
+          Appliance Watt-Hour (Wh) &amp; Monthly kWh Calculation Methodology
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Calculating electricity usage allows homeowners, RV travelers, and solar designers to estimate monthly utility bills, size battery banks, and detect phantom energy drains.

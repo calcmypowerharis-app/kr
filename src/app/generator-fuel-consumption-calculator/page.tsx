@@ -9,7 +9,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Generator Fuel Consumption Calculator",
+  title: "Generator Fuel Consumption Calculator - Gallons Per Hour Chart",
   description:
     "Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.",
   path: "/generator-fuel-consumption-calculator",

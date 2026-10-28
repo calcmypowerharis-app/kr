@@ -8,10 +8,10 @@ export const SolarSystemSizingGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold uppercase tracking-wider">
           <Sun className="w-3.5 h-3.5" />
-          <span>Complete Array Sizing &amp; Module Count Guide</span>
+          <span>PV Array Capacity &amp; Roof Area Engineering</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How to Calculate How Many Solar Panels You Need (kW &amp; Roof Space)
+          Residential Solar System Sizing: Array kW Demand, Panel Count &amp; Roof Area
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Sizing a residential photovoltaic (PV) array involves translating monthly kilowatt-hour consumption into array DC kilowatt capacity based on regional peak sun hours, system derating losses, and individual module wattage.

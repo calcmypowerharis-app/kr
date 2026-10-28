@@ -30,7 +30,6 @@ import { DisclaimerSection } from "./DisclaimerSection";
 import { FaqSection } from "./FaqSection";
 import { RelatedCalculators } from "./RelatedCalculators";
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
-import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   calculateGeneratorSize,
@@ -1150,38 +1149,6 @@ export const GeneratorSizeCalculator: React.FC = () => {
           </p>
         </div>
       </div>
-
-      {/* Contextual Amazon Hardware Section (Secondary) */}
-      <SidebarHardwareReference
-        title="Generator Hardware Reference"
-        subtitle="Standard equipment categories for portable backup power and safe transfer connection:"
-        items={[
-          {
-            title: "Dual-Fuel Inverter Generators (3,500W to 4,500W)",
-            brands: "Westinghouse iGen4500DF / Champion",
-            subtitle: "Clean power (<3% THD) for electronics; operates on gasoline or propane",
-            searchQuery: "dual fuel inverter generator 4500 watt",
-          },
-          {
-            title: "Outdoor Power Inlet Boxes (30A / 50A)",
-            brands: "Reliance Controls / Generac NEMA 3R",
-            subtitle: "NEMA 3R weatherproof exterior connection for transfer cords",
-            searchQuery: "generator power inlet box 30 amp nema 3r",
-          },
-          {
-            title: "Manual Transfer Switch Kits",
-            brands: "Reliance Controls / Square D",
-            subtitle: "Break-before-make subpanels to isolate generator power from utility lines",
-            searchQuery: "manual generator transfer switch 30 amp",
-          },
-          {
-            title: "4-Prong Generator Cords (L14-30P, 10 AWG)",
-            brands: "Southwire / Iron Forge Pure Copper",
-            subtitle: "Heavy-duty copper extension cords for 120V/240V 30-Amp generator outlets",
-            searchQuery: "10 awg l14-30p generator cord",
-          },
-        ]}
-      />
     </div>
   );
 
