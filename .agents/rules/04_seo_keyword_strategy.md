@@ -145,3 +145,19 @@ When a calculation or recommendation could affect installation safety:
 ### Rule 34: Direct Answer Passage Structure Standard
 - The opening passage following an H2 should provide a direct, declarative answer to the reader's query before elaborating on context, aiding user scanning and search engine passage extraction.
 - Prioritize reader utility and context-appropriate conciseness over rigid, arbitrary word-count quotas.
+
+### Rule 35: Stealth Monetization Client-Hydration Guardrail (Thin-Affiliate Protection)
+- Zero Raw SSR Affiliate Footprint: On young domains (DA 0 to 20), initial server-rendered HTML payloads crawled by Googlebot and Bingbot must contain exactly 0 outbound commercial affiliate search links (amazon.com/s?k=...).
+- Client-Mount Gating: All monetization cards and result match bars (ResultHardwareMatchBar, RecommendedHardwareBox, etc.) must be gated behind a client-mount check (isMounted state initialized to false and set to true in useEffect).
+- Human UX Performance: Human visitors with JavaScript enabled must receive instantaneous (<50ms) hydration of hardware recommendation cards without visual layout shifts.
+- Content Ratio Ceiling: Gating monetization behind client hydration guarantees raw HTML educational content-to-HTML ratio remains 90%+, preventing Googlebot Thin-Affiliate classifier penalties.
+
+### Rule 36: Directory & Hub Anchor Canonical Single-Truth Rule
+- Within any navigation hub, sitewide directory, or footer link section, each canonical destination URL may appear only ONCE per directory section with its true authoritative title.
+- When routes are consolidated or redirected, never rewrite legacy anchor links to point to parent calculators multiple times within the same hub section. Remove redundant ghost links completely.
+- Copy counts (such as "14 Interactive Calculators and 8 Sizing Guides") must reflect exact physical canonical counts.
+
+### Rule 37: Standard HTTP 301 Permanent Redirects
+- In next.config.ts, always use explicit statusCode: 301 for permanent route consolidation.
+- Never use permanent: true alone without checking status codes, as Next.js defaults to HTTP 308 (Permanent Redirect), which some legacy crawler caches and edge CDNs do not consolidate as aggressively as standard HTTP 301 Moved Permanently.
+

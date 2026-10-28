@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook — Domain 00: Core Identity, Guardrails & Business Strategy
+# CalcMyPower Rulebook  -  Domain 00: Core Identity, Guardrails & Business Strategy
 
 > Antigravity Modular Rule Specification: Category `00_core_identity_and_guardrails.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.
@@ -89,6 +89,13 @@ Never write fake reviews.
 Never claim personal testing without actual testing.
 Product information must be checked against current sources when possible.
 Use the required Amazon Associate disclosure on the site.
+
+### 11.1 Search Query Hygiene and Error Prevention Standard
+- Query Length Ceiling: Search queries passed to getAmazonSearchUrl() must strictly be 3 to 5 words. Never exceed 6 words.
+- Single Intent Focus: Never combine competing brand names in a single search query (do not combine "LiTime Renogy" or "Westinghouse Champion"). Use generic, high-intent category terms (for example, "12V 100Ah LiFePO4 battery", "1500VA pure sine wave UPS").
+- No Over-Stuffing: Avoid technical filler terms ("built in BMS", "deep cycle lithium", "smart wifi") that overload Amazon query parsers and trigger 500 error pages.
+- Mandatory HTTP 200 Pre-Validation: Every new or updated query must be pre-tested via automated HTTP probe (using scripts/audit_all_amazon_links.py) to confirm HTTP 200 and zero error signatures before merging.
+- Link Compliance: All affiliate links must include tag=thedeskriser2-20 and rel="sponsored nofollow noopener noreferrer".
 
 ## 12. AdSense Rules
 Ads must never interfere with the calculator or mislead users into clicking.

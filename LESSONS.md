@@ -54,7 +54,7 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 ---
 
 ## Lesson 008: Refraining from Arbitrary Retail Range Bucketing
-- **Context:** Arbitrarily mapping numerical calculator results into fixed retail product tiers (e.g. "4,000W–5,500W class") lacks rigorous sourcing and can mislead users whose load requirements straddle or fall outside arbitrary commercial boundaries.
+- **Context:** Arbitrarily mapping numerical calculator results into fixed retail product tiers (e.g. "4,000W to 5,500W class") lacks rigorous sourcing and can mislead users whose load requirements straddle or fall outside arbitrary commercial boundaries.
 - **Rule:** Deliver exact calculated engineering thresholds (minimum running capacity, minimum peak/startup capacity, and planning capacity after headroom) and educate the user on how to compare them against manufacturer nameplate Rated Watts and Surge Watts.
 - **Prevention:** In calculator specifications and UI results, present calculated figures first, followed by clear equipment specification matching criteria, rather than fabricated retail buckets.
 
@@ -125,7 +125,7 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
 
 ## Lesson 018: Never Place `items-start` on Parent Grid Containers Wrapping Sticky `<aside>`
 - **Context:** Setting `items-start` (`align-items: start`) on a CSS Grid container (`<div className="lg:grid ... items-start">`) collapses the `<aside>` grid column height to the height of its immediate content (~650px) rather than stretching to the full height of the adjacent article content (~12,000px). Because a `position: sticky` child can only stick within the bounds of its direct parent, `<nav className="sticky top-20">` runs out of vertical track immediately and scrolls off-screen.
-- **Rule:** Never apply `items-start` to grid wrappers containing a sticky sidebar. Allow the grid column to stretch to the full height of the article row. Additionally, keep the sidebar component compact (under ~650px total height) so the reading percentage, active section label, all section links, useful tools, and CTA button remain visible inside 800px–900px viewports without vertical clipping.
+- **Rule:** Never apply `items-start` to grid wrappers containing a sticky sidebar. Allow the grid column to stretch to the full height of the article row. Additionally, keep the sidebar component compact (under ~650px total height) so the reading percentage, active section label, all section links, useful tools, and CTA button remain visible inside 800px to 900px viewports without vertical clipping.
 - **Prevention:** Automated test suite `src/lib/seo/__tests__/article-design-consistency.test.ts` scans all 16 editorial guides and asserts that the outer 12-column grid container (`lg:grid-cols-12`) does not contain `items-start`. Desktop scrolling is also verified at both mid-article and end-of-article scroll offsets using browser QA to confirm the sidebar remains pinned throughout the entire page.
 
 ---
@@ -242,4 +242,34 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   3. Never describe an empirical observation (e.g. front-loading content often aids passage extraction) as an algorithmic requirement or a citation guarantee.
   4. Avoid inventing arbitrary word-count quotas (such as exactly 40-50 words after H2s) based on observational averages.
 - **Prevention:** Codified in `SEO_DIRECTIVE_2026.md`, Section 3.6 of `AEO_GEO_STRATEGY.md`, and Decision 037.
+
+---
+
+## Lesson 031: Amazon Search Query Overflow WAF Parser Crash & 500 Error Prevention
+- **Context:** Sizing calculators previously linked to 11-word Amazon search queries combining competing brands and buzzwords (`12V 100Ah LiFePO4 battery built in BMS deep cycle lithium LiTime Renogy`). Clicking this threw HTTP 500 ("SORRY something went wrong on our end" / Dogs of Amazon), destroying monetization and user trust.
+- **Rule:**
+  1. Restrict all Amazon search queries to 3 to 5 words of high-intent terminology.
+  2. Never combine competing brand names in a single query string.
+  3. Pre-validate 100% of queries against Amazon live endpoints using automated test scripts (`scripts/audit_all_amazon_links.py`) before production deploy.
+- **Prevention:** Enforced by Rule 11.1 in `.agents/rules/00_core_identity_and_guardrails.md` and test suite checks in `affiliate.test.ts`.
+
+---
+
+## Lesson 032: Stealth Client-Hydration for Outbound Affiliate Footprints & Thin-Affiliate Immunity
+- **Context:** A young DA 0 domain rendering 7 to 9 outbound affiliate search links in initial SSR HTML triggers Google's Thin-Affiliate / Doorway classifier, leaving pages trapped in "Crawled - currently not indexed".
+- **Rule:**
+  1. Gate all affiliate recommendation cards and match bars behind client-only mounting (`isMounted` via `useEffect`).
+  2. Keep raw SSR HTML 100% pure technical engineering equations, static lookup tables, and educational guides for search engine crawlers.
+  3. Ensure human visitors in real browsers see instantaneous (<50ms) hydration of hardware recommendation cards.
+- **Prevention:** Enforced by Rule 7.8 in `.agents/rules/04_seo_keyword_strategy.md`.
+
+---
+
+## Lesson 033: Canonical Hub Anchor Hygiene & Directory Link Single-Truth Rule
+- **Context:** When 10 legacy guides were redirected to parent calculators, automated URL rewrite scripts redirected their anchor links to parent tools without removing the cards, causing the homepage directory to render 4 conflicting links all pointing to `/generator-size-calculator` in the same list.
+- **Rule:**
+  1. Each canonical URL may appear only once per directory section with its single authoritative title.
+  2. When redirecting legacy paths, delete redundant card/bullet instances rather than mass-pointing duplicate anchors to the parent URL.
+  3. Use explicit `statusCode: 301` in `next.config.ts` for all route consolidations.
+- **Prevention:** Enforced by Rule 7.9 and Rule 7.10 in `.agents/rules/04_seo_keyword_strategy.md`.
 
