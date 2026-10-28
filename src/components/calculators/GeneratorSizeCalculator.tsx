@@ -30,7 +30,6 @@ import { DisclaimerSection } from "./DisclaimerSection";
 import { FaqSection } from "./FaqSection";
 import { RelatedCalculators } from "./RelatedCalculators";
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
-import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   calculateGeneratorSize,
   getEssentialOutagePreset,

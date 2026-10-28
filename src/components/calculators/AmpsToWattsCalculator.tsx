@@ -25,9 +25,7 @@ import { RelatedCalculators } from "@/components/calculators/RelatedCalculators"
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
 import {
   AlertCircle,
-  ExternalLink,
   Sliders,
-  ShoppingBag,
   ArrowRight,
   HelpCircle,
   Table,

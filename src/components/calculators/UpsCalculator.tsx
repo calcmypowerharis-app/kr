@@ -17,9 +17,7 @@ import { AssumptionsSection } from "@/components/calculators/AssumptionsSection"
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
-import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
-import { ShoppingBag, ExternalLink, Zap, Info } from "lucide-react";
 
 interface PresetAppliance {
   label: string;

@@ -20,8 +20,6 @@ import {
   Snowflake,
   Layers,
   HelpCircle,
-  ShoppingBag,
-  ExternalLink,
 } from "lucide-react";
 import { CalculatorShell } from "@/components/calculators/CalculatorShell";
 import { FormulaSection } from "@/components/calculators/FormulaSection";
