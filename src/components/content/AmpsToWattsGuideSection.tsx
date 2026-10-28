@@ -43,10 +43,10 @@ export const AmpsToWattsGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
           <Zap className="w-3.5 h-3.5" />
-          <span>Master Electrical Conversion Guide &amp; NEC Reference</span>
+          <span>Current to Active Power Conversion Standards</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How to Convert Amps to Watts: DC, 120V &amp; 240V Reference Charts
+          Amps to Watts Conversion: DC, Single-Phase &amp; Three-Phase Power Tables
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Converting current in amperes to power in watts depends on circuit voltage, phase arrangement, and whether loads are intermittent or continuous under National Electrical Code standards.

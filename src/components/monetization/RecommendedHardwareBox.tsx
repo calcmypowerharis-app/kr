@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { ExternalLink, ShieldCheck, ShoppingCart, Check, Star } from "lucide-react";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
@@ -14,7 +16,14 @@ interface RecommendedHardwareBoxProps {
 export const RecommendedHardwareBox: React.FC<RecommendedHardwareBoxProps> = ({
   calculatorSlug,
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const cluster = getHardwareClusterForSlug(calculatorSlug);
+
+  if (!isMounted) return null;
 
   const getRibbonBadgeClass = (color: HardwareProduct["ribbonColor"]) => {
     switch (color) {

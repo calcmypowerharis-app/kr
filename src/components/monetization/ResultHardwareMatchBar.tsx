@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import { Zap, ExternalLink } from "lucide-react";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 
@@ -157,8 +159,15 @@ export const ResultHardwareMatchBar: React.FC<ResultHardwareMatchBarProps> = ({
   calculatedValue,
   className = "",
 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const match = getMatchRecommendation(calculatorSlug, calculatedValue);
   const searchUrl = getAmazonSearchUrl(match.searchQuery);
+
+  if (!isMounted) return null;
 
   return (
     <div

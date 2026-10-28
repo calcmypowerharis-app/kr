@@ -9,7 +9,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Generator Size Calculator - Running + Surge Watts",
+  title: "Generator Size Calculator - Running & Surge Wattage Chart",
   description:
     "Calculate generator size needed for home backup or RVs using running watts and motor surge ratings. Includes master appliance wattage chart and amperage tables.",
   path: "/generator-size-calculator",

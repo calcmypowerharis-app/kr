@@ -8,10 +8,10 @@ export const SolarChargeControllerGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold uppercase tracking-wider">
           <Sun className="w-3.5 h-3.5" />
-          <span>Engineering Sizing Methodology &amp; NEC Reference</span>
+          <span>NEC 690.7 Voltage Margins &amp; Controller Ampacity</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How to Size a Solar Charge Controller: MPPT vs. PWM Formulas &amp; Voltage Limits
+          Solar Charge Controller Sizing: MPPT vs. PWM Formulas &amp; Cold-Weather Voc
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Sizing a solar battery charge controller prevents thermal overload, safeguards battery chemistry, and avoids damaging sensitive electronics from winter open-circuit voltage spikes.

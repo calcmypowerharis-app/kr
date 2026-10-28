@@ -8,10 +8,10 @@ export const GeneratorFuelGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
           <Fuel className="w-3.5 h-3.5" />
-          <span>Fuel Consumption Guide &amp; Runtime Reference</span>
+          <span>Fuel Burn Rates &amp; Operating Duration Engineering</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How Much Gas Does a Generator Use? Burn Rates, Runtime &amp; Fuel Types
+          Generator Fuel Consumption Rates, Hourly Burn &amp; Fuel Type Sizing
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Fuel consumption depends on generator engine displacement, electrical load percentage, inverter throttling technology, and fuel energy density across gasoline, propane, and diesel.

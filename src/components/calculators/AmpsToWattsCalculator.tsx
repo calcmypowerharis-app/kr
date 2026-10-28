@@ -22,9 +22,7 @@ import { AssumptionsSection } from "@/components/calculators/AssumptionsSection"
 import { DisclaimerSection } from "@/components/calculators/DisclaimerSection";
 import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
-import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
-import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import {
   AlertCircle,
   ExternalLink,
@@ -337,25 +335,6 @@ export const AmpsToWattsCalculator: React.FC = () => {
             </ul>
           </div>
 
-          {/* Diagnostic Gear Reference (Amazon Associate) */}
-          <SidebarHardwareReference
-            title="Electrical Diagnostic Tools"
-            subtitle="Equipment for safely measuring live electrical current and line voltage:"
-            items={[
-              {
-                title: "True RMS AC/DC Clamp Meters",
-                brands: "Klein Tools CL390 / Fluke",
-                subtitle: "Accurately measure running current without disconnecting wiring",
-                searchQuery: "digital clamp meter True RMS",
-              },
-              {
-                title: "Plug-In Digital Power & Watt Meters",
-                brands: "P3 Kill A Watt / Baldr",
-                subtitle: "Monitor household plug loads in real-time Watts, Amps, and kWh",
-                searchQuery: "kill a watt electricity monitor",
-              },
-            ]}
-          />
         </div>
       }
     >

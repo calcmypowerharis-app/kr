@@ -79,7 +79,7 @@ export const Footer: React.FC = () => {
                   href="/calculators"
                   className="text-blue-400 font-semibold hover:text-blue-300 transition"
                 >
-                  View All 16 Calculators &rarr;
+                  View All Calculators &rarr;
                 </Link>
               </li>
             </ul>

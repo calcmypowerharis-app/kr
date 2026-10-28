@@ -24,7 +24,6 @@ import { FaqSection } from "@/components/calculators/FaqSection";
 import { RelatedCalculators } from "@/components/calculators/RelatedCalculators";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import { ResultHardwareMatchBar } from "@/components/monetization/ResultHardwareMatchBar";
-import { SidebarHardwareReference } from "@/components/monetization/SidebarHardwareReference";
 import {
   AlertCircle,
   ExternalLink,
@@ -326,26 +325,6 @@ export const WattsToAmpsCalculator: React.FC = () => {
               </Link>
             </div>
           </div>
-
-          {/* Contextual Amazon Hardware Reference Card (Secondary) */}
-          <SidebarHardwareReference
-            title="Electrical Testing Tools"
-            subtitle="Equipment for measuring current draw and verifying branch-circuit loads:"
-            items={[
-              {
-                title: "Digital AC/DC Clamp Meters",
-                brands: "Klein Tools CL390 / Fluke",
-                subtitle: "Non-invasive live amperage measurement without breaking circuits",
-                searchQuery: "digital clamp meter True RMS",
-              },
-              {
-                title: "Digital Circuit Breaker Finders",
-                brands: "Klein Tools ET310 / Sperry",
-                subtitle: "Trace branch circuits directly to panel overcurrent devices",
-                searchQuery: "digital circuit breaker finder",
-              },
-            ]}
-          />
         </div>
       }
     >

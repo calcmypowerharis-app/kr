@@ -40,10 +40,10 @@ export const WattsToAmpsGuideSection: React.FC = () => {
       <div className="space-y-4">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider">
           <Zap className="w-3.5 h-3.5" />
-          <span>Electrical Circuit Sizing &amp; Conductor Ampacity Guide</span>
+          <span>Circuit Conductor Sizing &amp; Continuous Load Rules</span>
         </div>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-          How to Convert Watts to Amps: DC, 120V &amp; 240V Sizing Charts
+          Watts to Amps Circuit Sizing: Breaker Ratings &amp; Conductor Ampacity Tables
         </h2>
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-3xl">
           Calculating the current draw of any electrical load ensures circuit breakers, extension cords, and copper conductors operate safely without thermal overload or nuisance trips.
