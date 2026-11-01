@@ -9,12 +9,12 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Generator Size Calculator - Running & Surge Wattage Chart",
+  title: "Generator Size Calculator - Running Watts & Surge Sizing Tool",
   description:
-    "Calculate generator size needed for home backup or RVs using running watts and motor surge ratings. Includes master appliance wattage chart and amperage tables.",
+    "Calculate required generator capacity for home backup or RV loads using running watts, largest motor surge, and 125% planning headroom. Includes wattage charts.",
   path: "/generator-size-calculator",
   ogDescription:
-    "Calculate generator size needed for home backup or RVs using running watts and motor surge ratings. Includes master appliance wattage chart and amperage tables.",
+    "Calculate required generator capacity for home backup or RV loads using running watts, largest motor surge, and 125% planning headroom. Includes wattage charts.",
 });
 
 export default function GeneratorSizePage() {

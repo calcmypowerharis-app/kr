@@ -78,13 +78,6 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar Energy Guide",
   },
   {
-    title: "How Many Solar Panels Do I Need to Power My House?",
-    description:
-      "Step-by-step homeowner guide to estimating residential solar panel counts, electricity usage baselines, and roof space requirements.",
-    href: "/how-much-energy-does-a-solar-panel-produce",
-    category: "Solar Planning Guide",
-  },
-  {
     title: "Solar Panels in Series vs Parallel Guide",
     description:
       "Learn how series and parallel solar panel wiring affects circuit voltage, current, wire size, and line losses.",
