@@ -99,6 +99,20 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar Engineering Guide",
   },
   {
+    title: "How Many Amp Hours Do I Need for a Battery Bank?",
+    description:
+      "Calculate required battery bank capacity from daily load watt-hours, system voltage, autonomy, and chemistry depth of discharge.",
+    href: "/how-many-amp-hours-do-i-need",
+    category: "Sizing Guide",
+  },
+  {
+    title: "How Long Will a 100Ah Battery Last?",
+    description:
+      "Practical runtime estimates for refrigerators, CPAP machines, TVs, and inverters across LiFePO4 and lead-acid batteries.",
+    href: "/how-long-will-a-100ah-battery-last",
+    category: "Runtime Guide",
+  },
+  {
     title: "Solar Panels in Series vs Parallel Guide",
     description:
       "Understand how series and parallel wiring configurations affect array operating voltage, current, and charge controller compatibility.",

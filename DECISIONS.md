@@ -486,7 +486,8 @@ This log records major technical and product decisions, context, rationale, and 
   2. **Phase 2 Differentiation (Cluster D & E):** Differentiated interactive bank sizing tools from outage runtime estimators and companion guides across Cluster D (UPS and Battery Storage) and Cluster E (Electrical Circuits and Conversions). Protected historical high-performing Bing URLs (`/voltage-drop-calculator`, `/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle`, and `/what-is-a-watt-hour`) by preserving their exact tested meta descriptions and ranking signals. (Draft PR #37).
   3. **Metadata Parity & Character Cap Enforcement:** Synchronized OpenGraph, Twitter, and Schema JSON-LD descriptions across all modified child pages with `src/lib/seo/registry.ts`, guaranteeing that 100% of descriptions remain strictly between 100 and 165 characters.
   4. **Anchor Hygiene & Reciprocal Cross-Linking:** Eliminated duplicate anchor links in `BatteryCapacityCalculator.tsx` and cross-linked companion guides in `RELATED_TOOLS` across all modified calculators.
-  5. **Lessons Codification:** Codified Lessons 034, 035, 036, and 037 in `LESSONS.md`.
+  5. **Registry Route-Type Segregation & Automated Type Guardrails:** Audited and resolved 15 legacy occurrences in `src/lib/seo/registry.ts` where calculator routes were mistakenly cataloged under `relatedGuidePaths`, and enforced strict route-type validation in `src/lib/seo/__tests__/editorial-quality.test.ts`.
+  6. **Lessons Codification:** Codified Lessons 034, 035, 036, 037, and 038 in `LESSONS.md`.
 - **Rationale:** Clarifies search intent signals for Googlebot and Bingbot, prevents intra-cluster keyword cannibalization, guarantees single-source-of-truth metadata integrity, improves crawl discovery for companion guides, and upholds 100% stability freeze compliance.
 
 

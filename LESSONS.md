@@ -313,4 +313,14 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   3. Test automated CLI scripts against Windows PowerShell syntax rules before executing complex remote automation.
 - **Prevention:** Enforced by Rule 18 and Rule 23.11 in `.agents/rules/06_architecture_devops_git.md`.
 
+---
+
+## Lesson 038: Registry Route-Type Segregation and Automated Route Validation
+- **Context:** An audit of `src/lib/seo/registry.ts` revealed 15 instances where interactive calculator routes (such as `/electricity-use-calculator`, `/solar-system-size-calculator`, and `/battery-capacity-calculator`) were mistakenly placed in `relatedGuidePaths` across both calculators and editorial guides. Because automated tests previously only verified that referenced paths physically existed as pages in `src/app`, this route-type pollution passed silently, misclassifying tools as editorial guides and causing duplicate links.
+- **Rule:**
+  1. All paths in `relatedCalculatorPaths` must strictly resolve to entries within `CALCULATOR_REGISTRY`.
+  2. All paths in `relatedGuidePaths` must strictly resolve to entries within `GUIDE_REGISTRY`.
+  3. Continuous testing suites must validate route-type membership alongside physical filesystem path existence.
+- **Prevention:** Enforced by automated test assertions in `src/lib/seo/__tests__/editorial-quality.test.ts` and Rule 15 / Rule 29 in `.agents/rules/`.
+
 

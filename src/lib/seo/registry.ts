@@ -172,7 +172,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
       '/what-does-ah-mean-on-a-battery',
-      '/what-size-generator-do-i-need-for-my-house'
+      '/what-size-generator-do-i-need-for-my-house',
+      '/how-many-amp-hours-do-i-need'
     ],
   },
   {
@@ -223,10 +224,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/battery-capacity-calculator',
       '/ups-battery-backup-calculator',
       '/solar-panel-tilt-calculator',
-      '/generator-size-calculator'
+      '/generator-size-calculator',
+      '/electricity-use-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
       '/what-is-a-watt-hour',
       '/what-does-ah-mean-on-a-battery',
       '/what-size-generator-do-i-need-for-my-house',
@@ -254,10 +255,10 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/battery-capacity-calculator',
       '/solar-panel-tilt-calculator',
       '/ups-battery-backup-calculator',
-      '/generator-size-calculator'
+      '/generator-size-calculator',
+      '/electricity-use-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
       '/what-is-a-watt-hour',
       '/what-does-ah-mean-on-a-battery',
       '/what-size-generator-do-i-need-for-my-house',
@@ -316,7 +317,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/solar-panels-series-vs-parallel',
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
-      '/how-long-does-it-take-to-charge-a-battery-with-solar-panels'
+      '/how-long-does-it-take-to-charge-a-battery-with-solar-panels',
+      '/how-many-amp-hours-do-i-need'
     ],
   },
   {
@@ -453,9 +455,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/generator-size-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-cost-calculator',
       '/what-is-a-watt-hour',
-      '/solar-system-size-calculator'
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -479,8 +480,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/generator-size-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
-      '/what-is-a-watt-hour'
+      '/what-is-a-watt-hour',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -506,7 +507,6 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       '/how-many-amp-hours-do-i-need',
-      '/solar-charge-controller-calculator',
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
       '/solar-panels-series-vs-parallel'
@@ -607,7 +607,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/amps-to-watts-calculator'
     ],
     relatedGuidePaths: [
-      '/battery-capacity-calculator',
+      '/how-many-amp-hours-do-i-need',
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
       '/what-size-generator-do-i-need-for-my-house',
@@ -634,12 +634,14 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/battery-capacity-calculator',
       '/ups-battery-backup-calculator',
       '/watts-to-amps-calculator',
-      '/amps-to-watts-calculator'
+      '/amps-to-watts-calculator',
+      '/electricity-use-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
       '/how-long-will-a-100ah-battery-last',
       '/what-does-ah-mean-on-a-battery',
+      '/how-many-amp-hours-do-i-need',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle',
       '/what-size-generator-do-i-need-for-my-house'
     ],
   },
@@ -667,7 +669,6 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       '/how-many-amp-hours-do-i-need',
-      '/battery-capacity-calculator',
       '/what-does-ah-mean-on-a-battery',
       '/what-is-a-watt-hour'
     ],
@@ -725,8 +726,8 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/voltage-drop-calculator'
     ],
     relatedGuidePaths: [
-      '/solar-system-size-calculator',
       '/solar-panels-series-vs-parallel',
+      '/how-long-does-it-take-to-charge-a-battery-with-solar-panels',
       '/what-is-a-watt-hour'
     ],
   },
@@ -754,7 +755,6 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/watts-to-amps-calculator'
     ],
     relatedGuidePaths: [
-      '/battery-capacity-calculator',
       '/what-does-ah-mean-on-a-battery',
       '/what-is-a-watt-hour',
       '/how-long-will-a-100ah-battery-last',
@@ -786,7 +786,6 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       '/solar-panels-series-vs-parallel',
-      '/solar-charge-controller-calculator',
       '/how-long-will-a-100ah-battery-last',
       '/how-much-energy-does-a-solar-panel-produce'
     ],
@@ -812,13 +811,13 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/watts-to-amps-calculator',
       '/voltage-drop-calculator',
       '/electricity-cost-calculator',
+      '/electricity-use-calculator',
       '/generator-size-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
-      '/electricity-cost-calculator',
       '/what-is-a-watt-hour',
-      '/generator-size-calculator'
+      '/solar-panels-series-vs-parallel',
+      '/what-size-generator-do-i-need-for-my-house'
     ],
   },
 ];
