@@ -24,7 +24,7 @@ export const SolarSystemSizingGuideSection: React.FC = () => {
           <span>The Universal Solar Panel Count Formula</span>
         </h3>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Solar arrays generate power based on peak sun hours (hours per day when sunlight intensity averages 1,000 W/m²). Standard solar engineering planning models typically apply a 0.77 to 0.80 system derate factor (planning performance factor) for inverter losses, wiring resistance, and thermal heating:
+          Solar arrays generate power based on peak sun hours (hours per day when sunlight intensity averages 1,000 W/m²). For this simplified estimate, CalcMyPower uses an adjustable 78% planning performance factor to approximate combined system losses. Actual PV output varies with solar resource, tilt, azimuth, shading, soiling, temperature, wiring, and inverter behavior:
         </p>
         <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 font-mono text-center text-sm sm:text-base text-slate-900 font-bold space-y-2">
           <div>Array Size (kW) = [Daily Energy (kWh) ÷ (Peak Sun Hours × 0.78 System Derate)]</div>
