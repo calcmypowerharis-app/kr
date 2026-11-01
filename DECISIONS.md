@@ -475,5 +475,20 @@ This log records major technical and product decisions, context, rationale, and 
   6. **Empirical AI Search Citations Attribution Alignment:** Formalized citation sources for AI search behavior: attributing the 62.9% non-Top-10 citation finding to the Ahrefs study (March 2, 2026, 863K SERPs / 4M URLs; https://ahrefs.com/blog/ai-overview-citations-top-10/) and the 44.2% top-30% extraction finding to Kevin Indig's study reported on Search Engine Land (1.2M ChatGPT answers / 18,012 citations; https://searchengineland.com/chatgpt-citations-content-study-469483), replacing prior unverified agency heuristics.
 - **Rationale:** Protects the site against affiliate qualification penalties and deceptive freshness discrepancies, prevents structured data manual actions, upholds absolute factual authenticity in authorship, and preserves 100% stability freeze compliance.
 
+---
+
+## Decision 038: Phase 1 & Phase 2 SEO Search Intent Differentiation & Metadata Synchronization
+- **Date:** 2026-11-01
+- **Status:** Approved & Implemented across PR #36 and PR #37
+- **Context:** An SEO audit of CalcMyPower's topical clusters revealed intent overlap between interactive calculators and educational companion guides. Furthermore, several child page metadata blocks had hardcoded OpenGraph and schema descriptions exceeding 165 characters (up to 184 characters) that had drifted from the central registry, while certain calculation tools contained redundant duplicate anchor links or lacked reciprocal companion discovery.
+- **Decision:**
+  1. **Phase 1 Differentiation (Cluster A, B, C):** Established distinct meta title and description intent boundaries between computational sizing tools and companion guides for Solar Panels, Inverters, and Generators. Corrected educational text in `/how-to-size-a-solar-system-with-battery-storage` to clarify the 78% derate as an engineering rule-of-thumb planning performance factor rather than an NREL PVWatts automated simulation baseline. (Draft PR #36).
+  2. **Phase 2 Differentiation (Cluster D & E):** Differentiated interactive bank sizing tools from outage runtime estimators and companion guides across Cluster D (UPS and Battery Storage) and Cluster E (Electrical Circuits and Conversions). Protected historical high-performing Bing URLs (`/voltage-drop-calculator`, `/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle`, and `/what-is-a-watt-hour`) by preserving their exact tested meta descriptions and ranking signals. (Draft PR #37).
+  3. **Metadata Parity & Character Cap Enforcement:** Synchronized OpenGraph, Twitter, and Schema JSON-LD descriptions across all modified child pages with `src/lib/seo/registry.ts`, guaranteeing that 100% of descriptions remain strictly between 100 and 165 characters.
+  4. **Anchor Hygiene & Reciprocal Cross-Linking:** Eliminated duplicate anchor links in `BatteryCapacityCalculator.tsx` and cross-linked companion guides in `RELATED_TOOLS` across all modified calculators.
+  5. **Lessons Codification:** Codified Lessons 034, 035, 036, and 037 in `LESSONS.md`.
+- **Rationale:** Clarifies search intent signals for Googlebot and Bingbot, prevents intra-cluster keyword cannibalization, guarantees single-source-of-truth metadata integrity, improves crawl discovery for companion guides, and upholds 100% stability freeze compliance.
+
+
 
 

@@ -273,3 +273,44 @@ This log documents lessons learned, bugs found, root causes, and prevention stra
   3. Use explicit `statusCode: 301` in `next.config.ts` for all route consolidations.
 - **Prevention:** Enforced by Rule 7.9 and Rule 7.10 in `.agents/rules/04_seo_keyword_strategy.md`.
 
+---
+
+## Lesson 034: Transparent Planning Derate Factor Modeling vs. External Simulation Claims
+- **Context:** In `/how-to-size-a-solar-system-with-battery-storage`, educational text previously claimed that the default 0.78 (78%) planning derate factor was an "NREL PVWatts standard derating factor". However, NREL PVWatts employs an 86% system baseline with granular component loss modeling, whereas 78% represents a classic engineering rule-of-thumb DC-to-AC planning performance factor accounting for thermal, wiring, soiling, and inverter deratings.
+- **Rule:**
+  1. Never attribute rule-of-thumb planning derates to external lab simulation benchmarks unless verified against their exact published specifications.
+  2. Clearly state the engineering basis for rule-of-thumb factors (such as thermal, soiling, mismatch, and conversion deratings) as transparent conservative planning baselines.
+  3. Direct users needing multi-variable location-specific simulations to formal NREL tools without claiming automated simulation parity for static educational formulas.
+- **Prevention:** Enforced by Rule 9 (Sources & Accuracy), Rule 24 (Calculator Research & Validation), and Rule 26 (Permanent Technical Accuracy & Sizing Standards).
+
+---
+
+## Lesson 035: Single-Source-of-Truth Metadata Synchronization Across OpenGraph, Twitter, and Schema JSON-LD
+- **Context:** Auditing Cluster D & E pages revealed that child page files (`page.tsx`) maintained hardcoded `openGraph.description`, `twitter.description`, and `articleSchema.description` values that drifted away from `CALCULATOR_REGISTRY` / `GUIDE_REGISTRY`. Several OpenGraph descriptions exceeded 180 characters, causing schema-to-metadata discrepancies and violating search snippet display limits.
+- **Rule:**
+  1. All metadata surfaces (HTML `<meta name="description">`, `openGraph.description`, `twitter.description`, and JSON-LD `.description`) must strictly mirror the central single-truth registry in `src/lib/seo/registry.ts`.
+  2. Every description must remain strictly between 100 and 165 characters.
+  3. Child pages must consume description values from registry definitions rather than defining divergent local strings.
+- **Prevention:** Enforced by Rule 7.1 and Rule 29.2 in `.agents/rules/04_seo_keyword_strategy.md` and verified by `src/lib/seo/__tests__/seo-foundation.test.ts`.
+
+---
+
+## Lesson 036: Intra-Cluster Companion Anchor Hygiene & Reciprocal Cross-Linking
+- **Context:** In `BatteryCapacityCalculator.tsx`, line 1079 contained duplicate anchor links pointing to `/how-many-amp-hours-do-i-need` within the same sentence, while the quick informational box also linked `/how-many-amp-hours-do-i-need` twice without linking `/what-does-ah-mean-on-a-battery`. Furthermore, companion guides for electrical circuits lacked reciprocal discovery cards from their parent calculation tools.
+- **Rule:**
+  1. Never duplicate identical anchor links and href targets within the same explanatory sentence or callout block.
+  2. Distribute companion guide links across all relevant sub-topic guides within a cluster so that every companion guide receives direct in-content and tool-card discovery.
+  3. Maintain reciprocal link parity between interactive calculation tools and companion guides in `RELATED_TOOLS` and `CALCULATOR_REGISTRY.relatedGuidePaths`.
+- **Prevention:** Enforced by Lesson 033 extension and Rule 7.3 in `.agents/rules/04_seo_keyword_strategy.md`.
+
+---
+
+## Lesson 037: PowerShell CLI Multi-Line Syntax Protection with Ampersands and Special Characters
+- **Context:** Creating Draft PR #37 via `gh pr create --body "..."` failed with PowerShell `ParserError: The ampersand (&) character is not allowed.` due to unescaped `&` characters in markdown headers and cluster titles (e.g., `UPS & Battery Storage`).
+- **Rule:**
+  1. For any GitHub CLI (`gh`) command involving multi-line markdown or strings containing special characters (`&`, `$`, `"`, `'`), never pass inline strings through the shell parser.
+  2. Always write the content to a temporary markdown file (e.g., `pr_body.md`), pass `--body-file`, and delete the temporary file immediately after command completion.
+  3. Test automated CLI scripts against Windows PowerShell syntax rules before executing complex remote automation.
+- **Prevention:** Enforced by Rule 18 and Rule 23.11 in `.agents/rules/06_architecture_devops_git.md`.
+
+
