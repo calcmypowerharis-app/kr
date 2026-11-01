@@ -385,7 +385,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar System Size",
     metaTitle: "Solar System Size Calculator - Solar PV Array kW & Panel Sizing",
     metaDescription:
-      "Calculate solar PV system size, array kW capacity, panel count, and required roof space from monthly kWh usage and peak sun hours. Based on NREL PVWatts derates.",
+      "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
     cluster: "solar",
     secondaryClusters: ["home-energy", "rv-power"],
     primaryKeyword: "solar system size calculator",

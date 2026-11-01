@@ -12,17 +12,17 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar System Size Calculator - Solar PV Array kW & Panel Sizing",
   description:
-    "Calculate solar PV system size, array kW capacity, panel count, and required roof space from monthly kWh usage and peak sun hours. Based on NREL PVWatts derates.",
+    "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
   path: "/solar-system-size-calculator",
   ogDescription:
-    "Calculate solar PV system size, array kW capacity, panel count, and required roof space from monthly kWh usage and peak sun hours. Based on NREL PVWatts derates.",
+    "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
 });
 
 export default function SolarSystemSizeCalculatorPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Solar System Size Calculator",
     description:
-      "Calculate solar PV system size, array kW capacity, panel count, and required roof space from monthly kWh usage and peak sun hours based on NREL PVWatts derates.",
+      "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
     url: "https://calcmypower.com/solar-system-size-calculator",
   });
 
