@@ -60,6 +60,10 @@ Mandatory Git Author Identity:
 Credential Security Invariant:
 - Follow Section 23.11 exclusively. Use official GitHub CLI (`gh`) for remote GitHub operations. Never extract, stage, or commit GitHub tokens or secrets.
 
+### 18.1 Windows PowerShell Multi-Line CLI Safety Protocol
+- Never pass multi-line markdown or strings containing special characters (`&`, `$`, `"`, `'`) directly into inline CLI flags (e.g. `gh pr create --body "..."`).
+- Always write PR descriptions, issues, or release notes to a temporary file, pass the `--body-file` argument, and immediately delete the temporary file after command execution.
+
 ## 23. Remote Development, Testing & Deployment Standard
 
 ### 1. REMOTE-FIRST DEVELOPMENT

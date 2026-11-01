@@ -41,6 +41,27 @@ type CalculatorMode = "evaluate" | "size";
 
 const RELATED_TOOLS: RelatedTool[] = [
   {
+    title: "How Many Amp Hours Do I Need for a Battery Bank?",
+    description:
+      "Calculate required battery bank capacity from daily load watt-hours, system voltage, autonomy, and chemistry depth of discharge.",
+    href: "/how-many-amp-hours-do-i-need",
+    category: "Sizing Guide",
+  },
+  {
+    title: "How Long Will a 100Ah Battery Last?",
+    description:
+      "Realistic runtime estimates for refrigerators, CPAP machines, TVs, and inverters across LiFePO4 and lead-acid batteries.",
+    href: "/how-long-will-a-100ah-battery-last",
+    category: "Runtime Guide",
+  },
+  {
+    title: "What Does Ah Mean on a Battery?",
+    description:
+      "Understand battery charge capacity, convert Ah to Watt-hours, and learn why chemistry and discharge rates impact usable runtime.",
+    href: "/what-does-ah-mean-on-a-battery",
+    category: "Battery Guide",
+  },
+  {
     title: "Solar Battery Calculator",
     description:
       "Size off-grid and backup solar battery banks in kWh and Amp-hours based on daily energy consumption and days of autonomy.",
@@ -937,12 +958,12 @@ export const BatteryCapacityCalculator: React.FC = () => {
             <div className="space-y-1.5">
               <span className="font-bold">Need help calculating or wiring a multi-battery bank?</span>
               <p className="text-blue-800 leading-relaxed">
-                Learn how series and parallel arrangements change bank voltage and capacity in our comprehensive{" "}
+                Learn how to size your storage from daily Watt-hours in our comprehensive{" "}
                 <Link
                   href="/how-many-amp-hours-do-i-need"
                   className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  Battery Bank Amp-Hours Guide
+                  Battery Bank Sizing Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
                 . For realistic runtime benchmarks across appliances, read our{" "}
@@ -953,12 +974,12 @@ export const BatteryCapacityCalculator: React.FC = () => {
                   12V 100Ah Battery Runtime Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
-                , calculate total backup sizing from daily Watt-hours in our{" "}
+                , learn core rating definitions in our{" "}
                 <Link
-                  href="/how-many-amp-hours-do-i-need"
+                  href="/what-does-ah-mean-on-a-battery"
                   className="font-semibold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  Battery Bank Sizing Guide
+                  Battery Amp-Hours Explained Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
                 , or test runtime for specific appliances using our{" "}
@@ -1076,7 +1097,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
             </h2>
           </div>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
-            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. To calculate bank Amp-hours, voltage, and string configurations step-by-step, read our technical guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-semibold">how many amp hours you need for a daily load</Link>, or see our companion guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-medium">how many amp hours you need for a daily load</Link>:
+            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. To calculate bank Amp-hours, voltage, and string configurations step-by-step, read our technical guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-semibold">how many amp hours you need for a daily load</Link>, or see our companion guide explaining <Link href="/what-does-ah-mean-on-a-battery" className="text-blue-600 hover:underline font-medium">what Ah means on a battery</Link>:
           </p>
 
           <div className="overflow-x-auto mb-6">

@@ -462,26 +462,35 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
       expect(ah100Guide).toContain('href="/battery-capacity-calculator"');
     });
 
-    it("verifies all registry related paths correspond to existing routes in src/app", () => {
+    it("verifies all registry related paths correspond to existing routes in src/app and match their route types", () => {
+      const calcPathSet = new Set(CALCULATOR_REGISTRY.map((c) => c.path));
+      const guidePathSet = new Set(GUIDE_REGISTRY.map((g) => g.path));
       const allEntries = [...CALCULATOR_REGISTRY, ...GUIDE_REGISTRY];
+
+      const errors: string[] = [];
       for (const entry of allEntries) {
         for (const calcPath of entry.relatedCalculatorPaths) {
           const slug = calcPath.replace(/^\//, "");
           const pagePath = path.join(APP_DIR, slug, "page.tsx");
-          expect(
-            fs.existsSync(pagePath),
-            `Referenced related calculator path "${calcPath}" in ${entry.path} does not exist at ${pagePath}`
-          ).toBe(true);
+          if (!fs.existsSync(pagePath)) {
+            errors.push(`Referenced related calculator path "${calcPath}" in ${entry.path} does not exist at ${pagePath}`);
+          }
+          if (!calcPathSet.has(calcPath as any)) {
+            errors.push(`Referenced related calculator path "${calcPath}" in ${entry.path} is NOT a calculator in CALCULATOR_REGISTRY`);
+          }
         }
         for (const guidePath of entry.relatedGuidePaths) {
           const slug = guidePath.replace(/^\//, "");
           const pagePath = path.join(APP_DIR, slug, "page.tsx");
-          expect(
-            fs.existsSync(pagePath),
-            `Referenced related guide path "${guidePath}" in ${entry.path} does not exist at ${pagePath}`
-          ).toBe(true);
+          if (!fs.existsSync(pagePath)) {
+            errors.push(`Referenced related guide path "${guidePath}" in ${entry.path} does not exist at ${pagePath}`);
+          }
+          if (!guidePathSet.has(guidePath as any)) {
+            errors.push(`Referenced related guide path "${guidePath}" in ${entry.path} is NOT an editorial guide in GUIDE_REGISTRY`);
+          }
         }
       }
+      expect(errors).toEqual([]);
     });
   });
 

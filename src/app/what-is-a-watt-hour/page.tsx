@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained | CalcMyPower",
     description:
-      "A foundational engineering guide explaining the difference between electrical power (Watts) and energy (Watt-hours), with practical battery runtime and utility billing calculations.",
+      "Understand what a Watt-hour (Wh) measures, the crucial difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
     url: "https://calcmypower.com/what-is-a-watt-hour",
     type: "article",
     publishedTime: "2026-09-28T00:00:00Z",

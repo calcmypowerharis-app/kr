@@ -10,19 +10,19 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Amps to Watts Calculator - 120V/240V/DC Table",
+  title: "Amps to Watts Calculator - Current to Power Conversion Tool",
   description:
-    "Convert amps to watts across 12V DC, 120V, and 240V AC circuits. Features comprehensive conversion chart with NEC continuous-load limits from 1A to 200A.",
+    "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
   path: "/amps-to-watts-calculator",
   ogDescription:
-    "Convert amps to watts across 12V DC, 120V, and 240V AC circuits. Features comprehensive conversion chart with NEC continuous-load limits from 1A to 200A.",
+    "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
 });
 
 export default function AmpsToWattsPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Amps to Watts Electrical Calculator",
     description:
-      "Free online electrical calculator to convert current in Amperes to real power in Watts and kW for DC, single-phase AC, and balanced three-phase AC circuits.",
+      "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
     url: "https://calcmypower.com/amps-to-watts-calculator",
   });
 

@@ -155,10 +155,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/ups-battery-backup-calculator",
     title: "UPS Battery Backup Run-Time Hours Calculator",
     shortTitle: "UPS Runtime",
-    metaTitle: "UPS Battery Backup Calculator - Runtime Hours Table",
+    metaTitle: "UPS Battery Backup Calculator - Outage Run-Time Hours Tool",
     metaDescription:
-      
-      "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Includes static runtime table for WiFi routers, CPAP, and office PCs.",
+      "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Estimate backup duration for WiFi routers, CPAPs, and home office PCs.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar"],
     primaryKeyword: "uninterruptible power supply hours",
@@ -173,7 +172,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
       '/what-does-ah-mean-on-a-battery',
-      '/what-size-generator-do-i-need-for-my-house'
+      '/what-size-generator-do-i-need-for-my-house',
+      '/how-many-amp-hours-do-i-need'
     ],
   },
   {
@@ -181,9 +181,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/battery-capacity-calculator",
     title: "Battery Capacity & Sizing Calculator",
     shortTitle: "Battery Capacity",
-    metaTitle: "Battery Capacity Calculator - Ah & Wh Chart",
+    metaTitle: "Battery Capacity Calculator - Ah & Wh Bank Sizing Tool",
     metaDescription:
-      
       "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
@@ -210,10 +209,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/watts-to-amps-calculator",
     title: "Watts to Amps Electrical Calculator",
     shortTitle: "Watts to Amps",
-    metaTitle: "Watts to Amps Calculator - 120V/240V/DC Table",
+    metaTitle: "Watts to Amps Calculator - Amperage & Breaker Sizing Tool",
     metaDescription:
-      
-      "Convert watts to amps for DC, 120V, and 240V circuits. Features complete conversion table from 37W to 10,000W with NEC breaker and copper wire gauge sizing.",
+      "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
     cluster: "electricity",
     secondaryClusters: ["generators", "ups-battery", "solar"],
     primaryKeyword: "watts to amps calculator",
@@ -226,14 +224,15 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/battery-capacity-calculator',
       '/ups-battery-backup-calculator',
       '/solar-panel-tilt-calculator',
-      '/generator-size-calculator'
+      '/generator-size-calculator',
+      '/electricity-use-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
       '/what-is-a-watt-hour',
       '/what-does-ah-mean-on-a-battery',
       '/what-size-generator-do-i-need-for-my-house',
-      '/solar-panels-series-vs-parallel'
+      '/solar-panels-series-vs-parallel',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -241,10 +240,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/amps-to-watts-calculator",
     title: "Amps to Watts Electrical Calculator",
     shortTitle: "Amps to Watts",
-    metaTitle: "Amps to Watts Calculator - 120V/240V/DC Table",
+    metaTitle: "Amps to Watts Calculator - Current to Power Conversion Tool",
     metaDescription:
-      
-      "Convert amps to watts across 12V DC, 120V, and 240V AC circuits. Features comprehensive conversion chart with NEC continuous-load limits from 1A to 200A.",
+      "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
     cluster: "electricity",
     secondaryClusters: ["generators", "ups-battery", "solar"],
     primaryKeyword: "amps to watts",
@@ -257,14 +255,15 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/battery-capacity-calculator',
       '/solar-panel-tilt-calculator',
       '/ups-battery-backup-calculator',
-      '/generator-size-calculator'
+      '/generator-size-calculator',
+      '/electricity-use-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
       '/what-is-a-watt-hour',
       '/what-does-ah-mean-on-a-battery',
       '/what-size-generator-do-i-need-for-my-house',
-      '/solar-panels-series-vs-parallel'
+      '/solar-panels-series-vs-parallel',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -297,9 +296,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/solar-battery-calculator",
     title: "Solar Battery Calculator",
     shortTitle: "Solar Battery",
-    metaTitle: "Solar Battery Calculator (Size Battery Bank for Solar PV)",
+    metaTitle: "Solar Battery Calculator - Solar PV Energy Storage Sizing",
     metaDescription:
-      "Calculate the battery bank capacity needed for your off-grid or backup solar system. Size storage in kWh and Amp-hours based on daily usage and autonomy.",
+      "Calculate solar battery storage in kWh and Amp-hours for off-grid or backup systems based on daily energy use, days of autonomy, and inverter efficiency.",
     cluster: "solar",
     secondaryClusters: ["ups-battery", "rv-power"],
     primaryKeyword: "solar battery calculator",
@@ -318,7 +317,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/solar-panels-series-vs-parallel',
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
-      '/how-long-does-it-take-to-charge-a-battery-with-solar-panels'
+      '/how-long-does-it-take-to-charge-a-battery-with-solar-panels',
+      '/how-many-amp-hours-do-i-need'
     ],
   },
   {
@@ -356,7 +356,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/voltage-drop-calculator",
     title: "Voltage Drop Calculator",
     shortTitle: "Voltage Drop",
-    metaTitle: "Voltage Drop Calculator (AC, DC & Wire Sizing)",
+    metaTitle: "Voltage Drop Calculator - AC & DC Conductor Wire Sizing Tool",
     metaDescription:
       "Calculate voltage drop, percentage loss, and receiving voltage for AC and DC circuits. Size conductor wire gauge by distance, current, and material.",
     cluster: "electricity",
@@ -375,7 +375,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     relatedGuidePaths: [
       '/solar-panels-series-vs-parallel',
       '/what-is-a-watt-hour',
-      '/what-does-ah-mean-on-a-battery'
+      '/what-does-ah-mean-on-a-battery',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -410,7 +411,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/three-phase-power-calculator",
     title: "Three Phase Power Calculator",
     shortTitle: "Three Phase Power",
-    metaTitle: "Three Phase Power Calculator (kW, Amps & Power Factor)",
+    metaTitle: "Three Phase Power Calculator - 3-Phase kW, kVA & Line Amps",
     metaDescription:
       "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
     cluster: "electricity",
@@ -428,7 +429,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     relatedGuidePaths: [
       '/what-is-a-watt-hour',
       '/what-size-generator-do-i-need-for-my-house',
-      '/solar-panels-series-vs-parallel'
+      '/solar-panels-series-vs-parallel',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -453,9 +455,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/generator-size-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-cost-calculator',
       '/what-is-a-watt-hour',
-      '/solar-system-size-calculator'
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -479,8 +480,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
       '/generator-size-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
-      '/what-is-a-watt-hour'
+      '/what-is-a-watt-hour',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle'
     ],
   },
   {
@@ -506,7 +507,6 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       '/how-many-amp-hours-do-i-need',
-      '/solar-charge-controller-calculator',
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
       '/solar-panels-series-vs-parallel'
@@ -607,7 +607,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/amps-to-watts-calculator'
     ],
     relatedGuidePaths: [
-      '/battery-capacity-calculator',
+      '/how-many-amp-hours-do-i-need',
       '/how-long-will-a-100ah-battery-last',
       '/what-is-a-watt-hour',
       '/what-size-generator-do-i-need-for-my-house',
@@ -634,12 +634,14 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/battery-capacity-calculator',
       '/ups-battery-backup-calculator',
       '/watts-to-amps-calculator',
-      '/amps-to-watts-calculator'
+      '/amps-to-watts-calculator',
+      '/electricity-use-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
       '/how-long-will-a-100ah-battery-last',
       '/what-does-ah-mean-on-a-battery',
+      '/how-many-amp-hours-do-i-need',
+      '/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle',
       '/what-size-generator-do-i-need-for-my-house'
     ],
   },
@@ -667,7 +669,6 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       '/how-many-amp-hours-do-i-need',
-      '/battery-capacity-calculator',
       '/what-does-ah-mean-on-a-battery',
       '/what-is-a-watt-hour'
     ],
@@ -725,8 +726,8 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/voltage-drop-calculator'
     ],
     relatedGuidePaths: [
-      '/solar-system-size-calculator',
       '/solar-panels-series-vs-parallel',
+      '/how-long-does-it-take-to-charge-a-battery-with-solar-panels',
       '/what-is-a-watt-hour'
     ],
   },
@@ -754,7 +755,6 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/watts-to-amps-calculator'
     ],
     relatedGuidePaths: [
-      '/battery-capacity-calculator',
       '/what-does-ah-mean-on-a-battery',
       '/what-is-a-watt-hour',
       '/how-long-will-a-100ah-battery-last',
@@ -786,7 +786,6 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     ],
     relatedGuidePaths: [
       '/solar-panels-series-vs-parallel',
-      '/solar-charge-controller-calculator',
       '/how-long-will-a-100ah-battery-last',
       '/how-much-energy-does-a-solar-panel-produce'
     ],
@@ -812,13 +811,13 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
       '/watts-to-amps-calculator',
       '/voltage-drop-calculator',
       '/electricity-cost-calculator',
+      '/electricity-use-calculator',
       '/generator-size-calculator'
     ],
     relatedGuidePaths: [
-      '/electricity-use-calculator',
-      '/electricity-cost-calculator',
       '/what-is-a-watt-hour',
-      '/generator-size-calculator'
+      '/solar-panels-series-vs-parallel',
+      '/what-size-generator-do-i-need-for-my-house'
     ],
   },
 ];

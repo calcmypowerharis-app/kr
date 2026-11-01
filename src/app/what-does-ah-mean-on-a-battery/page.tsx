@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What Does Ah Mean on a Battery? Amp-Hours Explained | CalcMyPower",
     description:
-      "A practical engineering guide explaining battery Amp-hour ratings, energy conversion to Watt-hours, depth of discharge, and real-world runtime factors.",
+      "Understand what Ah (Amp-hours) means on a battery, how to convert Ah to Watt-hours (Wh), and why usable battery runtime depends on chemistry and discharge rate.",
     url: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
     type: "article",
     publishedTime: "2026-09-28T00:00:00Z",

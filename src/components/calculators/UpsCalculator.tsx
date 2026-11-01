@@ -407,6 +407,12 @@ export const UpsCalculator: React.FC = () => {
             category: "Battery Storage",
           },
           {
+            title: "How Many Amp Hours Do I Need for a Battery Bank?",
+            description: "Calculate required battery bank capacity from daily load watt-hours, system voltage, autonomy, and chemistry depth of discharge.",
+            href: "/how-many-amp-hours-do-i-need",
+            category: "Sizing Guide",
+          },
+          {
             title: "How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide",
             description: "Practical runtime estimates for refrigerators, CPAP machines, TVs, and inverters across LiFePO4 and lead-acid batteries.",
             href: "/how-long-will-a-100ah-battery-last",

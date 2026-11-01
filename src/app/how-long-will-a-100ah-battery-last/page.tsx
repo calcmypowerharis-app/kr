@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title:
       "How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide | CalcMyPower",
     description:
-      "Find out how long a 12V 100Ah battery will run a refrigerator, TV, CPAP, or inverter. Realistic runtime formulas and appliance benchmarks for LiFePO4 and lead-acid deep-cycle batteries.",
+      "Find out how long a 12V 100Ah battery will run a refrigerator, TV, CPAP, or inverter. See realistic runtime estimates for LiFePO4 and lead-acid deep-cycle batteries.",
     url: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
     type: "article",
     publishedTime: "2026-09-29T00:00:00Z",
