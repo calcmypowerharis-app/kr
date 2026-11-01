@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { Sun, Calculator, Compass, HelpCircle, Layers, CheckCircle2, ShieldCheck, TrendingUp, AlertTriangle } from "lucide-react";
 
 export const SolarSystemSizingGuideSection: React.FC = () => {

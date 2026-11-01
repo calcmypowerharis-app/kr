@@ -1505,13 +1505,6 @@ export const GeneratorSizeCalculator: React.FC = () => {
               category: "Fuel & Runtime",
             },
             {
-              title: "Generator Amperage Chart & Electrical Calculator",
-              description:
-                "Convert generator Watts to Amps at 120V and 240V split-phase with 80% continuous operating limits.",
-              href: "/watts-to-amps-calculator",
-              category: "Electrical Sizing",
-            },
-            {
               title: "What Size Generator Do I Need for My House?",
               description:
                 "Step-by-step residential outage sizing guide for furnaces, sump pumps, well pumps, and central air conditioners.",

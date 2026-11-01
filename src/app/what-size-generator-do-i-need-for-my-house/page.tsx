@@ -102,7 +102,7 @@ export default function GeneratorSizingGuidePage() {
   const articleSchema = generateArticleSchema({
     headline: "What Size Generator Do I Need for My House? Sizing Guide",
     description:
-      "A load-based technical guide to sizing portable and whole-house standby generators for residential power outages.",
+      "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
     url: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
     datePublished: "2026-09-27T08:00:00Z",
     dateModified: "2026-09-28T00:00:00Z",
