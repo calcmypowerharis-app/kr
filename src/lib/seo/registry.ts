@@ -133,10 +133,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/generator-size-calculator",
     title: "Generator Size Calculator",
     shortTitle: "Generator Size",
-    metaTitle: "Generator Size Calculator - Running & Surge Wattage Chart",
+    metaTitle: "Generator Size Calculator - Running Watts & Surge Sizing Tool",
     metaDescription:
-      
-      "Calculate generator size needed for home backup or RVs using running watts and motor surge ratings. Includes master appliance wattage chart and amperage tables.",
+      "Calculate required generator capacity for home backup or RV loads using running watts, largest motor surge, and 125% planning headroom. Includes wattage charts.",
     cluster: "generators",
     secondaryClusters: ["rv-power", "home-energy"],
     primaryKeyword: "generator size calculator",
@@ -384,9 +383,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/solar-system-size-calculator",
     title: "Solar System Size Calculator",
     shortTitle: "Solar System Size",
-    metaTitle: "Solar System Size Calculator (Array kW & Panel Count)",
+    metaTitle: "Solar System Size Calculator - Solar PV Array kW & Panel Sizing",
     metaDescription:
-      "Calculate solar system size and panel count for your home. Estimate array kW, module count, and roof space from daily kWh use and peak sun hours.",
+      "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
     cluster: "solar",
     secondaryClusters: ["home-energy", "rv-power"],
     primaryKeyword: "solar system size calculator",
@@ -437,10 +436,9 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/electricity-use-calculator",
     title: "Electricity Usage Calculator",
     shortTitle: "Electricity Usage",
-    metaTitle: "Electricity Usage Calculator - Appliance kWh & Cost Estimator",
+    metaTitle: "Electricity Usage Calculator - Multi-Appliance kWh Estimator",
     metaDescription:
-      
-      "Calculate electricity usage in kWh and power costs from appliance watts. Includes master 25+ residential appliance runtime and power consumption reference chart.",
+      "Calculate electricity usage in kWh across multiple home appliances. Enter watts, run hours, and duty cycles to estimate daily and monthly energy consumption.",
     cluster: "electricity",
     secondaryClusters: ["home-energy", "solar", "ups-battery"],
     primaryKeyword: "electricity usage calculator",
@@ -465,9 +463,8 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     path: "/electricity-cost-calculator",
     title: "Electricity Cost Calculator",
     shortTitle: "Electricity Cost",
-    metaTitle: "Electricity Cost Calculator - Electric Bill Chart",
+    metaTitle: "Electricity Cost Calculator - Electric Bill & Rate Estimator",
     metaDescription:
-      
       "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
     cluster: "electricity",
     secondaryClusters: ["home-energy"],
@@ -544,7 +541,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "House Generator Sizing Guide",
     metaTitle: "What Size Generator Do I Need for My House? Sizing Guide",
     metaDescription:
-      "Calculate the generator size you need for your house using running watts, motor startup surges, and essential circuits instead of misleading square-footage rules.",
+      "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator?scenario=winter-essentials",

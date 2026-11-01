@@ -1039,10 +1039,10 @@ export const ElectricityUseCalculator: React.FC = () => {
             category: "Electrical Circuits",
           },
           {
-            title: "Electricity Cost Calculator (Guide)",
-            description: "Read our comprehensive tutorial on appliance audits, phantom standby loads, and utility bill breakdown.",
-            href: "/electricity-cost-calculator",
-            category: "Sizing Guide",
+            title: "What Is a Watt-Hour? (Guide)",
+            description: "Understand the crucial difference between Watts and Watt-Hours, and how energy consumption determines utility billing and battery runtime.",
+            href: "/what-is-a-watt-hour",
+            category: "Energy Guide",
           },
         ]}
       />
