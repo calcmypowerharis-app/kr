@@ -9,20 +9,20 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "UPS Battery Backup Calculator - Runtime Hours Table",
+  title: "UPS Battery Backup Calculator - Outage Run-Time Hours Tool",
   description:
-    "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Includes static runtime table for WiFi routers, CPAP, and office PCs.",
+    "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Estimate backup duration for WiFi routers, CPAPs, and home office PCs.",
   path: "/ups-battery-backup-calculator",
-  ogTitle: "UPS & Battery Backup Run-Time Calculator | CalcMyPower",
+  ogTitle: "UPS Battery Backup Calculator - Outage Run-Time Hours Tool | CalcMyPower",
   ogDescription:
-    "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Includes static runtime table for WiFi routers, CPAP, and office PCs.",
+    "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Estimate backup duration for WiFi routers, CPAPs, and home office PCs.",
 });
 
 export default function UpsCalculatorPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "UPS Battery Backup Run-Time Calculator",
     description:
-      "Online calculator to estimate battery backup run-time hours for uninterruptible power supplies, inverters, and battery banks.",
+      "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Estimate backup duration for WiFi routers, CPAPs, and home office PCs.",
     url: "https://calcmypower.com/ups-battery-backup-calculator",
   });
 

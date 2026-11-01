@@ -10,19 +10,19 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { WATTS_TO_AMPS_FAQS } from "@/lib/calculators/watts-to-amps";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Watts to Amps Calculator - 120V/240V/DC Table",
+  title: "Watts to Amps Calculator - Amperage & Breaker Sizing Tool",
   description:
-    "Convert watts to amps for DC, 120V, and 240V circuits. Features complete conversion table from 37W to 10,000W with NEC breaker and copper wire gauge sizing.",
+    "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
   path: "/watts-to-amps-calculator",
   ogDescription:
-    "Convert watts to amps for DC, 120V, and 240V circuits. Features complete conversion table from 37W to 10,000W with NEC breaker and copper wire gauge sizing.",
+    "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
 });
 
 export default function WattsToAmpsPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Watts to Amps Electrical Calculator",
     description:
-      "Free online calculator to convert real power in Watts to current in Amperes for DC, single-phase AC, and balanced three-phase AC circuits.",
+      "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
     url: "https://calcmypower.com/watts-to-amps-calculator",
   });
 

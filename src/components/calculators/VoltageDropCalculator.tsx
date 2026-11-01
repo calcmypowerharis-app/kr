@@ -84,6 +84,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Solar PV",
   },
   {
+    title: "15-Amp vs 20-Amp Circuit Wattage Guide",
+    description:
+      "Learn safe breaker capacity, the NEC 80% continuous load rule, and 14 AWG vs 12 AWG wire sizing limits.",
+    href: "/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
+    category: "Circuit Sizing",
+  },
+  {
     title: "Solar Panels in Series vs Parallel Guide",
     description:
       "Learn how series and parallel solar panel wiring affects circuit voltage, current, wire size, and line losses.",

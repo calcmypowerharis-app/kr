@@ -9,7 +9,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Three Phase Power Calculator (kW, Amps & Power Factor)",
+  title: "Three Phase Power Calculator - 3-Phase kW, kVA & Line Amps",
   description:
     "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
   path: "/three-phase-power-calculator",

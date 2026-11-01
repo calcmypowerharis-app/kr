@@ -9,19 +9,19 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Solar Battery Calculator (Size Battery Bank for Solar PV)",
+  title: "Solar Battery Calculator - Solar PV Energy Storage Sizing",
   description:
-    "Calculate the battery bank capacity needed for your off-grid or backup solar system. Size storage in kWh and Amp-hours based on daily usage and autonomy.",
+    "Calculate solar battery storage in kWh and Amp-hours for off-grid or backup systems based on daily energy use, days of autonomy, and inverter efficiency.",
   path: "/solar-battery-calculator",
   ogDescription:
-    "Calculate the battery bank capacity needed for your off-grid or backup solar system. Size storage in kWh and Amp-hours based on daily usage and autonomy.",
+    "Calculate solar battery storage in kWh and Amp-hours for off-grid or backup systems based on daily energy use, days of autonomy, and inverter efficiency.",
 });
 
 export default function SolarBatteryPage() {
   const webAppSchema = generateWebApplicationSchema({
     name: "Solar Battery Calculator",
     description:
-      "Calculate the battery bank capacity needed for your off-grid or backup solar system. Size storage in kWh and Amp-hours based on daily usage and autonomy.",
+      "Calculate solar battery storage in kWh and Amp-hours for off-grid or backup systems based on daily energy use, days of autonomy, and inverter efficiency.",
     url: "https://calcmypower.com/solar-battery-calculator",
   });
 

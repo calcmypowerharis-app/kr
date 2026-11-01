@@ -82,6 +82,13 @@ const RELATED_TOOLS: RelatedTool[] = [
     category: "Battery Storage",
   },
   {
+    title: "15-Amp vs 20-Amp Circuit Wattage Guide",
+    description:
+      "Learn safe breaker capacity, the NEC 80% continuous load rule, and 14 AWG vs 12 AWG wiring limits.",
+    href: "/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
+    category: "Circuit Sizing",
+  },
+  {
     title: "Generator Size Calculator",
     description:
       "Size commercial, jobsite, and home standby generators using running watts and motor starting surge deltas.",

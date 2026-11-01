@@ -9,7 +9,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Voltage Drop Calculator (AC, DC & Wire Sizing)",
+  title: "Voltage Drop Calculator - AC & DC Conductor Wire Sizing Tool",
   description:
     "Calculate voltage drop, percentage loss, and receiving voltage for AC and DC circuits. Size conductor wire gauge by distance, current, and material.",
   path: "/voltage-drop-calculator",

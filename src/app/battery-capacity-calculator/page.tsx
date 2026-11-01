@@ -10,7 +10,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Battery Capacity Calculator - Ah & Wh Chart",
+  title: "Battery Capacity Calculator - Ah & Wh Bank Sizing Tool",
   description:
     "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
   path: "/battery-capacity-calculator",
@@ -20,9 +20,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function BatteryCapacityPage() {
   const webAppSchema = generateWebApplicationSchema({
-    name: "Battery Bank & Capacity Calculator",
+    name: "Battery Capacity & Sizing Calculator",
     description:
-      "Free online electrical calculator to evaluate battery bank capacity in Amp-hours (Ah) and Watt-hours (Wh), calculate series-parallel configurations, and size battery systems for loads.",
+      "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
     url: "https://calcmypower.com/battery-capacity-calculator",
   });
 

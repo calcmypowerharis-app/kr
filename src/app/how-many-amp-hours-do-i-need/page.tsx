@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title:
       "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide | CalcMyPower",
     description:
-      "Calculate how many amp-hours (Ah) your battery bank needs. Step-by-step formula covering daily Watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
+      "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     url: "https://calcmypower.com/how-many-amp-hours-do-i-need",
     type: "article",
     publishedTime: "2026-10-08T00:00:00Z",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title:
       "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide | CalcMyPower",
     description:
-      "Calculate how many amp-hours (Ah) your battery bank needs. Step-by-step formula covering daily Watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
+      "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     images: [
       "https://calcmypower.com/images/articles/how-many-amp-hours-battery-bank-sizing.webp",
     ],
@@ -123,7 +123,7 @@ export default function HowManyAmpHoursDoINeedPage() {
   const articleSchema = generateArticleSchema({
     headline: "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide",
     description:
-      "Calculate how many amp-hours (Ah) your battery bank needs. Step-by-step formula covering daily Watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
+      "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     url: "https://calcmypower.com/how-many-amp-hours-do-i-need",
     datePublished: "2026-10-08T00:00:00Z",
     dateModified: "2026-10-08T00:00:00Z",
