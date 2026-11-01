@@ -161,3 +161,14 @@ When a calculation or recommendation could affect installation safety:
 - In next.config.ts, always use explicit statusCode: 301 for permanent route consolidation.
 - Never use permanent: true alone without checking status codes, as Next.js defaults to HTTP 308 (Permanent Redirect), which some legacy crawler caches and edge CDNs do not consolidate as aggressively as standard HTTP 301 Moved Permanently.
 
+### 7.11 Registry Route-Type Segregation & Reciprocal Link Parity
+- In `src/lib/seo/registry.ts`, `relatedCalculatorPaths` must strictly contain only valid slugs registered in `CALCULATOR_REGISTRY`.
+- `relatedGuidePaths` must strictly contain only valid slugs registered in `GUIDE_REGISTRY`.
+- Never place calculator routes into `relatedGuidePaths` or vice versa.
+- When adding a companion guide to a calculator, maintain reciprocal discovery cards in both `RELATED_TOOLS` within the component and `relatedGuidePaths` in the central registry.
+- Enforce via automated test assertion in `src/lib/seo/__tests__/editorial-quality.test.ts`.
+
+### 7.12 Grounded Formula Transparency Standard
+- Never claim automated simulation parity with external laboratory tools (such as NREL PVWatts) unless the implementation executes their verified open-source simulation engine.
+- Transparently document rule-of-thumb engineering baselines (e.g., CalcMyPower's default 78% planning performance factor) as conservative planning approximations.
+
