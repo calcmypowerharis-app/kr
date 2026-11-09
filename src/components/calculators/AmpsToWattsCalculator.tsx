@@ -500,19 +500,26 @@ export const AmpsToWattsCalculator: React.FC = () => {
               This reference table compares electrical power output across common residential, commercial, and DC currents. Values are calculated using standard formulas for direct current (DC) and single-phase alternating current (AC).
             </p>
             <p className="text-xs text-slate-600 leading-relaxed pt-0.5">
-              Need to convert power back to current? Use the{" "}
+              To convert power back to current, use the{" "}
               <Link
                 href="/watts-to-amps-calculator"
                 className="text-blue-600 hover:text-blue-800 underline font-medium"
               >
                 Watts to Amps Electrical Calculator
               </Link>{" "}
-              to determine circuit amperage from equipment wattage, or check our guide on{" "}
+              or see our{" "}
               <Link
                 href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"
                 className="text-blue-600 hover:text-blue-800 underline font-medium"
               >
-                how many watts a 15-amp or 20-amp circuit can handle
+                15A vs 20A circuit guide
+              </Link>
+              . For commercial systems, size line current with the{" "}
+              <Link
+                href="/three-phase-power-calculator"
+                className="text-blue-600 hover:text-blue-800 underline font-medium"
+              >
+                Three-Phase Power Calculator
               </Link>
               .
             </p>

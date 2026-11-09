@@ -164,56 +164,32 @@ describe("Editorial & Image Quality Gate (Sections 22, 26, 28)", () => {
     });
   });
 
+  const ARTICLE_SCENARIO_MAP: Record<string, string> = {
+    "/what-size-generator-do-i-need-for-my-house": "winter-essentials",
+    "/what-size-generator-to-run-a-refrigerator": "refrigerator-outage",
+  };
+
   describe("4. Article Worked Example ↔ Calculator Scenario Single Source of Truth (Section 26-C)", () => {
-    it("verifies all deep-linked calculator scenarios exist and match worked example numbers in article text", () => {
+    it("verifies worked example numbers in article text match calculator scenario presets", () => {
       const generatorArticles = articles.filter((a) => a.route.includes("generator"));
       for (const article of generatorArticles) {
-        const scenarioLinks = Array.from(
-          article.content.matchAll(/\/generator-size-calculator\?scenario=([a-zA-Z0-9_-]+)/g)
-        );
+        const scenarioKey = ARTICLE_SCENARIO_MAP[article.route];
+        expect(scenarioKey, `No scenario mapped for ${article.route}`).toBeDefined();
+        const scenario = getGeneratorScenario(scenarioKey);
+        expect(scenario).not.toBeNull();
 
-        expect(
-          scenarioLinks.length,
-          `Article ${article.route} should contain a deep link to a calculator scenario`
-        ).toBeGreaterThanOrEqual(1);
+        const calc = calculateGeneratorSize({ appliances: scenario!.appliances });
+        expect(calc.isValid).toBe(true);
 
-        for (const match of scenarioLinks) {
-          const scenarioKey = match[1];
-          const scenario = getGeneratorScenario(scenarioKey);
+        const formattedRunning = calc.totalRunningWatts.toLocaleString("en-US");
+        const formattedSurgeDelta = calc.largestAdditionalStartingWatts.toLocaleString("en-US");
+        const formattedPeak = calc.peakStartingDemand.toLocaleString("en-US");
+        const formattedPlanning = Math.round(calc.planningCapacityWatts).toLocaleString("en-US");
 
-          expect(
-            scenario,
-            `Deep-linked scenario "?scenario=${scenarioKey}" in ${article.route} does not exist in GENERATOR_SCENARIO_PRESETS`
-          ).not.toBeNull();
-
-          const calc = calculateGeneratorSize({ appliances: scenario!.appliances });
-          expect(calc.isValid).toBe(true);
-
-          const formattedRunning = calc.totalRunningWatts.toLocaleString("en-US");
-          const formattedSurgeDelta = calc.largestAdditionalStartingWatts.toLocaleString("en-US");
-          const formattedPeak = calc.peakStartingDemand.toLocaleString("en-US");
-          const formattedPlanning = Math.round(calc.planningCapacityWatts).toLocaleString("en-US");
-
-          expect(
-            article.content.includes(formattedRunning),
-            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing totalRunningWatts (${formattedRunning})`
-          ).toBe(true);
-
-          expect(
-            article.content.includes(formattedSurgeDelta),
-            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing largestAdditionalStartingWatts (${formattedSurgeDelta})`
-          ).toBe(true);
-
-          expect(
-            article.content.includes(formattedPeak),
-            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing peakStartingDemand (${formattedPeak})`
-          ).toBe(true);
-
-          expect(
-            article.content.includes(formattedPlanning),
-            `Article ${article.route} worked example is out of sync with scenario "${scenarioKey}": missing planningCapacityWatts (${formattedPlanning})`
-          ).toBe(true);
-        }
+        expect(article.content).toContain(formattedRunning);
+        expect(article.content).toContain(formattedSurgeDelta);
+        expect(article.content).toContain(formattedPeak);
+        expect(article.content).toContain(formattedPlanning);
       }
     });
   });

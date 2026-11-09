@@ -31,14 +31,14 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import { ContinuousPowerGuideSection } from "@/components/content/ContinuousPowerGuideSection";
 
 export const metadata: Metadata = {
-  title: "What Size Generator Do I Need for My House? Sizing Guide",
+  title: "What Size Generator Do I Need for My House?",
   description:
     "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
   },
   openGraph: {
-    title: "What Size Generator Do I Need for My House? Sizing Guide | CalcMyPower",
+    title: "What Size Generator Do I Need for My House? | CalcMyPower",
     description:
       "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
     url: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
@@ -160,8 +160,11 @@ export default function GeneratorSizingGuidePage() {
             Home
           </Link>
           <span aria-hidden="true">/</span>
-          <Link href="/calculators" className="hover:text-blue-600 transition">
-            Calculators &amp; Guides
+          <Link
+            href="/generator-size-calculator"
+            className="hover:text-blue-600 transition"
+          >
+            Generator Size Calculator
           </Link>
           <span aria-hidden="true">/</span>
           <span className="text-slate-800 font-semibold truncate">
@@ -619,7 +622,7 @@ export default function GeneratorSizingGuidePage() {
               </p>
             </div>
             <Link
-              href="/generator-size-calculator?scenario=winter-essentials"
+              href="/generator-size-calculator"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-blue-600 text-white font-bold text-xs sm:text-sm hover:bg-blue-500 shadow-sm transition shrink-0 w-full sm:w-auto text-center"
             >
               <span>Open This {winterPlanningKwDisplay} Storm Scenario in Generator Calculator</span>

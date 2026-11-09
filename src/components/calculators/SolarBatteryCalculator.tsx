@@ -760,7 +760,10 @@ export const SolarBatteryCalculator: React.FC = () => {
             <span>How many batteries do I need for a solar system?</span>
           </div>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Physical battery module count cannot be determined from a single universal equation. The required quantity depends on your total nominal energy requirement (kWh), chosen DC system voltage (12V, 24V, or 48V), individual battery module capacity (e.g. 12V 100Ah vs. 48V 100Ah server racks), series/parallel wiring arrangements, and manufacturer limits on parallel battery expansion and BMS current limits.
+            Physical battery count cannot be determined from a single universal equation. The required quantity depends on total nominal energy storage (kWh) and chosen DC system voltage (12V, 24V, or 48V).
+          </p>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Final module quantity also depends on individual battery capacity (such as 12V 100Ah vs 48V server racks), series or parallel wiring, and manufacturer BMS current limits.
           </p>
         </div>
       </section>

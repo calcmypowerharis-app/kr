@@ -187,32 +187,62 @@ export const THREE_PHASE_FAQS: FaqItem[] = [
   {
     question: "What is the formula for 3-phase electrical power?",
     answer:
-      "For a balanced three-phase system using line-to-line RMS voltage (V_LL), real power is P = √3 × V_LL × I × PF, where √3 ≈ 1.73205, I is line current in Amps, and PF is the power factor (0 to 1.0). When using line-to-neutral voltage (V_LN), the formula is P = 3 × V_LN × I × PF because total power is the sum of all three individual phase powers.",
+      "For balanced three-phase systems using line-to-line voltage (V_LL), real power is P = √3 × V_LL × I × PF, where √3 ≈ 1.73205. When using line-to-neutral voltage (V_LN), total power is P = 3 × V_LN × I × PF, summing all three phases.",
   },
   {
     question: "Why do 3-phase power calculations use √3 (1.732)?",
     answer:
-      "The square root of 3 (approximately 1.73205) arises from the 120-degree phase displacement between the three alternating sinusoidal voltages in a balanced polyphase system. Line-to-line voltage is the vector difference between two phase voltages: V_LL = √3 × V_LN. Multiplying by √3 allows you to calculate total 3-phase power directly using standard line voltage and line current without calculating each phase independently.",
+      "The factor √3 (roughly 1.73205) originates from the 120-degree phase displacement between sinusoidal phase voltages. Line-to-line voltage is the vector difference between phases: V_LL = √3 × V_LN. Multiplying by √3 calculates total power directly from line voltage and line current without solving each phase separately.",
   },
   {
     question: "What is the difference between kW and kVA in 3-phase systems?",
     answer:
-      "Kilowatts (kW) represent real or active power: the actual energy doing mechanical work, heating, or lighting. Kilovolt-Amperes (kVA) represent apparent power: the vector combination of real power and reactive power (kVAR). Electrical equipment, transformers, and cables must be sized for kVA because they carry the total current, whereas utility billing often tracks both kW consumption and peak kVA demand.",
+      "Kilowatts (kW) represent real active power performing mechanical work, heating, or lighting. Kilovolt-Amperes (kVA) measure apparent power, combining active and reactive power (kVAR). Conductors, breakers, and transformers must be sized for kVA because they carry total current, while electric utilities bill for both active kW and peak demand.",
   },
   {
     question: "How do I calculate line current from 3-phase kW?",
     answer:
-      "To find line current (I in Amperes) from real power (kW), use the rearranged formula: I = (kW × 1,000) ÷ (√3 × V_LL × PF). For example, a 10 kW load on a 208V 3-phase line with a 0.90 power factor draws: 10,000 ÷ (1.73205 × 208 × 0.90) = 10,000 ÷ 324.23 = 30.84 Amps.",
+      "To find line current from active power, use: I = (kW × 1,000) ÷ (√3 × V_LL × PF). For example, a 10 kW load on a 208V line with 0.90 power factor draws: 10,000 ÷ (1.73205 × 208 × 0.90) = 30.84 Amps.",
   },
   {
     question: "How does 3-phase motor horsepower relate to electrical input power?",
     answer:
-      "A motor's nameplate horsepower (HP) rating reflects its mechanical shaft output, not its electrical input draw. To calculate the electrical power drawn from the utility lines, you must divide the mechanical output by the motor efficiency: P_electrical (kW) = (HP × 0.7457) ÷ Efficiency. For example, a 10 HP motor operating at 88% efficiency consumes 7.457 ÷ 0.88 = 8.47 kW of electrical input power.",
+      "Motor nameplate horsepower reflects mechanical shaft output, not electrical input draw. To calculate electrical input power, divide mechanical power by operating efficiency: P_elec (kW) = (HP × 0.7457) ÷ Efficiency. For example, a 10 HP motor operating at 88% efficiency draws 7.457 ÷ 0.88 = 8.47 kW.",
   },
   {
     question: "Does this calculator assume a balanced three-phase load?",
     answer:
-      "Yes. This calculator assumes a balanced, symmetrical three-phase system where the current in all three ungrounded phase conductors is identical. If phase currents or voltages are unbalanced (for example, in a panel with heavy single-phase 120V loads placed unevenly across phases), each phase must be measured and calculated individually: P_total = P_A + P_B + P_C.",
+      "Yes. Calculations assume a symmetrical system where currents in all three ungrounded phase conductors are equal. If phases are unbalanced due to uneven single-phase branch circuits, measure each phase individually and sum active powers: P_total = P_A + P_B + P_C.",
+  },
+  {
+    question: "What is the difference between Delta and Wye three-phase systems?",
+    answer:
+      "In a Wye (Y) system, three phase windings connect at a common grounded neutral point, providing two voltages: line-to-neutral (e.g. 120V or 277V) and line-to-line (208V or 480V). In a Delta (Δ) system, windings connect in a closed triangle, providing durable high-torque motor power without requiring a neutral.",
+  },
+  {
+    question: "What is a 120/240V high-leg delta system, and why is Phase B dangerous?",
+    answer:
+      "High-leg delta systems center-tap one transformer winding to produce 120V to neutral from Phases A and C. Phase B sits opposite the center tap, producing approximately 208V to neutral. Connecting single-phase 120V appliances to Phase B burns out equipment. NEC 110.15 mandates identifying this high leg with orange marking.",
+  },
+  {
+    question: "Why does motor inrush current trip circuit breakers, and how does NEC 430 prevent it?",
+    answer:
+      "Starting induction motors draw locked-rotor inrush currents of 600% to 800% of full-load amps. To prevent nuisance tripping while sustaining short-circuit protection, NEC Table 430.52 permits sizing inverse-time circuit breakers up to 250% of motor FLA, relying on dedicated overload relays to safeguard against motor overheating.",
+  },
+  {
+    question: "Why can neutral current exceed phase current in commercial facilities?",
+    answer:
+      "Non-linear electronic power supplies, computers, and LED drivers produce zero-sequence triplen harmonics (primarily the 3rd harmonic at 180 Hz). While fundamental 60 Hz currents cancel out at the neutral point, triplen harmonics add in-phase mathematically. Neutral conductors can carry up to 173% of phase current, requiring 200% neutral busbar sizing.",
+  },
+  {
+    question: "How do power factor correction capacitors reduce utility electric bills?",
+    answer:
+      "Inductive motors consume reactive power (kVAR), creating lagging current that inflates total kVA and line heating. Power factor correction capacitors supply local leading reactive current, reducing net utility demand. Raising power factor from 0.75 to 0.95 reduces conductor line losses by 37.7% and eliminates utility low power factor penalty surcharges.",
+  },
+  {
+    question: "How does the two-wattmeter method measure three-phase power?",
+    answer:
+      "Under Blondel's Theorem, two single-phase wattmeters can measure total power in any three-wire polyphase circuit: P_total = P1 + P2. If the load power factor drops below 0.50 lagging, the phase angle exceeds 60 degrees, causing wattmeter 2 to register a negative deflection that must be subtracted from wattmeter 1.",
   },
 ];
 

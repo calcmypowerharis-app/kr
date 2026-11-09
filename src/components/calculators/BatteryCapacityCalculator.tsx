@@ -1026,7 +1026,10 @@ export const BatteryCapacityCalculator: React.FC = () => {
           </div>
           <div className="prose prose-slate max-w-none text-sm md:text-base leading-relaxed space-y-4 text-slate-700">
             <p>
-              When evaluating deep-cycle batteries for off-grid solar, RV boondocking, or home emergency backup, the single most common sizing mistake is assuming that 100% of a battery&apos;s nameplate capacity can be drawn into appliances. A battery labeled &quot;100 Amp-hours at 12 Volts&quot; stores <strong>1,200 Watt-hours (Wh)</strong> of raw chemical energy, but the amount of electrical energy you can extract safely depends on its internal chemistry. If you are charging batteries with solar modules, calculate your array&apos;s optimal tilt angle and roof pitch using our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link>.
+              When sizing deep-cycle batteries for off-grid solar, RV systems, or emergency backup, never assume 100% of nameplate capacity is usable. A 12V 100Ah battery stores <strong>1,200 Watt-hours (Wh)</strong> of raw chemical energy, but usable power depends heavily on battery chemistry.
+            </p>
+            <p>
+              Discharging past recommended limits damages cells and shortens lifespan. If you charge your battery bank with solar panels, calculate your array&apos;s optimal angle using our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link>.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 not-prose my-6">
               <div className="p-4 rounded-xl border border-emerald-200 bg-emerald-50/50">
@@ -1097,7 +1100,7 @@ export const BatteryCapacityCalculator: React.FC = () => {
             </h2>
           </div>
           <p className="text-slate-600 text-sm md:text-base leading-relaxed mb-6">
-            Multiple batteries can be interconnected to create higher voltage or greater Amp-hour capacity. However, how you wire them radically changes electrical circuit parameters. To calculate bank Amp-hours, voltage, and string configurations step-by-step, read our technical guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-semibold">how many amp hours you need for a daily load</Link>, or see our companion guide explaining <Link href="/what-does-ah-mean-on-a-battery" className="text-blue-600 hover:underline font-medium">what Ah means on a battery</Link>:
+            Connecting batteries in series or parallel increases bank voltage or Amp-hour capacity. To calculate configurations step-by-step, explore our guide on <Link href="/how-many-amp-hours-do-i-need" className="text-blue-600 hover:underline font-semibold">how many amp hours you need for a daily load</Link>, or read our guide explaining <Link href="/what-does-ah-mean-on-a-battery" className="text-blue-600 hover:underline font-medium">what Ah means on a battery</Link>:
           </p>
 
           <div className="overflow-x-auto mb-6">
@@ -1143,7 +1146,10 @@ export const BatteryCapacityCalculator: React.FC = () => {
               <span>Critical Multi-Battery Safety Rule</span>
             </div>
             <p className="leading-relaxed">
-              Never connect batteries of differing chemistries, differing voltages, unequal capacities, or differing ages in series or parallel. A degraded or lower-capacity battery will cause premature cell reversal, overcharging, severe balance drift, and thermal runaway risks. Always use identical batteries from the same production batch and verify individual voltages match within 0.05V before connecting them into a bank.
+              Never connect batteries of differing chemistries, voltages, capacities, or ages in series or parallel. A mismatched battery causes premature cell reversal, overcharging, balance drift, and thermal runaway risks.
+            </p>
+            <p className="leading-relaxed">
+              Always use identical batteries from the same production batch. Verify individual resting voltages match within 0.05V before wiring them into a bank.
             </p>
           </div>
         </section>

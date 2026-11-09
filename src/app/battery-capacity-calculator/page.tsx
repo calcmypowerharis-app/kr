@@ -10,7 +10,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Battery Capacity Calculator - Ah & Wh Bank Sizing Tool",
+  title: "Battery Capacity Calculator: Ah & Wh Sizing",
   description:
     "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
   path: "/battery-capacity-calculator",

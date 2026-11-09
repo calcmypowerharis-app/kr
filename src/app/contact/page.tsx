@@ -6,7 +6,7 @@ import { generateBreadcrumbSchema } from "@/lib/seo/schema";
 import { SITE_URL } from "@/lib/seo/registry";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Contact Us",
+  title: "Contact Us: Support & Editorial Inquiries",
   description:
     "Contact the CalcMyPower engineering and publishing team for technical feedback, formula suggestions, errata corrections, or editorial inquiries.",
   path: "/contact",

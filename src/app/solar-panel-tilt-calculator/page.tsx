@@ -9,7 +9,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Solar Panel Tilt Angle Calculator (Optimal Angle & Roof Pitch)",
+  title: "Solar Panel Tilt & Angle Calculator",
   description:
     "Calculate the optimal solar panel tilt angle and compass orientation for your latitude. Compare roof pitch angles, seasonal adjustments, and mounting options.",
   path: "/solar-panel-tilt-calculator",

@@ -10,7 +10,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Solar System Size Calculator - Solar PV Array kW & Panel Sizing",
+  title: "Solar System Size Calculator: kW & Panels",
   description:
     "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
   path: "/solar-system-size-calculator",

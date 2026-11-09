@@ -10,7 +10,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Electricity Usage Calculator - Multi-Appliance kWh Estimator",
+  title: "Electricity Usage Calculator: Appliance kWh",
   description:
     "Calculate electricity usage in kWh across multiple home appliances. Enter watts, run hours, and duty cycles to estimate daily and monthly energy consumption.",
   path: "/electricity-use-calculator",

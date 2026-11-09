@@ -560,7 +560,10 @@ export const ElectricityCostCalculator: React.FC = () => {
           <span>Important Notice on Real-World Utility Tariff Variations</span>
         </div>
         <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
-          Actual electric utility statements vary widely depending on state Public Utility Commission (PUC) regulations, seasonal rate schedules (summer vs winter tiers), time-of-use (TOU) clock hours, and local municipal franchise agreements. Because electric utilities across the United States enforce thousands of distinct tariff formulas, this calculator does not fetch utility-specific tax codes automatically. Instead, it provides an engineering-grade model where you enter your specific utility statement charges directly to calculate your true effective kilowatt-hour cost.
+          Electric utility statements vary widely based on state Public Utility Commission (PUC) rules, seasonal rate schedules (summer vs winter tiers), time-of-use hours, and local franchise agreements.
+        </p>
+        <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+          Because US utilities enforce thousands of distinct tariff formulas, this calculator does not fetch municipal tax codes. Instead, enter your statement charges directly to calculate your true effective kilowatt-hour cost.
         </p>
       </div>
 

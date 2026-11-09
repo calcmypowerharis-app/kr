@@ -34,16 +34,16 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 
 export const metadata: Metadata = {
-  title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
+  title: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide",
   description:
-    "Understand what a Watt-hour (Wh) measures, the crucial difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
+    "Understand what a Watt-hour (Wh) measures, the difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
   alternates: {
     canonical: "https://calcmypower.com/what-is-a-watt-hour",
   },
   openGraph: {
-    title: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained | CalcMyPower",
+    title: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide | CalcMyPower",
     description:
-      "Understand what a Watt-hour (Wh) measures, the crucial difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
+      "Understand what a Watt-hour (Wh) measures, the difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
     url: "https://calcmypower.com/what-is-a-watt-hour",
     type: "article",
     publishedTime: "2026-09-28T00:00:00Z",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "What Is a Watt-Hour (Wh)? | CalcMyPower",
+    title: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide | CalcMyPower",
     description:
       "Master the difference between power in Watts and energy in Watt-hours, with practical formulas for batteries, solar, and home appliances.",
     images: [
@@ -125,7 +125,7 @@ export default function WattHoursExplainedPage() {
   const articleSchema = generateArticleSchema({
     headline: "What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained",
     description:
-      "Understand what a Watt-hour (Wh) measures, the crucial difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
+      "Understand what a Watt-hour (Wh) measures, the difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
     url: "https://calcmypower.com/what-is-a-watt-hour",
     datePublished: "2026-09-28T00:00:00Z",
     dateModified: "2026-09-28T00:00:00Z",

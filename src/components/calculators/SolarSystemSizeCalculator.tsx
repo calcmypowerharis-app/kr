@@ -692,7 +692,10 @@ export const SolarSystemSizeCalculator: React.FC = () => {
             Understanding Residential Solar System Sizing
           </h2>
           <p>
-            Determining how many solar panels you need begins with an analysis of your annual electrical energy consumption rather than the physical size of your house. Two homes with identical 2,500-square-foot floor plans can have drastically different power requirements: one with natural gas heating and minimal air conditioning might consume 600 kWh per month, while an all-electric home featuring dual heat pumps, an electric vehicle charger, and a heated pool pump can easily exceed 2,000 kWh per month.
+            Determining how many solar panels you need begins with analyzing annual electricity consumption rather than home square footage. Roof dimensions alone do not reflect real energy demand.
+          </p>
+          <p>
+            For example, two 2,500-square-foot homes can have drastically different electrical requirements. A gas-heated house might use 600 kWh monthly, while an all-electric home with heat pumps and EV charging can easily exceed 2,000 kWh per month.
           </p>
           <p>
             A photovoltaic solar system generates electricity whenever sunlight strikes its semiconductor cells. Because energy demand fluctuates across hours, days, and seasons, grid-tied residential solar is traditionally sized to produce an amount of energy over twelve months that offsets your home&apos;s total annual kilowatt-hour demand.
@@ -723,7 +726,10 @@ export const SolarSystemSizeCalculator: React.FC = () => {
             One of the most frequent misconceptions in solar planning is confusing total daylight hours with <span className="font-semibold text-slate-900">peak sun hours (PSH)</span>. A location may experience 14 hours of daylight on a June day, yet only accumulate 5.2 peak sun hours.
           </p>
           <p>
-            Early morning and late afternoon sunlight strikes solar panels at steep angles and passes through a thicker atmospheric layer, producing weak irradiance (often 100 to 300 W/m²). At solar noon on a clear day, irradiance approaches 1,000 W/m² under standard test conditions. To simplify harvest calculations, solar engineers integrate varying daily sunlight into equivalent hours of full 1,000 W/m² irradiance.
+            Early morning and late afternoon sunlight strikes solar panels at steep angles, passing through thicker atmosphere and producing weak irradiance (often 100 to 300 W/m²). At solar noon on a clear day, irradiance approaches 1,000 W/m².
+          </p>
+          <p>
+            To simplify harvest calculations, solar engineers integrate fluctuating daily sunlight into equivalent hours of full 1,000 W/m² irradiance, known as peak sun hours.
           </p>
           <p>
             According to the National Solar Radiation Database (NSRDB) maintained by the National Renewable Energy Laboratory (NREL), annualized daily peak sun hours across the United States typically range from 3.5 PSH in cloudy northern regions to 6.0+ PSH in the desert Southwest.

@@ -1,5 +1,6 @@
 import React from "react";
-import { Sun, Calculator, Compass, HelpCircle, Layers, CheckCircle2, ShieldCheck, TrendingUp, AlertTriangle } from "lucide-react";
+import Link from "next/link";
+import { Sun, Calculator, Compass, HelpCircle, Layers, CheckCircle2, ShieldCheck, TrendingUp, AlertTriangle, ArrowRight } from "lucide-react";
 
 export const SolarSystemSizingGuideSection: React.FC = () => {
   return (
@@ -85,6 +86,21 @@ export const SolarSystemSizingGuideSection: React.FC = () => {
               </tr>
             </tbody>
           </table>
+        </div>
+
+        {/* Editorial Cross-Link: 400W Solar Panel Energy Production Benchmarks */}
+        <div className="p-4 rounded-xl bg-amber-50/70 border border-amber-200 text-xs sm:text-sm text-amber-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <span className="font-bold">Need exact daily and monthly kilowatt-hour benchmarks?</span>{" "}
+            <span>See real-world output calculations across seasonal sun hours in our companion guide:</span>
+          </div>
+          <Link
+            href="/how-much-energy-does-a-solar-panel-produce"
+            className="font-bold text-amber-800 hover:text-amber-950 underline inline-flex items-center gap-1 shrink-0"
+          >
+            <span>How Much Energy Does a Solar Panel Produce?</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
 
