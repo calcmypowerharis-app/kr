@@ -95,11 +95,15 @@ export function generateWebApplicationSchema({
   description,
   url,
   applicationCategory = "UtilitiesApplication",
+  authorName = "CalcMyPower Technical Publishing",
+  authorUrl = `${SITE_URL}/about`,
 }: {
   name: string;
   description: string;
   url: string;
   applicationCategory?: string;
+  authorName?: string;
+  authorUrl?: string;
 }) {
   return {
     "@context": "https://schema.org",
@@ -113,6 +117,12 @@ export function generateWebApplicationSchema({
     inLanguage: "en-US",
     isPartOf: {
       "@id": WEBSITE_ID,
+    },
+    author: {
+      "@type": "Organization",
+      "@id": ORGANIZATION_ID,
+      name: authorName,
+      url: authorUrl,
     },
     publisher: {
       "@id": ORGANIZATION_ID,
@@ -157,6 +167,19 @@ export function generateFaqSchema(
   };
 }
 
+/**
+ * Normalizes a date string to ISO 8601 UTC format.
+ * If input is YYYY-MM-DD, appends T00:00:00Z.
+ * If input already has time component, preserves it.
+ */
+function normalizeIsoDate(dateStr: string): string {
+  if (!dateStr) return dateStr;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+    return `${dateStr}T00:00:00Z`;
+  }
+  return dateStr;
+}
+
 export function generateArticleSchema({
   headline,
   description,
@@ -164,6 +187,7 @@ export function generateArticleSchema({
   datePublished,
   dateModified,
   authorName = "CalcMyPower Technical Publishing",
+  authorUrl,
   publisherName = SITE_NAME,
   publisherUrl = SITE_URL,
   images = [],
@@ -174,10 +198,20 @@ export function generateArticleSchema({
   datePublished: string;
   dateModified: string;
   authorName?: string;
+  authorUrl?: string;
   publisherName?: string;
   publisherUrl?: string;
   images?: string[];
 }) {
+  const resolvedAuthorUrl = authorUrl ?? `${publisherUrl}/about`;
+  const normalizedImages = (
+    images && images.length > 0 ? images : [`${publisherUrl}/og-image.jpg`]
+  ).map((img) =>
+    img.startsWith("http://") || img.startsWith("https://")
+      ? img
+      : `${publisherUrl}${img.startsWith("/") ? "" : "/"}${img}`
+  );
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -192,12 +226,12 @@ export function generateArticleSchema({
       "@id": WEBSITE_ID,
     },
     url,
-    datePublished,
-    dateModified,
+    datePublished: normalizeIsoDate(datePublished),
+    dateModified: normalizeIsoDate(dateModified),
     author: {
       "@type": "Organization",
       name: authorName,
-      url: publisherUrl,
+      url: resolvedAuthorUrl,
     },
     publisher: {
       "@type": "Organization",
@@ -209,6 +243,7 @@ export function generateArticleSchema({
         url: `${publisherUrl}/icon.svg`,
       },
     },
-    image: images,
+    image: normalizedImages,
   };
 }
+

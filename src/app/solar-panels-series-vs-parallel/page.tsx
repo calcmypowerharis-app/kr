@@ -37,17 +37,17 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
-  title: "Solar Panels in Series vs Parallel: Wiring Diagrams & Sizing",
+  title: "Solar Panels in Series vs Parallel: Wiring",
   description:
-    "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
+    "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
   alternates: {
     canonical: "https://calcmypower.com/solar-panels-series-vs-parallel",
   },
   openGraph: {
     title:
-      "Solar Panels in Series vs Parallel: Wiring Diagrams & Sizing | CalcMyPower",
+      "Solar Panels in Series vs Parallel: Wiring | CalcMyPower",
     description:
-      "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
+      "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
     url: "https://calcmypower.com/solar-panels-series-vs-parallel",
     type: "article",
     publishedTime: "2026-09-30T00:00:00Z",
@@ -64,9 +64,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Solar Panels in Series vs Parallel: Wiring Diagrams & Sizing | CalcMyPower",
+      "Solar Panels in Series vs Parallel: Wiring | CalcMyPower",
     description:
-      "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
+      "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
     images: [
       "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     ],
@@ -124,7 +124,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
     headline:
       "Solar Panels in Series vs Parallel: Wiring, Voltage & Current Explained",
     description:
-      "Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.",
+      "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
     url: "https://calcmypower.com/solar-panels-series-vs-parallel",
     datePublished: "2026-09-30T00:00:00Z",
     dateModified: "2026-10-14T00:00:00Z",
@@ -135,7 +135,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
-    { name: "Guides", url: "https://calcmypower.com/calculators" },
+    { name: "Calculators", url: "https://calcmypower.com/calculators" },
     {
       name: "Solar Panels in Series vs Parallel",
       url: "https://calcmypower.com/solar-panels-series-vs-parallel",
@@ -173,7 +173,7 @@ export default function SolarPanelsSeriesVsParallelPage() {
           </Link>
           <span aria-hidden="true">/</span>
           <Link href="/calculators" className="hover:text-blue-600 transition">
-            Guides
+            Calculators
           </Link>
           <span aria-hidden="true">/</span>
           <span className="text-slate-800 font-semibold truncate">
@@ -1355,15 +1355,15 @@ export default function SolarPanelsSeriesVsParallelPage() {
                   </Link>
 
                   <Link
-                    href="/solar-system-size-calculator"
+                    href="/how-much-energy-does-a-solar-panel-produce"
                     className="p-5 rounded-2xl bg-white border border-slate-200 hover:border-blue-500 hover:shadow-md transition space-y-2"
                   >
                     <div className="flex items-center gap-2 text-amber-600 font-bold text-sm">
                       <Sun className="w-4 h-4" />
-                      <span>How Many Solar Panels Do I Need?</span>
+                      <span>How Much Energy Does a Solar Panel Produce?</span>
                     </div>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Estimate the number of solar panels needed for your home based on electric bill kWh, peak sun hours, and panel wattage.
+                      Calculate daily, monthly, and seasonal electricity output for 400W solar panels with peak sun hour models and system deratings.
                     </p>
                   </Link>
 

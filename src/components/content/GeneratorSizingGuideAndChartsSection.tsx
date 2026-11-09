@@ -155,7 +155,10 @@ export const GeneratorSizingGuideAndChartsSection: React.FC = () => {
           <span>Carbon Monoxide Safety &amp; Transfer Switch Requirements</span>
         </h4>
         <p className="text-xs sm:text-sm text-amber-800 leading-relaxed">
-          Never operate a combustion generator indoors, inside a garage, or near open windows. Always place the unit outdoors at least 20 feet away from living spaces with the exhaust pointed away. When powering home circuits, a manual transfer switch or mechanical interlock is mandatory under the National Electrical Code (NEC Article 702) to prevent deadly backfeeding into utility power lines.
+          Never operate a combustion generator indoors, inside a garage, or near open windows. Always place the unit outdoors at least 20 feet away from living spaces with the exhaust directed away.
+        </p>
+        <p className="text-xs sm:text-sm text-amber-800 leading-relaxed">
+          When powering home circuits, NEC Article 702 mandates an approved manual transfer switch or mechanical interlock. This equipment prevents dangerous electrical backfeeding into utility power lines during an outage.
         </p>
       </div>
     </section>

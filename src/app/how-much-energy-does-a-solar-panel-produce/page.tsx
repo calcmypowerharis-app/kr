@@ -35,7 +35,7 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 
 export const metadata: Metadata = {
-  title: "How Much Energy Does a Solar Panel Produce? 400W Panel Examples",
+  title: "How Much Energy Does a Solar Panel Produce?",
   description:
     "Learn how much electricity a solar panel produces daily and monthly. See 400W panel examples, peak sun hours, system losses, and factors affecting solar output.",
   alternates: {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "How Much Energy Does a Solar Panel Produce? 400W Panel Examples | CalcMyPower",
+      "How Much Energy Does a Solar Panel Produce? | CalcMyPower",
     description:
       "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
     url: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "How Much Energy Does a Solar Panel Produce? 400W Panel Examples | CalcMyPower",
+      "How Much Energy Does a Solar Panel Produce? | CalcMyPower",
     description:
       "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
     images: [
@@ -146,7 +146,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
-    { name: "Guides", url: "https://calcmypower.com/calculators" },
+    { name: "Calculators", url: "https://calcmypower.com/calculators" },
     {
       name: "How Much Energy Does a Solar Panel Produce?",
       url: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
@@ -184,7 +184,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
           </Link>
           <span aria-hidden="true">/</span>
           <Link href="/calculators" className="hover:text-blue-600 transition">
-            Guides
+            Calculators
           </Link>
           <span aria-hidden="true">/</span>
           <span className="text-slate-800 font-semibold truncate">

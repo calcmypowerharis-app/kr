@@ -466,6 +466,12 @@ describe("CalcMyPower SEO Foundation Guardrails", () => {
       expect(collection.isPartOf["@id"]).toBe(WEBSITE_ID);
       expect(app.publisher["@id"]).toBe(ORGANIZATION_ID);
       expect(article.publisher["@id"]).toBe(ORGANIZATION_ID);
+      expect(article.author["@type"]).toBe("Organization");
+      expect(article.author.name).toBe("CalcMyPower Technical Publishing");
+      expect(article.author.url).toBe(`${SITE_URL}/about`);
+      expect(app.author["@type"]).toBe("Organization");
+      expect(app.author.name).toBe("CalcMyPower Technical Publishing");
+      expect(app.author.url).toBe(`${SITE_URL}/about`);
       expect(breadcrumbs.itemListElement[0].position).toBe(1);
       expect(faq.mainEntity[0].acceptedAnswer.text).toBe("A.");
     });

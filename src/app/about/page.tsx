@@ -6,7 +6,7 @@ import { generateBreadcrumbSchema, generateOrganizationSchema } from "@/lib/seo/
 import { SITE_URL } from "@/lib/seo/registry";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "About CalcMyPower",
+  title: "About Us: Mission & Engineering Standards",
   description:
     "Learn about CalcMyPower's mission, engineering calculation methodology, transparent formula baselines, and authoritative US standards (NEC, IEEE, NREL, DOE).",
   path: "/about",

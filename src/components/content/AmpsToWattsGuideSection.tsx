@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Zap, Calculator, Activity, ShieldCheck, AlertTriangle, Plug, Cpu } from "lucide-react";
+import { Zap, Calculator, Activity, ShieldCheck, AlertTriangle, Plug, Cpu, ArrowRight } from "lucide-react";
 
 interface AmpsToWattsRow {
   amps: number;
@@ -147,6 +147,21 @@ export const AmpsToWattsGuideSection: React.FC = () => {
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
             On 240 volts (such as small air compressor or water heater lines), a 20-amp breaker supports 4,800 peak watts and 3,840 continuous watts.
           </p>
+        </div>
+
+        {/* Editorial Cross-Link: 15A vs 20A Circuit Sizing Guide */}
+        <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200 text-xs sm:text-sm text-blue-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div>
+            <span className="font-bold">Planning a high-draw appliance circuit or experiencing breaker trips?</span>{" "}
+            <span>Review wire gauge requirements, breaker curve trip mechanics, and continuous-load safety margins in our guide:</span>
+          </div>
+          <Link
+            href="/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle"
+            className="font-bold text-blue-700 hover:text-blue-900 underline inline-flex items-center gap-1 shrink-0"
+          >
+            <span>15A vs 20A Circuit Wattage Guide</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
         {/* 200 Amps to Watts */}

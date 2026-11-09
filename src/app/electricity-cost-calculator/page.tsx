@@ -10,7 +10,7 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Electricity Cost Calculator - Electric Bill & Rate Estimator",
+  title: "Electricity Cost Calculator: Bill Estimator",
   description:
     "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
   path: "/electricity-cost-calculator",

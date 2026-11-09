@@ -10,7 +10,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { WATTS_TO_AMPS_FAQS } from "@/lib/calculators/watts-to-amps";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Watts to Amps Calculator - Amperage & Breaker Sizing Tool",
+  title: "Watts to Amps Calculator: 120V, 240V, DC",
   description:
     "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
   path: "/watts-to-amps-calculator",

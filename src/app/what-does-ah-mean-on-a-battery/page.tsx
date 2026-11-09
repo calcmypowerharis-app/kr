@@ -32,14 +32,14 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 
 export const metadata: Metadata = {
-  title: "What Does Ah Mean on a Battery? Amp-Hours Explained",
+  title: "What Does Ah Mean on a Battery? (Amp-Hours)",
   description:
     "Understand what Ah (Amp-hours) means on a battery, how to convert Ah to Watt-hours (Wh), and why usable battery runtime depends on chemistry and discharge rate.",
   alternates: {
     canonical: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
   },
   openGraph: {
-    title: "What Does Ah Mean on a Battery? Amp-Hours Explained | CalcMyPower",
+    title: "What Does Ah Mean on a Battery? (Amp-Hours) | CalcMyPower",
     description:
       "Understand what Ah (Amp-hours) means on a battery, how to convert Ah to Watt-hours (Wh), and why usable battery runtime depends on chemistry and discharge rate.",
     url: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "What Does Ah Mean on a Battery? | CalcMyPower",
+    title: "What Does Ah Mean on a Battery? (Amp-Hours) | CalcMyPower",
     description:
       "Demystify battery Amp-hour ratings, convert Ah to Watt-hours, and calculate real usable backup runtime.",
     images: [

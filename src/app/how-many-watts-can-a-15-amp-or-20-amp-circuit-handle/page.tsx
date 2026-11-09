@@ -133,7 +133,7 @@ export default function CircuitWattageGuidePage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
-    { name: "Guides", url: "https://calcmypower.com/calculators" },
+    { name: "Calculators", url: "https://calcmypower.com/calculators" },
     {
       name: "15A vs 20A Circuit Wattage",
       url: "https://calcmypower.com/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
@@ -171,7 +171,7 @@ export default function CircuitWattageGuidePage() {
           </Link>
           <span aria-hidden="true">/</span>
           <Link href="/calculators" className="hover:text-blue-600 transition">
-            Guides
+            Calculators
           </Link>
           <span aria-hidden="true">/</span>
           <span className="text-slate-800 font-semibold truncate">

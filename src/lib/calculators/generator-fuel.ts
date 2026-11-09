@@ -10,19 +10,64 @@ export interface GeneratorFuelFaqItem {
 
 export const GENERATOR_FUEL_FAQS: GeneratorFuelFaqItem[] = [
   {
-    question: "How much gas does a 5000 watt generator use?",
+    question: "How much gas does a 5000 watt generator use per hour?",
     answer:
-      "A typical 5000W generator running at 50% load consumes about 0.5 to 0.75 gallons of gasoline per hour. Over a 24-hour period, it will use roughly 12 to 18 gallons, depending on the exact load and generator model efficiency.",
+      "At 50% load, a 5000W generator burns 0.50 to 0.75 gallons of gasoline per hour. Under continuous 24-hour operation, it consumes roughly 12 to 18 gallons, depending on engine displacement and whether it uses an inverter throttle.",
   },
   {
-    question: "Does a generator use more fuel if I plug more things into it?",
+    question: "How much fuel does a generator use at 25%, 50%, 75%, and 100% load?",
     answer:
-      "Yes. Generator fuel consumption is directly tied to the electrical load. An inverter generator will automatically idle down and use significantly less fuel when running a light load (like a TV and lights) compared to running a heavy load (like an air conditioner or space heater).",
+      "Fuel consumption scales non-linearly with load. A 7500W generator burns about 0.45 GPH at 25% load, 0.70 GPH at 50% load, 0.95 GPH at 75% load, and 1.25 GPH at full 100% load. Open-frame models burn more fuel at light loads than inverters.",
   },
   {
-    question: "Is propane or gasoline cheaper to run in a dual-fuel generator?",
+    question: "Why does a dual-fuel generator burn more propane than gasoline?",
     answer:
-      "Propane is generally less energy-dense than gasoline, so a generator will consume more gallons (or pounds) of propane per hour to produce the same wattage. However, propane rarely goes bad and won't gum up the carburetor during storage. To determine which is cheaper to run, you must compare local propane prices per pound against local gasoline prices per gallon.",
+      "Propane contains approximately 91,500 BTU per gallon compared to 114,000 BTU per gallon for gasoline. Because propane has roughly 20% lower volumetric energy density, the engine must consume about 25% to 30% more gallons of propane to deliver identical electrical kilowatt-hours.",
+  },
+  {
+    question: "How much natural gas does a 22kW whole-house standby generator consume?",
+    answer:
+      "A 22kW standby generator consumes approximately 150 to 180 cubic feet (1.5 to 1.8 CCF) per hour at 25% load, and 240 to 280 cubic feet (2.4 to 2.8 CCF) per hour at 50% load. At full load, consumption reaches 380 to 420 cubic feet per hour.",
+  },
+  {
+    question: "What size propane tank do I need for a 72-hour power outage?",
+    answer:
+      "For a 7,500W dual-fuel generator running 12 hours daily at 50% load, you need about 25 gallons (105 pounds) of propane. For a 22kW standby generator running intermittently, a 250-gallon or 500-gallon on-site tank is required to provide sufficient liquid volume and vaporization surface area.",
+  },
+  {
+    question: "How does cold winter weather affect generator fuel consumption?",
+    answer:
+      "Freezing temperatures increase fuel consumption by 10% to 20%. Cold air is denser, requiring extra fuel during startup and choke cycles. In extreme cold below 0°F, propane tank vapor pressure drops dramatically, which can starve large generators unless tanks are sufficiently filled or heated.",
+  },
+  {
+    question: "How much does elevation derate generator power output and fuel efficiency?",
+    answer:
+      "Naturally aspirated generator engines lose 3.5% of rated power for every 1,000 feet above sea level. Above 2,500 feet, you must install a high-altitude carburetor main jet. Without high-altitude jetting, the engine runs overly rich, fouling spark plugs and wasting fuel.",
+  },
+  {
+    question: "What are the NFPA 110 fuel reserve requirements for emergency generators?",
+    answer:
+      "NFPA 110 mandates that emergency power supply fuel tanks must store at least 133% of the required operational class duration. For a Class 48 system, the tank must hold 64 hours of continuous fuel at anticipated load, accounting for unpumpable bottom sediment.",
+  },
+  {
+    question: "How long can gasoline and diesel be stored before going bad?",
+    answer:
+      "Untreated E10 gasoline degrades within 30 to 60 days due to oxidation and ethanol moisture absorption. Adding fuel stabilizer extends gasoline life to 12 to 24 months. Diesel fuel remains stable for 12 to 24 months if kept dry and treated with biocide.",
+  },
+  {
+    question: "Does activating Eco-Mode noticeably reduce generator fuel consumption?",
+    answer:
+      "Yes. Eco-Mode throttles down engine speed from 3,600 RPM to 2,000 to 2,600 RPM when electrical loads are light. On portable inverter generators, Eco-Mode cuts fuel consumption by 25% to 40% during light loads, such as overnight refrigerator cycling and phone charging.",
+  },
+  {
+    question: "How often should engine oil be checked and changed during extended outages?",
+    answer:
+      "Check engine oil every 24 operating hours and change it every 50 to 100 hours. Most small portable generator engines lack pressurized oil filters and hold less than one quart of oil. Running low on oil triggers low-oil shutdown or catastrophic engine seizure.",
+  },
+  {
+    question: "What is wet stacking in diesel generators, and how does light loading cause it?",
+    answer:
+      "Wet stacking occurs when a diesel engine operates below 30% rated load for extended periods. Low in-cylinder combustion temperatures prevent fuel from burning completely. Unburned fuel and carbon accumulate in the exhaust manifold and turbocharger, degrading performance and increasing fuel waste.",
   },
 ];
 

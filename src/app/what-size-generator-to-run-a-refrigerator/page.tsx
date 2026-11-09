@@ -29,14 +29,14 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 
 export const metadata: Metadata = {
-  title: "What Size Generator to Run a Refrigerator? Sizing Guide",
+  title: "What Size Generator to Run a Refrigerator?",
   description:
     "Determine the generator size you need to run a refrigerator during an outage based on running watts, compressor startup surge, and simultaneous household loads.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
   },
   openGraph: {
-    title: "What Size Generator to Run a Refrigerator? Sizing Guide | CalcMyPower",
+    title: "What Size Generator to Run a Refrigerator? | CalcMyPower",
     description:
       "A practical engineering guide to sizing portable inverter and emergency generators for household refrigerators and freezers.",
     url: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
@@ -1007,10 +1007,10 @@ export default function RefrigeratorGeneratorSizingPage() {
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
                 <Link
-                  href="/generator-size-calculator?scenario=refrigerator-outage"
+                  href="/generator-size-calculator"
                   className="py-3 px-5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm flex items-center justify-center gap-2 transition shadow-sm"
                 >
-                  <span>Load Refrigerator Outage Scenario</span>
+                  <span>Calculate Refrigerator Outage in Generator Calculator</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 

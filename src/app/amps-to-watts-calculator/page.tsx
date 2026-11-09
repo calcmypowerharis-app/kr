@@ -10,7 +10,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Amps to Watts Calculator - Current to Power Conversion Tool",
+  title: "Amps to Watts Calculator: 120V, 240V, DC",
   description:
     "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
   path: "/amps-to-watts-calculator",

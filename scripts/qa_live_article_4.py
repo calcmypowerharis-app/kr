@@ -49,7 +49,7 @@ def run_qa():
 
     # 5. Prohibited Claims Check
     banned = [
-        '\u2014', '&mdash;', '—', "In today's world", "Let's dive in", "It is important to note",
+        '\u2014', '&mdash;', "In today's world", "Let's dive in", "It is important to note",
         "In conclusion", "When it comes to", "NEC compliant", "IEEE compliant", "certified",
         "code approved", "guaranteed", "safe sizing", "approved methodology",
         "NREL recommends 78%", "NREL default", "universal performance ratio"
@@ -74,8 +74,8 @@ def run_qa():
 
     # 6b. Issue 1 (Panel count consistency) & Issue 2 (Regional table safe structure)
     assert '380 kWh and 650 kWh' not in html, 'Found unsourced 380-650 kWh range'
-    assert '365–430 kWh/year' not in html, 'Found unsourced 365-430 range'
-    assert '620–700 kWh/year' not in html, 'Found unsourced 620-700 range'
+    assert '365\u2013430 kWh/year' not in html, 'Found unsourced 365-430 range'
+    assert '620\u2013700 kWh/year' not in html, 'Found unsourced 620-700 range'
     assert 'EIA 2022-2023' in html, 'EIA 2022-2023 benchmark not found'
     preferred_geo_text = 'Annual energy production varies by location, solar resource, orientation, tilt, shading, temperature, system losses, and availability. A simple planning example can illustrate the math, but actual annual production requires site-specific solar-resource and system modeling'
     assert preferred_geo_text in html, 'Preferred geographic variation text not found'

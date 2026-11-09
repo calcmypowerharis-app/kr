@@ -38,7 +38,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 import { SolarChargeTimeCalculator } from "@/components/article/SolarChargeTimeCalculator";
 
 export const metadata: Metadata = {
-  title: "How Long Does It Take to Charge a Battery With Solar Panels? (Solar Charge Time Calculator)",
+  title: "Solar Battery Charge Time Calculator & Guide",
   description:
     "Calculate solar battery charging time with our engineering calculator and guide covering peak sun hours, MPPT vs PWM efficiency, and battery chemistry.",
   alternates: {
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "How Long Does It Take to Charge a Battery With Solar Panels? | CalcMyPower",
+      "Solar Battery Charge Time Calculator & Guide | CalcMyPower",
     description:
       "Calculate how long it takes to charge a battery with solar panels. Master peak sun hours, derate factors, MPPT vs PWM controllers, and battery chemistry absorption.",
     url: "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "How Long Does It Take to Charge a Battery With Solar Panels? | CalcMyPower",
+      "Solar Battery Charge Time Calculator & Guide | CalcMyPower",
     description:
       "Calculate solar battery charging time using panel wattage, battery capacity, peak sun hours, and system efficiency deratings.",
     images: [
@@ -130,13 +130,16 @@ export default function SolarBatteryChargeTimePage() {
     description:
       "Calculate how long it takes to charge a battery with solar panels. Use our solar charge time calculator and engineering guide covering peak sun hours, MPPT vs PWM, and battery chemistry.",
     url: "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
-    datePublished: "2026-10-13",
-    dateModified: "2026-10-13",
+    datePublished: "2026-10-13T00:00:00Z",
+    dateModified: "2026-10-13T00:00:00Z",
+    images: [
+      "https://calcmypower.com/images/articles/how-long-does-it-take-to-charge-a-battery-with-solar-panels.webp",
+    ],
   });
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
-    { name: "Guides", url: "https://calcmypower.com/calculators#solar" },
+    { name: "Calculators", url: "https://calcmypower.com/calculators" },
     {
       name: "How Long Does It Take to Charge a Battery With Solar Panels?",
       url: "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
@@ -188,10 +191,10 @@ export default function SolarBatteryChargeTimePage() {
               </li>
               <li>
                 <Link
-                  href="/calculators#solar"
+                  href="/calculators"
                   className="hover:text-amber-600 transition"
                 >
-                  Solar PV Guides
+                  Calculators
                 </Link>
               </li>
               <li>

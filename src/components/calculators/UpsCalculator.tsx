@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
   calculateUpsRuntime,
   CHEMISTRY_DEFAULTS,
@@ -373,6 +375,21 @@ export const UpsCalculator: React.FC = () => {
 
       <DisclaimerSection />
 
+      {/* Contextual Inverter Sizing Cross-Link */}
+      <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-xs sm:text-sm text-blue-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div>
+          <span className="font-bold">Need to size your power inverter for battery backup?</span>{" "}
+          <span>Verify continuous wattage and motor startup surge headroom with our dedicated tool:</span>
+        </div>
+        <Link
+          href="/inverter-size-calculator"
+          className="font-bold text-blue-700 hover:text-blue-900 underline inline-flex items-center gap-1 shrink-0"
+        >
+          <span>Inverter Size Calculator</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
+
       <FaqSection
         faqs={[
           {
@@ -400,6 +417,12 @@ export const UpsCalculator: React.FC = () => {
 
       <RelatedCalculators
         calculators={[
+          {
+            title: "Inverter Size Calculator",
+            description: "Calculate continuous wattage and motor startup surge capacity for pure sine wave inverters.",
+            href: "/inverter-size-calculator",
+            category: "Inverter Sizing",
+          },
           {
             title: "Battery Capacity & Sizing Calculator",
             description: "Calculate battery capacity in Wh and Ah, evaluate usable energy across chemistries, and size battery banks for loads.",

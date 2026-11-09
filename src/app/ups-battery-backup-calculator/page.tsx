@@ -9,11 +9,11 @@ import {
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "UPS Battery Backup Calculator - Outage Run-Time Hours Tool",
+  title: "UPS Battery Backup Runtime Calculator",
   description:
     "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Estimate backup duration for WiFi routers, CPAPs, and home office PCs.",
   path: "/ups-battery-backup-calculator",
-  ogTitle: "UPS Battery Backup Calculator - Outage Run-Time Hours Tool | CalcMyPower",
+  ogTitle: "UPS Battery Backup Runtime Calculator | CalcMyPower",
   ogDescription:
     "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Estimate backup duration for WiFi routers, CPAPs, and home office PCs.",
 });

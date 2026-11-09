@@ -11,7 +11,12 @@ export const metadata: Metadata = {
   },
   description:
     "Practical electrical, battery backup, solar, and power calculators with transparent formulas and clear engineering baselines.",
-  authors: [{ name: "CalcMyPower Technical Publishing" }],
+  authors: [
+    {
+      name: "CalcMyPower Technical Publishing",
+      url: "https://calcmypower.com/about",
+    },
+  ],
   creator: "CalcMyPower",
   publisher: "CalcMyPower",
   formatDetection: {

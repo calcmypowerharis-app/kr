@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide",
+  title: "How Many Amp Hours Do I Need for a Battery?",
   description:
     "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
   alternates: {
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide | CalcMyPower",
+      "How Many Amp Hours Do I Need for a Battery? | CalcMyPower",
     description:
       "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     url: "https://calcmypower.com/how-many-amp-hours-do-i-need",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "How Many Amp Hours Do I Need for a Battery Bank? Sizing Guide | CalcMyPower",
+      "How Many Amp Hours Do I Need for a Battery? | CalcMyPower",
     description:
       "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
     images: [
@@ -134,7 +134,7 @@ export default function HowManyAmpHoursDoINeedPage() {
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: "Home", url: "https://calcmypower.com" },
-    { name: "Calculators & Guides", url: "https://calcmypower.com/calculators" },
+    { name: "Calculators", url: "https://calcmypower.com/calculators" },
     {
       name: "How Many Amp Hours Do I Need for a Battery Bank?",
       url: "https://calcmypower.com/how-many-amp-hours-do-i-need",
@@ -172,7 +172,7 @@ export default function HowManyAmpHoursDoINeedPage() {
           </Link>
           <span aria-hidden="true">/</span>
           <Link href="/calculators" className="hover:text-blue-600 transition">
-            Calculators &amp; Guides
+            Calculators
           </Link>
           <span aria-hidden="true">/</span>
           <span className="text-slate-800 font-semibold truncate">

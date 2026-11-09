@@ -701,7 +701,10 @@ export const VoltageDropCalculator: React.FC = () => {
             Understanding Voltage Drop in Electrical Circuit Design
           </h2>
           <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-            Voltage drop is the reduction in electrical potential that occurs between a power source and connected electrical equipment as current flows through the internal resistance of circuit conductors. While copper and aluminum are excellent electrical conductors, every physical wire possesses finite internal resistance. In accordance with Ohm&apos;s Law (V = I × R), current traversing this resistance converts electrical energy into heat, reducing the usable terminal voltage available at the receiving end of the circuit.
+            Voltage drop is the reduction in electrical potential between a power source and connected equipment as current flows through circuit conductors. While copper and aluminum are effective conductors, every physical wire possesses finite internal resistance.
+          </p>
+          <p className="text-sm md:text-base text-slate-600 leading-relaxed mt-3">
+            Under Ohm&apos;s Law (V = I × R), current traversing conductor resistance converts electrical energy into heat. This loss reduces the usable terminal voltage delivered to connected equipment.
           </p>
         </div>
 
@@ -711,7 +714,10 @@ export const VoltageDropCalculator: React.FC = () => {
               Why Circuit Distance and Load Current Multiply Losses
             </h3>
             <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-              Conductor resistance scales directly with physical distance. Running a feeder 150 feet produces exactly three times the resistance of a 50-foot run of identical wire. Simultaneously, voltage drop scales directly with electrical current: running 30 Amps creates three times the voltage drop of running 10 Amps through the exact same conductor. When long distances combine with high currents, voltage loss can degrade motor performance, dim lighting, trigger electronic power supply lockouts, or cause excessive line heating.
+              Conductor resistance scales directly with physical distance. For example, running a feeder 150 feet produces three times the resistance of a 50-foot run of identical wire.
+            </p>
+            <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+              Voltage drop also scales directly with load current. When long distances combine with high currents, severe voltage loss can degrade motor performance, dim lighting, trigger electronic lockouts, or overheat conductors.
             </p>
           </div>
 
@@ -720,7 +726,10 @@ export const VoltageDropCalculator: React.FC = () => {
               One-Way Physical Distance vs Complete Return Path
             </h3>
             <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-              In field installations, electricians measure the one-way linear distance from the panel to the equipment. However, electrical current requires a complete closed circuit to flow. In two-wire direct current and single-phase alternating current circuits, current travels out along the supply wire and returns through the neutral or return conductor. The mathematical formula applies a multiplier of 2 to account for both legs of the circuit automatically.
+              Electricians measure the one-way linear distance from the panel to equipment. However, electric current requires a complete closed loop to flow.
+            </p>
+            <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
+              In two-wire DC and single-phase AC systems, current flows out along the supply wire and back along the return conductor. The formula applies a multiplier of 2 to cover both circuit legs.
             </p>
           </div>
         </div>
@@ -730,7 +739,10 @@ export const VoltageDropCalculator: React.FC = () => {
             Three-Phase Balanced Circuits and the √3 Multiplier
           </h3>
           <p className="text-sm text-slate-600 leading-relaxed">
-            In balanced three-phase alternating current systems, current in each phase conductor is 120 degrees out of phase with the others. Because the balanced vector sum of phase currents at the neutral point equals zero, neutral conductors in balanced three-phase systems carry zero net return current. The line-to-line voltage drop between any two phase conductors is determined by multiplying phase current by the line-to-line multiplier of √3 (approximately 1.73205), rather than the factor of 2 applied in single-phase circuits.
+            In balanced three-phase systems, currents in the three phase conductors are 120 degrees out of phase. Because their balanced vector sum at the neutral point equals zero, neutral conductors carry zero net return current under balanced conditions.
+          </p>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            Line-to-line voltage drop between phase conductors is calculated by multiplying phase current by the line factor of √3 (approximately 1.73205), rather than the factor of 2 used in single-phase circuits.
           </p>
         </div>
 
@@ -739,7 +751,10 @@ export const VoltageDropCalculator: React.FC = () => {
             Conductor Material: Copper vs Aluminum Resistance
           </h3>
           <p className="text-sm text-slate-600 leading-relaxed">
-            Electrolytic tough pitch copper features an electrical resistivity of approximately 1.68 × 10⁻⁸ Ω·m, whereas aluminum electrical conductors present an electrical resistivity of approximately 2.82 × 10⁻⁸ Ω·m at standard reference temperatures. Under identical American Wire Gauge sizes, aluminum conductor resistance is roughly 1.6 times higher than copper. Consequently, aluminum circuits typically require stepping up one to two trade wire sizes (for example, using 2 AWG aluminum in place of 4 AWG copper) to maintain equivalent voltage drop and ampacity.
+            Copper features an electrical resistivity of approximately 1.68 × 10⁻⁸ Ω·m, while aluminum presents approximately 2.82 × 10⁻⁸ Ω·m at standard temperatures. For the same AWG size, aluminum conductor resistance is roughly 1.6 times higher than copper.
+          </p>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            Consequently, aluminum circuits typically require stepping up one to two trade wire sizes (for example, using 2 AWG aluminum instead of 4 AWG copper) to achieve equivalent voltage drop and ampacity.
           </p>
         </div>
 
@@ -748,7 +763,10 @@ export const VoltageDropCalculator: React.FC = () => {
             National Electrical Code (NEC) Informational Notes on Voltage Drop
           </h3>
           <p className="text-sm text-slate-600 leading-relaxed">
-            The National Electrical Code (NFPA 70) addresses voltage drop primarily through advisory Informational Notes rather than mandatory blanket rules. Specifically, Informational Note No. 2 to Section 210.19(A) for branch circuits and Section 215.2(A)(1) for feeders suggest that sizing conductors to limit voltage drop to 3% on the furthest branch circuit or feeder, and no more than 5% total across combined feeder and branch circuits, provides reasonable electrical efficiency and proper equipment operation.
+            The National Electrical Code (NFPA 70) addresses voltage drop primarily through advisory Informational Notes rather than mandatory blanket rules. These non-mandatory guidelines help engineers balance installation cost against operational efficiency.
+          </p>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            NEC Section 210.19(A) Informational Note No. 2 and Section 215.2(A)(1) recommend limiting voltage drop to 3% on the furthest branch circuit or feeder. Total combined drop across feeder and branch circuits should not exceed 5%.
           </p>
           <div className="bg-amber-50/80 border border-amber-200 rounded-xl p-4 text-xs md:text-sm text-amber-950 leading-relaxed">
             <span className="font-bold">Important Code Distinction: </span>
@@ -761,7 +779,10 @@ export const VoltageDropCalculator: React.FC = () => {
             Why Voltage Drop Alone Does Not Determine Conductor Ampacity
           </h3>
           <p className="text-sm text-slate-600 leading-relaxed">
-            Conductor sizing requires satisfying two independent electrical engineering criteria: <strong>ampacity thermal limits</strong> and <strong>voltage drop limits</strong>. Conductor ampacity (governed by NEC Section 310.16) defines the maximum continuous current a conductor is rated to carry without causing its insulation jacket to overheat, melt, or cause a fire. Ambient temperature correction factors and conduit fill adjustments directly derate conductor ampacity. A circuit wire might calculate a negligible 0.5% voltage drop on a short 10-foot run, yet still be completely undersized thermally if the current exceeds the conductor&apos;s allowable ampacity. Both calculations must be satisfied independently.
+            Conductor sizing requires satisfying two independent criteria: <strong>ampacity thermal limits</strong> and <strong>voltage drop limits</strong>. Conductor ampacity (NEC Section 310.16) defines the maximum continuous current a wire carries safely without insulation overheating. Ambient temperature and conduit fill adjustments directly derate this allowable ampacity.
+          </p>
+          <p className="text-sm text-slate-600 leading-relaxed">
+            A short 10-foot circuit might calculate a negligible 0.5% voltage drop, yet remain dangerously undersized if current exceeds allowable ampacity. Safe branch circuit design requires verifying both thermal ampacity and voltage drop limits independently.
           </p>
         </div>
       </section>
