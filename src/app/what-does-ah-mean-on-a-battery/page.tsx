@@ -209,7 +209,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
-                Whether shopping for a home UPS, RV battery, or off-grid solar bank, the letters <strong>Ah</strong> appear on almost every label. Understanding what Amp-hours measure is key to sizing dependable backup power.
+                Battery nameplates for home UPS systems, RV power banks, and off-grid solar storage prominently display <strong>Amp-hours (Ah)</strong>. Understanding this rating is necessary to calculate stored charge and runtime duration.
               </p>
             </header>
 
@@ -243,7 +243,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </p>
 
               <p>
-                In practical terms, a 100Ah battery can theoretically deliver:
+                A 100Ah battery can theoretically deliver:
               </p>
 
               <ul className="list-disc pl-6 space-y-1.5 text-slate-700">
@@ -430,14 +430,14 @@ export default function BatteryAmpHoursExplainedPage() {
               </div>
 
               <p>
-                Notice that both the 12V marine battery and the 48V server rack battery share the exact same <strong>100Ah</strong> label on their faceplates.
+                Both the 12V marine battery and the 48V server rack battery share the <strong>100Ah</strong> label on their faceplates.
               </p>
               <p>
-                However, because the server rack battery operates at four times the electrical potential (48V versus 12V), it contains <strong>four times as much total energy</strong> (4,800Wh versus 1,200Wh).
+                Because the server rack battery operates at four times the electrical potential (48V versus 12V), it contains <strong>four times as much total energy</strong> (4,800Wh versus 1,200Wh).
               </p>
 
               <p className="font-semibold text-slate-800">
-                Rule of thumb: Never compare battery capacity in Amp-hours unless you have first verified that both systems operate at the identical nominal voltage.
+                Never compare battery capacity in Amp-hours without first verifying that both systems operate at the identical nominal voltage.
               </p>
             </section>
 
@@ -587,7 +587,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </p>
 
               <p className="text-xs sm:text-sm text-slate-600 bg-blue-50/70 p-4 rounded-xl border border-blue-200 leading-relaxed">
-                For a detailed appliance-by-appliance breakdown covering refrigerators, TVs, laptops, CPAP machines, and continuous AC loads, read our comprehensive guide on{" "}
+                For a detailed appliance-by-appliance breakdown covering refrigerators, TVs, laptops, CPAP machines, and continuous AC loads, see our sizing guide for{" "}
                 <Link
                   href="/how-long-will-a-100ah-battery-last"
                   className="text-blue-700 font-bold hover:underline"
@@ -751,7 +751,7 @@ export default function BatteryAmpHoursExplainedPage() {
                 </div>
 
                 <p className="text-xs text-slate-400 pt-1">
-                  Notice that the LiFePO4 battery provides <strong>nearly 80% longer real-world runtime</strong> (9.2 hours vs. 5.1 hours) from the exact same 100Ah faceplate rating because of higher usable depth of discharge and reduced voltage sag.
+                  The LiFePO4 battery delivers <strong>nearly 80% longer real-world runtime</strong> (9.2 hours vs. 5.1 hours) from the same 100Ah nameplate rating due to higher usable depth of discharge and reduced voltage sag.
                 </p>
               </div>
             </section>
@@ -763,7 +763,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </h2>
 
               <p>
-                Not all Amp-hours are created equal.
+                Battery chemistry fundamentally alters how many Amp-hours can be safely discharged before damage or low-voltage cutoff occurs.
               </p>
               <p>
                 When evaluating capacity for UPS backups, RV boondocking, or solar storage, chemistry dictates usable energy, cycle life, and pack weight.
@@ -974,7 +974,7 @@ export default function BatteryAmpHoursExplainedPage() {
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
-                  Calculate Your Exact Battery Backup Run-Time Hours
+                  Calculate Your Battery Backup Runtime Hours
                 </h2>
 
                 <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
@@ -1148,7 +1148,7 @@ export default function BatteryAmpHoursExplainedPage() {
                     UPS Battery Backup Run-Time Calculator
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Calculate exact runtime hours from appliance wattage, battery voltage, and Amp-hour capacity.
+                    Calculate estimated runtime hours from appliance wattage, battery voltage, and Amp-hour capacity.
                   </p>
                 </Link>
 

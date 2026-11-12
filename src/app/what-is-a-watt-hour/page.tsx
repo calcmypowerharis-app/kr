@@ -928,7 +928,7 @@ export default function WattHoursExplainedPage() {
                     UPS Battery Backup Run-Time Calculator
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Calculate exact runtime hours from appliance wattage, battery voltage, and Amp-hour capacity.
+                    Calculate estimated runtime hours from appliance wattage, battery voltage, and Amp-hour capacity.
                   </p>
                 </Link>
 

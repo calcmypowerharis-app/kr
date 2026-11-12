@@ -615,7 +615,7 @@ export default function GeneratorSizingGuidePage() {
                 <span>Interactive Load Model</span>
               </span>
               <h3 className="font-bold text-slate-900 text-base sm:text-lg">
-                Explore or Customize This Exact Load Profile
+                Explore or Customize This Load Profile
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
                 Want to try the same load profile with your own appliances? Load this example into the calculator and edit the values.
@@ -639,16 +639,16 @@ export default function GeneratorSizingGuidePage() {
             </p>
             <ul className="space-y-2 text-xs sm:text-sm text-slate-600 pl-4 list-disc">
               <li>
-                <strong>Continuous Rating:</strong> Total continuous running load in this scenario is 2,955 Watts. While a 5,000-Watt rated continuous generator can carry the running load, our calculated planning capacity of 5,069 Watts (which includes the 25% planning margin above the single-motor peak) slightly exceeds 5,000 Watts. To maintain comfortable headroom and avoid loading the engine past 80%, equipment in the illustrative <strong>5,500 to 6,500-Watt continuous class</strong> serves as a practical target for this load profile.
+                <strong>Continuous Rating:</strong> Continuous running load is 2,955 Watts. Planning capacity reaches 5,069 Watts with the 25% safety margin. A generator rated for <strong>5,500 to 6,500 continuous Watts</strong> maintains engine loading under 80% with reliable operational headroom.
               </li>
               <li>
                 <strong>Surge Capability:</strong> The generator&apos;s momentary surge rating must comfortably exceed the 4,055-Watt peak. Portable generators in this illustrative 5,500W to 6,500W continuous class frequently provide around 6,800W to 8,500W of starting surge capacity depending on the manufacturer and model, easily absorbing the furnace blower&apos;s inrush demand.
               </li>
               <li>
-                <strong>Voltage &amp; Circuit Requirements:</strong> Because this setup feeds circuits across both panel bus bars through a home transfer switch, a dual-voltage 120V/240V connection is required (a common example on portable generators in this class is a 120/240V, 30A 4-prong locking configuration such as a NEMA L14-30 receptacle and power inlet box). The actual generator outlet, inlet box, transfer switch, wire gauge, and circuit breaker ratings must match your specific equipment and electrical installation requirements. A standard 120V-only generator cannot energize both bus bars in a split-phase panel without specialized transfer equipment.
+                <strong>Voltage &amp; Circuit Requirements:</strong> Feeding a home transfer switch across both bus bars requires a 120V/240V connection, such as a NEMA L14-30 inlet. Standard 120V-only generators cannot energize both legs of a split-phase electrical panel.
               </li>
               <li>
-                <strong>Fuel Type &amp; Output Variations:</strong> If planning to run on liquid propane or natural gas instead of gasoline, verify the fuel-specific nameplate ratings. Generator output can vary by fuel type and model; multi-fuel generators typically deliver lower continuous and surge wattage on propane or natural gas than on gasoline. Check the manufacturer&apos;s specifications for exact fuel-rated capacities when selecting a unit.
+                <strong>Fuel Type &amp; Output Variations:</strong> Multi-fuel generators typically produce 10% to 20% lower wattage on propane or natural gas than on gasoline. Check the manufacturer nameplate for fuel-specific ratings before selecting generator capacity.
               </li>
             </ul>
           </div>
@@ -1129,7 +1129,7 @@ export default function GeneratorSizingGuidePage() {
                 Generator Size Calculator
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Tally your exact appliances, calculate single-motor surge demand, and size your generator with planning headroom.
+                Tally your connected appliances, calculate single-motor surge demand, and size your generator with planning headroom.
               </p>
             </Link>
 

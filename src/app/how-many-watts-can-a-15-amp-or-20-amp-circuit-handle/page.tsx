@@ -325,7 +325,7 @@ export default function CircuitWattageGuidePage() {
               </p>
 
               <p>
-                Circuit breakers respond to total current in amperes (apparent power), not just real watts. For appliances with a power factor below 1.0, current draw is higher than a simple watts divided by 120 volts calculation.
+                Circuit breakers respond to total current in amperes (apparent power) rather than real watts alone. For appliances with a power factor below 1.0, current draw is higher than a simple watts divided by 120 volts calculation.
               </p>
 
               <div className="p-4 rounded-xl bg-blue-50 border-l-4 border-blue-600 text-sm text-blue-900">
@@ -694,7 +694,7 @@ export default function CircuitWattageGuidePage() {
               </p>
 
               <p>
-                Crucially, outlet faceplates never guarantee circuit ampacity. A 20-amp T-slot outlet might have been improperly wired to 14 AWG wire by an amateur. Confirm circuit rating by checking breaker size and conductor gauge.
+                Outlet faceplates never guarantee circuit ampacity, because a 20-amp T-slot receptacle may be improperly connected to 14 AWG wire. Confirm circuit rating directly at the breaker panel and inspect conductor wire gauge.
               </p>
             </section>
 

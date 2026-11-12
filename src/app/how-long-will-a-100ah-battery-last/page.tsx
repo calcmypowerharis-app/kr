@@ -225,7 +225,7 @@ export default function BatteryRuntimeGuidePage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
-                A 12V 100Ah deep-cycle battery is the undisputed workhorse of American backup systems, off-grid cabins, RVs, and marine setups.
+                A 12V 100Ah deep-cycle battery is a standard capacity rating for American backup systems, off-grid cabins, RVs, and marine setups.
               </p>
               <p className="text-base md:text-lg text-slate-600 leading-relaxed font-normal">
                 Yet determining real-world runtime is rarely a single number. Operating hours hinge on battery chemistry, inverter efficiency, discharge rates, and appliance duty cycles.
@@ -326,8 +326,8 @@ export default function BatteryRuntimeGuidePage() {
               </ul>
 
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs md:text-sm text-slate-600 leading-relaxed">
-                <span className="font-bold text-slate-900">Core Takeaway: </span>
-                Delivered runtime is fundamentally governed by appliance wattage, whether you run directly from 12V DC or convert through an inverter, and the chemistry depth of discharge you permit before recharging.
+                <span className="font-bold text-slate-900">Key Takeaway: </span>
+                Delivered runtime depends on appliance wattage, DC or AC inverter conversion, and chemistry depth of discharge before recharging.
               </div>
             </section>
 
@@ -664,7 +664,7 @@ export default function BatteryRuntimeGuidePage() {
               <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs md:text-sm text-amber-900 space-y-1.5">
                 <div className="font-bold flex items-center gap-1.5 text-amber-800">
                   <ShieldAlert className="w-4 h-4 text-amber-700" />
-                  <span>Crucial Refrigerator Outage Guidelines</span>
+                  <span>Refrigerator Outage Operating Guidelines</span>
                 </div>
                 <p className="leading-relaxed">
                   <strong>Startup Surge:</strong> Refrigerator compressors require an instantaneous startup surge of 800W to 1,200W for 1 to 2 seconds. You must use a pure sine wave inverter rated for at least 1,000W continuous and 2,000W surge; smaller inverters will overload and trip immediately.
@@ -1090,7 +1090,7 @@ export default function BatteryRuntimeGuidePage() {
                   </h2>
                 </div>
                 <p className="text-sm md:text-base text-slate-600 leading-relaxed">
-                  Need to calculate runtime for your exact custom equipment, size a multi-battery storage bank, or calculate wire sizes? Use our purpose-built engineering calculators:
+                  Need to calculate runtime for your specific equipment, size a multi-battery storage bank, or calculate wire sizes? Use our purpose-built engineering calculators:
                 </p>
               </div>
 
@@ -1127,7 +1127,7 @@ export default function BatteryRuntimeGuidePage() {
                     Battery Capacity &amp; Sizing Calculator
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Convert between Ah and Wh, evaluate usable battery bank energy across chemistries, or calculate the exact number of battery units required for your target runtime.
+                    Convert between Ah and Wh, evaluate usable battery bank energy across chemistries, or calculate the number of battery units required for your target runtime.
                   </p>
                 </Link>
 
@@ -1163,7 +1163,7 @@ export default function BatteryRuntimeGuidePage() {
                     How Long to Charge a Battery with Solar Panels?
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Calculate exact recharge time for 100Ah lithium and AGM batteries based on solar panel wattage, MPPT charge controllers, and peak sun hours.
+                    Calculate recharge time for 100Ah lithium and AGM batteries based on solar panel wattage, MPPT charge controllers, and peak sun hours.
                   </p>
                 </Link>
 
@@ -1199,7 +1199,7 @@ export default function BatteryRuntimeGuidePage() {
                     Generator Size Calculator
                   </h3>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    When battery runtime is not enough for extended multi-day outages, calculate the exact generator wattage required to recharge battery banks and power whole-house loads.
+                    When battery runtime is not enough for extended multi-day outages, calculate the required generator wattage to recharge battery banks and power whole-house loads.
                   </p>
                 </Link>
               </div>

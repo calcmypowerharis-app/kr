@@ -222,7 +222,7 @@ export default function SolarBatteryChargeTimePage() {
                 </h1>
 
                 <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-3xl">
-                  Recharging a battery with solar panels depends on battery capacity, daily peak sun hours, system efficiency losses, and charge controller technology. Here is how to calculate exact solar recharge hours and realistic calendar days using verified electrical formulas.
+                  Recharging a battery with solar panels depends on battery capacity, daily peak sun hours, system efficiency losses, and charge controller technology. This guide models expected solar recharge hours and realistic calendar days using verified electrical formulas.
                 </p>
 
                 <ArticleDateByline
@@ -268,11 +268,11 @@ export default function SolarBatteryChargeTimePage() {
                   Dividing 980 Watt-hours by 164 Watts gives approximately <strong>6.0 peak sun hours</strong>. Because most regions in the United States receive between 4.0 and 5.0 peak sun hours per day, this system takes approximately <strong>1.3 sunny days</strong> to complete a full recharge.
                 </p>
 
-                {/* Key Takeaways Card */}
+                {/* Solar Charging Operating Summary Card */}
                 <div className="rounded-xl border border-amber-200 bg-amber-50/70 p-5 space-y-3">
                   <div className="font-bold text-amber-950 text-sm flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-amber-700" />
-                    <span>Key Solar Charging Takeaways</span>
+                    <span>Solar Charging Operating Summary</span>
                   </div>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-slate-700">
                     <li className="flex items-start gap-2">

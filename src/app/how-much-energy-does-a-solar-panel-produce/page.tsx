@@ -270,11 +270,11 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 </div>
               </div>
 
-              {/* Crucial Concept: Power vs Energy Callout */}
+              {/* Concept: Power vs Energy Callout */}
               <div className="p-5 rounded-2xl bg-amber-50/70 border border-amber-200/80 text-slate-800 space-y-2 text-sm leading-relaxed">
                 <div className="flex items-center gap-2 text-amber-900 font-bold text-sm">
                   <Zap className="w-4 h-4 text-amber-700 shrink-0" />
-                  <span>Crucial Distinction: Power (Watts) vs. Energy (Watt-Hours)</span>
+                  <span>Power (Watts) vs. Energy (Watt-Hours)</span>
                 </div>
                 <p>
                   A 400-watt rating does <strong>not</strong> mean the panel produces 400 watts of power every hour of daylight. <strong>Watts (W)</strong> measure instantaneous capacity, while <strong>Watt-hours (Wh)</strong> and <strong>kilowatt-hours (kWh)</strong> measure electrical energy accumulated over time.
@@ -493,7 +493,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
               </p>
               <ul className="list-disc pl-6 space-y-2 text-sm text-slate-600">
                 <li>
-                  <strong>Summer Months (June to August):</strong> The sun reaches its highest solar elevation, days are longest (14 to 15 daylight hours), and cloud cover is often lower in many regions. A 400W panel in an area with 5.5 summer PSH will generate approximately <strong>50 to 55 kWh per month</strong>, despite elevated cell temperatures.
+                  <strong>Summer Months (June to August):</strong> The sun reaches its highest solar elevation, days are longest (14 to 15 daylight hours), and cloud cover is often lower in many regions. A 400W panel in an area with 5.5 summer PSH will generate approximately <strong>50 to 55 kWh per month</strong>, despite higher cell operating temperatures.
                 </li>
                 <li>
                   <strong>Winter Months (November to January):</strong> The sun sits low on the southern horizon, days are short (9 to 10 daylight hours), and weather storms are more frequent. The same 400W panel might drop to 2.5 winter PSH, producing roughly <strong>23 to 28 kWh per month</strong>.
@@ -586,7 +586,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                   In practical outdoor installations, these three laboratory conditions rarely align simultaneously. On an 85°F summer day under 1,000 W/m² irradiance, solar cells heat up to <strong>120°F to 145°F (50°C to 63°C)</strong>.
                 </p>
                 <p className="text-sm text-slate-600">
-                  Because silicon semiconductors have a negative temperature coefficient, elevated operating temperatures reduce panel voltage and trim real-world output by 8% to 15% below STC ratings.
+                  Because silicon semiconductors have a negative temperature coefficient, higher operating temperatures reduce panel voltage and trim real-world output by 8% to 15% below STC ratings.
                 </p>
               </div>
             </section>
@@ -798,7 +798,7 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                 </div>
 
                 <div className="text-xs text-slate-600 leading-relaxed border-t border-slate-200 pt-3">
-                  <strong>Practical Rule of Thumb:</strong> If your roof has generous, unshaded south-facing surface area, paying an extreme premium for 23% ultra-high-efficiency panels is rarely necessary. Standard 20% to 21% efficient panels will produce the identical kilowatt-hours for less upfront equipment cost. However, if your roof space is limited by dormers, valleys, or shading, higher-efficiency modules allow you to pack more total kilowatt capacity onto the usable roof area.
+                  With generous unshaded roof area, standard 20% to 21% efficient panels produce identical kilowatt-hours at lower equipment cost. Higher 23% efficiency modules become necessary primarily when roof space is constrained by dormers, vents, or layout geometry.
                 </div>
               </div>
             </section>

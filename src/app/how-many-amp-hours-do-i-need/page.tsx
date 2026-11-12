@@ -203,10 +203,10 @@ export default function HowManyAmpHoursDoINeedPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-normal">
-                A comprehensive engineering methodology to size battery bank capacity.
-                Learn how to calculate daily Watt-hours, select system voltage,
+                Size battery bank capacity using verified electrical principles.
+                Calculate daily Watt-hours, select nominal system voltage,
                 account for autonomy days, and factor in usable depth of discharge
-                and inverter losses.
+                and inverter conversion losses.
               </p>
             </header>
 
@@ -413,8 +413,8 @@ export default function HowManyAmpHoursDoINeedPage() {
                   </li>
                 </ul>
                 <p className="text-sm text-slate-600 italic">
-                  Notice that the total stored energy is identical in all three cases;
-                  the higher voltage system simply moves that energy at a lower continuous
+                  Total stored energy is identical in all three cases;
+                  the higher voltage system moves that energy at a lower continuous
                   current.
                 </p>
               </section>
@@ -850,7 +850,7 @@ export default function HowManyAmpHoursDoINeedPage() {
 
                 <p className="text-sm text-slate-700 leading-relaxed">
                   For complex banks requiring both higher voltage and higher capacity,
-                  series-parallel strings are used. For wiring rules, see our comprehensive guide on{" "}
+                  series-parallel strings are used. For wiring rules, see our sizing guide for{" "}
                   <Link
                     href="/solar-panels-series-vs-parallel"
                     className="text-sky-600 hover:text-sky-800 font-semibold underline"
@@ -1068,7 +1068,7 @@ export default function HowManyAmpHoursDoINeedPage() {
 
                 <p className="text-sm text-slate-200 leading-relaxed">
                   Use our free online tool to test different autonomy days,
-                  toggle inverter efficiency ratings, and determine exact Ah requirements
+                  toggle inverter efficiency ratings, and determine estimated Ah requirements
                   for your specific project.
                 </p>
 
@@ -1119,7 +1119,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                   <h2>Authoritative Sources & Engineering Standards</h2>
                 </div>
                 <p>
-                  Sizing principles, mathematical formulas, and baseline assumptions in this guide reference established industry engineering standards and educational resources:
+                  Sizing principles, mathematical formulas, and baseline assumptions reference established industry engineering standards and educational resources:
                 </p>
                 <ul className="list-disc list-inside space-y-1 pl-1">
                   <li>

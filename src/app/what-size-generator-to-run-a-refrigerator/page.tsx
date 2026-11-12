@@ -626,7 +626,7 @@ export default function RefrigeratorGeneratorSizingPage() {
                   <strong>Voltage (V):</strong> In the United States, this will indicate <strong>115V or 120V AC, 60 Hz</strong>.
                 </li>
                 <li>
-                  <strong>Full Load Amps (FLA) / Rated Amps (A):</strong> You will typically see a figure between <strong>4.5A and 7.5A</strong>. As noted earlier, this represents the maximum combined draw if internal fans, electronic defrost heaters, and the compressor run simultaneously.
+                  <strong>Full Load Amps (FLA) / Rated Amps (A):</strong> You will typically see a figure between <strong>4.5A and 7.5A</strong>. This represents the maximum combined draw if internal fans, electronic defrost heaters, and the compressor run simultaneously.
                 </li>
                 <li>
                   <strong>Locked Rotor Amps (LRA):</strong> If listed, this indicates the absolute maximum current drawn when the compressor motor starts from a dead stop. A refrigerator showing an LRA of 11.5A on a 120V circuit requires 11.5A × 120V = <strong>1,380 starting surge watts</strong>.
@@ -905,7 +905,7 @@ export default function RefrigeratorGeneratorSizingPage() {
                     <span>Adding a Gas Furnace Blower (+1,800W Surge)</span>
                   </h3>
                   <p className="text-slate-600">
-                    During winter storms, heating is vital. A 1/2 HP gas furnace fan draws 600 running watts and 1,800 starting watts, requiring 120V circuit integration.
+                    During winter storms, running gas heat requires powering the furnace blower. A 1/2 HP gas furnace fan draws 600 running watts and 1,800 starting watts, requiring 120V circuit integration.
                   </p>
                   <span className="font-bold text-blue-600 block text-xs">
                     New Minimum Generator: 3,500 to 4,000 Watts
@@ -1002,7 +1002,7 @@ export default function RefrigeratorGeneratorSizingPage() {
               </div>
 
               <p className="text-sm sm:text-base text-slate-700 leading-relaxed">
-                Want to calculate exact generator requirements for your specific refrigerator, freezer, and household appliances? Use our interactive Generator Size Calculator to adjust wattages and test custom scenarios.
+                Want to calculate generator requirements for your specific refrigerator, freezer, and household appliances? Use our interactive Generator Size Calculator to adjust wattages and test custom scenarios.
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
