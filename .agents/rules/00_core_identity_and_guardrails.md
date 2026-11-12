@@ -59,16 +59,19 @@ Voice:
 - varied sentence length
 - no robotic filler
 
-Avoid repeated AI phrases such as:
-- "-", "---"
-- "In today's world"
-- "Whether you're a homeowner or a professional"
-- "Let's dive in"
-- "It is important to note"
-- "In conclusion"
-- "When it comes to"
-- "This comprehensive guide"
-- "Look no further"
+Avoid repeated AI phrases and empty buzzwords such as:
+- "In today's world", "In today's fast-paced world", "In today's ever-evolving digital landscape"
+- "Whether you're a homeowner or a professional", "Whether you are a seasoned pro or a beginner"
+- "Let's dive in", "Without further ado", "Here's what you need to know"
+- "It is important to note", "It is worth noting", "It is crucial to remember"
+- "In conclusion", "To wrap up", "All in all"
+- "When it comes to", "At the end of the day"
+- "This comprehensive guide", "Look no further"
+- "Unlock the power of", "elevate your", "empower your journey", "seamless integration"
+- "game-changer", "next-level", "cutting-edge", "revolutionary", "pivotal moment"
+- "Read that again", "Let that sink in", "The message is clear", "Here is the bottom line"
+- "Honestly?", "Let's be honest", "Here's the thing", "Real talk"
+- "It is not just X, it is Y", "Not only X, but also Y"
 
 Do not deliberately make prose sloppy to "look human". Human quality means useful, specific, edited writing - not fake imperfections.
 

@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook — Domain 06: Architecture, Testing, DevOps & Git Discipline
+# CalcMyPower Rulebook - Domain 06: Architecture, Testing, DevOps & Git Discipline
 
 > Antigravity Modular Rule Specification: Category `06_architecture_devops_git.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.

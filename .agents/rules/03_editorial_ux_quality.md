@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook — Domain 03: Editorial Quality & Reader UX Standards
+# CalcMyPower Rulebook - Domain 03: Editorial Quality & Reader UX Standards
 
 > Antigravity Modular Rule Specification: Category `03_editorial_ux_quality.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.
@@ -176,6 +176,17 @@ FAQ questions must reflect real user needs.
 Do not create FAQ questions only to add keywords.
 Do not repeat the same answer in multiple forms.
 Do not make unsupported definitive claims.
+
+#### 14.1 Anti-Slop Writing & Structural Tropes (Zero AI Formula Invariant)
+To ensure all editorial content reads as human-crafted engineering guidance rather than generated copy, enforce these specific anti-slop filters:
+- **Zero Empty AI Buzzwords & Abstract Verbs**: Never use *unlock, elevate, empower, delve, showcase, testament, landscape (abstract), journey, robust, game-changer, next-level, seamless, cutting-edge, revolutionary, pivotal moment, ushering in a new era*. Use plain, direct verbs describing real hardware, measurements, or code rules.
+- **Zero Theatrical Coaching Commands**: Never direct the reader how to feel or react. Strictly banned: "Read that again.", "Let that sink in.", "The message is clear:", "That distinction matters.", "The takeaway is simple:", "Here is the bottom line:". State the engineering fact directly and let the numbers speak for themselves.
+- **Zero Signposting Meta-Commentary**: Never announce what the paragraph or article is about to do. Strictly banned: "Let's dive in", "Here is what you need to know", "In this article we will explore", "Without further ado". Open immediately with the core technical subject.
+- **Zero Negative Parallelism & Tailing Negations**: Avoid rhetorical formulas such as "It is not just X, it is Y", "Not only X, but also Y", or tacked-on clipped fragments ("no guessing", "no wasted motion"). State what the system does in clean declarative prose.
+- **No Rule-of-Three Padding**: Engineering and electrical workflows do not naturally conform to groups of three. Never force ideas, adjectives, or bullet points into artificial trios solely for cadence.
+- **Zero Weasel Attributions**: Never cite vague authorities ("experts agree", "industry observers note", "leading electricians recommend") without naming the specific standard, NEC article, IEEE paper, or manufacturer documentation.
+- **Zero Inanimate Subjects with Human Verbs**: Code, tools, and hardware do not possess consciousness. Never write "the calculator understands", "the inverter decides", or "the formula knows". Write what the component physically does ("the calculator computes", "the inverter disconnects").
+- **Zero False Ranges**: Avoid rhetorical framing like "from small DIY setups to massive industrial arrays, and everything in between". Specify exact system ratings (e.g., "from 400W portable systems to 12kW whole-home backups").
 
 ### B. Punctuation Standard
 

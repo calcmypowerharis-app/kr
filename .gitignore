@@ -37,3 +37,7 @@ next-env.d.ts
 # python
 __pycache__/
 *.py[cod]
+
+# local tools and agent workspaces
+anti-slop/
+.agents/teamwork/

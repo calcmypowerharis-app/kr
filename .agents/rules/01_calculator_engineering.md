@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook — Domain 01: Calculator Engineering & Topic Scope
+# CalcMyPower Rulebook - Domain 01: Calculator Engineering & Topic Scope
 
 > Antigravity Modular Rule Specification: Category `01_calculator_engineering.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.

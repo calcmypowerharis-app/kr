@@ -56,6 +56,7 @@ The authoritative, full-text rules (Rules 1 through 29) are modularized across 8
 - **Zero Hallucinated Experience:** Never claim personal testing, field installations, measured lab results, customer reviews, or professional engineering credentials unless physically documented and approved.
 - **Zero Scaled AI Filler:** Never produce generic template articles, repetitively phrased introductions, or superficial content intended solely for keyword stuffing.
 - **Writing Voice:** Clear, direct, calm, practical US technical English. Avoid robotic clichés (`"In today's world"`, `"Let's dive in"`, `"It is important to note"`, `"In conclusion"`, `"When it comes to"`). Never use em-dashes (`—`) in code or content.
+- **Anti-Slop Craft Invariant:** Every visual element and sentence must pass the Purpose-Gate test. Strictly ban empty AI buzzwords (unlock, elevate, game-changer, seamless, cutting-edge), theatrical coaching commands ("Read that again", "Let that sink in"), fake-candid openers, negative parallelism formulas, generic blue-to-purple gradients, excessive glassmorphism, decorative pulsing dots, and decorative emoji in UI text.
 
 ### 3. Engineering & Calculator-First Product Principle
 - The interactive calculator is the core product; editorial articles exist to support and teach the calculation methodology.

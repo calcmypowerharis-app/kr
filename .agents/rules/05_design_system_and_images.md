@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook — Domain 05: Design System Separation & Image Standards
+# CalcMyPower Rulebook - Domain 05: Design System Separation & Image Standards
 
 > Antigravity Modular Rule Specification: Category `05_design_system_and_images.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.
@@ -34,6 +34,19 @@ Important: do not assume Gemini 3.8 Flash itself can generate images through eve
 - no deceptive ad placement
 - trustworthy appearance
 - accessible contrast and controls
+
+### 14.1 Anti-Slop UI & Visual Craft Standard
+Every interface element must feel crafted by an intentional engineer, avoiding generic AI template tropes:
+- **Purpose-Gate Invariant**: Every visual technique (shadow, border radius, gradient, badge, glass effect) must serve a documented functional or hierarchy purpose. Technique without purpose is prohibited.
+- **Zero Generic AI Gradients & Radial Orbs**: Strictly avoid purple-to-blue, purple-to-pink gradients, neon glows, and blurred radial orbs behind hero sections. Color must derive from the established brand palette (slate, amber, emerald, sky) with intentional restraint (2 to 3 core colors + 1 deliberate accent).
+- **Zero Excessive Glassmorphism**: Never apply backdrop-filter blur across multiple surfaces simultaneously. Glassmorphism must be confined to at most 1 accent surface where foreground separation is genuinely required.
+- **Zero Border-Radius Monotony**: Do not force all components into uniform pill shapes (`rounded-full`). Distinct components (inputs, cards, modals, primary buttons) must carry distinct, proportional radii reflecting their hierarchy.
+- **Zero Fake Pulsing Dots**: Never use a glowing or endlessly pulsing colored dot next to headings, badges, or categories unless it communicates an active real-time telemetry state.
+- **Zero Eyebrow Badge Redundancy**: Avoid category pills positioned directly above H1 headlines that merely duplicate what the title states. Let the title lead.
+- **Zero Copy-Paste Feature Cards**: Do not flatten features into identical card grids with identical icon boxes. Vary layout structures (tables, key-value rows, highlighted cards) based on genuine content importance.
+- **Zero Decorative Emoji in UI Text**: Strictly prohibit emoji (such as rockets, fire, lightning bolts, checkmarks) in headings, buttons, badges, and card titles. Use semantic SVG icons with clear purpose or clean text.
+- **Zero Button Arrow Spam**: Do not attach directional arrows (`->` or `^`) to every button by default. Reserve arrows exclusively for actions triggering actual page navigation or external links.
+- **No Artificial Three-Step Workflows**: Present processes with their actual number of steps (whether 2, 4, or 5), rather than artificially forcing every procedure into a 3-step icon row.
 
 ## 25. Design System Separation: Calculator Pages vs. Editorial Articles
 

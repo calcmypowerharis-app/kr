@@ -1,4 +1,4 @@
-# CalcMyPower Rulebook — Domain 02: Article & Editorial Content Standard
+# CalcMyPower Rulebook - Domain 02: Article & Editorial Content Standard
 
 > Antigravity Modular Rule Specification: Category `02_editorial_content_standard.md`
 > Auto-discovered by Antigravity from `.agents/rules/*.md`.
@@ -172,7 +172,7 @@ Do not use exact-match anchor text unnaturally.
 Use visuals only when they improve understanding.
 
 Default maximum:
-- 2–3 meaningful article images
+- 2 to 3 meaningful article images
 
 Photorealistic AI-generated images are allowed when appropriate, but:
 - never present AI-generated images as real customer installations, real field tests, or documentary evidence
