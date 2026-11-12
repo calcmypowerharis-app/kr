@@ -9,6 +9,7 @@ interface ArticleDateBylineProps {
   authorUrl?: string;
   authorHref?: string;
   showAuthor?: boolean;
+  codeStandard?: string;
   className?: string;
 }
 
@@ -25,6 +26,7 @@ export function ArticleDateByline({
   authorUrl = "/about",
   authorHref,
   showAuthor = true,
+  codeStandard,
   className = "text-slate-500",
 }: ArticleDateBylineProps) {
   const targetUrl = authorHref ?? authorUrl;
@@ -51,6 +53,22 @@ export function ArticleDateByline({
               className="font-medium text-slate-700 hover:text-blue-600 transition-colors underline decoration-slate-300 hover:decoration-blue-500 underline-offset-2 py-0.5"
             >
               {authorName}
+            </Link>
+          </span>
+          <span className="text-slate-400" aria-hidden="true">
+            ·
+          </span>
+        </>
+      )}
+      {codeStandard && (
+        <>
+          <span className="inline-flex items-center gap-1 text-slate-600 font-medium">
+            <span>Reviewed against</span>
+            <Link
+              href="/about#methodology"
+              className="font-mono text-slate-800 hover:text-blue-600 transition underline decoration-slate-300 hover:decoration-blue-500 underline-offset-2"
+            >
+              {codeStandard}
             </Link>
           </span>
           <span className="text-slate-400" aria-hidden="true">

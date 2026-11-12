@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Zap, RotateCcw } from "lucide-react";
 import { formatEditorialDate, getCalculatorBySlug } from "@/lib/seo/registry";
 import { RecommendedHardwareBox } from "@/components/monetization/RecommendedHardwareBox";
+import { FieldNotesCallout } from "@/components/calculators/FieldNotesCallout";
 
 interface CalculatorShellProps {
   title: string;
@@ -108,6 +109,9 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
           {resultSection}
         </div>
       </div>
+
+      {/* Practical Engineering Field Notes Callout */}
+      <FieldNotesCallout calculatorSlug={calculatorSlug} />
 
       {/* Recommended Equipment & Hardware Box */}
       <RecommendedHardwareBox calculatorSlug={calculatorSlug} />
