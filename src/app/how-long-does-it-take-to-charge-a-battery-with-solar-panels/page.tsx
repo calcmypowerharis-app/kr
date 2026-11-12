@@ -239,6 +239,7 @@ export default function SolarBatteryChargeTimePage() {
                 <ArticleDateByline
                   datePublished="2026-10-13"
                   lastModified="2026-10-13"
+                  codeStandard="NFPA 70 (NEC) & IEEE Std 937"
                 />
               </header>
 

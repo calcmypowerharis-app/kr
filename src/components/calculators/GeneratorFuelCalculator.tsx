@@ -243,21 +243,21 @@ export function GeneratorFuelCalculator() {
             </div>
           </div>
 
-          {/* Quick Cross-Link to Generator Fuel Consumption Guide */}
+          {/* Quick Cross-Link to Generator Sizing Guide */}
           <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-xs text-blue-900 flex items-start gap-3">
             <Info className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
             <div className="space-y-1.5">
-              <span className="font-bold">Planning fuel storage for an extended power outage?</span>
+              <span className="font-bold">Need to verify your required running and surge wattage first?</span>
               <p className="text-blue-800 leading-relaxed">
-                Review hourly consumption rates and fuel storage rules for 2000W to 12000W generators in our companion guide on{" "}
+                Size your household electrical loads with our{" "}
                 <Link
                   href="/what-size-generator-do-i-need-for-my-house"
                   className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  how much gas a generator uses per hour
+                  What Size Generator Do I Need for My House?
                   <ArrowRight className="w-3 h-3" />
                 </Link>
-                .
+                {" "}sizing guide before estimating fuel reserves.
               </p>
             </div>
           </div>
@@ -322,7 +322,7 @@ export function GeneratorFuelCalculator() {
               parameter: "Load Variation",
               defaultVal: "Steady-State",
               realisticRange: "Highly variable",
-              impact: "Presets assume exactly 50% or 100% load continuously. Real-world consumption cycles with appliance usage."
+              impact: "Presets assume steady 50% or 100% continuous loads. Real-world consumption cycles with compressor starts, ambient temperature, and engine elevation derating (approximately 3.5% per 1,000 ft)."
             },
             {
               parameter: "Environmental Factors",
@@ -358,7 +358,15 @@ export function GeneratorFuelCalculator() {
           ]}
         />
 
-        <DisclaimerSection />
+        <DisclaimerSection
+          title="Generator Fuel & Carbon Monoxide Safety Disclaimer"
+          points={[
+            "Fuel consumption estimates represent theoretical steady-state operation based on manufacturer test specifications. Real-world consumption cycles with fluctuating appliance loads, ambient air temperature, engine wear, and altitude derating (approximately 3.5% engine power loss per 1,000 feet above sea level).",
+            "Carbon Monoxide (CO) Hazard: Portable generators produce toxic odorless exhaust fumes. Operate generators strictly outdoors at least 20 feet away from windows, doors, and intake vents per CPSC and NFPA guidelines.",
+            "Fuel Storage & Handling: Store gasoline, propane (LPG), and diesel in approved safety containers away from living quarters in compliance with NFPA 30, NFPA 58, and NFPA 110. Never refuel a hot or running generator engine.",
+            "For permanent standby generator installations, transfer switch wiring, and whole-house backup integration, always consult a licensed master electrician and your local building code authority.",
+          ]}
+        />
       </div>
     </CalculatorShell>
   );

@@ -202,7 +202,11 @@ export default function GeneratorSizingGuidePage() {
                   <span>11 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <ArticleDateByline datePublished="2026-09-27" lastModified="2026-09-28" />
+                <ArticleDateByline
+                  datePublished="2026-09-27"
+                  lastModified="2026-09-28"
+                  codeStandard="NFPA 70 (NEC) & NFPA 110"
+                />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

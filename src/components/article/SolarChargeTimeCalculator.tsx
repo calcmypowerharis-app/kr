@@ -334,7 +334,7 @@ export function SolarChargeTimeCalculator() {
               <p className="text-[11px] text-slate-400 mt-1">
                 {result.deficitEnergyWh === 0
                   ? "Battery is already at or above target state of charge (0 Wh deficit)."
-                  : `Hours of 1,000 W/m² equivalent direct sunlight needed to replenish ${result.deficitEnergyWh} Wh.`}
+                  : `Hours of 1,000 W/m² equivalent direct sunlight needed to deliver ${result.energyNeededWh} Wh input energy to replenish ${result.deficitEnergyWh} Wh stored deficit.`}
               </p>
             </div>
 

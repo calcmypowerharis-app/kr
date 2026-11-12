@@ -123,7 +123,7 @@ const FAQ_DATA = [
   {
     question: "How long will a 1,200Wh battery run a 100W device?",
     answer:
-      "Under ideal theoretical conditions, a 1,200Wh battery would power a 100-Watt load for 12 hours (1,200Wh ÷ 100W = 12 hours). In practical applications, delivered runtime is shorter (typically 5.1 to 9.2 hours) due to chemistry depth of discharge limits (50% for lead-acid vs. 80% to 90% for lithium), DC-to-AC inverter conversion losses (8% to 15% loss as heat), and operating temperature.",
+      "Under ideal theoretical conditions, a 1,200Wh battery would power a 100-Watt load for 12 hours (1,200Wh ÷ 100W = 12 hours). In practical applications, delivered runtime is shorter (typically 5.1 to 5.4 hours for lead-acid and 9.2 to 9.7 hours for LiFePO4 lithium) due to chemistry depth of discharge limits (50% for lead-acid vs. 80% to 90% for lithium), DC-to-AC inverter conversion losses (85% to 90% typical efficiency), and operating temperature.",
   },
   {
     question: "What is the difference between Wh and kWh?",
@@ -218,7 +218,11 @@ export default function WattHoursExplainedPage() {
                   <span>9 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <ArticleDateByline datePublished="2026-09-28" lastModified="2026-09-28" />
+                <ArticleDateByline
+                  datePublished="2026-09-28"
+                  lastModified="2026-09-28"
+                  codeStandard="NFPA 70 (NEC) & IEEE Std 485"
+                />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -539,7 +543,7 @@ export default function WattHoursExplainedPage() {
                     href="/electricity-use-calculator"
                     className="text-blue-700 font-semibold hover:underline"
                   >
-                    How to Calculate Electricity Usage: kWh, Appliance Audits &amp; Costs
+                    Electricity Usage Calculator (kWh &amp; Cost Estimator)
                   </Link>.
                 </p>
               </div>
@@ -610,7 +614,7 @@ export default function WattHoursExplainedPage() {
               </p>
 
               <p>
-                <strong>No. Real-world runtime will always be lower than the theoretical formula suggests.</strong> In practice, a 12V 100Ah battery running a 100W load will deliver approximately <strong>5.1 hours</strong> (for traditional lead-acid) to <strong>9.2 hours</strong> (for modern LiFePO4 lithium).
+                <strong>No. Real-world runtime will always be lower than the theoretical formula suggests.</strong> In practice, a 12V 100Ah battery running a 100W load will deliver approximately <strong>5.1 to 5.4 hours</strong> (for traditional lead-acid) to <strong>9.2 to 9.7 hours</strong> (for modern LiFePO4 lithium), depending on inverter conversion efficiency (85% to 90%).
               </p>
 
               <p className="text-xs sm:text-sm text-slate-600 bg-blue-50/70 p-4 rounded-xl border border-blue-200 leading-relaxed">

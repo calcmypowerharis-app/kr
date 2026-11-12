@@ -246,10 +246,10 @@ export const ElectricityUseCalculator: React.FC = () => {
           </Link>
           <span className="text-slate-300">•</span>
           <Link
-            href="/electricity-cost-calculator"
+            href="/what-is-a-watt-hour"
             className="text-blue-600 hover:text-blue-700 hover:underline flex items-center gap-1"
           >
-            <span>Formula Guide &rarr;</span>
+            <span>Watt-Hours (Wh) Guide &rarr;</span>
           </Link>
         </div>
       </div>
@@ -803,17 +803,25 @@ export const ElectricityUseCalculator: React.FC = () => {
       <div className="p-5 rounded-2xl bg-blue-50/70 border border-blue-200/90 space-y-2 text-xs">
         <div className="font-bold text-blue-950 flex items-center gap-1.5">
           <HelpCircle className="w-4 h-4 text-blue-600" />
-          <span>Need a Complete Energy Audit Guide?</span>
+          <span>Understanding Watt-Hours vs. Power Costs</span>
         </div>
         <p className="text-slate-600 leading-relaxed">
-          Learn how to read yellow EnergyGuide appliance labels, identify phantom standby loads, and conduct a thorough whole-house electrical audit:
+          Learn how to measure appliance draw and convert watts to watt-hours in our educational guide, or calculate your utility bill expenses directly:
         </p>
-        <Link
-          href="/electricity-cost-calculator"
-          className="inline-flex items-center gap-1 text-blue-700 font-bold hover:underline pt-1"
-        >
-          <span>Read Comprehensive Electricity Usage Guide &rarr;</span>
-        </Link>
+        <div className="flex flex-col gap-1.5 pt-1">
+          <Link
+            href="/what-is-a-watt-hour"
+            className="inline-flex items-center gap-1 text-blue-700 font-bold hover:underline"
+          >
+            <span>What Is a Watt-Hour (Wh)? Guide &rarr;</span>
+          </Link>
+          <Link
+            href="/electricity-cost-calculator"
+            className="inline-flex items-center gap-1 text-blue-700 font-bold hover:underline"
+          >
+            <span>Electricity Bill &amp; Cost Calculator &rarr;</span>
+          </Link>
+        </div>
       </div>
 
 

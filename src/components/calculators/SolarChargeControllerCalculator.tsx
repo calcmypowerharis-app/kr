@@ -251,7 +251,7 @@ export const SolarChargeControllerCalculator: React.FC = () => {
     {
       stepNumber: 6,
       title: "Verify Cold-Weather Open-Circuit Voltage Headroom (NEC 690.7)",
-      calculation: "111.6V Voc × [1 + (-0.0028 × (-20°C - 25°C))] = 125.7V Cold Voc < 150V Max PV",
+      calculation: "48.6V Voc × [1 + (-0.0030 × (-10°C - 25°C))] = 48.6V × 1.105 = 53.7V Cold Voc < 100V Max PV",
       explanation:
         "As ambient temperature drops, silicon photovoltaic voltage increases. Sizing must verify that the cold-temperature open-circuit voltage never exceeds the charge controller's maximum DC input voltage.",
     },
@@ -770,7 +770,7 @@ export const SolarChargeControllerCalculator: React.FC = () => {
                   href="/solar-panels-series-vs-parallel"
                   className="font-bold underline hover:text-blue-950 inline-flex items-center gap-0.5"
                 >
-                  Solar Charge Controller Sizing Guide
+                  Solar Panels in Series vs. Parallel Wiring Guide
                   <ArrowRight className="w-3 h-3" />
                 </Link>
                 .

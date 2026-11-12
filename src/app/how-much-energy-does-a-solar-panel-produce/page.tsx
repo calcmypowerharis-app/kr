@@ -222,7 +222,11 @@ export default function HowMuchEnergyDoesASolarPanelProducePage() {
                   <span>14 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <ArticleDateByline datePublished="2026-10-01" lastModified="2026-10-01" />
+                <ArticleDateByline
+                  datePublished="2026-10-01"
+                  lastModified="2026-10-01"
+                  codeStandard="NFPA 70 (NEC) & NREL PVWatts"
+                />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

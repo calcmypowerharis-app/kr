@@ -228,7 +228,11 @@ export default function BatteryRuntimeGuidePage() {
                   <span>12 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <ArticleDateByline datePublished="2026-09-29" lastModified="2026-09-29" />
+                <ArticleDateByline
+                  datePublished="2026-09-29"
+                  lastModified="2026-09-29"
+                  codeStandard="NFPA 70 (NEC) & IEEE Std 485"
+                />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">

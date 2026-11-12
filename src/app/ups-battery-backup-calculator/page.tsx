@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import { UpsCalculator } from "@/components/calculators/UpsCalculator";
-import { UpsRuntimeGuideSection } from "@/components/content/UpsRuntimeGuideSection";
 import {
   generateWebApplicationSchema,
   generateBreadcrumbSchema,
@@ -75,9 +74,6 @@ export default function UpsCalculatorPage() {
       />
 
       <UpsCalculator />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <UpsRuntimeGuideSection />
-      </div>
     </>
   );
 }

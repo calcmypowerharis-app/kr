@@ -212,7 +212,11 @@ export default function BatteryAmpHoursExplainedPage() {
                   <span>9 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <ArticleDateByline datePublished="2026-09-28" lastModified="2026-09-28" />
+                <ArticleDateByline
+                  datePublished="2026-09-28"
+                  lastModified="2026-09-28"
+                  codeStandard="NFPA 70 (NEC) & IEEE Std 485"
+                />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -594,7 +598,7 @@ export default function BatteryAmpHoursExplainedPage() {
               </p>
 
               <p>
-                In the real world, you will not get 12 hours of runtime from a 12V 100Ah battery running a 100W load. Depending on chemistry, delivered runtime ranges from 5.1 to 9.2 hours because of real-world losses.
+                In the real world, you will not get 12 hours of runtime from a 12V 100Ah battery running a 100W load. Depending on chemistry and inverter efficiency (85% to 90%), delivered runtime ranges from 5.1 to 5.4 hours for lead-acid and 9.2 to 9.7 hours for LiFePO4 lithium.
               </p>
 
               <p className="text-xs sm:text-sm text-slate-600 bg-blue-50/70 p-4 rounded-xl border border-blue-200 leading-relaxed">
@@ -743,8 +747,8 @@ export default function BatteryAmpHoursExplainedPage() {
                     <ul className="space-y-1 text-slate-300 font-mono text-xs">
                       <li>Nominal Energy: 1,200 Wh</li>
                       <li>Safe Usable Energy (50%): 600 Wh</li>
-                      <li>Inverter Efficiency (85%): 600 × 0.85 = 510 Wh</li>
-                      <li>Actual 100W Load Runtime: 510 ÷ 100 = <strong>5.1 Hours</strong></li>
+                      <li>Inverter Efficiency (85% to 90%): 600 × (0.85 to 0.90) = 510 to 540 Wh</li>
+                      <li>Actual 100W Load Runtime: (510 to 540) ÷ 100 = <strong>5.1 to 5.4 Hours</strong></li>
                     </ul>
                   </div>
 
@@ -755,14 +759,14 @@ export default function BatteryAmpHoursExplainedPage() {
                     <ul className="space-y-1 text-slate-300 font-mono text-xs">
                       <li>Nominal Energy: 1,200 Wh</li>
                       <li>Safe Usable Energy (90%): 1,080 Wh</li>
-                      <li>Inverter Efficiency (85%): 1,080 × 0.85 = 918 Wh</li>
-                      <li>Actual 100W Load Runtime: 918 ÷ 100 = <strong>9.2 Hours</strong></li>
+                      <li>Inverter Efficiency (85% to 90%): 1,080 × (0.85 to 0.90) = 918 to 972 Wh</li>
+                      <li>Actual 100W Load Runtime: (918 to 972) ÷ 100 = <strong>9.2 to 9.7 Hours</strong></li>
                     </ul>
                   </div>
                 </div>
 
                 <p className="text-xs text-slate-400 pt-1">
-                  The LiFePO4 battery delivers <strong>nearly 80% longer real-world runtime</strong> (9.2 hours vs. 5.1 hours) from the same 100Ah nameplate rating due to higher usable depth of discharge and reduced voltage sag.
+                  The LiFePO4 battery delivers <strong>nearly 80% longer real-world runtime</strong> (9.2 to 9.7 hours vs. 5.1 to 5.4 hours) from the same 100Ah nameplate rating due to higher usable depth of discharge and reduced voltage sag.
                 </p>
               </div>
             </section>

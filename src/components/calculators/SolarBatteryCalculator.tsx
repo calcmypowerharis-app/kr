@@ -257,9 +257,9 @@ export const SolarBatteryCalculator: React.FC = () => {
     {
       stepNumber: 5,
       title: "Convert Nominal Energy to Battery-Bank Amp-Hours",
-      calculation: "10,457.52 Wh ÷ 24V DC = 435.73 Amp-hours (Ah)",
+      calculation: "10,457.52 Wh ÷ 48V DC = 217.87 Amp-hours (Ah) at 48V DC (or 435.73 Ah on a 24V DC bus)",
       explanation:
-        "Dividing nominal energy by the selected 24V DC bus voltage determines the minimum Amp-hour capacity of the combined battery bank.",
+        "Dividing nominal energy by the selected 48V DC bus voltage determines the minimum Amp-hour capacity. For medium-to-large off-grid systems, a 48V bus significantly reduces DC operating current, conductor gauge, and resistive heating losses compared to 24V or 12V.",
     },
     {
       stepNumber: 6,
@@ -838,7 +838,7 @@ export const SolarBatteryCalculator: React.FC = () => {
         title="Step-by-Step Worked Example: Off-Grid Cabin (4,000 Wh/day, 2 Days Autonomy)"
         scenario="An off-grid mountain cabin consumes 4,000 Watt-hours (4.0 kWh) per day. The owner requires 2.0 days of autonomy for overcast mountain weather, uses a modern 48V pure sine wave inverter (90% efficiency), and selects 48V LiFePO4 lithium batteries (85% usable DoD)."
         steps={workedSteps}
-        conclusion="For this off-grid cabin scenario, the owner requires a nominal battery bank capacity of approximately 10.46 kWh (10,458 Wh). At a 24V DC bus, this equals ~435.73 Amp-hours (or ~217.86 Ah at 48V DC). Replenishing 4.0 kWh of daily consumption under 4.5 peak sun hours requires a preliminary solar array size of approximately 1,140 Watts."
+        conclusion="For this off-grid cabin scenario, the owner requires a nominal battery bank capacity of approximately 10.46 kWh (10,458 Wh). At a 48V DC bus, this equals 217.87 Amp-hours (or 435.73 Ah if configured on a 24V DC bus). Replenishing 4.0 kWh of daily consumption under 4.5 peak sun hours requires a preliminary solar array size of approximately 1,140 Watts."
       />
 
       {/* Engineering Assumptions & Variables */}

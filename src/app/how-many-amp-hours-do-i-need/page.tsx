@@ -206,7 +206,11 @@ export default function HowManyAmpHoursDoINeedPage() {
                   <span>13 min read</span>
                 </span>
                 <span className="text-slate-400">•</span>
-                <ArticleDateByline datePublished="2026-10-08" lastModified="2026-10-08" />
+                <ArticleDateByline
+                  datePublished="2026-10-08"
+                  lastModified="2026-10-08"
+                  codeStandard="NFPA 70 (NEC) & IEEE Std 485"
+                />
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -357,7 +361,7 @@ export default function HowManyAmpHoursDoINeedPage() {
                     </thead>
                     <tbody className="divide-y divide-slate-200">
                       <tr>
-                        <td className="p-3 font-medium text-slate-800">12V 12V RV Compressor Fridge</td>
+                        <td className="p-3 font-medium text-slate-800">12V RV Compressor Fridge</td>
                         <td className="p-3">50 W</td>
                         <td className="p-3">24 hrs</td>
                         <td className="p-3">40% duty cycle</td>
@@ -698,12 +702,12 @@ export default function HowManyAmpHoursDoINeedPage() {
                     <span>Connecting Individual Batteries into a Bank?</span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    If you are combining multiple 12V or 24V units, follow our guide on{" "}
+                    If you are combining multiple 12V or 24V units, model series and parallel bank configurations with our{" "}
                     <Link
                       href="/battery-capacity-calculator"
                       className="text-blue-700 hover:text-blue-900 font-medium underline underline-offset-2"
                     >
-                      how to calculate amp-hours of a battery bank
+                      Battery Capacity &amp; Bank Calculator
                     </Link>{" "}
                     for series and parallel wiring rules. For real-world runtime charts across popular appliances, see{" "}
                     <Link

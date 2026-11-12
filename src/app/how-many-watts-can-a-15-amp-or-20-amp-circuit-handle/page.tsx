@@ -212,6 +212,7 @@ export default function CircuitWattageGuidePage() {
                 <ArticleDateByline
                   datePublished="2026-10-17"
                   lastModified="2026-10-18"
+                  codeStandard="NFPA 70 (NEC 2023/2026) Art. 210"
                 />
               </div>
 
