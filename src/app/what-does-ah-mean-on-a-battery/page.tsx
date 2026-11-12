@@ -34,14 +34,25 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 export const metadata: Metadata = {
   title: "What Does Ah Mean on a Battery? (Amp-Hours)",
   description:
-    "Understand what Ah (Amp-hours) means on a battery, how to convert Ah to Watt-hours (Wh), and why usable battery runtime depends on chemistry and discharge rate.",
+    "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
   alternates: {
     canonical: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title: "What Does Ah Mean on a Battery? (Amp-Hours) | CalcMyPower",
     description:
-      "Understand what Ah (Amp-hours) means on a battery, how to convert Ah to Watt-hours (Wh), and why usable battery runtime depends on chemistry and discharge rate.",
+      "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
     url: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
     type: "article",
     publishedTime: "2026-09-28T00:00:00Z",
@@ -59,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Does Ah Mean on a Battery? (Amp-Hours) | CalcMyPower",
     description:
-      "Demystify battery Amp-hour ratings, convert Ah to Watt-hours, and calculate real usable backup runtime.",
+      "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
     images: [
       "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.webp",
     ],

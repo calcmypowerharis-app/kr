@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Fuel Consumption Calculator",
   description:
-    "Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.",
+    "Track generator fuel burn in gal/hr and tank runtime for gas, propane, and diesel backup sets under load.",
   path: "/generator-fuel-consumption-calculator",
   ogDescription:
-    "Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.",
+    "Track generator fuel burn in gal/hr and tank runtime for gas, propane, and diesel backup sets under load.",
 });
 
 import { GENERATOR_FUEL_FAQS } from "@/lib/calculators/generator-fuel";

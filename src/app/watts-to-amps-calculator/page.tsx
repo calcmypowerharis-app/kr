@@ -12,10 +12,10 @@ import { WATTS_TO_AMPS_FAQS } from "@/lib/calculators/watts-to-amps";
 export const metadata: Metadata = buildPageMetadata({
   title: "Watts to Amps Calculator: 120V, 240V, DC",
   description:
-    "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
+    "Find circuit current in amps across 12V DC, 120V, 240V, and 3-phase power with NEC 125% breaker sizing rules.",
   path: "/watts-to-amps-calculator",
   ogDescription:
-    "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
+    "Find circuit current in amps across 12V DC, 120V, 240V, and 3-phase power with NEC 125% breaker sizing rules.",
 });
 
 export default function WattsToAmpsPage() {

@@ -36,14 +36,25 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 export const metadata: Metadata = {
   title: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide",
   description:
-    "Understand what a Watt-hour (Wh) measures, the difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
+    "Learn what a Watt-hour (Wh) measures, the difference between Watts vs Wh, and how energy determines runtime.",
   alternates: {
     canonical: "https://calcmypower.com/what-is-a-watt-hour",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide | CalcMyPower",
     description:
-      "Understand what a Watt-hour (Wh) measures, the difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
+      "Learn what a Watt-hour (Wh) measures, the difference between Watts vs Wh, and how energy determines runtime.",
     url: "https://calcmypower.com/what-is-a-watt-hour",
     type: "article",
     publishedTime: "2026-09-28T00:00:00Z",
@@ -61,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide | CalcMyPower",
     description:
-      "Master the difference between power in Watts and energy in Watt-hours, with practical formulas for batteries, solar, and home appliances.",
+      "Learn what a Watt-hour (Wh) measures, the difference between Watts vs Wh, and how energy determines runtime.",
     images: [
       "https://calcmypower.com/images/articles/watt-hour-energy-monitor.webp",
     ],

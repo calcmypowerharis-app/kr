@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar Panel Tilt & Angle Calculator",
   description:
-    "Calculate the optimal solar panel tilt angle and compass orientation for your latitude. Compare roof pitch angles, seasonal adjustments, and mounting options.",
+    "Find optimal solar panel tilt angles by latitude with seasonal adjustments and roof pitch slope conversions.",
   path: "/solar-panel-tilt-calculator",
   ogDescription:
-    "Free online calculator to calculate optimal solar panel tilt angles by latitude, convert roof pitch to degrees, evaluate seasonal tilt adjustments, and determine compass orientation.",
+    "Find optimal solar panel tilt angles by latitude with seasonal adjustments and roof pitch slope conversions.",
 });
 
 export default function SolarPanelTiltPage() {

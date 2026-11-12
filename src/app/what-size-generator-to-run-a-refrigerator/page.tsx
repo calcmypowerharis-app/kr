@@ -31,14 +31,25 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 export const metadata: Metadata = {
   title: "What Size Generator to Run a Refrigerator?",
   description:
-    "Determine the generator size you need to run a refrigerator during an outage based on running watts, compressor startup surge, and simultaneous household loads.",
+    "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title: "What Size Generator to Run a Refrigerator? | CalcMyPower",
     description:
-      "A practical engineering guide to sizing portable inverter and emergency generators for household refrigerators and freezers.",
+      "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
     url: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
     type: "article",
     publishedTime: "2026-09-27T12:00:00Z",
@@ -56,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Size Generator to Run a Refrigerator? | CalcMyPower",
     description:
-      "Calculate the right generator wattage for your refrigerator and freezer during a storm outage.",
+      "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
     images: [
       "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.webp",
     ],

@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Size Calculator: Running Watts",
   description:
-    "Calculate required generator capacity for home backup or RV loads using running watts, largest motor surge, and 125% planning headroom. Includes wattage charts.",
+    "Size a backup generator for running watts, motor surge, and NEC 125% headroom to keep pumps and AC running.",
   path: "/generator-size-calculator",
   ogDescription:
-    "Calculate required generator capacity for home backup or RV loads using running watts, largest motor surge, and 125% planning headroom. Includes wattage charts.",
+    "Size a backup generator for running watts, motor surge, and NEC 125% headroom to keep pumps and AC running.",
 });
 
 export default function GeneratorSizePage() {

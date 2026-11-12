@@ -39,15 +39,26 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "Solar Panels in Series vs Parallel: Wiring",
   description:
-    "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
+    "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
   alternates: {
     canonical: "https://calcmypower.com/solar-panels-series-vs-parallel",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title:
       "Solar Panels in Series vs Parallel: Wiring | CalcMyPower",
     description:
-      "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
+      "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
     url: "https://calcmypower.com/solar-panels-series-vs-parallel",
     type: "article",
     publishedTime: "2026-09-30T00:00:00Z",
@@ -66,7 +77,7 @@ export const metadata: Metadata = {
     title:
       "Solar Panels in Series vs Parallel: Wiring | CalcMyPower",
     description:
-      "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
+      "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
     images: [
       "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     ],

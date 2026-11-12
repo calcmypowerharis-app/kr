@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar System Size Calculator: kW & Panels",
   description:
-    "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
+    "Size rooftop solar arrays in kW and panel count from monthly kWh use, peak sun hours, and derate factors.",
   path: "/solar-system-size-calculator",
   ogDescription:
-    "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
+    "Size rooftop solar arrays in kW and panel count from monthly kWh use, peak sun hours, and derate factors.",
 });
 
 export default function SolarSystemSizeCalculatorPage() {

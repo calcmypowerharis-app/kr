@@ -12,10 +12,10 @@ import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
 export const metadata: Metadata = buildPageMetadata({
   title: "Amps to Watts Calculator: 120V, 240V, DC",
   description:
-    "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
+    "Find real power in watts and kW across 12V DC, 120V, and 240V AC circuits with the NEC 80% continuous limit.",
   path: "/amps-to-watts-calculator",
   ogDescription:
-    "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
+    "Find real power in watts and kW across 12V DC, 120V, and 240V AC circuits with the NEC 80% continuous limit.",
 });
 
 export default function AmpsToWattsPage() {

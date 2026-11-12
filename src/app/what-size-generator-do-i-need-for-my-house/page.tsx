@@ -33,14 +33,25 @@ import { ContinuousPowerGuideSection } from "@/components/content/ContinuousPowe
 export const metadata: Metadata = {
   title: "What Size Generator Do I Need for My House?",
   description:
-    "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
+    "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title: "What Size Generator Do I Need for My House? | CalcMyPower",
     description:
-      "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
+      "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
     url: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
     type: "article",
     publishedTime: "2026-09-27T08:00:00Z",
@@ -58,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Size Generator Do I Need for My House? | CalcMyPower",
     description:
-      "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
+      "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
     images: [
       "https://calcmypower.com/images/articles/standby-generator-home-installation.webp",
     ],

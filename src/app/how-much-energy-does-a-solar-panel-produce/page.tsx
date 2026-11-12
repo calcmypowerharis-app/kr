@@ -37,15 +37,26 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Much Energy Does a Solar Panel Produce?",
   description:
-    "Learn how much electricity a solar panel produces daily and monthly. See 400W panel examples, peak sun hours, system losses, and factors affecting solar output.",
+    "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
   alternates: {
     canonical: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title:
       "How Much Energy Does a Solar Panel Produce? | CalcMyPower",
     description:
-      "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
+      "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
     url: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
     type: "article",
     publishedTime: "2026-10-01T00:00:00Z",
@@ -64,7 +75,7 @@ export const metadata: Metadata = {
     title:
       "How Much Energy Does a Solar Panel Produce? | CalcMyPower",
     description:
-      "Learn how much electricity a solar panel can produce per day and month. See 400W panel examples, peak sun hours, system losses, and the factors that affect solar output.",
+      "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
     images: [
       "https://calcmypower.com/images/articles/how-much-energy-does-a-solar-panel-produce.webp",
     ],

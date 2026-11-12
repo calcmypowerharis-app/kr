@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Electricity Cost Calculator: Bill Estimator",
   description:
-    "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
+    "Estimate electric utility bills and true cost per kWh from energy usage, monthly fixed fees, and local taxes.",
   path: "/electricity-cost-calculator",
   ogDescription:
-    "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
+    "Estimate electric utility bills and true cost per kWh from energy usage, monthly fixed fees, and local taxes.",
   images: [
     {
       url: "https://calcmypower.com/images/calculators/electricity-cost-calculator.webp",

@@ -40,16 +40,27 @@ import { SolarChargeTimeCalculator } from "@/components/article/SolarChargeTimeC
 export const metadata: Metadata = {
   title: "Solar Battery Charge Time Calculator & Guide",
   description:
-    "Calculate solar battery charging time with our engineering calculator and guide covering peak sun hours, MPPT vs PWM efficiency, and battery chemistry.",
+    "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
   alternates: {
     canonical:
       "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title:
       "Solar Battery Charge Time Calculator & Guide | CalcMyPower",
     description:
-      "Calculate how long it takes to charge a battery with solar panels. Master peak sun hours, derate factors, MPPT vs PWM controllers, and battery chemistry absorption.",
+      "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
     url: "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
     type: "article",
     publishedTime: "2026-10-13T00:00:00Z",
@@ -68,7 +79,7 @@ export const metadata: Metadata = {
     title:
       "Solar Battery Charge Time Calculator & Guide | CalcMyPower",
     description:
-      "Calculate solar battery charging time using panel wattage, battery capacity, peak sun hours, and system efficiency deratings.",
+      "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
     images: [
       "https://calcmypower.com/images/articles/how-long-does-it-take-to-charge-a-battery-with-solar-panels.webp",
     ],

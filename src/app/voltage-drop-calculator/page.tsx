@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Voltage Drop Calculator: Wire Sizing Tool",
   description:
-    "Calculate voltage drop, percentage loss, and receiving voltage for AC and DC circuits. Size conductor wire gauge by distance, current, and material.",
+    "Find wire gauge voltage drop and percentage loss across 120V, 240V, and DC runs to maintain NEC 3% limits.",
   path: "/voltage-drop-calculator",
   ogDescription:
-    "Calculate voltage drop, percentage loss, and receiving voltage for AC and DC circuits. Size conductor wire gauge by distance, current, and material.",
+    "Find wire gauge voltage drop and percentage loss across 120V, 240V, and DC runs to maintain NEC 3% limits.",
 });
 
 export default function VoltageDropCalculatorPage() {

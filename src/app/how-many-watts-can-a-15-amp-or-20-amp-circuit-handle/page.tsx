@@ -34,16 +34,27 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Many Watts on a 15-Amp or 20-Amp Circuit?",
   description:
-    "Calculate 15-amp and 20-amp circuit wattage at 120V. Understand the NEC 80% continuous load rule, wire gauge requirements, and space heater load planning.",
+    "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
   alternates: {
     canonical:
       "https://calcmypower.com/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title:
       "How Many Watts on a 15-Amp or 20-Amp Circuit? | CalcMyPower",
     description:
-      "Calculate 15-amp and 20-amp circuit wattage at 120V. Understand the NEC 80% continuous load rule, wire gauge requirements, and space heater load planning.",
+      "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
     url: "https://calcmypower.com/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
     type: "article",
     publishedTime: "2026-10-17T00:00:00Z",
@@ -62,7 +73,7 @@ export const metadata: Metadata = {
     title:
       "How Many Watts on a 15-Amp or 20-Amp Circuit? | CalcMyPower",
     description:
-      "Calculate 15-amp and 20-amp circuit wattage at 120V. Understand the NEC 80% continuous load rule, wire gauge requirements, and space heater load planning.",
+      "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
     images: [
       "https://calcmypower.com/images/articles/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle.webp",
     ],

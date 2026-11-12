@@ -118,7 +118,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     title: 'Generator Fuel Consumption Calculator',
     shortTitle: 'Generator Fuel',
     metaTitle: "Generator Fuel Consumption Calculator",
-    metaDescription: 'Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.',
+    metaDescription: "Track generator fuel burn in gal/hr and tank runtime for gas, propane, and diesel backup sets under load.",
     cluster: 'generators',
     primaryKeyword: 'generator fuel consumption calculator',
     formula: 'Cost = (Fuel Rate) * Price | Runtime = Capacity / (Fuel Rate)',
@@ -137,7 +137,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Generator Size",
     metaTitle: "Generator Size Calculator: Running Watts",
     metaDescription:
-      "Calculate required generator capacity for home backup or RV loads using running watts, largest motor surge, and 125% planning headroom. Includes wattage charts.",
+      "Size a backup generator for running watts, motor surge, and NEC 125% headroom to keep pumps and AC running.",
     cluster: "generators",
     secondaryClusters: ["rv-power", "home-energy"],
     primaryKeyword: "generator size calculator",
@@ -159,7 +159,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "UPS Runtime",
     metaTitle: "UPS Battery Backup Runtime Calculator",
     metaDescription:
-      "Calculate UPS battery backup runtime hours from appliance wattage and battery capacity. Estimate backup duration for WiFi routers, CPAPs, and home office PCs.",
+      "Find true UPS backup runtime for routers, CPAP gear, and PCs after inverter idle draw and usable battery DoD.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar"],
     primaryKeyword: "uninterruptible power supply hours",
@@ -185,7 +185,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Battery Capacity",
     metaTitle: "Battery Capacity Calculator: Ah & Wh Sizing",
     metaDescription:
-      "Calculate battery capacity in Amp-hours (Ah) and Watt-hours (Wh) for 12V, 24V, and 48V banks. Includes series-parallel wiring diagrams and DoD sizing tables.",
+      "Size 12V, 24V, and 48V battery banks in Ah and Wh with usable DoD limits for LiFePO4 and lead-acid storage.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
     primaryKeyword: "battery capacity calculator",
@@ -213,7 +213,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Watts to Amps",
     metaTitle: "Watts to Amps Calculator: 120V, 240V, DC",
     metaDescription:
-      "Convert watts to amps for DC, 120V, 240V, and 3-phase circuits. Calculate circuit current in Amperes with NEC breaker sizing and copper wire gauge charts.",
+      "Find circuit current in amps across 12V DC, 120V, 240V, and 3-phase power with NEC 125% breaker sizing rules.",
     cluster: "electricity",
     secondaryClusters: ["generators", "ups-battery", "solar"],
     primaryKeyword: "watts to amps calculator",
@@ -244,7 +244,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Amps to Watts",
     metaTitle: "Amps to Watts Calculator: 120V, 240V, DC",
     metaDescription:
-      "Convert amps to watts across 12V DC, 120V, 240V AC, and 3-phase circuits. Calculate real power in Watts and kW with NEC continuous-load limits from 1A to 200A.",
+      "Find real power in watts and kW across 12V DC, 120V, and 240V AC circuits with the NEC 80% continuous limit.",
     cluster: "electricity",
     secondaryClusters: ["generators", "ups-battery", "solar"],
     primaryKeyword: "amps to watts",
@@ -275,7 +275,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar Panel Tilt",
     metaTitle: "Solar Panel Tilt & Angle Calculator",
     metaDescription:
-      "Calculate the optimal solar panel tilt angle and compass orientation for your latitude. Compare roof pitch angles, seasonal adjustments, and mounting options.",
+      "Find optimal solar panel tilt angles by latitude with seasonal adjustments and roof pitch slope conversions.",
     cluster: "solar",
     secondaryClusters: ["rv-power", "home-energy"],
     primaryKeyword: "solar panel angle calculator",
@@ -300,7 +300,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar Battery",
     metaTitle: "Solar Battery Storage Sizing Calculator",
     metaDescription:
-      "Calculate solar battery storage in kWh and Amp-hours for off-grid or backup systems based on daily energy use, days of autonomy, and inverter efficiency.",
+      "Size solar battery storage in kWh and Ah from daily energy use, autonomy days, and inverter efficiency.",
     cluster: "solar",
     secondaryClusters: ["ups-battery", "rv-power"],
     primaryKeyword: "solar battery calculator",
@@ -331,7 +331,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     metaTitle: "Solar Charge Controller Sizing Calculator",
     metaDescription:
       
-      "Calculate solar charge controller amp rating for 12V, 24V, and 48V systems. Includes MPPT vs PWM sizing guide, NEC 125% safety margins, and cold Voc formulas.",
+      "Size MPPT and PWM charge controllers in amps with NEC 125% margins and cold-morning array Voc headroom.",
     cluster: "solar",
     secondaryClusters: ["ups-battery", "rv-power"],
     primaryKeyword: "solar charge controller calculator",
@@ -360,7 +360,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Voltage Drop",
     metaTitle: "Voltage Drop Calculator: Wire Sizing Tool",
     metaDescription:
-      "Calculate voltage drop, percentage loss, and receiving voltage for AC and DC circuits. Size conductor wire gauge by distance, current, and material.",
+      "Find wire gauge voltage drop and percentage loss across 120V, 240V, and DC runs to maintain NEC 3% limits.",
     cluster: "electricity",
     secondaryClusters: ["solar", "rv-power", "generators"],
     primaryKeyword: "voltage drop calculator",
@@ -388,7 +388,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar System Size",
     metaTitle: "Solar System Size Calculator: kW & Panels",
     metaDescription:
-      "Calculate solar array kW and roof space from monthly energy use, peak sun hours, and panel wattage using an adjustable default 78% planning performance factor.",
+      "Size rooftop solar arrays in kW and panel count from monthly kWh use, peak sun hours, and derate factors.",
     cluster: "solar",
     secondaryClusters: ["home-energy", "rv-power"],
     primaryKeyword: "solar system size calculator",
@@ -415,7 +415,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Three Phase Power",
     metaTitle: "Three-Phase Power Calculator: kW, kVA, Amps",
     metaDescription:
-      "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
+      "Solve 3-phase power in kW, kVA, and line current across 208V, 240V, and 480V balanced industrial circuits.",
     cluster: "electricity",
     secondaryClusters: ["generators", "solar"],
     primaryKeyword: "3 phase electrical power calculator",
@@ -442,7 +442,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Electricity Usage",
     metaTitle: "Electricity Usage Calculator: Appliance kWh",
     metaDescription:
-      "Calculate electricity usage in kWh across multiple home appliances. Enter watts, run hours, and duty cycles to estimate daily and monthly energy consumption.",
+      "Track appliance electricity use in daily and monthly kWh from operating wattage, run hours, and duty cycles.",
     cluster: "electricity",
     secondaryClusters: ["home-energy", "solar", "ups-battery"],
     primaryKeyword: "electricity usage calculator",
@@ -468,7 +468,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Electricity Cost",
     metaTitle: "Electricity Cost Calculator: Bill Estimator",
     metaDescription:
-      "Calculate electric utility bills and true effective cost per kWh from volumetric usage, energy rates, fixed charges, and taxes. Includes tiered bill examples.",
+      "Estimate electric utility bills and true cost per kWh from energy usage, monthly fixed fees, and local taxes.",
     cluster: "electricity",
     secondaryClusters: ["home-energy"],
     primaryKeyword: "electricity cost calculator",
@@ -493,7 +493,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Inverter Size",
     metaTitle: "Inverter Size Calculator: Watts & Surge",
     metaDescription:
-      "Calculate the inverter size you need in running and surge watts. Size DC battery current draw, cable gauge (AWG), and fuses for 12V, 24V, and 48V systems.",
+      "Size power inverters in continuous and surge watts with DC battery cable gauge (AWG) and fuse ratings.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
     primaryKeyword: "inverter size calculator",
@@ -543,7 +543,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "House Generator Sizing Guide",
     metaTitle: "What Size Generator Do I Need for My House?",
     metaDescription:
-      "Determine the right generator size for your house. Compare essential vs whole-home wattage, calculate motor surge inrush, and avoid square-footage sizing traps.",
+      "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator",
@@ -568,7 +568,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Refrigerator Generator Sizing Guide",
     metaTitle: "What Size Generator to Run a Refrigerator?",
     metaDescription:
-      "Determine the generator size you need to run a refrigerator during an outage based on running watts, compressor startup surge, and simultaneous household loads.",
+      "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator",
@@ -593,7 +593,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Battery Amp-Hours Explained",
     metaTitle: "What Does Ah Mean on a Battery? (Amp-Hours)",
     metaDescription:
-      "Understand what Ah (Amp-hours) means on a battery, how to convert Ah to Watt-hours (Wh), and why usable battery runtime depends on chemistry and discharge rate.",
+      "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
     cluster: "ups-battery",
     parentCalculatorPath: "/ups-battery-backup-calculator",
     scenarioLink: "/ups-battery-backup-calculator",
@@ -623,7 +623,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Watt-Hours (Wh) Explained",
     metaTitle: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide",
     metaDescription:
-      "Understand what a Watt-hour (Wh) measures, the difference between Watts and Watt-hours, how to convert Ah to Wh, and how energy determines battery runtime.",
+      "Learn what a Watt-hour (Wh) measures, the difference between Watts vs Wh, and how energy determines runtime.",
     cluster: "electricity",
     parentCalculatorPath: "/watts-to-amps-calculator",
     scenarioLink: "/watts-to-amps-calculator",
@@ -654,7 +654,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "100Ah Battery Runtime Guide",
     metaTitle: "How Long Will a 12V 100Ah Battery Last?",
     metaDescription:
-      "Find out how long a 12V 100Ah battery runs a refrigerator, TV, CPAP, or inverter. See realistic runtime hours for LiFePO4 and lead-acid battery banks.",
+      "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
     cluster: "ups-battery",
     parentCalculatorPath: "/ups-battery-backup-calculator",
     scenarioLink: "/ups-battery-backup-calculator",
@@ -682,7 +682,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Panels in Series vs Parallel",
     metaTitle: "Solar Panels in Series vs Parallel: Wiring",
     metaDescription:
-      "Compare solar panels in series vs parallel. View wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid systems.",
+      "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
     cluster: "solar",
     parentCalculatorPath: "/solar-panel-tilt-calculator",
     scenarioLink: "/solar-panel-tilt-calculator",
@@ -711,7 +711,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Panel Energy Production Guide",
     metaTitle: "How Much Energy Does a Solar Panel Produce?",
     metaDescription:
-      "Learn how much electricity a solar panel produces daily and monthly. See 400W panel examples, peak sun hours, system losses, and factors affecting solar output.",
+      "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
     cluster: "solar",
     parentCalculatorPath: "/solar-system-size-calculator",
     scenarioLink: "/solar-system-size-calculator",
@@ -740,7 +740,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Battery Bank Sizing Guide",
     metaTitle: "How Many Amp Hours Do I Need for a Battery?",
     metaDescription:
-      "Learn how to size a battery bank in amp-hours (Ah). Calculate daily watt-hours, system voltage, autonomy days, depth of discharge, and inverter losses.",
+      "Size battery bank capacity in amp-hours (Ah) using daily watt-hours, system voltage, autonomy, and DoD limits.",
     cluster: "ups-battery",
     parentCalculatorPath: "/battery-capacity-calculator",
     scenarioLink: "/battery-capacity-calculator",
@@ -770,7 +770,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Battery Charge Time Guide",
     metaTitle: "Solar Battery Charge Time Calculator & Guide",
     metaDescription:
-      "Calculate solar battery charging time with our engineering calculator and guide covering peak sun hours, MPPT vs PWM efficiency, and battery chemistry.",
+      "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
     cluster: "solar",
     parentCalculatorPath: "/solar-battery-calculator",
     scenarioLink: "/how-long-does-it-take-to-charge-a-battery-with-solar-panels#solar-charge-calculator",
@@ -799,7 +799,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "15A vs 20A Circuit Wattage",
     metaTitle: "How Many Watts on a 15-Amp or 20-Amp Circuit?",
     metaDescription:
-      "Calculate 15-amp and 20-amp circuit wattage at 120V. Understand the NEC 80% continuous load rule, wire gauge requirements, and space heater load planning.",
+      "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
     cluster: "electricity",
     parentCalculatorPath: "/amps-to-watts-calculator",
     scenarioLink: "/amps-to-watts-calculator",

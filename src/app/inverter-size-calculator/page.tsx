@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Inverter Size Calculator: Watts & Surge",
   description:
-    "Calculate the inverter size you need in running and surge watts. Size DC battery current draw, cable gauge (AWG), and fuses for 12V, 24V, and 48V systems.",
+    "Size power inverters in continuous and surge watts with DC battery cable gauge (AWG) and fuse ratings.",
   path: "/inverter-size-calculator",
   ogDescription:
-    "Calculate the inverter size you need in running and surge watts. Size DC battery current draw, cable gauge (AWG), and fuses for 12V, 24V, and 48V systems.",
+    "Size power inverters in continuous and surge watts with DC battery cable gauge (AWG) and fuse ratings.",
   keywords: [
     "inverter size calculator",
     "what size inverter do i need",

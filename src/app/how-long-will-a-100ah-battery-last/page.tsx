@@ -39,15 +39,26 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Long Will a 12V 100Ah Battery Last?",
   description:
-    "Find out how long a 12V 100Ah battery runs a refrigerator, TV, CPAP, or inverter. See realistic runtime hours for LiFePO4 and lead-acid battery banks.",
+    "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
   alternates: {
     canonical: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   openGraph: {
     title:
       "How Long Will a 12V 100Ah Battery Last? | CalcMyPower",
     description:
-      "Find out how long a 12V 100Ah battery runs a refrigerator, TV, CPAP, or inverter. See realistic runtime hours for LiFePO4 and lead-acid battery banks.",
+      "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
     url: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
     type: "article",
     publishedTime: "2026-09-29T00:00:00Z",
@@ -66,7 +77,7 @@ export const metadata: Metadata = {
     title:
       "How Long Will a 12V 100Ah Battery Last? | CalcMyPower",
     description:
-      "Calculate delivered runtime for a 12V 100Ah battery across household appliances, inverters, and direct DC circuits.",
+      "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
     images: [
       "https://calcmypower.com/images/articles/12v-100ah-battery-runtime-comparison.webp",
     ],

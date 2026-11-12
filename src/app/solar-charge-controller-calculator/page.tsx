@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar Charge Controller Sizing Calculator",
   description:
-    "Calculate solar charge controller amp rating for 12V, 24V, and 48V systems. Includes MPPT vs PWM sizing guide, NEC 125% safety margins, and cold Voc formulas.",
+    "Size MPPT and PWM charge controllers in amps with NEC 125% margins and cold-morning array Voc headroom.",
   path: "/solar-charge-controller-calculator",
   ogDescription:
-    "Calculate solar charge controller amp rating for 12V, 24V, and 48V systems. Includes MPPT vs PWM sizing guide, NEC 125% safety margins, and cold Voc formulas.",
+    "Size MPPT and PWM charge controllers in amps with NEC 125% margins and cold-morning array Voc headroom.",
 });
 
 export default function SolarChargeControllerPage() {

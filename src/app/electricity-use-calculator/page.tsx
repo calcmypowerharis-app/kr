@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Electricity Usage Calculator: Appliance kWh",
   description:
-    "Calculate electricity usage in kWh across multiple home appliances. Enter watts, run hours, and duty cycles to estimate daily and monthly energy consumption.",
+    "Track appliance electricity use in daily and monthly kWh from operating wattage, run hours, and duty cycles.",
   path: "/electricity-use-calculator",
   ogDescription:
-    "Calculate electricity usage in kWh across multiple home appliances. Enter watts, run hours, and duty cycles to estimate daily and monthly energy consumption.",
+    "Track appliance electricity use in daily and monthly kWh from operating wattage, run hours, and duty cycles.",
   images: [
     {
       url: "https://calcmypower.com/images/calculators/electricity-use-calculator.webp",

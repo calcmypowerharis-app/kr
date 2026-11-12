@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Three-Phase Power Calculator: kW, kVA, Amps",
   description:
-    "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
+    "Solve 3-phase power in kW, kVA, and line current across 208V, 240V, and 480V balanced industrial circuits.",
   path: "/three-phase-power-calculator",
   ogDescription:
-    "Calculate 3-phase real power (kW), apparent power (kVA), and line current (Amps). Supports 208V, 240V, and 480V circuits with balanced loads and power factor.",
+    "Solve 3-phase power in kW, kVA, and line current across 208V, 240V, and 480V balanced industrial circuits.",
 });
 
 export default function ThreePhasePowerCalculatorPage() {

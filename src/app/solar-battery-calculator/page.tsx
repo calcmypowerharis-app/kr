@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar Battery Storage Sizing Calculator",
   description:
-    "Calculate solar battery storage in kWh and Amp-hours for off-grid or backup systems based on daily energy use, days of autonomy, and inverter efficiency.",
+    "Size solar battery storage in kWh and Ah from daily energy use, autonomy days, and inverter efficiency.",
   path: "/solar-battery-calculator",
   ogDescription:
-    "Calculate solar battery storage in kWh and Amp-hours for off-grid or backup systems based on daily energy use, days of autonomy, and inverter efficiency.",
+    "Size solar battery storage in kWh and Ah from daily energy use, autonomy days, and inverter efficiency.",
 });
 
 export default function SolarBatteryPage() {
