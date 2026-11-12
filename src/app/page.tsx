@@ -288,11 +288,6 @@ export default function HomePage() {
       <div className="space-y-16 py-8 md:py-14">
         {/* 1. Enhanced Hero Section */}
         <section className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-blue-700 text-xs font-semibold tracking-wide shadow-xs">
-            <Zap className="w-3.5 h-3.5 fill-current text-blue-600" />
-            <span>US Electrical, Battery &amp; Backup Power Engineering Tools</span>
-          </div>
-
           <div className="space-y-4 max-w-4xl">
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
               Electrical, Battery Backup &amp; Generator Sizing Calculators
@@ -395,7 +390,7 @@ export default function HomePage() {
               </p>
             </div>
             <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full self-start sm:self-auto flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
               <span>{LIVE_CALCULATORS.length} Live Calculators</span>
             </span>
           </div>
@@ -1064,10 +1059,6 @@ export default function HomePage() {
         >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200 pb-4">
             <div>
-              <div className="flex items-center gap-2 text-indigo-600 font-bold text-xs uppercase tracking-wider mb-1">
-                <BookOpen className="w-4 h-4" />
-                <span>Engineering Reference &amp; Schematics</span>
-              </div>
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                 Essential Sizing Guides &amp; Reference Schematics
               </h2>
@@ -1077,7 +1068,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/calculators#sizing-guides"
-              className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 self-start sm:self-auto shrink-0"
+              className="text-xs font-semibold text-blue-600 hover:text-blue-800 inline-flex items-center gap-1 self-start sm:self-auto shrink-0"
             >
               <span>Explore All Sizing Guides</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -1085,7 +1076,7 @@ export default function HomePage() {
           </div>
 
           {/* Highlight Card: Solar Wiring Reference & Printable PDF */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-blue-50/80 via-white to-indigo-50/40 border border-blue-200 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-50 via-white to-sky-50/50 border border-slate-200 shadow-xs flex flex-col lg:flex-row lg:items-center justify-between gap-6">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 mt-1">
                 <Sun className="w-6 h-6" />

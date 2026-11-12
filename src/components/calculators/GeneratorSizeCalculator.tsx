@@ -404,9 +404,9 @@ export const GeneratorSizeCalculator: React.FC = () => {
         )}
 
         {activePresetId === "winter-essentials" && (
-          <div className="text-[11px] text-indigo-950 bg-indigo-50/90 border border-indigo-200 rounded-xl px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <div className="text-[11px] text-blue-950 bg-blue-50/90 border border-blue-200 rounded-xl px-3.5 py-2.5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
             <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-indigo-600 flex-shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-blue-600 flex-shrink-0" />
               <span>
                 <strong>Loaded Storm Scenario:</strong> Winter Storm Essentials (5.1 kW Outage Scenario). Edit wattages or quantities below to model your home.
               </span>
@@ -414,7 +414,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
             <button
               type="button"
               onClick={handleResetDefaults}
-              className="text-xs text-indigo-600 hover:text-indigo-800 font-semibold underline shrink-0 text-left sm:text-right"
+              className="text-xs text-blue-600 hover:text-blue-800 font-semibold underline shrink-0 text-left sm:text-right"
             >
               Reset to Defaults
             </button>
@@ -482,7 +482,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
                         <div className="font-semibold text-xs text-slate-900 flex items-center gap-1.5 flex-wrap">
                           <span>{item.name}</span>
                           {item.isCustom && (
-                            <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full font-medium">
+                            <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full font-medium">
                               Custom
                             </span>
                           )}
@@ -629,7 +629,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
                           <div className="font-semibold text-slate-900 flex items-center gap-1.5 flex-wrap">
                             <span>{item.name}</span>
                             {item.isCustom && (
-                              <span className="text-[10px] bg-purple-100 text-purple-700 px-1.5 py-0.5 rounded-full font-medium">
+                              <span className="text-[10px] bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded-full font-medium">
                                 Custom
                               </span>
                             )}
@@ -994,7 +994,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
   const resultSectionContent = (
     <div className="space-y-6">
       {/* Primary Capacity Card */}
-      <div className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white rounded-2xl p-6 shadow-lg space-y-4">
+      <div className="bg-gradient-to-br from-blue-600 to-sky-700 text-white rounded-2xl p-6 shadow-lg space-y-4">
         <div className="flex items-center justify-between">
           <span className="inline-flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-blue-500/40 text-blue-100 border border-blue-400/40">
             <Zap className="w-3.5 h-3.5 text-blue-200" />

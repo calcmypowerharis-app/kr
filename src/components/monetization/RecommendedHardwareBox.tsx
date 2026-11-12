@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ExternalLink, ShieldCheck, ShoppingCart, Check, Star } from "lucide-react";
+import { ExternalLink, Package, ShoppingCart, Check, Star } from "lucide-react";
 import { getAmazonSearchUrl, AMAZON_LINK_REL } from "@/config/affiliate";
 import {
   getHardwareClusterForSlug,
@@ -56,8 +56,8 @@ export const RecommendedHardwareBox: React.FC<RecommendedHardwareBoxProps> = ({
           </div>
         </div>
         <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 bg-white px-3 py-1.5 rounded-full border border-slate-200 shadow-xs self-start sm:self-auto">
-          <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>NEC &amp; UL Standards Verified</span>
+          <Package className="w-4 h-4 text-blue-600" />
+          <span>Recommended Hardware Sizing</span>
         </div>
       </div>
 

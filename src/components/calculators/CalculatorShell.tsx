@@ -54,20 +54,6 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
           <span className="text-slate-800 font-semibold truncate">{title}</span>
         </nav>
 
-        <div className="flex flex-wrap items-center gap-2 text-xs pt-1">
-          <span className="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-semibold uppercase tracking-wider">
-            {category}
-          </span>
-          <span className="text-slate-500">•</span>
-          <span className="text-slate-600 font-medium">{badge}</span>
-          {displayDate && (
-            <>
-              <span className="text-slate-500">•</span>
-              <span className="text-slate-600">Updated {displayDate}</span>
-            </>
-          )}
-        </div>
-
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-slate-900 leading-tight">
           {title}
         </h1>
@@ -75,6 +61,10 @@ export const CalculatorShell: React.FC<CalculatorShellProps> = ({
         <p className="text-base md:text-lg text-slate-600 max-w-3xl leading-relaxed">
           {description}
         </p>
+
+        {displayDate && (
+          <p className="text-xs text-slate-500 pt-0.5">Updated {displayDate}</p>
+        )}
       </header>
 
       {/* Main Interactive Calculation Grid */}

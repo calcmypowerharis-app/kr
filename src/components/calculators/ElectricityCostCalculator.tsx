@@ -217,7 +217,7 @@ export const ElectricityCostCalculator: React.FC = () => {
         <div className="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-xs font-semibold text-slate-800 uppercase tracking-wider">
-              <Percent className="w-3.5 h-3.5 text-indigo-600" />
+              <Percent className="w-3.5 h-3.5 text-blue-600" />
               <span>Taxes &amp; Local Surcharges</span>
             </div>
             <p className="text-[11px] text-slate-600">
@@ -379,7 +379,7 @@ export const ElectricityCostCalculator: React.FC = () => {
           />
           <div
             style={{ width: `${results.lineItems[2].percentOfTotal}%` }}
-            className="bg-purple-600 h-full"
+            className="bg-sky-600 h-full"
             title={`Delivery & Riders: ${results.lineItems[2].percentOfTotal}%`}
           />
           <div
@@ -398,7 +398,7 @@ export const ElectricityCostCalculator: React.FC = () => {
                 : idx === 1
                 ? "bg-amber-500"
                 : idx === 2
-                ? "bg-purple-600"
+                ? "bg-sky-600"
                 : "bg-emerald-500";
             const badge =
               idx === 0
@@ -406,7 +406,7 @@ export const ElectricityCostCalculator: React.FC = () => {
                 : idx === 1
                 ? { label: "User-Entered Fixed Fee", bg: "bg-amber-100 text-amber-900" }
                 : idx === 2
-                ? { label: "User-Entered Estimate", bg: "bg-purple-100 text-purple-900" }
+                ? { label: "User-Entered Estimate", bg: "bg-sky-100 text-sky-900" }
                 : { label: "User-Entered Tax", bg: "bg-emerald-100 text-emerald-900" };
             return (
               <div
@@ -504,7 +504,7 @@ export const ElectricityCostCalculator: React.FC = () => {
 
       {/* Strategic Tool Handoff & Guide Banners */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200/80 p-5 md:p-6 flex flex-col justify-between space-y-4">
+        <div className="bg-gradient-to-r from-blue-50 to-slate-50 rounded-2xl border border-blue-200/80 p-5 md:p-6 flex flex-col justify-between space-y-4">
           <div className="space-y-1.5">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">
               <Zap className="w-3.5 h-3.5" />
@@ -528,14 +528,14 @@ export const ElectricityCostCalculator: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-gradient-to-r from-slate-50 to-purple-50 rounded-2xl border border-purple-200/80 p-5 md:p-6 flex flex-col justify-between space-y-4">
+        <div className="bg-slate-50/80 rounded-2xl border border-slate-200 p-5 md:p-6 flex flex-col justify-between space-y-4">
           <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-purple-100 text-purple-800 text-xs font-semibold">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-200/80 text-slate-800 text-xs font-semibold">
               <FileText className="w-3.5 h-3.5" />
-              Comprehensive Sizing Guide
+              Utility Bill &amp; Tariff Guide
             </div>
             <h3 className="text-base font-bold text-slate-900">
-              How to Calculate Your Electricity Bill (Full Guide)
+              How to Calculate Your Electricity Bill
             </h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               Learn how electric utilities calculate statements from meter reads, unpack supply vs delivery tariffs, and discover why your true effective $/kWh is higher than quoted rates.
@@ -544,7 +544,7 @@ export const ElectricityCostCalculator: React.FC = () => {
           <div>
             <Link
               href="/electricity-use-calculator"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs shadow-sm transition"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs shadow-sm transition"
             >
               <span>Calculate Appliance Usage</span>
               <ArrowRight className="w-3.5 h-3.5" />

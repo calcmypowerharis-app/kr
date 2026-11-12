@@ -409,7 +409,7 @@ export const SolarBatteryCalculator: React.FC = () => {
               <Calendar className="w-4 h-4 text-blue-600" />
               <span>Days of Autonomy (Reserve Days)</span>
             </label>
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
               {[
                 { value: "0.5", label: "0.5 Day", sub: "Grid backup" },
                 { value: "1.0", label: "1.0 Day", sub: "Standard" },
@@ -422,6 +422,8 @@ export const SolarBatteryCalculator: React.FC = () => {
                   type="button"
                   onClick={() => setAutonomyType(opt.value)}
                   className={`p-2.5 rounded-xl border text-center transition ${
+                    opt.value === "custom" ? "col-span-2 sm:col-span-1" : ""
+                  } ${
                     autonomyType === opt.value
                       ? "bg-blue-50 border-blue-500 ring-2 ring-blue-500/20 text-blue-950 font-bold"
                       : "bg-white border-slate-200 hover:border-slate-300 text-slate-700"

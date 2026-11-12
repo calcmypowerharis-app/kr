@@ -327,7 +327,7 @@ export const InverterSizeCalculator: React.FC = () => {
                   key={v}
                   type="button"
                   onClick={() => setSystemVoltage(v)}
-                  className={`py-3 px-4 rounded-xl font-bold text-sm border transition flex flex-col items-center justify-center gap-1 ${
+                  className={`py-2.5 px-2 sm:px-4 rounded-xl font-bold text-sm border transition flex flex-col items-center justify-center gap-1 ${
                     systemVoltage === v
                       ? "bg-blue-600 text-white border-blue-600 shadow-sm"
                       : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
@@ -336,11 +336,11 @@ export const InverterSizeCalculator: React.FC = () => {
                 >
                   <span className="text-base">{v}V DC</span>
                   <span
-                    className={`text-[11px] font-medium ${
+                    className={`text-[11px] font-medium text-center ${
                       systemVoltage === v ? "text-white" : "text-slate-600"
                     }`}
                   >
-                    {v === 12 ? "Mobile / RV" : v === 24 ? "Cabin / Solar" : "Home / High Load"}
+                    {v === 12 ? "Mobile / RV" : v === 24 ? "Cabin / Solar" : "Whole Home"}
                   </span>
                 </button>
               ))}

@@ -300,7 +300,7 @@ export const SolarSystemSizeCalculator: React.FC = () => {
               </span>
             </div>
 
-            <div className="grid grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {[50, 75, 100, 120].map((pct) => (
                 <button
                   key={pct}

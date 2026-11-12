@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  Zap,
   Plug,
   BatteryCharging,
   Cpu,
@@ -24,11 +23,6 @@ export default function NotFound() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-10">
       <div className="bg-white rounded-2xl border border-slate-200 p-8 md:p-10 shadow-sm space-y-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-semibold uppercase tracking-wider">
-          <Zap className="w-3.5 h-3.5 text-amber-600" />
-          <span>404 Page Not Found</span>
-        </div>
-
         <div className="space-y-2">
           <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
             We couldn&apos;t find that calculator or guide.
