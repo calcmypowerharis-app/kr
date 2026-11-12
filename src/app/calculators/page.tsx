@@ -119,7 +119,7 @@ export default function CalculatorsDirectoryPage() {
                 Generator Fuel Consumption Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Estimate generator fuel use per hour, tank runtimes, and operating costs for gas, propane, and diesel models at 25%, 50%, 75%, and 100% load.
+                Track generator fuel burn in gal/hr and tank runtime for gas, propane, and diesel backup sets under load.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Fuel Calculator</span>
@@ -144,7 +144,7 @@ export default function CalculatorsDirectoryPage() {
                 Generator Size Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate required generator wattage for home backup, RV camping, or jobsite tools with single-motor surge handling and 25% planning headroom.
+                Size a backup generator for running watts, motor surge, and NEC 125% headroom to keep pumps and AC running.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -170,7 +170,7 @@ export default function CalculatorsDirectoryPage() {
                 UPS Battery Backup Run-Time Hours Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Estimate how long an uninterruptible power supply or deep-cycle battery bank will power your equipment during an outage.
+                Find true UPS backup runtime for routers, CPAP gear, and PCs after inverter idle draw and usable battery DoD.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -196,7 +196,7 @@ export default function CalculatorsDirectoryPage() {
                 Battery Capacity &amp; Sizing Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate battery energy storage in Watt-hours (Wh) and Amp-hours (Ah), evaluate usable capacity across chemistries, and size battery banks for loads.
+                Size 12V, 24V, and 48V battery banks in Ah and Wh with usable DoD limits for LiFePO4 and lead-acid storage.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -222,7 +222,7 @@ export default function CalculatorsDirectoryPage() {
                 Watts to Amps Electrical Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Convert continuous power (Watts) to electrical current (Amps) across DC, single-phase AC, and balanced three-phase AC circuits.
+                Find circuit current in amps across 12V DC, 120V, 240V, and 3-phase power with NEC 125% breaker sizing rules.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -248,7 +248,7 @@ export default function CalculatorsDirectoryPage() {
                 Amps to Watts Electrical Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Convert circuit current (Amps) and voltage (Volts) to real electrical power (Watts) and apparent power (VA) across DC and AC systems.
+                Find real power in watts and kW across 12V DC, 120V, and 240V AC circuits with the NEC 80% continuous limit.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -274,7 +274,7 @@ export default function CalculatorsDirectoryPage() {
                 Solar Panel Tilt Angle Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate the optimal solar panel tilt angle and compass orientation for your latitude. Compare roof pitch angles, seasonal adjustments, and mounting options.
+                Find optimal solar panel tilt angles by latitude with seasonal adjustments and roof pitch slope conversions.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -300,7 +300,7 @@ export default function CalculatorsDirectoryPage() {
                 Solar Battery Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate the battery bank capacity needed for your off-grid or backup solar system. Size storage in kWh and Amp-hours based on daily usage and autonomy.
+                Size solar battery storage in kWh and Ah from daily energy use, autonomy days, and inverter efficiency.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -326,7 +326,7 @@ export default function CalculatorsDirectoryPage() {
                 Solar Charge Controller Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate the charge controller size needed for your solar panels. Sizing calculator for MPPT and PWM controllers based on array wattage, battery voltage, and Voc.
+                Size MPPT and PWM charge controllers in amps with NEC 125% margins and cold-morning array Voc headroom.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -352,7 +352,7 @@ export default function CalculatorsDirectoryPage() {
                 Voltage Drop Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate voltage drop for DC, single-phase, and balanced three-phase circuits. Determine voltage loss, percentage drop, receiving voltage, and evaluate adjacent wire sizes.
+                Find wire gauge voltage drop and percentage loss across 120V, 240V, and DC runs to maintain NEC 3% limits.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -378,7 +378,7 @@ export default function CalculatorsDirectoryPage() {
                 Solar System Size Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate the solar system size in kW and approximate panel count required to power your home based on monthly kilowatt-hour consumption and local peak sun hours.
+                Size rooftop solar arrays in kW and panel count from monthly kWh use, peak sun hours, and derate factors.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -405,7 +405,7 @@ export default function CalculatorsDirectoryPage() {
                 Three Phase Power Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate 3-phase real power (kW), apparent power (kVA), reactive power (kVAR), and line current (Amps). Supports line-to-line and line-to-neutral voltages with power factor.
+                Solve 3-phase power in kW, kVA, and line current across 208V, 240V, and 480V balanced industrial circuits.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -431,7 +431,7 @@ export default function CalculatorsDirectoryPage() {
                 Electricity Usage Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate daily and monthly electricity usage in Watt-hours (Wh) and kilowatt-hours (kWh) across household appliances with duty cycles and utility cost estimates.
+                Track appliance electricity use in daily and monthly kWh from operating wattage, run hours, and duty cycles.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Calculator</span>
@@ -457,7 +457,7 @@ export default function CalculatorsDirectoryPage() {
                 Electricity Cost Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Estimate monthly electric utility bills from kilowatt-hour (kWh) usage, base rates, fixed customer charges, riders, and taxes. Calculate true effective cost per kWh.
+                Estimate electric utility bills and true cost per kWh from energy usage, monthly fixed fees, and local taxes.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Cost Calculator</span>
@@ -483,7 +483,7 @@ export default function CalculatorsDirectoryPage() {
                 Inverter Size Calculator
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate continuous and peak surge inverter wattage, DC battery current draw, cable gauge (AWG), and fuse sizing across 12V, 24V, and 48V systems.
+                Size power inverters in continuous and surge watts with DC battery cable gauge (AWG) and fuse ratings.
               </p>
               <div className="text-xs font-semibold text-blue-600 flex items-center gap-1 pt-2">
                 <span>Open Inverter Calculator</span>
@@ -525,7 +525,7 @@ export default function CalculatorsDirectoryPage() {
                 What Size Generator Do I Need for My House?
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate required continuous running wattage and motor startup surge demand for your home during utility outages using our four-step sizing method and 5.1 kW worked storm scenario.
+                Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read House Generator Guide</span>
@@ -550,7 +550,7 @@ export default function CalculatorsDirectoryPage() {
                 What Size Generator Do I Need to Run a Refrigerator?
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Determine exact running and compressor starting wattage for modern Energy Star refrigerators, deep freezers, and simultaneous household outage loads.
+                Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Refrigerator Sizing Guide</span>
@@ -575,7 +575,7 @@ export default function CalculatorsDirectoryPage() {
                 What Does Ah Mean on a Battery? Amp-Hours Explained
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Understand battery charge capacity, convert Amp-hours to Watt-hours (Wh), and evaluate how chemistry, depth of discharge, and Peukert losses determine real-world runtime.
+                Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Battery Ah Guide</span>
@@ -600,7 +600,7 @@ export default function CalculatorsDirectoryPage() {
                 What Is a Watt-Hour (Wh)? Watts vs. Watt-Hours Explained
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Discover the difference between instantaneous power (Watts) and energy consumed over time (Watt-hours), with practical battery runtime and utility billing calculations.
+                Learn what a Watt-hour (Wh) measures, the difference between Watts vs Wh, and how energy determines runtime.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Watt-Hour Guide</span>
@@ -625,7 +625,7 @@ export default function CalculatorsDirectoryPage() {
                 How Long Will a 100Ah Battery Last? 12V Appliance Runtime Guide
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Realistic delivered runtime estimates for refrigerators, CPAP machines, laptops, TVs, and inverters across LiFePO4 and lead-acid deep-cycle batteries.
+                Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read 100Ah Runtime Guide</span>
@@ -650,7 +650,7 @@ export default function CalculatorsDirectoryPage() {
                 Solar Panels in Series vs Parallel: Wiring Diagrams &amp; Sizing
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Compare solar panels in series vs parallel. See clear wiring diagrams, calculate array voltage and current, and size charge controllers for off-grid and RV systems.
+                Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Series vs Parallel Guide</span>
@@ -675,7 +675,7 @@ export default function CalculatorsDirectoryPage() {
                 How Much Energy Does a Solar Panel Produce?
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Learn daily, monthly, and annual solar panel electricity generation. 400W reference examples, peak sun hours, system deratings, and production variables.
+                Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Production Guide</span>
@@ -700,7 +700,7 @@ export default function CalculatorsDirectoryPage() {
                 How Long Does It Take to Charge a Battery With Solar Panels?
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate solar battery charging hours and calendar days using battery capacity, peak sun hours, MPPT vs PWM efficiency, and chemistry absorption stages.
+                Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Solar Recharge Guide</span>
@@ -725,7 +725,7 @@ export default function CalculatorsDirectoryPage() {
                 How Many Amp Hours Do I Need for a Battery Bank?
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Calculate total battery bank amp-hours from daily appliance Watt-hours, nominal voltage (12V, 24V, 48V), autonomy days, usable depth of discharge, and inverter efficiency.
+                Size battery bank capacity in amp-hours (Ah) using daily watt-hours, system voltage, autonomy, and DoD limits.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Battery Bank Sizing Guide</span>
@@ -750,7 +750,7 @@ export default function CalculatorsDirectoryPage() {
                 How Many Watts on a 15-Amp or 20-Amp Circuit?
               </h3>
               <p className="text-xs md:text-sm text-slate-600 leading-relaxed">
-                Determine real-world wattage capacity for 120V household branch circuits. Compare nominal limits against the NEC 80% continuous safety rule and review 14 AWG vs 12 AWG wire requirements.
+                Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.
               </p>
               <div className="text-xs font-semibold text-indigo-600 flex items-center gap-1 pt-2">
                 <span>Read Circuit Wattage Guide</span>
