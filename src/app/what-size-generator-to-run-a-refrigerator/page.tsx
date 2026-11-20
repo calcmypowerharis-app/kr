@@ -31,7 +31,7 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 export const metadata: Metadata = {
   title: "What Size Generator to Run a Refrigerator?",
   description:
-    "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
+    "What size generator runs a refrigerator? Most fridges need 2,000 starting watts and 1,000 running watts. Free guide with worked example.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
   },
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What Size Generator to Run a Refrigerator? | CalcMyPower",
     description:
-      "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
+      "What size generator runs a refrigerator? Most fridges need 2,000 starting watts and 1,000 running watts. Free guide with worked example.",
     url: "https://calcmypower.com/what-size-generator-to-run-a-refrigerator",
     type: "article",
     publishedTime: "2026-09-27T12:00:00Z",
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Size Generator to Run a Refrigerator? | CalcMyPower",
     description:
-      "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
+      "What size generator runs a refrigerator? Most fridges need 2,000 starting watts and 1,000 running watts. Free guide with worked example.",
     images: [
       "https://calcmypower.com/images/articles/residential-refrigerator-kitchen.webp",
     ],

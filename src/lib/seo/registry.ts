@@ -568,7 +568,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Refrigerator Generator Sizing Guide",
     metaTitle: "What Size Generator to Run a Refrigerator?",
     metaDescription:
-      "Find generator wattage to run a refrigerator during outages from compressor startup surge and household loads.",
+      "What size generator runs a refrigerator? Most fridges need 2,000 starting watts and 1,000 running watts. Free guide with worked example.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator",
