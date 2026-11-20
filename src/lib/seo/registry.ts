@@ -770,7 +770,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Battery Charge Time Guide",
     metaTitle: "Solar Battery Charge Time Calculator & Guide",
     metaDescription:
-      "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
+      "A 100Ah lithium battery recharges in about 6 sun hours with a 200W panel and MPPT. Free solar charge time calculator with 3 worked examples.",
     cluster: "solar",
     parentCalculatorPath: "/solar-battery-calculator",
     scenarioLink: "/how-long-does-it-take-to-charge-a-battery-with-solar-panels#solar-charge-calculator",

@@ -40,7 +40,7 @@ import { SolarChargeTimeCalculator } from "@/components/article/SolarChargeTimeC
 export const metadata: Metadata = {
   title: "Solar Battery Charge Time Calculator & Guide",
   description:
-    "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
+    "A 100Ah lithium battery recharges in about 6 sun hours with a 200W panel and MPPT. Free solar charge time calculator with 3 worked examples.",
   alternates: {
     canonical:
       "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     title:
       "Solar Battery Charge Time Calculator & Guide | CalcMyPower",
     description:
-      "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
+      "A 100Ah lithium battery recharges in about 6 sun hours with a 200W panel and MPPT. Free solar charge time calculator with 3 worked examples.",
     url: "https://calcmypower.com/how-long-does-it-take-to-charge-a-battery-with-solar-panels",
     type: "article",
     publishedTime: "2026-10-13T00:00:00Z",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title:
       "Solar Battery Charge Time Calculator & Guide | CalcMyPower",
     description:
-      "Solar battery charge times in hours based on panel wattage, peak sun hours, MPPT efficiency, and battery type.",
+      "A 100Ah lithium battery recharges in about 6 sun hours with a 200W panel and MPPT. Free solar charge time calculator with 3 worked examples.",
     images: [
       "https://calcmypower.com/images/articles/how-long-does-it-take-to-charge-a-battery-with-solar-panels.webp",
     ],
