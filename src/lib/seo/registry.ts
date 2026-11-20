@@ -623,7 +623,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Watt-Hours (Wh) Explained",
     metaTitle: "What Is a Watt-Hour (Wh)? Watts vs Wh Guide",
     metaDescription:
-      "Learn what a Watt-hour (Wh) measures, the difference between Watts vs Wh, and how energy determines runtime.",
+      "A 100W laptop charger running 3 hours uses 300 Wh; a 50W CPAP for 8 hours uses 400 Wh. Free watts vs watt-hours guide.",
     cluster: "electricity",
     parentCalculatorPath: "/watts-to-amps-calculator",
     scenarioLink: "/watts-to-amps-calculator",
