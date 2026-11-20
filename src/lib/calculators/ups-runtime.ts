@@ -69,8 +69,8 @@ export const CHEMISTRY_DEFAULTS: Record<
   },
   lifepo4: {
     name: "LiFePO4 - Lithium",
-    defaultDoD: 0.90, // 90% usable safely
-    description: "Modern deep-cycle lithium standard; safe down to 80-90% discharge.",
+    defaultDoD: 0.85, // 85% usable safely
+    description: "Modern deep-cycle lithium standard; safe down to 80-85% discharge.",
   },
   lithium_ion: {
     name: "Lithium-Ion - NMC",

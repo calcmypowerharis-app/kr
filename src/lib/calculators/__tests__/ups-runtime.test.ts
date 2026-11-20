@@ -5,8 +5,8 @@ describe("calculateUpsRuntime - Independent Hand Calculations", () => {
   it("calculates correct runtime for 12V 100Ah LiFePO4 battery under 150W load", () => {
     // Hand calculation:
     // Stored: 12V * 100Ah = 1200 Wh
-    // Usable: 1200 Wh * 0.90 (DoD) * 0.85 (eff) = 918 Wh
-    // Runtime: 918 Wh / 150W = 6.12 hours = 6 hr 7 min
+    // Usable: 1200 Wh * 0.85 (DoD) * 0.85 (eff) = 867 Wh
+    // Runtime: 867 Wh / 150W = 5.78 hours = 5 hr 47 min
     // DC Current: 150W / (12V * 0.85) = 14.705... A -> 14.7 A
     const result = calculateUpsRuntime({
       loadWatts: 150,
@@ -16,14 +16,14 @@ describe("calculateUpsRuntime - Independent Hand Calculations", () => {
     });
 
     expect(result.totalStoredWh).toBe(1200);
-    expect(result.usableWh).toBe(918);
-    expect(result.usableKwh).toBe(0.92);
-    expect(result.runtimeHours).toBe(6.12);
-    expect(result.hours).toBe(6);
-    expect(result.minutes).toBe(7);
-    expect(result.formattedRuntime).toBe("6 hr 7 min");
+    expect(result.usableWh).toBe(867);
+    expect(result.usableKwh).toBe(0.87);
+    expect(result.runtimeHours).toBe(5.78);
+    expect(result.hours).toBe(5);
+    expect(result.minutes).toBe(47);
+    expect(result.formattedRuntime).toBe("5 hr 47 min");
     expect(result.dcCurrentAmps).toBe(14.7);
-    expect(result.usedDoDPercent).toBe(90);
+    expect(result.usedDoDPercent).toBe(85);
     expect(result.usedEfficiencyPercent).toBe(85);
   });
 

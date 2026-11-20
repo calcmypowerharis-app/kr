@@ -310,8 +310,8 @@ export const UpsCalculator: React.FC = () => {
           {
             symbol: "DoD",
             name: "Depth of Discharge",
-            unit: "Decimal (0.50-0.90)",
-            description: "Safe discharge limit. 50% for standard Lead-Acid/AGM, up to 90% for Lithium Iron Phosphate (LiFePO4).",
+            unit: "Decimal (0.50-0.85)",
+            description: "Safe discharge limit. 50% for standard Lead-Acid/AGM, up to 85% for Lithium Iron Phosphate (LiFePO4).",
           },
           {
             symbol: "η",
@@ -350,17 +350,17 @@ export const UpsCalculator: React.FC = () => {
           {
             stepNumber: 3,
             title: "Calculate Usable AC Energy Delivered",
-            calculation: "E_usable = 1,200 Wh × 0.90 (DoD) × 0.85 (Efficiency) = 918 Wh",
-            explanation: "Apply the 90% safe discharge limit for LiFePO4 chemistry and the 85% inverter conversion factor.",
+            calculation: "E_usable = 1,200 Wh × 0.85 (DoD) × 0.85 (Efficiency) = 867 Wh",
+            explanation: "Apply the 85% safe discharge limit for LiFePO4 chemistry and the 85% inverter conversion factor.",
           },
           {
             stepNumber: 4,
             title: "Determine Run-Time Hours",
-            calculation: "Runtime = 918 Wh / 130 Watts = 7.06 Hours",
-            explanation: "Divide usable Watt-hours by continuous Watts. 7.06 hours equates to approximately 7 hours and 4 minutes.",
+            calculation: "Runtime = 867 Wh / 130 Watts = 6.67 Hours",
+            explanation: "Divide usable Watt-hours by continuous Watts. 6.67 hours equates to approximately 6 hours and 40 minutes.",
           },
         ]}
-        conclusion="The 12V 100Ah LiFePO4 system will power the 130W home office workstation continuously for approximately 7 hours and 4 minutes."
+        conclusion="The 12V 100Ah LiFePO4 system will power the 130W home office workstation continuously for approximately 6 hours and 40 minutes."
       />
 
       <AssumptionsSection
@@ -375,8 +375,8 @@ export const UpsCalculator: React.FC = () => {
           },
           {
             parameter: "LiFePO4 Safe DoD",
-            defaultVal: "90%",
-            realisticRange: "80% - 95%",
+            defaultVal: "85%",
+            realisticRange: "80% - 90%",
             impact: "Modern lithium chemistry sustains deep discharges without rapid cycle degradation.",
           },
           {

@@ -10,11 +10,11 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "UPS Battery Backup Runtime Calculator",
   description:
-    "Find true UPS backup runtime for routers, CPAP gear, and PCs after inverter idle draw and usable battery DoD.",
+    "Calculate UPS backup runtime in hours. Free calculator for routers, CPAP and PCs - true runtime after inverter loss and battery DoD.",
   path: "/ups-battery-backup-calculator",
   ogTitle: "UPS Battery Backup Runtime Calculator | CalcMyPower",
   ogDescription:
-    "Find true UPS backup runtime for routers, CPAP gear, and PCs after inverter idle draw and usable battery DoD.",
+    "Calculate UPS backup runtime in hours. Free calculator for routers, CPAP and PCs - true runtime after inverter loss and battery DoD.",
 });
 
 export default function UpsCalculatorPage() {

@@ -159,7 +159,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "UPS Runtime",
     metaTitle: "UPS Battery Backup Runtime Calculator",
     metaDescription:
-      "Find true UPS backup runtime for routers, CPAP gear, and PCs after inverter idle draw and usable battery DoD.",
+      "Calculate UPS backup runtime in hours. Free calculator for routers, CPAP and PCs - true runtime after inverter loss and battery DoD.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar"],
     primaryKeyword: "uninterruptible power supply hours",
