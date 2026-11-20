@@ -711,7 +711,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Panel Energy Production Guide",
     metaTitle: "How Much Energy Does a Solar Panel Produce?",
     metaDescription:
-      "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
+      "A 400W solar panel makes about 1.4 kWh a day - 42 kWh a month, 512 kWh a year. Free guide with peak sun hours and losses.",
     cluster: "solar",
     parentCalculatorPath: "/solar-system-size-calculator",
     scenarioLink: "/solar-system-size-calculator",

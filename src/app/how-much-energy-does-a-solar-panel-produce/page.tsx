@@ -37,7 +37,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Much Energy Does a Solar Panel Produce?",
   description:
-    "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
+    "A 400W solar panel makes about 1.4 kWh a day - 42 kWh a month, 512 kWh a year. Free guide with peak sun hours and losses.",
   alternates: {
     canonical: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
   },
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title:
       "How Much Energy Does a Solar Panel Produce? | CalcMyPower",
     description:
-      "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
+      "A 400W solar panel makes about 1.4 kWh a day - 42 kWh a month, 512 kWh a year. Free guide with peak sun hours and losses.",
     url: "https://calcmypower.com/how-much-energy-does-a-solar-panel-produce",
     type: "article",
     publishedTime: "2026-10-01T00:00:00Z",
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
     title:
       "How Much Energy Does a Solar Panel Produce? | CalcMyPower",
     description:
-      "Daily and monthly kWh output for 400W solar panels based on peak sun hours, tilt, and real system losses.",
+      "A 400W solar panel makes about 1.4 kWh a day - 42 kWh a month, 512 kWh a year. Free guide with peak sun hours and losses.",
     images: [
       "https://calcmypower.com/images/articles/how-much-energy-does-a-solar-panel-produce.webp",
     ],
