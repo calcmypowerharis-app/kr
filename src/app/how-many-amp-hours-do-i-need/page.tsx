@@ -33,7 +33,7 @@ import {
 export const metadata: Metadata = {
   title: "How Many Amp Hours Do I Need for a Battery?",
   description:
-    "Size battery bank capacity in amp-hours (Ah) using daily watt-hours, system voltage, autonomy, and DoD limits.",
+    "A camper van using 650 Wh a day needs 67 Ah - one 12V 100Ah battery covers it. Free amp-hour sizing guide with 4 scenarios.",
   alternates: {
     canonical: "https://calcmypower.com/how-many-amp-hours-do-i-need",
   },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     title:
       "How Many Amp Hours Do I Need for a Battery? | CalcMyPower",
     description:
-      "Size battery bank capacity in amp-hours (Ah) using daily watt-hours, system voltage, autonomy, and DoD limits.",
+      "A camper van using 650 Wh a day needs 67 Ah - one 12V 100Ah battery covers it. Free amp-hour sizing guide with 4 scenarios.",
     url: "https://calcmypower.com/how-many-amp-hours-do-i-need",
     type: "article",
     publishedTime: "2026-10-08T00:00:00Z",
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     title:
       "How Many Amp Hours Do I Need for a Battery? | CalcMyPower",
     description:
-      "Size battery bank capacity in amp-hours (Ah) using daily watt-hours, system voltage, autonomy, and DoD limits.",
+      "A camper van using 650 Wh a day needs 67 Ah - one 12V 100Ah battery covers it. Free amp-hour sizing guide with 4 scenarios.",
     images: [
       "https://calcmypower.com/images/articles/how-many-amp-hours-battery-bank-sizing.webp",
     ],

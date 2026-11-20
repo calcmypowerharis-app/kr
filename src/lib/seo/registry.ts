@@ -740,7 +740,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Battery Bank Sizing Guide",
     metaTitle: "How Many Amp Hours Do I Need for a Battery?",
     metaDescription:
-      "Size battery bank capacity in amp-hours (Ah) using daily watt-hours, system voltage, autonomy, and DoD limits.",
+      "A camper van using 650 Wh a day needs 67 Ah - one 12V 100Ah battery covers it. Free amp-hour sizing guide with 4 scenarios.",
     cluster: "ups-battery",
     parentCalculatorPath: "/battery-capacity-calculator",
     scenarioLink: "/battery-capacity-calculator",
