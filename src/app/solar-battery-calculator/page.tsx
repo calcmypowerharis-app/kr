@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar Battery Storage Sizing Calculator",
   description:
-    "Size solar battery storage in kWh and Ah from daily energy use, autonomy days, and inverter efficiency.",
+    "A cabin using 4 kWh a day needs 10.46 kWh of battery for 2 days off-grid - 218 Ah at 48V. Free solar battery calculator.",
   path: "/solar-battery-calculator",
   ogDescription:
-    "Size solar battery storage in kWh and Ah from daily energy use, autonomy days, and inverter efficiency.",
+    "A cabin using 4 kWh a day needs 10.46 kWh of battery for 2 days off-grid - 218 Ah at 48V. Free solar battery calculator.",
 });
 
 export default function SolarBatteryPage() {

@@ -300,7 +300,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar Battery",
     metaTitle: "Solar Battery Storage Sizing Calculator",
     metaDescription:
-      "Size solar battery storage in kWh and Ah from daily energy use, autonomy days, and inverter efficiency.",
+      "A cabin using 4 kWh a day needs 10.46 kWh of battery for 2 days off-grid - 218 Ah at 48V. Free solar battery calculator.",
     cluster: "solar",
     secondaryClusters: ["ups-battery", "rv-power"],
     primaryKeyword: "solar battery calculator",
