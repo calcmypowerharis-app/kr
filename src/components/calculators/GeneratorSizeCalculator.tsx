@@ -1271,7 +1271,7 @@ export const GeneratorSizeCalculator: React.FC = () => {
                 "The 25% planning margin ensures the generator does not operate at 100% capacity, providing fuel economy, engine protection, and transient reserve.",
             },
           ]}
-          conclusion="Based on this 1,965W continuous load and 3,465W peak demand, a generator with at least 4,350W rated running watts and 3,500W surge watts provides comfortable, safe emergency backup capacity."
+          conclusion="Based on this 1,965W continuous load and 3,465W peak demand, a generator with at least 3,500W rated running watts and 4,350W starting (surge) watts provides comfortable, safe emergency backup capacity to cover the 1,965W continuous load and 4,331W planning requirement."
         />
 
         {/* Generator Technology Educational Comparison */}

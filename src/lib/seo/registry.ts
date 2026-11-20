@@ -137,7 +137,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Generator Size",
     metaTitle: "Generator Size Calculator: Running Watts",
     metaDescription:
-      "Size a backup generator for running watts, motor surge, and NEC 125% headroom to keep pumps and AC running.",
+      "Size a backup generator in minutes. Free calculator - fridge, furnace and sump pump need 1,965W running, 3,465W peak. Worked example inside.",
     cluster: "generators",
     secondaryClusters: ["rv-power", "home-energy"],
     primaryKeyword: "generator size calculator",

@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Size Calculator: Running Watts",
   description:
-    "Size a backup generator for running watts, motor surge, and NEC 125% headroom to keep pumps and AC running.",
+    "Size a backup generator in minutes. Free calculator - fridge, furnace and sump pump need 1,965W running, 3,465W peak. Worked example inside.",
   path: "/generator-size-calculator",
   ogDescription:
-    "Size a backup generator for running watts, motor surge, and NEC 125% headroom to keep pumps and AC running.",
+    "Size a backup generator in minutes. Free calculator - fridge, furnace and sump pump need 1,965W running, 3,465W peak. Worked example inside.",
 });
 
 export default function GeneratorSizePage() {
