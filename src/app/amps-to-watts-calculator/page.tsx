@@ -12,10 +12,10 @@ import { AMPS_TO_WATTS_FAQS } from "@/lib/calculators/amps-to-watts";
 export const metadata: Metadata = buildPageMetadata({
   title: "Amps to Watts Calculator: 120V, 240V, DC",
   description:
-    "Find real power in watts and kW across 12V DC, 120V, and 240V AC circuits with the NEC 80% continuous limit.",
+    "15 amps is 1,800 watts at 120V. Convert any amps to watts - free calculator for 12V DC, 120V and 240V AC, with NEC 80% limit.",
   path: "/amps-to-watts-calculator",
   ogDescription:
-    "Find real power in watts and kW across 12V DC, 120V, and 240V AC circuits with the NEC 80% continuous limit.",
+    "15 amps is 1,800 watts at 120V. Convert any amps to watts - free calculator for 12V DC, 120V and 240V AC, with NEC 80% limit.",
 });
 
 export default function AmpsToWattsPage() {
