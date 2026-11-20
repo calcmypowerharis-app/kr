@@ -415,7 +415,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Three Phase Power",
     metaTitle: "Three-Phase Power Calculator: kW, kVA, Amps",
     metaDescription:
-      "Solve 3-phase power in kW, kVA, and line current across 208V, 240V, and 480V balanced industrial circuits.",
+      "A 480V motor at 30A and PF 0.85 draws 21.2 kW real power and 24.9 kVA apparent. Free 3-phase power calculator.",
     cluster: "electricity",
     secondaryClusters: ["generators", "solar"],
     primaryKeyword: "3 phase electrical power calculator",

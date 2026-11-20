@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Three-Phase Power Calculator: kW, kVA, Amps",
   description:
-    "Solve 3-phase power in kW, kVA, and line current across 208V, 240V, and 480V balanced industrial circuits.",
+    "A 480V motor at 30A and PF 0.85 draws 21.2 kW real power and 24.9 kVA apparent. Free 3-phase power calculator.",
   path: "/three-phase-power-calculator",
   ogDescription:
-    "Solve 3-phase power in kW, kVA, and line current across 208V, 240V, and 480V balanced industrial circuits.",
+    "A 480V motor at 30A and PF 0.85 draws 21.2 kW real power and 24.9 kVA apparent. Free 3-phase power calculator.",
 });
 
 export default function ThreePhasePowerCalculatorPage() {
