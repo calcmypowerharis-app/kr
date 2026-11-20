@@ -39,7 +39,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "Solar Panels in Series vs Parallel: Wiring",
   description:
-    "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
+    "Two 200W panels in series give 40.8V at 9.8A; in parallel, 20.4V at 19.6A. Free series vs parallel wiring guide.",
   alternates: {
     canonical: "https://calcmypower.com/solar-panels-series-vs-parallel",
   },
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title:
       "Solar Panels in Series vs Parallel: Wiring | CalcMyPower",
     description:
-      "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
+      "Two 200W panels in series give 40.8V at 9.8A; in parallel, 20.4V at 19.6A. Free series vs parallel wiring guide.",
     url: "https://calcmypower.com/solar-panels-series-vs-parallel",
     type: "article",
     publishedTime: "2026-09-30T00:00:00Z",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title:
       "Solar Panels in Series vs Parallel: Wiring | CalcMyPower",
     description:
-      "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
+      "Two 200W panels in series give 40.8V at 9.8A; in parallel, 20.4V at 19.6A. Free series vs parallel wiring guide.",
     images: [
       "https://calcmypower.com/images/articles/solar-panels-series-vs-parallel-wiring.webp",
     ],

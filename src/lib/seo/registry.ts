@@ -682,7 +682,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Solar Panels in Series vs Parallel",
     metaTitle: "Solar Panels in Series vs Parallel: Wiring",
     metaDescription:
-      "Compare solar panels in series vs parallel with wiring schematics, array voltage, current, and MPPT limits.",
+      "Two 200W panels in series give 40.8V at 9.8A; in parallel, 20.4V at 19.6A. Free series vs parallel wiring guide.",
     cluster: "solar",
     parentCalculatorPath: "/solar-panel-tilt-calculator",
     scenarioLink: "/solar-panel-tilt-calculator",
