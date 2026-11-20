@@ -654,7 +654,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "100Ah Battery Runtime Guide",
     metaTitle: "How Long Will a 12V 100Ah Battery Last?",
     metaDescription:
-      "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
+      "A 12V 100Ah battery runs a 100W load for 9.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
     cluster: "ups-battery",
     parentCalculatorPath: "/ups-battery-backup-calculator",
     scenarioLink: "/ups-battery-backup-calculator",

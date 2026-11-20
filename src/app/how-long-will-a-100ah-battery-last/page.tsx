@@ -39,7 +39,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Long Will a 12V 100Ah Battery Last?",
   description:
-    "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
+    "A 12V 100Ah battery runs a 100W load for 9.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
   alternates: {
     canonical: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
   },
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title:
       "How Long Will a 12V 100Ah Battery Last? | CalcMyPower",
     description:
-      "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
+      "A 12V 100Ah battery runs a 100W load for 9.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
     url: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
     type: "article",
     publishedTime: "2026-09-29T00:00:00Z",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title:
       "How Long Will a 12V 100Ah Battery Last? | CalcMyPower",
     description:
-      "Realistic 12V 100Ah battery runtime hours for fridges, TVs, and CPAPs across LiFePO4 vs lead-acid chemistry.",
+      "A 12V 100Ah battery runs a 100W load for 9.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
     images: [
       "https://calcmypower.com/images/articles/12v-100ah-battery-runtime-comparison.webp",
     ],
