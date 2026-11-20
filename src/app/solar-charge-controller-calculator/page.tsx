@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar Charge Controller Sizing Calculator",
   description:
-    "Size MPPT and PWM charge controllers in amps with NEC 125% margins and cold-morning array Voc headroom.",
+    "Size your solar charge controller in amps. Free MPPT and PWM calculator - 400W on 12V needs 33.3A, with NEC 125% margin and cold Voc check.",
   path: "/solar-charge-controller-calculator",
   ogDescription:
-    "Size MPPT and PWM charge controllers in amps with NEC 125% margins and cold-morning array Voc headroom.",
+    "Size your solar charge controller in amps. Free MPPT and PWM calculator - 400W on 12V needs 33.3A, with NEC 125% margin and cold Voc check.",
 });
 
 export default function SolarChargeControllerPage() {

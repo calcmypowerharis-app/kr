@@ -331,7 +331,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     metaTitle: "Solar Charge Controller Sizing Calculator",
     metaDescription:
       
-      "Size MPPT and PWM charge controllers in amps with NEC 125% margins and cold-morning array Voc headroom.",
+      "Size your solar charge controller in amps. Free MPPT and PWM calculator - 400W on 12V needs 33.3A, with NEC 125% margin and cold Voc check.",
     cluster: "solar",
     secondaryClusters: ["ups-battery", "rv-power"],
     primaryKeyword: "solar charge controller calculator",

@@ -865,6 +865,54 @@ export const SolarChargeControllerCalculator: React.FC = () => {
         conclusion="For this 400W 12V system, calculated nominal charging current is 33.3 Amps (400W ÷ 12V). Adding an illustrative 20% planning buffer yields an illustrative planning value of 40.0 Amps, indicating that a standard 40A controller rating class may be considered under these planning assumptions. Under -10°C winter conditions, the array's open-circuit voltage rises to 53.7V, which is within the entered controller voltage limit of 100V with 46.3V of calculated headroom."
       />
 
+      {/* Quick Sizing Table */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+        <div className="flex items-center gap-2.5 mb-4">
+          <div className="p-2 bg-amber-50 text-amber-600 rounded-lg">
+            <Sun className="w-5 h-5" />
+          </div>
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900">
+            Quick sizing table: array watts and battery voltage to controller amps
+          </h2>
+        </div>
+        <div className="overflow-x-auto mb-3">
+          <table className="w-full text-left border-collapse text-xs md:text-sm">
+            <thead>
+              <tr className="border-b border-slate-300 bg-slate-50 text-slate-700">
+                <th className="py-3 px-4 font-bold">Solar Array &amp; Battery Bank</th>
+                <th className="py-3 px-4 font-bold">Nominal Current (Watts ÷ Volts)</th>
+                <th className="py-3 px-4 font-bold text-right">Controller Size with 125% Margin</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 text-slate-700">
+              <tr>
+                <td className="py-3 px-4 font-bold text-slate-900">100W, 12V</td>
+                <td className="py-3 px-4 font-mono">8.33A nominal</td>
+                <td className="py-3 px-4 font-mono font-bold text-blue-600 text-right">10.42A with 125%</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-bold text-slate-900">400W, 12V</td>
+                <td className="py-3 px-4 font-mono">33.33A nominal</td>
+                <td className="py-3 px-4 font-mono font-bold text-blue-600 text-right">41.67A with 125%</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-bold text-slate-900">800W, 24V</td>
+                <td className="py-3 px-4 font-mono">33.33A nominal</td>
+                <td className="py-3 px-4 font-mono font-bold text-blue-600 text-right">41.67A with 125%</td>
+              </tr>
+              <tr>
+                <td className="py-3 px-4 font-bold text-slate-900">2400W, 48V</td>
+                <td className="py-3 px-4 font-mono">50.00A nominal</td>
+                <td className="py-3 px-4 font-mono font-bold text-blue-600 text-right">62.50A with 125%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs sm:text-sm text-slate-500">
+          Nominal current is array watts divided by battery volts. Pick the next controller size above the 125% figure.
+        </p>
+      </section>
+
       {/* Engineering Assumptions & Variables */}
       <AssumptionsSection
         title="Solar Charge Controller Sizing Assumptions & Variables"
