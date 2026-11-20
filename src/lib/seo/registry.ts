@@ -799,7 +799,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "15A vs 20A Circuit Wattage",
     metaTitle: "How Many Watts on a 15-Amp or 20-Amp Circuit?",
     metaDescription:
-      "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
+      "A 15-amp circuit handles 1,800W max, 1,440W continuous. A 20-amp circuit: 2,400W max, 1,920W continuous. Free guide with NEC 80% rule.",
     cluster: "electricity",
     parentCalculatorPath: "/amps-to-watts-calculator",
     scenarioLink: "/amps-to-watts-calculator",

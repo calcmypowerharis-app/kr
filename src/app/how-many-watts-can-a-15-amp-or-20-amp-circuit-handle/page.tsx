@@ -34,7 +34,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Many Watts on a 15-Amp or 20-Amp Circuit?",
   description:
-    "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
+    "A 15-amp circuit handles 1,800W max, 1,440W continuous. A 20-amp circuit: 2,400W max, 1,920W continuous. Free guide with NEC 80% rule.",
   alternates: {
     canonical:
       "https://calcmypower.com/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     title:
       "How Many Watts on a 15-Amp or 20-Amp Circuit? | CalcMyPower",
     description:
-      "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
+      "A 15-amp circuit handles 1,800W max, 1,440W continuous. A 20-amp circuit: 2,400W max, 1,920W continuous. Free guide with NEC 80% rule.",
     url: "https://calcmypower.com/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle",
     type: "article",
     publishedTime: "2026-10-17T00:00:00Z",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title:
       "How Many Watts on a 15-Amp or 20-Amp Circuit? | CalcMyPower",
     description:
-      "Safe wattage limits for 15A and 20A 120V circuits under the NEC 80% continuous load rule and wire gauge sizes.",
+      "A 15-amp circuit handles 1,800W max, 1,440W continuous. A 20-amp circuit: 2,400W max, 1,920W continuous. Free guide with NEC 80% rule.",
     images: [
       "https://calcmypower.com/images/articles/how-many-watts-can-a-15-amp-or-20-amp-circuit-handle.webp",
     ],
