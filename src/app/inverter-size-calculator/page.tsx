@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Inverter Size Calculator: Watts & Surge",
   description:
-    "Size power inverters in continuous and surge watts with DC battery cable gauge (AWG) and fuse ratings.",
+    "A cabin load of 1,430W running needs 1,788W continuous and 2,480W surge. Free inverter size calculator with cable and fuse ratings.",
   path: "/inverter-size-calculator",
   ogDescription:
-    "Size power inverters in continuous and surge watts with DC battery cable gauge (AWG) and fuse ratings.",
+    "A cabin load of 1,430W running needs 1,788W continuous and 2,480W surge. Free inverter size calculator with cable and fuse ratings.",
   keywords: [
     "inverter size calculator",
     "what size inverter do i need",

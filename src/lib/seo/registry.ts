@@ -493,7 +493,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Inverter Size",
     metaTitle: "Inverter Size Calculator: Watts & Surge",
     metaDescription:
-      "Size power inverters in continuous and surge watts with DC battery cable gauge (AWG) and fuse ratings.",
+      "A cabin load of 1,430W running needs 1,788W continuous and 2,480W surge. Free inverter size calculator with cable and fuse ratings.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
     primaryKeyword: "inverter size calculator",
