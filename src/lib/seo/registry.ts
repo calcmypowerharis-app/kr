@@ -185,7 +185,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Battery Capacity",
     metaTitle: "Battery Capacity Calculator: Ah & Wh Sizing",
     metaDescription:
-      "Size 12V, 24V, and 48V battery banks in Ah and Wh with usable DoD limits for LiFePO4 and lead-acid storage.",
+      "Calculate battery bank size in Ah and Wh. Free calculator for 12V, 24V and 48V banks, LiFePO4 and lead-acid, with usable capacity and DoD limits.",
     cluster: "ups-battery",
     secondaryClusters: ["electricity", "solar", "rv-power"],
     primaryKeyword: "battery capacity calculator",

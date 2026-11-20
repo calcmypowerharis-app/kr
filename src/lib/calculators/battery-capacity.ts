@@ -519,4 +519,9 @@ export const BATTERY_CAPACITY_FAQS: BatteryFaqItem[] = [
     answer:
       "Technical guidance from manufacturers like Victron Energy (Wiring Unlimited) recommends paralleling no more than 3 to 4 battery strings. Slight variations in cable resistance, terminal torque, and internal cell chemistry cause current to distribute unevenly among parallel strings. This imbalance leads to premature degradation of the closest string and reduces overall bank longevity unless busbars and diagonal cross-charging wiring are implemented.",
   },
+  {
+    question: "How many usable watt-hours is a 12V 100Ah battery?",
+    answer:
+      "A 12V 100Ah battery stores 1,200 Watt-hours of nominal energy (12V × 100Ah = 1,200 Wh). Usable capacity depends on chemistry: LiFePO4 gives about 1,020 Wh usable (1,200 Wh x 85% DoD); lead-acid gives about 600 Wh usable (1,200 Wh x 50% DoD).",
+  },
 ];

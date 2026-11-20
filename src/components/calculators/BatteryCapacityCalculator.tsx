@@ -1089,6 +1089,49 @@ export const BatteryCapacityCalculator: React.FC = () => {
           }
         />
 
+        {/* Section: Usable Energy Comparison by Chemistry */}
+        <section className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+          <div className="flex items-center gap-2.5 mb-4">
+            <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+              <Battery className="w-5 h-5" />
+            </div>
+            <h2 className="text-xl md:text-2xl font-bold text-slate-900">
+              Same battery, different chemistry: usable energy compared
+            </h2>
+          </div>
+          <div className="overflow-x-auto mb-3">
+            <table className="w-full text-left border-collapse text-xs md:text-sm">
+              <thead>
+                <tr className="border-b border-slate-300 bg-slate-50 text-slate-700">
+                  <th className="py-3 px-4 font-bold">Battery Chemistry</th>
+                  <th className="py-3 px-4 font-bold">Usable DoD</th>
+                  <th className="py-3 px-4 font-bold">Usable Energy Calculation (1,200 Wh Nominal)</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 text-slate-700">
+                <tr>
+                  <td className="py-3 px-4 font-bold text-slate-900">LiFePO4</td>
+                  <td className="py-3 px-4 font-medium text-slate-800">85% usable</td>
+                  <td className="py-3 px-4 font-mono text-emerald-600 font-semibold">1,200 Wh x 0.85 = 1,020 Wh usable</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-slate-900">Lead-acid (AGM / Gel / Flooded)</td>
+                  <td className="py-3 px-4 font-medium text-slate-800">50% usable</td>
+                  <td className="py-3 px-4 font-mono text-amber-600 font-semibold">1,200 Wh x 0.50 = 600 Wh usable</td>
+                </tr>
+                <tr>
+                  <td className="py-3 px-4 font-bold text-slate-900">Lithium-ion NMC</td>
+                  <td className="py-3 px-4 font-medium text-slate-800">80% usable</td>
+                  <td className="py-3 px-4 font-mono text-blue-600 font-semibold">1,200 Wh x 0.80 = 960 Wh usable</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-500">
+            Same 12V 100Ah battery - usable energy changes with chemistry. These DoD figures are the same ones the calculator above uses.
+          </p>
+        </section>
+
         {/* Section 4: Battery Bank Wiring (Series vs Parallel) */}
         <section className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
           <div className="flex items-center gap-2.5 mb-4">

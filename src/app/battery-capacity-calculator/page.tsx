@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Battery Capacity Calculator: Ah & Wh Sizing",
   description:
-    "Size 12V, 24V, and 48V battery banks in Ah and Wh with usable DoD limits for LiFePO4 and lead-acid storage.",
+    "Calculate battery bank size in Ah and Wh. Free calculator for 12V, 24V and 48V banks, LiFePO4 and lead-acid, with usable capacity and DoD limits.",
   path: "/battery-capacity-calculator",
   ogDescription:
-    "Size 12V, 24V, and 48V battery banks in Ah and Wh with usable DoD limits for LiFePO4 and lead-acid storage.",
+    "Calculate battery bank size in Ah and Wh. Free calculator for 12V, 24V and 48V banks, LiFePO4 and lead-acid, with usable capacity and DoD limits.",
 });
 
 export default function BatteryCapacityPage() {
