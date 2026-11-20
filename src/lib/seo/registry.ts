@@ -543,7 +543,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "House Generator Sizing Guide",
     metaTitle: "What Size Generator Do I Need for My House?",
     metaDescription:
-      "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
+      "Most homes need 3,500-5,000 running watts for essentials, 5,000-7,500 with a well pump. Free guide with worked example - 5.1 kW model.",
     cluster: "generators",
     parentCalculatorPath: "/generator-size-calculator",
     scenarioLink: "/generator-size-calculator",

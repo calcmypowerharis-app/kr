@@ -33,7 +33,7 @@ import { ContinuousPowerGuideSection } from "@/components/content/ContinuousPowe
 export const metadata: Metadata = {
   title: "What Size Generator Do I Need for My House?",
   description:
-    "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
+    "Most homes need 3,500-5,000 running watts for essentials, 5,000-7,500 with a well pump. Free guide with worked example - 5.1 kW model.",
   alternates: {
     canonical: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
   },
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What Size Generator Do I Need for My House? | CalcMyPower",
     description:
-      "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
+      "Most homes need 3,500-5,000 running watts for essentials, 5,000-7,500 with a well pump. Free guide with worked example - 5.1 kW model.",
     url: "https://calcmypower.com/what-size-generator-do-i-need-for-my-house",
     type: "article",
     publishedTime: "2026-09-27T08:00:00Z",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Size Generator Do I Need for My House? | CalcMyPower",
     description:
-      "Compare essential vs whole-house generator wattage, motor surge inrush, and avoid square-foot sizing traps.",
+      "Most homes need 3,500-5,000 running watts for essentials, 5,000-7,500 with a well pump. Free guide with worked example - 5.1 kW model.",
     images: [
       "https://calcmypower.com/images/articles/standby-generator-home-installation.webp",
     ],
