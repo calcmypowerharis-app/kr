@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Voltage Drop Calculator: Wire Sizing Tool",
   description:
-    "Find wire gauge voltage drop and percentage loss across 120V, 240V, and DC runs to maintain NEC 3% limits.",
+    "A 16A tool 75 ft away on 12 AWG loses 4.75V (3.96%) - over the NEC 3% limit. 10 AWG drops it to 2.48%. Free voltage drop calculator.",
   path: "/voltage-drop-calculator",
   ogDescription:
-    "Find wire gauge voltage drop and percentage loss across 120V, 240V, and DC runs to maintain NEC 3% limits.",
+    "A 16A tool 75 ft away on 12 AWG loses 4.75V (3.96%) - over the NEC 3% limit. 10 AWG drops it to 2.48%. Free voltage drop calculator.",
 });
 
 export default function VoltageDropCalculatorPage() {

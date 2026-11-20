@@ -360,7 +360,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Voltage Drop",
     metaTitle: "Voltage Drop Calculator: Wire Sizing Tool",
     metaDescription:
-      "Find wire gauge voltage drop and percentage loss across 120V, 240V, and DC runs to maintain NEC 3% limits.",
+      "A 16A tool 75 ft away on 12 AWG loses 4.75V (3.96%) - over the NEC 3% limit. 10 AWG drops it to 2.48%. Free voltage drop calculator.",
     cluster: "electricity",
     secondaryClusters: ["solar", "rv-power", "generators"],
     primaryKeyword: "voltage drop calculator",
