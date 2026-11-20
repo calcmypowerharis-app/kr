@@ -39,7 +39,7 @@ import { ArticleDateByline } from "@/components/article/ArticleDateByline";
 export const metadata: Metadata = {
   title: "How Long Will a 12V 100Ah Battery Last?",
   description:
-    "A 12V 100Ah battery runs a 100W load for 9.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
+    "A 12V 100Ah battery runs a 100W load for 8.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
   alternates: {
     canonical: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
   },
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title:
       "How Long Will a 12V 100Ah Battery Last? | CalcMyPower",
     description:
-      "A 12V 100Ah battery runs a 100W load for 9.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
+      "A 12V 100Ah battery runs a 100W load for 8.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
     url: "https://calcmypower.com/how-long-will-a-100ah-battery-last",
     type: "article",
     publishedTime: "2026-09-29T00:00:00Z",
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
     title:
       "How Long Will a 12V 100Ah Battery Last? | CalcMyPower",
     description:
-      "A 12V 100Ah battery runs a 100W load for 9.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
+      "A 12V 100Ah battery runs a 100W load for 8.7 hours (LiFePO4) or 5.4 hours (lead-acid). Free runtime guide with appliance table.",
     images: [
       "https://calcmypower.com/images/articles/12v-100ah-battery-runtime-comparison.webp",
     ],
@@ -108,7 +108,7 @@ const FAQ_DATA = [
   {
     question: "How long will a 100Ah battery run a 100W load?",
     answer:
-      "Under illustrative benchmark assumptions with a 90% inverter efficiency, a 12V 100Ah LiFePO4 battery (using a 90% depth of discharge, or 1,080Wh usable) will power a 100-Watt AC load for approximately 9.7 hours. A deep-cycle lead-acid battery (using an illustrative 50% depth of discharge, or 600Wh usable) will power the same 100-Watt load for approximately 5.4 hours.",
+      "Under benchmark engineering assumptions with an 85% inverter efficiency, a 12V 100Ah LiFePO4 battery (using an 85% depth of discharge, or 1,020Wh usable DC and 867Wh delivered AC) will power a 100-Watt AC load for approximately 8.7 hours. A deep-cycle lead-acid battery (using an illustrative 50% depth of discharge, or 600Wh usable) will power the same 100-Watt load for approximately 5.4 hours.",
   },
   {
     question: "Can a 100Ah battery run a full-size residential refrigerator?",
@@ -250,12 +250,12 @@ export default function BatteryRuntimeGuidePage() {
             {/* Hero Image with Fullscreen Lightbox Zoom */}
             <ZoomableArticleImage
               src="/images/articles/12v-100ah-battery-runtime-comparison.webp"
-              alt="Educational chart comparing 12V 100Ah battery runtime in hours across common electrical loads for modern LiFePO4 at 90 percent depth of discharge versus lead-acid AGM at 50 percent depth of discharge"
+              alt="Educational chart comparing 12V 100Ah battery runtime in hours across common electrical loads for modern LiFePO4 at 85 percent depth of discharge versus lead-acid AGM at 50 percent depth of discharge"
               caption="Comparing delivered operating runtime across common DC and AC loads for a 12V 100Ah LiFePO4 lithium battery versus a deep-cycle lead-acid AGM battery under benchmark test assumptions."
             >
               <Image
                 src="/images/articles/12v-100ah-battery-runtime-comparison.webp"
-                alt="Educational chart comparing 12V 100Ah battery runtime in hours across common electrical loads for modern LiFePO4 at 90 percent depth of discharge versus lead-acid AGM at 50 percent depth of discharge"
+                alt="Educational chart comparing 12V 100Ah battery runtime in hours across common electrical loads for modern LiFePO4 at 85 percent depth of discharge versus lead-acid AGM at 50 percent depth of discharge"
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 800px"
@@ -280,17 +280,17 @@ export default function BatteryRuntimeGuidePage() {
                       LiFePO4 Lithium (12V 100Ah)
                     </span>
                     <span className="text-xs font-semibold px-2 py-0.5 rounded bg-blue-200 text-blue-900">
-                      Illustrative ~90% DoD
+                      Recommended ~85% DoD
                     </span>
                   </div>
                   <div className="text-3xl font-black text-blue-950 mb-1">
-                    ~9.7 Hours
+                    ~8.7 Hours
                   </div>
                   <div className="text-xs font-medium text-blue-800 mb-2">
                     Powering a continuous 100W AC load via inverter
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Provides approximately 1,080 Watt-hours of usable energy. At a 90% inverter efficiency, it delivers ~972 Wh of AC electricity to appliances.
+                    Provides approximately 1,020 Watt-hours of usable energy. At an 85% inverter efficiency, it delivers ~867 Wh of AC electricity to appliances.
                   </p>
                 </div>
 
@@ -321,19 +321,19 @@ export default function BatteryRuntimeGuidePage() {
 
               <ul className="space-y-2 list-disc pl-5 text-sm md:text-base">
                 <li>
-                  <strong>Wi-Fi Router &amp; Modem (15W direct DC):</strong> 38 to 40 hours on lead-acid; 68 to 72 hours on LiFePO4.
+                  <strong>Wi-Fi Router &amp; Modem (15W direct DC):</strong> 38 to 40 hours on lead-acid; 60 to 65 hours on LiFePO4.
                 </li>
                 <li>
-                  <strong>Laptop Computer (60W AC via inverter):</strong> 9 hours on lead-acid; 16 hours on LiFePO4 (roughly 8 to 15 full laptop recharges).
+                  <strong>Laptop Computer (60W AC via inverter):</strong> 9 hours on lead-acid; 14.5 hours on LiFePO4 (roughly 8 to 14 full laptop recharges).
                 </li>
                 <li>
-                  <strong>43-Inch LED Smart TV (55W AC via inverter):</strong> 9.8 hours on lead-acid; 17.6 hours on LiFePO4.
+                  <strong>43-Inch LED Smart TV (55W AC via inverter):</strong> 9.8 hours on lead-acid; 15.8 hours on LiFePO4.
                 </li>
                 <li>
-                  <strong>CPAP Machine without heated humidity (15W DC):</strong> 38 to 40 hours on lead-acid; 68 to 72 hours on LiFePO4 (5 to 9 full nights of sleep).
+                  <strong>CPAP Machine without heated humidity (15W DC):</strong> 38 to 40 hours on lead-acid; 60 to 65 hours on LiFePO4 (5 to 8 full nights of sleep).
                 </li>
                 <li>
-                  <strong>Residential Refrigerator (40W to 55W average combined draw):</strong> 11 to 14 hours on lead-acid; 19 to 24 hours on LiFePO4.
+                  <strong>Residential Refrigerator (40W to 55W average combined draw):</strong> 11 to 14 hours on lead-acid; 16 to 19 hours on LiFePO4.
                 </li>
                 <li>
                   <strong>Space Heater or Toaster (1,200W AC):</strong> Not recommended. A 100Ah battery will be depleted or tripped on low-voltage shutdown in 15 to 45 minutes.
@@ -422,12 +422,12 @@ export default function BatteryRuntimeGuidePage() {
                     <tr>
                       <td className="py-3 px-4 font-bold text-slate-900">Recommended Depth of Discharge (DoD)</td>
                       <td className="py-3 px-4">Illustrative benchmark: 50% max recommended</td>
-                      <td className="py-3 px-4 font-semibold text-blue-700">Illustrative benchmark: 80% to 90% usable</td>
+                      <td className="py-3 px-4 font-semibold text-blue-700">Recommended benchmark: 80% to 85% usable</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-4 font-bold text-slate-900">Delivered Usable Energy</td>
                       <td className="py-3 px-4 font-mono">~500 to 600 Wh (40 to 50 Ah)</td>
-                      <td className="py-3 px-4 font-mono font-semibold text-emerald-600">~960 to 1,080 Wh (80 to 90 Ah)</td>
+                      <td className="py-3 px-4 font-mono font-semibold text-emerald-600">~960 to 1,020 Wh (80 to 85 Ah)</td>
                     </tr>
                     <tr>
                       <td className="py-3 px-4 font-bold text-slate-900">Discharge Voltage Curve</td>
@@ -447,7 +447,7 @@ export default function BatteryRuntimeGuidePage() {
                     <tr>
                       <td className="py-3 px-4 font-bold text-slate-900">Typical Expected Cycle Life</td>
                       <td className="py-3 px-4">300 to 500 cycles (at 50% DoD)</td>
-                      <td className="py-3 px-4 font-semibold text-emerald-600">3,000 to 5,000+ cycles (at 80% to 90% DoD)</td>
+                      <td className="py-3 px-4 font-semibold text-emerald-600">3,000 to 5,000+ cycles (at 80% to 85% DoD)</td>
                     </tr>
                   </tbody>
                 </table>
@@ -463,13 +463,13 @@ export default function BatteryRuntimeGuidePage() {
                 For traditional lead-acid chemistries (flooded, sealed AGM, and Gel), draining past 50% DoD causes rapid plate sulfation, grid corrosion, and premature cell failure. When a manufacturer recommends a 50% DoD ceiling, your 100Ah battery is effectively a 50Ah usable storage reservoir under daily cycling.
               </p>
               <p>
-                In contrast, Lithium Iron Phosphate (LiFePO4) chemistry allows deeper regular discharge. Most manufacturers approve discharging to 80% or 90% without rapid cell degradation.
+                In contrast, Lithium Iron Phosphate (LiFePO4) chemistry allows deeper regular discharge. Most manufacturers approve discharging to 80% to 85% without rapid cell degradation.
               </p>
               <p>
-                Discharging 90% of a 100Ah LiFePO4 battery releases 90Ah (1,080 Wh) of energy, giving you nearly double the operational service hours of an identically rated lead-acid unit.
+                Discharging 85% of a 100Ah LiFePO4 battery releases 85Ah (1,020 Wh) of energy, giving you nearly double the operational service hours of an identically rated lead-acid unit.
               </p>
               <p className="text-xs text-slate-500 italic">
-                Note: Recommended DoD varies by battery model, operating temperature, and manufacturer specifications. The figures of 50% for lead-acid and 90% for LiFePO4 are illustrative engineering benchmarks used throughout this guide to demonstrate practical runtime differences.
+                Note: Recommended DoD varies by battery model, operating temperature, and manufacturer specifications. The figures of 50% for lead-acid and 85% for LiFePO4 are conservative engineering benchmarks used throughout this guide to demonstrate practical runtime differences.
               </p>
 
               <h3 className="text-xl font-bold text-slate-900">
@@ -510,7 +510,7 @@ export default function BatteryRuntimeGuidePage() {
                   <strong>Nominal Wh:</strong> Voltage × Rated Ah (12V × 100Ah = 1,200 Wh).
                 </div>
                 <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
-                  <strong>Usable Fraction:</strong> Permitted DoD (e.g. 0.90 for LiFePO4; 0.50 for lead-acid).
+                  <strong>Usable Fraction:</strong> Permitted DoD (e.g. 0.85 for LiFePO4; 0.50 for lead-acid).
                 </div>
                 <div className="p-3 bg-slate-50 rounded-lg border border-slate-200">
                   <strong>System Efficiency:</strong> DC-to-AC inverter conversion efficiency (typically 0.85 to 0.92) or DC circuit efficiency (~0.95).
@@ -531,13 +531,13 @@ export default function BatteryRuntimeGuidePage() {
                 <div className="p-4 rounded-xl border border-blue-200 bg-white shadow-sm space-y-2">
                   <div className="font-bold text-slate-900 text-sm flex items-center justify-between">
                     <span>Scenario A: 12V 100Ah LiFePO4 Lithium Battery</span>
-                    <span className="text-xs font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded">90% DoD</span>
+                    <span className="text-xs font-mono text-blue-600 bg-blue-50 px-2 py-0.5 rounded">85% DoD</span>
                   </div>
                   <ol className="list-decimal pl-5 text-xs md:text-sm space-y-1 text-slate-600">
                     <li>Calculate nominal battery energy: 12V × 100Ah = 1,200 Wh</li>
-                    <li>Apply usable depth of discharge (90%): 1,200 Wh × 0.90 = 1,080 Wh usable</li>
-                    <li>Apply inverter efficiency (90%): 1,080 Wh × 0.90 = 972 delivered AC Wh</li>
-                    <li>Divide by appliance draw (100W): 972 Wh ÷ 100W = <strong>9.72 hours (~9.7 hours)</strong></li>
+                    <li>Apply usable depth of discharge (85%): 1,200 Wh × 0.85 = 1,020 Wh usable</li>
+                    <li>Apply inverter efficiency (85%): 1,020 Wh × 0.85 = 867 delivered AC Wh</li>
+                    <li>Divide by appliance draw (100W): 867 Wh ÷ 100W = <strong>8.67 hours (~8.7 hours)</strong></li>
                   </ol>
                 </div>
 
@@ -556,7 +556,7 @@ export default function BatteryRuntimeGuidePage() {
               </div>
 
               <p className="text-xs text-slate-500">
-                These calculations illustrate why a single 12V 100Ah LiFePO4 battery delivers nearly 80% more operational time than a lead-acid battery under identical load conditions.
+                These calculations illustrate why a single 12V 100Ah LiFePO4 battery delivers nearly 60% more operational time than a lead-acid battery under identical load conditions.
               </p>
             </section>
 
@@ -662,9 +662,9 @@ export default function BatteryRuntimeGuidePage() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs md:text-sm">
                   <div className="p-3 rounded-lg bg-blue-50/50 border border-blue-100 space-y-1">
-                    <span className="font-semibold text-blue-900">12V 100Ah LiFePO4 (90% DoD):</span>
+                    <span className="font-semibold text-blue-900">12V 100Ah LiFePO4 (85% DoD):</span>
                     <p className="text-slate-600">
-                      Usable capacity: 1,080 Wh. With an average combined draw of 45W to 55W (including compressor cycling and inverter tare draw), delivered runtime is <strong>roughly 19 to 24 hours</strong>.
+                      Usable capacity: 867 delivered AC Wh (1,020 Wh DC). With an average combined draw of 45W to 55W (including compressor cycling and inverter tare draw), delivered runtime is <strong>roughly 16 to 19 hours</strong>.
                     </p>
                   </div>
                   <div className="p-3 rounded-lg bg-amber-50/50 border border-amber-100 space-y-1">
@@ -712,7 +712,7 @@ export default function BatteryRuntimeGuidePage() {
               </p>
 
               <div className="p-3 rounded-lg bg-slate-100 text-xs text-slate-600 leading-normal mb-3">
-                <strong>Benchmark Assumptions:</strong> 12V 100Ah nominal = 1,200 Wh. LiFePO4 usable = 90% (1,080 Wh); Lead-Acid AGM usable = 50% (600 Wh). AC loads assume a 90% inverter efficiency (0.90); direct DC loads assume 95% circuit efficiency (0.95). Real-world draw varies by appliance model, age, and temperature.
+                <strong>Benchmark Assumptions:</strong> 12V 100Ah nominal = 1,200 Wh. LiFePO4 usable = 85% DoD (1,020 Wh DC); Lead-Acid AGM usable = 50% (600 Wh). AC loads for LiFePO4 assume 85% inverter efficiency (867 Wh net); direct DC loads assume 95% circuit efficiency (969 Wh net). Real-world draw varies by appliance model, age, and temperature.
               </div>
 
               <div className="overflow-x-auto my-6 border border-slate-200 rounded-xl">
@@ -724,7 +724,7 @@ export default function BatteryRuntimeGuidePage() {
                       <th className="py-3 px-3.5 font-bold">Circuit Type</th>
                       <th className="py-3 px-3.5 font-bold">Operating Mode</th>
                       <th className="py-3 px-3.5 font-bold text-amber-700">Lead-Acid Runtime (50% DoD)</th>
-                      <th className="py-3 px-3.5 font-bold text-blue-700">LiFePO4 Runtime (90% DoD)</th>
+                      <th className="py-3 px-3.5 font-bold text-blue-700">LiFePO4 Runtime (85% DoD)</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 text-slate-700">
@@ -734,7 +734,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">12V DC</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Continuous 100%</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~38.0 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~68.4 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~64.6 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">12V LED Interior / Camp Lights</td>
@@ -742,7 +742,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">12V DC</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Continuous 100%</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~28.5 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~51.3 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~48.5 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">12V Portable RV/Overland Fridge</td>
@@ -750,7 +750,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">12V DC</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">~30% duty cycle</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~38.0 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~68.4 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~64.6 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">CPAP Machine (No Humidity / Heat)</td>
@@ -758,7 +758,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">12V DC</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Continuous 100%</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~38.0 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~68.4 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~64.6 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Laptop Computer Charging</td>
@@ -766,7 +766,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Active charging</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~9.0 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~16.2 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~14.5 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">43-Inch LED Smart TV</td>
@@ -774,7 +774,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Continuous watching</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~9.8 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~17.6 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~15.8 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Full-Size Residential Fridge</td>
@@ -782,7 +782,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">~35% duty cycle + tare</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~12.0 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~21.6 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~19.3 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">CPAP Machine (Heated Hose &amp; Humidifier)</td>
@@ -790,7 +790,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Humidifier active</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~9.0 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~16.2 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~14.5 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Standard 20-Inch Box Fan</td>
@@ -798,7 +798,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Medium speed</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~10.8 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~19.4 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~17.3 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Standard Continuous 100W Benchmark</td>
@@ -806,7 +806,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Continuous 100%</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~5.4 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~9.7 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~8.7 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Continuous 200W Load</td>
@@ -814,7 +814,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Continuous 100%</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~2.7 Hours</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~4.9 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~4.3 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Continuous 500W Load</td>
@@ -822,7 +822,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Continuous 100%</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~1.1 Hours*</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~1.9 Hours</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~1.7 Hours</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Residential Sump Pump (1/3 HP)</td>
@@ -830,7 +830,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Intermittent (~10% cycle)</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~6.8 Hours (40 mins pump)</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~12.2 Hours (73 mins pump)</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~10.8 Hours (65 mins pump)</td>
                     </tr>
                     <tr className="hover:bg-slate-50/50">
                       <td className="py-3 px-3.5 font-semibold text-slate-900">Microwave Oven (Compact)</td>
@@ -838,7 +838,7 @@ export default function BatteryRuntimeGuidePage() {
                       <td className="py-3 px-3.5 font-medium">120V AC (Inverter)</td>
                       <td className="py-3 px-3.5 text-xs text-slate-500">Active heating</td>
                       <td className="py-3 px-3.5 font-mono text-amber-800">~20 to 25 Minutes*</td>
-                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~50 Minutes</td>
+                      <td className="py-3 px-3.5 font-mono font-semibold text-blue-700">~47 Minutes</td>
                     </tr>
                   </tbody>
                 </table>
@@ -877,7 +877,7 @@ export default function BatteryRuntimeGuidePage() {
                     </div>
                   </div>
                   <p className="text-xs md:text-sm text-slate-600">
-                    A single <strong>12V 100Ah LiFePO4 battery</strong> (1,080 Wh usable) will easily power this communication hub for <strong>2.3 full days (roughly 55 hours)</strong> without needing solar or generator recharge. A 100Ah AGM battery (600 Wh usable) delivers approximately <strong>1.3 days (31 hours)</strong>.
+                    A single <strong>12V 100Ah LiFePO4 battery</strong> (969 Wh usable DC) will easily power this communication hub for <strong>2.1 full days (roughly 51 hours)</strong> without needing solar or generator recharge. A 100Ah AGM battery (600 Wh usable) delivers approximately <strong>1.3 days (31 hours)</strong>.
                   </p>
                 </div>
 
@@ -925,7 +925,7 @@ export default function BatteryRuntimeGuidePage() {
                     </div>
                   </div>
                   <p className="text-xs md:text-sm text-slate-600">
-                    On a 100Ah LiFePO4 battery (1,080 Wh usable), the camper can boondock for <strong>almost two full days (46 hours)</strong> with zero solar generation. On lead-acid (600 Wh usable), the battery must be recharged every 24 hours.
+                    On a 100Ah LiFePO4 battery (969 Wh usable DC), the camper can boondock for <strong>1.75 days (roughly 42 hours)</strong> with zero solar generation. On lead-acid (600 Wh usable), the battery must be recharged every 24 hours.
                   </p>
                   <p className="text-xs md:text-sm text-slate-600">
                     Pairing rooftop solar panels tilted with our <Link href="/solar-panel-tilt-calculator" className="text-blue-600 hover:underline font-medium">Solar Panel Tilt Angle Calculator</Link> allows off-grid replenishment during sunny daylight hours.
@@ -1029,7 +1029,7 @@ export default function BatteryRuntimeGuidePage() {
                     How many hours or minutes the battery can supply power to your electrical devices before its voltage drops to its safe cutoff threshold and requires a recharge.
                   </p>
                   <div className="text-xs font-semibold text-slate-700 bg-slate-50 p-2 rounded border border-slate-200">
-                    Example: Running a 55W TV for 17.6 hours on a 100Ah LiFePO4 battery.
+                    Example: Running a 55W TV for 15.8 hours on a 100Ah LiFePO4 battery.
                   </div>
                 </div>
 
@@ -1063,7 +1063,7 @@ export default function BatteryRuntimeGuidePage() {
                   <strong>Sealed AGM Lead-Acid:</strong> Delivers roughly 400 to 600 cycles at 50% DoD under proper temperature-compensated float charging.
                 </li>
                 <li>
-                  <strong>LiFePO4 Lithium Iron Phosphate:</strong> Delivers 3,000 to 5,000+ cycles at 80% to 90% DoD. Even after 4,000 full cycles, the battery does not die; it simply retains ~80% of its initial 100Ah capacity.
+                  <strong>LiFePO4 Lithium Iron Phosphate:</strong> Delivers 3,000 to 5,000+ cycles at 80% to 85% DoD. Even after 4,000 full cycles, the battery does not die; it simply retains ~80% of its initial 100Ah capacity.
                 </li>
               </ul>
               <p>
