@@ -54,7 +54,7 @@ export default function Home() {
             <div className="lg:col-span-7 space-y-5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-100 border border-slate-200/90 text-xs font-mono font-semibold text-slate-800">
                 <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span>Industrial-Grade US Power Calculators</span>
+                <span>Free calculators - no sign-up</span>
               </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-[1.1]">
@@ -62,7 +62,7 @@ export default function Home() {
               </h1>
 
               <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
-                Practical engineering tools for US homeowners, electricians, and off-grid installers. Built with published equations, transparent assumptions, and National Electrical Code (NEC) continuous-load margins.
+                Free calculation tools for US homeowners, electricians, and solar installers. Each tool shows its formula, assumptions, and National Electrical Code (NEC) continuous-load margins.
               </p>
 
               {/* Quick Jump Action Pills to Categories */}
@@ -141,7 +141,7 @@ export default function Home() {
                 Engineering Workbench Calculators
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                Select a tool below to size electrical equipment, evaluate storage capacity, and verify conductor limits.
+                Pick a calculator below. Answer a few questions, get the size in seconds.
               </p>
             </div>
             <Link
@@ -636,7 +636,7 @@ export default function Home() {
                 </h2>
               </div>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                Practical calculation walk-throughs, NEC code compliance baselines, and printable engineering schematics.
+                Step-by-step guides that show the maths, with the NEC rule it follows.
               </p>
             </div>
             <Link
@@ -1014,7 +1014,7 @@ export default function Home() {
                 <h2>Calculation Methodology &amp; Engineering Baselines</h2>
               </div>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                Every CalcMyPower tool displays its governing mathematical formula, efficiency derates, and code references. We explicitly differentiate between <code className="font-mono text-slate-800 bg-white px-1.5 py-0.5 rounded border border-slate-200">1.25x</code> continuous-load safety rules (NEC Article 210/430) and empirical equipment surge allowances.
+                Every tool shows its formula, the losses it allows for, and the code rule it follows. We explicitly differentiate between <code className="font-mono text-slate-800 bg-white px-1.5 py-0.5 rounded border border-slate-200">1.25x</code> continuous-load safety rules (NEC Article 210/430) and empirical equipment surge allowances.
               </p>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                 Review our full formula derivations on our <Link href="/about" className="text-blue-600 font-semibold hover:underline">About &amp; Methodology page</Link>, submit feedback via our <Link href="/contact" className="text-blue-600 font-semibold hover:underline">Contact desk</Link>, or read our <Link href="/terms" className="text-blue-600 font-semibold hover:underline">Terms of Service</Link> and <Link href="/privacy" className="text-blue-600 font-semibold hover:underline">Privacy Policy</Link>.
