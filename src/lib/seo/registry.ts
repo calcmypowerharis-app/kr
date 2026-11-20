@@ -593,7 +593,7 @@ export const GUIDE_REGISTRY: GuideRegistryEntry[] = [
     shortTitle: "Battery Amp-Hours Explained",
     metaTitle: "What Does Ah Mean on a Battery? (Amp-Hours)",
     metaDescription:
-      "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
+      "A 12V 100Ah battery holds 1,200 Wh - it can run 5 amps for 20 hours or 10 amps for 10 hours. Free Ah to Wh guide.",
     cluster: "ups-battery",
     parentCalculatorPath: "/ups-battery-backup-calculator",
     scenarioLink: "/ups-battery-backup-calculator",

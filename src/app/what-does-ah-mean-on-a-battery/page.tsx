@@ -34,7 +34,7 @@ import ZoomableArticleImage from "@/components/article/ZoomableArticleImage";
 export const metadata: Metadata = {
   title: "What Does Ah Mean on a Battery? (Amp-Hours)",
   description:
-    "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
+    "A 12V 100Ah battery holds 1,200 Wh - it can run 5 amps for 20 hours or 10 amps for 10 hours. Free Ah to Wh guide.",
   alternates: {
     canonical: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
   },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "What Does Ah Mean on a Battery? (Amp-Hours) | CalcMyPower",
     description:
-      "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
+      "A 12V 100Ah battery holds 1,200 Wh - it can run 5 amps for 20 hours or 10 amps for 10 hours. Free Ah to Wh guide.",
     url: "https://calcmypower.com/what-does-ah-mean-on-a-battery",
     type: "article",
     publishedTime: "2026-09-28T00:00:00Z",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "What Does Ah Mean on a Battery? (Amp-Hours) | CalcMyPower",
     description:
-      "Learn what battery Amp-hours (Ah) mean, convert Ah to Wh, and see how discharge rate affects usable capacity.",
+      "A 12V 100Ah battery holds 1,200 Wh - it can run 5 amps for 20 hours or 10 amps for 10 hours. Free Ah to Wh guide.",
     images: [
       "https://calcmypower.com/images/articles/deep-cycle-battery-amp-hours.webp",
     ],
