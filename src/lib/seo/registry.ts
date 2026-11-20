@@ -275,7 +275,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar Panel Tilt",
     metaTitle: "Solar Panel Tilt & Angle Calculator",
     metaDescription:
-      "Find optimal solar panel tilt angles by latitude with seasonal adjustments and roof pitch slope conversions.",
+      "At 38° latitude, the best fixed tilt is 32° - a 4/12 roof sits at 18.4°, 13.6° off. Free solar tilt calculator with seasonal angles.",
     cluster: "solar",
     secondaryClusters: ["rv-power", "home-energy"],
     primaryKeyword: "solar panel angle calculator",
