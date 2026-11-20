@@ -11,10 +11,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Generator Fuel Consumption Calculator",
   description:
-    "Track generator fuel burn in gal/hr and tank runtime for gas, propane, and diesel backup sets under load.",
+    "A 3,500-4,500W generator burns 0.38 gallons per hour at half load - 9.1 gallons a day. Free fuel calculator for gas, propane and diesel.",
   path: "/generator-fuel-consumption-calculator",
   ogDescription:
-    "Track generator fuel burn in gal/hr and tank runtime for gas, propane, and diesel backup sets under load.",
+    "A 3,500-4,500W generator burns 0.38 gallons per hour at half load - 9.1 gallons a day. Free fuel calculator for gas, propane and diesel.",
 });
 
 import { GENERATOR_FUEL_FAQS } from "@/lib/calculators/generator-fuel";

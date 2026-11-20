@@ -118,7 +118,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     title: 'Generator Fuel Consumption Calculator',
     shortTitle: 'Generator Fuel',
     metaTitle: "Generator Fuel Consumption Calculator",
-    metaDescription: "Track generator fuel burn in gal/hr and tank runtime for gas, propane, and diesel backup sets under load.",
+    metaDescription: "A 3,500-4,500W generator burns 0.38 gallons per hour at half load - 9.1 gallons a day. Free fuel calculator for gas, propane and diesel.",
     cluster: 'generators',
     primaryKeyword: 'generator fuel consumption calculator',
     formula: 'Cost = (Fuel Rate) * Price | Runtime = Capacity / (Fuel Rate)',
