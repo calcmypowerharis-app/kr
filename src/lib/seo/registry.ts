@@ -388,7 +388,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Solar System Size",
     metaTitle: "Solar System Size Calculator: kW & Panels",
     metaDescription:
-      "Size rooftop solar arrays in kW and panel count from monthly kWh use, peak sun hours, and derate factors.",
+      "An average US home needs 8.55 kW of solar - about 22 panels at 400W. Free calculator from monthly kWh, peak sun hours and derate.",
     cluster: "solar",
     secondaryClusters: ["home-energy", "rv-power"],
     primaryKeyword: "solar system size calculator",

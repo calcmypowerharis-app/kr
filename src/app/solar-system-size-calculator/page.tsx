@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Solar System Size Calculator: kW & Panels",
   description:
-    "Size rooftop solar arrays in kW and panel count from monthly kWh use, peak sun hours, and derate factors.",
+    "An average US home needs 8.55 kW of solar - about 22 panels at 400W. Free calculator from monthly kWh, peak sun hours and derate.",
   path: "/solar-system-size-calculator",
   ogDescription:
-    "Size rooftop solar arrays in kW and panel count from monthly kWh use, peak sun hours, and derate factors.",
+    "An average US home needs 8.55 kW of solar - about 22 panels at 400W. Free calculator from monthly kWh, peak sun hours and derate.",
 });
 
 export default function SolarSystemSizeCalculatorPage() {
