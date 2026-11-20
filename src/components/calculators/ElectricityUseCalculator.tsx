@@ -967,6 +967,87 @@ export const ElectricityUseCalculator: React.FC = () => {
         conclusion="The complete entertainment setup consumes 1,310 Watt-hours (1.31 kWh) per day, resulting in 39.3 kWh per month. At $0.16 per kWh, running this entertainment setup accounts for approximately $6.29 on the monthly electric bill."
       />
 
+      {/* Common Appliances kWh Usage Reference Table */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm space-y-4">
+        <div>
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">
+            Common appliances: how many kWh do they use?
+          </h2>
+          <p className="text-sm text-slate-600 leading-relaxed mt-1">
+            Reference table showing daily electrical consumption for standard household appliances based on continuous wattage, daily run time, and duty cycles:
+          </p>
+        </div>
+
+        <div className="overflow-x-auto rounded-xl border border-slate-200">
+          <table className="min-w-full text-xs sm:text-sm text-left divide-y divide-slate-200">
+            <thead className="bg-slate-50 text-slate-700 font-bold">
+              <tr>
+                <th className="py-3 px-4">Appliance</th>
+                <th className="py-3 px-4">Running Power</th>
+                <th className="py-3 px-4">Daily Usage / Duty Cycle</th>
+                <th className="py-3 px-4">Calculation</th>
+                <th className="py-3 px-4 font-mono">Daily Energy</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-slate-700">
+              <tr className="hover:bg-slate-50/70 transition">
+                <td className="py-2.5 px-4 font-semibold text-slate-900">LED TV</td>
+                <td className="py-2.5 px-4 font-mono">100W</td>
+                <td className="py-2.5 px-4">5 hours/day</td>
+                <td className="py-2.5 px-4 font-mono text-slate-600">100W × 5h</td>
+                <td className="py-2.5 px-4 font-mono font-bold text-blue-700">0.50 kWh/day</td>
+              </tr>
+              <tr className="hover:bg-slate-50/70 transition">
+                <td className="py-2.5 px-4 font-semibold text-slate-900">Audio amplifier</td>
+                <td className="py-2.5 px-4 font-mono">150W</td>
+                <td className="py-2.5 px-4">3 hours/day</td>
+                <td className="py-2.5 px-4 font-mono text-slate-600">150W × 3h</td>
+                <td className="py-2.5 px-4 font-mono font-bold text-blue-700">0.45 kWh/day</td>
+              </tr>
+              <tr className="hover:bg-slate-50/70 transition">
+                <td className="py-2.5 px-4 font-semibold text-slate-900">Streaming box</td>
+                <td className="py-2.5 px-4 font-mono">15W</td>
+                <td className="py-2.5 px-4">24 hours/day (continuous)</td>
+                <td className="py-2.5 px-4 font-mono text-slate-600">15W × 24h</td>
+                <td className="py-2.5 px-4 font-mono font-bold text-blue-700">0.36 kWh/day</td>
+              </tr>
+              <tr className="hover:bg-slate-50/70 transition">
+                <td className="py-2.5 px-4 font-semibold text-slate-900">Computer</td>
+                <td className="py-2.5 px-4 font-mono">200W</td>
+                <td className="py-2.5 px-4">8 hours/day</td>
+                <td className="py-2.5 px-4 font-mono text-slate-600">200W × 8h</td>
+                <td className="py-2.5 px-4 font-mono font-bold text-blue-700">1.60 kWh/day</td>
+              </tr>
+              <tr className="hover:bg-slate-50/70 transition">
+                <td className="py-2.5 px-4 font-semibold text-slate-900">Space heater</td>
+                <td className="py-2.5 px-4 font-mono">1500W</td>
+                <td className="py-2.5 px-4">2 hours/day</td>
+                <td className="py-2.5 px-4 font-mono text-slate-600">1500W × 2h</td>
+                <td className="py-2.5 px-4 font-mono font-bold text-blue-700">3.00 kWh/day</td>
+              </tr>
+              <tr className="hover:bg-slate-50/70 transition">
+                <td className="py-2.5 px-4 font-semibold text-slate-900">Microwave</td>
+                <td className="py-2.5 px-4 font-mono">1000W</td>
+                <td className="py-2.5 px-4">0.1 hour/day (6 min)</td>
+                <td className="py-2.5 px-4 font-mono text-slate-600">1000W × 0.1h</td>
+                <td className="py-2.5 px-4 font-mono font-bold text-blue-700">0.10 kWh/day</td>
+              </tr>
+              <tr className="hover:bg-slate-50/70 transition">
+                <td className="py-2.5 px-4 font-semibold text-slate-900">Refrigerator</td>
+                <td className="py-2.5 px-4 font-mono">150W (nameplate)</td>
+                <td className="py-2.5 px-4">33% duty cycle (~50W average)</td>
+                <td className="py-2.5 px-4 font-mono text-slate-600">~50W × 24h</td>
+                <td className="py-2.5 px-4 font-mono font-bold text-blue-700">~1.20 kWh/day</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p className="text-xs text-slate-500 italic">
+          These are the same figures used in the worked example above: add your own appliances in the calculator.
+        </p>
+      </section>
+
       {/* Assumptions Section */}
       <AssumptionsSection
         title="Calculation Assumptions & Engineering Limitations"

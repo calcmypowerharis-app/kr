@@ -442,7 +442,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Electricity Usage",
     metaTitle: "Electricity Usage Calculator: Appliance kWh",
     metaDescription:
-      "Track appliance electricity use in daily and monthly kWh from operating wattage, run hours, and duty cycles.",
+      "Calculate electricity usage in kWh for any appliance. Free calculator with worked examples - daily and monthly kWh from watts, hours and duty cycle.",
     cluster: "electricity",
     secondaryClusters: ["home-energy", "solar", "ups-battery"],
     primaryKeyword: "electricity usage calculator",

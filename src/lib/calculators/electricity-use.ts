@@ -542,5 +542,10 @@ export const ELECTRICITY_USE_FAQS = [
     answer:
       "Watts (W) and kilowatts (kW) measure power, which is the instantaneous rate of electrical energy flow. Watt-hours (Wh) and kilowatt-hours (kWh) measure energy, which is the total quantity of electricity consumed over duration. A 1,000W microwave running for 6 minutes (0.1 hours) consumes only 100 Watt-hours (0.1 kWh).",
   },
+  {
+    question: "How many kWh does the average American home use per month?",
+    answer:
+      "About 890 to 900 kWh per month, according to the U.S. Energy Information Administration (EIA Form EIA-861M), with an average electric bill of roughly $155 to $165 per month depending on state rates and climate.",
+  },
 ];
 
