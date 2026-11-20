@@ -12,10 +12,10 @@ import { WATTS_TO_AMPS_FAQS } from "@/lib/calculators/watts-to-amps";
 export const metadata: Metadata = buildPageMetadata({
   title: "Watts to Amps Calculator: 120V, 240V, DC",
   description:
-    "Find circuit current in amps across 12V DC, 120V, 240V, and 3-phase power with NEC 125% breaker sizing rules.",
+    "1,500 watts is 12.5 amps at 120V. Convert any watts to amps - free calculator for 12V DC, 120V, 240V and 3-phase, with NEC 125% breaker rules.",
   path: "/watts-to-amps-calculator",
   ogDescription:
-    "Find circuit current in amps across 12V DC, 120V, 240V, and 3-phase power with NEC 125% breaker sizing rules.",
+    "1,500 watts is 12.5 amps at 120V. Convert any watts to amps - free calculator for 12V DC, 120V, 240V and 3-phase, with NEC 125% breaker rules.",
 });
 
 export default function WattsToAmpsPage() {
