@@ -838,7 +838,7 @@ export const CORE_ROUTE_REGISTRY: CoreRouteRegistryEntry[] = [
     title: "CalcMyPower | Power, Energy & Electrical Calculators",
     metaTitle: "CalcMyPower | Power, Energy & Electrical Calculators",
     metaDescription:
-      "Size backup battery banks, convert watts to amps, and calculate generator wattage using transparent engineering formulas and NEC continuous-load standards.",
+      "15 free power calculators - generator sizing, battery backup, solar PV and watts to amps, with worked examples and NEC rules. No sign-up.",
     lastModified: "2026-09-28",
   },
   {

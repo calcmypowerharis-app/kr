@@ -27,7 +27,7 @@ import { QuickPowerChecker } from "@/components/home/QuickPowerChecker";
 export const metadata: Metadata = buildPageMetadata({
   title: "CalcMyPower | Power, Energy & Electrical Calculators",
   description:
-    "Size backup battery banks, convert watts to amps, and calculate generator wattage using transparent engineering formulas and NEC continuous-load standards.",
+    "15 free power calculators - generator sizing, battery backup, solar PV and watts to amps, with worked examples and NEC rules. No sign-up.",
   path: "/",
   isRoot: true,
 });
