@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = buildPageMetadata({
   title: "Electrical & Power Calculators Directory",
   description:
-    "Browse interactive electrical calculators and engineering sizing tools for backup generators, battery storage, solar PV, and AC/DC circuit conversions.",
+    "15 free calculators - generator sizing, battery backup, solar PV and amps/watts conversions, each with worked examples and NEC rules.",
   path: "/calculators",
 });
 
