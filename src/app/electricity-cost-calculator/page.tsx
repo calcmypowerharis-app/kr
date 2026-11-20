@@ -12,10 +12,10 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Electricity Cost Calculator: Bill Estimator",
   description:
-    "Estimate electric utility bills and true cost per kWh from energy usage, monthly fixed fees, and local taxes.",
+    "A 900 kWh home pays about $185 a month - $0.2056 per kWh. Free electricity bill calculator with worked example.",
   path: "/electricity-cost-calculator",
   ogDescription:
-    "Estimate electric utility bills and true cost per kWh from energy usage, monthly fixed fees, and local taxes.",
+    "A 900 kWh home pays about $185 a month - $0.2056 per kWh. Free electricity bill calculator with worked example.",
   images: [
     {
       url: "https://calcmypower.com/images/calculators/electricity-cost-calculator.webp",

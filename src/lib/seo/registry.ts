@@ -468,7 +468,7 @@ export const CALCULATOR_REGISTRY: CalculatorRegistryEntry[] = [
     shortTitle: "Electricity Cost",
     metaTitle: "Electricity Cost Calculator: Bill Estimator",
     metaDescription:
-      "Estimate electric utility bills and true cost per kWh from energy usage, monthly fixed fees, and local taxes.",
+      "A 900 kWh home pays about $185 a month - $0.2056 per kWh. Free electricity bill calculator with worked example.",
     cluster: "electricity",
     secondaryClusters: ["home-energy"],
     primaryKeyword: "electricity cost calculator",
